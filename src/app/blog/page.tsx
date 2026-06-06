@@ -34,11 +34,16 @@ export default async function BlogPage() {
             {posts.map((post, i) => (
               <article key={i} className="bg-white rounded-lg overflow-hidden"
                 style={{ boxShadow: "0 2px 8px rgba(0,0,0,.1)" }}>
-                {/* Coloured placeholder thumbnail */}
-                <div className="h-44 flex items-center justify-center text-5xl"
-                  style={{ backgroundColor: "#eaf4da" }}>
-                  📝
-                </div>
+                {post.image ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={post.image} alt={post.title}
+                    className="w-full h-44 object-cover block" />
+                ) : (
+                  <div className="h-44 flex items-center justify-center text-5xl"
+                    style={{ backgroundColor: "#eaf4da" }}>
+                    📝
+                  </div>
+                )}
                 <div className="p-5">
                   <div className="flex items-center gap-2 mb-2">
                     <span className="text-xs uppercase tracking-wide text-gray-400">{formatDate(post.pubDate)}</span>
