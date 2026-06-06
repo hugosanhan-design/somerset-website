@@ -1,15 +1,15 @@
 import Link from "next/link";
-import Image from "next/image";
 
 export default function Home() {
   return (
     <>
       {/* Hero */}
       <section className="relative h-80 flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-green-700 to-green-500" />
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/hero-bg.jpg')", filter: "brightness(0.6)" }} />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(77,133,32,0.5) 0%, rgba(0,0,0,0.3) 100%)" }} />
         <div className="relative z-10 text-center text-white px-6 max-w-2xl">
-          <h1 className="text-4xl font-bold mb-4 drop-shadow">Learn English with Somerset</h1>
-          <p className="text-lg opacity-90 mb-6">English classes for all levels in Valencia, Spain. Children, teens and adults since 1982.</p>
+          <h1 className="text-4xl font-bold mb-4 drop-shadow-lg">Learn English with Somerset</h1>
+          <p className="text-lg opacity-90 mb-6 drop-shadow">English classes for all levels in Valencia, Spain. Children, teens and adults since 1982.</p>
           <div className="flex gap-4 justify-center flex-wrap">
             <Link href="/placement" className="bg-white text-green-700 font-bold px-6 py-3 rounded-full hover:bg-green-50 transition-colors">
               Find my level →
