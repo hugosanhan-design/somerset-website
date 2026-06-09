@@ -1,115 +1,116 @@
-import { getBlogPosts, formatDate } from "@/lib/blog";
-import Link from "next/link";
+import { getBlogPosts } from "@/lib/blog";
 
 export const metadata = { title: "Blog — Somerset Language Centre" };
 export const revalidate = 3600;
+
+function formatDateSplit(dateStr: string): { day: string; month: string; year: string } {
+  try {
+    const d = new Date(dateStr);
+    return {
+      day: String(d.getDate()),
+      month: d.toLocaleString("en-GB", { month: "long" }).toUpperCase(),
+      year: String(d.getFullYear()),
+    };
+  } catch {
+    return { day: "", month: "", year: dateStr };
+  }
+}
 
 export default async function BlogPage() {
   const posts = await getBlogPosts(12);
 
   return (
-    <div className="max-w-6xl mx-auto px-5 py-10">
+    <>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+        .blog-root { font-family: 'Poppins', sans-serif; background: #f0f4ec; min-height: 60vh; }
+        .blog-card { transition: transform 0.15s, box-shadow 0.15s; }
+        .blog-card:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(0,0,0,0.13) !important; }
+      `}</style>
 
-      {/* Page header */}
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold" style={{ color: "#4d8520" }}>Sara&apos;s Blog</h1>
-        <p className="text-gray-500 mt-1">Cultural notes, grammar tips and English curiosities from Sara Hancock</p>
-      </div>
+      <div className="blog-root">
 
-      {/* Two-column layout */}
-      <div className="grid gap-8" style={{ gridTemplateColumns: "1fr 300px" }}>
-
-        {/* Main — blog posts */}
-        <main>
-          <div className="text-xs font-bold uppercase tracking-widest pb-2 mb-5"
-            style={{ color: "#4d8520", borderBottom: "3px solid #6BAE2E" }}>
-            Latest Posts
+        {/* Hero */}
+        <div style={{
+          background: "linear-gradient(135deg, #dce9d0 0%, #e8f0e0 60%, #f0f4ec 100%)",
+          padding: "80px 48px 72px",
+          textAlign: "center",
+        }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, marginBottom: 20 }}>
+            <span style={{ width: 8, height: 8, borderRadius: "50%", backgroundColor: "#6BAE2E", display: "inline-block" }} />
+            <span style={{ fontSize: 12, fontWeight: 600, letterSpacing: "0.12em", color: "#4a7a1e", textTransform: "uppercase" as const }}>
+              From the Centre
+            </span>
           </div>
+          <h1 style={{ fontSize: "clamp(36px,5vw,56px)", fontWeight: 700, color: "#1a2e1a", lineHeight: 1.1, marginBottom: 20, fontFamily: "'Poppins', sans-serif" }}>
+            The Somerset <span style={{ color: "#6BAE2E" }}>Blog</span>
+          </h1>
+          <p style={{ fontSize: 18, color: "#4b6040", maxWidth: 520, margin: "0 auto", lineHeight: 1.6 }}>
+            News, seasonal notes and exam tips from Sara and the team —{" "}
+            straight from our notebook to yours.
+          </p>
+        </div>
 
-          {posts.length === 0 && (
-            <p className="text-gray-400 py-10 text-center">No posts found. Check back soon.</p>
-          )}
-
-          <div className="space-y-5">
-            {posts.map((post, i) => (
-              <article key={i} className="bg-white rounded-lg overflow-hidden"
-                style={{ boxShadow: "0 2px 8px rgba(0,0,0,.1)" }}>
-                {post.image ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img src={post.image} alt={post.title}
-                    className="w-full h-44 object-cover block" />
-                ) : (
-                  <div className="h-44 flex items-center justify-center text-5xl"
-                    style={{ backgroundColor: "#eaf4da" }}>
-                    📝
-                  </div>
-                )}
-                <div className="p-5">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-xs uppercase tracking-wide text-gray-400">{formatDate(post.pubDate)}</span>
-                    <span className="text-xs font-bold px-2 py-0.5 rounded-full"
-                      style={{ backgroundColor: "#eaf4da", color: "#4d8520" }}>Blog</span>
-                  </div>
-                  <h2 className="text-lg font-bold mb-2 leading-snug">{post.title}</h2>
-                  <p className="text-sm text-gray-500 leading-relaxed mb-4">{post.excerpt}</p>
-                  <a href={post.link} target="_blank" rel="noopener noreferrer"
-                    className="inline-block text-sm font-bold px-4 py-2 rounded border-2 transition-colors"
-                    style={{ borderColor: "#6BAE2E", color: "#4d8520" }}
-                    onMouseOver={undefined}>
-                    Read on Blogger ↗
+        {/* Cards */}
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "56px 32px 80px" }}>
+          {posts.length === 0 ? (
+            <p style={{ textAlign: "center", padding: "60px 0", color: "#9ca3af" }}>No posts found. Check back soon.</p>
+          ) : (
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))", gap: 32 }}>
+              {posts.map((post, i) => {
+                const { day, month, year } = formatDateSplit(post.pubDate);
+                return (
+                  <a key={i} href={post.link} target="_blank" rel="noopener noreferrer"
+                    style={{ textDecoration: "none", display: "block" }}>
+                    <article className="blog-card" style={{
+                      background: "#fff",
+                      borderRadius: 14,
+                      overflow: "hidden",
+                      boxShadow: "0 2px 12px rgba(0,0,0,0.07)",
+                      height: "100%",
+                      display: "flex",
+                      flexDirection: "column",
+                    }}>
+                      <div style={{ width: "100%", height: 220, backgroundColor: "#dce9d0", overflow: "hidden", flexShrink: 0 }}>
+                        {post.image ? (
+                          // eslint-disable-next-line @next/next/no-img-element
+                          <img src={post.image} alt={post.title} referrerPolicy="no-referrer"
+                            style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                        ) : (
+                          <div style={{ width: "100%", height: "100%", background: "linear-gradient(135deg,#c8ddb8,#e0edd4)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                            <span style={{ fontSize: 40 }}>📖</span>
+                          </div>
+                        )}
+                      </div>
+                      <div style={{ padding: "20px 24px 24px", display: "flex", flexDirection: "column", gap: 10, flex: 1 }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: 12, fontSize: 12, color: "#6b7280" }}>
+                          <span style={{ fontWeight: 600, color: "#4a7a1e", lineHeight: 1.3 }}>
+                            {day} {month}<br />{year}
+                          </span>
+                          <span style={{ width: 4, height: 4, borderRadius: "50%", backgroundColor: "#d1d5db", flexShrink: 0 }} />
+                          <span>Somerset Language Centre</span>
+                        </div>
+                        <h2 style={{ fontSize: 18, fontWeight: 700, color: "#1a2e1a", lineHeight: 1.3, margin: 0 }}>
+                          {post.title}
+                        </h2>
+                        {post.excerpt && (
+                          <p style={{ fontSize: 14, color: "#4b5563", lineHeight: 1.6, flex: 1, margin: 0 }}>
+                            {post.excerpt}
+                          </p>
+                        )}
+                        <span style={{ fontSize: 13, color: "#6BAE2E", fontWeight: 600, marginTop: 4 }}>
+                          Read more →
+                        </span>
+                      </div>
+                    </article>
                   </a>
-                </div>
-              </article>
-            ))}
-          </div>
-        </main>
-
-        {/* Sidebar */}
-        <aside className="space-y-5">
-
-          {/* About Sara */}
-          <div className="bg-white rounded-lg p-5" style={{ boxShadow: "0 2px 8px rgba(0,0,0,.1)" }}>
-            <div className="text-xs font-bold uppercase tracking-widest pb-2 mb-4"
-              style={{ color: "#4d8520", borderBottom: "3px solid #6BAE2E" }}>
-              About Sara
+                );
+              })}
             </div>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjcR1xO-Msx2ZNIhWlH3NLvZggB8b2WlI8gcUJPInF74MX4gA32sLbtCqxhmyBfnqTQatDh9L_ktwKDMT0F84ibxo3fC3bpLH4sSOa53mzOYdhmpuHgqIEQhpzcEkKoF-1mNB7yYFXkLM6mxXES4ncZsbk67TB4H3V0hkKZar7RcIv-MZY/s220/Imagen%20de%20WhatsApp%202025-02-02%20a%20las%2018.50.29_c2b9fcbd.jpg"
-              alt="Sara Hancock"
-              width={80} height={80}
-              className="rounded-full mx-auto mb-3 block"
-              style={{ border: "3px solid #6BAE2E", objectFit: "cover" }}
-            />
-            <p className="text-center font-bold text-sm">Sara Hancock</p>
-            <p className="text-center text-xs text-gray-500 mt-1 leading-relaxed">
-              Teaching English since 1982. Somerset Language Centre opened in Valencia in 2013. Cultural notes, exercises, and Cambridge exam tips.
-            </p>
-          </div>
+          )}
+        </div>
 
-          {/* Quick links */}
-          <div className="bg-white rounded-lg p-5" style={{ boxShadow: "0 2px 8px rgba(0,0,0,.1)" }}>
-            <div className="text-xs font-bold uppercase tracking-widest pb-2 mb-4"
-              style={{ color: "#4d8520", borderBottom: "3px solid #6BAE2E" }}>
-              Also on the site
-            </div>
-            <div className="space-y-1">
-              {[
-                { href: "/exercises", label: "📚 Exercise Library", sub: "B1 to C2 + EVAU" },
-                { href: "/placement", label: "🎯 Placement Test", sub: "Find your level in 2 min" },
-                { href: "/contact",   label: "✉️ Contact us",      sub: "Valencia · Mon–Fri" },
-              ].map(l => (
-                <Link key={l.href} href={l.href}
-                  className="flex flex-col py-2 border-b border-gray-100 last:border-0 hover:pl-1 transition-all text-sm font-semibold text-gray-700">
-                  {l.label}
-                  <span className="text-xs text-gray-400 font-normal">{l.sub}</span>
-                </Link>
-              ))}
-            </div>
-          </div>
-
-        </aside>
       </div>
-    </div>
+    </>
   );
 }
