@@ -2,6 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 
 const links = [
   { href: "/", label: "Home" },
@@ -14,6 +15,10 @@ const links = [
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+
+  // Homepage has its own full-screen nav — suppress layout header there
+  if (pathname === "/") return null;
   return (
     <header className="sticky top-0 z-50 bg-white" style={{ borderBottom: "2px solid #6BAE2E" }}>
       <div className="max-w-6xl mx-auto px-5 flex items-center justify-between h-16">
