@@ -27,8 +27,10 @@ export async function getBlogPosts(max = 10): Promise<BlogPost[]> {
     const items = xml.match(/<item>([\s\S]*?)<\/item>/g) || [];
 
     return items.map((item) => {
-      const title = item.match(/<title>([\s\S]*?)<\/title>/)?.[1]
+      const rawTitle = item.match(/<title>([\s\S]*?)<\/title>/)?.[1]
         ?.replace(/<!\[CDATA\[([\s\S]*?)\]\]>/, "$1").trim() ?? "";
+      const title = decodeEntities(rawTitle);
+
       const link = item.match(/<link>([\s\S]*?)<\/link>/)?.[1]?.trim() ?? "";
       const pubDate = item.match(/<pubDate>([\s\S]*?)<\/pubDate>/)?.[1]?.trim() ?? "";
 
@@ -38,9 +40,10 @@ export async function getBlogPosts(max = 10): Promise<BlogPost[]> {
       // Decode XML entities so we can parse actual HTML
       const decoded = decodeEntities(rawContent);
 
-      // Extract first image src from decoded HTML
+      // Extract first image src; upgrade http to https to avoid mixed-content blocks
       const imgMatch = decoded.match(/<img[^>]+src=["']([^"']+)["']/i);
-      const image = imgMatch?.[1] ?? null;
+      const rawImage = imgMatch?.[1] ?? null;
+      const image = rawImage ? rawImage.replace(/^http:\/\//, "https://") : null;
 
       // Strip HTML to get plain text excerpt
       const excerpt = decoded
