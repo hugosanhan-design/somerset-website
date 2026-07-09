@@ -1,6 +1,10 @@
-import Link from "next/link";
+"use client";
+import { usePathname } from "next/navigation";
 
 export default function Footer() {
+  const pathname = usePathname();
+  // Homepage has its own full countryside footer — suppress the layout footer there
+  if (pathname === "/") return null;
   return (
     <footer className="bg-gray-900 text-gray-400 text-sm mt-16">
       <div className="max-w-6xl mx-auto px-5 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
