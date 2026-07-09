@@ -29,6 +29,26 @@ export default function Home() {
     window.addEventListener('scroll', onNavScroll, { passive: true })
     cleanups.push(() => window.removeEventListener('scroll', onNavScroll))
 
+    /* ── Mobile burger menu ── */
+    const burger = $('navBurger')
+    const mobileMenu = $('mobileMenu')
+    const setMenu = (open: boolean) => {
+      document.body.classList.toggle('menu-open', open)
+      burger?.setAttribute('aria-expanded', String(open))
+      mobileMenu?.setAttribute('aria-hidden', String(!open))
+    }
+    const onBurger = () => setMenu(!document.body.classList.contains('menu-open'))
+    burger?.addEventListener('click', onBurger)
+    /* close when a menu link is tapped (same-page anchors need it) */
+    mobileMenu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)))
+    const onMenuKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setMenu(false) }
+    document.addEventListener('keydown', onMenuKey)
+    cleanups.push(() => {
+      burger?.removeEventListener('click', onBurger)
+      document.removeEventListener('keydown', onMenuKey)
+      document.body.classList.remove('menu-open')
+    })
+
     /* ── Sheep walk, cloud drift, hill parallax, night-at-footer ── */
     const sheep = $('sheepWalk')
     const clouds = document.querySelectorAll<HTMLElement>('.cloud')
@@ -277,6 +297,41 @@ export default function Home() {
         .nav:not(.scrolled) .nav-links a:hover { color: #fff; }
         .nav:not(.scrolled) .nav-links .nav-cta a { background: rgba(255,255,255,0.14); border: 1.5px solid rgba(255,255,255,0.4); color: #fff; }
         .nav:not(.scrolled) .nav-links .nav-cta a:hover { background: rgba(255,255,255,0.26); }
+        /* ── Mobile burger + full-screen menu ── */
+        .nav-burger { display: none; width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid var(--line); background: rgba(245,241,230,0.85); cursor: pointer; align-items: center; justify-content: center; flex-direction: column; gap: 5px; padding: 0; z-index: 260; }
+        .nav-burger span { display: block; width: 18px; height: 2px; background: var(--ink); border-radius: 2px; transition: transform 0.25s cubic-bezier(0.22,1,0.36,1), opacity 0.2s; }
+        .nav:not(.scrolled) .nav-burger { background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.4); }
+        .nav:not(.scrolled) .nav-burger span { background: #fff; }
+        body.menu-open .nav-burger { background: transparent; border-color: rgba(245,241,230,0.4); }
+        body.menu-open .nav-burger span { background: var(--paper); }
+        body.menu-open .nav-burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        body.menu-open .nav-burger span:nth-child(2) { opacity: 0; }
+        body.menu-open .nav-burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        .mobile-menu {
+          position: fixed; inset: 0; z-index: 250; background: var(--racing);
+          display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.4rem;
+          opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+        }
+        body.menu-open .mobile-menu { opacity: 1; pointer-events: auto; }
+        body.menu-open { overflow: hidden; }
+        /* keep the burger (inside .nav's stacking context) above the overlay */
+        body.menu-open .nav { z-index: 260; background: none !important; box-shadow: none !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+        .mobile-menu a {
+          font-family: var(--serif); font-size: clamp(1.7rem, 7vw, 2.2rem); font-weight: 400;
+          color: var(--paper); padding: 0.45rem 1.5rem; letter-spacing: -0.01em;
+          opacity: 0; transform: translateY(14px); transition: opacity 0.4s cubic-bezier(0.22,1,0.36,1), transform 0.4s cubic-bezier(0.22,1,0.36,1);
+        }
+        .mobile-menu a em { font-style: italic; color: var(--leaf); }
+        body.menu-open .mobile-menu a { opacity: 1; transform: none; }
+        body.menu-open .mobile-menu a:nth-child(1) { transition-delay: 0.05s; }
+        body.menu-open .mobile-menu a:nth-child(2) { transition-delay: 0.1s; }
+        body.menu-open .mobile-menu a:nth-child(3) { transition-delay: 0.15s; }
+        body.menu-open .mobile-menu a:nth-child(4) { transition-delay: 0.2s; }
+        body.menu-open .mobile-menu a:nth-child(5) { transition-delay: 0.25s; }
+        body.menu-open .mobile-menu a:nth-child(6) { transition-delay: 0.3s; }
+        body.menu-open .mobile-menu a:nth-child(7) { transition-delay: 0.35s; }
+        .mobile-menu .mm-sub { font-family: var(--sans); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.26em; text-transform: uppercase; color: rgba(245,241,230,0.45); margin-top: 1.6rem; opacity: 0; transition: opacity 0.4s ease 0.4s; }
+        body.menu-open .mobile-menu .mm-sub { opacity: 1; }
         .hero { position: relative; min-height: 100dvh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; overflow: hidden; padding-bottom: 26vh; }
         .hero::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(to bottom, rgba(8,20,12,0.52) 0%, rgba(8,20,12,0.18) 34%, rgba(8,20,12,0.3) 64%, rgba(30,66,39,0.28) 100%); }
         .hero::after { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: radial-gradient(ellipse at center, transparent 55%, rgba(8,20,12,0.35) 100%); }
@@ -296,7 +351,8 @@ export default function Home() {
         .hero-lead { font-size: clamp(1rem, 1.4vw, 1.14rem); font-weight: 400; color: rgba(255,255,255,0.92); line-height: 1.75; max-width: 52ch; margin: 0 auto 2.6rem; text-wrap: pretty; text-shadow: 0 1px 12px rgba(0,0,0,0.35); opacity: 0; animation: rise-in 1.1s cubic-bezier(0.22,1,0.36,1) 2.25s forwards; }
         .hero-actions { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; opacity: 0; animation: rise-in 1.1s cubic-bezier(0.22,1,0.36,1) 2.45s forwards; }
         @keyframes rise-in { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
-        .scene { position: fixed; bottom: 0; left: 0; width: 100%; height: 22.5vh; pointer-events: none; z-index: 90; -webkit-mask-image: linear-gradient(to top, #000 82%, rgba(0,0,0,0.2) 100%); mask-image: linear-gradient(to top, #000 82%, rgba(0,0,0,0.2) 100%); filter: saturate(var(--sc-sat, 0.88)) brightness(var(--sc-bri, 0.98)); transition: filter 1.8s ease; }
+        :root { --scene-h: 22.5vh; }
+        .scene { position: fixed; bottom: 0; left: 0; width: 100%; height: var(--scene-h); pointer-events: none; z-index: 90; -webkit-mask-image: linear-gradient(to top, #000 82%, rgba(0,0,0,0.2) 100%); mask-image: linear-gradient(to top, #000 82%, rgba(0,0,0,0.2) 100%); filter: saturate(var(--sc-sat, 0.88)) brightness(var(--sc-bri, 0.98)); transition: filter 1.8s ease; }
         body.wx-cloudy { --sc-sat: 0.8; --sc-bri: 0.93; }
         body.wx-fog { --sc-sat: 0.8; --sc-bri: 0.97; }
         body.wx-rain { --sc-sat: 0.74; --sc-bri: 0.88; }
@@ -351,7 +407,7 @@ export default function Home() {
         .cloud { position: absolute; z-index: 1; pointer-events: none; will-change: transform; }
         .scene .clickable { pointer-events: auto; cursor: pointer; transition: filter 0.15s; }
         .scene .clickable:hover { filter: drop-shadow(0 3px 7px rgba(19,34,53,0.3)) brightness(1.06); }
-        .info-pop { position: fixed; left: 50%; bottom: calc(22.5vh + 22px); transform: translateX(-50%) translateY(10px); width: min(360px, calc(100vw - 32px)); background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 20px 22px; box-shadow: 0 18px 48px rgba(23,40,27,0.24); z-index: 120; opacity: 0; pointer-events: none; transition: opacity 0.22s ease, transform 0.22s ease; }
+        .info-pop { position: fixed; left: 50%; bottom: calc(var(--scene-h) + 22px); transform: translateX(-50%) translateY(10px); width: min(360px, calc(100vw - 32px)); background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 20px 22px; box-shadow: 0 18px 48px rgba(23,40,27,0.24); z-index: 120; opacity: 0; pointer-events: none; transition: opacity 0.22s ease, transform 0.22s ease; }
         .info-pop.show { opacity: 1; transform: translateX(-50%) translateY(0); pointer-events: auto; }
         .info-pop .info-close { position: absolute; top: 9px; right: 13px; border: none; background: none; font-size: 24px; line-height: 1; color: var(--muted); cursor: pointer; padding: 0; }
         .info-pop .info-close:hover { color: var(--ink); }
@@ -466,7 +522,7 @@ export default function Home() {
         .founders-av { width: 3.2rem; height: 3.2rem; border-radius: 50%; background: var(--racing); color: var(--paper); display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-style: italic; font-size: 0.95rem; font-weight: 500; flex-shrink: 0; }
         .founders-av + div strong { font-size: 1rem; font-weight: 700; display: block; margin-bottom: 0.1rem; }
         .founders-av + div small { font-size: 0.8rem; color: var(--muted); }
-        .v6footer { background: linear-gradient(to bottom, var(--racing) 0%, var(--racing) 45%, var(--racing-2) 100%); color: rgba(245,241,230,0.6); padding: 5.5rem 0 calc(2.5rem + 22.5vh); }
+        .v6footer { background: linear-gradient(to bottom, var(--racing) 0%, var(--racing) 45%, var(--racing-2) 100%); color: rgba(245,241,230,0.6); padding: 5.5rem 0 calc(2.5rem + var(--scene-h)); }
         .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1.75fr 1fr; gap: 3rem; margin-bottom: 4rem; }
         .footer-brand-name { font-family: var(--brand); font-size: 1.3rem; font-weight: 700; color: var(--paper); margin-bottom: 0.15rem; }
         .footer-brand-name b { font-weight: 700; color: var(--leaf); }
@@ -505,11 +561,26 @@ export default function Home() {
           .course-num { display: none; }
           .course-levels { grid-column: 1 / -1; justify-content: flex-start; }
         }
-        @media (max-width: 600px) {
+        @media (max-width: 720px) {
           .nav-links { display: none; }
+          .nav-burger { display: flex; }
+        }
+        @media (max-width: 600px) {
+          :root { --scene-h: 14vh; }
           .nav-logo-sub { display: none; }
+          .nav-logo-name { font-size: 1rem; white-space: nowrap; }
+          .nav .wrap { padding: 0 1.2rem; }
+          .hero h1 { font-size: clamp(2.55rem, 12vw, 3.4rem); }
+          .hero { padding-bottom: 20vh; }
           .hero-actions { flex-direction: column; align-items: stretch; }
           .footer-grid { grid-template-columns: 1fr; }
+          .statement-text { font-size: 1.55rem; }
+          .wx-badge { right: 10px; font-size: 0.6rem; }
+          .castle { width: 110px; }
+          .apple-tree { width: 70px; }
+          .prop.pony { width: 52px; }
+          .prop.cottage { width: 50px; }
+          .sheep-walk { width: 44px; }
         }
         @media (prefers-reduced-motion: reduce) {
           .apple-tree, .falling-apple, .cloud, .sheep-walk, .sheep-walk.eating, .win-glow, .castle-person .fig, .smoke, .hero-bg, .mist, .ff, .drop, .flake, .marquee { animation: none !important; }
@@ -560,9 +631,23 @@ export default function Home() {
               <li><a href="/exercises">Exercises</a></li>
               <li className="nav-cta"><a href="/placement">Placement Test</a></li>
             </ul>
+            <button className="nav-burger" id="navBurger" aria-label="Menu" aria-expanded="false">
+              <span /><span /><span />
+            </button>
           </div>
         </div>
       </nav>
+
+      <div className="mobile-menu" id="mobileMenu" aria-hidden="true">
+        <a href="/">Home</a>
+        <a href="/#courses">Courses</a>
+        <a href="/games">Somerset <em>Games</em></a>
+        <a href="/placement">Placement <em>Test</em></a>
+        <a href="/exercises">Exercises</a>
+        <a href="/blog">Blog</a>
+        <a href="/contact">Contact</a>
+        <span className="mm-sub">Valencia · Est. 2013</span>
+      </div>
 
       <section className="hero" id="hero">
         <div className="hero-bg" aria-hidden="true" />
