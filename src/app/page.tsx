@@ -506,6 +506,13 @@ export default function Home() {
         .placement-title { font-family: var(--serif); font-size: clamp(2rem, 3.6vw, 3rem); font-weight: 380; line-height: 1.14; letter-spacing: -0.015em; max-width: 18ch; }
         .placement-title em { font-style: italic; color: var(--green-dk); }
         .placement-sub { font-size: 1rem; font-weight: 400; color: var(--muted); margin-top: 1rem; max-width: 42ch; line-height: 1.7; text-wrap: pretty; }
+        .quizzical { background: var(--paper); padding: var(--py) 0; position: relative; overflow: hidden; }
+        .quizzical::before { content: '“'; position: absolute; left: -3%; top: 50%; transform: translateY(-58%); font-family: var(--serif); font-style: italic; font-size: clamp(18rem, 34vw, 30rem); font-weight: 340; color: rgba(30,66,39,0.05); line-height: 1; pointer-events: none; }
+        .quizzical-inner { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 4rem; }
+        .quizzical-tag { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--racing); background: rgba(30,66,39,0.08); padding: 0.4rem 1rem; border-radius: 50px; margin-bottom: 1.3rem; }
+        .quizzical-title { font-family: var(--serif); font-size: clamp(2rem, 3.6vw, 3rem); font-weight: 380; line-height: 1.14; letter-spacing: -0.015em; max-width: 20ch; }
+        .quizzical-title em { font-style: italic; color: var(--green-dk); }
+        .quizzical-sub { font-size: 1rem; font-weight: 400; color: var(--muted); margin-top: 1rem; max-width: 44ch; line-height: 1.7; text-wrap: pretty; }
         .about { padding: var(--py) 0; background: var(--paper); }
         .about-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 5.5rem; align-items: center; }
         .about-img { aspect-ratio: 4/5; background: var(--paper-2); border-radius: 20px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; border: 1px solid var(--line); }
@@ -552,6 +559,7 @@ export default function Home() {
           .about-grid { grid-template-columns: 1fr; gap: 3rem; }
           .about-img { aspect-ratio: 3/2; }
           .placement-inner { flex-direction: column; align-items: flex-start; gap: 2rem; }
+          .quizzical-inner { flex-direction: column; align-items: flex-start; gap: 2rem; }
           .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.25rem; }
           .stats-grid { grid-template-columns: 1fr; }
           .stat-item { border-right: none; border-bottom: 1px solid var(--line); }
@@ -626,6 +634,7 @@ export default function Home() {
             <ul className="nav-links" role="list">
               <li><a href="/">Home</a></li>
               <li><a href="/blog">Blog</a></li>
+              <li><a href="/daily-quizzical">Daily Quizzical</a></li>
               <li><a href="/#courses">Courses</a></li>
               <li><a href="/games">Games</a></li>
               <li><a href="/exercises">Exercises</a></li>
@@ -642,6 +651,7 @@ export default function Home() {
         <a href="/">Home</a>
         <a href="/#courses">Courses</a>
         <a href="/games">Somerset <em>Games</em></a>
+        <a href="/daily-quizzical">Daily <em>Quizzical</em></a>
         <a href="/placement">Placement <em>Test</em></a>
         <a href="/exercises">Exercises</a>
         <a href="/blog">Blog</a>
@@ -1030,6 +1040,19 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="quizzical" id="daily-quizzical-cta">
+        <div className="wrap">
+          <div className="quizzical-inner">
+            <div className="reveal">
+              <div className="quizzical-tag">Free · 3–5 minutes · New piece every morning</div>
+              <h2 className="quizzical-title">A daily habit of <em>questioning what you know</em></h2>
+              <p className="quizzical-sub">Daily Quizzical is a short reading piece published every morning — the true, more complicated history behind things everyone assumes they already know. 59 pieces so far, sorted by topic.</p>
+            </div>
+            <a href="/daily-quizzical" className="btn btn-primary reveal" data-d="1">Read Daily Quizzical <span className="btn-arr">→</span></a>
+          </div>
+        </div>
+      </section>
+
       <section className="placement" id="placement-cta">
         <div className="wrap">
           <div className="placement-inner">
@@ -1088,6 +1111,7 @@ export default function Home() {
               <ul className="footer-links">
                 <li><a href="/">Home</a></li><li><a href="/#courses">Courses</a></li>
                 <li><a href="/games">Games</a></li><li><a href="/blog">Blog</a></li>
+                <li><a href="/daily-quizzical">Daily Quizzical</a></li>
                 <li><a href="/exercises">Exercises</a></li><li><a href="/placement">Placement Test</a></li>
                 <li><a href="/contact">Contact</a></li>
               </ul>
