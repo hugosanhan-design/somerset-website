@@ -10,6 +10,7 @@ const links = [
   { href: "/#courses", label: "Courses" },
   { href: "/games", label: "Games" },
   { href: "/exercises", label: "Exercises" },
+  { href: "/reading-lab", label: "Reading Lab" },
   { href: "/placement", label: "Placement Test" },
   { href: "/contact", label: "Contact" },
 ];
