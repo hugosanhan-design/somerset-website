@@ -22,37 +22,22 @@ export default async function BlogPage() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-        .blog-root { font-family: 'Poppins', sans-serif; background: #f0f4ec; min-height: 60vh; }
         .blog-card { transition: transform 0.15s, box-shadow 0.15s; }
         .blog-card:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(0,0,0,0.13) !important; }
       `}</style>
 
-      <div className="blog-root">
+      <div className="max-w-6xl mx-auto px-5 py-10">
 
-        {/* Hero */}
-        <div style={{
-          background: "linear-gradient(135deg, #dce9d0 0%, #e8f0e0 60%, #f0f4ec 100%)",
-          padding: "80px 48px 72px",
-          textAlign: "center",
-        }}>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, marginBottom: 20 }}>
-            <span style={{ width: 8, height: 8, borderRadius: "50%", backgroundColor: "#57B82C", display: "inline-block" }} />
-            <span style={{ fontSize: 12, fontWeight: 600, letterSpacing: "0.12em", color: "#4a7a1e", textTransform: "uppercase" as const }}>
-              From the Centre
-            </span>
-          </div>
-          <h1 style={{ fontSize: "clamp(36px,5vw,56px)", fontWeight: 700, color: "#1a2e1a", lineHeight: 1.1, marginBottom: 20, fontFamily: "'Poppins', sans-serif" }}>
-            The Somerset <span style={{ color: "#57B82C" }}>Blog</span>
-          </h1>
-          <p style={{ fontSize: 18, color: "#4b6040", maxWidth: 520, margin: "0 auto", lineHeight: 1.6 }}>
-            News, seasonal notes and exam tips from Sara and the team —{" "}
-            straight from our notebook to yours.
+        {/* Standard page heading — same pattern as Exercises / Courses */}
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold" style={{ color: "#3D8B1F" }}>The Somerset Blog</h1>
+          <p className="text-gray-500 mt-1">
+            News, seasonal notes and exam tips from Sara and the team — straight from our notebook to yours.
           </p>
         </div>
 
         {/* Cards */}
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "56px 32px 80px" }}>
+        <div>
           {posts.length === 0 ? (
             <p style={{ textAlign: "center", padding: "60px 0", color: "#9ca3af" }}>No posts found. Check back soon.</p>
           ) : (
@@ -114,3 +99,4 @@ export default async function BlogPage() {
     </>
   );
 }
+
