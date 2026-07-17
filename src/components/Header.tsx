@@ -4,6 +4,8 @@ import Image from "next/image";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 
+// Canonical site nav — keep in sync with the homepage nav, mobile menu, footer,
+// and the shared header in the embedded prototypes (build_daily_quizzical.py etc.)
 const links = [
   { href: "/", label: "Home" },
   { href: "/blog", label: "Blog" },
@@ -11,9 +13,8 @@ const links = [
   { href: "/#courses", label: "Courses" },
   { href: "/games", label: "Games" },
   { href: "/exercises", label: "Exercises" },
-  { href: "/reading-lab", label: "Reading Lab" },
-  { href: "/placement", label: "Placement Test" },
   { href: "/contact", label: "Contact" },
+  { href: "/placement", label: "Placement Test" },
 ];
 
 export default function Header() {
