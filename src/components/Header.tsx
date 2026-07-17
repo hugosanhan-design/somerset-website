@@ -1,11 +1,12 @@
 "use client";
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 
-// Canonical site nav — keep in sync with the homepage nav and the shared
-// sl-header in the embedded prototypes (build_daily_quizzical.py, Reading Lab,
-// Somerset Games hub). Same items, same order, same styling everywhere.
+// Canonical site nav — a replica of the homepage premium nav in its scrolled
+// state (cream blurred bar, Poppins wordmark, dark Placement pill). THE rule:
+// every page's banner looks exactly like this. Keep in sync with the homepage
+// nav in page.tsx and the sl-header in the embedded prototypes
+// (build_daily_quizzical.py, Reading Lab, Somerset Games hub).
 const links = [
   { href: "/", label: "Home" },
   { href: "/blog", label: "Blog" },
@@ -26,26 +27,37 @@ export default function Header() {
 
   return (
     <header className="sl-header">
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      <link
+        rel="stylesheet"
+        precedence="default"
+        href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Poppins:wght@600;700&display=swap"
+      />
       <style>{`
-        .sl-header { position: sticky; top: 0; z-index: 100; background: #fff; border-bottom: 2px solid #57B82C; }
-        .sl-header .sl-wrap { max-width: 1160px; margin: 0 auto; padding: 10px 24px; display: flex; align-items: center; justify-content: space-between; gap: 8px 16px; flex-wrap: wrap; }
-        .sl-header .sl-logo { display: flex; align-items: center; text-decoration: none; }
-        .sl-header .sl-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 6px; }
-        .sl-header .sl-nav a { font-size: 13.5px; font-weight: 600; color: #4b5563; text-decoration: none; padding: 7px 10px; border-radius: 6px; }
+        .sl-header { position: sticky; top: 0; z-index: 100; background: rgba(245,241,230,0.92); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 1px 0 #D9D2BC; }
+        .sl-header .sl-wrap { max-width: 1240px; margin: 0 auto; padding: 0.85rem 2rem; display: flex; align-items: center; justify-content: space-between; gap: 0.5rem 2rem; flex-wrap: wrap; }
+        .sl-header .sl-logo { display: flex; flex-direction: column; line-height: 1.05; gap: 2px; text-decoration: none; }
+        .sl-header .sl-logo-name { font-family: 'Poppins', system-ui, sans-serif; font-size: 1.35rem; font-weight: 700; color: #17281B; letter-spacing: -0.01em; }
+        .sl-header .sl-logo-name b { font-weight: 700; color: #57B82C; }
+        .sl-header .sl-logo-sub { font-family: 'Instrument Sans', system-ui, sans-serif; font-size: 0.55rem; font-weight: 600; letter-spacing: 0.26em; text-transform: uppercase; color: #5C6657; }
+        .sl-header .sl-nav { display: flex; align-items: center; flex-wrap: wrap; gap: 0.3rem; }
+        .sl-header .sl-nav a { font-family: 'Instrument Sans', system-ui, sans-serif; font-size: 0.9rem; font-weight: 500; color: #17281B; text-decoration: none; padding: 0.42rem 0.95rem; border-radius: 50px; white-space: nowrap; }
         .sl-header .sl-nav a:hover { color: #3D8B1F; }
-        .sl-header .sl-nav a.active { color: #3D8B1F; }
-        .sl-header .sl-nav a.sl-cta { background: #57B82C; color: #fff; padding: 7px 15px; border-radius: 20px; margin-left: 4px; }
+        .sl-header .sl-nav a.active { color: #3D8B1F; font-weight: 600; }
+        .sl-header .sl-nav a.sl-cta { background: #17281B; color: #F5F1E6; padding: 0.6rem 1.35rem; margin-left: 0.6rem; font-weight: 600; }
         .sl-header .sl-nav a.sl-cta:hover { background: #3D8B1F; color: #fff; }
         @media (max-width: 700px) {
-          .sl-header .sl-wrap { padding: 8px 14px; }
-          .sl-header .sl-logo img { height: 28px !important; width: auto !important; }
-          .sl-header .sl-nav a { font-size: 12.5px; padding: 5px 7px; }
-          .sl-header .sl-nav a.sl-cta { padding: 5px 12px; }
+          .sl-header .sl-wrap { padding: 0.6rem 1rem; }
+          .sl-header .sl-logo-name { font-size: 1.05rem; }
+          .sl-header .sl-nav a { font-size: 0.8rem; padding: 0.3rem 0.55rem; }
+          .sl-header .sl-nav a.sl-cta { padding: 0.4rem 0.9rem; margin-left: 0.2rem; }
         }
       `}</style>
       <div className="sl-wrap">
         <Link href="/" className="sl-logo">
-          <Image src="/logo-colour.svg" alt="Somerset Language Centre" width={153} height={34} style={{ height: 34, width: "auto" }} priority />
+          <span className="sl-logo-name"><b>Somerset</b> Language Centre</span>
+          <span className="sl-logo-sub">Valencia · Est. 2013</span>
         </Link>
         <nav className="sl-nav">
           {links.map(l => (
@@ -53,7 +65,7 @@ export default function Header() {
               {l.label}
             </Link>
           ))}
-          <Link href="/placement" className={"sl-cta"}>Placement Test</Link>
+          <Link href="/placement" className="sl-cta">Placement Test</Link>
         </nav>
       </div>
     </header>
