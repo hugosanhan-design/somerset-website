@@ -4,12 +4,25 @@
 // Fraunces + Instrument Sans + Poppins wordmark · cream/racing-green palette ·
 // curtain opening · live Somerset weather + seasons · countryside scene with
 // night mode, mist, fireflies and Exmoor ponies.
-import { useEffect } from 'react'
+import { useEffect, useLayoutEffect } from 'react'
 
 const ffStyle = (l: string, b: string, d: string, dl: string) =>
   ({ left: l, bottom: b, '--d': d, '--dl': dl } as React.CSSProperties)
 
+const INTRO_SEEN_KEY = 'somersetIntroSeen'
+
 export default function Home() {
+  // Runs before paint: if the curtain intro already played this session (e.g.
+  // navigating back to "/" from another page), skip it instantly instead of
+  // replaying the ~2.5s curtain + hero reveal every time.
+  useLayoutEffect(() => {
+    if (sessionStorage.getItem(INTRO_SEEN_KEY)) {
+      document.body.classList.add('curtain-done', 'intro-skip')
+    } else {
+      sessionStorage.setItem(INTRO_SEEN_KEY, '1')
+    }
+  }, [])
+
   useEffect(() => {
     const $ = (id: string) => document.getElementById(id)
     const cleanups: Array<() => void> = []
@@ -600,6 +613,14 @@ export default function Home() {
           .reveal { opacity: 1; transform: none; transition: none; }
           .crow { display: none; }
         }
+        /* Curtain already played this session (e.g. navigated back to "/") —
+           skip straight to the settled state, no replay of the ~2.5s intro. */
+        body.intro-skip .curtain { display: none; }
+        body.intro-skip .eyebrow,
+        body.intro-skip .hero-lead,
+        body.intro-skip .hero-actions { opacity: 1; animation: none; }
+        body.intro-skip .hl > span { transform: none; animation: none; }
+        body.intro-skip .hero-bg { animation: hero-kenburns 38s ease-in-out infinite alternate; }
       `}</style>
 
       <div className="grain" aria-hidden="true" />
