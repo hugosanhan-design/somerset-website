@@ -638,6 +638,7 @@ export default function Home() {
               <li><a href="/#courses">Courses</a></li>
               <li><a href="/games">Games</a></li>
               <li><a href="/exercises">Exercises</a></li>
+              <li><a href="/contact">Contact</a></li>
               <li className="nav-cta"><a href="/placement">Placement Test</a></li>
             </ul>
             <button className="nav-burger" id="navBurger" aria-label="Menu" aria-expanded="false">
@@ -649,13 +650,13 @@ export default function Home() {
 
       <div className="mobile-menu" id="mobileMenu" aria-hidden="true">
         <a href="/">Home</a>
+        <a href="/blog">Blog</a>
+        <a href="/daily-quizzical">Daily <em>Quizzical</em></a>
         <a href="/#courses">Courses</a>
         <a href="/games">Somerset <em>Games</em></a>
-        <a href="/daily-quizzical">Daily <em>Quizzical</em></a>
-        <a href="/placement">Placement <em>Test</em></a>
         <a href="/exercises">Exercises</a>
-        <a href="/blog">Blog</a>
         <a href="/contact">Contact</a>
+        <a href="/placement">Placement <em>Test</em></a>
         <span className="mm-sub">Valencia · Est. 2013</span>
       </div>
 
@@ -1109,11 +1110,10 @@ export default function Home() {
             <div>
               <div className="footer-col-title">Pages</div>
               <ul className="footer-links">
-                <li><a href="/">Home</a></li><li><a href="/#courses">Courses</a></li>
-                <li><a href="/games">Games</a></li><li><a href="/blog">Blog</a></li>
-                <li><a href="/daily-quizzical">Daily Quizzical</a></li>
-                <li><a href="/exercises">Exercises</a></li><li><a href="/placement">Placement Test</a></li>
-                <li><a href="/contact">Contact</a></li>
+                <li><a href="/">Home</a></li><li><a href="/blog">Blog</a></li>
+                <li><a href="/daily-quizzical">Daily Quizzical</a></li><li><a href="/#courses">Courses</a></li>
+                <li><a href="/games">Games</a></li><li><a href="/exercises">Exercises</a></li>
+                <li><a href="/contact">Contact</a></li><li><a href="/placement">Placement Test</a></li>
               </ul>
             </div>
             <div>
