@@ -1,61 +1,61 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
 import { usePathname } from "next/navigation";
 
-// Canonical site nav — keep in sync with the homepage nav, mobile menu, footer,
-// and the shared header in the embedded prototypes (build_daily_quizzical.py etc.)
+// Canonical site nav — keep in sync with the homepage nav and the shared
+// sl-header in the embedded prototypes (build_daily_quizzical.py, Reading Lab,
+// Somerset Games hub). Same items, same order, same styling everywhere.
 const links = [
   { href: "/", label: "Home" },
   { href: "/blog", label: "Blog" },
   { href: "/daily-quizzical", label: "Daily Quizzical" },
-  { href: "/#courses", label: "Courses" },
+  { href: "/courses", label: "Courses" },
   { href: "/games", label: "Games" },
   { href: "/exercises", label: "Exercises" },
   { href: "/contact", label: "Contact" },
-  { href: "/placement", label: "Placement Test" },
 ];
 
 export default function Header() {
-  const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
   // Homepage has its own full-screen nav — suppress layout header there
   if (pathname === "/") return null;
+
+  const isActive = (href: string) => href !== "/" && pathname.startsWith(href);
+
   return (
-    <header className="sticky top-0 z-50 bg-white" style={{ borderBottom: "2px solid #57B82C" }}>
-      <div className="max-w-6xl mx-auto px-5 flex items-center justify-between h-16">
-        <Link href="/" className="flex items-center">
-          <Image src="/logo-colour.svg" alt="Somerset Language Centre" width={180} height={40} priority />
+    <header className="sl-header">
+      <style>{`
+        .sl-header { position: sticky; top: 0; z-index: 100; background: #fff; border-bottom: 2px solid #57B82C; }
+        .sl-header .sl-wrap { max-width: 1160px; margin: 0 auto; padding: 10px 24px; display: flex; align-items: center; justify-content: space-between; gap: 8px 16px; flex-wrap: wrap; }
+        .sl-header .sl-logo { display: flex; align-items: center; text-decoration: none; }
+        .sl-header .sl-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 6px; }
+        .sl-header .sl-nav a { font-size: 13.5px; font-weight: 600; color: #4b5563; text-decoration: none; padding: 7px 10px; border-radius: 6px; }
+        .sl-header .sl-nav a:hover { color: #3D8B1F; }
+        .sl-header .sl-nav a.active { color: #3D8B1F; }
+        .sl-header .sl-nav a.sl-cta { background: #57B82C; color: #fff; padding: 7px 15px; border-radius: 20px; margin-left: 4px; }
+        .sl-header .sl-nav a.sl-cta:hover { background: #3D8B1F; color: #fff; }
+        @media (max-width: 700px) {
+          .sl-header .sl-wrap { padding: 8px 14px; }
+          .sl-header .sl-logo img { height: 28px !important; width: auto !important; }
+          .sl-header .sl-nav a { font-size: 12.5px; padding: 5px 7px; }
+          .sl-header .sl-nav a.sl-cta { padding: 5px 12px; }
+        }
+      `}</style>
+      <div className="sl-wrap">
+        <Link href="/" className="sl-logo">
+          <Image src="/logo-colour.svg" alt="Somerset Language Centre" width={153} height={34} style={{ height: 34, width: "auto" }} priority />
         </Link>
-        {/* Desktop nav */}
-        <nav className="hidden md:flex gap-1">
+        <nav className="sl-nav">
           {links.map(l => (
-            <Link key={l.href} href={l.href}
-              className="text-gray-600 hover:text-green-700 px-4 py-2 rounded text-sm font-semibold transition-colors"
-              style={{"--hover-color": "#57B82C"} as React.CSSProperties}>
+            <Link key={l.href} href={l.href} className={isActive(l.href) ? "active" : ""}>
               {l.label}
             </Link>
           ))}
+          <Link href="/placement" className={"sl-cta"}>Placement Test</Link>
         </nav>
-        {/* Mobile burger */}
-        <button className="md:hidden p-2 text-gray-600" onClick={() => setOpen(!open)} aria-label="Menu">
-          <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2">
-            {open ? <path d="M6 18L18 6M6 6l12 12"/> : <path d="M4 6h16M4 12h16M4 18h16"/>}
-          </svg>
-        </button>
       </div>
-      {open && (
-        <div className="md:hidden bg-white border-t px-5 pb-4">
-          {links.map(l => (
-            <Link key={l.href} href={l.href} onClick={() => setOpen(false)}
-              className="block text-gray-700 py-3 text-sm font-semibold border-b border-gray-100 last:border-0">
-              {l.label}
-            </Link>
-          ))}
-        </div>
-      )}
     </header>
   );
 }
