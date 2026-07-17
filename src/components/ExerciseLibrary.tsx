@@ -33,12 +33,12 @@ export default function ExerciseLibrary() {
           value={search}
           onChange={e => setSearch(e.target.value)}
           className="flex-1 px-4 py-2 rounded-lg border-2 border-gray-200 focus:outline-none text-sm"
-          style={{ borderColor: search ? "#6BAE2E" : undefined }}
+          style={{ borderColor: search ? "#57B82C" : undefined }}
         />
         <button
           onClick={surprise}
           className="px-4 py-2 rounded-lg text-sm font-bold text-white whitespace-nowrap transition-opacity hover:opacity-90"
-          style={{ backgroundColor: "#6BAE2E" }}>
+          style={{ backgroundColor: "#57B82C" }}>
           🎲 Surprise me
         </button>
       </div>
@@ -46,7 +46,7 @@ export default function ExerciseLibrary() {
       {/* Level filter */}
       <div className="flex flex-wrap gap-2 mb-3">
         {allLevels.map(l => {
-          const colour = l === "ALL" ? "#6BAE2E" : levelColour[l] ?? "#888";
+          const colour = l === "ALL" ? "#57B82C" : levelColour[l] ?? "#888";
           const active = activeLevel === l;
           return (
             <button key={l} onClick={() => setActiveLevel(l)}
@@ -70,9 +70,9 @@ export default function ExerciseLibrary() {
             <button key={t} onClick={() => setActiveType(t)}
               className="text-xs px-3 py-1 rounded-full border transition-colors"
               style={{
-                borderColor: active ? "#4d8520" : "#d1d5db",
+                borderColor: active ? "#3D8B1F" : "#d1d5db",
                 backgroundColor: active ? "#eaf4da" : "transparent",
-                color: active ? "#4d8520" : "#6b7280",
+                color: active ? "#3D8B1F" : "#6b7280",
                 fontWeight: active ? 700 : 400,
               }}>
               #{t.toLowerCase().replace(/ /g, "-")}

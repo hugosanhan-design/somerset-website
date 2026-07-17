@@ -71,15 +71,15 @@ export default function PlacementTest() {
     return (
       <div className="bg-white rounded-xl shadow p-10 text-center">
         <div className="text-6xl mb-4">{result.emoji}</div>
-        <h2 className="text-2xl font-bold mb-2" style={{ color: "#4d8520" }}>Your level: {result.level}</h2>
+        <h2 className="text-2xl font-bold mb-2" style={{ color: "#3D8B1F" }}>Your level: {result.level}</h2>
         <p className="text-gray-500 mb-6">{result.msg}</p>
         <p className="text-gray-400 text-sm mb-6">You scored {score} out of {questions.length}</p>
         <a href="/contact" className="inline-block text-white font-bold px-6 py-3 rounded-full mr-3 transition-colors"
-          style={{ backgroundColor: "#6BAE2E" }}>
+          style={{ backgroundColor: "#57B82C" }}>
           Book a class
         </a>
         <button onClick={reset} className="text-sm font-semibold border-2 rounded-full px-6 py-3 transition-colors"
-          style={{ borderColor: "#6BAE2E", color: "#4d8520" }}>
+          style={{ borderColor: "#57B82C", color: "#3D8B1F" }}>
           Try again
         </button>
       </div>
@@ -92,7 +92,7 @@ export default function PlacementTest() {
   return (
     <div className="bg-white rounded-xl shadow p-8">
       <div className="h-1.5 bg-gray-100 rounded-full mb-6">
-        <div className="h-full rounded-full transition-all" style={{ width: `${progress}%`, backgroundColor: "#6BAE2E" }} />
+        <div className="h-full rounded-full transition-all" style={{ width: `${progress}%`, backgroundColor: "#57B82C" }} />
       </div>
       <p className="text-xs text-gray-400 uppercase tracking-wide mb-3">Question {current + 1} of {questions.length}</p>
       <h3 className="text-lg font-semibold mb-1">{q.q}</h3>

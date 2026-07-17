@@ -37,13 +37,13 @@ export default async function BlogPage() {
           textAlign: "center",
         }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, marginBottom: 20 }}>
-            <span style={{ width: 8, height: 8, borderRadius: "50%", backgroundColor: "#6BAE2E", display: "inline-block" }} />
+            <span style={{ width: 8, height: 8, borderRadius: "50%", backgroundColor: "#57B82C", display: "inline-block" }} />
             <span style={{ fontSize: 12, fontWeight: 600, letterSpacing: "0.12em", color: "#4a7a1e", textTransform: "uppercase" as const }}>
               From the Centre
             </span>
           </div>
           <h1 style={{ fontSize: "clamp(36px,5vw,56px)", fontWeight: 700, color: "#1a2e1a", lineHeight: 1.1, marginBottom: 20, fontFamily: "'Poppins', sans-serif" }}>
-            The Somerset <span style={{ color: "#6BAE2E" }}>Blog</span>
+            The Somerset <span style={{ color: "#57B82C" }}>Blog</span>
           </h1>
           <p style={{ fontSize: 18, color: "#4b6040", maxWidth: 520, margin: "0 auto", lineHeight: 1.6 }}>
             News, seasonal notes and exam tips from Sara and the team —{" "}
@@ -98,7 +98,7 @@ export default async function BlogPage() {
                             {post.excerpt}
                           </p>
                         )}
-                        <span style={{ fontSize: 13, color: "#6BAE2E", fontWeight: 600, marginTop: 4 }}>
+                        <span style={{ fontSize: 13, color: "#57B82C", fontWeight: 600, marginTop: 4 }}>
                           Read more →
                         </span>
                       </div>

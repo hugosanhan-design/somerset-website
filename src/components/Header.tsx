@@ -23,7 +23,7 @@ export default function Header() {
   // Homepage has its own full-screen nav — suppress layout header there
   if (pathname === "/") return null;
   return (
-    <header className="sticky top-0 z-50 bg-white" style={{ borderBottom: "2px solid #6BAE2E" }}>
+    <header className="sticky top-0 z-50 bg-white" style={{ borderBottom: "2px solid #57B82C" }}>
       <div className="max-w-6xl mx-auto px-5 flex items-center justify-between h-16">
         <Link href="/" className="flex items-center">
           <Image src="/logo-colour.svg" alt="Somerset Language Centre" width={180} height={40} priority />
@@ -33,7 +33,7 @@ export default function Header() {
           {links.map(l => (
             <Link key={l.href} href={l.href}
               className="text-gray-600 hover:text-green-700 px-4 py-2 rounded text-sm font-semibold transition-colors"
-              style={{"--hover-color": "#6BAE2E"} as React.CSSProperties}>
+              style={{"--hover-color": "#57B82C"} as React.CSSProperties}>
               {l.label}
             </Link>
           ))}
