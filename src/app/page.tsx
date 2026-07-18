@@ -11,6 +11,21 @@ const ffStyle = (l: string, b: string, d: string, dl: string) =>
 
 const INTRO_SEEN_KEY = 'somersetIntroSeen'
 
+/* Real ratings + review excerpts, captured from public profiles 2026-07-18.
+   Quotes are verbatim complete sentences from Google reviews (all 5★). */
+const GOOGLE_REVIEWS_URL = 'https://www.google.com/maps/place/Somerset+Language+Centre/@39.4866863,-0.3716102,17z/data=!4m8!3m7!1s0xd604601c1453a5f:0xe2ac12582f38d91a!8m2!3d39.4866863!4d-0.3716102!9m1!1b1!16s%2Fg%2F1pv2f2446'
+const FACEBOOK_URL = 'https://www.facebook.com/SomersetLanguageCentre/'
+const MEJOR_URL = 'https://mejor.es/@somerset-language-centre/'
+
+const REVIEWS = [
+  { name: 'Lorena', text: 'Súper contenta con esta academia. Todo el personal es muy agradable y los profesores, muy dedicados. ¡Es el sitio donde mejor me han preparado para los exámenes!' },
+  { name: 'Raquel Roldán', text: 'Es una academia familiar con un trato personal y muy bueno. Las clases son reducidas y los profesores muy atentos. Lo recomiendo a todo el mundo 100%.' },
+  { name: 'Ana Benavent', text: 'He realizado varios cursos en esta academia, tanto para el B2, como para el C1 (superados ambos) y ha sido una gran experiencia. Los profesores están realmente volcados en el alumnado y se ajustan perfectamente a nuestras necesidades.' },
+  { name: 'Victor Hernández', text: 'Con mi hija han conseguido lo que para nosotros era impensable.' },
+  { name: 'Claudia Ucles', text: 'Me ayudaron mucho las clases, me saqué el C1 con ellos y la experiencia con las profes con las que estuve genial!!' },
+  { name: 'Isabel Quilis', text: 'Llevo más de 5 años yendo a Somerset, y mi experiencia es más de 5 estrellas.' },
+]
+
 export default function Home() {
   // Runs before paint: if the curtain intro already played this session (e.g.
   // navigating back to "/" from another page), skip it instantly instead of
@@ -373,7 +388,7 @@ export default function Home() {
         body.season-winter { --sc-sat: 0.8; }
         body.night { --sc-sat: 0.72; --sc-bri: 0.8; }
         .scene::after { content: ''; position: absolute; inset: 0; z-index: 10; background: linear-gradient(to bottom, rgba(232,178,106,0.22) 0%, rgba(232,178,106,0.07) 42%, rgba(140,94,156,0.06) 100%); }
-        .marquee-strip, .statement, .stats-strip, .why, .courses, .placement, .about, .v6footer { position: relative; z-index: 2; }
+        .marquee-strip, .statement, .stats-strip, .why, .courses, .reviews, .placement, .about, .v6footer { position: relative; z-index: 2; }
         .hill { position: absolute; bottom: 0; left: -3%; width: 106%; height: 100%; will-change: transform; }
         .hill svg { width: 100%; height: 100%; display: block; }
         .hill.far { opacity: 0.85; }
@@ -472,7 +487,7 @@ export default function Home() {
         .statement-text em { font-style: italic; color: var(--green-dk); }
         .statement-text .accent { font-style: italic; color: var(--heather); }
         .stats-strip { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-        .stats-grid { display: grid; grid-template-columns: repeat(3,1fr); text-align: center; }
+        .stats-grid { display: grid; grid-template-columns: repeat(4,1fr); text-align: center; }
         .stat-item { padding: 3.2rem 2rem; border-right: 1px solid var(--line); }
         .stat-item:last-child { border-right: none; }
         .stat-n { display: block; font-family: var(--serif); font-size: 3.6rem; font-weight: 400; line-height: 1; color: var(--racing); margin-bottom: 0.55rem; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
@@ -512,6 +527,23 @@ export default function Home() {
         .course-arr { font-size: 1.5rem; color: var(--brass); transition: transform 0.25s; }
         .course-row:hover .course-arr { transform: translateX(6px); }
         .courses-cta { margin-top: 2.6rem; display: flex; justify-content: center; }
+        .reviews { padding: var(--py) 0; background: var(--paper); }
+        .rating-badges { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.4rem; margin-bottom: 3rem; }
+        .rating-badge { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.3rem; background: #FBF9F2; border: 1px solid var(--line); border-radius: 20px; padding: 1.9rem 1.5rem 1.7rem; transition: transform 0.28s cubic-bezier(0.22,1,0.36,1), box-shadow 0.28s; }
+        a.rating-badge:hover { transform: translateY(-5px); box-shadow: 0 16px 36px rgba(23,40,27,0.1); }
+        .rb-source { font-size: 0.66rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+        .rb-score { font-family: var(--serif); font-size: 2.5rem; font-weight: 400; color: var(--racing); line-height: 1.15; letter-spacing: -0.02em; }
+        .rb-stars { color: var(--brass); font-size: 1rem; letter-spacing: 0.2em; }
+        .rb-sub { font-size: 0.84rem; color: var(--muted); }
+        .review-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.6rem; }
+        .review-card { display: flex; flex-direction: column; background: #FBF9F2; border: 1px solid var(--line); border-radius: 20px; padding: 2.1rem 2rem 1.9rem; transition: transform 0.28s cubic-bezier(0.22,1,0.36,1), box-shadow 0.28s; }
+        .review-card:hover { transform: translateY(-6px); box-shadow: 0 20px 44px rgba(23,40,27,0.1); }
+        .review-stars { color: var(--brass); font-size: 0.92rem; letter-spacing: 0.2em; margin-bottom: 0.9rem; }
+        .review-text { font-family: var(--serif); font-style: italic; font-size: 1.02rem; font-weight: 340; color: var(--ink-soft); line-height: 1.7; flex: 1; text-wrap: pretty; }
+        .review-meta { margin-top: 1.4rem; padding-top: 1.05rem; border-top: 1px solid var(--line); }
+        .review-name { display: block; font-size: 0.9rem; font-weight: 700; font-style: normal; }
+        .review-src { display: block; font-size: 0.73rem; color: var(--muted); margin-top: 0.1rem; }
+        .reviews-cta { margin-top: 2.6rem; display: flex; justify-content: center; }
         .placement { background: var(--paper-2); padding: var(--py) 0; position: relative; overflow: hidden; }
         .placement::before { content: '?'; position: absolute; right: -2%; top: 50%; transform: translateY(-52%); font-family: var(--serif); font-style: italic; font-size: clamp(18rem, 34vw, 30rem); font-weight: 340; color: rgba(30,66,39,0.06); line-height: 1; pointer-events: none; }
         .placement-inner { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 4rem; }
@@ -569,6 +601,8 @@ export default function Home() {
         .reveal[data-d="3"] { transition-delay: 0.36s; }
         @media (max-width: 900px) {
           .why-cards { grid-template-columns: 1fr; }
+          .rating-badges { grid-template-columns: 1fr; }
+          .review-cards { grid-template-columns: 1fr; }
           .about-grid { grid-template-columns: 1fr; gap: 3rem; }
           .about-img { aspect-ratio: 3/2; }
           .placement-inner { flex-direction: column; align-items: flex-start; gap: 2rem; }
@@ -922,6 +956,7 @@ export default function Home() {
               <span className="marquee-item">EVAU</span><span className="marquee-dot" />
               <span className="marquee-item">Small groups</span><span className="marquee-dot" />
               <span className="marquee-item">Native teachers</span><span className="marquee-dot" />
+              <span className="marquee-item">5.0 ★ on Google</span><span className="marquee-dot" />
               <span className="marquee-item">Since 2013</span><span className="marquee-dot" />
             </div>
           ))}
@@ -943,6 +978,7 @@ export default function Home() {
             <div className="stat-item reveal"><span className="stat-n">2013</span><span className="stat-l">Year established</span></div>
             <div className="stat-item reveal" data-d="1"><span className="stat-n"><span className="count" data-to="8">0</span><small>–</small><span className="count" data-to="10">0</span></span><span className="stat-l">Students per class</span></div>
             <div className="stat-item reveal" data-d="2"><span className="stat-n"><span className="count" data-to="40">0</span><small>+</small></span><span className="stat-l">Years of Sara&apos;s teaching experience</span></div>
+            <div className="stat-item reveal" data-d="3"><span className="stat-n">5.0<small>★</small></span><span className="stat-l">Google rating · 49 reviews</span></div>
           </div>
         </div>
       </div>
@@ -1062,6 +1098,50 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="reviews" id="reviews">
+        <div className="wrap">
+          <div className="section-header reveal">
+            <h2 className="section-title">What our students <em>say</em></h2>
+            <span className="section-tag">Reviews</span>
+          </div>
+          <div className="rating-badges reveal">
+            <a className="rating-badge" href={GOOGLE_REVIEWS_URL} target="_blank" rel="noopener">
+              <span className="rb-source">Google</span>
+              <span className="rb-score">5.0</span>
+              <span className="rb-stars" aria-hidden="true">★★★★★</span>
+              <span className="rb-sub">49 reviews →</span>
+            </a>
+            <a className="rating-badge" href={FACEBOOK_URL} target="_blank" rel="noopener">
+              <span className="rb-source">Facebook</span>
+              <span className="rb-score">100%</span>
+              <span className="rb-stars" aria-hidden="true">★★★★★</span>
+              <span className="rb-sub">recommend · 12 reviews →</span>
+            </a>
+            <a className="rating-badge" href={MEJOR_URL} target="_blank" rel="noopener">
+              <span className="rb-source">Mejor.es</span>
+              <span className="rb-score">10/10</span>
+              <span className="rb-stars" aria-hidden="true">★★★★★</span>
+              <span className="rb-sub">rated by students →</span>
+            </a>
+          </div>
+          <div className="review-cards">
+            {REVIEWS.map((r, i) => (
+              <blockquote className="review-card reveal" data-d={String(i % 3)} key={r.name}>
+                <div className="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+                <p className="review-text">“{r.text}”</p>
+                <footer className="review-meta">
+                  <cite className="review-name">{r.name}</cite>
+                  <span className="review-src">Google review</span>
+                </footer>
+              </blockquote>
+            ))}
+          </div>
+          <div className="reviews-cta reveal">
+            <a href={GOOGLE_REVIEWS_URL} target="_blank" rel="noopener" className="btn btn-ghost">Read all 49 reviews on Google <span className="btn-arr">→</span></a>
+          </div>
+        </div>
+      </section>
+
       <section className="quizzical" id="daily-quizzical-cta">
         <div className="wrap">
           <div className="quizzical-inner">
@@ -1150,6 +1230,8 @@ export default function Home() {
               <div className="footer-col-title">Follow</div>
               <ul className="footer-links">
                 <li><a href="https://www.instagram.com/somersetlanguagecentre/" target="_blank" rel="noopener">Instagram</a></li>
+                <li><a href="https://www.facebook.com/SomersetLanguageCentre/" target="_blank" rel="noopener">Facebook</a></li>
+                <li><a href="https://www.google.com/maps/place/Somerset+Language+Centre/@39.4866863,-0.3716102,17z/data=!4m8!3m7!1s0xd604601c1453a5f:0xe2ac12582f38d91a!8m2!3d39.4866863!4d-0.3716102!9m1!1b1!16s%2Fg%2F1pv2f2446" target="_blank" rel="noopener">Google Reviews · 5.0 ★</a></li>
                 <li><a href="https://somersetlanguagecentre.blogspot.com" target="_blank" rel="noopener">Sara&apos;s Blog</a></li>
               </ul>
             </div>
