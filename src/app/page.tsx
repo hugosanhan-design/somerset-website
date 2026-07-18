@@ -4,7 +4,7 @@
 // Fraunces + Instrument Sans + Poppins wordmark · cream/racing-green palette ·
 // curtain opening · live Somerset weather + seasons · countryside scene with
 // night mode, mist, fireflies and Exmoor ponies.
-import { useEffect, useLayoutEffect } from 'react'
+import { useEffect, useLayoutEffect, useState } from 'react'
 
 const ffStyle = (l: string, b: string, d: string, dl: string) =>
   ({ left: l, bottom: b, '--d': d, '--dl': dl } as React.CSSProperties)
@@ -26,7 +26,101 @@ const REVIEWS = [
   { name: 'Isabel Quilis', text: 'Llevo más de 5 años yendo a Somerset, y mi experiencia es más de 5 estrellas.' },
 ]
 
+/* Every written review each platform shows publicly (the rest are score-only
+   or login-walled). Shown in the in-page modal when a rating badge is clicked. */
+const REVIEW_SOURCES: Record<string, {
+  label: string; score: string; scoreNote: string; url: string; urlLabel: string;
+  footnote: string; reviews: Array<{ name: string; text: string }>;
+}> = {
+  google: {
+    label: 'Google', score: '5.0', scoreNote: '49 reviews · 47 five-star',
+    url: GOOGLE_REVIEWS_URL, urlLabel: 'See all on Google',
+    footnote: 'These are the 8 written reviews — the other 41 ratings are stars only.',
+    reviews: [
+      REVIEWS[3], REVIEWS[0], REVIEWS[4], REVIEWS[2],
+      { name: 'Óscar Ojeda Ferrer', text: 'Estudié en la academia cuando era pequeño y mi experiencia fue muy buena. Este último año decidí presentarme al C1 y elegir a Somerset como mi escuela para prepararlo.' },
+      REVIEWS[5],
+      { name: 'Sara Doménech', text: 'Mi experiencia en Somerset ha sido excelente. Todos los profesores son nativos y enormemente cualificados. He obtenido allí tanto mi certificado B2 como C1.' },
+      REVIEWS[1],
+    ],
+  },
+  facebook: {
+    label: 'Facebook', score: '100%', scoreNote: 'recommend · 12 reviews',
+    url: FACEBOOK_URL, urlLabel: 'See all on Facebook',
+    footnote: 'Facebook only shows the rest of its reviews to logged-in users.',
+    reviews: [
+      { name: 'Adita Vidal Tortosa', text: 'Academia de idiomas especialmente inglés y estoy encantada desde el primer día!!!! Preciosa y muy agradable y los profesores encantadores y aparte tenemos un salón biblioteca que es fenomenal y servicios enormes y limpísimos!!!! Chapo por la gente que trabaja así y se preocupa por nosotros sus alumnos así!!!!!' },
+    ],
+  },
+  mejor: {
+    label: 'Mejor.es', score: '10/10', scoreNote: 'Excelente · #3 en Educación en La Saïdia',
+    url: MEJOR_URL, urlLabel: 'See the profile on Mejor.es',
+    footnote: 'Mejor.es publishes scores rather than written reviews.',
+    reviews: [],
+  },
+}
+
+/* Course detail content — carried over from the level descriptions on the original
+   somersetlc.com/cursos pages, adapted into the site voice. Factual content unchanged. */
+const COURSES = [
+  {
+    name: 'Children',
+    tagline: 'Learning that feels like play — solid foundations from the very start.',
+    pills: ['Infantil', 'Primaria'],
+    levels: [
+      { level: 'Starters & Movers', text: 'First steps in English — listening, speaking and reading built through games, songs and activities, so the language grows naturally.' },
+      { level: 'Flyers (9–11) · A2', text: 'Equivalent to A2 level, with content designed for children of this age: a solid grammar base, a growing command of English, and first steps in organising written ideas — everything practised through games and activities so learning feels natural and fun.' },
+    ],
+  },
+  {
+    name: 'Teenagers',
+    tagline: 'Confidence for school, exams and everything after.',
+    pills: ['ESO', 'Bachillerato'],
+    levels: [
+      { level: 'KET · A2 Key', text: 'The goal is real communication: speaking English with good pronunciation and the confidence to use it effectively, enriching everything already learnt at school.' },
+      { level: 'PET · B1 Preliminary', text: 'Built around all four skills of the official Cambridge exams — Listening, Reading, Speaking and Writing — so nothing on exam day comes as a surprise.' },
+      { level: 'FCE · B2 First', text: 'Students learn to converse, read and write correctly in English, deepening and consolidating the language — working individually, in pairs and in small groups through conversations, role-plays, debates and presentations.' },
+      { level: 'C1 Advanced', text: 'For students aiming at an advanced command of English: understanding and expressing complex ideas, spoken and written, with the reading and listening skills to handle specialised texts with confidence.' },
+    ],
+  },
+  {
+    name: 'Adults',
+    tagline: 'Practical English for work, travel and real life.',
+    pills: ['All levels', 'Conversation'],
+    levels: [
+      { level: 'A1 · Beginner', text: 'Really communicate in English — good pronunciation and the confidence to use the language effectively from day one.' },
+      { level: 'B1 · Intermediate', text: 'Designed for handling the everyday situations where English matters — travel, work, meeting people — at your own pace and in an enjoyable way.' },
+      { level: 'B2 · Upper Intermediate', text: 'Builds the confidence to operate fully in English in any circumstance, in a comfortable and relaxed atmosphere — with real attention to pronunciation, grammar and specific vocabulary.' },
+      { level: 'C1 · Advanced (CAE)', text: 'Every skill taken to its highest level for the Cambridge Advanced exam — the deeper, more precise English demanded in academic and professional life.' },
+    ],
+  },
+  {
+    name: 'Exam preparation',
+    tagline: 'Cambridge results without the panic — proven, structured prep.',
+    pills: ['B1', 'B2 First', 'C1 Advanced', 'EVAU'],
+    levels: [
+      { level: 'Cambridge exams', text: 'Structured preparation for every paper of the official exams — B1 Preliminary, B2 First and C1 Advanced — with mock exams and personal feedback so you walk in knowing exactly what to expect.' },
+      { level: 'Summer intensives', text: 'Focused on preparing every part of the Cambridge exam in record time, with a specialised approach and experienced teachers.' },
+      { level: 'EVAU English', text: 'Exam technique and calm, focused practice for the English paper in selectividad.' },
+    ],
+  },
+]
+
 export default function Home() {
+  const [openCourse, setOpenCourse] = useState<number | null>(null)
+  // Which rating source's reviews are open in the in-page modal (null = closed)
+  const [reviewSrc, setReviewSrc] = useState<string | null>(null)
+
+  useEffect(() => {
+    if (!reviewSrc) return
+    const onEsc = (e: KeyboardEvent) => { if (e.key === 'Escape') setReviewSrc(null) }
+    document.addEventListener('keydown', onEsc)
+    document.body.classList.add('reviews-modal-open')
+    return () => {
+      document.removeEventListener('keydown', onEsc)
+      document.body.classList.remove('reviews-modal-open')
+    }
+  }, [reviewSrc])
   // Runs before paint: if the curtain intro already played this session (e.g.
   // navigating back to "/" from another page), skip it instantly instead of
   // replaying the ~2.5s curtain + hero reveal every time.
@@ -517,8 +611,16 @@ export default function Home() {
         .courses .section-title em { color: var(--leaf); }
         .courses .section-tag { color: rgba(245,241,230,0.5); }
         .course-list { border-top: 1px solid rgba(245,241,230,0.16); }
-        .course-row { display: grid; grid-template-columns: 4rem 1fr auto auto; align-items: center; gap: 2.5rem; padding: 2.1rem 0.5rem; border-bottom: 1px solid rgba(245,241,230,0.16); transition: background 0.22s, padding 0.28s cubic-bezier(0.22,1,0.36,1); }
+        .course-item { border-bottom: 1px solid rgba(245,241,230,0.16); }
+        .course-row { display: grid; grid-template-columns: 4rem 1fr auto auto; align-items: center; gap: 2.5rem; padding: 2.1rem 0.5rem; width: 100%; text-align: left; background: none; border: none; color: inherit; font: inherit; cursor: pointer; transition: background 0.22s, padding 0.28s cubic-bezier(0.22,1,0.36,1); }
         .course-row:hover { background: rgba(245,241,230,0.045); padding-left: 1.4rem; }
+        .course-item.open .course-arr { transform: rotate(90deg); }
+        .course-detail { padding: 0.3rem 0.5rem 2.3rem; display: grid; gap: 1.15rem; animation: detail-in 0.5s cubic-bezier(0.22,1,0.36,1); }
+        @keyframes detail-in { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: none; } }
+        .course-level { display: grid; grid-template-columns: 12rem 1fr; gap: 1.5rem; align-items: baseline; }
+        .course-level-name { font-family: var(--serif); font-style: italic; font-size: 1.05rem; color: var(--leaf); }
+        .course-level p { font-size: 0.95rem; line-height: 1.7; color: rgba(245,241,230,0.78); max-width: 64ch; margin: 0; }
+        .course-detail-cta { justify-self: start; margin-top: 0.55rem; }
         .course-num { font-family: var(--serif); font-style: italic; font-size: 1.05rem; color: var(--brass); }
         .course-name { font-family: var(--serif); font-size: clamp(1.5rem, 2.6vw, 2.2rem); font-weight: 400; letter-spacing: -0.01em; line-height: 1.15; }
         .course-name small { display: block; font-family: var(--sans); font-size: 0.86rem; font-style: normal; color: rgba(245,241,230,0.6); margin-top: 0.4rem; font-weight: 400; letter-spacing: 0; }
@@ -529,8 +631,8 @@ export default function Home() {
         .courses-cta { margin-top: 2.6rem; display: flex; justify-content: center; }
         .reviews { padding: var(--py) 0; background: var(--paper); }
         .rating-badges { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.4rem; margin-bottom: 3rem; }
-        .rating-badge { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.3rem; background: #FBF9F2; border: 1px solid var(--line); border-radius: 20px; padding: 1.9rem 1.5rem 1.7rem; transition: transform 0.28s cubic-bezier(0.22,1,0.36,1), box-shadow 0.28s; }
-        a.rating-badge:hover { transform: translateY(-5px); box-shadow: 0 16px 36px rgba(23,40,27,0.1); }
+        .rating-badge { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.3rem; background: #FBF9F2; border: 1px solid var(--line); border-radius: 20px; padding: 1.9rem 1.5rem 1.7rem; transition: transform 0.28s cubic-bezier(0.22,1,0.36,1), box-shadow 0.28s; font-family: inherit; color: inherit; cursor: pointer; width: 100%; }
+        .rating-badge:hover { transform: translateY(-5px); box-shadow: 0 16px 36px rgba(23,40,27,0.1); }
         .rb-source { font-size: 0.66rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
         .rb-score { font-family: var(--serif); font-size: 2.5rem; font-weight: 400; color: var(--racing); line-height: 1.15; letter-spacing: -0.02em; }
         .rb-stars { color: var(--brass); font-size: 1rem; letter-spacing: 0.2em; }
@@ -544,6 +646,27 @@ export default function Home() {
         .review-name { display: block; font-size: 0.9rem; font-weight: 700; font-style: normal; }
         .review-src { display: block; font-size: 0.73rem; color: var(--muted); margin-top: 0.1rem; }
         .reviews-cta { margin-top: 2.6rem; display: flex; justify-content: center; }
+        .rv-overlay { position: fixed; inset: 0; z-index: 280; background: rgba(23,40,27,0.5); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; padding: 1.2rem; animation: rv-fade 0.25s ease; }
+        @keyframes rv-fade { from { opacity: 0; } }
+        .rv-panel { position: relative; background: var(--paper); border: 1px solid var(--line); border-radius: 24px; width: min(660px, 100%); max-height: min(82vh, 800px); display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 30px 80px rgba(8,20,12,0.4); animation: rv-rise 0.32s cubic-bezier(0.22,1,0.36,1); }
+        @keyframes rv-rise { from { opacity: 0; transform: translateY(22px); } }
+        .rv-close { position: absolute; top: 13px; right: 17px; background: none; border: none; font-size: 27px; line-height: 1; color: var(--muted); cursor: pointer; padding: 4px; z-index: 2; }
+        .rv-close:hover { color: var(--ink); }
+        .rv-head { padding: 1.9rem 2.2rem 1.3rem; border-bottom: 1px solid var(--line); display: flex; flex-direction: column; gap: 0.3rem; }
+        .rv-score { font-family: var(--serif); font-size: 2.1rem; font-weight: 400; color: var(--racing); line-height: 1.1; letter-spacing: -0.02em; display: flex; align-items: baseline; gap: 0.7rem; }
+        .rv-stars { color: var(--brass); font-size: 1rem; letter-spacing: 0.18em; }
+        .rv-note { font-size: 0.85rem; color: var(--muted); }
+        .rv-list { overflow-y: auto; padding: 0.3rem 2.2rem; flex: 1; }
+        .rv-item { padding: 1.4rem 0; border-bottom: 1px solid var(--line); }
+        .rv-item:last-child { border-bottom: none; }
+        .rv-item .review-stars { margin-bottom: 0.55rem; }
+        .rv-text { font-family: var(--serif); font-style: italic; font-weight: 340; font-size: 1rem; line-height: 1.7; color: var(--ink-soft); margin-bottom: 0.6rem; text-wrap: pretty; }
+        .rv-name { display: block; font-style: normal; font-size: 0.85rem; font-weight: 700; }
+        .rv-foot { padding: 1.1rem 2.2rem 1.35rem; border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; flex-wrap: wrap; }
+        .rv-footnote { font-size: 0.78rem; color: var(--muted); }
+        .rv-foot a { font-size: 0.85rem; font-weight: 600; color: var(--green-dk); white-space: nowrap; }
+        .rv-foot a:hover { text-decoration: underline; }
+        body.reviews-modal-open { overflow: hidden; }
         .placement { background: var(--paper-2); padding: var(--py) 0; position: relative; overflow: hidden; }
         .placement::before { content: '?'; position: absolute; right: -2%; top: 50%; transform: translateY(-52%); font-family: var(--serif); font-style: italic; font-size: clamp(18rem, 34vw, 30rem); font-weight: 340; color: rgba(30,66,39,0.06); line-height: 1; pointer-events: none; }
         .placement-inner { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 4rem; }
@@ -615,12 +738,15 @@ export default function Home() {
           .course-row { grid-template-columns: 1fr auto; gap: 1rem; }
           .course-num { display: none; }
           .course-levels { grid-column: 1 / -1; justify-content: flex-start; }
+          .course-level { grid-template-columns: 1fr; gap: 0.3rem; }
         }
         @media (max-width: 720px) {
           .nav-links { display: none; }
           .nav-burger { display: flex; }
         }
         @media (max-width: 600px) {
+          .rv-head, .rv-foot { padding-left: 1.3rem; padding-right: 1.3rem; }
+          .rv-list { padding-left: 1.3rem; padding-right: 1.3rem; }
           :root { --scene-h: 14vh; }
           .nav-logo-sub { display: none; }
           .nav-logo-name { font-size: 1rem; white-space: nowrap; }
@@ -1067,30 +1193,28 @@ export default function Home() {
             <span className="section-tag">What we teach</span>
           </div>
           <div className="course-list">
-            <a href="/contact" className="course-row reveal">
-              <span className="course-num">01</span>
-              <span className="course-name">Children<small>Learning that feels like play — solid foundations from the very start.</small></span>
-              <span className="course-levels"><span className="level-pill">Infantil</span><span className="level-pill">Primaria</span></span>
-              <span className="course-arr">→</span>
-            </a>
-            <a href="/contact" className="course-row reveal" data-d="1">
-              <span className="course-num">02</span>
-              <span className="course-name">Teenagers<small>Confidence for school, exams and everything after.</small></span>
-              <span className="course-levels"><span className="level-pill">ESO</span><span className="level-pill">Bachillerato</span></span>
-              <span className="course-arr">→</span>
-            </a>
-            <a href="/contact" className="course-row reveal" data-d="2">
-              <span className="course-num">03</span>
-              <span className="course-name">Adults<small>Practical English for work, travel and real life.</small></span>
-              <span className="course-levels"><span className="level-pill">All levels</span><span className="level-pill">Conversation</span></span>
-              <span className="course-arr">→</span>
-            </a>
-            <a href="/contact" className="course-row reveal" data-d="3">
-              <span className="course-num">04</span>
-              <span className="course-name">Exam preparation<small>Cambridge results without the panic — proven, structured prep.</small></span>
-              <span className="course-levels"><span className="level-pill">B1</span><span className="level-pill">B2 First</span><span className="level-pill">C1 Advanced</span><span className="level-pill">EVAU</span></span>
-              <span className="course-arr">→</span>
-            </a>
+            {COURSES.map((c, i) => (
+              <div key={c.name} className={`course-item reveal${openCourse === i ? ' open' : ''}`} data-d={i > 0 ? String(i) : undefined}>
+                <button type="button" className="course-row" aria-expanded={openCourse === i}
+                  onClick={() => setOpenCourse(openCourse === i ? null : i)}>
+                  <span className="course-num">0{i + 1}</span>
+                  <span className="course-name">{c.name}<small>{c.tagline}</small></span>
+                  <span className="course-levels">{c.pills.map(p => <span key={p} className="level-pill">{p}</span>)}</span>
+                  <span className="course-arr">→</span>
+                </button>
+                {openCourse === i && (
+                  <div className="course-detail">
+                    {c.levels.map(l => (
+                      <div key={l.level} className="course-level">
+                        <span className="course-level-name">{l.level}</span>
+                        <p>{l.text}</p>
+                      </div>
+                    ))}
+                    <a href="/contact" className="btn btn-light course-detail-cta">Ask about this course <span className="btn-arr">→</span></a>
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
           <div className="courses-cta reveal">
             <a href="/contact" className="btn btn-light">Ask about a course <span className="btn-arr">→</span></a>
@@ -1105,24 +1229,24 @@ export default function Home() {
             <span className="section-tag">Reviews</span>
           </div>
           <div className="rating-badges reveal">
-            <a className="rating-badge" href={GOOGLE_REVIEWS_URL} target="_blank" rel="noopener">
+            <button type="button" className="rating-badge" onClick={() => setReviewSrc('google')}>
               <span className="rb-source">Google</span>
               <span className="rb-score">5.0</span>
               <span className="rb-stars" aria-hidden="true">★★★★★</span>
               <span className="rb-sub">49 reviews →</span>
-            </a>
-            <a className="rating-badge" href={FACEBOOK_URL} target="_blank" rel="noopener">
+            </button>
+            <button type="button" className="rating-badge" onClick={() => setReviewSrc('facebook')}>
               <span className="rb-source">Facebook</span>
               <span className="rb-score">100%</span>
               <span className="rb-stars" aria-hidden="true">★★★★★</span>
               <span className="rb-sub">recommend · 12 reviews →</span>
-            </a>
-            <a className="rating-badge" href={MEJOR_URL} target="_blank" rel="noopener">
+            </button>
+            <button type="button" className="rating-badge" onClick={() => setReviewSrc('mejor')}>
               <span className="rb-source">Mejor.es</span>
               <span className="rb-score">10/10</span>
               <span className="rb-stars" aria-hidden="true">★★★★★</span>
               <span className="rb-sub">rated by students →</span>
-            </a>
+            </button>
           </div>
           <div className="review-cards">
             {REVIEWS.map((r, i) => (
@@ -1137,7 +1261,7 @@ export default function Home() {
             ))}
           </div>
           <div className="reviews-cta reveal">
-            <a href={GOOGLE_REVIEWS_URL} target="_blank" rel="noopener" className="btn btn-ghost">Read all 49 reviews on Google <span className="btn-arr">→</span></a>
+            <button type="button" onClick={() => setReviewSrc('google')} className="btn btn-ghost">Read all the reviews <span className="btn-arr">→</span></button>
           </div>
         </div>
       </section>
@@ -1245,6 +1369,32 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {reviewSrc && (
+        <div className="rv-overlay" role="dialog" aria-modal="true" aria-label={`${REVIEW_SOURCES[reviewSrc].label} reviews`} onClick={() => setReviewSrc(null)}>
+          <div className="rv-panel" onClick={e => e.stopPropagation()}>
+            <button type="button" className="rv-close" onClick={() => setReviewSrc(null)} aria-label="Close">×</button>
+            <div className="rv-head">
+              <span className="rb-source">{REVIEW_SOURCES[reviewSrc].label}</span>
+              <span className="rv-score">{REVIEW_SOURCES[reviewSrc].score} <span className="rv-stars" aria-hidden="true">★★★★★</span></span>
+              <span className="rv-note">{REVIEW_SOURCES[reviewSrc].scoreNote}</span>
+            </div>
+            <div className="rv-list">
+              {REVIEW_SOURCES[reviewSrc].reviews.map(r => (
+                <blockquote className="rv-item" key={r.name}>
+                  <div className="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+                  <p className="rv-text">“{r.text}”</p>
+                  <cite className="rv-name">{r.name}</cite>
+                </blockquote>
+              ))}
+            </div>
+            <div className="rv-foot">
+              <span className="rv-footnote">{REVIEW_SOURCES[reviewSrc].footnote}</span>
+              <a href={REVIEW_SOURCES[reviewSrc].url} target="_blank" rel="noopener">{REVIEW_SOURCES[reviewSrc].urlLabel} →</a>
+            </div>
+          </div>
+        </div>
+      )}
 
       <div className="info-pop" id="infoPop" hidden>
         <button className="info-close" id="infoClose" aria-label="Close">×</button>
