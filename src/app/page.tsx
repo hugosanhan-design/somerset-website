@@ -371,8 +371,8 @@ export default function Home() {
         .eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 3px rgba(87,184,44,0.35); }
         .hero h1 { font-family: var(--serif); font-size: clamp(3rem, 7.6vw, 6.2rem); font-weight: 380; line-height: 1.04; letter-spacing: -0.015em; color: #fff; margin-bottom: 1.7rem; text-wrap: balance; text-shadow: 0 2px 40px rgba(0,0,0,0.3); }
         .hero h1 em { font-style: italic; font-weight: 420; color: var(--leaf); }
-        .hl { display: block; overflow: hidden; }
-        .hl > span { display: block; transform: translateY(110%); animation: line-up 1.15s cubic-bezier(0.22,1,0.36,1) forwards; }
+        .hl { display: block; overflow: hidden; padding-bottom: 0.18em; margin-bottom: -0.18em; }
+        .hl > span { display: block; transform: translateY(125%); animation: line-up 1.15s cubic-bezier(0.22,1,0.36,1) forwards; }
         .hl:nth-child(1) > span { animation-delay: 1.75s; }
         .hl:nth-child(2) > span { animation-delay: 1.9s; }
         @keyframes line-up { to { transform: translateY(0); } }
