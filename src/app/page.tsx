@@ -1193,8 +1193,10 @@ export default function Home() {
             <span className="section-tag">What we teach</span>
           </div>
           <div className="course-list">
+            {/* No `reveal` here: these re-render on click, and React rewriting className
+                would strip the observer-added `in` class — the row would vanish. */}
             {COURSES.map((c, i) => (
-              <div key={c.name} className={`course-item reveal${openCourse === i ? ' open' : ''}`} data-d={i > 0 ? String(i) : undefined}>
+              <div key={c.name} className={`course-item${openCourse === i ? ' open' : ''}`}>
                 <button type="button" className="course-row" aria-expanded={openCourse === i}
                   onClick={() => setOpenCourse(openCourse === i ? null : i)}>
                   <span className="course-num">0{i + 1}</span>
