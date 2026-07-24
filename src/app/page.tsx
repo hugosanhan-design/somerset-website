@@ -620,7 +620,7 @@ export default function Home() {
         .course-level { display: grid; grid-template-columns: 12rem 1fr; gap: 1.5rem; align-items: baseline; }
         .course-level-name { font-family: var(--serif); font-style: italic; font-size: 1.05rem; color: var(--leaf); }
         .course-level p { font-size: 0.95rem; line-height: 1.7; color: rgba(245,241,230,0.78); max-width: 64ch; margin: 0; }
-        .course-detail-cta { justify-self: start; margin-top: 0.55rem; }
+        .course-detail-cta { justify-self: start; margin-top: 0.55rem; display: flex; gap: 0.8rem; flex-wrap: wrap; }
         .course-num { font-family: var(--serif); font-style: italic; font-size: 1.05rem; color: var(--brass); }
         .course-name { font-family: var(--serif); font-size: clamp(1.5rem, 2.6vw, 2.2rem); font-weight: 400; letter-spacing: -0.01em; line-height: 1.15; }
         .course-name small { display: block; font-family: var(--sans); font-size: 0.86rem; font-style: normal; color: rgba(245,241,230,0.6); margin-top: 0.4rem; font-weight: 400; letter-spacing: 0; }
@@ -628,7 +628,7 @@ export default function Home() {
         .level-pill { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; padding: 0.32rem 0.8rem; border-radius: 50px; border: 1px solid rgba(245,241,230,0.3); color: rgba(245,241,230,0.85); white-space: nowrap; }
         .course-arr { font-size: 1.5rem; color: var(--brass); transition: transform 0.25s; }
         .course-row:hover .course-arr { transform: translateX(6px); }
-        .courses-cta { margin-top: 2.6rem; display: flex; justify-content: center; }
+        .courses-cta { margin-top: 2.6rem; display: flex; justify-content: center; gap: 0.9rem; flex-wrap: wrap; }
         .reviews { padding: var(--py) 0; background: var(--paper); }
         .rating-badges { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.4rem; margin-bottom: 3rem; }
         .rating-badge { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.3rem; background: #FBF9F2; border: 1px solid var(--line); border-radius: 20px; padding: 1.9rem 1.5rem 1.7rem; transition: transform 0.28s cubic-bezier(0.22,1,0.36,1), box-shadow 0.28s; font-family: inherit; color: inherit; cursor: pointer; width: 100%; }
@@ -731,9 +731,10 @@ export default function Home() {
           .placement-inner { flex-direction: column; align-items: flex-start; gap: 2rem; }
           .quizzical-inner { flex-direction: column; align-items: flex-start; gap: 2rem; }
           .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.25rem; }
-          .stats-grid { grid-template-columns: 1fr; }
-          .stat-item { border-right: none; border-bottom: 1px solid var(--line); }
-          .stat-item:last-child { border-bottom: none; }
+          .stats-grid { grid-template-columns: 1fr 1fr; }
+          .stat-item { padding: 2.2rem 1rem; border-bottom: 1px solid var(--line); }
+          .stat-item:nth-child(2n) { border-right: none; }
+          .stat-item:nth-child(n+3) { border-bottom: none; }
           .section-header { flex-direction: column; gap: 0.6rem; }
           .course-row { grid-template-columns: 1fr auto; gap: 1rem; }
           .course-num { display: none; }
@@ -745,23 +746,44 @@ export default function Home() {
           .nav-burger { display: flex; }
         }
         @media (max-width: 600px) {
+          /* tighter vertical rhythm so sections don't feel endless on a phone */
+          :root { --py: clamp(3.25rem, 11vw, 4.5rem); }
           .rv-head, .rv-foot { padding-left: 1.3rem; padding-right: 1.3rem; }
           .rv-list { padding-left: 1.3rem; padding-right: 1.3rem; }
-          :root { --scene-h: 14vh; }
+          :root { --scene-h: 10vh; }
+          .wrap { padding: 0 1.35rem; }
           .nav-logo-sub { display: none; }
           .nav-logo-name { font-size: 1rem; white-space: nowrap; }
           .nav .wrap { padding: 0 1.2rem; }
           .hero h1 { font-size: clamp(2.55rem, 12vw, 3.4rem); }
-          .hero { padding-bottom: 20vh; }
+          .hero { padding-bottom: 16vh; }
           .hero-actions { flex-direction: column; align-items: stretch; }
           .footer-grid { grid-template-columns: 1fr; }
           .statement-text { font-size: 1.55rem; }
-          .wx-badge { right: 10px; font-size: 0.6rem; }
-          .castle { width: 110px; }
-          .apple-tree { width: 70px; }
-          .prop.pony { width: 52px; }
-          .prop.cottage { width: 50px; }
-          .sheep-walk { width: 44px; }
+          .statement-eyebrow { margin-bottom: 1.6rem; }
+          .section-header { margin-bottom: 2.2rem; }
+          /* compact stats — no more one-number-per-screen scrolling */
+          .stat-item { padding: 1.5rem 0.6rem; }
+          .stat-n { font-size: 2.5rem; margin-bottom: 0.3rem; }
+          .stat-n small { font-size: 1.5rem; }
+          .stat-l { font-size: 0.66rem; letter-spacing: 0.08em; }
+          /* leaner cards */
+          .why-cards { gap: 1.1rem; }
+          .why-card { padding: 1.9rem 1.6rem 1.7rem; }
+          .card-badge { width: 62px; height: 62px; margin-bottom: 1.1rem; }
+          .card-badge svg { width: 38px; height: 38px; }
+          .review-card { padding: 1.7rem 1.6rem; }
+          /* the floating weather pill lands in the middle of content on a
+             narrow screen — drop it on mobile, it's decorative */
+          .wx-badge { display: none; }
+          .castle { width: 96px; }
+          .apple-tree { width: 62px; }
+          .prop.pony { width: 46px; }
+          .prop.cottage { width: 44px; }
+          .prop.hay { width: 40px; }
+          .prop.graze { width: 36px; }
+          .sheep-walk { width: 40px; }
+          .crow { width: 38px; }
         }
         @media (prefers-reduced-motion: reduce) {
           .apple-tree, .falling-apple, .cloud, .sheep-walk, .sheep-walk.eating, .win-glow, .castle-person .fig, .smoke, .hero-bg, .mist, .ff, .drop, .flake, .marquee { animation: none !important; }
@@ -1212,14 +1234,18 @@ export default function Home() {
                         <p>{l.text}</p>
                       </div>
                     ))}
-                    <a href="/contact" className="btn btn-light course-detail-cta">Ask about this course <span className="btn-arr">→</span></a>
+                    <div className="course-detail-cta">
+                      <a href="/courses" className="btn btn-light">See timetables <span className="btn-arr">→</span></a>
+                      <a href="/contact" className="btn btn-outline-white">Ask about this course <span className="btn-arr">→</span></a>
+                    </div>
                   </div>
                 )}
               </div>
             ))}
           </div>
           <div className="courses-cta reveal">
-            <a href="/contact" className="btn btn-light">Ask about a course <span className="btn-arr">→</span></a>
+            <a href="/courses" className="btn btn-light">Timetables &amp; groups <span className="btn-arr">→</span></a>
+            <a href="/contact" className="btn btn-outline-white">Ask about a course <span className="btn-arr">→</span></a>
           </div>
         </div>
       </section>
