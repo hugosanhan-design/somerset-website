@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 // Canonical site nav — a replica of the homepage premium nav in its scrolled
 // state (cream blurred bar, Poppins wordmark, dark Placement pill). THE rule:
@@ -19,6 +20,17 @@ const links = [
 
 export default function Header() {
   const pathname = usePathname();
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  // Close the mobile menu whenever the route changes, and lock body scroll
+  // while it's open.
+  useEffect(() => { setMenuOpen(false); }, [pathname]);
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    const onEsc = (e: KeyboardEvent) => { if (e.key === "Escape") setMenuOpen(false); };
+    document.addEventListener("keydown", onEsc);
+    return () => { document.body.style.overflow = ""; document.removeEventListener("keydown", onEsc); };
+  }, [menuOpen]);
 
   // Homepage has its own full-screen nav — suppress layout header there
   if (pathname === "/") return null;
@@ -26,7 +38,8 @@ export default function Header() {
   const isActive = (href: string) => href !== "/" && pathname.startsWith(href);
 
   return (
-    <header className="sl-header">
+    <>
+    <header className={`sl-header${menuOpen ? " menu-open" : ""}`}>
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       <link
@@ -47,11 +60,29 @@ export default function Header() {
         .sl-header .sl-nav a.active { color: #3D8B1F; font-weight: 600; }
         .sl-header .sl-nav a.sl-cta { background: #17281B; color: #F5F1E6; padding: 0.6rem 1.35rem; margin-left: 0.6rem; font-weight: 600; }
         .sl-header .sl-nav a.sl-cta:hover { background: #3D8B1F; color: #fff; }
+        /* ── Mobile burger (hidden on desktop) ── */
+        .sl-burger { display: none; width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid #D9D2BC; background: rgba(245,241,230,0.85); cursor: pointer; flex-direction: column; align-items: center; justify-content: center; gap: 5px; padding: 0; z-index: 260; }
+        .sl-burger span { display: block; width: 18px; height: 2px; background: #17281B; border-radius: 2px; transition: transform 0.25s cubic-bezier(0.22,1,0.36,1), opacity 0.2s; }
+        .sl-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .sl-burger.open span:nth-child(2) { opacity: 0; }
+        .sl-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        /* while the menu is open, lift the header (and its burger) above the
+           overlay so the X stays visible and tappable — the header's own
+           backdrop-filter would otherwise trap the fixed overlay inside it */
+        .sl-header.menu-open { z-index: 260; background: transparent; backdrop-filter: none; -webkit-backdrop-filter: none; box-shadow: none; }
+        .sl-header.menu-open .sl-burger { background: transparent; border-color: rgba(245,241,230,0.4); }
+        .sl-header.menu-open .sl-burger span { background: #F5F1E6; }
+        /* ── Full-screen mobile menu ── */
+        .sl-mobile { position: fixed; inset: 0; z-index: 250; background: #1E4227; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.3rem; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+        .sl-mobile.open { opacity: 1; pointer-events: auto; }
+        .sl-mobile a { font-family: 'Fraunces', Georgia, serif; font-size: clamp(1.7rem, 7vw, 2.2rem); font-weight: 400; color: #F5F1E6; padding: 0.4rem 1.5rem; letter-spacing: -0.01em; }
+        .sl-mobile a.active { color: #A8D77E; }
+        .sl-mobile .sl-mobile-sub { font-family: 'Instrument Sans', system-ui, sans-serif; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.26em; text-transform: uppercase; color: rgba(245,241,230,0.45); margin-top: 1.4rem; }
         @media (max-width: 700px) {
-          .sl-header .sl-wrap { padding: 0.6rem 1rem; }
+          .sl-header .sl-wrap { padding: 0.6rem 1rem; flex-wrap: nowrap; }
           .sl-header .sl-logo-name { font-size: 1.05rem; }
-          .sl-header .sl-nav a { font-size: 0.8rem; padding: 0.3rem 0.55rem; }
-          .sl-header .sl-nav a.sl-cta { padding: 0.4rem 0.9rem; margin-left: 0.2rem; }
+          .sl-header .sl-nav { display: none; }
+          .sl-burger { display: flex; }
         }
       `}</style>
       <div className="sl-wrap">
@@ -67,7 +98,27 @@ export default function Header() {
           ))}
           <Link href="/placement" className="sl-cta">Placement Test</Link>
         </nav>
+        <button
+          type="button"
+          className={`sl-burger${menuOpen ? " open" : ""}`}
+          aria-label="Menu"
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen(o => !o)}
+        >
+          <span /><span /><span />
+        </button>
       </div>
     </header>
+
+    <div className={`sl-mobile${menuOpen ? " open" : ""}`} aria-hidden={!menuOpen}>
+      {links.map(l => (
+        <Link key={l.href} href={l.href} className={isActive(l.href) ? "active" : ""}>
+          {l.label}
+        </Link>
+      ))}
+      <Link href="/placement" className={isActive("/placement") ? "active" : ""}>Placement Test</Link>
+      <span className="sl-mobile-sub">Valencia · Est. 2013</span>
+    </div>
+    </>
   );
 }
