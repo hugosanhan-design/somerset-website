@@ -756,7 +756,10 @@ export default function Home() {
           .nav-logo-name { font-size: 1rem; white-space: nowrap; }
           .nav .wrap { padding: 0 1.2rem; }
           .hero h1 { font-size: clamp(2.55rem, 12vw, 3.4rem); }
-          .hero { padding-bottom: 16vh; }
+          /* top-align the hero on a phone with a clear gap below the nav, so the
+             eyebrow isn't cramped right under the wordmark */
+          .hero { justify-content: flex-start; padding-top: 6rem; padding-bottom: 10vh; }
+          .eyebrow { margin-top: 1.2rem; }
           .hero-actions { flex-direction: column; align-items: stretch; }
           .footer-grid { grid-template-columns: 1fr; }
           .statement-text { font-size: 1.55rem; }
@@ -783,7 +786,14 @@ export default function Home() {
           .prop.hay { width: 40px; }
           .prop.graze { width: 36px; }
           .sheep-walk { width: 40px; }
-          .crow { width: 38px; }
+          /* declutter the countryside on a phone — a calm, sparse ground rather
+             than a busy diorama: one cloud, no duplicate props, no hay/heather,
+             no crow. Keeps castle, one cottage, one sheep, one pony, the tree. */
+          .scene .cloud ~ .cloud { display: none; }
+          .scene .prop.small { display: none; }
+          .scene .prop.hay,
+          .scene .prop.heather { display: none; }
+          .crow { display: none; }
         }
         @media (prefers-reduced-motion: reduce) {
           .apple-tree, .falling-apple, .cloud, .sheep-walk, .sheep-walk.eating, .win-glow, .castle-person .fig, .smoke, .hero-bg, .mist, .ff, .drop, .flake, .marquee { animation: none !important; }
