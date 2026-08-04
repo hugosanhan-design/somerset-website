@@ -8,14 +8,19 @@ import { useEffect, useState } from "react";
 // every page's banner looks exactly like this. Keep in sync with the homepage
 // nav in page.tsx and the sl-header in the embedded prototypes
 // (build_daily_quizzical.py, Reading Lab, Somerset Games hub).
-const links = [
-  { href: "/", label: "Home" },
-  { href: "/blog", label: "Blog" },
-  { href: "/daily-quizzical", label: "Daily Quizzical" },
+// No "Home" link — the logo is the home button. Primary trio first, then the
+// learning-content group (Games / Exercises / Daily Quizzical / Blog) as its
+// own quieter section after a hairline divider.
+const primaryLinks = [
+  { href: "/#about", label: "Who we are" },
   { href: "/courses", label: "Courses" },
+  { href: "/contact", label: "Contact" },
+];
+const secondaryLinks = [
   { href: "/games", label: "Games" },
   { href: "/exercises", label: "Exercises" },
-  { href: "/contact", label: "Contact" },
+  { href: "/daily-quizzical", label: "Daily Quizzical" },
+  { href: "/blog", label: "Blog" },
 ];
 
 export default function Header() {
@@ -60,6 +65,10 @@ export default function Header() {
         .sl-header .sl-nav a.active { color: #3D8B1F; font-weight: 600; }
         .sl-header .sl-nav a.sl-cta { background: #17281B; color: #F5F1E6; padding: 0.6rem 1.35rem; margin-left: 0.6rem; font-weight: 600; }
         .sl-header .sl-nav a.sl-cta:hover { background: #3D8B1F; color: #fff; }
+        .sl-header .sl-nav .sl-sep { width: 1px; height: 18px; background: #D9D2BC; margin: 0 0.55rem; }
+        .sl-header .sl-nav a.sl-sec { font-size: 0.78rem; color: #5C6657; padding: 0.38rem 0.7rem; }
+        .sl-header .sl-nav a.sl-sec:hover { color: #3D8B1F; }
+        .sl-header .sl-nav a.sl-sec.active { color: #3D8B1F; font-weight: 600; }
         /* ── Mobile burger (hidden on desktop) ── */
         .sl-burger { display: none; width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid #D9D2BC; background: rgba(245,241,230,0.85); cursor: pointer; flex-direction: column; align-items: center; justify-content: center; gap: 5px; padding: 0; z-index: 260; }
         .sl-burger span { display: block; width: 18px; height: 2px; background: #17281B; border-radius: 2px; transition: transform 0.25s cubic-bezier(0.22,1,0.36,1), opacity 0.2s; }
@@ -77,6 +86,9 @@ export default function Header() {
         .sl-mobile.open { opacity: 1; pointer-events: auto; }
         .sl-mobile a { font-family: 'Fraunces', Georgia, serif; font-size: clamp(1.7rem, 7vw, 2.2rem); font-weight: 400; color: #F5F1E6; padding: 0.4rem 1.5rem; letter-spacing: -0.01em; }
         .sl-mobile a.active { color: #A8D77E; }
+        .sl-mobile .sl-mobile-divider { width: 42px; height: 1px; background: rgba(245,241,230,0.25); margin: 1.1rem 0 0.9rem; }
+        .sl-mobile a.sl-mobile-small { font-family: 'Instrument Sans', system-ui, sans-serif; font-size: 1.02rem; font-weight: 500; color: rgba(245,241,230,0.8); padding: 0.32rem 1.5rem; letter-spacing: 0; }
+        .sl-mobile a.sl-mobile-small.active { color: #A8D77E; }
         .sl-mobile .sl-mobile-sub { font-family: 'Instrument Sans', system-ui, sans-serif; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.26em; text-transform: uppercase; color: rgba(245,241,230,0.45); margin-top: 1.4rem; }
         @media (max-width: 700px) {
           .sl-header .sl-wrap { padding: 0.6rem 1rem; flex-wrap: nowrap; }
@@ -91,8 +103,14 @@ export default function Header() {
           <span className="sl-logo-sub">Valencia · Est. 2013</span>
         </Link>
         <nav className="sl-nav">
-          {links.map(l => (
+          {primaryLinks.map(l => (
             <Link key={l.href} href={l.href} className={isActive(l.href) ? "active" : ""}>
+              {l.label}
+            </Link>
+          ))}
+          <span className="sl-sep" aria-hidden="true" />
+          {secondaryLinks.map(l => (
+            <Link key={l.href} href={l.href} className={`sl-sec${isActive(l.href) ? " active" : ""}`}>
               {l.label}
             </Link>
           ))}
@@ -111,12 +129,18 @@ export default function Header() {
     </header>
 
     <div className={`sl-mobile${menuOpen ? " open" : ""}`} aria-hidden={!menuOpen}>
-      {links.map(l => (
+      {primaryLinks.map(l => (
         <Link key={l.href} href={l.href} className={isActive(l.href) ? "active" : ""}>
           {l.label}
         </Link>
       ))}
       <Link href="/placement" className={isActive("/placement") ? "active" : ""}>Placement Test</Link>
+      <span className="sl-mobile-divider" aria-hidden="true" />
+      {secondaryLinks.map(l => (
+        <Link key={l.href} href={l.href} className={`sl-mobile-small${isActive(l.href) ? " active" : ""}`}>
+          {l.label}
+        </Link>
+      ))}
       <span className="sl-mobile-sub">Valencia · Est. 2013</span>
     </div>
     </>
