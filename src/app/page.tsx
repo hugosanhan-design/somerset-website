@@ -411,6 +411,11 @@ export default function Home() {
         .nav-links a:hover { color: var(--green-dk); }
         .nav-links .nav-cta a { background: var(--ink); color: var(--paper); padding: 0.6rem 1.35rem; margin-left: 0.6rem; font-weight: 600; transition: background 0.2s, transform 0.2s; }
         .nav-links .nav-cta a:hover { background: var(--green-dk); color: #fff; }
+        /* secondary group — Games / Exercises / Daily Quizzical / Blog: smaller,
+           quieter, separated from the primary trio by a hairline */
+        .nav-links .nav-sep { width: 1px; height: 18px; background: var(--line); margin: 0 0.55rem; }
+        .nav-links .nav-sec a { font-size: 0.78rem; font-weight: 500; color: var(--muted); padding: 0.38rem 0.7rem; }
+        .nav-links .nav-sec a:hover { color: var(--green-dk); }
         .nav:not(.scrolled) { background: linear-gradient(to bottom, rgba(8,16,10,0.5), rgba(8,16,10,0)); }
         .nav:not(.scrolled) .nav-logo-name { color: #fff; }
         .nav:not(.scrolled) .nav-logo-name b { color: var(--leaf); }
@@ -419,6 +424,9 @@ export default function Home() {
         .nav:not(.scrolled) .nav-links a:hover { color: #fff; }
         .nav:not(.scrolled) .nav-links .nav-cta a { background: rgba(255,255,255,0.14); border: 1.5px solid rgba(255,255,255,0.4); color: #fff; }
         .nav:not(.scrolled) .nav-links .nav-cta a:hover { background: rgba(255,255,255,0.26); }
+        .nav:not(.scrolled) .nav-links .nav-sep { background: rgba(255,255,255,0.3); }
+        .nav:not(.scrolled) .nav-links .nav-sec a { color: rgba(255,255,255,0.68); }
+        .nav:not(.scrolled) .nav-links .nav-sec a:hover { color: #fff; }
         /* ── Mobile burger + full-screen menu ── */
         .nav-burger { display: none; width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid var(--line); background: rgba(245,241,230,0.85); cursor: pointer; align-items: center; justify-content: center; flex-direction: column; gap: 5px; padding: 0; z-index: 260; }
         .nav-burger span { display: block; width: 18px; height: 2px; background: var(--ink); border-radius: 2px; transition: transform 0.25s cubic-bezier(0.22,1,0.36,1), opacity 0.2s; }
@@ -445,21 +453,28 @@ export default function Home() {
         }
         .mobile-menu a em { font-style: italic; color: var(--leaf); }
         body.menu-open .mobile-menu a { opacity: 1; transform: none; }
-        body.menu-open .mobile-menu a:nth-child(1) { transition-delay: 0.05s; }
-        body.menu-open .mobile-menu a:nth-child(2) { transition-delay: 0.1s; }
-        body.menu-open .mobile-menu a:nth-child(3) { transition-delay: 0.15s; }
-        body.menu-open .mobile-menu a:nth-child(4) { transition-delay: 0.2s; }
-        body.menu-open .mobile-menu a:nth-child(5) { transition-delay: 0.25s; }
-        body.menu-open .mobile-menu a:nth-child(6) { transition-delay: 0.3s; }
-        body.menu-open .mobile-menu a:nth-child(7) { transition-delay: 0.35s; }
+        body.menu-open .mobile-menu a:nth-of-type(1) { transition-delay: 0.05s; }
+        body.menu-open .mobile-menu a:nth-of-type(2) { transition-delay: 0.1s; }
+        body.menu-open .mobile-menu a:nth-of-type(3) { transition-delay: 0.15s; }
+        body.menu-open .mobile-menu a:nth-of-type(4) { transition-delay: 0.2s; }
+        body.menu-open .mobile-menu a:nth-of-type(5) { transition-delay: 0.25s; }
+        body.menu-open .mobile-menu a:nth-of-type(6) { transition-delay: 0.28s; }
+        body.menu-open .mobile-menu a:nth-of-type(7) { transition-delay: 0.31s; }
+        body.menu-open .mobile-menu a:nth-of-type(8) { transition-delay: 0.34s; }
+        .mobile-menu .mm-divider { width: 42px; height: 1px; background: rgba(245,241,230,0.25); margin: 1.1rem 0 0.9rem; opacity: 0; transition: opacity 0.4s ease 0.25s; }
+        body.menu-open .mobile-menu .mm-divider { opacity: 1; }
+        .mobile-menu a.mm-small { font-family: var(--sans); font-size: 1.02rem; font-weight: 500; color: rgba(245,241,230,0.8); padding: 0.32rem 1.5rem; letter-spacing: 0; }
         .mobile-menu .mm-sub { font-family: var(--sans); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.26em; text-transform: uppercase; color: rgba(245,241,230,0.45); margin-top: 1.6rem; opacity: 0; transition: opacity 0.4s ease 0.4s; }
         body.menu-open .mobile-menu .mm-sub { opacity: 1; }
         .hero { position: relative; min-height: 100dvh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; overflow: hidden; padding-bottom: 26vh; }
         .hero::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(to bottom, rgba(8,20,12,0.52) 0%, rgba(8,20,12,0.18) 34%, rgba(8,20,12,0.3) 64%, rgba(30,66,39,0.28) 100%); }
         .hero::after { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: radial-gradient(ellipse at center, transparent 55%, rgba(8,20,12,0.35) 100%); }
-        .hero-bg { position: absolute; inset: 0; z-index: 0; background-image: url("/hero-original.webp"); background-size: cover; background-position: center 34%; transform-origin: center; animation: hero-enter 2.4s cubic-bezier(0.22,1,0.36,1) both, hero-kenburns 38s ease-in-out 2.4s infinite alternate; will-change: transform; }
-        @keyframes hero-enter { from { transform: scale(1.14); } to { transform: scale(1.05); } }
-        @keyframes hero-kenburns { 0% { transform: scale(1.05) translate(0,0); } 100% { transform: scale(1.13) translate(-1.4%,-1.2%); } }
+        /* Once the curtain lifts (starts at 1.55s) the image drifts slowly toward
+           the viewer — a very subtle "pulled into the landscape" zoom-in, then the
+           ken-burns drift takes over from the same scale. */
+        .hero-bg { position: absolute; inset: 0; z-index: 0; background-image: url("/hero-original.webp"); background-size: cover; background-position: center 34%; transform-origin: center; animation: hero-enter 7s cubic-bezier(0.22,1,0.36,1) 1.55s both, hero-kenburns 38s ease-in-out 8.55s infinite alternate; will-change: transform; }
+        @keyframes hero-enter { from { transform: scale(1); } to { transform: scale(1.07); } }
+        @keyframes hero-kenburns { 0% { transform: scale(1.07) translate(0,0); } 100% { transform: scale(1.14) translate(-1.4%,-1.2%); } }
         .hero-content { position: relative; z-index: 3; padding: 2rem 2rem 0; max-width: 880px; }
         .eyebrow { display: inline-flex; align-items: center; gap: 0.6rem; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: #fff; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.26); padding: 0.45rem 1.1rem; border-radius: 50px; margin-bottom: 2rem; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); opacity: 0; animation: rise-in 1s cubic-bezier(0.22,1,0.36,1) 2.05s forwards; }
         .eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 3px rgba(87,184,44,0.35); }
@@ -845,13 +860,14 @@ export default function Home() {
               <span className="nav-logo-sub">Valencia · Est. 2013</span>
             </a>
             <ul className="nav-links" role="list">
-              <li><a href="/">Home</a></li>
-              <li><a href="/blog">Blog</a></li>
-              <li><a href="/daily-quizzical">Daily Quizzical</a></li>
+              <li><a href="/#about">Who we are</a></li>
               <li><a href="/#courses">Courses</a></li>
-              <li><a href="/games">Games</a></li>
-              <li><a href="/exercises">Exercises</a></li>
               <li><a href="/contact">Contact</a></li>
+              <li className="nav-sep" aria-hidden="true" />
+              <li className="nav-sec"><a href="/games">Games</a></li>
+              <li className="nav-sec"><a href="/exercises">Exercises</a></li>
+              <li className="nav-sec"><a href="/daily-quizzical">Daily Quizzical</a></li>
+              <li className="nav-sec"><a href="/blog">Blog</a></li>
               <li className="nav-cta"><a href="/placement">Placement Test</a></li>
             </ul>
             <button className="nav-burger" id="navBurger" aria-label="Menu" aria-expanded="false">
@@ -862,14 +878,15 @@ export default function Home() {
       </nav>
 
       <div className="mobile-menu" id="mobileMenu" aria-hidden="true">
-        <a href="/">Home</a>
-        <a href="/blog">Blog</a>
-        <a href="/daily-quizzical">Daily <em>Quizzical</em></a>
+        <a href="/#about">Who <em>we are</em></a>
         <a href="/#courses">Courses</a>
-        <a href="/games">Somerset <em>Games</em></a>
-        <a href="/exercises">Exercises</a>
         <a href="/contact">Contact</a>
         <a href="/placement">Placement <em>Test</em></a>
+        <span className="mm-divider" aria-hidden="true" />
+        <a href="/games" className="mm-small">Somerset Games</a>
+        <a href="/exercises" className="mm-small">Exercises</a>
+        <a href="/daily-quizzical" className="mm-small">Daily Quizzical</a>
+        <a href="/blog" className="mm-small">Blog</a>
         <span className="mm-sub">Valencia · Est. 2013</span>
       </div>
 
@@ -1330,7 +1347,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="about">
+      <section className="about" id="about">
         <div className="wrap">
           <div className="about-grid">
             <div className="about-img reveal">
@@ -1373,10 +1390,10 @@ export default function Home() {
             <div>
               <div className="footer-col-title">Pages</div>
               <ul className="footer-links">
-                <li><a href="/">Home</a></li><li><a href="/blog">Blog</a></li>
-                <li><a href="/daily-quizzical">Daily Quizzical</a></li><li><a href="/#courses">Courses</a></li>
-                <li><a href="/games">Games</a></li><li><a href="/exercises">Exercises</a></li>
+                <li><a href="/#about">Who we are</a></li><li><a href="/#courses">Courses</a></li>
                 <li><a href="/contact">Contact</a></li><li><a href="/placement">Placement Test</a></li>
+                <li><a href="/games">Games</a></li><li><a href="/exercises">Exercises</a></li>
+                <li><a href="/daily-quizzical">Daily Quizzical</a></li><li><a href="/blog">Blog</a></li>
               </ul>
             </div>
             <div>
