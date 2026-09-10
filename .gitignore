@@ -4,3 +4,6 @@ node_modules/
 .env
 *.log
 .claude/
+
+# scratch: files the sandbox could not delete
+_to_delete/

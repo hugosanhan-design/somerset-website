@@ -145,31 +145,9 @@ export default function Home() {
     const curtainSafety = setTimeout(() => document.body.classList.add('curtain-done'), 3400)
     cleanups.push(() => { curtain?.removeEventListener('animationend', onCurtainEnd); clearTimeout(curtainSafety) })
 
-    /* ── Nav on scroll ── */
-    const nav = $('nav')
-    const onNavScroll = () => nav?.classList.toggle('scrolled', window.scrollY > 20)
-    window.addEventListener('scroll', onNavScroll, { passive: true })
-    cleanups.push(() => window.removeEventListener('scroll', onNavScroll))
-
-    /* ── Mobile burger menu ── */
-    const burger = $('navBurger')
-    const mobileMenu = $('mobileMenu')
-    const setMenu = (open: boolean) => {
-      document.body.classList.toggle('menu-open', open)
-      burger?.setAttribute('aria-expanded', String(open))
-      mobileMenu?.setAttribute('aria-hidden', String(!open))
-    }
-    const onBurger = () => setMenu(!document.body.classList.contains('menu-open'))
-    burger?.addEventListener('click', onBurger)
-    /* close when a menu link is tapped (same-page anchors need it) */
-    mobileMenu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)))
-    const onMenuKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setMenu(false) }
-    document.addEventListener('keydown', onMenuKey)
-    cleanups.push(() => {
-      burger?.removeEventListener('click', onBurger)
-      document.removeEventListener('keydown', onMenuKey)
-      document.body.classList.remove('menu-open')
-    })
+    /* Navigation now lives in one place: src/data/nav.json, rendered by
+       src/components/Shell.tsx and driven by public/nav-rail.js. The
+       homepage no longer carries its own nav or mobile menu. */
 
     /* ── Sheep walk, cloud drift, hill parallax, night-at-footer ── */
     const sheep = $('sheepWalk')
@@ -399,73 +377,10 @@ export default function Home() {
         .btn-light:hover { background: #fff; transform: translateY(-2px); box-shadow: 0 10px 26px rgba(0,0,0,0.18); }
         .btn-ghost { background: transparent; color: var(--ink); border-color: var(--line); }
         .btn-ghost:hover { border-color: var(--green-dk); color: var(--green-dk); transform: translateY(-2px); }
-        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.3rem 0; transition: background 0.35s, box-shadow 0.35s, padding 0.35s; }
-        .nav.scrolled { background: rgba(245,241,230,0.9); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 1px 0 var(--line); padding: 0.85rem 0; }
-        .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
-        .nav-logo { display: flex; flex-direction: column; line-height: 1.05; gap: 2px; }
-        .nav-logo-name { font-family: var(--brand); font-size: 1.35rem; font-weight: 700; color: var(--ink); letter-spacing: -0.01em; }
-        .nav-logo-name b { font-weight: 700; color: var(--green); }
-        .nav-logo-sub { font-size: 0.55rem; font-weight: 600; letter-spacing: 0.26em; text-transform: uppercase; color: var(--muted); }
-        .nav-links { display: flex; align-items: center; list-style: none; gap: 0.3rem; }
-        .nav-links a { font-size: 0.9rem; font-weight: 500; color: var(--ink); padding: 0.42rem 0.95rem; border-radius: 50px; transition: color 0.15s, background 0.15s; white-space: nowrap; }
-        .nav-links a:hover { color: var(--green-dk); }
-        .nav-links .nav-cta a { background: var(--ink); color: var(--paper); padding: 0.6rem 1.35rem; margin-left: 0.6rem; font-weight: 600; transition: background 0.2s, transform 0.2s; }
-        .nav-links .nav-cta a:hover { background: var(--green-dk); color: #fff; }
         /* secondary group — Games / Exercises / Daily Quizzical / Blog: smaller,
            quieter, separated from the primary trio by a hairline */
-        .nav-links .nav-sep { width: 1px; height: 18px; background: var(--line); margin: 0 0.55rem; }
-        .nav-links .nav-sec a { font-size: 0.78rem; font-weight: 500; color: var(--muted); padding: 0.38rem 0.7rem; }
-        .nav-links .nav-sec a:hover { color: var(--green-dk); }
-        .nav:not(.scrolled) { background: linear-gradient(to bottom, rgba(8,16,10,0.5), rgba(8,16,10,0)); }
-        .nav:not(.scrolled) .nav-logo-name { color: #fff; }
-        .nav:not(.scrolled) .nav-logo-name b { color: var(--leaf); }
-        .nav:not(.scrolled) .nav-logo-sub { color: rgba(255,255,255,0.55); }
-        .nav:not(.scrolled) .nav-links a { color: rgba(255,255,255,0.92); }
-        .nav:not(.scrolled) .nav-links a:hover { color: #fff; }
-        .nav:not(.scrolled) .nav-links .nav-cta a { background: rgba(255,255,255,0.14); border: 1.5px solid rgba(255,255,255,0.4); color: #fff; }
-        .nav:not(.scrolled) .nav-links .nav-cta a:hover { background: rgba(255,255,255,0.26); }
-        .nav:not(.scrolled) .nav-links .nav-sep { background: rgba(255,255,255,0.3); }
-        .nav:not(.scrolled) .nav-links .nav-sec a { color: rgba(255,255,255,0.68); }
-        .nav:not(.scrolled) .nav-links .nav-sec a:hover { color: #fff; }
         /* ── Mobile burger + full-screen menu ── */
-        .nav-burger { display: none; width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid var(--line); background: rgba(245,241,230,0.85); cursor: pointer; align-items: center; justify-content: center; flex-direction: column; gap: 5px; padding: 0; z-index: 260; }
-        .nav-burger span { display: block; width: 18px; height: 2px; background: var(--ink); border-radius: 2px; transition: transform 0.25s cubic-bezier(0.22,1,0.36,1), opacity 0.2s; }
-        .nav:not(.scrolled) .nav-burger { background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.4); }
-        .nav:not(.scrolled) .nav-burger span { background: #fff; }
-        body.menu-open .nav-burger { background: transparent; border-color: rgba(245,241,230,0.4); }
-        body.menu-open .nav-burger span { background: var(--paper); }
-        body.menu-open .nav-burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-        body.menu-open .nav-burger span:nth-child(2) { opacity: 0; }
-        body.menu-open .nav-burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-        .mobile-menu {
-          position: fixed; inset: 0; z-index: 250; background: var(--racing);
-          display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.4rem;
-          opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
-        }
-        body.menu-open .mobile-menu { opacity: 1; pointer-events: auto; }
-        body.menu-open { overflow: hidden; }
         /* keep the burger (inside .nav's stacking context) above the overlay */
-        body.menu-open .nav { z-index: 260; background: none !important; box-shadow: none !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
-        .mobile-menu a {
-          font-family: var(--serif); font-size: clamp(1.7rem, 7vw, 2.2rem); font-weight: 400;
-          color: var(--paper); padding: 0.45rem 1.5rem; letter-spacing: -0.01em;
-          opacity: 0; transform: translateY(14px); transition: opacity 0.4s cubic-bezier(0.22,1,0.36,1), transform 0.4s cubic-bezier(0.22,1,0.36,1);
-        }
-        .mobile-menu a em { font-style: italic; color: var(--leaf); }
-        body.menu-open .mobile-menu a { opacity: 1; transform: none; }
-        body.menu-open .mobile-menu a:nth-of-type(1) { transition-delay: 0.05s; }
-        body.menu-open .mobile-menu a:nth-of-type(2) { transition-delay: 0.1s; }
-        body.menu-open .mobile-menu a:nth-of-type(3) { transition-delay: 0.15s; }
-        body.menu-open .mobile-menu a:nth-of-type(4) { transition-delay: 0.2s; }
-        body.menu-open .mobile-menu a:nth-of-type(5) { transition-delay: 0.25s; }
-        body.menu-open .mobile-menu a:nth-of-type(6) { transition-delay: 0.28s; }
-        body.menu-open .mobile-menu a:nth-of-type(7) { transition-delay: 0.31s; }
-        body.menu-open .mobile-menu a:nth-of-type(8) { transition-delay: 0.34s; }
-        .mobile-menu .mm-divider { width: 42px; height: 1px; background: rgba(245,241,230,0.25); margin: 1.1rem 0 0.9rem; opacity: 0; transition: opacity 0.4s ease 0.25s; }
-        body.menu-open .mobile-menu .mm-divider { opacity: 1; }
-        .mobile-menu a.mm-small { font-family: var(--sans); font-size: 1.02rem; font-weight: 500; color: rgba(245,241,230,0.8); padding: 0.32rem 1.5rem; letter-spacing: 0; }
-        .mobile-menu .mm-sub { font-family: var(--sans); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.26em; text-transform: uppercase; color: rgba(245,241,230,0.45); margin-top: 1.6rem; opacity: 0; transition: opacity 0.4s ease 0.4s; }
-        body.menu-open .mobile-menu .mm-sub { opacity: 1; }
         .hero { position: relative; min-height: 100dvh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; overflow: hidden; padding-bottom: 26vh; }
         .hero::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(to bottom, rgba(8,20,12,0.52) 0%, rgba(8,20,12,0.18) 34%, rgba(8,20,12,0.3) 64%, rgba(30,66,39,0.28) 100%); }
         .hero::after { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: radial-gradient(ellipse at center, transparent 55%, rgba(8,20,12,0.35) 100%); }
@@ -757,8 +672,6 @@ export default function Home() {
           .course-level { grid-template-columns: 1fr; gap: 0.3rem; }
         }
         @media (max-width: 720px) {
-          .nav-links { display: none; }
-          .nav-burger { display: flex; }
         }
         @media (max-width: 600px) {
           /* tighter vertical rhythm so sections don't feel endless on a phone */
@@ -767,9 +680,6 @@ export default function Home() {
           .rv-list { padding-left: 1.3rem; padding-right: 1.3rem; }
           :root { --scene-h: 10vh; }
           .wrap { padding: 0 1.35rem; }
-          .nav-logo-sub { display: none; }
-          .nav-logo-name { font-size: 1rem; white-space: nowrap; }
-          .nav .wrap { padding: 0 1.2rem; }
           .hero h1 { font-size: clamp(2.55rem, 12vw, 3.4rem); }
           /* top-align the hero on a phone with a clear gap below the nav, so the
              eyebrow isn't cramped right under the wordmark */
@@ -852,43 +762,7 @@ export default function Home() {
         </defs>
       </svg>
 
-      <nav className="nav" id="nav">
-        <div className="wrap">
-          <div className="nav-inner">
-            <a href="/" className="nav-logo">
-              <span className="nav-logo-name"><b>Somerset</b> Language Centre</span>
-              <span className="nav-logo-sub">Valencia · Est. 2013</span>
-            </a>
-            <ul className="nav-links" role="list">
-              <li><a href="/#about">Who we are</a></li>
-              <li><a href="/#courses">Courses</a></li>
-              <li><a href="/contact">Contact</a></li>
-              <li className="nav-sep" aria-hidden="true" />
-              <li className="nav-sec"><a href="/games">Games</a></li>
-              <li className="nav-sec"><a href="/exercises">Exercises</a></li>
-              <li className="nav-sec"><a href="/daily-quizzical">Daily Quizzical</a></li>
-              <li className="nav-sec"><a href="/blog">Blog</a></li>
-              <li className="nav-cta"><a href="/placement">Placement Test</a></li>
-            </ul>
-            <button className="nav-burger" id="navBurger" aria-label="Menu" aria-expanded="false">
-              <span /><span /><span />
-            </button>
-          </div>
-        </div>
-      </nav>
 
-      <div className="mobile-menu" id="mobileMenu" aria-hidden="true">
-        <a href="/#about">Who <em>we are</em></a>
-        <a href="/#courses">Courses</a>
-        <a href="/contact">Contact</a>
-        <a href="/placement">Placement <em>Test</em></a>
-        <span className="mm-divider" aria-hidden="true" />
-        <a href="/games" className="mm-small">Somerset Games</a>
-        <a href="/exercises" className="mm-small">Exercises</a>
-        <a href="/daily-quizzical" className="mm-small">Daily Quizzical</a>
-        <a href="/blog" className="mm-small">Blog</a>
-        <span className="mm-sub">Valencia · Est. 2013</span>
-      </div>
 
       <section className="hero" id="hero">
         <div className="hero-bg" aria-hidden="true" />
