@@ -112,16 +112,12 @@ export function renderRailInner(opts = {}) {
       `</div>`;
 
   return (
-    `<a class="sl-brand" href="${esc(d.brand.href)}">` +
-    `<span class="sl-mark" aria-hidden="true">${esc(d.brand.monogram)}</span>` +
-    `<span class="sl-brandtext"><span class="sl-name"><b>${esc(d.brand.name)}</b>${esc(
-      d.brand.rest
-    )}</span><span class="sl-sub">${esc(d.brand.sub)}</span></span>` +
+    `<div class="sl-railtop">` +
     `<button type="button" class="sl-toggle" aria-label="${
       collapsed ? "Expand navigation" : "Collapse navigation"
     }" aria-expanded="${collapsed ? "false" : "true"}">` +
     `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${ICONS.chev}</svg>` +
-    `</button></a>` +
+    `</button></div>` +
     `<div class="sl-hint" role="status"><button type="button" class="sl-x" aria-label="Dismiss">&times;</button>` +
     `<b>Welcome back</b>You can narrow this rail to icons — the arrow, or press <kbd>[</kbd>.</div>` +
     account +
@@ -182,4 +178,29 @@ export function renderMinibar(active) {
       cta.short || cta.label
     )}</a></nav></header>`
   );
+}
+
+/* Masthead — the full-width brand band across the very top.
+   Built as a CSS FLEXBOX TEXT LOCKUP, never an <img> of logo-colour.svg.
+   Those SVGs are live <text> with absolute x coordinates and a font-family, the
+   exact asset class that has produced the LANGUAGE/CENTRE overlap three times
+   (SVG x-coords May 2026; PNG data-URIs 8 Jun; canonical light data-URI 17 Jun).
+   Flexbox is real text flow, so the two parts can never collide at any size or
+   in any font. Do not "simplify" this back to an image. */
+export function renderMastheadInner() {
+  const d = navData;
+  return (
+    `<a class="sl-lockup" href="${esc(d.brand.href)}" aria-label="${esc(d.brand.name + d.brand.rest)}">` +
+    `<span class="sl-lk-word">Somerset</span>` +
+    `<span class="sl-lk-sub"><span>LANGUAGE</span><span>CENTRE</span></span>` +
+    `</a>` +
+    `<span class="sl-mast-meta">${esc(d.brand.sub)}</span>` +
+    `<button type="button" class="sl-burger" aria-label="Open menu">` +
+    `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round">${ICONS.burger}</svg>` +
+    `</button>`
+  );
+}
+
+export function renderMasthead() {
+  return `<header class="sl-masthead">${renderMastheadInner()}</header>`;
 }

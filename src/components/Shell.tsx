@@ -19,7 +19,7 @@
  * site's only organic acquisition surface.
  */
 import { cookies } from "next/headers";
-import { renderRailInner, renderTopbarInner, NAV_BREAKPOINT } from "@/lib/nav-render.mjs";
+import { renderRailInner, renderMastheadInner, NAV_BREAKPOINT } from "@/lib/nav-render.mjs";
 
 export default async function Shell({
   children,
@@ -41,13 +41,13 @@ export default async function Shell({
       className={`sl-shell${collapsed ? " sl-collapsed" : ""}`}
       data-breakpoint={NAV_BREAKPOINT}
     >
+      <header className="sl-masthead" dangerouslySetInnerHTML={{ __html: renderMastheadInner() }} />
       <aside
         className="sl-rail"
         aria-label="Main navigation"
         dangerouslySetInnerHTML={{ __html: renderRailInner({ collapsed, signedIn, student }) }}
       />
       <div className="sl-col">
-        <div className="sl-topbar" dangerouslySetInnerHTML={{ __html: renderTopbarInner() }} />
         <main>{children}</main>
         {footer}
       </div>

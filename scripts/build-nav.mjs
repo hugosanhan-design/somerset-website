@@ -26,12 +26,13 @@ const here = dirname(fileURLToPath(import.meta.url));
 const root = resolve(here, "..");
 const nav = JSON.parse(readFileSync(resolve(root, "src/data/nav.json"), "utf8"));
 
-import { renderRail, renderTopbar, renderMinibar } from "../src/lib/nav-render.mjs";
+import { renderRail, renderTopbar, renderMinibar, renderMasthead } from "../src/lib/nav-render.mjs";
 
 mkdirSync(resolve(root, "build"), { recursive: true });
 writeFileSync(resolve(root, "build/nav-rail.html"), renderRail({}), "utf8");
 writeFileSync(resolve(root, "build/nav-topbar.html"), renderTopbar(), "utf8");
 writeFileSync(resolve(root, "build/nav-minibar.html"), renderMinibar(), "utf8");
+writeFileSync(resolve(root, "build/nav-masthead.html"), renderMasthead(), "utf8");
 writeFileSync(
   resolve(root, "build/nav-meta.json"),
   JSON.stringify({ breakpoint: nav.breakpoint, css: "/nav-rail.css", js: "/nav-rail.js" }, null, 2),
