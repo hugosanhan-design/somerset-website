@@ -23,4 +23,7 @@ export function renderTopbarInner(): string;
 export function renderTopbar(): string;
 /** Slim top bar for full-screen interactive pages (games, placement test). */
 export function renderMinibar(active?: string): string;
+/** Full-width brand band. CSS flexbox lockup — never an <img> of the logo SVGs. */
+export function renderMastheadInner(): string;
+export function renderMasthead(): string;
 export const NAV_BREAKPOINT: number;

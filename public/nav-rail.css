@@ -19,21 +19,39 @@
   --sl-rule:#D9D2BC;
   --sl-rule-2:rgba(23,40,27,.09);
   --sl-w:268px;
+  --sl-mast:90px;
   --sl-ease:cubic-bezier(.22,.61,.36,1);
   --sl-sans:'Instrument Sans',system-ui,sans-serif;
   --sl-brand:'Poppins',system-ui,sans-serif;
 }
 
 /* ---------- shell ---------- */
-.sl-shell{display:grid;grid-template-columns:var(--sl-w) 1fr;min-height:100vh;min-height:100dvh;transition:grid-template-columns .28s var(--sl-ease);position:relative;background:var(--sl-cream)}
+.sl-shell{display:grid;grid-template-columns:var(--sl-w) 1fr;grid-template-rows:auto 1fr;min-height:100vh;min-height:100dvh;transition:grid-template-columns .28s var(--sl-ease);position:relative;background:var(--sl-cream)}
 .sl-shell.sl-collapsed{--sl-w:78px}
 .sl-shell.sl-narrow{grid-template-columns:1fr}
 .sl-col{min-width:0;display:flex;flex-direction:column}
 .sl-shell > main{min-width:0}
 
+
+/* ---------- masthead: full-width brand band ---------- */
+/* The lockup is FLEXBOX TEXT, never an <img> of logo-colour.svg — those SVGs are
+   live <text> at absolute x coords and overlap "Somerset" with LANGUAGE/CENTRE
+   whenever the font renders wide. Three recorded recurrences. Do not swap it. */
+.sl-masthead{grid-column:1 / -1;height:var(--sl-mast);display:flex;align-items:center;gap:24px;padding:0 34px;background:var(--sl-cream);border-bottom:1px solid var(--sl-rule);font-family:var(--sl-sans);position:relative;z-index:110}
+.sl-lockup{display:flex;align-items:flex-end;gap:12px;text-decoration:none;line-height:1}
+.sl-lk-word{font-family:var(--sl-brand);font-weight:700;font-size:42px;letter-spacing:-.022em;line-height:.86;color:var(--sl-green)}
+.sl-lk-sub{display:flex;flex-direction:column;font-weight:700;font-size:10.5px;letter-spacing:.24em;line-height:1.22;color:var(--sl-ink);padding-bottom:5px}
+.sl-mast-meta{margin-left:auto;font-size:10px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--sl-muted);white-space:nowrap}
+.sl-masthead .sl-burger{display:none;margin-left:12px}
+
 /* ---------- rail ---------- */
-.sl-rail{background:var(--sl-rail);border-right:1px solid var(--sl-rule);display:flex;flex-direction:column;padding:20px 14px 16px;position:sticky;top:0;height:100vh;height:100dvh;overflow:visible;z-index:100;font-family:var(--sl-sans)}
-.sl-brand{display:grid;grid-template-columns:38px 1fr auto;align-items:center;gap:10px;padding:0 4px 2px;min-height:42px;text-decoration:none;color:inherit}
+.sl-rail{background:var(--sl-rail);border-right:1px solid var(--sl-rule);display:flex;flex-direction:column;padding:14px 14px 16px;position:sticky;top:0;min-height:calc(100dvh - var(--sl-mast));align-self:start;overflow:visible;z-index:100;font-family:var(--sl-sans)}
+/* The rail is a column flex container. Never give it a FIXED height: once the
+   masthead took 90px, the content no longer fit and flexbox silently shrank the
+   group labels to height:0 (they stayed in the DOM and the a11y tree, so only a
+   computed-style check caught it). min-height + no shrinking keeps that impossible. */
+.sl-rail > *{flex-shrink:0}
+.sl-railtop{display:flex;justify-content:flex-end;align-items:center;min-height:26px;padding:0 2px}
 .sl-mark{width:38px;height:38px;border-radius:11px;background:var(--sl-green);color:#0F2410;display:grid;place-items:center;font-family:var(--sl-brand);font-weight:700;font-size:18px}
 .sl-brandtext{min-width:0;overflow:hidden}
 .sl-name{display:block;font-family:var(--sl-brand);font-weight:700;font-size:13.5px;line-height:1.25;letter-spacing:-.01em;color:var(--sl-ink)}
@@ -44,9 +62,10 @@
 .sl-toggle:hover{background:var(--sl-rail-2);color:var(--sl-ink)}
 .sl-toggle svg{transition:transform .28s var(--sl-ease)}
 .sl-collapsed .sl-toggle svg{transform:rotate(180deg)}
-.sl-collapsed .sl-toggle{position:absolute;top:70px;right:-13px;background:var(--sl-paper);border:1px solid var(--sl-rule);width:26px;height:26px;z-index:6}
+.sl-collapsed .sl-toggle{position:absolute;top:18px;right:-13px;background:var(--sl-paper);border:1px solid var(--sl-rule);width:26px;height:26px;z-index:6}
 
-.sl-glabel{font-size:9.5px;font-weight:600;letter-spacing:.17em;text-transform:uppercase;color:var(--sl-muted);padding:0 8px;margin:22px 0 5px;white-space:nowrap;overflow:hidden}
+.sl-glabel{display:flex;align-items:center;gap:9px;font-size:10.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--sl-ink-2);padding:0 8px;margin:24px 0 7px;white-space:nowrap;overflow:hidden}
+.sl-glabel::after{content:"";flex:1;height:1px;background:var(--sl-rule)}
 .sl-div{height:1px;background:var(--sl-rule);margin:20px 12px 14px;display:none}
 .sl-collapsed .sl-div{display:block}
 
@@ -85,11 +104,10 @@
 .sl-collapsed .sl-item,.sl-collapsed .sl-cta,.sl-collapsed .sl-account{grid-template-columns:34px;justify-content:center}
 .sl-collapsed .sl-account{margin:16px auto 0;padding:9px}
 .sl-collapsed .sl-lab,
-.sl-collapsed .sl-brandtext,
 .sl-collapsed .sl-who,
 .sl-collapsed .sl-glabel,
 .sl-collapsed .sl-foot{opacity:0;width:0;height:0;margin:0;padding:0;border:0;overflow:hidden;pointer-events:none}
-.sl-collapsed .sl-brand{grid-template-columns:38px;justify-content:center;gap:0}
+.sl-collapsed .sl-railtop{justify-content:center}
 
 /* ---------- flyout (collapsed only) ---------- */
 .sl-tip{position:absolute;left:calc(100% + 12px);top:50%;transform:translate(-6px,-50%);background:var(--sl-forest-2);color:#E8F0E2;font-size:12.5px;font-weight:500;padding:7px 13px;border-radius:9px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .14s,transform .14s var(--sl-ease);box-shadow:0 10px 26px -10px rgba(21,48,28,.55);z-index:20}
@@ -100,7 +118,7 @@
 .sl-collapsed .sl-cta:hover .sl-tip{opacity:1;transform:translate(0,-50%)}
 
 /* ---------- returning-visitor hint (never on a first visit) ---------- */
-.sl-hint{position:absolute;top:54px;left:calc(100% - 58px);width:214px;background:var(--sl-forest-2);color:#E8F0E2;border-radius:11px;padding:12px 13px 11px;font-size:12.5px;line-height:1.5;box-shadow:0 14px 32px -12px rgba(21,48,28,.6);z-index:30;opacity:0;transform:translateY(-6px);pointer-events:none;transition:opacity .3s,transform .3s var(--sl-ease)}
+.sl-hint{position:absolute;top:44px;left:calc(100% - 58px);width:214px;background:var(--sl-forest-2);color:#E8F0E2;border-radius:11px;padding:12px 13px 11px;font-size:12.5px;line-height:1.5;box-shadow:0 14px 32px -12px rgba(21,48,28,.6);z-index:30;opacity:0;transform:translateY(-6px);pointer-events:none;transition:opacity .3s,transform .3s var(--sl-ease)}
 .sl-hint.sl-show{opacity:1;transform:translateY(0);pointer-events:auto}
 .sl-hint::after{content:"";position:absolute;top:-4px;left:44px;width:9px;height:9px;background:var(--sl-forest-2);transform:rotate(45deg)}
 .sl-hint b{display:block;font-size:9px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#8FA886;margin-bottom:4px}
@@ -120,10 +138,10 @@
 .sl-narrow .sl-toggle{display:none}
 .sl-narrow .sl-div{display:none}
 .sl-narrow .sl-item,.sl-narrow .sl-cta,.sl-narrow .sl-account{grid-template-columns:34px 1fr}
-.sl-narrow .sl-lab,.sl-narrow .sl-brandtext,.sl-narrow .sl-who,.sl-narrow .sl-glabel,.sl-narrow .sl-foot{opacity:1;width:auto;height:auto;pointer-events:auto}
+.sl-narrow .sl-lab,.sl-narrow .sl-who,.sl-narrow .sl-glabel,.sl-narrow .sl-foot{opacity:1;width:auto;height:auto;pointer-events:auto}
 .sl-narrow .sl-glabel{margin:22px 0 5px}
 .sl-narrow .sl-foot{padding:14px 10px 0;border-top:1px solid var(--sl-rule)}
-.sl-narrow .sl-brand{grid-template-columns:38px 1fr auto;gap:10px}
+
 .sl-narrow.sl-open .sl-rail{transform:translateX(0)}
 .sl-narrow.sl-open .sl-scrim{opacity:1;pointer-events:auto}
 .sl-narrow .sl-tip{display:none}
@@ -150,3 +168,14 @@
   .sl-mb-nav a{font-size:.8rem;padding:.3rem .55rem}
   .sl-mb-nav a.sl-mb-cta{padding:.4rem .9rem;margin-left:.2rem}
 }
+
+@media (max-width:899px){
+  .sl-shell{--sl-mast:64px}
+  .sl-masthead{padding:0 16px;gap:14px}
+  .sl-lk-word{font-size:28px}
+  .sl-lk-sub{font-size:8px;letter-spacing:.2em;padding-bottom:3px}
+  .sl-mast-meta{display:none}
+  .sl-masthead .sl-burger{display:grid}
+}
+.sl-narrow .sl-rail{top:var(--sl-mast);height:calc(100dvh - var(--sl-mast));min-height:0;overflow-y:auto}
+.sl-narrow .sl-topbar{display:none}
