@@ -1,5 +1,5 @@
 {
-  "_comment": "SINGLE SOURCE OF TRUTH for site navigation. Consumed by src/lib/nav-render.ts (React pages), by scripts/build-nav.mjs (writes build/nav-rail.html for the Python generators), and read directly by build_daily_quizzical.py / regen_site_html.py. Change nav here and nowhere else.",
+  "_comment": "SINGLE SOURCE OF TRUTH for site navigation. `place` decides where a group or CTA lives on wide screens: 'masthead' = the top bar (the parent-facing conversion path), 'rail' = the slim left shelf (free content for returning students). Everything is ALSO rendered into the rail markup so the mobile drawer holds the whole nav; CSS hides the masthead-placed items there on wide screens. Consumed by src/lib/nav-render.mjs, scripts/build-nav.mjs, and the two Python generators. Change nav here and nowhere else.",
   "brand": {
     "href": "/",
     "name": "Somerset",
@@ -29,7 +29,8 @@
           "label": "Contact",
           "icon": "contact"
         }
-      ]
+      ],
+      "place": "masthead"
     },
     {
       "id": "free",
@@ -57,7 +58,8 @@
           "label": "Blog",
           "icon": "blog"
         }
-      ]
+      ],
+      "place": "rail"
     },
     {
       "id": "classes",
@@ -79,7 +81,8 @@
           "label": "Progress",
           "icon": "level"
         }
-      ]
+      ],
+      "place": "rail"
     }
   ],
   "ctas": [
@@ -89,14 +92,16 @@
       "short": "Find my level",
       "icon": "level",
       "style": "solid",
-      "public": true
+      "public": true,
+      "place": "masthead"
     },
     {
       "href": "/student",
       "label": "Student sign in",
       "icon": "key",
       "style": "ghost",
-      "public": true
+      "public": true,
+      "place": "rail"
     }
   ],
   "foot": {

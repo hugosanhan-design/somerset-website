@@ -44,6 +44,22 @@
 .sl-mast-meta{margin-left:auto;font-size:10px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--sl-muted);white-space:nowrap}
 .sl-masthead .sl-burger{display:none;margin-left:12px}
 
+
+/* Masthead nav — the parent-facing path: Who we are / Courses / Contact + the
+   Placement pill. The left rail is now only the free-content shelf. */
+.sl-mastnav{display:flex;align-items:center;gap:.25rem}
+.sl-mastnav a{font-size:.92rem;font-weight:500;color:var(--sl-ink);text-decoration:none;padding:.45rem 1rem;border-radius:50px;white-space:nowrap}
+.sl-mastnav a:hover{color:var(--sl-green-2);background:rgba(87,184,44,.08)}
+.sl-mastnav a.sl-mast-cta{background:var(--sl-ink);color:var(--sl-cream);padding:.62rem 1.35rem;margin-left:.7rem;font-weight:600}
+.sl-mastnav a.sl-mast-cta:hover{background:var(--sl-green-2);color:#fff}
+.sl-masthead .sl-mast-meta{margin-right:20px}
+
+/* One nav, two homes: masthead-placed groups are rendered into the rail as well
+   (so the mobile drawer is complete) and hidden there on wide screens. */
+.sl-shell:not(.sl-narrow) .sl-rail [data-place="masthead"]{display:none}
+.sl-narrow .sl-mastnav{display:none}
+.sl-narrow .sl-mast-meta{display:none}
+
 /* ---------- rail ---------- */
 .sl-rail{background:var(--sl-rail);border-right:1px solid var(--sl-rule);display:flex;flex-direction:column;padding:14px 14px 16px;position:sticky;top:0;min-height:calc(100dvh - var(--sl-mast));align-self:start;overflow:visible;z-index:100;font-family:var(--sl-sans)}
 /* The rail is a column flex container. Never give it a FIXED height: once the
