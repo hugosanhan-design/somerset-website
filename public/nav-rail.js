@@ -54,6 +54,10 @@
     setCookie('slc_nav', c ? 'collapsed' : 'open');
   }
 
+  /* Default collapsed: the rail is the free-content shelf, four icons wide.
+     Only an explicit "open" widens it. */
+  setCollapsed(getCookie('slc_nav') !== 'open');
+
   if (toggle) {
     toggle.addEventListener('click', function () {
       hideHint(true);
@@ -70,7 +74,6 @@
     if (!hint) return;
     if (visits < 2) return;
     if (getCookie('slc_navhint') === '1') return;
-    if (shell.classList.contains('sl-collapsed')) return;
     if (shell.classList.contains('sl-narrow')) return;
     timer = setTimeout(function () {
       hint.classList.add('sl-show');

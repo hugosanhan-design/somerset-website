@@ -29,7 +29,8 @@ export default async function Shell({
   footer?: React.ReactNode;
 }) {
   const jar = await cookies();
-  const collapsed = jar.get("slc_nav")?.value === "collapsed";
+  // The free shelf is a slim icon strip by default; only an explicit choice widens it.
+  const collapsed = jar.get("slc_nav")?.value !== "open";
   const signedIn = jar.get("slc_student")?.value === "1";
 
   const student = signedIn

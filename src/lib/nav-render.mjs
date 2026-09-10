@@ -77,14 +77,17 @@ export function renderRailInner(opts = {}) {
   const d = navData;
   const { active, collapsed, signedIn, student } = opts;
 
+  /* Every group is rendered into the rail so the mobile drawer holds the whole
+     nav. On wide screens CSS hides the ones whose place is "masthead". */
   const groups = d.groups
     .filter((g) => g.public || signedIn)
     .map(
       (g) =>
+        `<div class="sl-groupwrap" data-place="${esc(g.place || "rail")}">` +
         `<div class="sl-glabel">${esc(g.label)}</div><div class="sl-div"></div>` +
         `<nav class="sl-group" aria-label="${esc(g.label)}">` +
         g.items.map((it) => renderItem(it, g.label, active)).join("") +
-        `</nav>`
+        `</nav></div>`
     )
     .join("");
 
@@ -103,7 +106,9 @@ export function renderRailInner(opts = {}) {
       d.ctas
         .map(
           (c) =>
-            `<a class="sl-cta${c.style === "ghost" ? " sl-ghost" : ""}" href="${esc(c.href)}">` +
+            `<a class="sl-cta${c.style === "ghost" ? " sl-ghost" : ""}" data-place="${esc(
+              c.place || "rail"
+            )}" href="${esc(c.href)}">` +
             icon(c.icon) +
             `<span class="sl-lab">${esc(c.label)}</span>` +
             `<span class="sl-tip">${esc(c.short || c.label)}</span></a>`
@@ -119,7 +124,7 @@ export function renderRailInner(opts = {}) {
     `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${ICONS.chev}</svg>` +
     `</button></div>` +
     `<div class="sl-hint" role="status"><button type="button" class="sl-x" aria-label="Dismiss">&times;</button>` +
-    `<b>Welcome back</b>You can narrow this rail to icons — the arrow, or press <kbd>[</kbd>.</div>` +
+    `<b>Welcome back</b>The free shelf can widen to show labels — the arrow, or press <kbd>[</kbd>.</div>` +
     account +
     groups +
     ctas +
@@ -195,6 +200,17 @@ export function renderMastheadInner() {
     `<span class="sl-lk-sub"><span>LANGUAGE</span><span>CENTRE</span></span>` +
     `</a>` +
     `<span class="sl-mast-meta">${esc(d.brand.sub)}</span>` +
+    `<nav class="sl-mastnav" aria-label="Main">` +
+    d.groups
+      .filter((g) => g.place === "masthead")
+      .flatMap((g) => g.items)
+      .map((it) => `<a href="${esc(it.href)}">${esc(it.label)}</a>`)
+      .join("") +
+    d.ctas
+      .filter((c) => c.place === "masthead")
+      .map((c) => `<a class="sl-mast-cta" href="${esc(c.href)}">${esc(c.short || c.label)}</a>`)
+      .join("") +
+    `</nav>` +
     `<button type="button" class="sl-burger" aria-label="Open menu">` +
     `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round">${ICONS.burger}</svg>` +
     `</button>`
