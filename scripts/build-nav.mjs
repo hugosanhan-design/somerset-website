@@ -38,4 +38,4 @@ writeFileSync(
   JSON.stringify({ breakpoint: nav.breakpoint, css: "/nav-rail.css", js: "/nav-rail.js" }, null, 2),
   "utf8"
 );
-console.log("nav exported → build/nav-rail.html, build/nav-topbar.html, build/nav-meta.json");
+console.log("nav exported → build/nav-rail.html, nav-topbar.html, nav-minibar.html, nav-masthead.html, nav-meta.json");
