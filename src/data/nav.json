@@ -1,0 +1,54 @@
+{
+  "_comment": "SINGLE SOURCE OF TRUTH for site navigation. Consumed by src/lib/nav-render.ts (React pages), by scripts/build-nav.mjs (writes build/nav-rail.html for the Python generators), and read directly by build_daily_quizzical.py / regen_site_html.py. Change nav here and nowhere else.",
+  "brand": {
+    "href": "/",
+    "name": "Somerset",
+    "rest": " Language Centre",
+    "sub": "Valencia · Est. 2013",
+    "monogram": "S"
+  },
+  "groups": [
+    {
+      "id": "visit",
+      "label": "Visit us",
+      "public": true,
+      "items": [
+        { "href": "/#about", "label": "Who we are", "icon": "about" },
+        { "href": "/courses", "label": "Courses & timetables", "short": "Courses", "icon": "courses" },
+        { "href": "/contact", "label": "Contact", "icon": "contact" }
+      ]
+    },
+    {
+      "id": "free",
+      "label": "Learn, free",
+      "public": true,
+      "note": "Stays public and indexable. This is the school's only organic acquisition surface — do not put these behind the student sign-in.",
+      "items": [
+        { "href": "/daily-quizzical", "label": "Daily Quizzical", "icon": "monogram:DQ" },
+        { "href": "/exercises", "label": "Exercises", "icon": "exercises" },
+        { "href": "/games", "label": "Games", "icon": "games" },
+        { "href": "/blog", "label": "Blog", "icon": "blog" }
+      ]
+    },
+    {
+      "id": "classes",
+      "label": "Your classes",
+      "public": false,
+      "items": [
+        { "href": "/student", "label": "My group", "icon": "group" },
+        { "href": "/student/corrections", "label": "Corrections", "icon": "check" },
+        { "href": "/student/progress", "label": "Progress", "icon": "level" }
+      ]
+    }
+  ],
+  "ctas": [
+    { "href": "/placement", "label": "Find my level →", "short": "Find my level", "icon": "level", "style": "solid", "public": true },
+    { "href": "/student", "label": "Student sign in", "icon": "key", "style": "ghost", "public": true }
+  ],
+  "foot": {
+    "hours": "Mon–Fri 16:00–21:00",
+    "address": "C/ Visitación 23, Valencia",
+    "meta": "WhatsApp · ★ 5.0 · 49 reviews"
+  },
+  "breakpoint": 900
+}

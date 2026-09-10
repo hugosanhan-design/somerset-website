@@ -1,0 +1,152 @@
+/* Somerset rail — the canonical site navigation.
+   Single stylesheet, used by BOTH the Next pages (imported in layout) and the
+   standalone HTML pages (inlined by build_daily_quizzical.py / regen_site_html.py).
+   Tokens match the existing site exactly: cream #F5F1E6, ink #17281B,
+   green #57B82C, green-dark #3D8B1F, rule #D9D2BC, forest #1E4227. */
+
+:root{
+  --sl-cream:#F5F1E6;
+  --sl-rail:#EDE7D6;
+  --sl-rail-2:#E4DCC6;
+  --sl-paper:#FFFDF8;
+  --sl-ink:#17281B;
+  --sl-ink-2:#3A4A38;
+  --sl-muted:#5C6657;
+  --sl-green:#57B82C;
+  --sl-green-2:#3D8B1F;
+  --sl-forest:#1E4227;
+  --sl-forest-2:#15301C;
+  --sl-rule:#D9D2BC;
+  --sl-rule-2:rgba(23,40,27,.09);
+  --sl-w:268px;
+  --sl-ease:cubic-bezier(.22,.61,.36,1);
+  --sl-sans:'Instrument Sans',system-ui,sans-serif;
+  --sl-brand:'Poppins',system-ui,sans-serif;
+}
+
+/* ---------- shell ---------- */
+.sl-shell{display:grid;grid-template-columns:var(--sl-w) 1fr;min-height:100vh;min-height:100dvh;transition:grid-template-columns .28s var(--sl-ease);position:relative;background:var(--sl-cream)}
+.sl-shell.sl-collapsed{--sl-w:78px}
+.sl-shell.sl-narrow{grid-template-columns:1fr}
+.sl-col{min-width:0;display:flex;flex-direction:column}
+.sl-shell > main{min-width:0}
+
+/* ---------- rail ---------- */
+.sl-rail{background:var(--sl-rail);border-right:1px solid var(--sl-rule);display:flex;flex-direction:column;padding:20px 14px 16px;position:sticky;top:0;height:100vh;height:100dvh;overflow:visible;z-index:100;font-family:var(--sl-sans)}
+.sl-brand{display:grid;grid-template-columns:38px 1fr auto;align-items:center;gap:10px;padding:0 4px 2px;min-height:42px;text-decoration:none;color:inherit}
+.sl-mark{width:38px;height:38px;border-radius:11px;background:var(--sl-green);color:#0F2410;display:grid;place-items:center;font-family:var(--sl-brand);font-weight:700;font-size:18px}
+.sl-brandtext{min-width:0;overflow:hidden}
+.sl-name{display:block;font-family:var(--sl-brand);font-weight:700;font-size:13.5px;line-height:1.25;letter-spacing:-.01em;color:var(--sl-ink)}
+.sl-name b{color:var(--sl-green-2);font-weight:700}
+.sl-sub{display:block;font-size:8px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--sl-muted);margin-top:4px;white-space:nowrap}
+
+.sl-toggle{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;color:var(--sl-muted);border:0;background:none;cursor:pointer;transition:background .15s,color .15s}
+.sl-toggle:hover{background:var(--sl-rail-2);color:var(--sl-ink)}
+.sl-toggle svg{transition:transform .28s var(--sl-ease)}
+.sl-collapsed .sl-toggle svg{transform:rotate(180deg)}
+.sl-collapsed .sl-toggle{position:absolute;top:70px;right:-13px;background:var(--sl-paper);border:1px solid var(--sl-rule);width:26px;height:26px;z-index:6}
+
+.sl-glabel{font-size:9.5px;font-weight:600;letter-spacing:.17em;text-transform:uppercase;color:var(--sl-muted);padding:0 8px;margin:22px 0 5px;white-space:nowrap;overflow:hidden}
+.sl-div{height:1px;background:var(--sl-rule);margin:20px 12px 14px;display:none}
+.sl-collapsed .sl-div{display:block}
+
+.sl-group{display:flex;flex-direction:column;gap:1px}
+.sl-item{display:grid;grid-template-columns:34px 1fr;align-items:center;gap:11px;padding:9px 8px;border-radius:10px;color:var(--sl-ink);text-decoration:none;position:relative;transition:background .15s}
+.sl-item:hover{background:var(--sl-rail-2)}
+.sl-ico{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;color:var(--sl-ink-2);transition:background .18s,color .18s}
+/* Daily Quizzical is a named publication, not a category, so it takes a
+   monogram — a question mark would read as "help". */
+.sl-ico.sl-mono{font-size:11.5px;font-weight:700;background:rgba(87,184,44,.14);color:var(--sl-green-2)}
+.sl-lab{font-size:14px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:opacity .18s var(--sl-ease)}
+.sl-item.sl-active{background:var(--sl-paper);box-shadow:0 1px 2px rgba(23,40,27,.07)}
+.sl-item.sl-active .sl-ico{background:rgba(87,184,44,.18);color:var(--sl-green-2)}
+.sl-item.sl-active .sl-ico.sl-mono{background:rgba(87,184,44,.28)}
+.sl-item.sl-active .sl-lab{font-weight:600;color:var(--sl-green-2)}
+.sl-item.sl-active::before{content:"";position:absolute;left:-14px;top:9px;bottom:9px;width:3px;border-radius:0 3px 3px 0;background:var(--sl-green)}
+
+.sl-ctas{margin-top:18px;padding:0 2px;display:flex;flex-direction:column;gap:8px}
+.sl-cta{display:grid;grid-template-columns:34px 1fr;align-items:center;gap:11px;border-radius:11px;padding:9px 8px;text-decoration:none;background:var(--sl-ink);color:var(--sl-cream);transition:background .15s}
+.sl-cta:hover{background:var(--sl-green-2)}
+.sl-cta .sl-lab{font-size:13.5px;font-weight:600}
+.sl-cta.sl-ghost{background:transparent;border:1px solid var(--sl-rule);color:var(--sl-ink)}
+.sl-cta.sl-ghost:hover{background:var(--sl-rail-2)}
+
+.sl-account{display:grid;grid-template-columns:34px 1fr;align-items:center;gap:11px;margin:16px 2px 0;padding:9px 8px;background:var(--sl-paper);border:1px solid var(--sl-rule-2);border-radius:11px;text-decoration:none;color:inherit}
+.sl-avatar{width:34px;height:34px;border-radius:9px;background:var(--sl-forest);color:var(--sl-cream);display:grid;place-items:center;font-size:11.5px;font-weight:700}
+.sl-who{min-width:0;overflow:hidden;transition:opacity .18s var(--sl-ease)}
+.sl-who .sl-n{display:block;font-size:13px;font-weight:600;white-space:nowrap}
+.sl-who .sl-g{display:block;font-size:10.5px;color:var(--sl-muted);white-space:nowrap;margin-top:1px}
+
+.sl-foot{margin-top:auto;padding:14px 10px 0;border-top:1px solid var(--sl-rule);font-size:11.5px;line-height:1.8;color:var(--sl-muted);white-space:nowrap;overflow:hidden;transition:opacity .18s var(--sl-ease)}
+.sl-foot b{display:block;color:var(--sl-ink);font-weight:600;font-size:12px}
+.sl-foot .sl-stars{color:#C9A227}
+
+/* ---------- collapsed ---------- */
+.sl-collapsed .sl-item,.sl-collapsed .sl-cta,.sl-collapsed .sl-account{grid-template-columns:34px;justify-content:center}
+.sl-collapsed .sl-account{margin:16px auto 0;padding:9px}
+.sl-collapsed .sl-lab,
+.sl-collapsed .sl-brandtext,
+.sl-collapsed .sl-who,
+.sl-collapsed .sl-glabel,
+.sl-collapsed .sl-foot{opacity:0;width:0;height:0;margin:0;padding:0;border:0;overflow:hidden;pointer-events:none}
+.sl-collapsed .sl-brand{grid-template-columns:38px;justify-content:center;gap:0}
+
+/* ---------- flyout (collapsed only) ---------- */
+.sl-tip{position:absolute;left:calc(100% + 12px);top:50%;transform:translate(-6px,-50%);background:var(--sl-forest-2);color:#E8F0E2;font-size:12.5px;font-weight:500;padding:7px 13px;border-radius:9px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .14s,transform .14s var(--sl-ease);box-shadow:0 10px 26px -10px rgba(21,48,28,.55);z-index:20}
+.sl-tip::after{content:"";position:absolute;left:-4px;top:50%;width:8px;height:8px;background:var(--sl-forest-2);transform:translateY(-50%) rotate(45deg)}
+.sl-tip s{text-decoration:none;display:block;font-size:9px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#8FA886;margin-bottom:2px}
+.sl-collapsed .sl-item:hover .sl-tip,
+.sl-collapsed .sl-item:focus-visible .sl-tip,
+.sl-collapsed .sl-cta:hover .sl-tip{opacity:1;transform:translate(0,-50%)}
+
+/* ---------- returning-visitor hint (never on a first visit) ---------- */
+.sl-hint{position:absolute;top:54px;left:calc(100% - 58px);width:214px;background:var(--sl-forest-2);color:#E8F0E2;border-radius:11px;padding:12px 13px 11px;font-size:12.5px;line-height:1.5;box-shadow:0 14px 32px -12px rgba(21,48,28,.6);z-index:30;opacity:0;transform:translateY(-6px);pointer-events:none;transition:opacity .3s,transform .3s var(--sl-ease)}
+.sl-hint.sl-show{opacity:1;transform:translateY(0);pointer-events:auto}
+.sl-hint::after{content:"";position:absolute;top:-4px;left:44px;width:9px;height:9px;background:var(--sl-forest-2);transform:rotate(45deg)}
+.sl-hint b{display:block;font-size:9px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#8FA886;margin-bottom:4px}
+.sl-hint kbd{font-family:var(--sl-sans);font-size:10.5px;font-weight:600;background:rgba(232,240,226,.14);border-radius:4px;padding:1px 5px}
+.sl-hint .sl-x{position:absolute;top:6px;right:7px;width:20px;height:20px;border-radius:6px;color:#8FA886;display:grid;place-items:center;font-size:14px;line-height:1;border:0;background:none;cursor:pointer}
+.sl-hint .sl-x:hover{background:rgba(232,240,226,.12);color:#E8F0E2}
+.sl-collapsed .sl-hint,.sl-narrow .sl-hint{display:none}
+@keyframes sl-ring{0%{box-shadow:0 0 0 0 rgba(87,184,44,.5)}70%{box-shadow:0 0 0 9px rgba(87,184,44,0)}100%{box-shadow:0 0 0 0 rgba(87,184,44,0)}}
+.sl-toggle.sl-pulse{animation:sl-ring 2s var(--sl-ease) 3}
+
+/* ---------- narrow: top bar + drawer ---------- */
+.sl-topbar{display:none;align-items:center;justify-content:space-between;padding:12px 16px;background:rgba(245,241,230,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--sl-rule);position:sticky;top:0;z-index:90;font-family:var(--sl-sans)}
+.sl-burger{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;color:var(--sl-ink);border:0;background:none;cursor:pointer}
+.sl-scrim{position:fixed;inset:0;background:rgba(21,48,28,.42);opacity:0;pointer-events:none;transition:opacity .24s;z-index:95}
+.sl-narrow .sl-topbar{display:flex}
+.sl-narrow .sl-rail{position:fixed;top:0;bottom:0;left:0;width:266px;--sl-w:266px;height:100%;transform:translateX(-100%);transition:transform .28s var(--sl-ease);box-shadow:14px 0 44px -14px rgba(21,48,28,.4);overflow-y:auto}
+.sl-narrow .sl-toggle{display:none}
+.sl-narrow .sl-div{display:none}
+.sl-narrow .sl-item,.sl-narrow .sl-cta,.sl-narrow .sl-account{grid-template-columns:34px 1fr}
+.sl-narrow .sl-lab,.sl-narrow .sl-brandtext,.sl-narrow .sl-who,.sl-narrow .sl-glabel,.sl-narrow .sl-foot{opacity:1;width:auto;height:auto;pointer-events:auto}
+.sl-narrow .sl-glabel{margin:22px 0 5px}
+.sl-narrow .sl-foot{padding:14px 10px 0;border-top:1px solid var(--sl-rule)}
+.sl-narrow .sl-brand{grid-template-columns:38px 1fr auto;gap:10px}
+.sl-narrow.sl-open .sl-rail{transform:translateX(0)}
+.sl-narrow.sl-open .sl-scrim{opacity:1;pointer-events:auto}
+.sl-narrow .sl-tip{display:none}
+
+.sl-rail :focus-visible,.sl-topbar :focus-visible{outline:2px solid var(--sl-green);outline-offset:2px;border-radius:6px}
+@media (prefers-reduced-motion:reduce){.sl-shell *{transition:none!important;animation:none!important}}
+
+/* No-JS: the rail is plain markup and stays open. Nothing depends on script. */
+
+/* ---------- minibar: full-screen interactive pages ---------- */
+.sl-minibar{position:sticky;top:0;z-index:300;display:flex;align-items:center;justify-content:space-between;gap:.5rem 2rem;flex-wrap:wrap;max-width:1240px;margin:0 auto;padding:.85rem 2rem;background:rgba(245,241,230,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--sl-rule);font-family:var(--sl-sans)}
+.sl-mb-logo{display:flex;flex-direction:column;line-height:1.05;gap:2px;text-decoration:none}
+.sl-mb-logo .sl-name{font-size:1.35rem}
+.sl-mb-logo .sl-sub{font-size:.55rem;letter-spacing:.26em;margin-top:0}
+.sl-mb-nav{display:flex;align-items:center;flex-wrap:wrap;gap:.3rem}
+.sl-mb-nav a{font-size:.9rem;font-weight:500;color:var(--sl-ink);text-decoration:none;padding:.42rem .95rem;border-radius:50px;white-space:nowrap}
+.sl-mb-nav a:hover{color:var(--sl-green-2)}
+.sl-mb-nav a.sl-on{color:var(--sl-green-2);font-weight:600}
+.sl-mb-nav a.sl-mb-cta{background:var(--sl-ink);color:var(--sl-cream);padding:.6rem 1.35rem;margin-left:.6rem;font-weight:600}
+.sl-mb-nav a.sl-mb-cta:hover{background:var(--sl-green-2);color:#fff}
+@media (max-width:700px){
+  .sl-minibar{padding:.6rem 1rem}
+  .sl-mb-logo .sl-name{font-size:1.05rem}
+  .sl-mb-nav a{font-size:.8rem;padding:.3rem .55rem}
+  .sl-mb-nav a.sl-mb-cta{padding:.4rem .9rem;margin-left:.2rem}
+}

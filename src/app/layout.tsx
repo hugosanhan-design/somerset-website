@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "@/components/Header";
+import Shell from "@/components/Shell";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
@@ -15,10 +15,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Poppins:wght@600;700&display=swap"
+        />
+        {/* The rail: one stylesheet and one script, shared with the generated
+            standalone pages so navigation exists in exactly one place. */}
+        <link rel="stylesheet" href="/nav-rail.css" />
+      </head>
       <body className="text-gray-800" style={{ backgroundColor: "#F5F1E6" }}>
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        <Shell footer={<Footer />}>{children}</Shell>
+        <script src="/nav-rail.js" defer />
       </body>
     </html>
   );
