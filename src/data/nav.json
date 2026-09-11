@@ -14,7 +14,7 @@
       "public": true,
       "items": [
         {
-          "href": "/#about",
+          "href": "/about",
           "label": "Who we are",
           "icon": "about"
         },
