@@ -5,6 +5,7 @@
 // curtain opening · live Somerset weather + seasons · countryside scene with
 // night mode, mist, fireflies and Exmoor ponies.
 import { useEffect, useLayoutEffect, useState } from 'react'
+import { story, founders } from "@/data/about";
 
 const ffStyle = (l: string, b: string, d: string, dl: string) =>
   ({ left: l, bottom: b, '--d': d, '--dl': dl } as React.CSSProperties)
@@ -1237,17 +1238,17 @@ export default function Home() {
               </div>
             </div>
             <div className="reveal" data-d="1">
-              <div className="about-eyebrow">Our story</div>
+              <div className="about-eyebrow">{story.eyebrow}</div>
               <h2>English for everyone<br />who <em>needs it</em></h2>
-              <p className="about-body">Somerset Language Centre was founded in Valencia in 2013 with a single purpose: bring quality English teaching to everyone. Our method is fundamentally practical, based on oral communication — we put students in real, useful situations so they think and communicate in English from day one.</p>
+              <p className="about-body">{story.body}</p>
               <div className="about-founders">
-                <div className="founders-av">H&amp;S</div>
+                <div className="founders-av">{founders.initials}</div>
                 <div>
-                  <strong>Hugo &amp; Sara Hancock</strong>
-                  <small>Founders · Sara has 40+ years of teaching experience</small>
+                  <strong>{founders.names}</strong>
+                  <small>{founders.note}</small>
                 </div>
               </div>
-              <a href="/#courses" className="btn btn-ghost">Discover our courses <span className="btn-arr">→</span></a>
+              <a href="/about" className="btn btn-ghost">Read our story <span className="btn-arr">→</span></a>
             </div>
           </div>
         </div>
@@ -1264,7 +1265,7 @@ export default function Home() {
             <div>
               <div className="footer-col-title">Pages</div>
               <ul className="footer-links">
-                <li><a href="/#about">Who we are</a></li><li><a href="/#courses">Courses</a></li>
+                <li><a href="/about">Who we are</a></li><li><a href="/#courses">Courses</a></li>
                 <li><a href="/contact">Contact</a></li><li><a href="/placement">Placement Test</a></li>
                 <li><a href="/games">Games</a></li><li><a href="/exercises">Exercises</a></li>
                 <li><a href="/daily-quizzical">Daily Quizzical</a></li><li><a href="/blog">Blog</a></li>
