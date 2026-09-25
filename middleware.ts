@@ -35,6 +35,6 @@ export default auth((req) => {
 
 export const config = {
   matcher: [
-    '/((?!api/auth|api/intake|api/teachers/bootstrap|api/admin/recover|api/correct|api/correct-docx|api/extract|api/detect-ai|api/cbt/submit|api/cbt/draft|api/speaking/practice|api/aoife|aoife|api/student/access|cbt|login|setup|forgot-password|reset-password|intake|placement|games|uploads|sara|cbt-audio|_next/static|_next/image|favicon.ico|.*\\.(?:png|jpg|jpeg|svg|ico|webp|mp3|html)$).*)',
+    '/((?!api/auth|api/intake|api/teachers/bootstrap|api/admin/recover|api/correct|api/correct-docx|api/extract|api/detect-ai|api/cbt/submit|api/cbt/draft|api/speaking/practice|api/aoife|aoife|api/student/access|cbt|login|setup|forgot-password|reset-password|intake|placement|games|uploads|sara|cbt-audio|_next/static|_next/image|favicon.ico|manifest.json|icons|.*\\.(?:png|jpg|jpeg|svg|ico|webp|mp3|html)$).*)',
   ],
 }
