@@ -34,10 +34,9 @@ function LoginForm() {
   return (
     <div style={{
       minHeight: '100vh', fontFamily: FONT.sans,
-      backgroundImage: "url('/Somerset b-g.jpg')", backgroundSize: 'cover', backgroundPosition: 'center',
+      background: '#fff',
       display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 20,
     }}>
-      <div style={{ position: 'absolute', inset: 0, background: 'rgba(23,40,27,0.6)' }} />
       <div style={{
         position: 'relative', background: 'rgba(245,241,230,0.98)', borderRadius: RADIUS.card,
         boxShadow: SHADOW.ink, padding: '36px 32px', width: '100%', maxWidth: 380,
