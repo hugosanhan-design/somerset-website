@@ -15,6 +15,7 @@ export interface GroupSlot {
   group_id: string
   group_name: string
   group_slug: string
+  group_level?: string
   dow: number // 1 = Monday ... 5 = Friday, matching timetable.json's own convention
   from_time: string
   to_time: string

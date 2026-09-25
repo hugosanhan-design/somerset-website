@@ -12,8 +12,14 @@ import { usePathname } from 'next/navigation'
 import { signOut, useSession } from 'next-auth/react'
 import SomersetLogo from '@/components/SomersetLogo'
 
-const GREEN = '#6BAE2E'
-const RACING = '#1E4227'
+import { PORTAL } from '@/lib/portalTheme'
+
+// Recoloured 25 Sep 2026 to match the local Somerset Portal's masthead
+// (near-black #1A1A1A, not the Level Ladder decks' deep green) — see
+// reference_somerset_portal_pwa.md and Hugo's "same design as the other
+// Somerset Portal" request.
+const GREEN = PORTAL.green
+const RACING = PORTAL.dark
 
 const PRIMARY = [
   { href: '/dashboard', icon: '📅', label: 'Dashboard' },

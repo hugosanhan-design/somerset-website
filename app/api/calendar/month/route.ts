@@ -29,7 +29,7 @@ export async function GET(req: NextRequest) {
 
   const isAdmin = session.user.role === 'admin'
   const slotRows = await db.prepare(`
-    SELECT gs.group_id, g.name as group_name, g.slug as group_slug, gs.dow, gs.from_time, gs.to_time
+    SELECT gs.group_id, g.name as group_name, g.slug as group_slug, g.level as group_level, gs.dow, gs.from_time, gs.to_time
     FROM group_slots gs JOIN groups g ON g.id = gs.group_id
     WHERE g.active = 1 ${isAdmin ? '' : 'AND (g.teacher_id = ? OR g.teacher_id IS NULL)'}
   `).all(...(isAdmin ? [] : [session.user.id])) as GroupSlot[]
@@ -50,6 +50,7 @@ export async function GET(req: NextRequest) {
         group_id: g.group_id,
         group_name: g.group_name,
         group_slug: g.group_slug,
+        group_level: g.group_level || '',
         from_time: g.from_time,
         to_time: g.to_time,
         status: log?.status || 'not_ready',
