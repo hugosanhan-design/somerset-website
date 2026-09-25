@@ -45,8 +45,8 @@ export default function UpdateBanner() {
     <div style={{
       position: 'sticky', top: 0, zIndex: 200,
       display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12,
-      background: PORTAL.dark, color: '#fff', fontSize: 13.5, fontWeight: 600,
-      padding: '9px 16px',
+      background: PORTAL.panel, color: PORTAL.ink, fontSize: 13.5, fontWeight: 600,
+      padding: '9px 16px', borderBottom: `3px solid ${PORTAL.green}`,
     }}>
       There's a new version of the Portal.
       <button

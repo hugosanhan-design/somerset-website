@@ -1,18 +1,14 @@
 'use client'
 
 // The Portal's home screen — day / week / month views of real class days, styled to
-// match the local Somerset Portal (Somerset Worksheets/_apps/somerset-portal) so this
-// is recognisably the same product, just reachable from anywhere. Readiness per group
-// per day is a manual toggle (click a class, then the button) — see lib/db.ts's note
-// on lesson_log for why this replaced the old local Portal's disk-scan.
+// the "canonical teaching-deck" aesthetic (light green/white, Hugo's 25 Sep request —
+// see lib/portalTheme.ts). Readiness per group per day is a manual toggle (click a
+// class, then the button) — see lib/db.ts's note on lesson_log for why this replaced
+// the old local Portal's disk-scan.
 //
-// Clicking a class opens a lesson panel with whatever the database actually knows
-// (group, level, time, readiness). It does NOT yet show the plan/worksheet/slides/
-// audio shelves the local Portal shows — those live only as files on Hugo's Mac and
-// are not synced anywhere the web app can reach. That migration is its own project
-// (see PORTAL_V2_PLAN.md and reference_vercel_cli_no_auth_in_cowork.md); the panel
-// says so plainly rather than pretending, matching the local Portal's own "say so
-// instead of pretending" rule.
+// Clicking a class opens a lesson panel with real synced lesson content for FCE I and
+// PET I (unit/pages/plan/grammar/vocab/arcade/shelf labels — see migrate-lesson-content.mjs);
+// other groups get an honest "not synced yet" message rather than a fake one.
 
 import { useState, useEffect, useMemo, useCallback } from 'react'
 import PortalShell from '@/components/portal/PortalShell'
@@ -181,8 +177,8 @@ function ViewTabs({ view, setView }: { view: View; setView: (v: View) => void })
           key={t.k}
           onClick={() => setView(t.k)}
           style={{
-            font: 'inherit', fontSize: 14, fontWeight: 700, padding: '8px 16px', borderRadius: 8,
-            border: `1px solid ${view === t.k ? PORTAL.green : PORTAL.line}`,
+            font: 'inherit', fontSize: 14, fontWeight: 700, padding: '9px 20px', borderRadius: 999,
+            border: `2px solid ${view === t.k ? PORTAL.green : PORTAL.line}`,
             background: view === t.k ? PORTAL.green : PORTAL.paper,
             color: view === t.k ? '#fff' : PORTAL.ink,
             cursor: 'pointer',
@@ -200,9 +196,9 @@ function Btn({ children, onClick, primary }: { children: React.ReactNode; onClic
     <button
       onClick={onClick}
       style={{
-        font: 'inherit', fontSize: 14, background: primary ? PORTAL.green : PORTAL.panel,
-        color: primary ? '#fff' : PORTAL.ink, border: `1px solid ${primary ? PORTAL.green : PORTAL.line}`,
-        borderRadius: 8, padding: '8px 13px', cursor: 'pointer', fontWeight: primary ? 700 : 400,
+        font: 'inherit', fontSize: 14, background: primary ? PORTAL.green : PORTAL.paper,
+        color: primary ? '#fff' : PORTAL.ink, border: `2px solid ${primary ? PORTAL.green : PORTAL.line}`,
+        borderRadius: 999, padding: '8px 16px', cursor: 'pointer', fontWeight: primary ? 700 : 600,
       }}
     >
       {children}
@@ -265,9 +261,9 @@ function ClassCard({ g, onClick }: { g: DayGroup; onClick: () => void }) {
       onClick={onClick}
       style={{
         display: 'block', textAlign: 'left', width: '100%', textDecoration: 'none', color: 'inherit',
-        background: PORTAL.paper, border: `1px solid ${PORTAL.line}`,
+        background: PORTAL.paper, border: `2px solid ${PORTAL.line}`,
         borderLeft: `5px solid ${r === 'none' ? PORTAL.amberLine : PORTAL.green}`,
-        borderRadius: 12, padding: '16px 18px', boxShadow: PORTAL.shadow, cursor: 'pointer', font: 'inherit',
+        borderRadius: 14, padding: '16px 18px', cursor: 'pointer', font: 'inherit',
       }}
     >
       <div style={{ display: 'flex', alignItems: 'baseline', gap: 12, flexWrap: 'wrap' }}>
@@ -590,6 +586,6 @@ function ShelfList({ title, items }: { title: string; items?: ShelfItem[] }) {
 
 const dayBarStyle: React.CSSProperties = {
   display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap', background: PORTAL.paper,
-  border: `1px solid ${PORTAL.line}`, borderRadius: 12, padding: '14px 16px', boxShadow: PORTAL.shadow, marginBottom: 18,
+  border: `2px solid ${PORTAL.line}`, borderRadius: 14, padding: '14px 16px', marginBottom: 18,
 }
 const emptyStyle: React.CSSProperties = { textAlign: 'center', padding: '44px 20px', color: PORTAL.muted, fontSize: 16 }

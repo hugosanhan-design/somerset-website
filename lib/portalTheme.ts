@@ -1,25 +1,27 @@
-// Design tokens ported 1:1 from the local Somerset Portal (Somerset Worksheets/
-// _apps/somerset-portal/index.html's :root custom properties) so the web app's
-// calendar/day/lesson screens read as the same product, not a reskin — Hugo's
-// request, 25 Sep 2026. Keep in sync if the local portal's palette ever changes.
+// Design tokens for the "canonical teaching-deck" aesthetic (Hugo's 25 Sep 2026
+// request, cloned from Somerset Worksheets/groups/2026-27/fce1/materials/
+// Thu 24 Sep 2026/FCEI_Unit1_pp10-11_Answers_24Sep2026_VISTA.html — see
+// feedback_teaching_deck_canonical_template.md). Light green/white throughout,
+// no dark chrome anywhere: this replaced the earlier near-black-masthead look
+// that matched the local Somerset Portal.app instead.
 export const PORTAL = {
   green: '#6BAE2E',
-  greenDeep: '#3F6D18',
-  dark: '#1A1A1A',
-  panel: '#F2F7EC',
-  line: '#D9E4CE',
+  greenDeep: '#4D8120',
+  dark: '#1A1A1A', // body ink, not a background — nothing in this theme uses dark chrome
+  panel: '#F4F8EE', // the deck's .whybox background
+  line: '#E2E2E2', // the deck's .mc-opt / footer border grey
   paper: '#FFFFFF',
   ink: '#1A1A1A',
-  muted: '#5C6657',
-  amber: '#B07908',
-  amberBg: '#FDF6E3',
-  amberLine: '#EBD9A8',
+  muted: '#666666',
+  amber: '#E08A1E',
+  amberBg: '#FDF3E4',
+  amberLine: '#F0D9B8',
   red: '#A8321E',
   redBg: '#FBF0ED',
-  pageBg: '#EFF2EB',
-  shadow: '0 1px 2px rgba(26,26,26,.06), 0 4px 16px rgba(26,26,26,.06)',
-  shadowHover: '0 2px 4px rgba(26,26,26,.08), 0 8px 24px rgba(26,26,26,.1)',
-  font: 'Arial, "Liberation Sans", "Helvetica Neue", Helvetica, sans-serif',
+  pageBg: '#FFFFFF',
+  shadow: 'none',
+  shadowHover: 'none',
+  font: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
 }
 
 export type Readiness = 'ready' | 'part' | 'none'
@@ -35,7 +37,7 @@ export const READINESS_LABEL: Record<Readiness, string> = {
 }
 
 export const READINESS_CHIP: Record<Readiness, { bg: string; fg: string }> = {
-  ready: { bg: '#E8F3DA', fg: PORTAL.greenDeep },
+  ready: { bg: '#DFF0CB', fg: PORTAL.greenDeep },
   part: { bg: PORTAL.amberBg, fg: PORTAL.amber },
-  none: { bg: '#F0F0EE', fg: PORTAL.muted },
+  none: { bg: '#F0F0F0', fg: PORTAL.muted },
 }
