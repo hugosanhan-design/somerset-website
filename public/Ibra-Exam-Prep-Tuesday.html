@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ibra — Exam Prep for Tuesday</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Helvetica Neue',Arial,sans-serif; color:#1A1A1A; background:#f2f4ef; font-size:16px; line-height:1.5; }
+.wrap { max-width:760px; margin:0 auto; background:#fff; min-height:100vh; }
+.header { display:flex; align-items:flex-end; justify-content:space-between; padding:20px 24px 16px; border-bottom:3px solid #6BAE2E; flex-wrap:wrap; gap:10px; }
+.logo { display:flex; align-items:flex-end; gap:10px; }
+.logo .word { font-family:Arial,Helvetica,sans-serif; font-weight:800; font-size:30pt; letter-spacing:-1.2px; line-height:.9; color:#6BAE2E; }
+.logo .lc { font-family:Arial,Helvetica,sans-serif; font-weight:700; font-size:8pt; letter-spacing:2.4px; line-height:1.18; padding-bottom:4px; color:#4d8120; }
+.header .meta { text-align:right; }
+.header .meta .t { font-size:11px; letter-spacing:1.4px; text-transform:uppercase; color:#888; }
+.header .meta .d { font-size:16px; font-weight:700; }
+.hero { background:#6BAE2E; color:#fff; padding:18px 24px; }
+.hero h1 { font-size:22px; margin-bottom:4px; }
+.hero p { font-size:14px; opacity:.95; }
+.scorebar { position:sticky; top:0; z-index:10; background:#1A1A1A; color:#fff; padding:10px 24px; display:flex; align-items:center; justify-content:space-between; font-size:14px; }
+.scorebar .sc { font-weight:700; }
+.scorebar .sc b { color:#8fd94a; font-size:17px; }
+.scorebar button { background:#6BAE2E; color:#fff; border:none; padding:6px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; }
+.sec { padding:20px 24px 6px; }
+.sec > h2 { font-size:13px; text-transform:uppercase; letter-spacing:1px; color:#6BAE2E; border-bottom:1px solid #e0e0e0; padding-bottom:6px; margin-bottom:4px; }
+.sec > .lead { font-size:13.5px; color:#555; margin:8px 0 14px; }
+.sec > .lead b { color:#33610f; }
+.item { border:1px solid #e6e6e6; border-radius:8px; padding:14px 16px; margin-bottom:12px; }
+.item .prompt { font-size:15.5px; margin-bottom:10px; }
+.item .prompt .root { display:inline-block; background:#EAF4DA; color:#33610f; font-weight:700; font-size:12px; letter-spacing:.5px; padding:2px 8px; border-radius:5px; margin-left:6px; vertical-align:middle; }
+.gap { color:#6BAE2E; font-weight:800; letter-spacing:1px; }
+.row { display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+.item input[type=text] { flex:1; min-width:180px; font-size:16px; padding:9px 12px; border:2px solid #cfd8c4; border-radius:7px; font-family:inherit; }
+.item input[type=text]:focus { outline:none; border-color:#6BAE2E; }
+.opts { display:flex; flex-direction:column; gap:7px; }
+.opt { text-align:left; background:#f7f9f4; border:2px solid #e2e8d8; border-radius:7px; padding:10px 13px; font-size:15px; cursor:pointer; font-family:inherit; }
+.opt:hover { border-color:#a9cf85; }
+.opt.correct { background:#e7f6d9; border-color:#6BAE2E; color:#2d6a0a; font-weight:700; }
+.opt.wrong { background:#fbe6e4; border-color:#d88; color:#b00000; font-weight:700; }
+.chk { background:#6BAE2E; color:#fff; border:none; padding:9px 16px; border-radius:7px; font-size:14px; font-weight:700; cursor:pointer; }
+.chk:disabled { background:#bcbcbc; cursor:default; }
+.fb { margin-top:10px; font-size:14px; line-height:1.55; padding:10px 13px; border-radius:7px; display:none; }
+.fb.ok { background:#e7f6d9; border-left:4px solid #6BAE2E; }
+.fb.no { background:#fdeeec; border-left:4px solid #c0392b; }
+.fb .ans { font-weight:700; color:#2d6a0a; }
+.fb .rz { color:#444; display:block; margin-top:3px; }
+.tip { background:#fff8ec; border:1px solid #e8c98a; border-left:4px solid #E8A93C; border-radius:0 6px 6px 0; padding:11px 15px; font-size:13.5px; line-height:1.6; margin:2px 0 14px; }
+.tip b { color:#8a5a00; }
+.priorities { margin:16px 24px 8px; background:#EAF4DA; border:1px solid #6BAE2E; border-radius:8px; padding:16px 20px; }
+.priorities h3 { font-size:13px; text-transform:uppercase; letter-spacing:1px; color:#33610f; margin-bottom:8px; }
+.priorities ol { margin-left:18px; }
+.priorities li { font-size:14.5px; line-height:1.7; margin-bottom:5px; }
+.foot { text-align:center; color:#999; font-size:12px; padding:18px 24px 30px; }
+.done-banner { display:none; text-align:center; background:#6BAE2E; color:#fff; font-weight:700; padding:14px; font-size:16px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="header">
+    <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+    <div class="meta"><div class="t">B2 First · Exam Prep</div><div class="d">Ibra — ready for Tuesday</div></div>
+  </div>
+  <div class="hero">
+    <h1>Your 30-minute warm-up for Tuesday</h1>
+    <p>Built from your Mock 4. Every section is where you actually lost marks — not random practice. Type or tap your answer, then press <b>Check</b>. New sentences, same traps. All set in Valencia so it's easy to picture.</p>
+  </div>
+
+  <div class="scorebar">
+    <span class="sc">Score: <b><span id="got">0</span></b> / <span id="tot">0</span></span>
+    <button onclick="resetAll()">Reset</button>
+  </div>
+  <div class="done-banner" id="doneBanner"></div>
+
+  <!-- SECTION 1 -->
+  <div class="sec" id="s1"></div>
+  <div class="sec" id="s2"></div>
+  <div class="sec" id="s3"></div>
+  <div class="sec" id="s4"></div>
+  <div class="sec" id="s5"></div>
+
+  <div class="priorities">
+    <h3>On the day — your three reminders</h3>
+    <ol>
+      <li><b>Word formation (Part 3):</b> build the word, then check two things — right <b>part of speech</b>, right <b>spelling &amp; plural</b>. This is where the last mock slipped from 28 to 20.</li>
+      <li><b>Writing:</b> plan to <b>180 words and stop.</b> Spend the last five minutes checking — that's what catches <em>happiness, less, lives</em>.</li>
+      <li><b>Part 2 task:</b> answer the <b>exact</b> question. If it asks for a specific job, name one — don't write around it.</li>
+    </ol>
+  </div>
+
+  <div class="foot">Somerset Language Centre · Valencia · self-check practice — nothing is saved, refresh to start again.</div>
+</div>
+
+<script>
+const SECTIONS = [
+  {
+    el:'s1',
+    title:'1 · Word Formation Lab (Part 3) — your priority',
+    lead:'Same trap as the exam: right root, wrong ending or spelling. Build the word in CAPITALS. <b>Check the part of speech and the spelling before you commit.</b>',
+    tip:'The four that cost you marks: <b>influential</b> (–tial, not –cial), <b>creative</b> (adjective, not "creation"), <b>similarity</b> (uncountable after "a great deal of"), <b>economists</b> (people, not "economics").',
+    items:[
+      {type:'text', prompt:'The mayor of Valencia is one of the most <span class="gap">………</span> figures in the region.', root:'INFLUENCE', answers:['influential'], reason:'Adjective before a noun. Spelling: influen<b>t</b>ial, not "influencial".'},
+      {type:'text', prompt:'Ruzafa is known for its <span class="gap">………</span> community of artists and designers.', root:'CREATE', answers:['creative'], reason:'You need an adjective before "community" — creative, not the noun "creation".'},
+      {type:'text', prompt:'There is a great deal of <span class="gap">………</span> between paella and other rice dishes.', root:'SIMILAR', answers:['similarity'], reason:'"A great deal of ___" takes an uncountable noun → similarity (you’d only use "similarities" after "a number of / many").'},
+      {type:'text', prompt:'According to <span class="gap">………</span>, tourism now drives much of Valencia’s economy.', root:'ECONOMY', answers:['economists'], reason:'"According to ___" needs the people who say it → economists, not the subject "economics".'},
+      {type:'text', prompt:'The fireworks at Las Fallas were completely <span class="gap">………</span> — nobody saw them coming.', root:'EXPECT', answers:['unexpected'], reason:'Negative prefix: un + expected.'},
+      {type:'text', prompt:'Our guide gave a clear <span class="gap">………</span> of why the Turia gardens were built.', root:'EXPLAIN', answers:['explanation'], reason:'Noun. Watch the spelling: explanation (no "i" — not "explaination").'},
+      {type:'text', prompt:'Learning English opens up a world of <span class="gap">………</span> for young people in Spain.', root:'POSSIBLE', answers:['possibilities'], reason:'Plural noun after "a world of". Root changes: possible → possibility → possibilities.'},
+      {type:'text', prompt:'The view from the Miguelete tower is genuinely <span class="gap">………</span>.', root:'IMPRESS', answers:['impressive'], reason:'Adjective after "is". impress → impressive.'}
+    ]
+  },
+  {
+    el:'s2',
+    title:'2 · Transformation Clinic (Part 4)',
+    lead:'Two to five words. These target the exact structures you half-missed: the <b>third conditional</b>, <b>must have + done</b>, <b>wish + past perfect</b>, and using a <b>name</b> instead of an unclear "his".',
+    tip:'Remember: "I’m sure it was…" → <b>must have been</b>; a regret about the past → <b>wish + had(n’t) done</b>; and if "wouldn’t have…" is in the sentence, the other half is <b>had + past participle</b>.',
+    items:[
+      {type:'text', prompt:'The train was late, so we missed the concert at the Palau. <br><b>TIME</b> — "If the train <span class="gap">………</span> , we wouldn’t have missed the concert."', answers:['had been on time'], reason:'Third conditional to match "wouldn’t have missed" → had been on time.'},
+      {type:'text', prompt:'I’m certain the trip to Albacete was very tiring for them. <br><b>MUST</b> — "The trip to Albacete <span class="gap">………</span> for them."', answers:['must have been very tiring','must have been really tiring'], reason:'Past deduction: must have been + adjective (keep "very/really" for emphasis).'},
+      {type:'text', prompt:'Diego regrets eating so much at the Fallas food stall. <br><b>WISHES</b> — "Diego <span class="gap">………</span> so much."', answers:["wishes he hadn't eaten","wishes he had not eaten"], reason:'Regret about the past → wish + past perfect: wishes he hadn’t eaten.'},
+      {type:'text', prompt:'Lucía offered Pablo a ticket to the Oceanogràfic, but he said no. <br><b>TURNED</b> — "Pablo <span class="gap">………</span> ticket to the Oceanogràfic."', answers:["turned down lucia's"], reason:'Use the name for clarity → turned down Lucía’s (just "his/her" would be ambiguous).'},
+      {type:'text', prompt:'Sofía will only reply straight away if you write "URGENT". <br><b>UNLESS</b> — "Sofía <span class="gap">………</span> you write URGENT."', answers:["won't reply straight away unless","will not reply straight away unless","won't reply immediately unless"], reason:'"only… if" → "not… unless". You got this pattern right in the mock — keep it.'},
+      {type:'text', prompt:'It was a mistake to lend María my notes. <br><b>WISH</b> — "I <span class="gap">………</span> María my notes."', answers:["wish i hadn't lent","wish i had not lent"], reason:'Same structure you nailed in the mock: wish + hadn’t + past participle.'}
+    ]
+  },
+  {
+    el:'s3',
+    title:'3 · Open Cloze (Part 2) — small words',
+    lead:'One word per gap. These are the linkers, possessives and fixed phrases that the cloze tests.',
+    items:[
+      {type:'text', prompt:'The recipe is based on <span class="gap">…</span> grandmother’s own method.', answers:['his','her'], reason:'"___ own" almost always follows a possessive: his/her own.'},
+      {type:'text', prompt:'Valencia is famous <span class="gap">…</span> its paella and its Fallas.', answers:['for'], reason:'Fixed phrase: famous for.'},
+      {type:'text', prompt:'<span class="gap">…</span> many tourists come in summer, spring is the best time to visit.', answers:['although','though','while','whilst'], reason:'A contrast linker starting the sentence: Although / While.'},
+      {type:'text', prompt:'The Turia park is used by runners <span class="gap">…</span> well as cyclists.', answers:['as'], reason:'Fixed phrase: as well as.'},
+      {type:'text', prompt:'The city offers activities <span class="gap">…</span> as kayaking, cycling and climbing.', answers:['such'], reason:'Giving examples: such as.'},
+      {type:'text', prompt:'She’s the teacher <span class="gap">…</span> helped me pass my B2.', answers:['who','that'], reason:'Relative pronoun for a person: who (that is also accepted).'}
+    ]
+  },
+  {
+    el:'s4',
+    title:'4 · Listening self-defence',
+    lead:'You can’t practise the audio now, but you <b>can</b> drill the two things that cost you: <b>spelling the word exactly</b>, writing <b>only the missing words</b>, and spotting the <b>paraphrase</b> in Part 1.',
+    tip:'In the mock you wrote "cheener" (not a real word) and "sun gun <b>light</b>" (one word too many). Rule: write a <b>real word</b>, and write <b>only</b> what the gap needs — no extra.',
+    items:[
+      {type:'text', prompt:'You clearly hear the fish often served in a salad, /ˈtjuːnə/. Write it correctly:', answers:['tuna'], reason:'Spelling counts in gap-fill — tuna. A word you’re unsure of, sound out and write a real English word.'},
+      {type:'text', prompt:'The speaker says the tool is "called a sun gun". The gap needs the name of the tool — write <b>only</b> the missing words:', answers:['sun gun','sun-gun','sungun'], reason:'Just "sun gun". Adding an extra word (like "light") makes a correct answer wrong.'},
+      {type:'mc', prompt:'You hear: "I wasn’t keen on the film — it really dragged." What did the speaker think?', options:['The film was exciting','The film was too long and slow','The film was frightening'], correct:1, reason:'"Dragged" = felt slow/too long. Part 1 answers usually paraphrase the recording rather than repeat its words.'},
+      {type:'mc', prompt:'You hear: "The tickets weren’t cheap, but the show was worth every cent." How does the speaker feel about the price?', options:['It was a waste of money','It was expensive but justified','It was surprisingly cheap'], correct:1, reason:'"Worth every cent" justifies the high price. Don’t pick "cheap" just because you heard about money.'},
+      {type:'text', prompt:'You hear a place name spelled out: C-O-S-T-A R-I-C-A. Write it with correct capitals:', answers:['costa rica'], reason:'Proper nouns need capital letters, but the marker accepts your spelling either way as long as it’s the right word.'}
+    ]
+  },
+  {
+    el:'s5',
+    title:'5 · Proofreading Gym (your writing slips)',
+    lead:'Each sentence has <b>one</b> mistake — the kind that appeared in your own essays. Choose the correct version. This is the five-minute check that protects your writing mark.',
+    items:[
+      {type:'mc', prompt:'Which is correct?', options:['Hapiness is the most important thing.','Happiness is the most important thing.'], correct:1, reason:'happiness — double p, double s. It slipped twice in your essay.'},
+      {type:'mc', prompt:'Which is correct?', options:['We have all been young at some point in our lifes.','We have all been young at some point in our lives.'], correct:1, reason:'life → lives in the plural.'},
+      {type:'mc', prompt:'Which is correct?', options:['Most of the people prefer summer here.','Most people prefer summer here.'], correct:1, reason:'"most people" (not "most of the people") for people in general.'},
+      {type:'mc', prompt:'Which is correct?', options:['I asked myself what will I study next year.','I asked myself what I would study next year.'], correct:1, reason:'Embedded question keeps statement word order: what I would study.'},
+      {type:'mc', prompt:'Which is correct?', options:['She gave me some advice of how to prepare.','She gave me some advice on how to prepare.'], correct:1, reason:'Fixed phrase: advice on (something).'},
+      {type:'mc', prompt:'Which is correct?', options:['People that work hard usually succeed.','People who work hard usually succeed.'], correct:1, reason:'Use "who" for people in your writing.'}
+    ]
+  }
+];
+
+let total=0, got=0;
+const answered = new Set();
+
+function norm(s){
+  return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'')
+    .replace(/[.,;:!?"'’]/g,'').replace(/\s+/g,' ').trim();
+}
+
+function render(){
+  SECTIONS.forEach((sec)=>{
+    const host=document.getElementById(sec.el);
+    let html='<h2>'+sec.title+'</h2>';
+    if(sec.lead) html+='<div class="lead">'+sec.lead+'</div>';
+    if(sec.tip) html+='<div class="tip">'+sec.tip+'</div>';
+    sec.items.forEach((it,i)=>{
+      total++;
+      const id=sec.el+'_'+i;
+      it._id=id;
+      html+='<div class="item" id="wrap_'+id+'"><div class="prompt">'+it.prompt+
+        (it.root?'<span class="root">'+it.root+'</span>':'')+'</div>';
+      if(it.type==='mc'){
+        html+='<div class="opts">';
+        it.options.forEach((o,j)=>{ html+='<button class="opt" data-id="'+id+'" data-j="'+j+'">'+o+'</button>'; });
+        html+='</div>';
+      } else {
+        html+='<div class="row"><input type="text" id="in_'+id+'" autocomplete="off" spellcheck="false" placeholder="type your answer">'+
+          '<button class="chk" data-id="'+id+'">Check</button></div>';
+      }
+      html+='<div class="fb" id="fb_'+id+'"></div></div>';
+    });
+    host.innerHTML=html;
+  });
+  document.getElementById('tot').textContent=total;
+  // wire text checks
+  document.querySelectorAll('.chk').forEach(b=>{
+    b.addEventListener('click',()=>checkText(b.dataset.id));
+  });
+  document.querySelectorAll('input[type=text]').forEach(inp=>{
+    inp.addEventListener('keydown',e=>{ if(e.key==='Enter'){ const id=inp.id.slice(3); checkText(id); }});
+  });
+  document.querySelectorAll('.opt').forEach(b=>{
+    b.addEventListener('click',()=>checkMc(b.dataset.id, parseInt(b.dataset.j)));
+  });
+}
+
+function findItem(id){
+  for(const s of SECTIONS){ for(const it of s.items){ if(it._id===id) return it; } }
+}
+
+function markScore(id, ok){
+  if(answered.has(id)) return;
+  answered.add(id);
+  if(ok) got++;
+  document.getElementById('got').textContent=got;
+  if(answered.size===total){
+    const b=document.getElementById('doneBanner');
+    b.style.display='block';
+    b.textContent='Done — '+got+' / '+total+'. '+(got>=Math.ceil(total*0.8)?'That’s exam-ready. Go get it Tuesday.':'Look back at the red ones and try again before Tuesday.');
+    b.scrollIntoView({behavior:'smooth'});
+  }
+}
+
+function checkText(id){
+  if(answered.has(id)) return;
+  const it=findItem(id);
+  const val=document.getElementById('in_'+id).value;
+  if(!val.trim()) return;
+  const ok=it.answers.some(a=>norm(a)===norm(val));
+  const fb=document.getElementById('fb_'+id);
+  fb.className='fb '+(ok?'ok':'no');
+  fb.style.display='block';
+  fb.innerHTML=(ok?'✓ Correct. ':'✗ Not quite. Answer: ')+
+    (ok?'':'<span class="ans">'+it.answers[0]+'</span>')+
+    '<span class="rz">'+it.reason+'</span>';
+  document.querySelector('#wrap_'+id+' .chk').disabled=true;
+  document.getElementById('in_'+id).disabled=true;
+  markScore(id, ok);
+}
+
+function checkMc(id, j){
+  if(answered.has(id)) return;
+  const it=findItem(id);
+  const ok=(j===it.correct);
+  const btns=document.querySelectorAll('.opt[data-id="'+id+'"]');
+  btns.forEach((b,k)=>{
+    b.disabled=true;
+    if(k===it.correct) b.classList.add('correct');
+    if(k===j && !ok) b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb_'+id);
+  fb.className='fb '+(ok?'ok':'no');
+  fb.style.display='block';
+  fb.innerHTML=(ok?'✓ Correct. ':'✗ Not quite. ')+'<span class="rz">'+it.reason+'</span>';
+  markScore(id, ok);
+}
+
+function resetAll(){ got=0; total=0; answered.clear(); document.getElementById('doneBanner').style.display='none';
+  ['s1','s2','s3','s4','s5'].forEach(x=>document.getElementById(x).innerHTML=''); render();
+  document.getElementById('got').textContent=0; window.scrollTo({top:0,behavior:'smooth'}); }
+
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Somerset Games — Somerset Language Centre</title>
+  <meta name="description" content="Practise English with Somerset games — grammar, vocabulary, punctuation and adventures. Free, for every level.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper:    #F5F1E6;
+      --paper-2:  #EDE7D6;
+      --ink:      #17281B;
+      --racing:   #1E4227;
+      --racing-2: #2A5636;
+      --green:    #57B82C;
+      --green-dk: #3D8B1F;
+      --leaf:     #A8D77E;
+      --brass:    #C9A24B;
+      --heather:  #8C5E9C;
+      --cheddar:  #E3A33A;
+      --cider:    #B23A2C;
+      --muted:    #5C6657;
+      --line:     #D9D2BC;
+      --serif: 'Fraunces', Georgia, serif;
+      --sans:  'Instrument Sans', system-ui, sans-serif;
+      --brand: 'Poppins', system-ui, sans-serif;
+      --max-w: 1240px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--paper); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    ::selection { background: var(--green); color: #fff; }
+    .wrap { width: min(var(--max-w), 100%); margin: 0 auto; padding: 0 2rem; }
+
+    /* ── Nav ── */
+    .nav { position: sticky; top: 0; z-index: 100; padding: 1rem 0; background: rgba(245,241,230,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: 0 1px 0 var(--line); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+    .nav-logo-name { font-family: var(--brand); font-size: 1.25rem; font-weight: 700; color: var(--ink); }
+    .nav-logo-name b { color: var(--green); }
+    .nav-back { font-size: 0.9rem; font-weight: 600; color: var(--green-dk); display: inline-flex; align-items: center; gap: 0.4rem; }
+    .nav-back:hover { color: var(--racing); }
+
+    /* ── Header ── */
+    .head { padding: clamp(3rem, 7vw, 5.5rem) 0 2.5rem; }
+    .head-eyebrow { display: flex; align-items: center; gap: 1rem; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.4rem; }
+    .head-eyebrow::before { content: ''; width: 44px; height: 1px; background: var(--brass); }
+    .head h1 { font-family: var(--serif); font-size: clamp(2.6rem, 5.5vw, 4.2rem); font-weight: 380; line-height: 1.05; letter-spacing: -0.015em; margin-bottom: 1.1rem; }
+    .head h1 em { font-style: italic; color: var(--green-dk); }
+    .head-sub { font-size: 1.05rem; color: var(--muted); max-width: 56ch; line-height: 1.75; text-wrap: pretty; }
+
+    /* ── Player profile card ── */
+    .profile {
+      background: var(--racing); color: var(--paper); border-radius: 20px;
+      padding: 2.2rem 2.4rem; margin: 2.5rem 0 3.5rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 2.5rem; flex-wrap: wrap;
+      box-shadow: 0 18px 44px rgba(30,66,39,0.22);
+    }
+    .profile-q { font-family: var(--serif); font-size: clamp(1.4rem, 2.4vw, 1.9rem); font-weight: 400; line-height: 1.2; }
+    .profile-q em { font-style: italic; color: var(--leaf); }
+    .profile-form { display: flex; align-items: center; gap: 0.9rem; flex-wrap: wrap; }
+    .profile input {
+      font-family: var(--sans); font-size: 1rem; font-weight: 500;
+      background: rgba(245,241,230,0.1); color: var(--paper);
+      border: 1.5px solid rgba(245,241,230,0.4); border-radius: 50px;
+      padding: 0.7rem 1.3rem; width: 200px; outline: none; transition: border-color 0.2s, background 0.2s;
+    }
+    .profile input::placeholder { color: rgba(245,241,230,0.45); }
+    .profile input:focus { border-color: var(--leaf); background: rgba(245,241,230,0.16); }
+    .levels { display: flex; gap: 0.45rem; }
+    .level-chip {
+      font-family: var(--sans); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.04em;
+      background: transparent; color: rgba(245,241,230,0.8);
+      border: 1.5px solid rgba(245,241,230,0.35); border-radius: 50px;
+      padding: 0.55rem 1.05rem; cursor: pointer; transition: all 0.18s;
+    }
+    .level-chip:hover { border-color: var(--leaf); color: #fff; }
+    .level-chip.on { background: var(--green); border-color: var(--green); color: #fff; }
+    .profile-go {
+      font-family: var(--sans); font-size: 0.92rem; font-weight: 600;
+      background: var(--paper); color: var(--racing); border: none; border-radius: 50px;
+      padding: 0.75rem 1.7rem; cursor: pointer; transition: transform 0.18s, box-shadow 0.18s;
+    }
+    .profile-go:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,0.22); }
+    .profile-go:disabled { opacity: 0.45; cursor: default; transform: none; box-shadow: none; }
+    .profile-unsure { font-size: 0.78rem; color: rgba(245,241,230,0.55); width: 100%; }
+    .profile-unsure a { color: var(--leaf); font-weight: 600; }
+    .profile-unsure a:hover { text-decoration: underline; }
+    /* greeting state */
+    .profile.greet { align-items: center; }
+    .greet-name { font-family: var(--serif); font-size: clamp(1.5rem, 2.6vw, 2rem); }
+    .greet-name em { font-style: italic; color: var(--leaf); }
+    .greet-meta { font-size: 0.85rem; color: rgba(245,241,230,0.6); margin-top: 0.3rem; }
+    .greet-meta button { background: none; border: none; color: var(--leaf); font-family: var(--sans); font-size: 0.85rem; font-weight: 600; cursor: pointer; padding: 0; }
+    .greet-meta button:hover { text-decoration: underline; }
+    .greet-level { font-family: var(--serif); font-style: italic; font-size: 2.6rem; color: var(--leaf); }
+
+    /* ── Games grid ── */
+    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.6rem; padding-bottom: 5rem; }
+    .card {
+      position: relative; background: #FBF9F2; border: 1px solid var(--line); border-radius: 20px;
+      padding: 2rem 2.1rem 1.9rem; overflow: hidden; display: flex; flex-direction: column; gap: 0.7rem;
+      transition: transform 0.28s cubic-bezier(0.22,1,0.36,1), box-shadow 0.28s;
+    }
+    .card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--accent, var(--brass)); }
+    a.card:hover { transform: translateY(-6px); box-shadow: 0 20px 44px rgba(23,40,27,0.12); }
+    .card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+    .card-art { width: 88px; height: 66px; border-radius: 12px; flex-shrink: 0; overflow: hidden; background: var(--paper-2); display: flex; align-items: center; justify-content: center; }
+    .card-art svg { width: 100%; height: 100%; display: block; }
+    .card h2 { font-family: var(--serif); font-size: 1.55rem; font-weight: 500; letter-spacing: -0.01em; line-height: 1.15; }
+    .card p { font-size: 0.92rem; color: var(--muted); line-height: 1.65; text-wrap: pretty; }
+    .card-meta { display: flex; align-items: center; gap: 0.45rem; flex-wrap: wrap; margin-top: auto; padding-top: 0.8rem; }
+    .pill { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.07em; padding: 0.3rem 0.75rem; border-radius: 50px; border: 1px solid var(--line); color: var(--muted); }
+    .pill.live { background: var(--green); border-color: var(--green); color: #fff; }
+    .pill.soon { background: var(--paper-2); }
+    .pill.lvl-on { border-color: var(--green-dk); color: var(--green-dk); font-weight: 700; }
+    .card-cta { font-size: 0.9rem; font-weight: 600; color: var(--green-dk); display: inline-flex; align-items: center; gap: 0.4rem; }
+    .card .arr { display: inline-block; transition: transform 0.2s; }
+    a.card:hover .arr { transform: translateX(5px); }
+    .card.soon-card { opacity: 0.82; }
+    .card.soon-card:hover { transform: none; box-shadow: none; }
+
+    /* ── Footer strip ── */
+    .foot { background: var(--racing); color: rgba(245,241,230,0.6); padding: 2.2rem 0; }
+    .foot-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    .foot-brand { font-family: var(--brand); font-weight: 700; color: var(--paper); font-size: 1rem; }
+    .foot-brand b { color: var(--leaf); }
+    .foot small { font-size: 0.75rem; }
+    .foot-links { display: flex; gap: 1.4rem; flex-wrap: wrap; }
+    .foot-links a { font-size: 0.85rem; font-weight: 600; color: rgba(245,241,230,0.75); transition: color 0.15s; }
+    .foot-links a:hover { color: #fff; }
+
+    /* ── WhatsApp floating button ── */
+    .wa-fab {
+      position: fixed; right: 18px; bottom: 18px; z-index: 150;
+      width: 54px; height: 54px; border-radius: 50%;
+      background: #25D366; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+      transition: transform 0.2s cubic-bezier(0.22,1,0.36,1), box-shadow 0.2s;
+    }
+    .wa-fab:hover { transform: scale(1.09); box-shadow: 0 12px 30px rgba(0,0,0,0.35); }
+    .wa-fab svg { width: 29px; height: 29px; fill: #fff; }
+
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1); }
+    .reveal.in { opacity: 1; transform: none; }
+
+    @media (max-width: 800px) {
+      .grid { grid-template-columns: 1fr; }
+      .profile { flex-direction: column; align-items: flex-start; }
+    }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo-name"><b>Somerset</b> Language Centre</a>
+      <a href="/" class="nav-back">← Back to home</a>
+    </div>
+  </div>
+</nav>
+
+<header class="head">
+  <div class="wrap">
+    <div class="head-eyebrow">Practise between classes</div>
+    <h1>Somerset <em>Games</em></h1>
+    <p class="head-sub">Five minutes a day beats one hour once a week. Grammar, vocabulary, punctuation and proper adventures — made by your teachers, tuned to your level, free.</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ── Player profile ── -->
+  <section class="profile" id="profileCard" aria-live="polite"></section>
+
+  <!-- ── Games ── -->
+  <section class="grid">
+
+    <!-- Somerset Island -->
+    <a class="card reveal" style="--accent: var(--cider)" href="https://somerset-island-b2-game.netlify.app" target="_blank" rel="noopener">
+      <div class="card-top">
+        <h2>Somerset Island</h2>
+        <div class="card-art">
+          <svg viewBox="0 0 88 66" xmlns="http://www.w3.org/2000/svg">
+            <rect width="88" height="66" fill="#1a2f4a"/>
+            <rect y="40" width="88" height="26" fill="#2a5a7a"/>
+            <g fill="#3a7a9a"><rect x="4" y="42" width="10" height="2"/><rect x="30" y="48" width="14" height="2"/><rect x="62" y="44" width="12" height="2"/><rect x="16" y="56" width="12" height="2"/><rect x="50" y="58" width="10" height="2"/></g>
+            <path d="M28,40 L44,18 L60,40 Z" fill="#4a6a3a"/>
+            <rect x="41" y="10" width="6" height="12" fill="#c8b89a"/>
+            <polygon points="40,10 44,4 48,10" fill="#a03a2a"/>
+            <rect x="42" y="13" width="4" height="3" fill="#ffe9a0"/>
+            <circle cx="14" cy="12" r="5" fill="#ffe9a0"/>
+            <g fill="#ddd"><rect x="60" y="8" width="12" height="3"/><rect x="64" y="5" width="10" height="3"/></g>
+          </svg>
+        </div>
+      </div>
+      <p>A point-and-click pirate adventure across Valencia. Solve the Three Trials, out-duel the exam ghosts, earn your certificate. Proper retro — proper English.</p>
+      <div class="card-meta">
+        <span class="pill live">LIVE</span>
+        <span class="pill" data-lvl="B2">B2 First</span>
+        <span class="pill">Adventure</span>
+        <span class="pill">~40 min</span>
+      </div>
+      <span class="card-cta">Play now <span class="arr">→</span></span>
+    </a>
+
+    <!-- Grammar Sprint -->
+    <a class="card reveal" style="--accent: var(--cheddar)" href="grammar-sprint.html">
+      <div class="card-top">
+        <h2>Grammar Sprint</h2>
+        <div class="card-art">
+          <svg viewBox="0 0 88 66" xmlns="http://www.w3.org/2000/svg">
+            <rect width="88" height="66" fill="#EDE7D6"/>
+            <circle cx="44" cy="33" r="22" fill="none" stroke="#C9A24B" stroke-width="3"/>
+            <line x1="44" y1="33" x2="44" y2="18" stroke="#17281B" stroke-width="3" stroke-linecap="round"/>
+            <line x1="44" y1="33" x2="55" y2="38" stroke="#B23A2C" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="44" cy="33" r="3" fill="#17281B"/>
+          </svg>
+        </div>
+      </div>
+      <p>Ten gaps, ninety seconds, streaks and a time bonus. Beat the clock, then beat yesterday's score.</p>
+      <div class="card-meta">
+        <span class="pill live">NEW</span>
+        <span class="pill" data-lvl="A2">A2</span><span class="pill" data-lvl="B1">B1</span><span class="pill" data-lvl="B2">B2</span><span class="pill" data-lvl="C1">C1</span>
+        <span class="pill">~2 min</span>
+      </div>
+      <span class="card-cta">Play now <span class="arr">→</span></span>
+    </a>
+
+    <!-- Punctuation Repair -->
+    <a class="card reveal" style="--accent: var(--heather)" href="punctuation-repair.html">
+      <div class="card-top">
+        <h2>Punctuation Repair</h2>
+        <div class="card-art">
+          <svg viewBox="0 0 88 66" xmlns="http://www.w3.org/2000/svg">
+            <rect width="88" height="66" fill="#EDE7D6"/>
+            <text x="22" y="42" font-family="Georgia" font-size="30" fill="#8C5E9C" font-style="italic">?</text>
+            <text x="42" y="42" font-family="Georgia" font-size="30" fill="#B23A2C">,</text>
+            <text x="56" y="42" font-family="Georgia" font-size="30" fill="#3D8B1F">;</text>
+            <path d="M18,52 Q44,58 70,52" stroke="#C9A24B" stroke-width="2" fill="none"/>
+          </svg>
+        </div>
+      </div>
+      <p>Broken sentences arrive at your workshop. Commas, apostrophes and capitals put them right — the details Cambridge examiners actually mark.</p>
+      <div class="card-meta">
+        <span class="pill live">NEW</span>
+        <span class="pill" data-lvl="A2">A2</span><span class="pill" data-lvl="B1">B1</span><span class="pill" data-lvl="B2">B2</span><span class="pill" data-lvl="C1">C1</span>
+        <span class="pill">No clock</span>
+      </div>
+      <span class="card-cta">Play now <span class="arr">→</span></span>
+    </a>
+
+    <!-- Correction Clinic -->
+    <a class="card reveal" style="--accent: var(--racing-2)" href="correction-clinic.html">
+      <div class="card-top">
+        <h2>Correction Clinic</h2>
+        <div class="card-art">
+          <svg viewBox="0 0 88 66" xmlns="http://www.w3.org/2000/svg">
+            <rect width="88" height="66" fill="#EDE7D6"/>
+            <text x="14" y="30" font-family="Georgia" font-size="16" fill="#B23A2C" text-decoration="line-through">wrong</text>
+            <path d="M18,40 Q30,32 44,40" stroke="#C9A24B" stroke-width="2" fill="none"/>
+            <text x="20" y="56" font-family="Georgia" font-size="16" fill="#3D8B1F" font-weight="700">right</text>
+            <path d="M62,20 L68,28 L80,12" stroke="#3D8B1F" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+      <p>Real mistakes from real Somerset essays, anonymised. Spot the fix your teacher would make &mdash; false friends, word order, the lot.</p>
+      <div class="card-meta">
+        <span class="pill live">NEW</span>
+        <span class="pill" data-lvl="B1">B1</span><span class="pill" data-lvl="B2">B2</span><span class="pill" data-lvl="C1">C1</span>
+        <span class="pill">No clock</span>
+      </div>
+      <span class="card-cta">Play now <span class="arr">→</span></span>
+    </a>
+
+    <!-- Vocab Match -->
+    <a class="card reveal" style="--accent: var(--green)" href="vocab-match.html">
+      <div class="card-top">
+        <h2>Vocab Match</h2>
+        <div class="card-art">
+          <svg viewBox="0 0 88 66" xmlns="http://www.w3.org/2000/svg">
+            <rect width="88" height="66" fill="#EDE7D6"/>
+            <rect x="12" y="14" width="28" height="16" rx="4" fill="#fff" stroke="#D9D2BC"/>
+            <rect x="48" y="14" width="28" height="16" rx="4" fill="#57B82C"/>
+            <rect x="12" y="36" width="28" height="16" rx="4" fill="#57B82C"/>
+            <rect x="48" y="36" width="28" height="16" rx="4" fill="#fff" stroke="#D9D2BC"/>
+            <path d="M40,22 L48,44 M40,44 L48,22" stroke="#C9A24B" stroke-width="2"/>
+          </svg>
+        </div>
+      </div>
+      <p>Pairs, but useful: phrasal verbs to meanings, words to definitions. Somerset's word-hoard, one match at a time — fewer mistakes, better score.</p>
+      <div class="card-meta">
+        <span class="pill live">NEW</span>
+        <span class="pill" data-lvl="A2">A2</span><span class="pill" data-lvl="B1">B1</span><span class="pill" data-lvl="B2">B2</span><span class="pill" data-lvl="C1">C1</span>
+        <span class="pill">~1 min</span>
+      </div>
+      <span class="card-cta">Play now <span class="arr">→</span></span>
+    </a>
+
+    <!-- Irregular Verb Dash -->
+    <a class="card reveal" style="--accent: var(--brass)" href="irregular-verb-dash.html">
+      <div class="card-top">
+        <h2>Irregular Verb Dash</h2>
+        <div class="card-art">
+          <svg viewBox="0 0 88 66" xmlns="http://www.w3.org/2000/svg">
+            <rect width="88" height="66" fill="#EDE7D6"/>
+            <path d="M30,10 L20,38 L32,38 L26,56 L52,30 L38,30 L48,10 Z" fill="#C9A24B" stroke="#17281B" stroke-width="2" stroke-linejoin="round"/>
+            <text x="58" y="28" font-family="Georgia" font-size="13" font-style="italic" fill="#5C6657">go</text>
+            <text x="56" y="46" font-family="Georgia" font-size="13" font-weight="700" fill="#1E4227">went</text>
+          </svg>
+        </div>
+      </div>
+      <p>Sixty seconds of went, sought, forsaken and friends — the forms Cambridge expects you to know cold.</p>
+      <div class="card-meta">
+        <span class="pill live">NEW</span>
+        <span class="pill" data-lvl="A2">A2</span><span class="pill" data-lvl="B1">B1</span><span class="pill" data-lvl="B2">B2</span><span class="pill" data-lvl="C1">C1</span>
+        <span class="pill">~1 min</span>
+      </div>
+      <span class="card-cta">Play now <span class="arr">→</span></span>
+    </a>
+
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-inner">
+      <span class="foot-brand"><b>Somerset</b> Language Centre</span>
+      <div class="foot-links">
+        <a href="https://wa.me/34601129552?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20cursos%20de%20ingl%C3%A9s" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="mailto:info@somersetlc.com">info@somersetlc.com</a>
+        <a href="tel:+34963388933">963 38 89 33</a>
+      </div>
+      <small>Games made by your teachers in Valencia · free for everyone</small>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp -->
+<a class="wa-fab" href="https://wa.me/34601129552?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20cursos%20de%20ingl%C3%A9s" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+</a>
+
+<script>
+  /* ── Player profile: name + level, kept in this browser ── */
+  (function () {
+    const KEY = 'slc-player';
+    const card = document.getElementById('profileCard');
+    const LEVELS = ['A2', 'B1', 'B2', 'C1'];
+
+    function load() { try { return JSON.parse(localStorage.getItem(KEY)); } catch (e) { return null; } }
+    function save(p) { localStorage.setItem(KEY, JSON.stringify(p)); }
+
+    function markLevels(level) {
+      document.querySelectorAll('.pill[data-lvl]').forEach(p => {
+        p.classList.toggle('lvl-on', p.dataset.lvl === level);
+      });
+    }
+
+    function renderForm(existing) {
+      card.classList.remove('greet');
+      card.innerHTML = `
+        <div class="profile-q">First things first —<br>what's your <em>name</em>?</div>
+        <div class="profile-form">
+          <input type="text" id="pName" maxlength="24" placeholder="Your name" autocomplete="given-name" value="${existing && existing.name ? existing.name.replace(/"/g, '&quot;') : ''}">
+          <div class="levels" id="pLevels">
+            ${LEVELS.map(l => `<button type="button" class="level-chip${existing && existing.level === l ? ' on' : ''}" data-l="${l}">${l}</button>`).join('')}
+          </div>
+          <button type="button" class="profile-go" id="pGo" disabled>Let's play →</button>
+          <div class="profile-unsure">Not sure of your level? <a href="/placement/index.html">Take the free placement test first</a></div>
+        </div>`;
+      const nameEl = document.getElementById('pName');
+      const goEl = document.getElementById('pGo');
+      let level = existing ? existing.level : null;
+      function validate() { goEl.disabled = !(nameEl.value.trim().length >= 2 && level); }
+      nameEl.addEventListener('input', validate);
+      document.querySelectorAll('#pLevels .level-chip').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('#pLevels .level-chip').forEach(b => b.classList.remove('on'));
+          btn.classList.add('on');
+          level = btn.dataset.l;
+          validate();
+        });
+      });
+      goEl.addEventListener('click', () => {
+        const p = { name: nameEl.value.trim(), level: level };
+        save(p);
+        renderGreet(p);
+      });
+      nameEl.addEventListener('keydown', e => { if (e.key === 'Enter' && !goEl.disabled) goEl.click(); });
+      validate();
+    }
+
+    function renderGreet(p) {
+      card.classList.add('greet');
+      const hour = new Date().getHours();
+      const hello = hour < 12 ? 'Good morning' : hour < 19 ? 'Good afternoon' : 'Good evening';
+      card.innerHTML = `
+        <div>
+          <div class="greet-name">${hello}, <em>${p.name}</em> — ready to play?</div>
+          <div class="greet-meta">Playing at level ${p.level} · <button type="button" id="pEdit">change name or level</button></div>
+        </div>
+        <div class="greet-level">${p.level}</div>`;
+      markLevels(p.level);
+      document.getElementById('pEdit').addEventListener('click', () => { renderForm(p); markLevels(null); });
+    }
+
+    const existing = load();
+    if (existing && existing.name && existing.level) renderGreet(existing);
+    else renderForm(existing);
+  })();
+
+  /* ── Reveal on scroll ── */
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  /* fallback: reveal everything if the observer never fires (throttled tabs) */
+  setTimeout(() => document.querySelectorAll('.reveal:not(.in)').forEach(el => el.classList.add('in')), 1200);
+</script>
+
+</body>
+</html>

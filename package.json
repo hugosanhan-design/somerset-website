@@ -1,0 +1,36 @@
+{
+  "name": "somerset-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "deploy": "bash deploy.sh"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.100.1",
+    "@types/nodemailer": "^8.0.0",
+    "@types/pdf-parse": "^1.1.5",
+    "@vercel/functions": "^3.7.5",
+    "bcryptjs": "^3.0.3",
+    "better-sqlite3": "^11.10.0",
+    "docx": "^9.7.1",
+    "next": "^14.2.35",
+    "next-auth": "^5.0.0-beta.31",
+    "nodemailer": "^8.0.10",
+    "pdf-parse": "^2.4.5",
+    "pg": "^8.22.0",
+    "react": "^18",
+    "react-dom": "^18",
+    "@vercel/blob": "^0.27.3"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/node": "^20",
+    "@types/pg": "^8.20.0",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "typescript": "^5"
+  }
+}

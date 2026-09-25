@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Correction Clinic — Somerset Games</title>
+  <meta name="description" content="Real mistakes from real Somerset essays, turned into a game. Spot the fix.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #F5F1E6; --paper-2: #EDE7D6; --ink: #17281B; --racing: #1E4227; --racing-2: #2A5636;
+      --green: #57B82C; --green-dk: #3D8B1F; --leaf: #A8D77E; --brass: #C9A24B;
+      --heather: #8C5E9C; --cheddar: #E3A33A; --cider: #B23A2C; --muted: #5C6657; --line: #D9D2BC;
+      --accent: var(--racing-2);
+      --serif: 'Fraunces', Georgia, serif; --sans: 'Instrument Sans', system-ui, sans-serif; --brand: 'Poppins', system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--sans); background: var(--paper); color: var(--ink); line-height: 1.55; -webkit-font-smoothing: antialiased; min-height: 100dvh; display: flex; flex-direction: column; }
+    a { color: inherit; text-decoration: none; }
+    ::selection { background: var(--green); color: #fff; }
+    .wrap { width: min(760px, 100%); margin: 0 auto; padding: 0 1.4rem; }
+
+    .nav { padding: 1rem 0; background: rgba(245,241,230,0.92); box-shadow: 0 1px 0 var(--line); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .nav-logo { font-family: var(--brand); font-size: 1.1rem; font-weight: 700; }
+    .nav-logo b { color: var(--green); }
+    .nav-back { font-size: 0.88rem; font-weight: 600; color: var(--green-dk); }
+    .nav-back:hover { color: var(--racing); }
+
+    main { flex: 1; display: flex; align-items: center; padding: 2rem 0 3rem; }
+    .stage { width: 100%; }
+
+    .gtag { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
+    .gtag::before { content: ''; width: 34px; height: 1px; background: var(--accent); }
+    h1 { font-family: var(--serif); font-size: clamp(2.2rem, 6vw, 3.2rem); font-weight: 380; letter-spacing: -0.015em; line-height: 1.05; margin-bottom: 0.9rem; }
+    h1 em { font-style: italic; color: var(--green-dk); }
+    .lead { color: var(--muted); max-width: 46ch; margin-bottom: 1.8rem; text-wrap: pretty; }
+
+    .panel { background: #FBF9F2; border: 1px solid var(--line); border-radius: 20px; padding: 1.8rem; position: relative; overflow: hidden; }
+    .panel::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--accent); }
+
+    .player-line { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.3rem; }
+    .player-line strong { font-family: var(--serif); font-size: 1.15rem; font-weight: 500; }
+    .player-line strong em { font-style: italic; color: var(--green-dk); }
+    .player-line .best { font-size: 0.8rem; color: var(--muted); }
+    .lvl-row { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+    .lvl-chip { font-family: var(--sans); font-size: 0.85rem; font-weight: 600; background: transparent; color: var(--muted); border: 1.5px solid var(--line); border-radius: 50px; padding: 0.5rem 1rem; cursor: pointer; transition: all 0.15s; }
+    .lvl-chip:hover { border-color: var(--green-dk); color: var(--green-dk); }
+    .lvl-chip.on { background: var(--racing); border-color: var(--racing); color: #fff; }
+    .name-row { margin-bottom: 1.5rem; }
+    .name-row input { font-family: var(--sans); font-size: 0.95rem; border: 1.5px solid var(--line); background: #fff; border-radius: 50px; padding: 0.6rem 1.1rem; width: 210px; outline: none; }
+    .name-row input:focus { border-color: var(--green-dk); }
+
+    .btn { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--sans); font-size: 0.95rem; font-weight: 600; padding: 0.85rem 1.8rem; border-radius: 50px; border: 1.5px solid transparent; cursor: pointer; transition: all 0.2s; }
+    .btn-primary { background: var(--green); color: #fff; box-shadow: 0 6px 18px rgba(87,184,44,0.28); }
+    .btn-primary:hover { background: var(--green-dk); transform: translateY(-2px); }
+    .btn-primary:disabled { opacity: 0.45; cursor: default; transform: none; box-shadow: none; }
+    .btn-ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+    .btn-ghost:hover { border-color: var(--green-dk); color: var(--green-dk); }
+
+    .hud { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; font-size: 0.85rem; font-weight: 600; color: var(--muted); }
+    .hud .score { color: var(--racing); }
+    .hud .streak { color: var(--cheddar); }
+    .tbar { height: 6px; background: var(--paper-2); border-radius: 3px; overflow: hidden; margin-bottom: 1.6rem; }
+    .tbar > div { height: 100%; background: var(--accent); border-radius: 3px; transition: width 0.24s linear; }
+    .tbar.low > div { background: var(--cider); }
+
+    .qtag { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem; }
+    .q { font-family: var(--serif); font-size: clamp(1.25rem, 3.2vw, 1.6rem); font-weight: 400; line-height: 1.4; margin-bottom: 1.6rem; min-height: 2.4em; }
+    .opts { display: grid; grid-template-columns: 1fr; gap: 0.7rem; }
+    .opt { font-family: var(--sans); font-size: 1rem; font-weight: 500; text-align: left; background: #fff; border: 1.5px solid var(--line); border-radius: 14px; padding: 0.9rem 1.2rem; cursor: pointer; transition: all 0.14s; }
+    .opt:hover { border-color: var(--green-dk); transform: translateY(-1px); }
+    .opt.right { background: #EAF6E0; border-color: var(--green); color: var(--green-dk); font-weight: 700; }
+    .opt.wrong { background: #F9E9E6; border-color: var(--cider); color: var(--cider); }
+    .opt:disabled { cursor: default; }
+
+    .end-score { font-family: var(--serif); font-size: clamp(3rem, 9vw, 4.6rem); font-weight: 400; line-height: 1; color: var(--racing); }
+    .end-sub { color: var(--muted); margin: 0.5rem 0 1.4rem; }
+    .newbest { display: inline-block; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #fff; background: var(--brass); padding: 0.4rem 1rem; border-radius: 50px; margin-bottom: 1.2rem; }
+    .review { margin: 1.4rem 0; border-top: 1px solid var(--line); }
+    .review-item { padding: 0.85rem 0; border-bottom: 1px solid var(--line); font-size: 0.92rem; }
+    .review-item .rq { color: var(--muted); }
+    .review-item .ra { font-weight: 600; }
+    .review-item .ra.ok { color: var(--green-dk); }
+    .review-item .ra.no { color: var(--cider); text-decoration: line-through; margin-right: 0.5rem; }
+    .end-actions { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1.6rem; }
+    .sheep-cheer { display: flex; align-items: center; gap: 0.9rem; margin-top: 1.4rem; color: var(--muted); font-size: 0.9rem; font-style: italic; }
+    .sheep-cheer svg { width: 46px; flex-shrink: 0; }
+
+    .hide { display: none !important; }
+    @media (max-width: 560px) { .panel { padding: 1.4rem 1.2rem; } }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a href="/games/index.html" class="nav-logo"><b>Somerset</b> Games</a>
+    <a href="/games/index.html" class="nav-back">← All games</a>
+  </div>
+</nav>
+
+<main>
+  <div class="wrap stage">
+
+    <!-- START -->
+    <section id="scrStart">
+      <div class="gtag">Somerset Games · Writing</div>
+      <h1>Correction <em>Clinic</em></h1>
+      <p class="lead">Real mistakes from real Somerset essays — anonymised — turned into a game. Spot the fix your teacher would make, every time.</p>
+      <div class="panel">
+        <div class="player-line">
+          <strong id="pGreet"></strong>
+          <span class="best" id="pBest"></span>
+        </div>
+        <div class="name-row hide" id="nameRow"><input type="text" id="pName" maxlength="24" placeholder="Your name (optional)"></div>
+        <div class="lvl-row" id="lvlRow"></div>
+        <button class="btn btn-primary" id="btnStart">Open the clinic →</button>
+      </div>
+    </section>
+
+    <!-- PLAY -->
+    <section id="scrPlay" class="hide">
+      <div class="hud">
+        <span id="hudQ">1 / 6</span>
+        <span class="streak" id="hudStreak"></span>
+        <span class="score" id="hudScore">0 pts</span>
+      </div>
+      <div class="tbar" id="tbar"><div id="tfill" style="width:100%"></div></div>
+      <div class="panel">
+        <div class="qtag" id="qTag"></div>
+        <div class="q" id="qText"></div>
+        <div class="opts" id="opts"></div>
+      </div>
+    </section>
+
+    <!-- END -->
+    <section id="scrEnd" class="hide">
+      <div class="gtag">Clinic closed</div>
+      <div class="panel">
+        <span class="newbest hide" id="newBest">★ New personal best</span>
+        <div class="end-score" id="endScore">0</div>
+        <div class="end-sub" id="endSub"></div>
+        <div class="sheep-cheer hide" id="sheepCheer">
+          <svg viewBox="0 0 54 44" xmlns="http://www.w3.org/2000/svg">
+            <rect x="18" y="28" width="2.4" height="11" fill="#33302a"/><rect x="32" y="28" width="2.4" height="11" fill="#33302a"/>
+            <ellipse cx="28" cy="22" rx="16" ry="12" fill="#EFE9DA"/>
+            <circle cx="16" cy="16" r="6" fill="#EFE9DA"/><circle cx="27" cy="12" r="7" fill="#EFE9DA"/><circle cx="39" cy="16" r="6" fill="#EFE9DA"/>
+            <ellipse cx="12" cy="24" rx="4.5" ry="6.5" fill="#3a342b" transform="rotate(-32 12 24)"/>
+            <ellipse cx="15" cy="19" rx="2.4" ry="1.4" fill="#3a342b"/>
+          </svg>
+          <span id="sheepSay"></span>
+        </div>
+        <div class="review" id="review"></div>
+        <div class="end-actions">
+          <button class="btn btn-primary" id="btnAgain">Play again →</button>
+          <button class="btn btn-ghost" id="btnLevel">Change level</button>
+          <a class="btn btn-ghost" href="/games/index.html">All games</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<script>
+/* ═══════════ CONTENT — Correction Clinic ═══════════
+   Real "student wrote → better version" pairs pulled from Somerset's own
+   writing-correction sample reports (writing-correction/_samples/), anonymised.
+   { tag: category label, s: short prompt, a: correct, w: [wrong options] }   */
+const CONTENT = {
+  B1: [
+    { tag: "Preposition", s: "Which is correct?", a: "on the internet", w: ["in the internet", "at the internet"] },
+    { tag: "Word choice", s: "Which is correct?", a: "other ways", w: ["others ways", "other way's"] },
+    { tag: "Subject–verb agreement", s: "Which is correct?", a: "The books are slower.", w: ["The books is more slowly.", "The books was more slower."] },
+    { tag: "Verb pattern", s: "Which is correct?", a: "the best way to select and compare", w: ["the best way for select and contrast", "the best way for selecting and contrast"] },
+    { tag: "Phrasal verb", s: "Which is correct?", a: "look up information", w: ["look up for information", "look for up information"] },
+    { tag: "Spelling", s: "Which is correct?", a: "definitely", w: ["definetly", "definately"] },
+    { tag: "Word order", s: "Which is correct?", a: "It is also the first source.", w: ["Also is the first source.", "Also it the first source is."] },
+    { tag: "Verb form", s: "Which is correct?", a: "It has a lot of good things.", w: ["It have a lot of good things.", "It haves a lot of good things."] },
+    { tag: "Linking word", s: "Which is correct?", a: "In conclusion, it is a good tool.", w: ["In conclusion is a good tool.", "In conclusion, is a good tool."] }
+  ],
+  B2: [
+    { tag: "False friend", s: "Which is correct?", a: "Without doubt, we should explore space.", w: ["Definitively we should explore space.", "Definitively, the space should be explored."] },
+    { tag: "Spelling", s: "Which is correct?", a: "the mechanisms underlying the regulation", w: ["the mechanisms underlaying the regulation", "the mechanisms under-laying the regulation"] },
+    { tag: "Linking word", s: "Which is correct?", a: "such as respiration in plants", w: ["as respiration in plants", "like as respiration in plants"] },
+    { tag: "Verb form", s: "Which is correct?", a: "We must provide homeless people with support.", w: ["We must provided homeless people with support.", "We must to provide homeless people with support."] },
+    { tag: "Article", s: "Which is correct?", a: "As a scientist, I firmly believe…", w: ["As Scientist, I really believe…", "As the scientist, I really believe…"] },
+    { tag: "Spelling", s: "Which is correct?", a: "the Government", w: ["the Goverment", "the Governement"] },
+    { tag: "Register (informal email)", s: "Which is correct?", a: "I'm / We'll / it's", w: ["I am / We will / it is", "I'm / We will / it's"] },
+    { tag: "Preposition", s: "Which is correct?", a: "interested in going abroad", w: ["interested on going abroad", "interested for going abroad"] },
+    { tag: "False friend", s: "“Definitivamente” in English is…", a: "definitely", w: ["definitively", "in a definitive way"] }
+  ],
+  C1: [
+    { tag: "Countable / uncountable", s: "Which is correct?", a: "funding might be addressed", w: ["fundings might be addressed", "a funding might be addressed"] },
+    { tag: "Word choice", s: "Which is correct?", a: "this raises the question", w: ["this arises the question", "this rises the question"] },
+    { tag: "Adjective agreement", s: "Which is correct?", a: "public gardens", w: ["publics gardens", "the publics gardens"] },
+    { tag: "Word order", s: "Which is correct?", a: "it is patently obvious", w: ["is it patently obvious", "patently it is obvious"] },
+    { tag: "Article", s: "Which is correct?", a: "a sports complex deserves…", w: ["sports complex deserves…", "the sports complex it deserves…"] },
+    { tag: "Preposition", s: "Which is correct?", a: "people seek comfortable places", w: ["people seek for comfortable places", "people seek to comfortable places"] },
+    { tag: "Voice", s: "Which is correct?", a: "prices had plummeted", w: ["prices had been plummeted", "prices had been plummeting"] },
+    { tag: "Article", s: "Which is correct?", a: "to connect with nature", w: ["to connect with the nature", "to connect with a nature"] },
+    { tag: "Parallel structure", s: "Which is correct?", a: "to be treated well and to be upgraded", w: ["to be treated well and being upgraded", "to be treated well and upgraded"] }
+  ]
+};
+
+/* ═══════════ ENGINE — Somerset drill (canonical) ═══════════ */
+const GAME = {
+  key: 'cc',
+  roundSize: 6,
+  timed: false,
+  seconds: 0,
+  pointsPerHit: 10
+};
+
+const LEVELS = ['B1', 'B2', 'C1'];
+const $ = id => document.getElementById(id);
+const shuffle = arr => { const a = arr.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+
+let player = null;
+try { player = JSON.parse(localStorage.getItem('slc-player')); } catch (e) {}
+let level = (player && LEVELS.includes(player.level)) ? player.level : null;
+
+let round = [], idx = 0, score = 0, streak = 0, bestStreak = 0, answers = [];
+let timeLeft = GAME.seconds, timer = null;
+
+function bestKey() { return 'slc-best-' + GAME.key + '-' + level; }
+function getBest() { return parseInt(localStorage.getItem(bestKey()) || '0', 10); }
+
+function renderStart() {
+  $('scrStart').classList.remove('hide'); $('scrPlay').classList.add('hide'); $('scrEnd').classList.add('hide');
+  const name = player && player.name;
+  $('pGreet').innerHTML = name ? 'Ready, <em>' + name + '</em>?' : 'Ready for the clinic?';
+  $('nameRow').classList.toggle('hide', !!name);
+  $('lvlRow').innerHTML = LEVELS.map(l => '<button class="lvl-chip' + (l === level ? ' on' : '') + '" data-l="' + l + '">' + l + '</button>').join('');
+  $('lvlRow').querySelectorAll('.lvl-chip').forEach(b => b.addEventListener('click', () => {
+    level = b.dataset.l;
+    $('lvlRow').querySelectorAll('.lvl-chip').forEach(x => x.classList.toggle('on', x === b));
+    updateStartMeta();
+  }));
+  updateStartMeta();
+}
+function updateStartMeta() {
+  $('btnStart').disabled = !level;
+  $('pBest').textContent = level ? (getBest() ? 'Personal best at ' + level + ': ' + getBest() + ' pts' : 'No score at ' + level + ' yet — set one!') : 'Choose your level';
+}
+
+function startRound() {
+  const nameVal = $('pName') && $('pName').value.trim();
+  if (nameVal) { player = Object.assign(player || {}, { name: nameVal, level: level }); localStorage.setItem('slc-player', JSON.stringify(player)); }
+  else if (player) { player.level = level; localStorage.setItem('slc-player', JSON.stringify(player)); }
+
+  round = shuffle(CONTENT[level]).slice(0, GAME.roundSize);
+  idx = 0; score = 0; streak = 0; bestStreak = 0; answers = [];
+  $('scrStart').classList.add('hide'); $('scrEnd').classList.add('hide'); $('scrPlay').classList.remove('hide');
+  $('tbar').style.display = 'none';
+  showQ();
+}
+
+function showQ() {
+  const q = round[idx];
+  $('hudQ').textContent = (idx + 1) + ' / ' + round.length;
+  $('hudScore').textContent = score + ' pts';
+  $('hudStreak').textContent = streak >= 2 ? '🔥 streak ×' + streak : '';
+  $('qTag').textContent = q.tag;
+  $('qText').textContent = q.s;
+  const opts = shuffle([q.a].concat(q.w));
+  $('opts').innerHTML = opts.map(o => '<button class="opt">' + o + '</button>').join('');
+  $('opts').querySelectorAll('.opt').forEach(btn => btn.addEventListener('click', () => pick(btn, q)));
+}
+
+function pick(btn, q) {
+  $('opts').querySelectorAll('.opt').forEach(b => b.disabled = true);
+  const right = btn.textContent === q.a;
+  answers.push({ q: q.tag + ' — ' + q.s, a: q.a, chosen: btn.textContent, right: right });
+  if (right) {
+    streak++; bestStreak = Math.max(bestStreak, streak);
+    score += GAME.pointsPerHit + Math.max(0, (streak - 1) * 2);
+    btn.classList.add('right');
+  } else {
+    streak = 0;
+    btn.classList.add('wrong');
+    $('opts').querySelectorAll('.opt').forEach(b => { if (b.textContent === q.a) b.classList.add('right'); });
+  }
+  setTimeout(() => {
+    idx++;
+    if (idx >= round.length) endRound(); else showQ();
+  }, right ? 650 : 1400);
+}
+
+function endRound() {
+  const hits = answers.filter(a => a.right).length;
+  const best = getBest();
+  const isBest = score > best;
+  if (isBest) localStorage.setItem(bestKey(), String(score));
+
+  $('scrPlay').classList.add('hide'); $('scrEnd').classList.remove('hide');
+  $('endScore').textContent = score + ' pts';
+  $('endSub').textContent = hits + ' of ' + answers.length + ' correct at ' + level +
+    (bestStreak >= 3 ? ' · best streak ×' + bestStreak : '');
+  $('newBest').classList.toggle('hide', !isBest);
+
+  const ratio = answers.length ? hits / answers.length : 0;
+  const name = (player && player.name) ? player.name : 'friend';
+  $('sheepCheer').classList.remove('hide');
+  $('sheepSay').textContent = ratio >= 0.9 ? '"Baa-rilliant, ' + name + '!"' :
+    ratio >= 0.6 ? '"Not baa-d at all. Once more?"' : '"Ewe can do better — again!"';
+
+  $('review').innerHTML = answers.map(a =>
+    '<div class="review-item"><div class="rq">' + a.q + '</div>' +
+    (a.right ? '<span class="ra ok">' + a.a + ' ✓</span>'
+             : '<span class="ra no">' + a.chosen + '</span><span class="ra ok">' + a.a + '</span>') +
+    '</div>').join('');
+}
+
+$('btnStart').addEventListener('click', startRound);
+$('btnAgain').addEventListener('click', startRound);
+$('btnLevel').addEventListener('click', renderStart);
+renderStart();
+</script>
+
+</body>
+</html>

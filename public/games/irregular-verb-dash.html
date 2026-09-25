@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Irregular Verb Dash — Somerset Games</title>
+  <meta name="description" content="Sixty seconds of irregular verbs. How many forms can you nail?">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #F5F1E6; --paper-2: #EDE7D6; --ink: #17281B; --racing: #1E4227;
+      --green: #57B82C; --green-dk: #3D8B1F; --leaf: #A8D77E; --brass: #C9A24B;
+      --heather: #8C5E9C; --cheddar: #E3A33A; --cider: #B23A2C; --muted: #5C6657; --line: #D9D2BC;
+      --accent: var(--cider);
+      --serif: 'Fraunces', Georgia, serif; --sans: 'Instrument Sans', system-ui, sans-serif; --brand: 'Poppins', system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--sans); background: var(--paper); color: var(--ink); line-height: 1.55; -webkit-font-smoothing: antialiased; min-height: 100dvh; display: flex; flex-direction: column; }
+    a { color: inherit; text-decoration: none; }
+    ::selection { background: var(--green); color: #fff; }
+    .wrap { width: min(760px, 100%); margin: 0 auto; padding: 0 1.4rem; }
+
+    .nav { padding: 1rem 0; background: rgba(245,241,230,0.92); box-shadow: 0 1px 0 var(--line); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .nav-logo { font-family: var(--brand); font-size: 1.1rem; font-weight: 700; }
+    .nav-logo b { color: var(--green); }
+    .nav-back { font-size: 0.88rem; font-weight: 600; color: var(--green-dk); }
+    .nav-back:hover { color: var(--racing); }
+
+    main { flex: 1; display: flex; align-items: center; padding: 2rem 0 3rem; }
+    .stage { width: 100%; }
+
+    .gtag { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
+    .gtag::before { content: ''; width: 34px; height: 1px; background: var(--accent); }
+    h1 { font-family: var(--serif); font-size: clamp(2.2rem, 6vw, 3.2rem); font-weight: 380; letter-spacing: -0.015em; line-height: 1.05; margin-bottom: 0.9rem; }
+    h1 em { font-style: italic; color: var(--green-dk); }
+    .lead { color: var(--muted); max-width: 46ch; margin-bottom: 1.8rem; text-wrap: pretty; }
+
+    .panel { background: #FBF9F2; border: 1px solid var(--line); border-radius: 20px; padding: 1.8rem; position: relative; overflow: hidden; }
+    .panel::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--accent); }
+
+    .player-line { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.3rem; }
+    .player-line strong { font-family: var(--serif); font-size: 1.15rem; font-weight: 500; }
+    .player-line strong em { font-style: italic; color: var(--green-dk); }
+    .player-line .best { font-size: 0.8rem; color: var(--muted); }
+    .lvl-row { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+    .lvl-chip { font-family: var(--sans); font-size: 0.85rem; font-weight: 600; background: transparent; color: var(--muted); border: 1.5px solid var(--line); border-radius: 50px; padding: 0.5rem 1rem; cursor: pointer; transition: all 0.15s; }
+    .lvl-chip:hover { border-color: var(--green-dk); color: var(--green-dk); }
+    .lvl-chip.on { background: var(--racing); border-color: var(--racing); color: #fff; }
+    .name-row { margin-bottom: 1.5rem; }
+    .name-row input { font-family: var(--sans); font-size: 0.95rem; border: 1.5px solid var(--line); background: #fff; border-radius: 50px; padding: 0.6rem 1.1rem; width: 210px; outline: none; }
+    .name-row input:focus { border-color: var(--green-dk); }
+
+    .btn { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--sans); font-size: 0.95rem; font-weight: 600; padding: 0.85rem 1.8rem; border-radius: 50px; border: 1.5px solid transparent; cursor: pointer; transition: all 0.2s; }
+    .btn-primary { background: var(--green); color: #fff; box-shadow: 0 6px 18px rgba(87,184,44,0.28); }
+    .btn-primary:hover { background: var(--green-dk); transform: translateY(-2px); }
+    .btn-primary:disabled { opacity: 0.45; cursor: default; transform: none; box-shadow: none; }
+    .btn-ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+    .btn-ghost:hover { border-color: var(--green-dk); color: var(--green-dk); }
+
+    /* HUD */
+    .hud { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; font-size: 0.85rem; font-weight: 600; color: var(--muted); }
+    .hud .score { color: var(--racing); }
+    .hud .streak { color: var(--cheddar); }
+    .tbar { height: 6px; background: var(--paper-2); border-radius: 3px; overflow: hidden; margin-bottom: 1.6rem; }
+    .tbar > div { height: 100%; background: var(--accent); border-radius: 3px; transition: width 0.24s linear; }
+    .tbar.low > div { background: var(--cider); }
+
+    .q { font-family: var(--serif); font-size: clamp(1.3rem, 3.4vw, 1.7rem); font-weight: 400; line-height: 1.4; margin-bottom: 1.6rem; min-height: 3em; }
+    .q .gap { display: inline-block; min-width: 3.2em; border-bottom: 2.5px solid var(--brass); margin: 0 0.15em; text-align: center; font-style: italic; color: var(--green-dk); }
+    .opts { display: grid; grid-template-columns: 1fr; gap: 0.7rem; }
+    .opt { font-family: var(--sans); font-size: 1rem; font-weight: 500; text-align: left; background: #fff; border: 1.5px solid var(--line); border-radius: 14px; padding: 0.9rem 1.2rem; cursor: pointer; transition: all 0.14s; }
+    .opt:hover { border-color: var(--green-dk); transform: translateY(-1px); }
+    .opt.right { background: #EAF6E0; border-color: var(--green); color: var(--green-dk); font-weight: 700; }
+    .opt.wrong { background: #F9E9E6; border-color: var(--cider); color: var(--cider); }
+    .opt:disabled { cursor: default; }
+
+    /* End screen */
+    .end-score { font-family: var(--serif); font-size: clamp(3rem, 9vw, 4.6rem); font-weight: 400; line-height: 1; color: var(--racing); }
+    .end-sub { color: var(--muted); margin: 0.5rem 0 1.4rem; }
+    .newbest { display: inline-block; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #fff; background: var(--brass); padding: 0.4rem 1rem; border-radius: 50px; margin-bottom: 1.2rem; }
+    .review { margin: 1.4rem 0; border-top: 1px solid var(--line); }
+    .review-item { padding: 0.85rem 0; border-bottom: 1px solid var(--line); font-size: 0.92rem; }
+    .review-item .rq { color: var(--muted); }
+    .review-item .ra { font-weight: 600; }
+    .review-item .ra.ok { color: var(--green-dk); }
+    .review-item .ra.no { color: var(--cider); text-decoration: line-through; margin-right: 0.5rem; }
+    .end-actions { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1.6rem; }
+    .sheep-cheer { display: flex; align-items: center; gap: 0.9rem; margin-top: 1.4rem; color: var(--muted); font-size: 0.9rem; font-style: italic; }
+    .sheep-cheer svg { width: 46px; flex-shrink: 0; }
+
+    .hide { display: none !important; }
+    @media (max-width: 560px) { .panel { padding: 1.4rem 1.2rem; } }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a href="/games/index.html" class="nav-logo"><b>Somerset</b> Games</a>
+    <a href="/games/index.html" class="nav-back">← All games</a>
+  </div>
+</nav>
+
+<main>
+  <div class="wrap stage">
+
+    <!-- START -->
+    <section id="scrStart">
+      <div class="gtag">Somerset Games · Verbs</div>
+      <h1>Irregular Verb <em>Dash</em></h1>
+      <p class="lead">Sixty seconds, ten verbs — went, sought, forsaken and friends. The forms Cambridge expects you to know cold.</p>
+      <div class="panel">
+        <div class="player-line">
+          <strong id="pGreet"></strong>
+          <span class="best" id="pBest"></span>
+        </div>
+        <div class="name-row hide" id="nameRow"><input type="text" id="pName" maxlength="24" placeholder="Your name (optional)"></div>
+        <div class="lvl-row" id="lvlRow"></div>
+        <button class="btn btn-primary" id="btnStart">Start the dash →</button>
+      </div>
+    </section>
+
+    <!-- PLAY -->
+    <section id="scrPlay" class="hide">
+      <div class="hud">
+        <span id="hudQ">1 / 10</span>
+        <span class="streak" id="hudStreak"></span>
+        <span class="score" id="hudScore">0 pts</span>
+      </div>
+      <div class="tbar" id="tbar"><div id="tfill" style="width:100%"></div></div>
+      <div class="panel">
+        <div class="q" id="qText"></div>
+        <div class="opts" id="opts"></div>
+      </div>
+    </section>
+
+    <!-- END -->
+    <section id="scrEnd" class="hide">
+      <div class="gtag">Dash complete</div>
+      <div class="panel">
+        <span class="newbest hide" id="newBest">★ New personal best</span>
+        <div class="end-score" id="endScore">0</div>
+        <div class="end-sub" id="endSub"></div>
+        <div class="sheep-cheer hide" id="sheepCheer">
+          <svg viewBox="0 0 54 44" xmlns="http://www.w3.org/2000/svg">
+            <rect x="18" y="28" width="2.4" height="11" fill="#33302a"/><rect x="32" y="28" width="2.4" height="11" fill="#33302a"/>
+            <ellipse cx="28" cy="22" rx="16" ry="12" fill="#EFE9DA"/>
+            <circle cx="16" cy="16" r="6" fill="#EFE9DA"/><circle cx="27" cy="12" r="7" fill="#EFE9DA"/><circle cx="39" cy="16" r="6" fill="#EFE9DA"/>
+            <ellipse cx="12" cy="24" rx="4.5" ry="6.5" fill="#3a342b" transform="rotate(-32 12 24)"/>
+            <ellipse cx="15" cy="19" rx="2.4" ry="1.4" fill="#3a342b"/>
+          </svg>
+          <span id="sheepSay"></span>
+        </div>
+        <div class="review" id="review"></div>
+        <div class="end-actions">
+          <button class="btn btn-primary" id="btnAgain">Play again →</button>
+          <button class="btn btn-ghost" id="btnLevel">Change level</button>
+          <a class="btn btn-ghost" href="/games/index.html">All games</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<script>
+/* ═══════════ CONTENT — Grammar Sprint (gap-fill MCQ) ═══════════
+   {s: sentence with ___, a: correct, w: [wrong options]}         */
+const CONTENT = {
+  A2: [
+    { s: "The past simple of \u2018go\u2019 is ___.", a: "went", w: ["goed", "gone"] },
+    { s: "The past simple of \u2018see\u2019 is ___.", a: "saw", w: ["seed", "seen"] },
+    { s: "The past simple of \u2018have\u2019 is ___.", a: "had", w: ["haved", "has"] },
+    { s: "The past simple of \u2018make\u2019 is ___.", a: "made", w: ["maked", "maden"] },
+    { s: "The past simple of \u2018take\u2019 is ___.", a: "took", w: ["taked", "taken"] },
+    { s: "The past simple of \u2018come\u2019 is ___.", a: "came", w: ["comed", "camed"] },
+    { s: "The past simple of \u2018eat\u2019 is ___.", a: "ate", w: ["eated", "eaten"] },
+    { s: "The past simple of \u2018drink\u2019 is ___.", a: "drank", w: ["drinked", "drunk"] },
+    { s: "The past simple of \u2018write\u2019 is ___.", a: "wrote", w: ["writed", "written"] },
+    { s: "The past simple of \u2018buy\u2019 is ___.", a: "bought", w: ["buyed", "brought"] },
+    { s: "The past simple of \u2018get\u2019 is ___.", a: "got", w: ["getted", "gat"] },
+    { s: "The past simple of \u2018do\u2019 is ___.", a: "did", w: ["doed", "done"] },
+    { s: "The past simple of \u2018say\u2019 is ___.", a: "said", w: ["sayed", "sais"] },
+    { s: "The past simple of \u2018give\u2019 is ___.", a: "gave", w: ["gived", "given"] }
+  ],
+  B1: [
+    { s: "The past participle of \u2018break\u2019 is ___.", a: "broken", w: ["broke", "breaked"] },
+    { s: "The past participle of \u2018choose\u2019 is ___.", a: "chosen", w: ["chose", "choosed"] },
+    { s: "The past participle of \u2018drive\u2019 is ___.", a: "driven", w: ["drove", "drived"] },
+    { s: "The past participle of \u2018fall\u2019 is ___.", a: "fallen", w: ["fell", "falled"] },
+    { s: "The past participle of \u2018forget\u2019 is ___.", a: "forgotten", w: ["forgot", "forgetted"] },
+    { s: "The past participle of \u2018speak\u2019 is ___.", a: "spoken", w: ["spoke", "speaked"] },
+    { s: "The past participle of \u2018steal\u2019 is ___.", a: "stolen", w: ["stole", "stealed"] },
+    { s: "The past participle of \u2018swim\u2019 is ___.", a: "swum", w: ["swam", "swimmed"] },
+    { s: "The past participle of \u2018throw\u2019 is ___.", a: "thrown", w: ["threw", "throwed"] },
+    { s: "The past participle of \u2018wear\u2019 is ___.", a: "worn", w: ["wore", "weared"] },
+    { s: "The past participle of \u2018wake\u2019 is ___.", a: "woken", w: ["woke", "waked"] },
+    { s: "The past participle of \u2018fly\u2019 is ___.", a: "flown", w: ["flew", "flied"] },
+    { s: "The past participle of \u2018draw\u2019 is ___.", a: "drawn", w: ["drew", "drawed"] },
+    { s: "The past participle of \u2018ride\u2019 is ___.", a: "ridden", w: ["rode", "rided"] }
+  ],
+  B2: [
+    { s: "The past simple of \u2018lie\u2019 (lie down) is ___.", a: "lay", w: ["lied", "lain"] },
+    { s: "The past simple of \u2018lay\u2019 (lay the table) is ___.", a: "laid", w: ["layed", "lain"] },
+    { s: "The past simple of \u2018rise\u2019 is ___.", a: "rose", w: ["raised", "risen"] },
+    { s: "The past simple of \u2018raise\u2019 is ___.", a: "raised", w: ["rose", "risen"] },
+    { s: "The past participle of \u2018bear\u2019 (endure) is ___.", a: "borne", w: ["born", "beared"] },
+    { s: "The past simple of \u2018seek\u2019 is ___.", a: "sought", w: ["seeked", "saught"] },
+    { s: "The past participle of \u2018deal\u2019 is ___.", a: "dealt", w: ["dealed", "delt"] },
+    { s: "The past simple of \u2018flee\u2019 is ___.", a: "fled", w: ["fleed", "flown"] },
+    { s: "The past simple of \u2018strike\u2019 is ___.", a: "struck", w: ["striked", "stroke"] },
+    { s: "The past participle of \u2018sew\u2019 is ___.", a: "sewn", w: ["sowed", "sawn"] },
+    { s: "The past participle of \u2018swear\u2019 is ___.", a: "sworn", w: ["sweared", "swore"] },
+    { s: "The past participle of \u2018tear\u2019 is ___.", a: "torn", w: ["teared", "tore"] },
+    { s: "The past simple of \u2018cost\u2019 is ___.", a: "cost", w: ["costed", "costen"] },
+    { s: "The past simple of \u2018burst\u2019 is ___.", a: "burst", w: ["bursted", "bursten"] }
+  ],
+  C1: [
+    { s: "The past participle of \u2018arise\u2019 is ___.", a: "arisen", w: ["arose", "arised"] },
+    { s: "The past participle of \u2018forsake\u2019 is ___.", a: "forsaken", w: ["forsook", "forsaked"] },
+    { s: "The past simple of \u2018wring\u2019 is ___.", a: "wrung", w: ["wringed", "wrang"] },
+    { s: "The past simple of \u2018weep\u2019 is ___.", a: "wept", w: ["weeped", "wope"] },
+    { s: "The past simple of \u2018fling\u2019 is ___.", a: "flung", w: ["flinged", "flang"] },
+    { s: "The past participle of \u2018cling\u2019 is ___.", a: "clung", w: ["clinged", "clang"] },
+    { s: "The past simple of \u2018sting\u2019 is ___.", a: "stung", w: ["stinged", "stang"] },
+    { s: "The past participle of \u2018stride\u2019 is ___.", a: "stridden", w: ["strode", "strided"] },
+    { s: "The past participle of \u2018smite\u2019 is ___.", a: "smitten", w: ["smote", "smited"] },
+    { s: "The past simple of \u2018grind\u2019 is ___.", a: "ground", w: ["grinded", "grount"] },
+    { s: "The past participle of \u2018withdraw\u2019 is ___.", a: "withdrawn", w: ["withdrew", "withdrawed"] },
+    { s: "The past participle of \u2018overthrow\u2019 is ___.", a: "overthrown", w: ["overthrew", "overthrowed"] },
+    { s: "The past participle of \u2018forgo\u2019 is ___.", a: "forgone", w: ["forwent", "forgoed"] },
+    { s: "The past simple of \u2018bid\u2019 (bid farewell) is ___.", a: "bade", w: ["bidded", "bod"] }
+  ]
+};
+
+/* ═══════════ ENGINE — Somerset drill (canonical) ═══════════ */
+const GAME = {
+  key: 'vd',
+  roundSize: 10,
+  timed: true,
+  seconds: 60,
+  pointsPerHit: 10
+};
+
+const LEVELS = ['A2', 'B1', 'B2', 'C1'];
+const $ = id => document.getElementById(id);
+const shuffle = arr => { const a = arr.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+
+let player = null;
+try { player = JSON.parse(localStorage.getItem('slc-player')); } catch (e) {}
+let level = (player && player.level) || null;
+
+let round = [], idx = 0, score = 0, streak = 0, bestStreak = 0, answers = [];
+let timeLeft = GAME.seconds, timer = null;
+
+function bestKey() { return 'slc-best-' + GAME.key + '-' + level; }
+function getBest() { return parseInt(localStorage.getItem(bestKey()) || '0', 10); }
+
+/* ── Start screen ── */
+function renderStart() {
+  $('scrStart').classList.remove('hide'); $('scrPlay').classList.add('hide'); $('scrEnd').classList.add('hide');
+  const name = player && player.name;
+  $('pGreet').innerHTML = name ? 'Ready, <em>' + name + '</em>?' : 'Ready to sprint?';
+  $('nameRow').classList.toggle('hide', !!name);
+  $('lvlRow').innerHTML = LEVELS.map(l => '<button class="lvl-chip' + (l === level ? ' on' : '') + '" data-l="' + l + '">' + l + '</button>').join('');
+  $('lvlRow').querySelectorAll('.lvl-chip').forEach(b => b.addEventListener('click', () => {
+    level = b.dataset.l;
+    $('lvlRow').querySelectorAll('.lvl-chip').forEach(x => x.classList.toggle('on', x === b));
+    updateStartMeta();
+  }));
+  updateStartMeta();
+}
+function updateStartMeta() {
+  $('btnStart').disabled = !level;
+  $('pBest').textContent = level ? (getBest() ? 'Personal best at ' + level + ': ' + getBest() + ' pts' : 'No score at ' + level + ' yet — set one!') : 'Choose your level';
+}
+
+/* ── Round ── */
+function startRound() {
+  const nameVal = $('pName') && $('pName').value.trim();
+  if (nameVal) { player = Object.assign(player || {}, { name: nameVal, level: level }); localStorage.setItem('slc-player', JSON.stringify(player)); }
+  else if (player) { player.level = level; localStorage.setItem('slc-player', JSON.stringify(player)); }
+
+  round = shuffle(CONTENT[level]).slice(0, GAME.roundSize);
+  idx = 0; score = 0; streak = 0; bestStreak = 0; answers = [];
+  $('scrStart').classList.add('hide'); $('scrEnd').classList.add('hide'); $('scrPlay').classList.remove('hide');
+  if (GAME.timed) {
+    timeLeft = GAME.seconds;
+    $('tbar').classList.remove('low');
+    clearInterval(timer);
+    timer = setInterval(() => {
+      timeLeft--;
+      $('tfill').style.width = (timeLeft / GAME.seconds * 100) + '%';
+      if (timeLeft <= 15) $('tbar').classList.add('low');
+      if (timeLeft <= 0) { clearInterval(timer); endRound(true); }
+    }, 1000);
+  } else { $('tbar').style.display = 'none'; }
+  showQ();
+}
+
+function showQ() {
+  const q = round[idx];
+  $('hudQ').textContent = (idx + 1) + ' / ' + round.length;
+  $('hudScore').textContent = score + ' pts';
+  $('hudStreak').textContent = streak >= 2 ? '🔥 streak ×' + streak : '';
+  $('qText').innerHTML = q.s.replace('___', '<span class="gap">&nbsp;</span>');
+  const opts = shuffle([q.a].concat(q.w));
+  $('opts').innerHTML = opts.map(o => '<button class="opt">' + o + '</button>').join('');
+  $('opts').querySelectorAll('.opt').forEach(btn => btn.addEventListener('click', () => pick(btn, q)));
+}
+
+function pick(btn, q) {
+  $('opts').querySelectorAll('.opt').forEach(b => b.disabled = true);
+  const right = btn.textContent === q.a;
+  answers.push({ q: q.s, a: q.a, chosen: btn.textContent, right: right });
+  if (right) {
+    streak++; bestStreak = Math.max(bestStreak, streak);
+    score += GAME.pointsPerHit + Math.max(0, (streak - 1) * 2);
+    btn.classList.add('right');
+    $('qText').innerHTML = q.s.replace('___', '<span class="gap">' + q.a + '</span>');
+  } else {
+    streak = 0;
+    btn.classList.add('wrong');
+    $('opts').querySelectorAll('.opt').forEach(b => { if (b.textContent === q.a) b.classList.add('right'); });
+  }
+  setTimeout(() => {
+    idx++;
+    if (idx >= round.length) endRound(false); else showQ();
+  }, right ? 650 : 1400);
+}
+
+function endRound(timeUp) {
+  clearInterval(timer);
+  if (GAME.timed && !timeUp) score += timeLeft;   /* time bonus */
+  const hits = answers.filter(a => a.right).length;
+  const best = getBest();
+  const isBest = score > best;
+  if (isBest) localStorage.setItem(bestKey(), String(score));
+
+  $('scrPlay').classList.add('hide'); $('scrEnd').classList.remove('hide');
+  $('endScore').textContent = score + ' pts';
+  $('endSub').textContent = hits + ' of ' + answers.length + ' correct at ' + level +
+    (GAME.timed && !timeUp ? ' · +' + timeLeft + ' time bonus' : timeUp ? ' · time ran out!' : '') +
+    (bestStreak >= 3 ? ' · best streak ×' + bestStreak : '');
+  $('newBest').classList.toggle('hide', !isBest);
+
+  const ratio = answers.length ? hits / answers.length : 0;
+  const name = (player && player.name) ? player.name : 'friend';
+  $('sheepCheer').classList.remove('hide');
+  $('sheepSay').textContent = ratio >= 0.9 ? '"Baa-rilliant, ' + name + '!"' :
+    ratio >= 0.6 ? '"Not baa-d at all. Once more?"' : '"Ewe can do better — again!"';
+
+  $('review').innerHTML = answers.map(a =>
+    '<div class="review-item"><div class="rq">' + a.q.replace('___', '⟨…⟩') + '</div>' +
+    (a.right ? '<span class="ra ok">' + a.a + ' ✓</span>'
+             : '<span class="ra no">' + a.chosen + '</span><span class="ra ok">' + a.a + '</span>') +
+    '</div>').join('');
+}
+
+$('btnStart').addEventListener('click', startRound);
+$('btnAgain').addEventListener('click', startRound);
+$('btnLevel').addEventListener('click', renderStart);
+renderStart();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Miriam · 30 Days with Aoife</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap');
+  :root{
+    --green:#6BAE2E; --green-deep:#3f6d18; --green-ink:#2b4d10;
+    --paper:#f6f4ee; --card:#fff; --ink:#23261f; --muted:#7c7c72; --hair:#e7e3d8;
+    --gold:#9a6b12; --goldsoft:#f6efdf; --terra:#9e4430; --terrasoft:#f6eae4; --greensoft:#eef4ec;
+    --shadow:0 1px 2px rgba(40,40,30,.04),0 12px 34px -14px rgba(40,45,30,.22);
+    --shadow-sm:0 1px 2px rgba(40,40,30,.05),0 6px 16px -12px rgba(40,45,30,.28);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Inter',-apple-system,Arial,sans-serif;color:var(--ink);background:var(--paper);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:820px;margin:0 auto;min-height:100vh;padding:22px 24px 60px;}
+  .serif,h1,h2{font-family:'Fraunces',Georgia,serif;}
+  .logo{display:flex;align-items:flex-end;gap:11px;border-bottom:1px solid var(--hair);padding-bottom:14px;}
+  .logo .word{font-family:'Fraunces',serif;font-weight:600;font-size:26px;letter-spacing:-.5px;line-height:.95;}
+  .logo .lc{font-weight:600;font-size:9px;color:var(--muted);letter-spacing:3.5px;text-transform:uppercase;line-height:1.25;padding-bottom:4px;}
+  .logo .rt{margin-left:auto;text-align:right;font-size:12px;color:var(--muted);}.logo .rt b{color:var(--ink);}
+
+  .hero{background:linear-gradient(120deg,#22400f,#33590f 46%,#4b7c1c);color:#fff;border-radius:22px;padding:32px 32px 28px;margin:20px 0;box-shadow:var(--shadow);}
+  .hero .k{font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.72);}
+  .hero h1{margin:10px 0 0;font-weight:600;font-size:32px;line-height:1.1;letter-spacing:-.5px;}
+  .hero p{margin:12px 0 0;font-size:15px;max-width:620px;color:rgba(255,255,255,.9);}
+
+  .card2{background:var(--card);border:1px solid var(--hair);border-radius:20px;padding:22px 24px;margin:16px 0;box-shadow:var(--shadow-sm);}
+  label.fl{display:block;font-weight:600;font-size:11px;letter-spacing:1.4px;text-transform:uppercase;color:var(--green-deep);margin:12px 0 5px;}
+  input[type=text]{width:100%;border:1px solid var(--hair);border-radius:11px;padding:12px 14px;font-size:16px;font-family:inherit;background:#fdfcf9;}
+  input[type=text]:focus{outline:none;border-color:#c9d9b6;background:#fff;}
+  .btn{font-family:'Inter';border:1px solid var(--green-deep);background:var(--green-deep);color:#fff;border-radius:12px;padding:12px 20px;font-size:15px;font-weight:600;cursor:pointer;transition:all .16s;box-shadow:0 6px 16px -10px rgba(63,109,24,.7);}
+  .btn:hover{background:#365f14;} .btn:disabled{opacity:.45;cursor:not-allowed;}
+  .btn.ghost{background:var(--card);color:#55554d;border-color:var(--hair);box-shadow:none;} .btn.ghost:hover{background:var(--card);border-color:#c9d9b6;color:var(--green-ink);}
+  .btn.sm{padding:8px 15px;font-size:13px;border-radius:11px;} .btn.big{width:100%;padding:16px;font-size:16px;margin-top:16px;}
+  .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+  .err{color:var(--terra);font-weight:600;font-size:14px;margin-top:10px;}
+  .muted{color:var(--muted);font-size:13.5px;}
+
+  /* dashboard + map */
+  .dash{background:var(--card);border:1px solid var(--hair);border-radius:20px;padding:22px 24px;margin:16px 0;box-shadow:var(--shadow);}
+  .dash .big{display:flex;align-items:baseline;gap:12px;}
+  .dash .big .n{font-family:'Fraunces';font-size:52px;font-weight:600;color:var(--green-deep);line-height:1;}
+  .dash .big .of{font-size:16px;color:var(--muted);}
+  .barwrap{background:#ece9df;border-radius:20px;height:12px;margin:14px 0 8px;overflow:hidden;}
+  .bar{height:100%;background:linear-gradient(90deg,#6f9e2f,var(--green-deep));width:0;border-radius:20px;transition:width .6s;}
+  .proj{font-size:14.5px;color:var(--green-ink);font-weight:600;} .soft{font-size:13.5px;color:var(--muted);font-style:italic;margin-top:7px;}
+  .maptitle{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin:26px 0 10px;}
+  .imap{display:grid;grid-template-columns:repeat(6,1fr);gap:9px;}
+  @media(max-width:620px){.imap{grid-template-columns:repeat(5,1fr);}}
+  .tile{aspect-ratio:1;border:1px solid var(--hair);border-radius:14px;background:#fbfaf6;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:4px;position:relative;box-shadow:0 1px 1px rgba(40,40,30,.03);}
+  .tile .em{font-size:21px;} .tile .pl{font-size:8.5px;font-weight:600;color:var(--green-ink);margin-top:3px;line-height:1.05;}
+  .tile .dn{position:absolute;top:3px;left:6px;font-size:9px;font-weight:700;color:#c7c0af;font-family:'Fraunces';}
+  .tile.locked{background:#f3f1ea;} .tile.locked .em{filter:grayscale(1);opacity:.3;} .tile.locked .pl{visibility:hidden;}
+  .tile.done{background:var(--greensoft);border-color:#bcd3a6;}
+  .tile.today{border-color:var(--green-deep);border-width:2px;box-shadow:0 0 0 3px rgba(63,109,24,.15);}
+
+  /* day view */
+  #dayView{display:none;} #home{display:none;} #signin{display:none;}
+  .backlink{font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--green-deep);cursor:pointer;display:inline-block;margin:8px 0 12px;}
+  .daybar{background:var(--card);border:1px solid var(--hair);border-radius:18px;padding:20px 24px;margin-bottom:14px;box-shadow:var(--shadow-sm);}
+  .daybar .wk{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--green-deep);}
+  .daybar h2{font-weight:600;font-size:27px;margin-top:5px;letter-spacing:-.5px;}
+  .daybar .fc{font-size:13px;color:var(--muted);margin-top:5px;}
+  .sec{background:var(--card);border:1px solid var(--hair);border-radius:20px;margin:14px 0;overflow:hidden;box-shadow:var(--shadow-sm);}
+  .sh{display:flex;align-items:center;gap:11px;border-bottom:1px solid var(--hair);padding:15px 22px;}
+  .sh .ic{font-size:19px;} .sh .tt{font-family:'Fraunces';font-size:17px;font-weight:600;} .sh .mn{margin-left:auto;font-size:10.5px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);}
+  .sb{padding:18px 22px 22px;}
+  .msg{font-family:'Fraunces',Georgia,serif;background:#fbfaf6;border:1px solid var(--hair);border-radius:14px;padding:18px 20px;font-size:17px;line-height:1.68;color:#33332c;}
+  .msg .sig{display:block;margin-top:12px;font-style:italic;color:var(--green-deep);font-weight:500;}
+  .nugget{border-left:3px solid var(--green);padding:5px 0 5px 15px;margin-top:16px;}
+  .nugget .t{font-size:10.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--green-deep);} .nugget .x{font-size:14.5px;color:#4a4a42;}
+  .qlist{margin:8px 0 0;} .qitem{font-family:'Fraunces';font-size:17px;font-weight:500;padding:8px 0;border-bottom:1px dashed var(--hair);} .qitem:last-child{border:none;}
+  .rec{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:6px 0;}
+  .recdot{width:11px;height:11px;border-radius:50%;background:var(--terra);display:none;} .recdot.on{display:inline-block;animation:blink 1s infinite;}
+  @keyframes blink{50%{opacity:.25;}}
+  audio{height:34px;} .recnote{font-size:12.5px;color:var(--muted);font-style:italic;}
+  textarea{width:100%;border:1px solid var(--hair);border-radius:12px;padding:12px 14px;font-size:15.5px;font-family:inherit;background:#fdfcf9;min-height:90px;resize:vertical;}
+  textarea:focus{outline:none;border-color:#c9d9b6;background:#fff;}
+  .errcard{border:1px solid var(--hair);border-radius:12px;padding:12px 15px;margin:9px 0;background:#fdfcf9;}
+  .errcard .o{color:var(--terra);text-decoration:line-through;} .errcard .f{color:var(--green-ink);font-weight:600;} .errcard .w{font-size:13.5px;color:var(--muted);margin-top:4px;}
+  .drill{background:var(--greensoft);border-radius:12px;padding:13px 15px;margin:10px 0;}
+  .drill .p{font-weight:600;font-size:14px;margin-bottom:8px;}
+  .drill .item{font-size:15px;margin:6px 0;} .drill .rev{color:var(--green-deep);font-weight:600;cursor:pointer;}
+  .unlock{border:1px solid #e6d5a8;border-radius:16px;background:var(--goldsoft);padding:18px;margin:16px 0;text-align:center;display:none;box-shadow:var(--shadow-sm);}
+  .unlock.on{display:block;} .unlock .em{font-size:38px;} .unlock .pl{font-family:'Fraunces';font-size:19px;font-weight:600;color:var(--gold);margin:5px 0 3px;} .unlock .fx{font-size:14px;color:#6b5a2c;}
+  .done-banner{font-family:'Fraunces';background:linear-gradient(120deg,#33590f,#4b7c1c);color:#fff;border-radius:16px;padding:18px;text-align:center;font-size:18px;font-weight:500;display:none;margin-top:16px;box-shadow:var(--shadow);}
+  .done-banner.on{display:block;}
+  .step{display:none;} .step.on{display:block;}
+  .foot{text-align:center;color:var(--muted);font-size:11px;letter-spacing:.3px;margin-top:32px;border-top:1px solid var(--hair);padding-top:16px;}
+  .spin{display:inline-block;width:15px;height:15px;border:2px solid #cfd6c6;border-top-color:var(--green-deep);border-radius:50%;animation:sp .7s linear infinite;vertical-align:-2px;} @keyframes sp{to{transform:rotate(360deg);}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span>
+    <span class="rt"><b>Speak Up! · Ireland</b><br><span id="whoami">Miriam</span></span></div>
+
+  <!-- ============ SIGN IN ============ -->
+  <div id="signin">
+    <div class="hero">
+      <div class="k">Ten minutes a day · every day</div>
+      <h1>30 Days with Aoife 🍀</h1>
+      <p>Your friend in Dublin, Aoife (say it “EE-fa”), writes to you every day. You answer out loud. Sign in with the name and code Hugo gave you.</p>
+    </div>
+    <div class="card2">
+      <label class="fl">Your name</label>
+      <input type="text" id="inName" placeholder="Miriam" autocomplete="off">
+      <label class="fl">Your code</label>
+      <input type="text" id="inCode" placeholder="MIRIAM-EIRE" autocomplete="off">
+      <button class="btn big" id="signinBtn" onclick="signIn()">Start →</button>
+      <div class="err" id="signinErr"></div>
+    </div>
+  </div>
+
+  <!-- ============ HOME ============ -->
+  <div id="home">
+    <div class="dash">
+      <div class="big"><span class="n" id="doneN">0</span><span class="of">of 30 days done</span></div>
+      <div class="barwrap"><div class="bar" id="bar"></div></div>
+      <div class="proj" id="proj"></div>
+      <div class="soft" id="soft"></div>
+    </div>
+    <div class="maptitle">Your map of Ireland — a place a day</div>
+    <div class="imap" id="imap"></div>
+    <button class="btn big" id="startBtn" onclick="openDay()">Start today →</button>
+  </div>
+
+  <!-- ============ DAY VIEW ============ -->
+  <div id="dayView">
+    <span class="backlink" onclick="goHome()">← Back to the map</span>
+    <div class="daybar">
+      <div class="wk" id="dWk"></div>
+      <h2 id="dTitle"></h2>
+      <div class="fc" id="dFocus"></div>
+    </div>
+
+    <div class="sec"><div class="sh"><span class="ic">💌</span><span class="tt">A message from Aoife</span></div>
+      <div class="sb"><div class="msg" id="dMsg"></div><div class="nugget" id="dNugget"></div></div></div>
+
+    <div class="sec"><div class="sh"><span class="ic">🎙️</span><span class="tt">Answer her — out loud</span></div>
+      <div class="sb">
+        <div class="qlist" id="dQs"></div>
+
+        <!-- step 1: record -->
+        <div class="step on" id="stRecord">
+          <p class="muted" style="margin:12px 0 8px">Say your answer out loud, then record it. Speak for about a minute.</p>
+          <div class="rec">
+            <button class="btn sm" id="recBtn" onclick="toggleRec()">● Record</button>
+            <span class="recdot" id="recDot"></span>
+            <audio id="player" controls style="display:none"></audio>
+            <button class="btn sm ghost" id="sendBtn" style="display:none" onclick="sendAudio()">Use this recording →</button>
+          </div>
+          <div class="recnote" id="recNote"></div>
+        </div>
+
+        <!-- step 2: confirm transcript -->
+        <div class="step" id="stConfirm">
+          <label class="fl">Is this what you said? Fix anything the computer heard wrong.</label>
+          <textarea id="transcriptBox"></textarea>
+          <div class="row" style="margin-top:10px">
+            <button class="btn" id="confirmBtn" onclick="analyse()">Yes, look at it →</button>
+            <button class="btn ghost sm" onclick="backToRecord()">↻ Record again</button>
+          </div>
+          <div class="err" id="confirmErr"></div>
+        </div>
+
+        <!-- step 3: feedback + rewrite -->
+        <div class="step" id="stFeedback">
+          <div id="fbEncourage" class="msg" style="font-size:16px;margin-bottom:12px"></div>
+          <div id="fbErrors"></div>
+          <div id="fbDrill"></div>
+          <label class="fl" id="rewriteLbl">Now write it again — a little better</label>
+          <div class="muted" id="rewriteHint" style="margin-bottom:6px"></div>
+          <textarea id="rewriteBox"></textarea>
+          <button class="btn big" id="saveBtn" onclick="saveDay()">✓ Send to Aoife &amp; finish today</button>
+          <div class="err" id="saveErr"></div>
+        </div>
+      </div></div>
+
+    <div class="unlock" id="dUnlock"></div>
+    <div class="done-banner" id="doneBanner"></div>
+  </div>
+
+  <div class="foot">Somerset Language Centre · València · Speak Up! Intensivo · Ireland · your recordings are never stored, only what you write</div>
+</div>
+
+<script>
+const API = ''; // same origin (served from the app). If ever hosted elsewhere, set the full base URL.
+const LS = 'aoife_miriam';
+let creds = null;      // { name, code }
+let dayData = null;    // current /next payload
+let currentQ = '';     // the question we're answering (first question of the day)
+let mediaRec=null, chunks=[], stream=null, lastBlob=null, analysis=null;
+
+// 30-place map (matches the server spine order)
+const MAP=[
+ ["🏙️","Dublin"],["🌉","The Liffey"],["📚","Trinity"],["🍳","Irish breakfast"],["🦌","Phoenix Park"],["🌧️","A soft day"],["🎻","Temple Bar"],
+ ["🍺","Guinness"],["🌊","Sandymount"],["🐟","Molly Malone"],["⛰️","Howth"],["🏑","Hurling"],["☘️","St Patrick's"],["🚪","Georgian doors"],
+ ["🎸","Grafton St"],["🚆","The DART"],["🎶","Galway"],["🧗","Cliffs of Moher"],["🗣️","Gaeilge"],["🌋","Giant's Causeway"],["🧶","Aran Islands"],
+ ["🧀","Cork market"],["🍵","Irish tea"],["✍️","Writers"],["🦢","Children of Lir"],["🎃","Samhain"],["🥁","The bodhrán"],["❤️","Grá"],["🌅","Newgrange"],["🏆","You did it!"]
+];
+
+/* ---------- sign in ---------- */
+(function boot(){
+  try{ const s=JSON.parse(localStorage.getItem(LS)); if(s&&s.name&&s.code){ creds=s; return start(); } }catch(e){}
+  document.getElementById('signin').style.display='block';
+})();
+async function signIn(){
+  const name=document.getElementById('inName').value.trim();
+  const code=document.getElementById('inCode').value.trim();
+  const err=document.getElementById('signinErr'); err.textContent='';
+  if(!name||!code){ err.textContent='Please type your name and code.'; return; }
+  creds={name,code};
+  const btn=document.getElementById('signinBtn'); btn.disabled=true; btn.innerHTML='<span class="spin"></span> Checking…';
+  const ok=await loadNext();
+  btn.disabled=false; btn.textContent='Start →';
+  if(ok){ localStorage.setItem(LS,JSON.stringify(creds)); document.getElementById('signin').style.display='none'; start(); }
+  else { err.textContent='That name and code didn’t match. Check with Hugo.'; }
+}
+async function start(){ document.getElementById('signin').style.display='none'; await loadNext(); renderHome(); }
+
+/* ---------- API helpers ---------- */
+async function post(path, body, isForm){
+  const opts={ method:'POST' };
+  if(isForm){ opts.body=body; } else { opts.headers={'Content-Type':'application/json'}; opts.body=JSON.stringify(body); }
+  const r=await fetch(API+path, opts);
+  const data=await r.json().catch(()=>({error:'Network error'}));
+  if(!r.ok) throw new Error(data.error||'Something went wrong.');
+  return data;
+}
+async function loadNext(){
+  try{ dayData=await post('/api/aoife/next',{name:creds.name,code:creds.code}); document.getElementById('whoami').textContent=creds.name; return true; }
+  catch(e){ return false; }
+}
+
+/* ---------- home ---------- */
+function renderHome(){
+  document.getElementById('home').style.display='block';
+  document.getElementById('dayView').style.display='none';
+  const done=dayData.daysDone||0;
+  document.getElementById('doneN').textContent=done;
+  document.getElementById('bar').style.width=(done/30*100)+'%';
+  const proj=document.getElementById('proj'), soft=document.getElementById('soft');
+  if(dayData.finished){ proj.textContent='🏆 Thirty days done. You finished. Look how far you’ve come.'; soft.textContent=''; }
+  else if(done===0){ proj.textContent='Your first day is the hardest. After that, it’s just a habit.'; soft.textContent=''; }
+  else { const left=30-done; proj.textContent='Keep going — '+left+' '+(left===1?'day':'days')+' to a full month of English. 💪';
+    soft.textContent='Missed a day? It doesn’t matter at all — nothing resets. Every day you do counts forever.'; }
+  const map=document.getElementById('imap'); map.innerHTML='';
+  const cur=dayData.day||(done+1);
+  MAP.forEach((m,i)=>{ const dn=i+1; const isDone=dn<=done; const isToday=dn===cur&&!dayData.finished;
+    const t=document.createElement('div'); t.className='tile'+(isDone?' done':(dn<=cur?'':' locked'))+(isToday?' today':'');
+    if(dn>cur&&!isDone) t.classList.add('locked');
+    t.innerHTML='<span class="dn">'+dn+'</span><span class="em">'+m[0]+'</span><span class="pl">'+m[1]+'</span>';
+    map.appendChild(t); });
+  const sb=document.getElementById('startBtn');
+  if(dayData.finished){ sb.style.display='none'; }
+  else { sb.style.display='block'; sb.textContent = done===0 ? 'Start Day 1 →' : 'Continue — Day '+cur+' →'; }
+}
+
+/* ---------- day view ---------- */
+function openDay(){
+  if(dayData.finished) return;
+  document.getElementById('home').style.display='none';
+  document.getElementById('dayView').style.display='block';
+  document.getElementById('dWk').textContent='Week '+dayData.week+' · Day '+dayData.day+' of 30';
+  document.getElementById('dTitle').textContent=dayData.title;
+  document.getElementById('dFocus').textContent='Focus: '+dayData.grammar;
+  document.getElementById('dMsg').innerHTML=escapeHtml(dayData.message)+'<span class="sig">— Aoife 🍀</span>';
+  document.getElementById('dNugget').innerHTML='<div class="t">🇮🇪 '+escapeHtml(dayData.nugget.title)+'</div><div class="x">'+escapeHtml(dayData.nugget.text)+'</div>';
+  const qs=dayData.questions||[]; currentQ=qs[0]||'';
+  document.getElementById('dQs').innerHTML=qs.map((q,i)=>'<div class="qitem">'+(i+1)+'. '+escapeHtml(q)+'</div>').join('');
+  showStep('stRecord'); resetRecorder();
+  document.getElementById('dUnlock').className='unlock'; document.getElementById('doneBanner').className='done-banner';
+  window.scrollTo(0,0);
+}
+function goHome(){ stopStream(); renderHome(); window.scrollTo(0,0); }
+function showStep(id){ ['stRecord','stConfirm','stFeedback'].forEach(s=>document.getElementById(s).classList.toggle('on',s===id)); }
+
+/* ---------- recording ---------- */
+async function toggleRec(){
+  const btn=document.getElementById('recBtn'), dot=document.getElementById('recDot'), note=document.getElementById('recNote');
+  if(mediaRec&&mediaRec.state==='recording'){ mediaRec.stop(); return; }
+  try{
+    stream=await navigator.mediaDevices.getUserMedia({audio:true});
+    mediaRec=new MediaRecorder(stream); chunks=[];
+    mediaRec.ondataavailable=e=>chunks.push(e.data);
+    mediaRec.onstop=()=>{ lastBlob=new Blob(chunks,{type:'audio/webm'}); const url=URL.createObjectURL(lastBlob);
+      const p=document.getElementById('player'); p.src=url; p.style.display='inline-block';
+      btn.textContent='● Record again'; dot.classList.remove('on');
+      document.getElementById('sendBtn').style.display='inline-block'; };
+    mediaRec.start(); btn.textContent='■ Stop'; dot.classList.add('on'); note.textContent='Listening… speak your answer, then press Stop.';
+    document.getElementById('sendBtn').style.display='none';
+  }catch(e){ note.textContent='The microphone is blocked. Allow the mic, or open this from Student’s Corner (not as a file).'; }
+}
+function resetRecorder(){ lastBlob=null; const p=document.getElementById('player'); p.style.display='none'; p.src='';
+  document.getElementById('recBtn').textContent='● Record'; document.getElementById('recDot').classList.remove('on');
+  document.getElementById('recNote').textContent=''; document.getElementById('sendBtn').style.display='none'; }
+function backToRecord(){ showStep('stRecord'); resetRecorder(); }
+function stopStream(){ if(mediaRec&&mediaRec.state==='recording')mediaRec.stop(); if(stream){stream.getTracks().forEach(t=>t.stop());stream=null;} }
+
+async function sendAudio(){
+  if(!lastBlob) return;
+  const btn=document.getElementById('sendBtn'); btn.disabled=true; btn.innerHTML='<span class="spin"></span> Listening…';
+  try{
+    const fd=new FormData(); fd.append('name',creds.name); fd.append('code',creds.code); fd.append('file',lastBlob,'recording.webm');
+    const data=await post('/api/aoife/transcribe',fd,true);
+    document.getElementById('transcriptBox').value=data.transcript||'';
+    showStep('stConfirm');
+  }catch(e){ document.getElementById('recNote').textContent=e.message; }
+  finally{ btn.disabled=false; btn.textContent='Use this recording →'; }
+}
+
+/* ---------- analyse ---------- */
+async function analyse(){
+  const text=document.getElementById('transcriptBox').value.trim();
+  const err=document.getElementById('confirmErr'); err.textContent='';
+  if(text.split(/\s+/).length<3){ err.textContent='Say a little more first — a full sentence or two.'; return; }
+  const btn=document.getElementById('confirmBtn'); btn.disabled=true; btn.innerHTML='<span class="spin"></span> Reading…';
+  try{
+    analysis=await post('/api/aoife/analyse',{name:creds.name,code:creds.code,day:dayData.day,text,question:currentQ});
+    renderFeedback(text);
+    showStep('stFeedback');
+  }catch(e){ err.textContent=e.message; }
+  finally{ btn.disabled=false; btn.textContent='Yes, look at it →'; }
+}
+function renderFeedback(originalText){
+  document.getElementById('fbEncourage').textContent=analysis.encouragement||'Lovely work.';
+  const errs=analysis.errors||[];
+  document.getElementById('fbErrors').innerHTML = errs.length ? errs.map(e=>
+    '<div class="errcard"><span class="o">'+escapeHtml(e.original)+'</span> → <span class="f">'+escapeHtml(e.fix)+'</span><div class="w">'+escapeHtml(e.why)+'</div></div>'
+  ).join('') : '<div class="errcard" style="background:var(--greensoft)">Nothing to fix here — that was clear and correct. 🌟</div>';
+  const ex=analysis.microExercise;
+  if(ex&&ex.items&&ex.items.length){
+    document.getElementById('fbDrill').innerHTML='<div class="drill"><div class="p">'+escapeHtml(ex.prompt||'Try these:')+'</div>'+
+      ex.items.map((it,i)=>'<div class="item">'+(i+1)+'. '+escapeHtml(it.q)+' <span class="rev" onclick="this.outerHTML=\'→ <b>'+escapeAttr(it.a)+'</b>\'">show</span></div>').join('')+'</div>';
+  } else { document.getElementById('fbDrill').innerHTML=''; }
+  document.getElementById('rewriteHint').textContent=analysis.rewriteHint||'Write your answer again, a little fuller.';
+  document.getElementById('rewriteBox').value=analysis.cleaned||originalText;
+}
+
+/* ---------- save ---------- */
+async function saveDay(){
+  const rewrite=document.getElementById('rewriteBox').value.trim();
+  const err=document.getElementById('saveErr'); err.textContent='';
+  const btn=document.getElementById('saveBtn'); btn.disabled=true; btn.innerHTML='<span class="spin"></span> Sending…';
+  try{
+    const errorTypes=(analysis&&analysis.errors||[]).map(e=>e.type).filter(Boolean);
+    const res=await post('/api/aoife/save',{name:creds.name,code:creds.code,day:dayData.day,question:currentQ,
+      transcript:document.getElementById('transcriptBox').value.trim(),rewrite,errorTypes});
+    // celebrate + unlock
+    const u=dayData.unlock; const du=document.getElementById('dUnlock');
+    du.className='unlock on'; du.innerHTML='<div class="em">'+u.emoji+'</div><div class="pl">'+escapeHtml(u.place)+' — unlocked!</div><div class="fx">'+escapeHtml(u.fact)+'</div>';
+    const banner=document.getElementById('doneBanner'); banner.className='done-banner on';
+    banner.textContent = res.daysDone>=30 ? '🏆 That’s 30! You finished. Aoife is so proud.' : '🍀 Day '+dayData.day+' done — '+res.daysDone+' of 30. Come back tomorrow!';
+    document.getElementById('stFeedback').classList.remove('on');
+    await loadNext(); // refresh day/streak for next time
+    setTimeout(()=>{ goHome(); }, 2600);
+  }catch(e){ err.textContent=e.message; btn.disabled=false; btn.textContent='✓ Send to Aoife & finish today'; }
+}
+
+/* ---------- utils ---------- */
+function escapeHtml(s){ return String(s==null?'':s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
+function escapeAttr(s){ return escapeHtml(s).replace(/'/g,'&#39;'); }
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!--
+  Somerset Language Centre — wordmark SVG
+  ⚠️  DESIGN REFERENCE ONLY — do not embed this SVG inline in HTML worksheets.
+  ⚠️  The text elements depend on Montserrat loading at runtime. When the font is
+       unavailable (PDF export, offline, slow network) the fallback font renders
+       "Somerset" wider, pushing LANGUAGE CENTRE into it.
+
+  FOR HTML WORKSHEETS: use the data-URI <img> snippets in _assets/_logo-canonical.md
+  FOR DOCX/PPTX:       use somerset-logo-wordmark-colour.png / somerset-logo-wordmark-white.png
+-->
+<svg viewBox="0 0 330 56" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Somerset Language Centre">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&amp;family=Barlow:wght@600&amp;display=swap');
+    </style>
+  </defs>
+  <!-- Somerset wordmark -->
+  <text
+    x="0" y="44"
+    font-family="'Montserrat', 'Trebuchet MS', Arial, sans-serif"
+    font-weight="700"
+    font-size="50"
+    fill="#6BAE2E"
+    letter-spacing="-0.5"
+  >Somerset</text>
+  <!-- LANGUAGE CENTRE stack -->
+  <text
+    x="242" y="22"
+    font-family="'Barlow', 'Gill Sans', 'Helvetica Neue', Arial, sans-serif"
+    font-weight="600"
+    font-size="11.5"
+    fill="#1A1A1A"
+    letter-spacing="2.5"
+  >LANGUAGE</text>
+  <text
+    x="242" y="40"
+    font-family="'Barlow', 'Gill Sans', 'Helvetica Neue', Arial, sans-serif"
+    font-weight="600"
+    font-size="11.5"
+    fill="#1A1A1A"
+    letter-spacing="2.5"
+  >CENTRE</text>
+</svg>

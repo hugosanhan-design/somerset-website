@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vocab Match — Somerset Games</title>
+  <meta name="description" content="Match words to meanings — phrasal verbs, idioms and Somerset's word-hoard.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #F5F1E6; --paper-2: #EDE7D6; --ink: #17281B; --racing: #1E4227;
+      --green: #57B82C; --green-dk: #3D8B1F; --leaf: #A8D77E; --brass: #C9A24B;
+      --heather: #8C5E9C; --cheddar: #E3A33A; --cider: #B23A2C; --muted: #5C6657; --line: #D9D2BC;
+      --accent: var(--green);
+      --serif: 'Fraunces', Georgia, serif; --sans: 'Instrument Sans', system-ui, sans-serif; --brand: 'Poppins', system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--sans); background: var(--paper); color: var(--ink); line-height: 1.55; -webkit-font-smoothing: antialiased; min-height: 100dvh; display: flex; flex-direction: column; }
+    a { color: inherit; text-decoration: none; }
+    ::selection { background: var(--green); color: #fff; }
+    .wrap { width: min(820px, 100%); margin: 0 auto; padding: 0 1.4rem; }
+
+    .nav { padding: 1rem 0; background: rgba(245,241,230,0.92); box-shadow: 0 1px 0 var(--line); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .nav-logo { font-family: var(--brand); font-size: 1.1rem; font-weight: 700; }
+    .nav-logo b { color: var(--green); }
+    .nav-back { font-size: 0.88rem; font-weight: 600; color: var(--green-dk); }
+    .nav-back:hover { color: var(--racing); }
+
+    main { flex: 1; display: flex; align-items: center; padding: 2rem 0 3rem; }
+    .stage { width: 100%; }
+
+    .gtag { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
+    .gtag::before { content: ''; width: 34px; height: 1px; background: var(--accent); }
+    h1 { font-family: var(--serif); font-size: clamp(2.2rem, 6vw, 3.2rem); font-weight: 380; letter-spacing: -0.015em; line-height: 1.05; margin-bottom: 0.9rem; }
+    h1 em { font-style: italic; color: var(--green-dk); }
+    .lead { color: var(--muted); max-width: 48ch; margin-bottom: 1.8rem; text-wrap: pretty; }
+
+    .panel { background: #FBF9F2; border: 1px solid var(--line); border-radius: 20px; padding: 1.8rem; position: relative; overflow: hidden; }
+    .panel::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--accent); }
+
+    .player-line { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.3rem; }
+    .player-line strong { font-family: var(--serif); font-size: 1.15rem; font-weight: 500; }
+    .player-line strong em { font-style: italic; color: var(--green-dk); }
+    .player-line .best { font-size: 0.8rem; color: var(--muted); }
+    .lvl-row { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+    .lvl-chip { font-family: var(--sans); font-size: 0.85rem; font-weight: 600; background: transparent; color: var(--muted); border: 1.5px solid var(--line); border-radius: 50px; padding: 0.5rem 1rem; cursor: pointer; transition: all 0.15s; }
+    .lvl-chip:hover { border-color: var(--green-dk); color: var(--green-dk); }
+    .lvl-chip.on { background: var(--racing); border-color: var(--racing); color: #fff; }
+
+    .btn { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--sans); font-size: 0.95rem; font-weight: 600; padding: 0.85rem 1.8rem; border-radius: 50px; border: 1.5px solid transparent; cursor: pointer; transition: all 0.2s; }
+    .btn-primary { background: var(--green); color: #fff; box-shadow: 0 6px 18px rgba(87,184,44,0.28); }
+    .btn-primary:hover { background: var(--green-dk); transform: translateY(-2px); }
+    .btn-primary:disabled { opacity: 0.45; cursor: default; transform: none; box-shadow: none; }
+    .btn-ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+    .btn-ghost:hover { border-color: var(--green-dk); color: var(--green-dk); }
+
+    .hud { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1.2rem; font-size: 0.85rem; font-weight: 600; color: var(--muted); }
+    .hud .matched { color: var(--racing); }
+
+    .board { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+    .col { display: flex; flex-direction: column; gap: 0.7rem; }
+    .col-title { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.2rem; }
+    .tile {
+      font-family: var(--sans); font-size: 0.95rem; font-weight: 500; text-align: left;
+      background: #fff; border: 1.5px solid var(--line); border-radius: 14px;
+      padding: 0.85rem 1.05rem; cursor: pointer; transition: all 0.15s; line-height: 1.4;
+    }
+    .tile.word { font-family: var(--serif); font-size: 1.05rem; }
+    .tile:hover { border-color: var(--green-dk); transform: translateY(-1px); }
+    .tile.sel { border-color: var(--racing); background: #EFF3E9; box-shadow: 0 0 0 2px rgba(30,66,39,0.15); }
+    .tile.matched { background: #EAF6E0; border-color: var(--green); color: var(--green-dk); cursor: default; opacity: 0.85; }
+    .tile.bad { background: #F9E9E6; border-color: var(--cider); animation: shake 0.3s; }
+    @keyframes shake { 25% { transform: translateX(-4px); } 75% { transform: translateX(4px); } }
+
+    .end-score { font-family: var(--serif); font-size: clamp(3rem, 9vw, 4.6rem); font-weight: 400; line-height: 1; color: var(--racing); }
+    .end-sub { color: var(--muted); margin: 0.5rem 0 1.4rem; }
+    .newbest { display: inline-block; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #fff; background: var(--brass); padding: 0.4rem 1rem; border-radius: 50px; margin-bottom: 1.2rem; }
+    .review { margin: 1.4rem 0; border-top: 1px solid var(--line); }
+    .review-item { padding: 0.85rem 0; border-bottom: 1px solid var(--line); font-size: 0.92rem; display: flex; gap: 0.8rem; flex-wrap: wrap; }
+    .review-item .rw { font-family: var(--serif); font-weight: 600; }
+    .review-item .rm { color: var(--muted); }
+    .end-actions { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1.6rem; }
+    .sheep-cheer { display: flex; align-items: center; gap: 0.9rem; margin-top: 1.4rem; color: var(--muted); font-size: 0.9rem; font-style: italic; }
+    .sheep-cheer svg { width: 46px; flex-shrink: 0; }
+
+    .hide { display: none !important; }
+    @media (max-width: 560px) { .panel { padding: 1.4rem 1.2rem; } .tile { font-size: 0.88rem; padding: 0.75rem 0.9rem; } }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a href="/games/index.html" class="nav-logo"><b>Somerset</b> Games</a>
+    <a href="/games/index.html" class="nav-back">← All games</a>
+  </div>
+</nav>
+
+<main>
+  <div class="wrap stage">
+
+    <section id="scrStart">
+      <div class="gtag">Somerset Games · Vocabulary</div>
+      <h1>Vocab <em>Match</em></h1>
+      <p class="lead">Six words, six meanings, all face up — but only you know which belongs to which. Fewer mistakes, better score. Somerset's word-hoard, one match at a time.</p>
+      <div class="panel">
+        <div class="player-line">
+          <strong id="pGreet"></strong>
+          <span class="best" id="pBest"></span>
+        </div>
+        <div class="lvl-row" id="lvlRow"></div>
+        <button class="btn btn-primary" id="btnStart">Start matching →</button>
+      </div>
+    </section>
+
+    <section id="scrPlay" class="hide">
+      <div class="hud">
+        <span class="matched" id="hudMatched">0 / 6 matched</span>
+        <span id="hudMoves">0 tries</span>
+        <span id="hudTime">0s</span>
+      </div>
+      <div class="panel">
+        <div class="board">
+          <div>
+            <div class="col-title">Words</div>
+            <div class="col" id="colWords"></div>
+          </div>
+          <div>
+            <div class="col-title">Meanings</div>
+            <div class="col" id="colMeans"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="scrEnd" class="hide">
+      <div class="gtag">All matched</div>
+      <div class="panel">
+        <span class="newbest hide" id="newBest">★ New personal best</span>
+        <div class="end-score" id="endScore">0</div>
+        <div class="end-sub" id="endSub"></div>
+        <div class="sheep-cheer hide" id="sheepCheer">
+          <svg viewBox="0 0 54 44" xmlns="http://www.w3.org/2000/svg">
+            <rect x="18" y="28" width="2.4" height="11" fill="#33302a"/><rect x="32" y="28" width="2.4" height="11" fill="#33302a"/>
+            <ellipse cx="28" cy="22" rx="16" ry="12" fill="#EFE9DA"/>
+            <circle cx="16" cy="16" r="6" fill="#EFE9DA"/><circle cx="27" cy="12" r="7" fill="#EFE9DA"/><circle cx="39" cy="16" r="6" fill="#EFE9DA"/>
+            <ellipse cx="12" cy="24" rx="4.5" ry="6.5" fill="#3a342b" transform="rotate(-32 12 24)"/>
+            <ellipse cx="15" cy="19" rx="2.4" ry="1.4" fill="#3a342b"/>
+          </svg>
+          <span id="sheepSay"></span>
+        </div>
+        <div class="review" id="review"></div>
+        <div class="end-actions">
+          <button class="btn btn-primary" id="btnAgain">Play again →</button>
+          <button class="btn btn-ghost" id="btnLevel">Change level</button>
+          <a class="btn btn-ghost" href="/games/index.html">All games</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<script>
+/* ═══════════ CONTENT — Vocab Match (word ↔ meaning pairs) ═══════════ */
+const CONTENT = {
+  A2: [
+    { w: "get up", m: "get out of bed" },
+    { w: "look for", m: "try to find" },
+    { w: "turn on", m: "start a machine" },
+    { w: "huge", m: "very big" },
+    { w: "tiny", m: "very small" },
+    { w: "cheap", m: "not expensive" },
+    { w: "begin", m: "start" },
+    { w: "furious", m: "very angry" }
+  ],
+  B1: [
+    { w: "give up", m: "stop trying" },
+    { w: "find out", m: "discover information" },
+    { w: "carry on", m: "continue" },
+    { w: "put off", m: "postpone" },
+    { w: "run out of", m: "have none left" },
+    { w: "look after", m: "take care of" },
+    { w: "set off", m: "begin a journey" },
+    { w: "turn down", m: "refuse an offer" }
+  ],
+  B2: [
+    { w: "come up with", m: "think of (an idea)" },
+    { w: "get away with", m: "escape punishment for" },
+    { w: "look up to", m: "admire and respect" },
+    { w: "put up with", m: "tolerate" },
+    { w: "break down", m: "stop working (machine)" },
+    { w: "bring up", m: "raise (a child)" },
+    { w: "take over", m: "gain control of" },
+    { w: "fall through", m: "fail to happen (a plan)" }
+  ],
+  C1: [
+    { w: "dwindle", m: "shrink gradually" },
+    { w: "meticulous", m: "extremely careful" },
+    { w: "ubiquitous", m: "found everywhere" },
+    { w: "candid", m: "honest and direct" },
+    { w: "feasible", m: "realistically possible" },
+    { w: "scrutinise", m: "examine very closely" },
+    { w: "reluctant", m: "unwilling" },
+    { w: "pivotal", m: "critically important" }
+  ]
+};
+
+const GAME = { key: 'vm', pairs: 6 };
+const LEVELS = ['A2', 'B1', 'B2', 'C1'];
+const $ = id => document.getElementById(id);
+const shuffle = arr => { const a = arr.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+
+let player = null;
+try { player = JSON.parse(localStorage.getItem('slc-player')); } catch (e) {}
+let level = (player && player.level) || null;
+
+let pairs = [], matched = 0, moves = 0, seconds = 0, ticker = null, selWord = null, selMean = null;
+
+function bestKey() { return 'slc-best-' + GAME.key + '-' + level; }
+function getBest() { return parseInt(localStorage.getItem(bestKey()) || '0', 10); }
+
+function renderStart() {
+  $('scrStart').classList.remove('hide'); $('scrPlay').classList.add('hide'); $('scrEnd').classList.add('hide');
+  clearInterval(ticker);
+  const name = player && player.name;
+  $('pGreet').innerHTML = name ? 'Ready, <em>' + name + '</em>?' : 'Ready to match?';
+  $('lvlRow').innerHTML = LEVELS.map(l => '<button class="lvl-chip' + (l === level ? ' on' : '') + '" data-l="' + l + '">' + l + '</button>').join('');
+  $('lvlRow').querySelectorAll('.lvl-chip').forEach(b => b.addEventListener('click', () => {
+    level = b.dataset.l;
+    $('lvlRow').querySelectorAll('.lvl-chip').forEach(x => x.classList.toggle('on', x === b));
+    updateStartMeta();
+  }));
+  updateStartMeta();
+}
+function updateStartMeta() {
+  $('btnStart').disabled = !level;
+  $('pBest').textContent = level ? (getBest() ? 'Personal best at ' + level + ': ' + getBest() + ' pts' : 'No score at ' + level + ' yet — set one!') : 'Choose your level';
+}
+
+function startRound() {
+  if (player) { player.level = level; localStorage.setItem('slc-player', JSON.stringify(player)); }
+  pairs = shuffle(CONTENT[level]).slice(0, GAME.pairs);
+  matched = 0; moves = 0; seconds = 0; selWord = null; selMean = null;
+  $('scrStart').classList.add('hide'); $('scrEnd').classList.add('hide'); $('scrPlay').classList.remove('hide');
+  clearInterval(ticker);
+  ticker = setInterval(() => { seconds++; $('hudTime').textContent = seconds + 's'; }, 1000);
+
+  $('colWords').innerHTML = shuffle(pairs).map((p, i) => '<button class="tile word" data-w="' + p.w.replace(/"/g, '&quot;') + '">' + p.w + '</button>').join('');
+  $('colMeans').innerHTML = shuffle(pairs).map(p => '<button class="tile mean" data-m="' + p.m.replace(/"/g, '&quot;') + '">' + p.m + '</button>').join('');
+  hud();
+
+  document.querySelectorAll('#colWords .tile').forEach(t => t.addEventListener('click', () => select(t, 'w')));
+  document.querySelectorAll('#colMeans .tile').forEach(t => t.addEventListener('click', () => select(t, 'm')));
+}
+
+function hud() {
+  $('hudMatched').textContent = matched + ' / ' + GAME.pairs + ' matched';
+  $('hudMoves').textContent = moves + (moves === 1 ? ' try' : ' tries');
+  $('hudTime').textContent = seconds + 's';
+}
+
+function select(tile, kind) {
+  if (tile.classList.contains('matched')) return;
+  if (kind === 'w') { if (selWord) selWord.classList.remove('sel'); selWord = (selWord === tile) ? null : tile; if (selWord) selWord.classList.add('sel'); }
+  else { if (selMean) selMean.classList.remove('sel'); selMean = (selMean === tile) ? null : tile; if (selMean) selMean.classList.add('sel'); }
+  if (selWord && selMean) attempt();
+}
+
+function attempt() {
+  moves++;
+  const w = selWord.dataset.w, m = selMean.dataset.m;
+  const pair = pairs.find(p => p.w === w);
+  const ok = pair && pair.m === m;
+  const a = selWord, b = selMean;
+  selWord = null; selMean = null;
+  if (ok) {
+    matched++;
+    a.classList.remove('sel'); b.classList.remove('sel');
+    a.classList.add('matched'); b.classList.add('matched');
+    hud();
+    if (matched >= GAME.pairs) setTimeout(endRound, 500);
+  } else {
+    a.classList.add('bad'); b.classList.add('bad');
+    setTimeout(() => { a.classList.remove('sel', 'bad'); b.classList.remove('sel', 'bad'); }, 420);
+    hud();
+  }
+}
+
+function endRound() {
+  clearInterval(ticker);
+  const extra = Math.max(0, moves - GAME.pairs);
+  const score = Math.max(10, 120 - extra * 8 - seconds);
+  const best = getBest();
+  const isBest = score > best;
+  if (isBest) localStorage.setItem(bestKey(), String(score));
+
+  $('scrPlay').classList.add('hide'); $('scrEnd').classList.remove('hide');
+  $('endScore').textContent = score + ' pts';
+  $('endSub').textContent = GAME.pairs + ' pairs in ' + seconds + 's · ' + moves + ' tries at ' + level;
+  $('newBest').classList.toggle('hide', !isBest);
+
+  const name = (player && player.name) ? player.name : 'friend';
+  $('sheepCheer').classList.remove('hide');
+  $('sheepSay').textContent = extra === 0 ? '"Flawless, ' + name + ' — not a single stray!"' :
+    extra <= 3 ? '"Not baa-d at all. Once more?"' : '"A few strays there — round them up again!"';
+
+  $('review').innerHTML = pairs.map(p =>
+    '<div class="review-item"><span class="rw">' + p.w + '</span><span class="rm">— ' + p.m + '</span></div>').join('');
+}
+
+$('btnStart').addEventListener('click', startRound);
+$('btnAgain').addEventListener('click', startRound);
+$('btnLevel').addEventListener('click', renderStart);
+renderStart();
+</script>
+
+</body>
+</html>

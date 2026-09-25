@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ibra — Word Formation: Rules &amp; Practice</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Helvetica Neue',Arial,sans-serif; color:#1A1A1A; background:#f2f4ef; font-size:16px; line-height:1.5; }
+.wrap { max-width:800px; margin:0 auto; background:#fff; min-height:100vh; }
+.header { display:flex; align-items:flex-end; justify-content:space-between; padding:20px 24px 16px; border-bottom:3px solid #6BAE2E; flex-wrap:wrap; gap:10px; }
+.logo { display:flex; align-items:flex-end; gap:10px; }
+.logo .word { font-family:Arial,Helvetica,sans-serif; font-weight:800; font-size:30pt; letter-spacing:-1.2px; line-height:.9; color:#6BAE2E; }
+.logo .lc { font-family:Arial,Helvetica,sans-serif; font-weight:700; font-size:8pt; letter-spacing:2.4px; line-height:1.18; padding-bottom:4px; color:#4d8120; }
+.header .meta { text-align:right; }
+.header .meta .t { font-size:11px; letter-spacing:1.4px; text-transform:uppercase; color:#888; }
+.header .meta .d { font-size:16px; font-weight:700; }
+.hero { background:#6BAE2E; color:#fff; padding:18px 24px; }
+.hero h1 { font-size:22px; margin-bottom:4px; }
+.hero p { font-size:13.5px; opacity:.96; }
+.progress { position:sticky; top:0; z-index:20; background:#1A1A1A; color:#fff; padding:9px 24px; display:flex; align-items:center; justify-content:space-between; font-size:14px; }
+.progress b { color:#8fd94a; font-size:17px; }
+.progress button { background:#3a3a3a; color:#fff; border:none; padding:5px 10px; border-radius:6px; font-size:11px; cursor:pointer; }
+h2.sec { font-size:14px; text-transform:uppercase; letter-spacing:1.2px; color:#6BAE2E; border-bottom:1px solid #e0e0e0; padding-bottom:6px; margin:24px 24px 14px; }
+.tips { padding:0 24px; }
+.card { border:1px solid #e6e6e6; border-radius:10px; padding:16px 18px; margin-bottom:14px; }
+.card h3 { font-size:16px; color:#1A1A1A; margin-bottom:8px; }
+.card h3 .num { display:inline-block; background:#6BAE2E; color:#fff; width:24px; height:24px; border-radius:50%; text-align:center; line-height:24px; font-size:13px; margin-right:8px; }
+.card p { font-size:14px; line-height:1.65; margin-bottom:8px; }
+.card p:last-child { margin-bottom:0; }
+.q4 { list-style:none; counter-reset:q; }
+.q4 li { position:relative; padding:8px 0 8px 40px; border-bottom:1px dashed #e4e4e4; font-size:14.5px; line-height:1.5; }
+.q4 li:last-child { border-bottom:none; }
+.q4 li:before { counter-increment:q; content:counter(q); position:absolute; left:0; top:8px; background:#EAF4DA; color:#33610f; font-weight:800; width:26px; height:26px; border-radius:50%; text-align:center; line-height:26px; font-size:13px; }
+.q4 b { color:#33610f; }
+table.wf { width:100%; border-collapse:collapse; font-size:13.5px; margin:4px 0; }
+table.wf th { background:#6BAE2E; color:#fff; text-align:left; padding:7px 10px; font-size:11px; text-transform:uppercase; letter-spacing:.5px; }
+table.wf td { padding:7px 10px; border-bottom:1px solid #eee; vertical-align:top; }
+table.wf tr:nth-child(even) td { background:#f5faf0; }
+table.wf .suf { font-weight:700; color:#2d6a0a; white-space:nowrap; }
+table.wf em { color:#666; }
+.signal { font-weight:700; color:#1A1A1A; }
+.traps { background:#fff8ec; border:1px solid #e8c98a; border-left:5px solid #E8A93C; border-radius:0 8px 8px 0; padding:14px 18px; }
+.traps h3 { color:#8a5a00; font-size:15px; margin-bottom:8px; }
+.traps ul { margin-left:18px; }
+.traps li { font-size:14px; line-height:1.7; }
+.traps b { color:#b06f00; }
+.warn { background:#EAF4DA; border-left:5px solid #6BAE2E; border-radius:0 8px 8px 0; padding:12px 16px; font-size:13.5px; line-height:1.6; margin-top:8px; }
+.warn b { color:#33610f; }
+/* exercises */
+.exgroup { padding:0 24px; }
+.exhead { background:#EAF4DA; border-radius:8px; padding:10px 14px; margin:10px 0 12px; }
+.exhead .t { font-size:15px; font-weight:800; color:#1A1A1A; }
+.exhead .s { font-size:12.5px; color:#555; margin-top:2px; }
+.item { border:1px solid #e6e6e6; border-radius:9px; padding:14px 16px; margin-bottom:12px; }
+.qtype { font-size:10px; text-transform:uppercase; letter-spacing:1px; color:#9aa; font-weight:700; margin-bottom:6px; }
+.item .prompt { font-size:15.5px; margin-bottom:10px; }
+.item .prompt .root { display:inline-block; background:#EAF4DA; color:#33610f; font-weight:700; font-size:12px; letter-spacing:.5px; padding:2px 8px; border-radius:5px; margin-left:6px; }
+.gap { color:#6BAE2E; font-weight:800; letter-spacing:1px; }
+.row { display:flex; gap:8px; flex-wrap:wrap; }
+.item input[type=text] { flex:1; min-width:170px; font-size:16px; padding:9px 12px; border:2px solid #cfd8c4; border-radius:7px; font-family:inherit; }
+.item input[type=text]:focus { outline:none; border-color:#6BAE2E; }
+.opts { display:flex; flex-wrap:wrap; gap:7px; }
+.opt { text-align:left; background:#f7f9f4; border:2px solid #e2e8d8; border-radius:7px; padding:9px 14px; font-size:15px; cursor:pointer; font-family:inherit; }
+.opt:hover { border-color:#a9cf85; }
+.opt.correct { background:#e7f6d9; border-color:#6BAE2E; color:#2d6a0a; font-weight:700; }
+.opt.wrong { background:#fbe6e4; border-color:#d88; color:#b00000; font-weight:700; }
+.chk { background:#6BAE2E; color:#fff; border:none; padding:9px 16px; border-radius:7px; font-size:14px; font-weight:700; cursor:pointer; }
+.chk:disabled { background:#bcbcbc; }
+.fb { margin-top:10px; font-size:14px; line-height:1.55; padding:10px 13px; border-radius:7px; display:none; }
+.fb.ok { background:#e7f6d9; border-left:4px solid #6BAE2E; }
+.fb.no { background:#fdeeec; border-left:4px solid #c0392b; }
+.fb .ans { font-weight:700; color:#2d6a0a; }
+.fb .rz { color:#444; display:block; margin-top:3px; }
+.done-banner { display:none; text-align:center; background:#6BAE2E; color:#fff; font-weight:700; padding:14px; font-size:16px; margin:12px 24px; border-radius:10px; }
+.foot { text-align:center; color:#999; font-size:12px; padding:18px 24px 30px; }
+.foot a { color:#6BAE2E; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="header">
+    <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+    <div class="meta"><div class="t">B2 First · Use of English Part 3</div><div class="d">Ibra — Word Formation</div></div>
+  </div>
+  <div class="hero">
+    <h1>Word Formation — rules of thumb + practice</h1>
+    <p>This is the part that took your Use of English from 28 to 20 in the mock. Read the rules first — they're short — then do the drills underneath. Every drill tells you which rule it's testing. Type or tap, press Check.</p>
+  </div>
+
+  <div class="progress"><span>Drill score: <b><span id="got">0</span></b> / <span id="tot">0</span></span><button onclick="resetAll()">Reset</button></div>
+
+  <h2 class="sec">Part 1 · The rules of thumb</h2>
+  <div class="tips">
+
+    <div class="card">
+      <h3><span class="num">1</span>Ask four questions at every gap</h3>
+      <p>Word formation is not guessing — it's a checklist. Before you write anything, run these four questions. They catch almost every mistake you made in the mock.</p>
+      <ol class="q4">
+        <li><b>What type of word does the gap need?</b> Noun, verb, adjective or adverb? Look at the words <em>around</em> the gap, not the gap itself.</li>
+        <li><b>Positive or negative meaning?</b> Does the sentence need a prefix like <em>un-, in-, dis-</em>? (e.g. "It was <em>im</em>possible.")</li>
+        <li><b>If it's a noun — singular or plural? Countable?</b> "a great deal of <em>similarity</em>" (uncountable) vs "many <em>similarities</em>".</li>
+        <li><b>Check the spelling.</b> A right word with a wrong spelling scores <b>zero</b>. This is where you lost marks.</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h3><span class="num">2</span>How to tell which type of word the gap needs</h3>
+      <p>Question 1 is the most important, so here are the signals. The words touching the gap tell you the answer.</p>
+      <table class="wf">
+        <thead><tr><th>You need a…</th><th>when the gap is…</th><th>example</th></tr></thead>
+        <tbody>
+          <tr><td class="signal">Noun</td><td>after <em>a / an / the</em>, after an adjective, or after a preposition (<em>of, in, for</em>)</td><td>a great <span class="suf">decision</span> · lots of <span class="suf">information</span></td></tr>
+          <tr><td class="signal">Adjective</td><td>before a noun, or after <em>be / seem / look / become</em></td><td>a <span class="suf">creative</span> team · it was <span class="suf">useful</span></td></tr>
+          <tr><td class="signal">Adverb</td><td>describing a verb or an adjective (usually ends <em>-ly</em>)</td><td>she sang <span class="suf">beautifully</span> · <span class="suf">completely</span> new</td></tr>
+          <tr><td class="signal">Verb</td><td>after <em>to</em>, after a modal (<em>can, will</em>), or after a subject</td><td>it will <span class="suf">strengthen</span> the team</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3><span class="num">3</span>The endings (suffixes) worth knowing by heart</h3>
+      <table class="wf">
+        <thead><tr><th>Make a…</th><th>Common endings</th><th>Examples</th></tr></thead>
+        <tbody>
+          <tr><td class="signal">Noun (thing/idea)</td><td class="suf">-tion/-sion · -ment · -ity · -ness · -ance/-ence</td><td>decision, development, ability, happiness, importance</td></tr>
+          <tr><td class="signal">Noun (person)</td><td class="suf">-er · -or · -ist · -ant</td><td>teacher, actor, econom<b>ist</b>, assistant</td></tr>
+          <tr><td class="signal">Adjective</td><td class="suf">-ive · -ous · -al/-ical · -able/-ible · -ent/-ant</td><td>creative, famous, natural, comfortable, different</td></tr>
+          <tr><td class="signal">Adjective (with/without)</td><td class="suf">-ful = with · -less = without</td><td>care<b>ful</b> (with care) · hope<b>less</b> (without hope)</td></tr>
+          <tr><td class="signal">Adverb</td><td class="suf">-ly</td><td>quick<b>ly</b>, easi<b>ly</b>, dramatical<b>ly</b></td></tr>
+          <tr><td class="signal">Verb</td><td class="suf">-ise/-ize · -ify · -en</td><td>modernise, simplify, strengthen</td></tr>
+        </tbody>
+      </table>
+      <div class="warn"><b>Spelling changes to watch:</b> <em>y → i</em> (happy → happiness, rely → reliable) · drop the silent <em>e</em> (create → creation) · <em>-ic → -ically</em> (dramatic → dramatically) · and the one that caught you: many adjectives end <em>-tial</em>, not "-cial" → <b>influential</b>, essential.</div>
+    </div>
+
+    <div class="card">
+      <h3><span class="num">4</span>Negative prefixes — a sound rule, not random</h3>
+      <p>Which negative prefix? It's mostly decided by the first letter of the word, to make it easier to say:</p>
+      <table class="wf">
+        <thead><tr><th>Prefix</th><th>Rule of thumb</th><th>Examples</th></tr></thead>
+        <tbody>
+          <tr><td class="suf">il-</td><td>before a word starting with <b>l</b></td><td>illegal, illogical</td></tr>
+          <tr><td class="suf">ir-</td><td>before a word starting with <b>r</b></td><td>irregular, irresponsible</td></tr>
+          <tr><td class="suf">im-</td><td>before <b>m, p</b> (and b)</td><td>impossible, impatient</td></tr>
+          <tr><td class="suf">in-</td><td>most other cases</td><td>incorrect, invisible</td></tr>
+          <tr><td class="suf">un- / dis- / mis-</td><td>very common; learn per word</td><td>unhappy, disagree, misunderstand</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="traps">
+      <h3>⚠ Your four from the mock — learn these cold</h3>
+      <ul>
+        <li><b>INFLUENCE → influential</b> — adjective, ends <b>-tial</b> (not "influencial").</li>
+        <li><b>CREATE → creative</b> — before a noun you need the <b>adjective</b>, not the noun "creation".</li>
+        <li><b>SIMILAR → similarity</b> — after "a great deal of" the noun is <b>uncountable</b> (not "similarities").</li>
+        <li><b>ECONOMY → economists</b> — "according to ___" needs the <b>people</b>, and here it's <b>plural</b>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="sec">Part 2 · Practice — grouped by rule</h2>
+  <div id="ex"></div>
+  <div class="done-banner" id="doneBanner"></div>
+
+  <div class="foot">
+    Somerset Language Centre · Valencia. Rules of thumb drawn from Cambridge B2 First exam guidance
+    (<a href="https://www.onestopenglish.com/cambridge-english-first-fce/fce-tips-use-of-english-part-3-word-formation/144716.article">Onestopenglish</a>,
+    <a href="https://www.flo-joe.co.uk/fce/students/tests/FCE-Part-3-Word-Formation-Practice-Test.htm">Flo-Joe</a>,
+    <a href="https://www.getspeakingenglish.com/about-the-b2-first-exam/reading-and-use-of-english/question-types/part-3-word-formation">GetSpeakingEnglish</a>).
+    Self-check — nothing is saved; refresh to start again.
+  </div>
+</div>
+
+<script>
+const GROUPS = [
+ { t:"A · Diagnose the word type (Rule 2)", s:"Don't build a word yet — just decide what the gap needs. This is the skill that fixes most mistakes.", items:[
+   {type:"mc", qtype:"What is needed?", prompt:`The museum has an impressive <span class="gap">………</span> of modern art.`, options:["noun","verb","adjective","adverb"], correct:0, reason:"After 'an impressive' (article + adjective) you need a NOUN → collection."},
+   {type:"mc", qtype:"What is needed?", prompt:`She spoke very <span class="gap">………</span> about the plan.`, options:["noun","verb","adjective","adverb"], correct:3, reason:"It describes HOW she spoke → an ADVERB (–ly): confidently."},
+   {type:"mc", qtype:"What is needed?", prompt:`The instructions were surprisingly <span class="gap">………</span>.`, options:["noun","verb","adjective","adverb"], correct:2, reason:"After 'were' and describing the instructions → an ADJECTIVE: clear/simple."},
+   {type:"mc", qtype:"What is needed?", prompt:`New technology can <span class="gap">………</span> the way we work.`, options:["noun","verb","adjective","adverb"], correct:1, reason:"After the modal 'can' → a base VERB: transform/change."}
+ ]},
+ { t:"B · Nouns (Rule 3)", s:"Turn the word into a noun. Watch countable vs uncountable, singular vs plural.", items:[
+   {type:"text", root:"DECIDE", prompt:`Leaving Valencia was a brave <span class="gap">………</span>.`, answers:["decision"], reason:"Verb → noun: decide → decision (–sion). After 'a brave' you need a noun."},
+   {type:"text", root:"INFORM", prompt:`The leaflet gives useful <span class="gap">………</span> about the city.`, answers:["information"], reason:"Uncountable noun — no plural: information."},
+   {type:"text", root:"HAPPY", prompt:`Money doesn't always bring <span class="gap">………</span>.`, answers:["happiness"], reason:"Adjective → noun: y → i, + ness = happiness."},
+   {type:"text", root:"EXPLAIN", prompt:`The guide gave a clear <span class="gap">………</span> of the tradition.`, answers:["explanation"], reason:"Verb → noun: explain → explanation (no 'i' — not 'explaination')."},
+   {type:"text", root:"ECONOMY", prompt:`Several <span class="gap">………</span> predicted more tourism.`, answers:["economists"], reason:"Person noun + plural: economy → economist → economists."}
+ ]},
+ { t:"C · Adjectives (Rule 3)", s:"Turn the word into an adjective. Remember –ful = with, –less = without.", items:[
+   {type:"text", root:"CREATE", prompt:`Ruzafa is full of <span class="gap">………</span> young designers.`, answers:["creative"], reason:"Before a noun → adjective: create → creative (NOT 'creation')."},
+   {type:"text", root:"INFLUENCE", prompt:`The mayor is a very <span class="gap">………</span> figure.`, answers:["influential"], reason:"Adjective ending –tial: influential (not 'influencial')."},
+   {type:"text", root:"CARE", prompt:`Be <span class="gap">………</span> near the edge of the platform.`, answers:["careful"], reason:"–ful = 'with care': careful."},
+   {type:"text", root:"HOPE", prompt:`After three defeats, the situation seemed <span class="gap">………</span>.`, answers:["hopeless"], reason:"–less = 'without hope' (the meaning is negative): hopeless."},
+   {type:"text", root:"COMFORT", prompt:`The hostel room was small but <span class="gap">………</span>.`, answers:["comfortable"], reason:"Noun → adjective: comfort → comfortable (mind the spelling)."}
+ ]},
+ { t:"D · Negative prefixes (Rule 4)", s:"Add the right negative prefix. Let the first letter guide you.", items:[
+   {type:"text", root:"LEGAL", prompt:`Parking on this corner is <span class="gap">………</span>.`, answers:["illegal"], reason:"il- before a word starting with l → illegal."},
+   {type:"text", root:"REGULAR", prompt:`His attendance this term has been <span class="gap">………</span>.`, answers:["irregular"], reason:"ir- before a word starting with r → irregular."},
+   {type:"text", root:"POSSIBLE", prompt:`Without a map it was <span class="gap">………</span> to find the house.`, answers:["impossible"], reason:"im- before p → impossible."},
+   {type:"mc", qtype:"Which prefix?", prompt:`The negative of <b>LOGICAL</b> is…`, options:["illogical","unlogical","inlogical","dislogical"], correct:0, reason:"il- before l → illogical."}
+ ]},
+ { t:"E · Adverbs &amp; spelling changes (Rule 3)", s:"Most adverbs add –ly, but the spelling often changes.", items:[
+   {type:"text", root:"EASY", prompt:`She passed the B2 exam <span class="gap">………</span>.`, answers:["easily"], reason:"Adverb: y → i + ly = easily."},
+   {type:"text", root:"DRAMATIC", prompt:`House prices in the centre rose <span class="gap">………</span>.`, answers:["dramatically"], reason:"–ic → –ically: dramatically."},
+   {type:"text", root:"TRUE", prompt:`It was a <span class="gap">………</span> unforgettable holiday.`, answers:["truly"], reason:"Irregular: true → truly (drop the e)."},
+   {type:"text", root:"RESPONSIBLE", prompt:`The students behaved very <span class="gap">………</span> on the trip.`, answers:["responsibly"], reason:"–le → –ly: responsible → responsibly."}
+ ]},
+ { t:"F · Countable, plural &amp; uncountable (Rule 1, Q3)", s:"These are the ones you got wrong — check the noun's number and countability.", items:[
+   {type:"text", root:"POSSIBLE", prompt:`Learning English opens up new <span class="gap">………</span>.`, answers:["possibilities"], reason:"Plural noun: possible → possibility → possibilities."},
+   {type:"text", root:"SIMILAR", prompt:`There is a great deal of <span class="gap">………</span> between the two dishes.`, answers:["similarity"], reason:"'a great deal of' → uncountable → similarity (not 'similarities')."},
+   {type:"text", root:"ADVISE", prompt:`She gave me some good <span class="gap">………</span> before the exam.`, answers:["advice"], reason:"Noun 'advice' (with c) is uncountable — never 'advices'."},
+   {type:"text", root:"KNOW", prompt:`He has an excellent <span class="gap">………</span> of grammar.`, answers:["knowledge"], reason:"Uncountable noun: know → knowledge."}
+ ]},
+ { t:"G · Exam-style mini (all rules together)", s:"Like the real Part 3: a short text about Valencia. Read for the word type, then build.", items:[
+   {type:"text", root:"TRADITION", prompt:`Valencia is famous for its <span class="gap">………</span> paella.`, answers:["traditional"], reason:"Before a noun → adjective: tradition → traditional."},
+   {type:"text", root:"ATTRACT", prompt:`The City of Arts is the city's biggest <span class="gap">………</span>.`, answers:["attraction"], reason:"After 'biggest' → noun: attract → attraction."},
+   {type:"text", root:"VISIT", prompt:`Thousands of <span class="gap">………</span> come to the Fallas each year.`, answers:["visitors"], reason:"People noun + plural: visit → visitor → visitors."},
+   {type:"text", root:"IMPRESS", prompt:`The Oceanogràfic aquarium is genuinely <span class="gap">………</span>.`, answers:["impressive"], reason:"After 'is' → adjective: impress → impressive."},
+   {type:"text", root:"EASY", prompt:`You can get around the old town <span class="gap">………</span> on foot.`, answers:["easily"], reason:"Describes 'get around' → adverb: easily."},
+   {type:"text", root:"SUCCESS", prompt:`Overall, the festival was a huge <span class="gap">………</span>.`, answers:["success"], reason:"After 'a huge' → noun: success (double c, double s)."}
+ ]}
+];
+
+let total=0, got=0; const answered=new Set();
+function norm(s){ return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[.,;:!?"'’]/g,'').replace(/\s+/g,' ').trim(); }
+
+function render(){
+  let html='';
+  GROUPS.forEach((g,gi)=>{
+    html+=`<div class="exgroup"><div class="exhead"><div class="t">${g.t}</div><div class="s">${g.s}</div></div>`;
+    g.items.forEach((it,i)=>{
+      total++; const id='g'+gi+'_'+i; it._id=id;
+      html+=`<div class="item" id="wrap_${id}">`;
+      if(it.qtype) html+=`<div class="qtype">${it.qtype}</div>`;
+      html+=`<div class="prompt">${it.prompt}${it.root?'<span class="root">'+it.root+'</span>':''}</div>`;
+      if(it.type==='mc'){
+        html+='<div class="opts">';
+        it.options.forEach((o,j)=>{ html+=`<button class="opt" onclick="checkMc('${id}',${j})">${o}</button>`; });
+        html+='</div>';
+      } else {
+        html+=`<div class="row"><input type="text" id="in_${id}" autocomplete="off" spellcheck="false" placeholder="type your answer" onkeydown="if(event.key==='Enter')checkText('${id}')"><button class="chk" id="chk_${id}" onclick="checkText('${id}')">Check</button></div>`;
+      }
+      html+=`<div class="fb" id="fb_${id}"></div></div>`;
+    });
+    html+='</div>';
+  });
+  document.getElementById('ex').innerHTML=html;
+  document.getElementById('tot').textContent=total;
+}
+function findItem(id){ for(const g of GROUPS){ for(const it of g.items){ if(it._id===id) return it; } } }
+function tally(id, ok){ if(answered.has(id))return; answered.add(id); if(ok)got++; document.getElementById('got').textContent=got;
+  if(answered.size===total){ const b=document.getElementById('doneBanner'); b.style.display='block'; b.textContent='All done — '+got+' / '+total+'. '+(got>=Math.ceil(total*0.8)?'That is exam-ready word formation.':'Reread the rules for the red ones and try again.'); b.scrollIntoView({behavior:'smooth'}); } }
+function checkText(id){ if(answered.has(id))return; const it=findItem(id); const v=document.getElementById('in_'+id).value; if(!v.trim())return;
+  const ok=it.answers.some(a=>norm(a)===norm(v)); const fb=document.getElementById('fb_'+id);
+  fb.className='fb '+(ok?'ok':'no'); fb.style.display='block';
+  fb.innerHTML=(ok?'✓ Correct. ':'✗ Not quite. Answer: ')+(ok?'':'<span class="ans">'+it.answers[0]+'</span>')+'<span class="rz">'+it.reason+'</span>';
+  document.getElementById('chk_'+id).disabled=true; document.getElementById('in_'+id).disabled=true; tally(id, ok); }
+function checkMc(id, j){ if(answered.has(id))return; const it=findItem(id); const ok=(j===it.correct);
+  document.querySelectorAll('#wrap_'+id+' .opt').forEach((b,k)=>{ b.disabled=true; if(k===it.correct)b.classList.add('correct'); if(k===j&&!ok)b.classList.add('wrong'); });
+  const fb=document.getElementById('fb_'+id); fb.className='fb '+(ok?'ok':'no'); fb.style.display='block';
+  fb.innerHTML=(ok?'✓ Correct. ':'✗ Not quite. ')+'<span class="rz">'+it.reason+'</span>'; tally(id, ok); }
+function resetAll(){ got=0; total=0; answered.clear(); document.getElementById('got').textContent=0; document.getElementById('doneBanner').style.display='none'; render(); window.scrollTo({top:0,behavior:'smooth'}); }
+render();
+</script>
+</body>
+</html>
