@@ -1,7 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import PortalShell from '@/components/portal/PortalShell'
 import { PORTAL } from '@/lib/portalTheme'
 
 const LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2', 'Mixed']
@@ -44,7 +43,6 @@ export default function GroupsPage() {
   }
 
   return (
-    <PortalShell>
       <div style={s.wrap}>
         <div style={s.pageHead}>
           <div style={s.pageTitle}>Groups</div>
@@ -101,7 +99,6 @@ export default function GroupsPage() {
           </div>
         )}
       </div>
-    </PortalShell>
   )
 }
 

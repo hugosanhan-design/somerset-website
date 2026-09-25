@@ -7,7 +7,6 @@
 import { useState, useEffect } from 'react'
 import { useParams, useSearchParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
-import PortalShell from '@/components/portal/PortalShell'
 import { PORTAL } from '@/lib/portalTheme'
 
 interface Entry {
@@ -77,14 +76,11 @@ export default function CorrectEntry() {
 
   if (!entry) {
     return (
-      <PortalShell>
         <div style={{ padding: 40, color: PORTAL.muted }}>Loading…</div>
-      </PortalShell>
     )
   }
 
   return (
-    <PortalShell>
       <div style={s.wrap}>
         <Link href="/correct-queue" style={s.back}>← Queue</Link>
         <div style={s.grid}>
@@ -128,7 +124,6 @@ export default function CorrectEntry() {
           </div>
         </div>
       </div>
-    </PortalShell>
   )
 }
 

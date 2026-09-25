@@ -11,7 +11,6 @@
 // other groups get an honest "not synced yet" message rather than a fake one.
 
 import { useState, useEffect, useMemo, useCallback } from 'react'
-import PortalShell from '@/components/portal/PortalShell'
 import { PORTAL, readinessFromStatus, READINESS_LABEL, READINESS_CHIP } from '@/lib/portalTheme'
 
 interface DayGroup {
@@ -111,7 +110,6 @@ export default function Dashboard() {
   }, [anchor])
 
   return (
-    <PortalShell>
       <div style={{ maxWidth: 1040, margin: '0 auto', padding: '22px 20px 64px', fontFamily: PORTAL.font, color: PORTAL.ink }}>
         <ViewTabs view={view} setView={setView} />
         {error && <p style={{ color: PORTAL.red, fontSize: 14 }}>{error}</p>}
@@ -158,7 +156,6 @@ export default function Dashboard() {
           />
         )}
       </div>
-    </PortalShell>
   )
 }
 

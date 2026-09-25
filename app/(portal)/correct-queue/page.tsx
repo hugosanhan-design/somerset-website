@@ -5,7 +5,6 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import PortalShell from '@/components/portal/PortalShell'
 import { PORTAL } from '@/lib/portalTheme'
 
 interface PendingEntry {
@@ -31,7 +30,6 @@ export default function CorrectQueue() {
   }, [])
 
   return (
-    <PortalShell>
       <div style={s.wrap}>
         <div style={s.pageTitle}>To correct</div>
         <p style={s.sub}>
@@ -55,7 +53,6 @@ export default function CorrectQueue() {
           </div>
         )}
       </div>
-    </PortalShell>
   )
 }
 

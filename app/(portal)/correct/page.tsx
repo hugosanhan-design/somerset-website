@@ -2,7 +2,6 @@
 import { useState, useRef, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
-import PortalShell from '@/components/portal/PortalShell'
 
 const MAX_FILE_MB = 10
 const LEVELS = ['B1', 'B2', 'C1 (CAE)']
@@ -133,7 +132,6 @@ function CorrectPageInner() {
   }
 
   return (
-    <PortalShell>
     <div style={styles.page}>
       {/* Sidebar */}
       <div style={styles.sidebar}>
@@ -298,7 +296,6 @@ function CorrectPageInner() {
         )}
       </div>
     </div>
-    </PortalShell>
   )
 }
 
