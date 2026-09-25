@@ -7,7 +7,8 @@
 import { useState, useEffect } from 'react'
 import { useParams, useSearchParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
-import SomersetLogo from '@/components/SomersetLogo'
+import PortalShell from '@/components/portal/PortalShell'
+import { PORTAL } from '@/lib/portalTheme'
 
 interface Entry {
   id: string
@@ -75,63 +76,71 @@ export default function CorrectEntry() {
   }
 
   if (!entry) {
-    return <div style={{ padding: 40, fontFamily: 'Arial, Helvetica, sans-serif', color: '#777' }}>Loading…</div>
+    return (
+      <PortalShell>
+        <div style={{ padding: 40, color: PORTAL.muted }}>Loading…</div>
+      </PortalShell>
+    )
   }
 
   return (
-    <div style={{ minHeight: '100vh', fontFamily: 'Arial, Helvetica, sans-serif', background: '#fff' }}>
-      <header style={{ background: '#1E4227', borderBottom: '3px solid #6BAE2E', padding: '16px 20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <SomersetLogo variant="white" />
-        <Link href="/correct-queue" style={{ color: 'rgba(255,255,255,0.85)', fontSize: 13, textDecoration: 'none' }}>← Queue</Link>
-      </header>
+    <PortalShell>
+      <div style={s.wrap}>
+        <Link href="/correct-queue" style={s.back}>← Queue</Link>
+        <div style={s.grid}>
+          <div>
+            <h1 style={s.h1}>{entry.student_name}</h1>
+            <p style={s.sub}>{entry.title || entry.type} · {entry.date}</p>
+            <img src={entry.image_url} alt="Student work" style={s.image} />
+          </div>
 
-      <div style={{ maxWidth: 720, margin: '0 auto', padding: '28px 20px 60px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
-        <div>
-          <h1 style={{ fontFamily: 'Georgia, serif', fontWeight: 700, fontSize: 20, color: '#222', marginBottom: 4 }}>{entry.student_name}</h1>
-          <p style={{ color: '#777', fontSize: 13, marginBottom: 16 }}>{entry.title || entry.type} · {entry.date}</p>
-          <img src={entry.image_url} alt="Student work" style={{ width: '100%', borderRadius: 8, border: '1px solid #DDDDDD' }} />
-        </div>
+          <div>
+            {!analysed ? (
+              <>
+                <button onClick={runAnalysis} disabled={analysing} style={s.btnPrimary}>
+                  {analysing ? 'Analysing…' : 'Run AI analysis →'}
+                </button>
+                <button onClick={() => setAnalysed(true)} style={s.skipLink}>
+                  Skip — I&apos;ll write it myself
+                </button>
+              </>
+            ) : (
+              <>
+                <label style={s.label}>Score (out of 100)</label>
+                <input value={score} onChange={e => setScore(e.target.value)} type="number" min={0} max={100} style={s.input} />
 
-        <div>
-          {!analysed ? (
-            <>
-              <button onClick={runAnalysis} disabled={analysing} style={btnPrimary}>
-                {analysing ? 'Analysing…' : 'Run AI analysis →'}
-              </button>
-              <button
-                onClick={() => setAnalysed(true)}
-                style={{ display: 'block', marginTop: 12, background: 'none', border: 'none', color: '#777', fontSize: 13, cursor: 'pointer', textDecoration: 'underline' }}
-              >
-                Skip — I&apos;ll write it myself
-              </button>
-            </>
-          ) : (
-            <>
-              <label style={labelStyle}>Score (out of 100)</label>
-              <input value={score} onChange={e => setScore(e.target.value)} type="number" min={0} max={100} style={inputStyle} />
+                <label style={s.label}>Feedback</label>
+                <textarea value={feedback} onChange={e => setFeedback(e.target.value)} rows={6} style={{ ...s.input, resize: 'vertical' }} />
 
-              <label style={labelStyle}>Feedback</label>
-              <textarea value={feedback} onChange={e => setFeedback(e.target.value)} rows={6} style={{ ...inputStyle, resize: 'vertical' }} />
+                <label style={s.label}>Error patterns (one per line)</label>
+                <textarea
+                  value={errorPatterns.join('\n')}
+                  onChange={e => setErrorPatterns(e.target.value.split('\n').filter(Boolean))}
+                  rows={3}
+                  style={{ ...s.input, resize: 'vertical' }}
+                />
 
-              <label style={labelStyle}>Error patterns (one per line)</label>
-              <textarea
-                value={errorPatterns.join('\n')}
-                onChange={e => setErrorPatterns(e.target.value.split('\n').filter(Boolean))}
-                rows={3}
-                style={{ ...inputStyle, resize: 'vertical' }}
-              />
-
-              <button onClick={markCorrected} disabled={saving} style={{ ...btnPrimary, width: '100%', marginTop: 12 }}>
-                {saving ? 'Saving…' : '✅ Mark corrected'}
-              </button>
-            </>
-          )}
+                <button onClick={markCorrected} disabled={saving} style={{ ...s.btnPrimary, width: '100%', marginTop: 12 }}>
+                  {saving ? 'Saving…' : '✅ Mark corrected'}
+                </button>
+              </>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </PortalShell>
   )
 }
 
-const labelStyle: React.CSSProperties = { display: 'block', fontSize: 12, fontWeight: 700, color: '#555', marginBottom: 6, textTransform: 'uppercase', letterSpacing: '0.04em' }
-const inputStyle: React.CSSProperties = { width: '100%', padding: '10px 12px', fontSize: 14, borderRadius: 8, border: '1.5px solid #DDDDDD', marginBottom: 16, fontFamily: 'Arial, Helvetica, sans-serif', color: '#222' }
-const btnPrimary: React.CSSProperties = { display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: '13px 22px', borderRadius: 50, border: 'none', background: '#6BAE2E', color: '#fff', fontSize: 15, fontWeight: 700, cursor: 'pointer' }
+const s: Record<string, React.CSSProperties> = {
+  wrap: { maxWidth: 900, margin: '0 auto', padding: '24px 28px 60px' },
+  back: { fontSize: 13, color: PORTAL.muted, textDecoration: 'none', display: 'inline-block', marginBottom: 16 },
+  grid: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 28 },
+  h1: { fontSize: 20, fontWeight: 700, color: PORTAL.ink, marginBottom: 4 },
+  sub: { color: PORTAL.muted, fontSize: 13, marginBottom: 16 },
+  image: { width: '100%', borderRadius: 12, border: `2px solid ${PORTAL.line}` },
+  label: { display: 'block', fontSize: 12, fontWeight: 700, color: PORTAL.muted, marginBottom: 6, textTransform: 'uppercase', letterSpacing: '0.04em' },
+  input: { width: '100%', padding: '10px 12px', fontSize: 14, borderRadius: 10, border: `2px solid ${PORTAL.line}`, marginBottom: 16, fontFamily: 'inherit', color: PORTAL.ink },
+  btnPrimary: { display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: '13px 22px', borderRadius: 999, border: 'none', background: PORTAL.green, color: '#fff', fontSize: 15, fontWeight: 700, cursor: 'pointer' },
+  skipLink: { display: 'block', marginTop: 12, background: 'none', border: 'none', color: PORTAL.muted, fontSize: 13, cursor: 'pointer', textDecoration: 'underline' },
+}

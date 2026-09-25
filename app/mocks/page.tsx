@@ -7,7 +7,7 @@
 // Phase 1, where student pencil sheets have no printed source and must be photographed.
 
 import { useEffect, useMemo, useState } from 'react'
-import Link from 'next/link'
+import PortalShell from '@/components/portal/PortalShell'
 import { COLORS, FONT, card, h1, h2, eyebrow, btnPrimary, btnGhost, btnSmall, input as inputStyle, page as pageStyle } from '@/lib/theme'
 import type { ExamPartDefinition } from '@/lib/mocks'
 
@@ -182,13 +182,10 @@ export default function MocksPage() {
   }
 
   return (
+    <PortalShell>
     <div style={pageStyle}>
-      <header style={{ background: COLORS.racing, color: '#fff', padding: '16px 24px', display: 'flex', alignItems: 'center', gap: 14 }}>
-        <Link href="/teacher" style={{ color: 'rgba(255,255,255,0.8)', textDecoration: 'none', fontSize: 13, fontWeight: 600 }}>← Home</Link>
-        <span style={{ fontFamily: FONT.brand, fontWeight: 700, fontSize: 17 }}>Mock Correction</span>
-      </header>
-
-      <main style={{ maxWidth: 860, margin: '0 auto', padding: '28px 20px 60px', display: 'flex', flexDirection: 'column', gap: 18 }}>
+      <main style={{ maxWidth: 860, margin: '0 auto', padding: '28px 28px 60px', display: 'flex', flexDirection: 'column', gap: 18 }}>
+        <div style={{ fontSize: 22, fontWeight: 700, color: COLORS.ink }}>Mock correction</div>
         {error && (
           <div style={{ ...card, borderColor: COLORS.danger, color: COLORS.danger, fontWeight: 600, fontSize: 14 }}>{error}</div>
         )}
@@ -336,5 +333,6 @@ export default function MocksPage() {
         )}
       </main>
     </div>
+    </PortalShell>
   )
 }

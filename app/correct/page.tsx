@@ -2,6 +2,7 @@
 import { useState, useRef, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
+import PortalShell from '@/components/portal/PortalShell'
 
 const MAX_FILE_MB = 10
 const LEVELS = ['B1', 'B2', 'C1 (CAE)']
@@ -132,14 +133,13 @@ function CorrectPageInner() {
   }
 
   return (
+    <PortalShell>
     <div style={styles.page}>
       {/* Sidebar */}
       <div style={styles.sidebar}>
         <div style={styles.sidebarHeader}>
-          <Link href="/teacher" style={{ textDecoration: 'none' }}>
-            <div style={styles.logoText}>Somerset</div>
-            <div style={styles.logoSub}>Writing Correction</div>
-          </Link>
+          <div style={styles.logoText}>Correct writing</div>
+          <div style={styles.logoSub}>AI-assisted feedback report</div>
         </div>
 
         {/* Anonymous context banner — one-off correction, nothing saved */}
@@ -298,6 +298,7 @@ function CorrectPageInner() {
         )}
       </div>
     </div>
+    </PortalShell>
   )
 }
 
@@ -310,14 +311,14 @@ export default function CorrectPage() {
 }
 
 const styles: Record<string, React.CSSProperties> = {
-  page: { display: 'flex', height: '100vh', overflow: 'hidden' },
+  page: { display: 'flex', height: '100%', minHeight: '100vh', overflow: 'hidden' },
   sidebar: {
-    width: 320, background: '#fff', borderRight: '1px solid #e0e0e0',
+    width: 320, background: '#fff', borderRight: '2px solid #E2E2E2',
     display: 'flex', flexDirection: 'column', flexShrink: 0, overflowY: 'auto',
   },
-  sidebarHeader: { background: '#6BAE2E', padding: '16px 20px' },
-  logoText: { color: '#fff', fontWeight: 700, fontSize: 17 },
-  logoSub: { color: 'rgba(255,255,255,0.75)', fontSize: 12, marginTop: 2 },
+  sidebarHeader: { padding: '18px 20px', borderBottom: '2px solid #E2E2E2' },
+  logoText: { color: '#1A1A1A', fontWeight: 700, fontSize: 17 },
+  logoSub: { color: '#666666', fontSize: 12, marginTop: 2 },
   studentBanner: {
     display: 'flex', alignItems: 'center', gap: 10,
     padding: '12px 20px', backgroundColor: '#f0fae6',
@@ -327,24 +328,24 @@ const styles: Record<string, React.CSSProperties> = {
   label: { fontSize: 12, fontWeight: 600, color: '#444', textTransform: 'uppercase' as const, letterSpacing: '0.5px' },
   req: { color: '#c0392b' },
   input: {
-    border: '1.5px solid #ddd', borderRadius: 5, padding: '8px 10px',
+    border: '2px solid #E2E2E2', borderRadius: 10, padding: '8px 10px',
     fontSize: 14, fontFamily: 'inherit', outline: 'none', width: '100%',
   },
   button: {
-    background: '#6BAE2E', color: '#fff', border: 'none', borderRadius: 5,
+    background: '#6BAE2E', color: '#fff', border: 'none', borderRadius: 999,
     padding: '11px 0', fontSize: 14, fontWeight: 700, cursor: 'pointer', marginTop: 6,
   },
   buttonDisabled: {
-    background: '#a5c98a', color: '#fff', border: 'none', borderRadius: 5,
+    background: '#a5c98a', color: '#fff', border: 'none', borderRadius: 999,
     padding: '11px 0', fontSize: 14, fontWeight: 700, cursor: 'not-allowed', marginTop: 6,
   },
   printButton: {
-    background: '#fff', color: '#6BAE2E', border: '1.5px solid #6BAE2E',
-    borderRadius: 5, padding: '10px 0', fontSize: 14, fontWeight: 700, cursor: 'pointer',
+    background: '#fff', color: '#6BAE2E', border: '2px solid #6BAE2E',
+    borderRadius: 999, padding: '10px 0', fontSize: 14, fontWeight: 700, cursor: 'pointer',
   },
   uploadBtn: {
-    flex: 1, background: '#f3f4f6', color: '#374151', border: '1.5px solid #e5e7eb',
-    borderRadius: 5, padding: '7px 6px', fontSize: 12, fontWeight: 600,
+    flex: 1, background: '#F4F8EE', color: '#374151', border: '2px solid #E2E2E2',
+    borderRadius: 999, padding: '7px 6px', fontSize: 12, fontWeight: 600,
     cursor: 'pointer', fontFamily: 'inherit',
   },
   preview: {
