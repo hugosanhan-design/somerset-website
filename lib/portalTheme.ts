@@ -18,7 +18,16 @@ export const PORTAL = {
   amberLine: '#F0D9B8',
   red: '#A8321E',
   redBg: '#FBF0ED',
-  pageBg: '#FFFFFF',
+  // Cream + tan-bordered "premium" treatment, lifted from the public website
+  // (somerset-website.vercel.app — body bg, .why-card bg/border, H2 ink) per
+  // Hugo's 25 Sep 2026 request. pageBg replaces flat white; cardBg/cardLine
+  // are for cards that should look like the website's why-cards rather than
+  // the flatter teaching-deck tiles (worksheet-shelf rows keep PORTAL.paper).
+  pageBg: '#F5F1E6',
+  cardBg: '#FBF9F2',
+  cardLine: '#D9D2BC',
+  headingInk: '#17281B',
+  serif: 'var(--font-fraunces), Georgia, serif', // set by next/font in app/layout.tsx
   shadow: 'none',
   shadowHover: 'none',
   font: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',

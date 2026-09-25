@@ -229,9 +229,9 @@ function DayView({ date, groups, onPrev, onNext, onToday, onSelect }: {
   return (
     <div>
       <div style={dayBarStyle}>
-        <h1 style={{ margin: 0, fontSize: 21, flex: '1 1 auto', minWidth: 200 }}>
+        <h1 style={{ margin: 0, fontSize: 23, fontFamily: PORTAL.serif, fontWeight: 500, color: PORTAL.headingInk, flex: '1 1 auto', minWidth: 200 }}>
           <span style={{ color: PORTAL.greenDeep }}>{f.dow}</span> {f.long}
-          {isToday && <small style={{ display: 'block', fontSize: 13, fontWeight: 400, color: PORTAL.muted, marginTop: 2 }}>Today</small>}
+          {isToday && <small style={{ display: 'block', fontSize: 13, fontFamily: PORTAL.font, fontWeight: 400, color: PORTAL.muted, marginTop: 4 }}>Today</small>}
         </h1>
         <Btn onClick={onPrev}>&larr; Previous</Btn>
         <Btn onClick={onToday} primary>Today</Btn>
@@ -258,14 +258,14 @@ function ClassCard({ g, onClick }: { g: DayGroup; onClick: () => void }) {
       onClick={onClick}
       style={{
         display: 'block', textAlign: 'left', width: '100%', textDecoration: 'none', color: 'inherit',
-        background: PORTAL.paper, border: `2px solid ${PORTAL.line}`,
+        background: PORTAL.cardBg, border: `1px solid ${PORTAL.cardLine}`,
         borderLeft: `5px solid ${r === 'none' ? PORTAL.amberLine : PORTAL.green}`,
-        borderRadius: 14, padding: '16px 18px', cursor: 'pointer', font: 'inherit',
+        borderRadius: 18, padding: '18px 20px', cursor: 'pointer', font: 'inherit',
       }}
     >
       <div style={{ display: 'flex', alignItems: 'baseline', gap: 12, flexWrap: 'wrap' }}>
         <span style={{ fontSize: 18, fontWeight: 700, color: PORTAL.greenDeep, fontVariantNumeric: 'tabular-nums' }}>{g.from_time}</span>
-        <h2 style={{ margin: 0, fontSize: 18, flex: '1 1 auto' }}>{g.group_name}</h2>
+        <h2 style={{ margin: 0, fontSize: 19, fontFamily: PORTAL.serif, fontWeight: 500, color: PORTAL.headingInk, flex: '1 1 auto' }}>{g.group_name}</h2>
         <Chip status={g.status} />
       </div>
       {g.group_level && <div style={{ color: PORTAL.muted, fontSize: 14, marginTop: 5 }}>{g.group_level}</div>}
@@ -604,7 +604,7 @@ function ShelfList({ title, items }: { title: string; items?: ShelfItem[] }) {
 }
 
 const dayBarStyle: React.CSSProperties = {
-  display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap', background: PORTAL.paper,
-  border: `2px solid ${PORTAL.line}`, borderRadius: 14, padding: '14px 16px', marginBottom: 18,
+  display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap', background: PORTAL.cardBg,
+  border: `1px solid ${PORTAL.cardLine}`, borderRadius: 20, padding: '18px 20px', marginBottom: 18,
 }
 const emptyStyle: React.CSSProperties = { textAlign: 'center', padding: '44px 20px', color: PORTAL.muted, fontSize: 16 }
