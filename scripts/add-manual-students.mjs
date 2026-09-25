@@ -5,8 +5,8 @@
 //
 // - Flyers I (slug: flyers) — 11 students confirmed 23 Sep 2026 by Hugo directly
 //   (matches Level_Ladder_Scores_9Sep2026.md "ALL 11 CONFIRMED" and the level-gap
-//   investigation roster). One surname still open (Vera Castel vs Vera Dolz) —
-//   filed under the level-gap surname pending confirmation.
+//   investigation roster). Surname resolved 25 Sep 2026: Vera Castel Dolz
+//   (Pau's sister) — Castel Dolz is her full surname.
 // - Private class (slug: private-tue) — 1 student, Ivan, confirmed 22 Sep 2026.
 //
 // Idempotent: skips a name already on that group's roster in Postgres, so
@@ -19,7 +19,7 @@ const pool = new Pool({ connectionString: process.env.DATABASE_URL })
 
 const MANUAL_ROSTERS = {
   flyers: [
-    'Gael', 'Enzo', 'Pau', 'Vera Castel', 'Vera de la Ossa', 'Ona',
+    'Gael', 'Enzo', 'Pau', 'Vera Castel Dolz', 'Vera de la Ossa', 'Ona',
     'Carla', 'Madison', 'Lucas', 'Martin', 'Bruno',
   ],
   'private-tue': ['Ivan'],
