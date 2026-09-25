@@ -7,6 +7,6 @@ export const dynamic = 'force-dynamic'
 
 export async function GET() {
   return NextResponse.json({
-    buildId: process.env.VERCEL_GIT_COMMIT_SHA || String(process.env.NEXT_PUBLIC_BUILD_ID || 'dev'),
+    buildId: process.env.VERCEL_URL || 'dev',
   })
 }
