@@ -571,14 +571,29 @@ function ShelfList({ title, items }: { title: string; items?: ShelfItem[] }) {
   return (
     <ShelfSection title={title}>
       <div style={{ display: 'grid', gap: 8 }}>
-        {items.map(it => (
-          <div key={it.stem} style={{
-            background: PORTAL.paper, border: `1px solid ${PORTAL.line}`, borderRadius: 9,
-            padding: '10px 13px', fontSize: 14, fontWeight: 700,
-          }}>
-            {it.label}
-          </div>
-        ))}
+        {items.map(it => {
+          const fileEntries = Object.entries(it.files || {}).filter(([, url]) => url)
+          return (
+            <div key={it.stem} style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10,
+              background: PORTAL.paper, border: `1px solid ${PORTAL.line}`, borderRadius: 9,
+              padding: '10px 13px', fontSize: 14, fontWeight: 700,
+            }}>
+              <span>{it.label}</span>
+              {fileEntries.length > 0 && (
+                <span style={{ display: 'flex', gap: 6, flexShrink: 0 }}>
+                  {fileEntries.map(([kind, url]) => (
+                    <a key={kind} href={url} target="_blank" rel="noopener noreferrer" style={{
+                      fontSize: 12, fontWeight: 700, textTransform: 'uppercase', textDecoration: 'none',
+                      color: PORTAL.green, border: `1px solid ${PORTAL.green}`, borderRadius: 999,
+                      padding: '3px 10px',
+                    }}>{kind}</a>
+                  ))}
+                </span>
+              )}
+            </div>
+          )
+        })}
       </div>
     </ShelfSection>
   )
