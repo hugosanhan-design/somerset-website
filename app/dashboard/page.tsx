@@ -511,10 +511,20 @@ function LessonPanel({ date, group, onClose, onToggle }: {
             <ShelfList title="Student worksheet" items={content.shelves?.worksheet} />
             <ShelfList title="Teacher key" items={content.shelves?.key} />
             <ShelfList title="Slides" items={content.shelves?.slides} />
+            <ShelfList title="Class audio" items={content.shelves?.audio} />
 
             {content.unitAudio && content.unitAudio.length > 0 && (
-              <ShelfSection title="Audio">
-                <div style={{ fontSize: 13, color: PORTAL.muted }}>{content.unitAudio.length} track{content.unitAudio.length === 1 ? '' : 's'} built — {content.unitAudio.slice(0, 3).map(a => a.label).join(', ')}{content.unitAudio.length > 3 ? '…' : ''}</div>
+              <ShelfSection title="Book audio">
+                <div style={{ display: 'grid', gap: 6 }}>
+                  {content.unitAudio.map((a, i) => (
+                    <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                      <span style={{ fontSize: 13, fontWeight: 700, minWidth: 90 }}>{a.label}</span>
+                      {a.path?.startsWith('http')
+                        ? <audio controls preload="none" src={a.path} style={{ height: 28, flex: 1, maxWidth: 320 }} />
+                        : <span style={{ fontSize: 12, color: PORTAL.muted }}>not synced yet</span>}
+                    </div>
+                  ))}
+                </div>
               </ShelfSection>
             )}
 
@@ -537,10 +547,7 @@ function LessonPanel({ date, group, onClose, onToggle }: {
               </ShelfSection>
             )}
 
-            <div style={{ marginTop: 4, fontSize: 12.5, color: PORTAL.muted, borderTop: `1px solid ${PORTAL.line}`, paddingTop: 10 }}>
-              File links (worksheet PDF, slides, audio playback) open only from <strong>Somerset Portal.app</strong> on
-              your Mac for now — the files themselves aren&rsquo;t synced anywhere reachable from the web yet.
-            </div>
+
           </div>
         )}
       </div>
