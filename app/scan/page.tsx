@@ -150,7 +150,7 @@ export default function ScanWork() {
             <p style={{ color: MUTED, fontSize: 14, marginBottom: 24 }}>
               {selectedStudent?.name}&apos;s work is in the correction queue.
             </p>
-            <button onClick={resetForCapture} style={btnPrimary}>Scan another →</button>
+            <button onClick={resetForCapture} style={btnPrimary}>Next photo →</button>
           </div>
         ) : (
           <>
