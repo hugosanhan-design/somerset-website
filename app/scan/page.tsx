@@ -4,6 +4,11 @@
 // submit. No AI call here — that happens later at the laptop in /correct-queue.
 // Designed to be fast between classes: big touch targets, minimal typing, and the
 // form resets itself after each save so the next photo is one tap away.
+//
+// Camera photos come in at several MB (often 4-8MB on modern phones), well past
+// Vercel's ~4.5MB request body limit for serverless functions -- that's what was
+// silently failing with a generic "check your connection" message (26 Sep 2026).
+// Every photo is downscaled/recompressed client-side via canvas before upload.
 
 import { useState, useEffect, useRef } from 'react'
 import SomersetLogo from '@/components/SomersetLogo'
@@ -37,6 +42,7 @@ export default function ScanWork() {
   const [imageFile, setImageFile] = useState<File | null>(null)
   const [preview, setPreview] = useState<string | null>(null)
   const [status, setStatus] = useState<'idle' | 'saving' | 'done' | 'error'>('idle')
+  const [errorMsg, setErrorMsg] = useState<string | null>(null)
 
   useEffect(() => {
     fetch('/api/groups').then(r => r.json()).then(setGroups).catch(() => {})
@@ -45,11 +51,49 @@ export default function ScanWork() {
 
   const filteredStudents = groupId ? students.filter(s => s.group_id === groupId) : students
 
-  function handleFile(e: React.ChangeEvent<HTMLInputElement>) {
+  async function handleFile(e: React.ChangeEvent<HTMLInputElement>) {
     const f = e.target.files?.[0]
     if (!f) return
-    setImageFile(f)
-    setPreview(URL.createObjectURL(f))
+    setStatus('idle')
+    try {
+      const compressed = await compressImage(f)
+      setImageFile(compressed)
+      setPreview(URL.createObjectURL(compressed))
+    } catch {
+      // If compression fails for any reason, fall back to the original file
+      // rather than blocking the teacher from scanning at all.
+      setImageFile(f)
+      setPreview(URL.createObjectURL(f))
+    }
+  }
+
+  // Resize to a max dimension and re-encode as JPEG so the upload reliably stays
+  // well under Vercel's request-body limit, whatever the phone's camera resolution is.
+  function compressImage(file: File, maxDim = 1600, quality = 0.8): Promise<File> {
+    return new Promise((resolve, reject) => {
+      const img = new Image()
+      const url = URL.createObjectURL(file)
+      img.onload = () => {
+        URL.revokeObjectURL(url)
+        let { width, height } = img
+        if (width > maxDim || height > maxDim) {
+          if (width > height) { height = Math.round(height * (maxDim / width)); width = maxDim }
+          else { width = Math.round(width * (maxDim / height)); height = maxDim }
+        }
+        const canvas = document.createElement('canvas')
+        canvas.width = width
+        canvas.height = height
+        const ctx = canvas.getContext('2d')
+        if (!ctx) { reject(new Error('no canvas context')); return }
+        ctx.drawImage(img, 0, 0, width, height)
+        canvas.toBlob(blob => {
+          if (!blob) { reject(new Error('toBlob failed')); return }
+          resolve(new File([blob], file.name.replace(/\.\w+$/, '') + '.jpg', { type: 'image/jpeg' }))
+        }, 'image/jpeg', quality)
+      }
+      img.onerror = () => { URL.revokeObjectURL(url); reject(new Error('image load failed')) }
+      img.src = url
+    })
   }
 
   function resetForCapture() {
@@ -63,6 +107,7 @@ export default function ScanWork() {
   async function submit() {
     if (!studentId || !imageFile) return
     setStatus('saving')
+    setErrorMsg(null)
     const fd = new FormData()
     fd.append('studentId', studentId)
     fd.append('type', type)
@@ -72,9 +117,16 @@ export default function ScanWork() {
 
     try {
       const res = await fetch('/api/work-entries/quick', { method: 'POST', body: fd })
-      if (!res.ok) { setStatus('error'); return }
+      if (!res.ok) {
+        if (res.status === 401 || res.status === 404) setErrorMsg('Session expired -- reopen the app and sign in again.')
+        else if (res.status === 413) setErrorMsg('Photo too large -- try again (it should auto-shrink; if this repeats, tell Hugo).')
+        else setErrorMsg(`Couldn't save (error ${res.status}) -- try again.`)
+        setStatus('error')
+        return
+      }
       setStatus('done')
     } catch {
+      setErrorMsg("Couldn't reach the server -- check your connection and try again.")
       setStatus('error')
     }
   }
@@ -163,7 +215,7 @@ export default function ScanWork() {
             <input ref={fileRef} type="file" accept="image/*" capture="environment" onChange={handleFile} style={{ display: 'none' }} />
 
             {status === 'error' && (
-              <p style={{ color: '#B23A2C', fontSize: 13, marginBottom: 12 }}>Couldn&apos;t save — check your connection and try again.</p>
+              <p style={{ color: '#B23A2C', fontSize: 13, marginBottom: 12 }}>{errorMsg}</p>
             )}
 
             <button
