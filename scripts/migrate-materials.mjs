@@ -32,6 +32,7 @@ import { put } from '@vercel/blob'
 import { Pool } from 'pg'
 import fs from 'fs'
 import path from 'path'
+import crypto from 'crypto'
 
 // Node doesn't auto-load .env.local outside `next dev`/`next build` — running
 // this script bare (`node scripts/...`) otherwise gets DATABASE_URL/
@@ -65,16 +66,43 @@ const CONTENT_TYPES = {
 // referenced by 15 different lesson dates is only uploaded once per run.
 const uploadCache = new Map()
 
+// Persistent, cross-run cache: blob pathname -> {hash, url}, so re-running
+// this script after a small content change (one new lesson, one edited
+// worksheet) doesn't re-upload all 540 unique files every time. Each put()
+// with allowOverwrite:true counts as a Vercel Blob "Advanced Operation" (27
+// Sep 2026: 1475 uploads in one run alone tripped the Hobby plan's 2,000/month
+// cap and blocked the store — see reference in
+// Claude/memory/reference_vercel_blob_token_fix.md's sibling notes). Skipping
+// unchanged files keeps that number close to zero on every run after the
+// first. Not committed to git (see .gitignore) — it's local run state, not
+// source, and losing it just means the next run re-uploads everything once.
+const CACHE_PATH = new URL('../.migrate-blob-cache.json', import.meta.url)
+let diskCache = {}
+try {
+  diskCache = JSON.parse(fs.readFileSync(CACHE_PATH, 'utf8'))
+} catch {}
+let cacheDirty = false
+let skippedUnchanged = 0
+
 async function uploadOne(localAbsPath, blobPathname) {
   if (uploadCache.has(localAbsPath)) return uploadCache.get(localAbsPath)
-  const ext = path.extname(localAbsPath).toLowerCase()
   const buf = fs.readFileSync(localAbsPath)
+  const hash = crypto.createHash('sha256').update(buf).digest('hex')
+  const cached = diskCache[blobPathname]
+  if (cached && cached.hash === hash) {
+    uploadCache.set(localAbsPath, cached.url)
+    skippedUnchanged++
+    return cached.url
+  }
+  const ext = path.extname(localAbsPath).toLowerCase()
   const blob = await put(blobPathname, buf, {
     access: 'public',
     addRandomSuffix: false,
     allowOverwrite: true,
     contentType: CONTENT_TYPES[ext] || 'application/octet-stream',
   })
+  diskCache[blobPathname] = { hash, url: blob.url }
+  cacheDirty = true
   uploadCache.set(localAbsPath, blob.url)
   return blob.url
 }
@@ -208,7 +236,11 @@ async function main() {
     }
   }
 
-  console.log(`\nDone: ${stats.daysProcessed} day/group entries updated, ${stats.daysSkipped} skipped (no files), ${stats.uploaded} files uploaded (${uploadCache.size} unique), ${stats.missing} referenced files missing on disk`)
+  console.log(`\nDone: ${stats.daysProcessed} day/group entries updated, ${stats.daysSkipped} skipped (no files), ${stats.uploaded} files uploaded (${uploadCache.size} unique), ${stats.missing} referenced files missing on disk, ${skippedUnchanged} unchanged (skipped)`)
+
+  if (cacheDirty) {
+    fs.writeFileSync(CACHE_PATH, JSON.stringify(diskCache, null, 1))
+  }
   await pool.end()
 }
 

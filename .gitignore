@@ -11,3 +11,6 @@ node_modules
 tsconfig.tsbuildinfo
 .DS_Store
 somerset.db
+
+# Local run-state cache for scripts/migrate-materials.mjs (skip-unchanged-files)
+.migrate-blob-cache.json
