@@ -1,9 +1,9 @@
 // Uploads the actual lesson material files (worksheets, teacher keys, slides,
-// class audio, photos, AND per-unit book audio tracks) referenced in the
-// local Somerset Portal's portal-data.js to Vercel Blob storage, then upserts
-// lesson_content rows carrying blob URLs instead of local file:// paths.
+// class audio, photos, per-unit book audio tracks, AND review plays) referenced
+// in the local Somerset Portal's portal-data.js to Vercel Blob storage, then
+// upserts lesson_content rows carrying blob URLs instead of local file:// paths.
 //
-// Two separate sources of files, both handled here:
+// Three sources of files, all handled here:
 // - `classes[].shelves` — per-lesson materials (worksheet/key/slides/audio/other),
 //   each item has a `files` map of {kind: relPath}.
 // - `classes[].unitAudio` (and `.audio`) — per-unit BOOK audio tracks (Track 1.0,
@@ -11,6 +11,11 @@
 //   every lesson date in that unit, so uploads are deduped in-memory by source
 //   path within one run — re-uploading the same book track 15 times would be
 //   wasteful and pointless.
+// - `classes[].lesson.play` / `.plays` — the review play HTML file(s) for that
+//   date's unit (added 27 Sep 2026, alongside the Arcade fix — see
+//   reference_arcade_and_plays_web_hosting.md). Same dedup-by-source-path
+//   caching as book audio, since one unit's play is referenced by every lesson
+//   date in that unit.
 //
 // This supersedes the group-restricted scope of migrate-lesson-content.mjs
 // (which only covered fce1/pet1): it walks every group and date that has
@@ -105,6 +110,27 @@ async function uploadAudioTracks(tracks, groupSlug, portalDir, stats) {
   return out
 }
 
+// Walks one lesson's play reference — a single {label, href} or an array of
+// them (Friday B2 / PET I can have several plays per unit). `href` is a
+// portalDir-relative local path, same convention as shelf items' `files`.
+async function uploadPlayRef(playRef, groupSlug, portalDir, stats) {
+  if (!playRef) return playRef
+  const uploadOnePlay = async (p) => {
+    if (!p.href) return p
+    const absPath = path.resolve(portalDir, p.href)
+    if (!fs.existsSync(absPath)) {
+      console.warn(`  missing on disk, skipping play: ${p.href}`)
+      stats.missing++
+      return p
+    }
+    const filename = path.basename(absPath)
+    const url = await uploadOne(absPath, `materials/${groupSlug}/plays/${filename}`)
+    stats.uploaded++
+    return { ...p, href: url }
+  }
+  return Array.isArray(playRef) ? Promise.all(playRef.map(uploadOnePlay)) : uploadOnePlay(playRef)
+}
+
 async function main() {
   const portalDataPath = process.argv[2]
   const worksheetsRoot = process.argv[3]
@@ -124,7 +150,9 @@ async function main() {
       const hasShelfFiles = c.shelves && Object.values(c.shelves).some(arr => Array.isArray(arr) && arr.length > 0)
       const hasUnitAudio = Array.isArray(c.unitAudio) && c.unitAudio.length > 0
       const hasAudio = Array.isArray(c.audio) && c.audio.length > 0
-      if (!hasShelfFiles && !hasUnitAudio && !hasAudio) { stats.daysSkipped++; continue }
+      const playRef = c.lesson?.play || c.lesson?.plays || null
+      const hasPlay = !!playRef
+      if (!hasShelfFiles && !hasUnitAudio && !hasAudio && !hasPlay) { stats.daysSkipped++; continue }
 
       console.log(`${date} / ${c.classId}`)
 
@@ -142,13 +170,14 @@ async function main() {
 
       const newUnitAudio = hasUnitAudio ? await uploadAudioTracks(c.unitAudio, c.classId, portalDir, stats) : undefined
       const newAudio = hasAudio ? await uploadAudioTracks(c.audio, c.classId, portalDir, stats) : undefined
+      const newPlay = hasPlay ? await uploadPlayRef(playRef, c.classId, portalDir, stats) : undefined
 
       // Build the upsert dynamically so we never clobber shelves_json with
       // null when this pass only touched unitAudio (or vice versa) — read
       // the existing row's other JSON columns first, only overwrite what
       // this run actually produced.
       const { rows: existingRows } = await pool.query(
-        'SELECT shelves_json, unit_audio_json FROM lesson_content WHERE group_slug = $1 AND date = $2',
+        'SELECT shelves_json, unit_audio_json, play_json FROM lesson_content WHERE group_slug = $1 AND date = $2',
         [c.classId, date]
       )
       const existing = existingRows[0]
@@ -156,12 +185,13 @@ async function main() {
       const unitAudioToStore = newUnitAudio ? JSON.stringify(newUnitAudio.concat(newAudio || []))
         : newAudio ? JSON.stringify(newAudio)
         : (existing?.unit_audio_json ?? '[]')
+      const playToStore = newPlay !== undefined ? JSON.stringify(newPlay) : (existing?.play_json ?? 'null')
 
       await pool.query(
-        `INSERT INTO lesson_content (id, group_slug, date, shelves_json, unit_audio_json)
-         VALUES ($1, $2, $3, $4, $5)
-         ON CONFLICT (group_slug, date) DO UPDATE SET shelves_json = EXCLUDED.shelves_json, unit_audio_json = EXCLUDED.unit_audio_json`,
-        [newId(), c.classId, date, shelvesToStore, unitAudioToStore]
+        `INSERT INTO lesson_content (id, group_slug, date, shelves_json, unit_audio_json, play_json)
+         VALUES ($1, $2, $3, $4, $5, $6)
+         ON CONFLICT (group_slug, date) DO UPDATE SET shelves_json = EXCLUDED.shelves_json, unit_audio_json = EXCLUDED.unit_audio_json, play_json = EXCLUDED.play_json`,
+        [newId(), c.classId, date, shelvesToStore, unitAudioToStore, playToStore]
       )
       stats.daysProcessed++
     }
