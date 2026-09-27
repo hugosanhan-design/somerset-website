@@ -413,7 +413,7 @@ interface LessonContent {
   grammar: string | null; vocab: string | null; warmer: string | null; plan: string | null
   print: string | null; flag: string | null; note: string | null
   play: { label: string; href: string } | { label: string; href: string }[] | null
-  arcade: { unit: string; game: string; missing?: false } | { missing: true; why: string } | null
+  arcade: { unit: string; game: string; href?: string; missing?: false } | { missing: true; why: string } | null
   shelves: Shelves | null
   unitAudio: { label: string; track?: number; path: string }[]
 }
@@ -435,14 +435,14 @@ function LessonPanel({ date, group, onClose, onToggle }: {
 
   return (
     <div style={{
-      position: 'fixed', inset: 0, background: 'rgba(26,26,26,.35)', display: 'flex',
-      alignItems: 'flex-end', justifyContent: 'center', zIndex: 50,
+      position: 'fixed', inset: 0, background: 'rgba(26,26,26,.45)', display: 'flex',
+      alignItems: 'center', justifyContent: 'center', zIndex: 50, padding: '5vh 20px',
     }} onClick={onClose}>
       <div
         onClick={e => e.stopPropagation()}
         style={{
-          background: PORTAL.paper, borderRadius: '16px 16px 0 0', padding: '22px 24px', maxWidth: 640, width: '100%',
-          boxShadow: '0 -8px 32px rgba(26,26,26,.18)', maxHeight: '82vh', overflowY: 'auto',
+          background: PORTAL.paper, borderRadius: 16, padding: '22px 24px', maxWidth: 640, width: '100%',
+          boxShadow: '0 20px 60px rgba(26,26,26,.35)', maxHeight: '90vh', overflowY: 'auto',
         }}
       >
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12 }}>
@@ -527,7 +527,7 @@ function LessonPanel({ date, group, onClose, onToggle }: {
 
             {content.arcade && !content.arcade.missing && 'unit' in content.arcade && (
               <ShelfSection title="Somerset Arcade">
-                <div style={{ fontSize: 14 }}>Point Grab set — <em>{content.arcade.unit}</em></div>
+                <LinkRow label={`Point Grab — ${content.arcade.unit}`} href={content.arcade.href} openLabel="Play" />
               </ShelfSection>
             )}
             {content.arcade && content.arcade.missing && (
@@ -538,9 +538,11 @@ function LessonPanel({ date, group, onClose, onToggle }: {
 
             {content.play && (
               <ShelfSection title="Review play">
-                {Array.isArray(content.play)
-                  ? content.play.map((p, i) => <div key={i} style={{ fontSize: 14 }}>{p.label}</div>)
-                  : <div style={{ fontSize: 14 }}>{content.play.label}</div>}
+                <div style={{ display: 'grid', gap: 8 }}>
+                  {Array.isArray(content.play)
+                    ? content.play.map((p, i) => <LinkRow key={i} label={p.label} href={p.href} openLabel="Open" />)
+                    : <LinkRow label={content.play.label} href={content.play.href} openLabel="Open" />}
+                </div>
               </ShelfSection>
             )}
 
@@ -567,6 +569,27 @@ function ShelfSection({ title, children }: { title: string; children: React.Reac
       <h2 style={{ fontSize: 12, textTransform: 'uppercase', letterSpacing: '.05em', color: PORTAL.muted, margin: '0 0 8px', paddingBottom: 5, borderBottom: `1px solid ${PORTAL.line}` }}>{title}</h2>
       {children}
     </section>
+  )
+}
+
+function LinkRow({ label, href, openLabel }: { label: string; href?: string; openLabel: string }) {
+  return (
+    <div style={{
+      display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10,
+      background: PORTAL.paper, border: `1px solid ${PORTAL.line}`, borderRadius: 9,
+      padding: '10px 13px', fontSize: 14, fontWeight: 700,
+    }}>
+      <span>{label}</span>
+      {href ? (
+        <a href={href} target="_blank" rel="noopener noreferrer" style={{
+          fontSize: 12, fontWeight: 700, textTransform: 'uppercase', textDecoration: 'none',
+          color: PORTAL.green, border: `1px solid ${PORTAL.green}`, borderRadius: 999,
+          padding: '3px 10px', flexShrink: 0,
+        }}>{openLabel}</a>
+      ) : (
+        <span style={{ fontSize: 12, color: PORTAL.muted, flexShrink: 0 }}>not synced yet</span>
+      )}
+    </div>
   )
 }
 
