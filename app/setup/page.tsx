@@ -32,7 +32,7 @@ export default function SetupPage() {
     if (signInRes?.error) {
       router.push('/login')
     } else {
-      router.push('/teacher')
+      router.push('/dashboard')
       router.refresh()
     }
   }

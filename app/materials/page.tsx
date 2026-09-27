@@ -99,7 +99,7 @@ export default function MaterialsPage() {
   return (
     <div style={{ minHeight: '100vh', background: COLORS.paper, fontFamily: FONT.sans, color: COLORS.ink }}>
       <header style={header}>
-        <Link href="/teacher" style={headerBrand}>Somerset</Link>
+        <Link href="/dashboard" style={headerBrand}>Somerset</Link>
         <span style={{ color: 'rgba(255,255,255,0.5)' }}>/</span>
         <span style={{ fontSize: 14, fontWeight: 600 }}>Class Materials</span>
         <div style={{ flex: 1 }} />

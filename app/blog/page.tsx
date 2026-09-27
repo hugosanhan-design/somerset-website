@@ -55,7 +55,7 @@ export default function BlogPage() {
           top: 0,
           zIndex: 100,
         }}>
-          <a href="/teacher" style={{ textDecoration: 'none' }}>
+          <a href="/dashboard" style={{ textDecoration: 'none' }}>
             <span style={{ color: '#6BAE2E', fontWeight: 700, fontSize: 20, fontFamily: "'Poppins', sans-serif" }}>Somerset</span>
             <span style={{ color: '#1a2e1a', fontWeight: 600, fontSize: 20, fontFamily: "'Poppins', sans-serif" }}> Language Centre</span>
           </a>

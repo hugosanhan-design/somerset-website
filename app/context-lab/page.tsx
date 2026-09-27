@@ -141,7 +141,7 @@ export default function ContextLabPage() {
   return (
     <div style={s.page}>
       <header style={s.header}>
-        <Link href="/teacher" style={s.headerLink}>← Somerset</Link>
+        <Link href="/dashboard" style={s.headerLink}>← Somerset</Link>
         <div style={s.headerTitle}>Context Lab</div>
       </header>
 

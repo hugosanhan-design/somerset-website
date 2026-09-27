@@ -175,7 +175,7 @@ export default function SpeakingPage() {
 
       <div className="top">
         <span className="brand">Somerset · Speaking</span>
-        <Link href="/teacher">← Teacher home</Link>
+        <Link href="/dashboard">← Dashboard</Link>
       </div>
 
       <h1>Speaking assessment</h1>
