@@ -572,7 +572,24 @@ function ShelfSection({ title, children }: { title: string; children: React.Reac
   )
 }
 
-function LinkRow({ label, href, openLabel }: { label: string; href?: string; openLabel: string }) {
+// Vercel Blob always forces Content-Disposition: attachment on stored files
+// (no SDK option overrides this - see scripts/migrate-materials.mjs), which
+// makes interactive HTML (slides, review plays) prompt to save instead of
+// opening. Route those through our own proxy, which re-serves them inline;
+// everything else (audio, images, pdf, pptx) keeps its direct Blob link.
+function viewUrl(url?: string): string | undefined {
+  if (!url) return url
+  try {
+    const u = new URL(url)
+    if (u.hostname.endsWith('.public.blob.vercel-storage.com') && u.pathname.toLowerCase().endsWith('.html')) {
+      return `/api/materials/view?src=${encodeURIComponent(url)}`
+    }
+  } catch {}
+  return url
+}
+
+function LinkRow({ label, href: rawHref, openLabel }: { label: string; href?: string; openLabel: string }) {
+  const href = viewUrl(rawHref)
   return (
     <div style={{
       display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10,
@@ -610,7 +627,7 @@ function ShelfList({ title, items }: { title: string; items?: ShelfItem[] }) {
               {fileEntries.length > 0 && (
                 <span style={{ display: 'flex', gap: 6, flexShrink: 0 }}>
                   {fileEntries.map(([kind, url]) => (
-                    <a key={kind} href={url} target="_blank" rel="noopener noreferrer" style={{
+                    <a key={kind} href={viewUrl(url)} target="_blank" rel="noopener noreferrer" style={{
                       fontSize: 12, fontWeight: 700, textTransform: 'uppercase', textDecoration: 'none',
                       color: PORTAL.green, border: `1px solid ${PORTAL.green}`, borderRadius: 999,
                       padding: '3px 10px',
