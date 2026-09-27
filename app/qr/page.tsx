@@ -1,11 +1,14 @@
 'use client'
 import SomersetLogo from '@/components/SomersetLogo'
+import BackToDashboard from '@/components/BackToDashboard'
 
 const INTAKE_URL = 'https://app-seven-pi-qvwadlldx2.vercel.app/intake'
 const QR_URL = `https://api.qrserver.com/v1/create-qr-code/?size=400x400&margin=16&data=${encodeURIComponent(INTAKE_URL)}`
 
 export default function QRPage() {
   return (
+    <>
+      <BackToDashboard />
     <div style={{
       minHeight: '100vh',
       background: '#fff',
@@ -119,5 +122,6 @@ export default function QRPage() {
         }
       `}</style>
     </div>
+    </>
   )
 }

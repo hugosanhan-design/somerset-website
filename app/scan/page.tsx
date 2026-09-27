@@ -12,6 +12,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import SomersetLogo from '@/components/SomersetLogo'
+import BackToDashboard from '@/components/BackToDashboard'
 
 interface Group { id: string; name: string }
 interface Student { id: string; name: string; group_id: string | null; group_name: string }
@@ -134,6 +135,8 @@ export default function ScanWork() {
   const selectedStudent = students.find(s => s.id === studentId)
 
   return (
+    <>
+      <BackToDashboard />
     <div style={{ minHeight: '100vh', fontFamily: 'Arial, Helvetica, sans-serif', background: '#fff' }}>
       <header style={{ background: RACING, borderBottom: `3px solid ${GREEN}`, padding: '16px 20px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <SomersetLogo variant="white" />
@@ -234,6 +237,7 @@ export default function ScanWork() {
         )}
       </div>
     </div>
+    </>
   )
 }
 

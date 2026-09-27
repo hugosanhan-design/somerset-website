@@ -20,6 +20,7 @@ import { Suspense, useEffect, useMemo, useRef, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { TEST4, CbtReadingPart, CbtListeningPart, CbtWritingTask } from '@/data/cbt/test4-b2first'
 import { GEN01 } from '@/data/cbt/gen01-b2first'
+import BackToDashboard from '@/components/BackToDashboard'
 
 // What this page actually reads off an exam — deliberately narrower than either exam's
 // full data shape (e.g. TEST4 also carries a `speaking` section this page never uses,
@@ -126,6 +127,7 @@ interface SavedSession {
 export default function CbtPage() {
   return (
     <Suspense fallback={null}>
+      <BackToDashboard />
       <CbtPageInner />
     </Suspense>
   )
