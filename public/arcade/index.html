@@ -1,0 +1,2078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Somerset Arcade</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600..900&family=Instrument+Sans:wght@400..700&family=Fraunces:opsz,wght@9..144,400..900&display=swap" rel="stylesheet">
+<style>
+/* ==================================================================
+   SOMERSET ARCADE — skin: INK  (design direction 03, chosen 4 Sep 2026)
+   Two rules this skin must never break:
+   1. Somerset's own palette. Green / coral / gold — the same inks as
+      the September booklet. Not another school's colours.
+   2. Nothing the children must READ is skewed, condensed or in caps.
+      Panels skew; English does not. Questions, options, clues and
+      vocabulary are all set in Instrument Sans, upright, sentence case.
+   ================================================================== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#6BAE2E; --green-deep:#2F6B1A; --green-ink:#1E4227; --dark:#141110; --dark2:#211D1A;
+  --paper:#F7F3EA; --sand:#E7E4D8; --hot:#E2542C; --gold:#E8A020; --ice:#3A8FA3;
+  --cond:'Archivo',system-ui,sans-serif;      /* headings, labels, numbers ONLY */
+  --sans:'Instrument Sans',system-ui,sans-serif; /* everything they read */
+  --serif:'Fraunces',Georgia,serif;
+  --skew:-7deg;
+}
+html,body{height:100%;overflow:hidden;font-family:var(--sans);background:var(--dark);color:#fff}
+button{font-family:inherit;cursor:pointer;border:0}
+.wrap{position:fixed;inset:0;display:flex;flex-direction:column;isolation:isolate}
+
+/* ---------- the ink ---------- */
+.wrap::before,.wrap::after{content:"";position:fixed;z-index:-2;pointer-events:none}
+.wrap::before{top:-14vh;left:-9vw;width:64vw;height:66vh;background:var(--green);opacity:.92;
+  border-radius:48% 52% 38% 62%/54% 40% 60% 46%;transform:rotate(-8deg);
+  animation:drift1 22s ease-in-out infinite alternate}
+.wrap::after{bottom:-22vh;right:-8vw;width:58vw;height:62vh;background:var(--hot);opacity:.9;
+  border-radius:56% 44% 62% 38%/42% 58% 42% 58%;animation:drift2 26s ease-in-out infinite alternate}
+@keyframes drift1{to{transform:rotate(-3deg) scale(1.06) translate(2vw,1vh)}}
+@keyframes drift2{to{transform:rotate(5deg) scale(1.05) translate(-2vw,-1vh)}}
+.wrap>*{position:relative;z-index:1}
+.halftone{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.16;
+  background-image:radial-gradient(#000 1.1px,transparent 1.2px);background-size:7px 7px}
+
+/* ---------- top bar ---------- */
+.bar{display:flex;align-items:center;gap:16px;padding:12px 26px;flex-shrink:0;
+     background:rgba(20,17,16,.55);backdrop-filter:blur(7px);border-bottom:3px solid #fff}
+.logo{font-family:var(--cond);font-weight:900;font-size:clamp(19px,2.1vw,27px);text-transform:uppercase;
+  letter-spacing:.01em;line-height:.95;color:#fff}
+.logo small{display:inline-block;font-family:var(--cond);font-size:10px;font-weight:800;letter-spacing:.26em;
+  background:#fff;color:var(--dark);padding:1px 7px;margin-top:3px}
+.bar .unit{font-family:var(--cond);font-size:clamp(11px,1.1vw,13px);font-weight:700;text-transform:uppercase;
+  letter-spacing:.14em;color:rgba(255,255,255,.85)}
+.bar .auto{font-family:var(--cond);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;
+  background:var(--gold);color:var(--dark);padding:4px 11px;transform:skewX(var(--skew))}
+.bar .auto:empty{display:none}
+.bar .sp{flex:1}
+.bar select{font-family:var(--cond);font-size:13px;font-weight:700;padding:7px 11px;border:2px solid #fff;
+  background:var(--dark);color:#fff;transform:skewX(var(--skew));text-transform:uppercase;letter-spacing:.06em}
+.bar button{background:#fff;color:var(--dark);font-family:var(--cond);font-weight:800;font-size:13px;
+  text-transform:uppercase;letter-spacing:.08em;padding:8px 15px;transform:skewX(var(--skew));transition:.14s}
+.bar button:hover{background:var(--gold)}
+.bar button>span,.bar select>option{display:inline-block;transform:skewX(calc(-1*var(--skew)))}
+
+.stage{flex:1;position:relative;overflow:auto}
+.pad{padding:clamp(14px,2.6vh,30px) clamp(16px,2.6vw,36px);min-height:100%;display:flex;flex-direction:column}
+
+/* ---------- launcher ---------- */
+.h1{font-family:var(--cond);font-weight:900;font-size:clamp(34px,5.4vw,68px);line-height:.95;
+  text-transform:uppercase;transform:skewX(var(--skew));transform-origin:left;margin-bottom:6px;
+  text-shadow:5px 5px 0 rgba(0,0,0,.35)}
+.sub{font-family:var(--cond);font-size:clamp(12px,1.3vw,16px);font-weight:700;text-transform:uppercase;
+  letter-spacing:.2em;color:rgba(255,255,255,.85);margin-bottom:clamp(12px,2.2vh,24px)}
+.tiles{display:flex;flex-wrap:wrap;gap:clamp(9px,1.1vw,15px);flex:1;align-content:flex-start}
+.tile{flex:1 1 240px;max-width:none;min-height:150px;padding:17px 19px 15px;background:var(--dark2);
+  border:3px solid #fff;transform:skewX(var(--skew));display:flex;flex-direction:column;
+  justify-content:space-between;text-align:left;color:#fff;transition:background .14s,transform .14s;
+  animation:slam .34s cubic-bezier(.2,1.4,.4,1) backwards;animation-delay:calc(var(--i,0)*55ms)}
+.tile>*{transform:skewX(calc(-1*var(--skew)))}
+.tile:nth-child(even){background:#1A1614}
+.tile .ic{font-size:34px;line-height:1}
+.tile h3{font-family:var(--cond);font-weight:900;font-size:clamp(18px,2vw,26px);text-transform:uppercase;
+  line-height:.97;margin:9px 0 5px}
+.tile p{font-family:var(--sans);font-size:13.5px;line-height:1.4;color:rgba(255,255,255,.72)}
+.tile:hover{background:var(--green);border-color:var(--dark);transform:skewX(var(--skew)) translateY(-9px)}
+.tile:hover p{color:#0F2107}
+.tile.case{background:var(--hot);border-color:#fff}
+.tile.case p{color:rgba(255,255,255,.9)}
+.tile.case:hover{background:var(--gold);border-color:var(--dark)}
+.tile.case:hover p,.tile.case:hover h3{color:var(--dark)}
+/* Somerset Pursuit tile — added 25 Sep 2026 for the B2 Conversación
+   group. Cobalt, matching the Historia azulejo, so it reads as its
+   own thing next to the coral Case tile. */
+.tile.pursuit{background:#1C4E9C;border-color:#fff}
+.tile.pursuit p{color:rgba(255,255,255,.9)}
+.tile.pursuit:hover{background:var(--gold);border-color:var(--dark)}
+.tile.pursuit:hover p,.tile.pursuit:hover h3{color:var(--dark)}
+@keyframes slam{from{opacity:0;transform:skewX(var(--skew)) scale(.72) translateY(26px)}}
+
+/* ---------- teams ---------- */
+.teams{display:flex;gap:11px;margin-bottom:13px;flex-wrap:wrap;flex-shrink:0}
+.team{flex:1 1 160px;padding:10px 15px;background:var(--dark2);border:3px solid #fff;
+  transform:skewX(var(--skew));display:flex;align-items:center;gap:12px}
+.team>*{transform:skewX(calc(-1*var(--skew)))}
+.team:nth-child(1){border-left:11px solid var(--green)}
+.team:nth-child(2){border-left:11px solid var(--hot)}
+.team:nth-child(3){border-left:11px solid var(--gold)}
+.team.on{background:#fff;color:var(--dark)}
+.team.on .pm button{background:rgba(0,0,0,.12);color:var(--dark)}
+.team .nm{font-family:var(--cond);font-weight:800;font-size:14px;text-transform:uppercase;
+  letter-spacing:.09em;flex:1}
+.team .sc{font-family:var(--cond);font-weight:900;font-size:clamp(26px,2.9vw,40px);line-height:.9;
+  animation:pop .34s cubic-bezier(.2,1.7,.4,1)}
+@keyframes pop{0%{transform:skewX(calc(-1*var(--skew))) scale(1.55);color:var(--gold)}}
+.team .pm{display:flex;gap:5px}
+/* Added 18 Sep 2026: compact trophy button that sits beside the team
+   cards (deliberately NOT a .team — it must not be counted as one) to
+   open the manual "declare winner" screen. */
+.winbtn{flex:0 0 auto;padding:10px 16px;background:var(--dark2);border:3px solid #fff;
+  border-left:11px solid var(--gold);color:#fff;transform:skewX(var(--skew));
+  display:flex;align-items:center;cursor:pointer;font-size:20px}
+.winbtn>span{transform:skewX(calc(-1*var(--skew)))}
+.winnerName{font-size:clamp(40px,9vw,120px)!important;text-align:center;max-width:none!important}
+.ov.winner::before{background:var(--gold);opacity:.22}
+.team .pm button{width:27px;height:27px;background:rgba(255,255,255,.17);color:#fff;font-family:var(--cond);
+  font-weight:900;font-size:15px;line-height:1}
+
+/* ---------- point grab ---------- */
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(7px,.9vw,12px);flex:1;
+  grid-auto-rows:minmax(0,1fr)}
+.cell{background:var(--dark2);border:3px solid #fff;transform:skewX(var(--skew));color:#fff;
+  font-family:var(--cond);font-weight:900;font-size:clamp(24px,3.4vw,50px);display:flex;align-items:center;
+  justify-content:center;position:relative;transition:background .12s,transform .12s;
+  animation:slam .3s cubic-bezier(.2,1.4,.4,1) backwards;animation-delay:calc(var(--i,0)*22ms)}
+.cell>span,.cell{line-height:1}
+.cell::before{content:attr(data-n);transform:skewX(calc(-1*var(--skew)))}
+.cell:hover{background:var(--green);border-color:var(--dark);transform:skewX(var(--skew)) scale(1.05)}
+/* the tile's value is SECRET until it has been played — otherwise the
+   class can see which tiles are ×2 or STEAL and just picks those */
+.cell .pts{position:absolute;bottom:5px;right:8px;font-family:var(--cond);font-size:11px;font-weight:900;
+  letter-spacing:.08em;transform:skewX(calc(-1*var(--skew)));color:var(--gold);opacity:0}
+.cell.done .pts{opacity:1}
+.cell.done{background:transparent;border-color:rgba(255,255,255,.18);color:rgba(255,255,255,.18);
+  pointer-events:none}
+.cell.done::after{content:"";position:absolute;inset:0;background:
+  linear-gradient(to bottom right,transparent calc(50% - 2px),rgba(255,255,255,.22) 50%,transparent calc(50% + 2px))}
+.cell.done .pts{color:rgba(255,255,255,.18)}
+
+/* ---------- question overlay ---------- */
+.ov{position:fixed;inset:0;z-index:60;background:rgba(15,13,12,.97);display:none;flex-direction:column;
+  align-items:center;justify-content:center;padding:5vh 6vw;text-align:center;gap:22px}
+.ov.on{display:flex}
+.ov::before{content:"";position:absolute;width:78vw;height:78vh;background:var(--green);opacity:.17;
+  border-radius:52% 48% 40% 60%/46% 56% 44% 54%;z-index:-1;animation:slam .4s cubic-bezier(.2,1.3,.4,1)}
+.ov .badge{font-family:var(--cond);font-size:13px;font-weight:900;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--gold);background:var(--dark);border:2px solid var(--gold);padding:6px 15px;
+  transform:skewX(var(--skew))}
+.ov .q{font-family:var(--sans);font-weight:600;font-size:clamp(30px,4.6vw,66px);line-height:1.14;max-width:22ch}
+.ov .a{font-family:var(--sans);font-weight:700;font-size:clamp(22px,3.2vw,46px);color:var(--dark);
+  background:var(--green);padding:.28em .7em;display:none}
+.ov .a.on{display:block;animation:splat .34s cubic-bezier(.2,1.8,.4,1)}
+@keyframes splat{0%{transform:scale(.5) rotate(-4deg);opacity:0}60%{transform:scale(1.08) rotate(1deg)}}
+.ov .row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:4px}
+.btn{background:#fff;color:var(--dark);font-family:var(--cond);font-weight:800;text-transform:uppercase;
+  letter-spacing:.07em;font-size:clamp(14px,1.5vw,19px);padding:.65em 1.5em;transform:skewX(var(--skew));
+  transition:.13s}
+.btn>span{display:inline-block;transform:skewX(calc(-1*var(--skew)))}
+.btn:hover{background:var(--gold)}
+.btn.ghost{background:transparent;color:#fff;box-shadow:inset 0 0 0 3px #fff}
+.btn.ghost:hover{background:#fff;color:var(--dark)}
+.btn.hot{background:var(--hot);color:#fff}
+.btn.hot:hover{background:var(--gold);color:var(--dark)}
+
+/* ---------- memory / guess who ---------- */
+.board{display:grid;gap:clamp(5px,.7vw,10px);flex:1;min-height:0;grid-auto-rows:minmax(0,1fr)}
+.pc{position:relative;overflow:hidden;background:var(--dark2);border:3px solid #fff;
+  transform:skewX(var(--skew));transition:transform .13s;
+  animation:slam .3s cubic-bezier(.2,1.4,.4,1) backwards;animation-delay:calc(var(--i,0)*18ms)}
+.pc img{width:100%;height:100%;object-fit:cover;object-position:center 24%;display:block;
+  transform:skewX(calc(-1*var(--skew))) scale(1.22)}
+.pc .back{position:absolute;inset:0;background:var(--green);display:flex;align-items:center;
+  justify-content:center;font-family:var(--cond);font-weight:900;font-size:clamp(20px,2.6vw,40px);
+  color:var(--dark)}
+.pc .back>span{transform:skewX(calc(-1*var(--skew)))}
+.pc.flip .back{display:none}
+.pc:hover{transform:skewX(var(--skew)) translateY(-5px)}
+.pc.out{opacity:.2}
+.pc.out::after{content:"";position:absolute;inset:0;background:
+  linear-gradient(to bottom right,transparent calc(50% - 3px),var(--hot) 50%,transparent calc(50% + 3px))}
+.pc .tagn{position:absolute;top:4px;left:5px;background:var(--dark);color:#fff;font-family:var(--cond);
+  font-size:11px;font-weight:900;padding:2px 7px;transform:skewX(calc(-1*var(--skew)))}
+.legend{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:11px;align-items:center;flex-shrink:0}
+.chip{background:var(--dark2);border:2px solid #fff;padding:7px 14px;font-size:14px;font-weight:500;
+  transform:skewX(var(--skew));font-family:var(--sans)}
+.chip>span{display:inline-block;transform:skewX(calc(-1*var(--skew)))}
+.chip b{font-weight:700;color:var(--gold)}
+
+/* ---------- the case ---------- */
+.locks{display:flex;flex-direction:column;gap:11px;max-width:960px}
+.lock{background:var(--dark2);border:3px solid rgba(255,255,255,.3);padding:15px 19px;
+  transform:skewX(var(--skew))}
+.lock>*{transform:skewX(calc(-1*var(--skew)))}
+.lock.now{border-color:var(--hot);background:rgba(226,84,44,.16);animation:edge 1.9s ease-in-out infinite}
+@keyframes edge{50%{border-color:var(--gold)}}
+.lock.ok{border-color:var(--green);background:rgba(107,174,46,.18)}
+.lock h4{font-family:var(--cond);font-weight:900;font-size:clamp(17px,2vw,26px);text-transform:uppercase;
+  display:flex;align-items:center;gap:10px;letter-spacing:.02em}
+.lock .st{margin-left:auto;font-size:22px}
+.lock .body{margin-top:12px;display:none}
+.lock.now .body{display:block}
+
+/* ---------- team setup ---------- */
+.setup{max-width:1000px}
+.setup h2{font-family:var(--cond);font-weight:900;font-size:clamp(15px,1.6vw,19px);text-transform:uppercase;
+  letter-spacing:.14em;color:var(--gold);margin:0 0 9px}
+.setup section{margin-bottom:20px}
+.count{display:flex;gap:9px;flex-wrap:wrap}
+.count button{background:var(--dark2);border:3px solid rgba(255,255,255,.35);color:#fff;font-family:var(--cond);
+  font-weight:900;font-size:22px;width:62px;height:52px;transform:skewX(var(--skew));transition:.13s}
+.count button>span{display:inline-block;transform:skewX(calc(-1*var(--skew)))}
+.count button.on{background:#fff;color:var(--dark);border-color:#fff}
+.count button:hover{border-color:var(--green)}
+#roster{width:100%;max-width:560px;min-height:96px;background:var(--dark2);border:3px solid rgba(255,255,255,.35);
+  color:#fff;font-family:var(--sans);font-size:16px;line-height:1.5;padding:12px 14px;resize:vertical}
+#roster:focus{outline:0;border-color:var(--green)}
+.hint{font-family:var(--sans);font-size:13.5px;color:rgba(255,255,255,.7);margin-top:7px;max-width:60ch;
+  line-height:1.5}
+.hcap{display:flex;align-items:center;gap:11px;font-family:var(--sans);font-size:15px;cursor:pointer;
+  user-select:none}
+.hcap input{width:19px;height:19px;accent-color:var(--green)}
+.prev{display:flex;gap:11px;flex-wrap:wrap;margin-top:4px}
+.pteam{flex:1 1 175px;background:var(--dark2);border:3px solid #fff;padding:12px 15px;
+  transform:skewX(var(--skew))}
+.pteam>*{transform:skewX(calc(-1*var(--skew)))}
+.pteam:nth-child(1){border-left:11px solid var(--green)}
+.pteam:nth-child(2){border-left:11px solid var(--hot)}
+.pteam:nth-child(3){border-left:11px solid var(--gold)}
+.pteam:nth-child(4){border-left:11px solid var(--ice)}
+.pteam:nth-child(5){border-left:11px solid #fff}
+.pteam h5{font-family:var(--cond);font-weight:900;font-size:16px;text-transform:uppercase;letter-spacing:.08em;
+  display:flex;align-items:center;gap:8px;margin-bottom:7px}
+.pteam .mult{font-family:var(--cond);font-size:12px;font-weight:900;background:var(--gold);color:var(--dark);
+  padding:2px 7px;margin-left:auto}
+.pteam ul{list-style:none;font-family:var(--sans);font-size:14.5px;line-height:1.65}
+.pteam li::before{content:"· "}
+.pteam .empty{font-family:var(--sans);font-size:14px;color:rgba(255,255,255,.5);font-style:italic}
+.team .mult{font-family:var(--cond);font-size:11px;font-weight:900;background:var(--gold);color:var(--dark);
+  padding:1px 6px}
+.team.on .mult{background:var(--hot);color:#fff}
+.steal{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.lock p.pr{font-family:var(--sans);font-size:clamp(15px,1.6vw,21px);line-height:1.45;
+  color:rgba(255,255,255,.92);margin-bottom:12px}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opt{text-align:left;background:rgba(255,255,255,.09);border:2px solid rgba(255,255,255,.28);color:#fff;
+  padding:12px 16px;font-family:var(--sans);font-size:clamp(14px,1.5vw,19px);font-weight:500;transition:.13s}
+.opt:hover{background:#fff;color:var(--dark);border-color:#fff}
+.opt.bad{background:rgba(226,84,44,.4);border-color:var(--hot);text-decoration:line-through;opacity:.65}
+.opt.good{background:var(--green);color:var(--dark);border-color:var(--green)}
+.mgrid{display:flex;flex-wrap:wrap;gap:8px}
+.mw{background:rgba(255,255,255,.12);border:2px solid rgba(255,255,255,.3);padding:10px 15px;
+  font-family:var(--sans);font-size:clamp(14px,1.5vw,19px);font-weight:600;color:#fff;transition:.12s}
+.mw:hover{background:rgba(255,255,255,.24)}
+.mw.sel{background:var(--gold);border-color:var(--gold);color:var(--dark)}
+.mw.done{opacity:.25;pointer-events:none;text-decoration:line-through}
+.sus{display:flex;flex-wrap:wrap;gap:9px}
+.suscard{flex:1 1 155px;background:rgba(255,255,255,.09);border:3px solid rgba(255,255,255,.25);
+  padding:11px 14px;text-align:left;color:#fff;font-family:var(--sans);font-size:13.5px;line-height:1.55;
+  transition:.13s;position:relative}
+.suscard b{font-family:var(--cond);font-weight:900;font-size:17px;text-transform:uppercase;display:block;
+  margin-bottom:4px;letter-spacing:.05em}
+.suscard:hover{border-color:#fff}
+.suscard.out{opacity:.32}
+.suscard.out::after{content:"";position:absolute;inset:0;background:
+  linear-gradient(to bottom right,transparent calc(50% - 3px),var(--hot) 50%,transparent calc(50% + 3px))}
+.suscard.pick{border-color:var(--gold)}
+.clues{background:rgba(232,160,32,.15);border-left:5px solid var(--gold);padding:11px 15px;margin-bottom:13px;
+  font-family:var(--sans);font-size:clamp(14px,1.5vw,18px);line-height:1.75}
+
+/* ================= STINGERS =================
+   Full-screen motion overlays that fly in and disappear. They play on
+   TOP of the question overlay (z-index 90 vs 60), so the reveal is the
+   first thing the room sees after a tile is clicked. */
+.sting{position:fixed;inset:0;z-index:90;pointer-events:none;overflow:hidden;
+  display:flex;align-items:center;justify-content:center}
+.sting .stingtxt{font-family:var(--cond);font-weight:900;text-transform:uppercase;color:#fff;
+  text-shadow:7px 7px 0 rgba(0,0,0,.42);white-space:nowrap;line-height:.9;position:relative}
+
+.sting.pts .stingtxt{font-size:clamp(48px,8vw,132px);color:#fff;
+  animation:stPts .75s cubic-bezier(.2,1.6,.4,1) forwards}
+@keyframes stPts{0%{transform:scale(.35);opacity:0}22%{transform:scale(1.06);opacity:1}
+  70%{transform:scale(1);opacity:1}100%{transform:scale(1.12) translateY(-38px);opacity:0}}
+
+.sting.x2::before{content:"";position:absolute;inset:-25%;
+  background:repeating-conic-gradient(from 0deg,var(--gold) 0 7deg,transparent 7deg 14deg);
+  animation:stRays 1.25s linear forwards}
+@keyframes stRays{0%{transform:rotate(0) scale(.15);opacity:0}22%{opacity:.55}
+  100%{transform:rotate(70deg) scale(1.5);opacity:0}}
+.sting.x2 .stingtxt{font-size:clamp(92px,21vw,300px);color:var(--gold);
+  -webkit-text-stroke:4px var(--dark);animation:stX2 1.25s cubic-bezier(.2,1.7,.35,1) forwards}
+@keyframes stX2{0%{transform:scale(3.4) rotate(-26deg);opacity:0}
+  17%{transform:scale(1) rotate(-8deg);opacity:1}68%{transform:scale(1) rotate(-8deg);opacity:1}
+  100%{transform:scale(1.55) rotate(-8deg);opacity:0}}
+
+.sting.steal::before{content:"";position:absolute;top:-10%;bottom:-10%;width:170%;left:-175%;
+  background:linear-gradient(100deg,transparent,var(--hot) 16%,var(--hot) 84%,transparent);
+  transform:skewX(-13deg);animation:stSwipe 1.25s cubic-bezier(.45,0,.2,1) forwards}
+@keyframes stSwipe{0%{left:-175%}52%{left:-8%}100%{left:125%}}
+.sting.steal .stingtxt{font-size:clamp(58px,13vw,190px);transform:skewX(-13deg);
+  animation:stSteal 1.25s ease-out forwards}
+@keyframes stSteal{0%{transform:translateX(-46vw) skewX(-13deg);opacity:0}
+  28%{transform:translateX(0) skewX(-13deg);opacity:1}72%{opacity:1}
+  100%{transform:translateX(34vw) skewX(-13deg);opacity:0}}
+
+.ov .worth{font-family:var(--cond);font-weight:900;font-size:clamp(15px,1.7vw,22px);text-transform:uppercase;
+  letter-spacing:.14em;background:#fff;color:var(--dark);padding:5px 15px;transform:skewX(var(--skew))}
+.ov .worth.x2{background:var(--gold)}
+.ov .worth.steal{background:var(--hot);color:#fff}
+
+/* ================= VALENCIAN GAME MODES ================= */
+.pmsg{font-family:var(--sans);font-size:clamp(15px,1.7vw,22px);font-weight:600;margin:12px 0 14px;
+  color:#fff;min-height:1.4em}
+.vrow{display:flex;gap:11px;flex-wrap:wrap;align-items:center}
+
+/* --- pilota: the trinquet --- */
+.court{flex:1;min-height:0;position:relative;background:linear-gradient(#2A2622,#1A1614);
+  border:3px solid #fff;margin-bottom:13px;overflow:hidden}
+.court .line{position:absolute;left:0;right:0;height:2px;background:rgba(255,255,255,.22)}
+.court .net{position:absolute;left:50%;top:8%;bottom:8%;width:3px;background:rgba(255,255,255,.5);
+  transform:translateX(-50%)}
+.court .wall{position:absolute;left:0;top:0;bottom:0;width:26px;background:repeating-linear-gradient(
+  180deg,rgba(255,255,255,.12) 0 14px,transparent 14px 28px)}
+.court .ball{position:absolute;top:46%;left:12%;font-size:clamp(26px,3.4vw,44px);
+  filter:drop-shadow(0 4px 10px rgba(0,0,0,.6))}
+.court .ball.hit{animation:rally .9s cubic-bezier(.3,.1,.5,1)}
+.court .ball.miss{animation:netted .8s ease-in}
+@keyframes rally{0%{left:12%;top:50%}35%{left:46%;top:16%}70%{left:74%;top:56%}100%{left:88%;top:44%}}
+@keyframes netted{0%{left:12%;top:50%}60%{left:47%;top:22%}100%{left:50%;top:78%;opacity:.35}}
+.pilscore{display:flex;gap:11px;flex-wrap:wrap;margin-bottom:8px}
+.pil{flex:1 1 190px;background:var(--dark2);border:3px solid #fff;padding:10px 15px;
+  transform:skewX(var(--skew));display:flex;align-items:center;gap:11px}
+.pil>*{transform:skewX(calc(-1*var(--skew)))}
+.pil.on{background:#fff;color:var(--dark)}
+.pil .nm{font-family:var(--cond);font-weight:800;font-size:14px;text-transform:uppercase;
+  letter-spacing:.08em;flex:1}
+.pil .val{font-family:var(--cond);font-weight:900;font-size:clamp(18px,2.1vw,27px);color:var(--gold)}
+.pil.on .val{color:var(--hot)}
+.pil .jocs{font-family:var(--sans);font-size:12.5px;opacity:.75}
+
+/* --- paella --- */
+.pan{flex:0 0 auto;height:clamp(80px,15vh,140px);border:5px solid #8A8A8A;border-radius:50%/22%;
+  background:radial-gradient(ellipse at 50% 40%,#E8A020 0 40%,#C97F16 70%,#8A5A0E 100%);
+  display:flex;align-items:center;justify-content:center;gap:9px;font-size:clamp(22px,3vw,40px);
+  margin-bottom:13px;flex-wrap:wrap;padding:0 20px;overflow:hidden}
+.pan .empty{font-family:var(--sans);font-size:15px;font-weight:600;color:rgba(0,0,0,.5)}
+.ings{display:grid;grid-template-columns:repeat(7,1fr);gap:9px;flex:1;min-height:0;
+  grid-auto-rows:minmax(0,1fr)}
+.ing{background:var(--dark2);border:3px solid #fff;transform:skewX(var(--skew));color:#fff;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+  font-size:clamp(20px,2.6vw,34px);transition:.13s;padding:6px}
+.ing>*{transform:skewX(calc(-1*var(--skew)))}
+.ing span{font-family:var(--sans);font-size:12.5px;font-weight:600;line-height:1.15;text-align:center}
+.ing:hover{background:var(--green);border-color:var(--dark)}
+.ing.taken{opacity:.28;pointer-events:none}
+.ing.bad.taken{border-color:var(--hot)}
+
+/* --- el mercat (build the paella) --- */
+.mkwrap{display:flex;flex-direction:column;gap:10px;flex:1;min-height:0}
+.recpick{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:14px}
+.reccard{background:var(--dark2);border:3px solid #fff;transform:skewX(var(--skew));padding:18px 16px;
+  text-align:left;transition:.13s;color:#fff}
+.reccard>*{transform:skewX(calc(-1*var(--skew)))}
+.reccard:hover{background:var(--green);border-color:var(--dark)}
+.reccard b{font-family:var(--cond);font-weight:900;text-transform:uppercase;
+  font-size:clamp(17px,2.1vw,25px);display:block;margin-bottom:7px;line-height:1.05}
+.reccard span{font-family:var(--sans);font-size:13.5px;line-height:1.45;display:block;opacity:.85}
+.mkbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.coin{font-family:var(--cond);font-weight:900;text-transform:uppercase;letter-spacing:.05em;
+  background:var(--gold);color:var(--dark);padding:7px 14px;transform:skewX(var(--skew));font-size:15px}
+.coin>span{display:inline-block;transform:skewX(calc(-1*var(--skew)))}
+.coin.none{background:var(--dark2);color:#fff;opacity:.6}
+.verdict{text-align:center;padding:26px 20px;border:4px solid #fff;background:var(--dark2);
+  transform:skewX(var(--skew));animation:slam .3s cubic-bezier(.2,1.5,.4,1);margin-top:8px}
+.verdict>*{transform:skewX(calc(-1*var(--skew)))}
+.verdict.win{border-color:var(--green);background:rgba(107,174,46,.22)}
+.verdict.lose{border-color:var(--hot);background:rgba(226,84,44,.18)}
+.verdict .party{font-size:clamp(30px,6vw,64px);letter-spacing:.08em;margin-bottom:6px}
+.verdict .val{font-family:var(--cond);font-weight:900;text-transform:uppercase;
+  font-size:clamp(19px,3.2vw,40px);line-height:1.12}
+.verdict .en{font-family:var(--sans);font-size:clamp(13px,1.5vw,18px);margin-top:10px;opacity:.85}
+.verdict .lst{font-family:var(--sans);font-size:14px;margin-top:13px;opacity:.82;line-height:1.5}
+.verdict .lst b{color:var(--gold)}
+
+/* --- sambori --- */
+.sam{flex:1;min-height:0;display:flex;flex-direction:column-reverse;align-items:center;gap:7px;
+  padding:8px 0}
+.samrow{display:flex;gap:7px}
+.sq{width:clamp(58px,7vw,96px);height:clamp(38px,6.4vh,64px);background:var(--dark2);border:3px solid #fff;
+  transform:skewX(var(--skew));display:flex;align-items:center;justify-content:center;position:relative;
+  font-family:var(--cond);font-weight:900;font-size:clamp(15px,1.9vw,24px)}
+.sq>*{transform:skewX(calc(-1*var(--skew)))}
+.sq.up{background:rgba(107,174,46,.35);border-color:var(--green)}
+.sq.down{background:rgba(226,84,44,.35);border-color:var(--hot)}
+.sq.cel{background:var(--gold);color:var(--dark)}
+.sq .tok{position:absolute;bottom:-9px;display:flex;gap:3px;font-size:15px}
+
+/* --- falla --- */
+.fallas{display:flex;gap:16px;flex:1;min-height:0;align-items:flex-end;justify-content:center;
+  padding-bottom:10px}
+.fal{flex:1 1 160px;max-width:230px;display:flex;flex-direction:column;align-items:center;gap:5px}
+.fal .stack{display:flex;flex-direction:column-reverse;align-items:center;gap:3px;min-height:0}
+.fal .blk{background:linear-gradient(150deg,var(--gold),var(--hot));border:2px solid #fff;
+  height:clamp(13px,2.2vh,22px);animation:slam .3s cubic-bezier(.2,1.5,.4,1)}
+.fal .blk:nth-child(1){width:150px}.fal .blk:nth-child(2){width:134px}
+.fal .blk:nth-child(3){width:118px}.fal .blk:nth-child(4){width:102px}
+.fal .blk:nth-child(5){width:86px}.fal .blk:nth-child(6){width:70px}
+.fal .blk:nth-child(7){width:54px}.fal .blk:nth-child(8){width:38px;background:var(--green)}
+.fal .ninot{font-size:26px}
+.fal .lbl{font-family:var(--cond);font-weight:900;font-size:13px;text-transform:uppercase;
+  letter-spacing:.08em;text-align:center}
+.fal.burning .blk{animation:burn .9s ease-in forwards}
+
+/* ---------- somerset pursuit (added 25 Sep 2026, B2 Conversación) ----------
+   A Trivial-Pursuit-style ring: 24 spaces round the border of a 7×7
+   CSS grid (4×7-4=24, exactly), leaving the interior 5×5 free for the
+   centre hub — no absolute positioning needed. Six spaces, one every
+   four (index%4===0), are each colour's HQ. Manises-style ceramic
+   azulejo tiles mark categories and collected pieces: four white
+   quarter-circle petals meeting in the middle of a coloured square,
+   drawn with layered radial-gradients — no external images, same rule
+   as every other icon in this app. */
+.pcatlegend{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:9px}
+.pleg{display:flex;align-items:center;gap:6px;font-family:var(--sans);font-size:12.5px;
+  color:rgba(255,255,255,.85)}
+.azulejo{width:22px;height:22px;flex:0 0 auto;background:var(--pc,#888);border:2px solid #fff;
+  position:relative}
+.azulejo.sm{width:15px;height:15px;border-width:1px}
+.azulejo.xs{width:13px;height:13px;border-width:1px}
+.azulejo.xs.empty{opacity:.2;filter:grayscale(1)}
+.azulejo::after{content:"";position:absolute;inset:14%;
+  background:
+    radial-gradient(circle at 0 0,   transparent 58%, #fff 60% 64%, transparent 66%),
+    radial-gradient(circle at 100% 0,transparent 58%, #fff 60% 64%, transparent 66%),
+    radial-gradient(circle at 0 100%,transparent 58%, #fff 60% 64%, transparent 66%),
+    radial-gradient(circle at 100% 100%,transparent 58%,#fff 60% 64%, transparent 66%);}
+.pursuit-wrap{display:flex;justify-content:center;margin:4px 0 8px;flex:1;min-height:0}
+.pursuit-board{display:grid;grid-template-columns:repeat(7,1fr);grid-template-rows:repeat(7,1fr);
+  gap:3px;width:min(72vh,92vw,540px);aspect-ratio:1}
+.pspace{background:var(--pc,#333);border:2px solid #fff;display:flex;align-items:center;
+  justify-content:center;position:relative;min-width:0;min-height:0}
+.pspace.hq{border:3px solid var(--gold)}
+.ptok{position:absolute;font-size:clamp(10px,1.6vw,15px);display:flex;gap:1px;line-height:1}
+.phub{background:var(--dark2);border:3px solid #fff;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:5px;padding:6px;overflow:hidden}
+.phubTitle{font-size:clamp(18px,3vw,34px)}
+.phubTeams{display:flex;flex-direction:column;gap:4px;width:100%}
+.phubTeam{display:flex;align-items:center;gap:5px;justify-content:space-between;
+  font-family:var(--cond);font-size:clamp(8px,1vw,11px);text-transform:uppercase;
+  letter-spacing:.05em;color:rgba(255,255,255,.7);padding:1px 4px}
+.phubTeam.on{color:#fff;background:rgba(255,255,255,.12)}
+.phubTeam .nm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:9ch}
+.phubTeam .tiles{display:flex;gap:2px;flex-shrink:0}
+@keyframes burn{to{background:#3A1608;transform:translateY(14px) scaleY(.25);opacity:.35}}
+.fal.burning .ninot{animation:flare .7s ease-out infinite alternate}
+@keyframes flare{to{transform:translateY(-9px) scale(1.28);filter:hue-rotate(-18deg)}}
+
+.toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) skewX(var(--skew));background:var(--dark);
+  border:3px solid #fff;padding:11px 26px;font-family:var(--cond);font-weight:800;text-transform:uppercase;
+  letter-spacing:.08em;z-index:80;display:none}
+.toast.on{display:block;animation:slam .3s cubic-bezier(.2,1.5,.4,1)}
+#tmr{position:fixed;top:70px;right:22px;z-index:70;font-family:var(--cond);font-weight:900;
+  font-size:clamp(30px,3.6vw,56px);color:var(--dark);background:var(--gold);padding:3px 18px;
+  transform:skewX(var(--skew));display:none}
+#tmr.on{display:block}
+/* Point Grab countdown: gold normally, coral in the last five seconds,
+   coral + flash on TIME!. English never skews, but the chip may. */
+/* ---- Hangman ---- */
+.hmwrap{display:flex;gap:clamp(18px,4vw,54px);align-items:center;justify-content:center;
+  flex-wrap:wrap;flex:1}
+.hmfig{width:clamp(150px,18vw,260px);height:auto;flex-shrink:0}
+.hmright{display:flex;flex-direction:column;gap:16px;align-items:center;min-width:min(100%,520px)}
+.hmclue{display:flex;flex-direction:column;align-items:center;gap:8px}
+/* Spanish clue: upright sentence case, never skewed — it is read, not decorated */
+.hmclueword{font-family:var(--sans);font-weight:600;font-size:clamp(20px,2.6vw,38px);color:var(--paper)}
+.hmword{display:flex;gap:clamp(5px,.8vw,12px);flex-wrap:wrap;justify-content:center}
+.hmslot{font-family:var(--sans);font-weight:700;font-size:clamp(26px,4vw,60px);line-height:1.1;
+  min-width:clamp(24px,3.4vw,50px);text-align:center;border-bottom:5px solid var(--green);
+  color:var(--paper)}
+.hmslot.free{border-bottom-color:transparent}
+.hmlives{font-size:clamp(16px,1.8vw,26px);color:var(--green);letter-spacing:.18em}
+.hmlives .gone{color:#5a534d}
+.hmlivestxt{font-family:var(--cond);font-weight:900;letter-spacing:.12em;text-transform:uppercase;
+  font-size:13px;color:var(--paper);margin-left:12px}
+.hmkeys{display:grid;grid-template-columns:repeat(13,1fr);gap:clamp(4px,.6vw,9px);width:100%}
+.hmkey{font-family:var(--cond);font-weight:900;font-size:clamp(15px,1.7vw,26px);
+  padding:clamp(5px,.8vh,12px) 0;background:var(--dark2);color:var(--paper);
+  border:2px solid #4a443e;cursor:pointer;transform:skewX(var(--skew))}
+.hmkey:hover:not(:disabled){background:var(--green);color:var(--dark);border-color:var(--green)}
+.hmkey.hit{background:var(--green);color:var(--dark);border-color:var(--green)}
+.hmkey.miss{background:transparent;color:#5a534d;border-color:#3a352f}
+.hmkey:disabled{cursor:default}
+@media (max-width:780px){.hmkeys{grid-template-columns:repeat(7,1fr)}}
+#tmr.low{background:var(--hot);color:#fff}
+#tmr.out{background:var(--hot);color:#fff;animation:slam .3s cubic-bezier(.2,1.5,.4,1)}
+.tmrbtn{font-family:var(--cond);font-weight:900;letter-spacing:.1em;text-transform:uppercase;
+  font-size:13px;padding:6px 14px;border:2px solid var(--green);background:transparent;
+  color:var(--green);cursor:pointer;transform:skewX(var(--skew))}
+.tmrbtn.off{border-color:#777;color:#777}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.memory-game{height:calc(100dvh - 60px);min-height:560px}.memory-game .board{min-height:180px}.memory-game .pc img{position:absolute;inset:0}.memory-game>.row{flex-shrink:0}
+.picture-tf{overflow-y:auto;justify-content:flex-start!important;padding:20px!important;gap:12px!important}.picture-pair{display:flex;gap:20px;justify-content:center;flex-shrink:0}.picture-pair figure{margin:0;text-align:center}.picture-pair img{height:clamp(140px,36vh,330px);width:clamp(130px,25vw,300px);object-fit:contain;background:#181818;border:3px solid white}.picture-pair figcaption{font-size:16px;margin-top:5px}.picture-tf .q{font-size:clamp(22px,3vw,38px);max-width:1000px}.picture-hint{font-size:15px;max-width:800px;text-align:center}
+button:disabled{opacity:.4;cursor:not-allowed}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="halftone"></div>
+  <div class="bar">
+    <div class="logo">SOMERSET<small>ARCADE</small></div>
+    <span class="unit" id="unitLabel"></span>
+    <span class="sp"></span>
+    <button onclick="Game.intro()"><span>🏫 Change class</span></button>
+    <button onclick="Game.setup()"><span>👥 Teams</span></button>
+    <button onclick="Game.home()"><span>◀ Menu</span></button>
+    <button onclick="toggleFS()"><span>⛶</span></button>
+  </div>
+  <div class="stage" id="stage"></div>
+</div>
+
+<div class="ov" id="ov"></div>
+<div class="toast" id="toast"></div>
+<div id="tmr">0:00</div>
+
+<script src="units/adults-b12-w1.js"></script>
+<script src="units/adults-b12-w2.js"></script>
+<script src="units/b1a-u01-l01.js"></script>
+<script src="units/b1a-u01-l02.js"></script>
+<script src="units/b1a-u01-l03.js"></script>
+<script src="units/b1a-u01-l04.js"></script>
+<script src="units/b1a-u01-l05.js"></script>
+<script src="units/b1a-u01-l06.js"></script>
+<script src="units/b1a-u02-l01.js"></script>
+<script src="units/b1a-u02-l02.js"></script>
+<script src="units/b1a-u02-l03.js"></script>
+<script src="units/b1a-u02-l04.js"></script>
+<script src="units/b1a-u02-l05.js"></script>
+<script src="units/b1a-u02-l06.js"></script>
+<script src="units/b1a-u03-l01.js"></script>
+<script src="units/b1a-u03-l02.js"></script>
+<script src="units/b1a-u03-l03.js"></script>
+<script src="units/b1a-u03-l04.js"></script>
+<script src="units/b1a-u03-l05.js"></script>
+<script src="units/b1a-u03-l06.js"></script>
+<script src="units/b1a-u04-l01.js"></script>
+<script src="units/b1a-u04-l02.js"></script>
+<script src="units/b1a-u04-l03.js"></script>
+<script src="units/b1a-u04-l04.js"></script>
+<script src="units/b1a-u04-l05.js"></script>
+<script src="units/b1a-u04-l06.js"></script>
+<script src="units/b1a-u05-l01.js"></script>
+<script src="units/b1a-u05-l02.js"></script>
+<script src="units/b1a-u05-l03.js"></script>
+<script src="units/b1a-u05-l04.js"></script>
+<script src="units/b1a-u05-l05.js"></script>
+<script src="units/b1a-u05-l06.js"></script>
+<script src="units/b1a-u06-l01.js"></script>
+<script src="units/b1a-u06-l02.js"></script>
+<script src="units/b1a-u06-l03.js"></script>
+<script src="units/b1a-u06-l04.js"></script>
+<script src="units/b1a-u06-l05.js"></script>
+<script src="units/b1a-u06-l06.js"></script>
+<script src="units/b2a-u01-l01.js"></script>
+<script src="units/b2a-u01-l02.js"></script>
+<script src="units/b2a-u01-l03.js"></script>
+<script src="units/b2a-u01-l04.js"></script>
+<script src="units/b2a-u01-l05.js"></script>
+<script src="units/b2a-u01-l06.js"></script>
+<script src="units/b2a-u01-l07.js"></script>
+<script src="units/b2a-u01-l08.js"></script>
+<script src="units/b2a-u01-l09.js"></script>
+<script src="units/b2a-u02-l01.js"></script>
+<script src="units/b2a-u02-l02.js"></script>
+<script src="units/b2a-u02-l03.js"></script>
+<script src="units/b2a-u02-l04.js"></script>
+<script src="units/b2a-u02-l05.js"></script>
+<script src="units/b2a-u02-l06.js"></script>
+<script src="units/b2a-u02-l07.js"></script>
+<script src="units/b2a-u02-l08.js"></script>
+<script src="units/b2a-u02-l09.js"></script>
+<script src="units/b2a-u03-l01.js"></script>
+<script src="units/b2a-u03-l02.js"></script>
+<script src="units/b2a-u03-l03.js"></script>
+<script src="units/b2a-u03-l04.js"></script>
+<script src="units/b2a-u03-l05.js"></script>
+<script src="units/b2a-u03-l06.js"></script>
+<script src="units/b2a-u03-l07.js"></script>
+<script src="units/b2a-u03-l08.js"></script>
+<script src="units/b2a-u03-l09.js"></script>
+<script src="units/b2a-u04-l01.js"></script>
+<script src="units/b2a-u04-l02.js"></script>
+<script src="units/b2a-u04-l03.js"></script>
+<script src="units/b2a-u04-l04.js"></script>
+<script src="units/b2a-u04-l05.js"></script>
+<script src="units/b2a-u04-l06.js"></script>
+<script src="units/b2a-u04-l07.js"></script>
+<script src="units/b2a-u04-l08.js"></script>
+<script src="units/b2a-u04-l09.js"></script>
+<script src="units/b2a-u05-l01.js"></script>
+<script src="units/b2a-u05-l02.js"></script>
+<script src="units/b2a-u05-l03.js"></script>
+<script src="units/b2a-u05-l04.js"></script>
+<script src="units/b2a-u05-l05.js"></script>
+<script src="units/b2a-u05-l06.js"></script>
+<script src="units/b2a-u05-l07.js"></script>
+<script src="units/b2a-u05-l08.js"></script>
+<script src="units/b2a-u05-l09.js"></script>
+<script src="units/b2a-u06-l01.js"></script>
+<script src="units/b2a-u06-l02.js"></script>
+<script src="units/b2a-u06-l03.js"></script>
+<script src="units/b2a-u06-l04.js"></script>
+<script src="units/b2a-u06-l05.js"></script>
+<script src="units/b2a-u06-l06.js"></script>
+<script src="units/b2a-u06-l07.js"></script>
+<script src="units/b2a-u06-l08.js"></script>
+<script src="units/b2a-u06-l09.js"></script>
+<script src="units/fce1-u01.js"></script>
+<script src="units/fce1-u01b.js"></script>
+<script src="units/fce1-u01c.js"></script>
+<script src="units/friday-b2-u01.js"></script>
+<script src="units/friday-b2-u01b.js"></script>
+<script src="units/pet1-u01.js"></script>
+<script src="units/b2conv-u01.js"></script>
+<script src="units/unit-01.js"></script>
+<script src="units/unit-02.js"></script>
+<script src="units/unit-03.js"></script>
+<script>
+/* ============================================================
+   SOMERSET ARCADE — classroom game engine
+   One data file per unit drives every game. No server, no build.
+   Add a unit: drop units/unit-0N.js and add a <script> tag above.
+   Skin: INK. Panels skew, English does not — see the note in <style>.
+   ============================================================ */
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const stage = $('#stage'), ov = $('#ov');
+const shuffle = a => { a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]];} return a; };
+const esc = s => String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+
+function toast(msg,ms=1800){const t=$('#toast');t.textContent=msg;t.classList.add('on');
+  clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('on'),ms);}
+function toggleFS(){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen();}
+let tI=null;
+/* How long a team has to answer a Point Grab tile. Change this one number. */
+const POINT_GRAB_SECONDS = 25;
+/* How long a team gets, after correctly calling a True/False suggested
+   answer "False", to also say the real answer out loud for a bonus
+   point. Added 18 Sep 2026 at Hugo's request. Change this one number. */
+const TF_BONUS_SECONDS = 10;
+function timer(sec,onEnd){const el=$('#tmr');el.classList.add('on');el.classList.remove('low','out');let t=sec;
+  const d=()=>{el.textContent=Math.floor(t/60)+':'+String(t%60).padStart(2,'0');
+    el.classList.toggle('low', t<=5 && t>0);};
+  d();clearInterval(tI);tI=setInterval(()=>{t--;d();if(t<=0){clearInterval(tI);
+    el.textContent='TIME!';el.classList.remove('low');el.classList.add('out');
+    if(typeof onEnd==='function') onEnd();}},1000);}
+function stopTimer(){clearInterval(tI);const el=$('#tmr');el.classList.remove('on','low','out');}
+
+/* ==================================================================
+   THE TIMETABLE — this is the only part you edit when a class moves.
+   d: 0=Sunday … 6=Saturday.  Times are 24h.  The Arcade opens on the
+   class you are about to teach, with 45 minutes of setup grace before
+   the start, so it is already right when you walk in.
+   Several groups share a day, so the TIME is what tells them apart —
+   without it Monday is ambiguous between Flyers and the B1.2 adults.
+
+   Source: Hugo's contracted timetable, CURSO 2026-27 (20 h/week).
+   Preparation slots are deliberately absent: during prep the Arcade
+   points at the NEXT class of the day, which is what you want.
+
+   Group ids are the class names Hugo actually says out loud. Folder
+   mapping in Somerset Worksheets/groups/ :
+     flyers      → groups/children/        (Our World 4)
+     adults-b12  → groups/young-adults/    (Monday Adults — Miriam & Alejandra)
+     b1-seniors  → groups/adults-tuesday/
+     b2-conv     → groups/adults-wednesday/
+     ket1 · pet1 · fce1 → see TIMETABLE_2026-27.md; the old
+     `adolescents` and `teenagers` folders do not map cleanly.
+     friday-b2  → groups/friday-b2/       (New Close-up B2 Split A — separate from fce1, same level, added 18 Sep 2026)
+   ================================================================== */
+const TIMETABLE=[
+  /* MONDAY */
+  {d:1, from:'17:30', to:'18:30', group:'flyers',     label:'Flyers I'},
+  {d:1, from:'18:45', to:'20:45', group:'adults-b12', label:'B1.2 Adults'},
+  /* TUESDAY */
+  {d:2, from:'16:20', to:'17:20', group:'fce1',       label:'FCE I'},
+  {d:2, from:'17:30', to:'18:30', group:'ket1',       label:'KET I'},
+  {d:2, from:'18:45', to:'19:45', group:'b1-seniors', label:'B1 + Seniors'},
+  /* WEDNESDAY */
+  {d:3, from:'15:45', to:'17:15', group:'pet1',       label:'PET I'},
+  {d:3, from:'17:30', to:'18:30', group:'flyers',     label:'Flyers I'},
+  {d:3, from:'18:45', to:'20:15', group:'b2-conv',    label:'B2 Conversación'},
+  /* THURSDAY */
+  {d:4, from:'16:30', to:'17:30', group:'fce1',       label:'FCE I'},
+  {d:4, from:'17:30', to:'18:30', group:'ket1',       label:'KET I'},
+  {d:4, from:'18:45', to:'19:45', group:'b1-seniors', label:'B1 + Seniors'},
+  /* FRIDAY */
+  {d:5, from:'15:45', to:'17:45', group:'friday-b2', label:'Friday B2'}
+];
+const DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const hhmm = s => { const [h,m]=s.split(':').map(Number); return h*60+m; };
+/* Which class is it? Inside the lesson (or in the 45 min before it),
+   that one. Otherwise the next one still to come today. Otherwise null
+   and the Arcade just opens on the first unit it has. */
+function slotFor(now){
+  const d=now.getDay(), mins=now.getHours()*60+now.getMinutes();
+  const today=TIMETABLE.filter(s=>s.d===d).sort((a,b)=>hhmm(a.from)-hhmm(b.from));
+  return today.find(s=>mins>=hhmm(s.from)-45 && mins<=hhmm(s.to))
+      || today.find(s=>mins<hhmm(s.from))
+      || null;
+}
+
+/* ---------- Valencian game data ----------
+   A real Valencian paella: chicken, rabbit, the two beans, rice, tomato,
+   garlic, olive oil, saffron, rosemary — snails if you are lucky. The
+   last three are the ones that start arguments at Spanish family lunches,
+   which is exactly why they are worth minus ten points. */
+const PAELLA=[
+  {n:'chicken',ok:1,e:'🍗'},   {n:'rabbit',ok:1,e:'🐰'},  {n:'butter beans',ok:1,e:'🫘'},
+  {n:'green beans',ok:1,e:'🫛'},{n:'rice',ok:1,e:'🍚'},    {n:'tomato',ok:1,e:'🍅'},
+  {n:'garlic',ok:1,e:'🧄'},    {n:'olive oil',ok:1,e:'🫒'},{n:'saffron',ok:1,e:'🌼'},
+  {n:'rosemary',ok:1,e:'🌿'},  {n:'snails',ok:1,e:'🐌'},
+  {n:'chorizo',ok:0,e:'🌭'},   {n:'peas',ok:0,e:'🟢'},     {n:'onion',ok:0,e:'🧅'}
+];
+
+/* ---------- el mercat: the shopping game (14 Sep 2026) ----------
+   Hugo's brief: they have to earn the right to shop. A correct answer
+   about the reading buys one ingredient; at the end the pan is judged
+   against the recipe they picked. Three real recipes, so "the right
+   ingredients" depends on which paella you said you were making —
+   which is exactly the argument the lesson is about.
+   A unit can override all of this with its own `mercat` block. */
+const MERCAT_DEFAULT = {
+  market:[
+    {n:'rice',e:'\u{1F35A}'},      {n:'chicken',e:'\u{1F357}'},  {n:'rabbit',e:'\u{1F430}'},
+    {n:'duck',e:'\u{1F986}'},      {n:'garrofó',e:'\u{1FAD8}'},  {n:'green beans',e:'\u{1FADB}'},
+    {n:'artichoke',e:'\u{1F331}'}, {n:'tomato',e:'\u{1F345}'},   {n:'olive oil',e:'\u{1FAD2}'},
+    {n:'saffron',e:'\u{1F33C}'},   {n:'salt',e:'\u{1F9C2}'},     {n:'water',e:'\u{1F4A7}'},
+    {n:'rosemary',e:'\u{1F33F}'},  {n:'snails',e:'\u{1F40C}'},   {n:'garlic',e:'\u{1F9C4}'},
+    {n:'paprika',e:'\u{1F336}'},   {n:'prawns',e:'\u{1F990}'},   {n:'squid',e:'\u{1F991}'},
+    {n:'mussels',e:'\u{1F41A}'},   {n:'chorizo',e:'\u{1F32D}'},  {n:'peas',e:'\u{1F7E2}'},
+    {n:'onion',e:'\u{1F9C5}'}
+  ],
+  recipes:[
+    {name:'Paella Valenciana', blurb:'The ten ingredients four hundred chefs agreed on in 2022.',
+     need:['rice','chicken','rabbit','green beans','garrofó','tomato','olive oil','saffron','salt','water'],
+     extra:['duck','snails','rosemary','artichoke','garlic','paprika'],
+     never:['chorizo','peas','onion','prawns','squid','mussels']},
+    {name:'Paella de Verdures', blurb:'All vegetables. Harder than it looks to get right.',
+     need:['rice','green beans','garrofó','artichoke','tomato','olive oil','saffron','salt','water','paprika'],
+     extra:['garlic','rosemary'],
+     never:['chicken','rabbit','duck','prawns','squid','mussels','chorizo','peas','onion']}
+  ],
+  fails:{
+    chorizo:{val:'Xe, amb chorizo?! Això no és una paella, això és un arròs amb coses.',
+             en:'Hey, with chorizo?! That is not a paella, that is rice with things in it.'},
+    peas:   {val:'Pésols a la paella? La teua sogra estarà contenta. Ningú més.',
+             en:'Peas in the paella? Your mother-in-law will be delighted. Nobody else.'},
+    onion:  {val:'Amb ceba l\u2019arròs es queda blanet. Això no ho firma cap valencià.',
+             en:'With onion the rice goes soft. No Valencian is signing their name to this.'},
+    prawns: {val:'Marisc ací? Ni el gos de l\u2019Albufera s\u2019ho menjaria.',
+             en:'Seafood in this? Not even the dog from the Albufera would eat it.'},
+    chicken:{val:'Pollastre en una paella de verdures? Xe, decidix-te!',
+             en:'Chicken in a vegetable paella? Come on, make your mind up!'}
+  },
+  generic:{val:'Això no va ací. Torna al mercat.',
+           en:'That does not belong in there. Back to the market.'},
+  missing:{val:'Li falten coses! Això és un arròs trist, no una paella.',
+           en:'It is missing things! That is a sad rice, not a paella.'},
+  win:{val:'Això sí que és una paella! Socarrat i tot. Bon profit!',
+       en:'Now THAT is a paella! Socarrat and everything. Enjoy your meal!'}
+};
+
+const SAM_UP={3:2,7:2}, SAM_DOWN={5:2,9:3};
+const TOKENS=['🔴','🔵','🟡','🟣','⚪'];
+
+/* ---------- teams ----------------------------------------------
+   Configured once from the Teams screen and kept for the whole
+   lesson: switching game (or unit) never wipes the scores. The
+   handicap is a points multiplier — a team of 2 playing against
+   teams of 3 earns 1.5× — so a short-handed team stays in it
+   without anyone having to remember a rule mid-game.
+   --------------------------------------------------------------- */
+const Teams = {
+  list:[], turn:0, handicap:true, configured:false,
+  blank(n){ return Array.from({length:n},(_,i)=>({name:'Team '+(i+1),members:[],score:0})); },
+  /* used by games; only builds default teams if none were set up */
+  init(n=3){ if(!this.configured){ this.list=this.blank(n); this.configured=true; this.recalc(); } this.turn=0; this.render(); },
+  configure(n,names){
+    const teams=this.blank(n);
+    shuffle(names.filter(s=>s.trim())).forEach((nm,i)=>teams[i%n].members.push(nm.trim()));
+    teams.forEach(t=>{ if(t.members.length) t.name=t.members.join(' & ').length<=22
+      ? t.members.join(' & ') : t.name; });
+    this.list=teams; this.turn=0; this.configured=true; this.recalc();
+  },
+  /* multiplier = biggest team ÷ this team, so the short team earns more */
+  recalc(){
+    const sizes=this.list.map(t=>t.members.length);
+    const max=Math.max(1,...sizes);
+    this.list.forEach(t=>{
+      const s=t.members.length;
+      t.mult = (this.handicap && s>0 && s<max) ? Math.round((max/s)*10)/10 : 1;
+    });
+  },
+  add(pts){ const t=this.list[this.turn]; t.score += Math.round(pts*(t.mult||1)); this.render(); },
+  steal(fromIdx,pts){
+    const a=this.list[this.turn], b=this.list[fromIdx];
+    if(!b||b===a) return;
+    b.score-=pts; a.score+=pts; this.render();
+  },
+  next(){ this.turn=(this.turn+1)%this.list.length; this.render(); },
+  html(){ return '<div class="teams">'+this.list.map((t,i)=>
+      `<div class="team ${i===this.turn?'on':''}">
+         <button class="nm" style="background:transparent;color:inherit;text-align:left" onclick="Teams.select(${i})" aria-label="Select ${esc(t.name)}">${esc(t.name)}</button>
+         ${t.mult>1?`<span class="mult">×${t.mult}</span>`:''}
+         <span class="sc">${t.score}</span>
+         <span class="pm"><button onclick="Teams.bump(${i},-1)">−</button>
+         <button onclick="Teams.bump(${i},1)">+</button></span></div>`).join('')+
+      `<button class="winbtn" onclick="Teams.declareWinner()" aria-label="Declare winner" title="Declare winner"><span>🏆</span></button>`
+      +'</div>'; },
+  select(i){ if(Game._memSelected?.length || ov.classList.contains('on')){ toast('Finish this turn before changing team.'); return; } this.turn=i; this.render(); },
+  bump(i,d){ this.list[i].score+=d; this.render(); },
+  render(){ const el=$('#teamsBox'); if(el) el.innerHTML=this.html(); },
+  /* Manual "declare winner" screen, added 18 Sep 2026 at Hugo's request.
+     Deliberately a button the teacher presses, never an automatic
+     threshold — same philosophy as the rest of the Arcade: the teacher
+     always decides when a round is over, nothing on screen scores or
+     ends anything by itself. Ties show every team that's tied. */
+  declareWinner(){
+    if(!this.list.length) return;
+    const max=Math.max(...this.list.map(t=>t.score));
+    const winners=this.list.filter(t=>t.score===max);
+    ov.className='ov on winner';
+    ov.innerHTML=`<div class="badge">🏆 WINNER</div>
+      <div class="q winnerName">${winners.map(w=>esc(w.name)).join(' & ')}</div>
+      <div class="q" style="font-size:clamp(20px,3vw,40px);color:var(--gold)">${max} point${max===1?'':'s'}${winners.length>1?' — tie!':''}</div>
+      <div class="row"><button class="btn" onclick="ov.classList.remove('on')"><span>Close</span></button></div>`;
+  }
+};
+
+/* friendly icon per class, for the intro screen only — purely cosmetic */
+const GROUP_ICON = {flyers:'🧒',fce1:'🎓',ket1:'🔑','b1-seniors':'🌿',pet1:'📗','adults-b12':'💬','b2-conv':'🗣️'};
+
+/* ---------- engine ---------- */
+const Game = {
+  unit:null, _ids:[], version:'original',
+  versions(fn,title){
+    this._launch=fn; this._title=title;
+    stage.innerHTML=`<div class="pad"><h1 class="h1">${esc(title)}</h1>
+      <p class="sub">Choose a version. Teams and points carry across games.</p>
+      <div class="tiles">${[['original','Original','Play the original game.'],['tf','True or false',fn==='Game.memory()'?'Compare the two pictures. Is the sentence true?':'Decide whether the suggested answer is correct.'],['gap','Fill in','Complete the missing answer out loud.'],['mc','Multiple choice','Choose from the answers on screen.']].map(([v,t,d],i)=>tile('▶',t,d,`Game.startVersion('${v}')`,i)).join('')}</div>
+      <p class="sub">Turn Two and the points games use your chosen question format. Guess Who, Word Flash, Speed Round, Hangman and The Case offer a unit-question quiz edition.</p>
+      <div class="row"><button class="btn ghost" onclick="Game.setup()"><span>Set up teams</span></button><button class="btn ghost" onclick="Game.home()"><span>Back</span></button></div></div>`;
+  },
+  startVersion(v){
+    this.version=v; this._pool=null; this._memSelected=[];
+    const fn=this._launch;
+    if(v!=='original' && /Game\.(guessWho|flash|speed|theCase|hangman)/.test(fn)){ this.quizEdition(); return; }
+    const match=fn.match(/^Game\.(\w+)\((?:'([^']*)')?\)$/);
+    if(match) this[match[1]](match[2]);
+  },
+  questionPool(topic){
+    const qs=(this.unit.questions||[]).filter(q=>!topic||q.topic===topic);
+    if(this.version==='gap'){
+      const gaps=qs.filter(q=>q.type==='gap');
+      if(gaps.length) return gaps;
+      return qs.map(q=>({...q,q:q.q+' Answer: ___'}));
+    }
+    return qs;
+  },
+  questionView(q){
+    let prompt=q.q, answer=q.a, choices=[];
+    const pool=this.questionPool();
+    /* Prefer a distractor from the SAME topic tag as q, so a True/False
+       suggested answer is a plausible near-miss rather than a random
+       answer from a different part of the unit that reads as obviously
+       false. Falls back to the old whole-unit-by-type pool when the
+       question has no topic or too few topic-mates. Added 18 Sep 2026
+       at Hugo's request after the Friday B2 class. */
+    const sameTopic=q.topic?pool.filter(x=>x.topic===q.topic&&x.type===q.type&&x.a!==q.a):[];
+    const byType=pool.filter(x=>x.type===q.type);
+    const wrongPool=sameTopic.length?sameTopic:byType;
+    const wrong=[...new Set(wrongPool.map(x=>x.a))].filter(a=>a!==q.a);
+    if(this.version==='tf'){
+      const isFalse=wrong.length>0 && Math.random()<0.5;
+      const candidate=isFalse?shuffle(wrong)[0]:q.a;
+      this._tfIsFalse=candidate!==q.a; this._tfCorrectAnswer=q.a;
+      prompt+=' Suggested answer: “'+candidate+'”. True or false?';
+      answer=(this._tfIsFalse?'False':'True')+' — '+q.a; choices=['True','False'];
+    } else if(this.version==='mc') choices=shuffle([q.a,...shuffle(wrong).slice(0,3)]);
+    return `<div class="q">${esc(prompt)}</div>${choices.length?`<div class="row" style="display:flex;gap:12px;flex-wrap:wrap">${choices.map(c=>`<span class="chip"><span>${esc(c)}</span></span>`).join('')}</div>`:''}<div class="a" id="ansBox">${esc(answer)}</div>`;
+  },
+  quizEdition(){
+    Teams.init(); stage.innerHTML=`<div class="pad"><div id="teamsBox">${Teams.html()}</div><h1 class="h1">${esc(this._title)} · Quiz</h1><p class="sub">Answer a unit question. Correct answers earn one point.</p><button class="btn" onclick="Game.quizQuestion()"><span>Next question</span></button></div>`;
+  },
+  quizQuestion(){
+    this.ask(ok=>{
+      if(ok) Teams.add(1);
+      /* Correctly called a T/F suggested answer "False" → bonus round,
+         not straight to the next team. See tfBonusRound(). */
+      if(ok && this.version==='tf' && this._tfIsFalse) this.tfBonusRound();
+      else Teams.next();
+    },this._title+' · Quiz');
+  },
+  /* Bonus round added 18 Sep 2026: the team already earned +1 for correctly
+     saying "False" — now they get TF_BONUS_SECONDS to also give the real
+     answer out loud for one more point. Reuses the same global #tmr clock
+     as Point Grab (timer()/stopTimer()), so it follows the same
+     never-auto-scores rule: Correct/Wrong stay live at TIME!, the teacher
+     always decides. */
+  tfBonusRound(){
+    const answer=this._tfCorrectAnswer;
+    ov.className='ov on';
+    ov.innerHTML=`<div class="badge">BONUS · ${TF_BONUS_SECONDS}s FOR THE CORRECT ANSWER</div>
+      <div class="q">They said False and were right. Now: what IS the correct answer?</div>
+      <div class="row">
+        <button class="btn ghost" onclick="$('#ansBox').classList.add('on')"><span>Show answer</span></button>
+        <button class="btn" onclick="Game.resolveTfBonus(true)"><span>✔ Correct · +1</span></button>
+        <button class="btn hot" onclick="Game.resolveTfBonus(false)"><span>✘ Wrong / pass</span></button>
+      </div>
+      <div class="a" id="ansBox">${esc(answer)}</div>`;
+    timer(TF_BONUS_SECONDS);
+  },
+  resolveTfBonus(ok){
+    stopTimer();
+    ov.classList.remove('on');
+    if(ok) Teams.add(1);
+    Teams.next();
+  },
+  boot(){
+    this._ids = Object.keys(window.SOMERSET_UNITS||{});
+    if(!this._ids.length){ stage.innerHTML='<div class="pad"><h1 class="h1">No units found</h1><p class="sub">Add a file in units/ and a script tag in index.html.</p></div>'; return; }
+    if(this.deepLink()) return;
+    this.intro();
+  },
+  /* Deep link — an optional, purely-additive shortcut into the manual
+     intro flow. A normal double-click with no params still lands on
+     Game.intro() exactly as set 7 Sep 2026 at Hugo's request (see the
+     note above intro()) — nothing here runs unless the URL asks for it.
+
+     Query string, for an external page linking in (e.g. a course-plan
+     console reading TIMETABLE_2026-27.md):
+       index.html?unit=fce1-u01b&game=pointGrab
+       - unit  (required) a real unit id — the key SOMERSET_UNITS[id] is
+               registered under in units/*.js, e.g. fce1-u01, fce1-u01b.
+       - game  (optional) a game id: pointGrab, memory, guessWho, speed,
+               flash, hangman or theCase (case-sensitive, matches the
+               Game.<id>() method name). Valid → skip straight past
+               Game.intro()/Game.pickClass() AND the game-picker grid,
+               landing on that game's own version screen (teams can
+               still be set up from there). Missing or unrecognised →
+               still skip straight to Game.load(id), landing on the
+               normal per-unit game-picker (Game.home()) instead of the
+               full class→unit intro — safe, and still a shortcut.
+       - unit missing / not a real loaded unit id → falls straight
+         through to the ordinary Game.intro() flow. Never throws, never
+         leaves a blank screen on a bad or malformed query string.
+
+     Hash, added 17 Sep 2026 for the teacher's digital booklet (kept
+     working as-is — this is additive, not a replacement):
+       index.html#unit=unit-02&play=pointGrab&topic=have%20to
+     `game` and `play` are interchangeable keys, and work in either the
+     query string or the hash; `topic` (Point Grab only) does too. The
+     query string is checked first — if it has no `unit`, the hash is
+     used instead, so neither entry point interferes with the other. */
+  deepLink(){
+    let params; try{
+      const qs=new URLSearchParams(location.search||'');
+      const hs=new URLSearchParams((location.hash||'').slice(1));
+      params = qs.get('unit') ? qs : hs;
+    }catch(e){ return false; }
+    const id=params.get('unit'); if(!id||!(window.SOMERSET_UNITS||{})[id]) return false;
+    this.load(id);
+    const names={pointGrab:'Point Grab',memory:'Turn Two',guessWho:'Guess Who',speed:'Speed Round',flash:'Word Flash',hangman:'Hangman',theCase:'The Case'};
+    const g=params.get('game')||params.get('play'), t=(params.get('topic')||'').replace(/'/g,'');
+    if(g&&names[g]){
+      const fn = (g==='pointGrab'&&t) ? `Game.pointGrab('${t}')` : `Game.${g}()`;
+      this.versions(fn, names[g]+(g==='pointGrab'&&t?' · '+t[0].toUpperCase()+t.slice(1):''));
+    }
+    return true;
+  },
+  /* teacher picks the class, then the unit — no auto-selection.
+     Set 7 Sep 2026 at Hugo's request: this replaces the earlier clock-based
+     auto-open (which used TIMETABLE + slotFor to guess the class from the
+     time of day). TIMETABLE/slotFor are kept — only for the class labels
+     below — but nothing here reads the clock to pick anything by itself. */
+  intro(){
+    stopTimer(); ov.classList.remove('on'); this.unit=null;
+    $('#unitLabel').textContent='';
+    const groups=[...new Set(this._ids.map(id=>window.SOMERSET_UNITS[id].group))];
+    stage.innerHTML = `<div class="pad">
+      <h1 class="h1">Somerset Arcade</h1>
+      <p class="sub">Which class are you teaching?</p>
+      <div class="tiles">${groups.map((g,i)=>{
+        const lbl=(TIMETABLE.find(t=>t.group===g)||{}).label || g;
+        const n=this._ids.filter(id=>window.SOMERSET_UNITS[id].group===g).length;
+        return tile(GROUP_ICON[g]||'🏫', lbl, n+' unit'+(n>1?'s':'')+' ready', `Game.pickClass('${esc(g)}')`, i);
+      }).join('')}</div></div>`;
+  },
+  pickClass(g){
+    const lbl=(TIMETABLE.find(t=>t.group===g)||{}).label || g;
+    const units=this._ids.filter(id=>window.SOMERSET_UNITS[id].group===g);
+    stage.innerHTML = `<div class="pad">
+      <h1 class="h1">${esc(lbl)}</h1>
+      <p class="sub">Which unit?</p>
+      <div class="tiles">${units.map((id,i)=>{
+        const u=window.SOMERSET_UNITS[id];
+        return tile('📘', u.title, u.book+' · '+u.month, `Game.load('${esc(id)}')`, i);
+      }).join('')}${tile('◀','Back','Choose a different class.','Game.intro()',units.length)}</div></div>`;
+  },
+  load(id){ this.unit = window.SOMERSET_UNITS[id];
+    $('#unitLabel').textContent = this.unit.book + ' · ' + this.unit.month;
+    this.home(); },
+  home(){ if(!this.unit){ this.intro(); return; }
+    stopTimer(); ov.classList.remove('on'); this._memSelected=[];
+    const u=this.unit;
+    const topics=[...new Set((u.questions||[]).map(q=>q.topic).filter(Boolean))];
+    stage.innerHTML = `<div class="pad">
+      <h1 class="h1">${esc(u.title)}</h1>
+      <p class="sub">${esc(u.book)} — pick a game</p>
+      <div class="tiles">
+        ${(()=>{ let i=0; return [
+          tile('🎯','Point Grab','Teams pick a number. Answer to win the points. Some tiles bite back.','Game.pointGrab()',i++),
+          ...topics.map(t=>tile('🌞','Point Grab · '+t[0].toUpperCase()+t.slice(1),
+            'Same game, questions from the "'+t+'" set only — nothing they have not met yet.',
+            `Game.pointGrab('${esc(t)}')`,i++)),
+          tile('🧠','Turn Two','Flip any two faces. Say a true comparative about them.','Game.memory()',i++),
+          tile('🕵️','Guess Who','Yes/no questions. Cross the faces off the board.','Game.guessWho()',i++),
+          tile('⚡','Speed Round','Sixty seconds. How many can the class shout out?','Game.speed()',i++),
+          tile('🔤','Word Flash','Big word on the board. Say it, use it, next.','Game.flash()',i++),
+          tile('🪢','Hangman','Guess the word letter by letter. The clue is in Spanish. Six wrong letters and it is gone.','Game.hangman()',i++),
+          tile('🎾','Pilota','Win the strike, win the rally. Quinze, trenta, val, joc.','Game.pilota()',i++),
+          tile('🥘','La Paella','Claim the right ingredients. Touch the chorizo and you lose.','Game.paella()',i++),
+          tile('🧺','El Mercat','Answer to earn an ingredient, then buy it. Build the pan they asked for — or Valencia will have something to say.','Game.mercat()',i++),
+          tile('🦶','Sambori','Valencian hopscotch. Hop to CEL before the others.','Game.sambori()',i++),
+          tile('🔥','La Falla','Build the monument piece by piece, then burn it.','Game.falla()',i++),
+          u.case?tileCase(u,i++):'',
+          u.pursuit?tilePursuit(u,i++):''
+        ].join(''); })()}
+      </div></div>`;
+  },
+
+  /* ---- TEAM SETUP ---- */
+  setup(){
+    stopTimer(); ov.classList.remove('on');
+    const n = this.pendingN || (this.configuredCount()) || 3;
+    this.pendingN = n;
+    stage.innerHTML = `<div class="pad"><div class="setup">
+      <h1 class="h1" style="font-size:clamp(28px,4vw,48px)">Teams</h1>
+      <section>
+        <h2>How many teams?</h2>
+        <div class="count" id="cnt">${[2,3,4,5].map(k=>
+          `<button class="${k===n?'on':''}" onclick="Game.pickN(${k})"><span>${k}</span></button>`).join('')}</div>
+      </section>
+      <section>
+        <h2>Who is here today?</h2>
+        <textarea id="roster" placeholder="One name per line — or separated by commas.&#10;Marc, Aina, Pau, Lucía…">${esc((Teams.list.flatMap(t=>t.members)).join(', '))}</textarea>
+        <p class="hint">Leave it empty to just play with numbered teams. With names in, <b>Shuffle</b> deals them out at random and no team ends up more than one player bigger than another.</p>
+      </section>
+      <section>
+        <label class="hcap"><input type="checkbox" id="hcapBox" ${Teams.handicap?'checked':''}
+          onchange="Teams.handicap=this.checked;Teams.recalc();Game.drawPreview()">
+          <span>Handicap the smaller teams — a team of 2 against teams of 3 scores <b>×1.5</b></span></label>
+      </section>
+      <section>
+        <div class="row" style="display:flex;gap:11px;flex-wrap:wrap">
+          <button class="btn" onclick="Game.shuffleTeams()"><span>🎲 Shuffle into teams</span></button>
+          <button class="btn ghost" onclick="Game.clearTeams()"><span>Clear</span></button>
+          <button class="btn hot" onclick="Game.home()"><span>Done ▶</span></button>
+        </div>
+      </section>
+      <section><h2>This lesson</h2><div class="prev" id="prev"></div></section>
+    </div></div>`;
+    this.drawPreview();
+  },
+  configuredCount(){ return Teams.configured ? Teams.list.length : 0; },
+  pickN(k){ this.pendingN=k;
+    const names=this.rosterNames();
+    if(names.length) Teams.configure(k,names); else { Teams.list=Teams.blank(k); Teams.configured=true; Teams.recalc(); }
+    this.setup();
+  },
+  rosterNames(){
+    const el=$('#roster'); if(!el) return [];
+    return el.value.split(/[\n,;]+/).map(s=>s.trim()).filter(Boolean);
+  },
+  shuffleTeams(){
+    const names=this.rosterNames();
+    const n=this.pendingN||3;
+    if(!names.length){ toast('Type the names first.'); return; }
+    Teams.configure(n,names);
+    this.drawPreview();
+    toast('Teams shuffled.');
+  },
+  clearTeams(){
+    Teams.list=Teams.blank(this.pendingN||3); Teams.configured=true; Teams.turn=0; Teams.recalc();
+    const el=$('#roster'); if(el) el.value='';
+    this.drawPreview();
+  },
+  drawPreview(){
+    const el=$('#prev'); if(!el) return;
+    el.innerHTML = Teams.list.map(t=>`<div class="pteam">
+      <h5>${esc(t.name)}${t.mult>1?`<span class="mult">×${t.mult}</span>`:''}</h5>
+      ${t.members.length
+        ? '<ul>'+t.members.map(m=>`<li>${esc(m)}</li>`).join('')+'</ul>'
+        : '<p class="empty">no names — numbered team</p>'}
+    </div>`).join('');
+  },
+
+  /* ---- 1 · POINT GRAB (the Baamboozle-style core) ---- */
+  pointGrab(topic){
+    Teams.init(3);
+    /* take up to 20 questions, but never draw an empty tile.
+       an optional topic narrows the pool to questions tagged with it —
+       e.g. pointGrab('summer') only draws from the word-search set,
+       so the game never surfaces grammar the class hasn't met yet. */
+    const pool = this.questionPool(topic);
+    const qs = shuffle(pool).slice(0,20);
+    const nSteal = qs.length>=10?2:1, nDouble = qs.length>=10?2:1;
+    const vals = shuffle(qs.map((_,i)=> i<nSteal?'STEAL': i<nSteal+nDouble?'x2': (i%4===0?15:10)));
+    const cols = qs.length>=20?5 : qs.length>=12?4 : 3;
+    stage.innerHTML = `<div class="pad"><div id="teamsBox">${Teams.html()}</div>
+      <div style="display:flex;justify-content:center;margin:-4px 0 10px">
+        <button class="tmrbtn${this.pgTimer?'':' off'}" id="pgTimerBtn" onclick="Game.togglePGTimer()"
+          >&#9201; ${POINT_GRAB_SECONDS}s countdown: ${this.pgTimer?'ON':'OFF'}</button></div>
+      <div class="grid" id="grid" style="grid-template-columns:repeat(${cols},1fr)">${qs.map((q,i)=>
+        `<button class="cell" id="c${i}" style="--i:${i}" data-n="${i+1}" onclick="Game.openQ(${i})"
+          ><span class="pts">${vals[i]==='STEAL'?'STEAL':vals[i]==='x2'?'×2':vals[i]}</span></button>`).join('')}
+      </div></div>`;
+    this._qs=qs; this._vals=vals;
+  },
+  /* a stinger: a full-screen motion overlay that flies in and vanishes.
+     This is how the hidden value of a tile is revealed — the class only
+     finds out it was a ×2 or a STEAL after somebody has committed. */
+  sting(kind,label){
+    const el=document.createElement('div');
+    el.className='sting '+kind;
+    el.innerHTML=`<div class="stingtxt">${esc(label)}</div>`;
+    document.body.appendChild(el);
+    setTimeout(()=>el.remove(), kind==='pts'?800:1300);
+    return el;
+  },
+  /* The countdown is teacher-facing pressure, not an auto-marker: when it
+     hits zero the chip turns coral and says TIME!, and the teacher still
+     decides Correct or Wrong. Nothing is scored automatically — that is
+     the same rule every other game in here follows. */
+  pgTimer:true,
+  togglePGTimer(){
+    this.pgTimer=!this.pgTimer;
+    const b=$('#pgTimerBtn');
+    if(b){ b.classList.toggle('off',!this.pgTimer);
+      b.innerHTML='&#9201; '+POINT_GRAB_SECONDS+'s countdown: '+(this.pgTimer?'ON':'OFF'); }
+    if(!this.pgTimer) stopTimer();
+    toast(this.pgTimer?'Countdown on':'Countdown off');
+  },
+  openQ(i){
+    const q=this._qs[i], v=this._vals[i];
+    const steal=v==='STEAL', dbl=v==='x2';
+    ov.className='ov on';
+    ov.innerHTML = `<div class="badge">${esc(q.type==='gap'?'Complete the sentence':q.type==='fix'?'Find the mistake':'Answer out loud')}</div>
+      <div class="worth ${steal?'steal':dbl?'x2':''}">${steal?'Steal tile':dbl?'Double points · 20':v+' points'}</div>
+      ${this.questionView(q)}
+      <div class="row">
+        <button class="btn ghost" onclick="$('#ansBox').classList.add('on')"><span>Show answer</span></button>
+        <button class="btn" onclick="Game.score(${i},true)"><span>✔ Correct</span></button>
+        <button class="btn hot" onclick="Game.score(${i},false)"><span>✘ Wrong</span></button>
+      </div>`;
+    this.sting(steal?'steal':dbl?'x2':'pts', steal?'Steal!':dbl?'×2':v+' points');
+    if(this.pgTimer) timer(POINT_GRAB_SECONDS, ()=>toast("Time's up!"));
+  },
+  score(i,ok){
+    const v=this._vals[i];
+    if(ok){
+      if(v==='STEAL'){ this.askSteal(i); return; }   /* resolved in takeFrom() */
+      if(v==='x2'){ toast('DOUBLE POINTS!'); Teams.add(20); }
+      else Teams.add(v);
+    }
+    this.closeTile(i);
+  },
+  closeTile(i){
+    stopTimer();
+    const c=$('#c'+i); if(c) c.classList.add('done');
+    ov.classList.remove('on');
+    Teams.next();
+  },
+  /* a STEAL tile has to actually take the points off somebody, and the
+     class has to see whose. The teacher picks the victim. */
+  askSteal(i){
+    stopTimer();
+    const me=Teams.turn;
+    ov.className='ov on';
+    ov.innerHTML=`<div class="badge">Steal tile</div>
+      <div class="q" style="font-size:clamp(26px,3.6vw,52px)">Correct! Take 10 points from another team.</div>
+      <div class="steal">${Teams.list.map((t,k)=> k===me?'':
+        `<button class="btn hot" onclick="Game.takeFrom(${k},${i})"><span>${esc(t.name)} (${t.score})</span></button>`
+        ).join('')}
+        <button class="btn ghost" onclick="Game.takeFrom(-1,${i})"><span>Nobody — just take 10</span></button>
+      </div>`;
+  },
+  takeFrom(k,i){
+    if(k>=0){ Teams.steal(k,10); toast('10 points stolen!'); }
+    else { Teams.add(10); }
+    this.closeTile(i);
+  },
+
+  /* ---- 2 · MEMORY ---- */
+  memory(){
+    Teams.init(3); this._memSelected=[];
+    const pick=shuffle(this.unit.cards).slice(0,12); this._memCards=pick;
+    stage.innerHTML=`<div class="pad memory-game"><div id="teamsBox">${Teams.html()}</div>
+      <div class="legend"><span class="chip"><span>Turn over two faces. ${this.version==='original'?'Say a true comparative.':this.version==='tf'?'Compare the two pictures: true or false?':'Compare the two pictures.'}</span></span>
+      <button class="btn ghost" onclick="Game.memory()"><span>New deal</span></button></div>
+      <div class="board" id="bd" style="grid-template-columns:repeat(6,1fr)">${pick.map((c,i)=>`<button class="pc" aria-label="Card ${c.n}" onclick="Game.flipMemory(${i})"><img src="${c.img}" alt=""><span class="tagn">${c.n}</span><span class="back"><span>${c.n}</span></span></button>`).join('')}</div>
+      <div class="row" style="display:flex;gap:12px;margin-top:12px"><button class="btn" id="memCorrect" disabled onclick="Game.finishMemory(true)"><span>Correct · +1</span></button><button class="btn hot" id="memPass" disabled onclick="Game.finishMemory(false)"><span>Wrong / pass</span></button></div></div>`;
+  },
+  flipMemory(i){
+    if(this._memSelected.length>=2 || this._memSelected.includes(i)) return;
+    this._memSelected.push(i); $$('#bd .pc')[i].classList.add('flip');
+    if(this._memSelected.length===2){
+      if(this.version==='original'){ $('#memCorrect').disabled=false; $('#memPass').disabled=false; }
+      else if(this.version==='tf') this.askMemoryTF();
+      else this.askMemoryChoice();
+    }
+  },
+  // Broad visible hair categories checked against cards/01.jpg–24.jpg.
+  // Equal categories produce no comparative claim; grey hair has no shade rank.
+  pictureTraits:{1:[0,2,0],2:[0,2,1],3:[0,1,0],4:[0,0,0],5:[0,null,0],6:[2,2,0],7:[2,1,0],8:[1,0,0],9:[0,1,2],10:[0,2,2],11:[1,1,2],12:[2,2,2],13:[0,1,2],14:[0,2,2],15:[1,0,2],16:[2,2,2],17:[1,0,0],18:[1,1,0],19:[2,2,0],20:[null,1,null],21:[2,2,2],22:[0,null,0],23:[0,null,0],24:[2,0,1]},
+  // Height is not a visual read from a head-and-shoulders photo -- it comes
+  // straight from the card's existing Top Trumps stat (stats.height, 1-10),
+  // the same number already printed on the physical deck. Shown under the
+  // photo below, not inferred, so nobody is guessing an invisible fact.
+  pictureStatements(cards){
+    const left=this.pictureTraits[cards[0].n],right=this.pictureTraits[cards[1].n];
+    if(!left||!right) return [];
+    const trueOptions=[],falseOptions=[];
+    const dims=[
+      {more:'longer',less:'shorter',tpl:a=>`has ${a} hair`,val:c=>this.pictureTraits[c.n]&&this.pictureTraits[c.n][0]},
+      {more:'darker',less:'lighter',tpl:a=>`has ${a} hair`,val:c=>this.pictureTraits[c.n]&&this.pictureTraits[c.n][1]},
+      {more:'curlier',less:'straighter',tpl:a=>`has ${a} hair`,val:c=>this.pictureTraits[c.n]&&this.pictureTraits[c.n][2]},
+      {more:'taller',less:'shorter',tpl:a=>`is ${a}`,val:c=>c.stats&&c.stats.height}
+    ];
+    dims.forEach(({more,less,tpl,val})=>{
+      const lv=val(cards[0]),rv=val(cards[1]);
+      if(lv==null||rv==null||lv===rv) return;
+      const leftMore=lv>rv;
+      for(const side of ['left','right']) for(const adjective of [more,less]){
+        const correct=(side==='left' ? leftMore : !leftMore)===(adjective===more);
+        (correct?trueOptions:falseOptions).push({text:`The person on the ${side} ${tpl(adjective)}.`,correct});
+      }
+    });
+    if(!trueOptions.length) return [];
+    return shuffle([shuffle(trueOptions)[0],...shuffle(falseOptions).slice(0,2)]);
+  },
+  askMemoryChoice(){
+    const cards=this._memSelected.map(i=>this._memCards[i]);
+    if(cards.length!==2) return;
+    const prompts=[
+      ['Who looks happier?', 'looks ___ than', 'happy'],
+      ['Who looks older?', 'looks ___ than', 'old'],
+      ['Who looks younger?', 'looks ___ than', 'young'],
+      ['Who has longer hair?', 'has ___ hair than', 'long'],
+      ['Who has shorter hair?', 'has ___ hair than', 'short'],
+      ['Who has curlier hair?', 'has ___ hair than', 'curly'],
+      ['Who is taller?', 'is ___ than', 'tall'],
+      ['Who is shorter?', 'is ___ than', 'short']
+    ];
+    const prompt=shuffle(prompts)[0], gap=this.version==='gap';
+    this._pictureOptions=gap?[]:this.pictureStatements(cards);
+    if(!gap && this._pictureOptions.length!==3){
+      const last=this._memSelected.pop(); $$('#bd .pc')[last].classList.remove('flip');
+      toast('These photos are too similar for a clear question. Choose a different second card.'); return;
+    }
+    this._pictureChoice=null; this._pictureChecked=false;
+    this._cb=ok=>this.finishMemory(ok);
+    ov.className='ov on picture-tf';
+    ov.innerHTML=`<div class="badge">Turn Two · ${gap?'Fill in':'Multiple choice'}</div>
+      <div class="picture-pair">${cards.map((c,i)=>`<figure><img src="${c.img}" alt="${i===0?'Left':'Right'} picture, card ${c.n}"><figcaption>${i===0?'Left':'Right'} · Card ${c.n}<br>Height ${'●'.repeat(Math.round((c.stats&&c.stats.height||0)/2))}${'○'.repeat(5-Math.round((c.stats&&c.stats.height||0)/2))}</figcaption></figure>`).join('')}</div>
+      <div class="q">${gap?`The person on the left ${prompt[1]} the person on the right. (${prompt[2]})`:'Which sentence is true?'}</div>
+      ${gap?'<p class="picture-hint">Complete the comparative, then decide whether the sentence fits the pictures. Swap left and right if needed.</p>':`<div class="row" style="display:flex;gap:12px;flex-wrap:wrap">${this._pictureOptions.map((option,i)=>`<button class="btn ghost picture-choice" aria-pressed="false" onclick="Game.chooseMemoryAnswer(${i})"><span>${i+1}. ${esc(option.text)}</span></button>`).join('')}</div><p id="pictureSelection" class="picture-hint" aria-live="polite">Choose the one sentence that matches the pictures.</p>`}
+      <p class="picture-hint">${gap?'Teacher: accept an answer supported by the pictures.':'One correct answer. Choose a sentence, then check it.'}</p>
+      <div class="row" style="display:flex;gap:12px;flex-wrap:wrap"><button id="pictureAccept" class="btn" ${gap?'':'disabled'} onclick="${gap?'Game.resolve(true)':'Game.checkMemoryAnswer()'}"><span>${gap?'Accept answer · +1':'Check answer'}</span></button><button class="btn hot" onclick="Game.resolve(false)"><span>Wrong / pass</span></button></div>`;
+  },
+  chooseMemoryAnswer(i){
+    const labels=this._pictureOptions.map(o=>o.text);
+    if(!labels[i] || !$('#pictureSelection')) return;
+    this._pictureChoice=i;
+    $$('.picture-choice').forEach((b,k)=>{b.setAttribute('aria-pressed',String(i===k)); b.classList.toggle('ghost',i!==k);});
+    $('#pictureSelection').textContent='Selected: '+labels[i]+' Choose Check answer when ready.';
+    $('#pictureAccept').disabled=false;
+  },
+  checkMemoryAnswer(){
+    if(this._pictureChoice===null || this._pictureChecked) return;
+    this._pictureChecked=true;
+    const correct=this._pictureOptions[this._pictureChoice].correct;
+    $('#pictureSelection').textContent=correct?'Correct! +1 point.':'Not quite. Correct: '+this._pictureOptions.find(o=>o.correct).text;
+    $$('.picture-choice').forEach(b=>b.disabled=true);
+    $('#pictureAccept').outerHTML=`<button class="btn" onclick="Game.resolve(${correct})"><span>Next turn</span></button>`;
+  },
+  askMemoryTF(){
+    const cards=this._memSelected.map(i=>this._memCards[i]);
+    if(cards.length!==2) return;
+    const comparisons=['looks happier than','looks older than','looks younger than','has longer hair than','has shorter hair than','has curlier hair than','is taller than','is shorter than'];
+    const comparison=shuffle(comparisons)[0];
+    this._cb=ok=>this.finishMemory(ok);
+    ov.className='ov on picture-tf';
+    ov.innerHTML=`<div class="badge">Turn Two · True or false</div>
+      <div class="picture-pair">${cards.map((c,i)=>`<figure><img src="${c.img}" alt="${i===0?'Left':'Right'} picture, card ${c.n}"><figcaption>${i===0?'Left':'Right'} · Card ${c.n}<br>Height ${'●'.repeat(Math.round((c.stats&&c.stats.height||0)/2))}${'○'.repeat(5-Math.round((c.stats&&c.stats.height||0)/2))}</figcaption></figure>`).join('')}</div>
+      <div class="q">The person on the left ${esc(comparison)} the person on the right.</div>
+      <div class="row" style="display:flex;gap:12px"><span class="chip"><span>True</span></span><span class="chip"><span>False</span></span></div>
+      <p class="picture-hint">Say true or false. If false, correct the sentence. Teacher: judge from the pictures and accept a reasonable explanation.</p>
+      <div class="row" style="display:flex;gap:12px;flex-wrap:wrap"><button class="btn" onclick="Game.resolve(true)"><span>Accept answer · +1</span></button><button class="btn hot" onclick="Game.resolve(false)"><span>Wrong / pass</span></button></div>`;
+  },
+  finishMemory(ok){
+    if(this._memSelected.length!==2) return;
+    if(ok) Teams.add(1);
+    $$('#bd .pc').forEach(c=>c.classList.remove('flip'));
+    this._memSelected=[]; $('#memCorrect').disabled=true; $('#memPass').disabled=true; Teams.next();
+  },
+
+  /* ---- 3 · GUESS WHO ---- */
+  guessWho(){
+    const cs=this.unit.cards;
+    const secret=cs[Math.random()*cs.length|0];
+    this._secret=secret;
+    stage.innerHTML = `<div class="pad">
+      <div class="legend">
+        <span class="chip"><span>Ask <b>yes / no</b> questions only</span></span>
+        <span class="chip"><span>Click a face to cross it out</span></span>
+        <button class="btn ghost" onclick="Game.peek()"><span>👁 Teacher peek</span></button>
+        <button class="btn ghost" onclick="Game.reveal()"><span>Reveal</span></button>
+        <button class="btn" onclick="Game.guessWho()"><span>New game</span></button></div>
+      <div class="board" style="grid-template-columns:repeat(8,1fr)">
+        ${cs.map((c,i)=>`<button class="pc flip" style="--i:${i}" onclick="this.classList.toggle('out')">
+            <img src="${c.img}" alt=""><span class="tagn">${c.n}</span></button>`).join('')}
+      </div></div>`;
+    /* the secret is NOT announced — it used to be toasted on the projector,
+       where the whole class could read it. Teacher presses Peek. */
+  },
+  peek(){
+    const s=this._secret; if(!s) return;
+    toast('Secret card: number '+s.n, 1400);
+  },
+  reveal(){ const s=this._secret;
+    ov.className='ov on';
+    ov.innerHTML=`<div class="badge">The secret card was</div>
+      <div class="q">Number ${s.n}</div>
+      <div class="a on">${esc(s.hair)} · ${esc(s.colour)} · ${s.glasses?'glasses':'no glasses'} · ${s.tall?'tall':'short'}</div>
+      <div class="row"><button class="btn" onclick="ov.classList.remove('on')"><span>Close</span></button></div>`;
+  },
+
+  /* ---- 4 · SPEED ROUND ---- */
+  speed(){
+    const words=shuffle(this.unit.vocab);let i=0;
+    Teams.init(2);
+    /* the Spanish stays hidden until the teacher shows it — otherwise
+       the answer is on the board before anybody has tried */
+    const show=()=>{ const w=words[i%words.length];
+      $('#spw').innerHTML=`<div class="q">${esc(w.w)}</div>
+        <div class="a" id="spa">${esc(w.t)}</div>`; };
+    stage.innerHTML=`<div class="pad"><div id="teamsBox">${Teams.html()}</div>
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px" id="spw"></div>
+      <div class="row" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <button class="btn ghost" onclick="$('#spa').classList.add('on')"><span>Show Spanish</span></button>
+        <button class="btn" onclick="Teams.add(1);Game._sp()"><span>✔ Got it (+1)</span></button>
+        <button class="btn ghost" onclick="Game._sp()"><span>Skip ▶</span></button>
+        <button class="btn ghost" onclick="Teams.next()"><span>↻ Next team</span></button>
+        <button class="btn hot" onclick="timer(60)"><span>▶ 60 seconds</span></button>
+      </div></div>`;
+    this._sp=()=>{i++;show();}; show();
+  },
+
+  /* ---- 5 · WORD FLASH ---- */
+  flash(){
+    const words=shuffle(this.unit.vocab);let i=0;
+    const show=()=>{const w=words[i%words.length];
+      stage.innerHTML=`<div class="pad" style="align-items:center;justify-content:center;text-align:center;gap:20px">
+        <div class="sub" style="margin:0">Word ${i+1} / ${words.length}</div>
+        <div style="font-family:var(--sans);font-weight:700;font-size:clamp(46px,11vw,180px);line-height:1">${esc(w.w)}</div>
+        <div class="row" style="display:flex;gap:12px">
+          <button class="btn ghost" onclick="Game._fl(-1)"><span>◀</span></button>
+          <button class="btn" onclick="Game._fl(1)"><span>Next ▶</span></button>
+        </div></div>`;};
+    this._fl=d=>{i=(i+d+words.length)%words.length;show();}; show();
+  },
+
+  /* ---- 6 · HANGMAN ----
+     The sixth mechanic: letter-by-letter reveal. It is the only game in
+     here that drills SPELLING, which is where Spanish speakers lose marks
+     in Use of English — embarrassment, misophonia, frustration.
+     Two rules keep it from being the weak version of hangman:
+       1. the clue is the Spanish, so it is vocabulary recall, not roulette;
+       2. finishing the word does not score. The team then has to USE it,
+          and Hugo marks that — same rule as every other game here. */
+  hangmanWords(){
+    return (this.unit.vocab||[]).map(v=>{
+      let w=String(v.w).split('/')[0].replace(/\([^)]*\)/g,'').trim();
+      w=w.replace(/^to\s+/i,'').trim();
+      return {w:w.toUpperCase(), t:v.t, full:v.w};
+    }).filter(v=>(v.w.match(/[A-ZÁÉÍÓÚÑ]/g)||[]).length>=4);
+  },
+  hangman(){
+    const pool=this.hangmanWords();
+    if(!pool.length){ stage.innerHTML='<div class="pad"><h1 class="h1">No words long enough</h1><p class="sub">This unit needs vocabulary of four letters or more.</p><div class="row"><button class="btn ghost" onclick="Game.home()"><span>Back</span></button></div></div>'; return; }
+    Teams.init(2);
+    this._hmPool=shuffle(pool); this._hmI=0;
+    this.hangmanDeal();
+  },
+  hangmanDeal(){
+    const pick=this._hmPool[this._hmI % this._hmPool.length]; this._hmI++;
+    this._hm={word:pick.w, clue:pick.t, full:pick.full, got:new Set(), miss:new Set()};
+    this.hangmanDraw();
+  },
+  hangmanSlots(){
+    const h=this._hm;
+    return [...h.word].map(ch=>{
+      if(!/[A-ZÁÉÍÓÚÑ]/.test(ch)) return `<span class="hmslot free">${ch===' '?'&nbsp;':esc(ch)}</span>`;
+      return `<span class="hmslot">${h.got.has(ch)?esc(ch):''}</span>`;
+    }).join('');
+  },
+  hangmanWon(){ const h=this._hm; return [...h.word].every(ch=>!/[A-ZÁÉÍÓÚÑ]/.test(ch)||h.got.has(ch)); },
+  hangmanDraw(){
+    /* any round-end panel belongs to the previous word — clear it before
+       repainting, or the board is live underneath a stale overlay */
+    ov.classList.remove('on');
+    const h=this._hm, miss=h.miss.size, lost=miss>=6;
+    const part=n=>miss>=n?'':' style="display:none"';
+    stage.innerHTML=`<div class="pad"><div id="teamsBox">${Teams.html()}</div>
+      <div class="hmwrap">
+        <svg class="hmfig" viewBox="0 0 180 200" aria-hidden="true">
+          <g stroke="var(--green)" stroke-width="7" stroke-linecap="round" fill="none">
+            <line x1="14" y1="192" x2="104" y2="192"${part(1)}/>
+            <line x1="44" y1="192" x2="44" y2="12"${part(2)}/>
+            <line x1="44" y1="12" x2="126" y2="12"${part(3)}/>
+            <line x1="126" y1="12" x2="126" y2="40"${part(4)}/>
+          </g>
+          <g stroke="var(--hot)" stroke-width="7" stroke-linecap="round" fill="none">
+            <circle cx="126" cy="58" r="18"${part(5)}/>
+            <g${part(6)}>
+              <line x1="126" y1="76" x2="126" y2="128"/>
+              <line x1="126" y1="92" x2="104" y2="114"/>
+              <line x1="126" y1="92" x2="148" y2="114"/>
+              <line x1="126" y1="128" x2="106" y2="160"/>
+              <line x1="126" y1="128" x2="146" y2="160"/>
+            </g>
+          </g>
+        </svg>
+        <div class="hmright">
+          <div class="hmclue"><span class="chip"><span>Clue · español</span></span>
+            <div class="hmclueword">${esc(h.clue)}</div></div>
+          <div class="hmword">${this.hangmanSlots()}</div>
+          <div class="hmlives">${'●'.repeat(6-miss)}<span class="gone">${'●'.repeat(miss)}</span>
+            <span class="hmlivestxt">${6-miss} left</span></div>
+          <div class="hmkeys">${'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').map(L=>{
+            const used=h.got.has(L)||h.miss.has(L);
+            return `<button class="hmkey${h.got.has(L)?' hit':h.miss.has(L)?' miss':''}"${used||lost?' disabled':''}
+              onclick="Game.hangmanGuess('${L}')">${L}</button>`;}).join('')}</div>
+        </div>
+      </div>
+      <div class="row" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:14px">
+        <button class="btn ghost" onclick="Game.hangmanDeal()"><span>New word ▶</span></button>
+        <button class="btn ghost" onclick="Teams.next();Game.hangmanDraw()"><span>↻ Next team</span></button>
+        <button class="btn ghost" onclick="Game.home()"><span>Menu</span></button>
+      </div></div>`;
+    if(this.hangmanWon()) this.hangmanEnd(true);
+    else if(lost) this.hangmanEnd(false);
+  },
+  hangmanGuess(L){
+    const h=this._hm; if(!h||h.miss.size>=6||this.hangmanWon()) return;
+    if(h.got.has(L)||h.miss.has(L)) return;
+    if(h.word.includes(L)){ h.got.add(L); }
+    else { h.miss.add(L); Teams.next(); }
+    this.hangmanDraw();
+  },
+  /* Finishing the word wins nothing on its own. The team says it in a
+     sentence and the teacher decides — the Arcade never auto-scores. */
+  hangmanEnd(won){
+    const h=this._hm;
+    ov.className='ov on';
+    ov.innerHTML=`<div class="badge">${won?'Word complete':'Six wrong letters'}</div>
+      <div class="worth ${won?'':'steal'}">${won?'Now use it — 2 points':'The word was'}</div>
+      <div class="q">${esc(h.full)}</div>
+      <div class="a on">${esc(h.clue)}</div>
+      ${won?'<p class="sub">Say a full sentence with the word. You decide if it counts.</p>':''}
+      <div class="row">
+        ${won?`<button class="btn" onclick="Teams.add(2);Game.hangmanAfter()"><span>✔ Good sentence · +2</span></button>
+        <button class="btn hot" onclick="Game.hangmanAfter()"><span>✘ No points</span></button>`
+        :`<button class="btn" onclick="Game.hangmanAfter()"><span>Next word ▶</span></button>`}
+      </div>`;
+  },
+  hangmanAfter(){ ov.classList.remove('on'); Teams.next(); this.hangmanDeal(); },
+
+  /* ================================================================
+     THE VALENCIAN MODES
+     Baamboozle's nineteen "games" are five mechanics in different art:
+     a sport, a race, a territory grab, a build-and-reveal, and the
+     hidden-value grid we already have. These four are those mechanics
+     with Valencian clothes on — and they need NO new content: every
+     one of them runs off the unit's existing `questions` array, so a
+     new unit gets all four for free.
+     ================================================================ */
+  nextQ(){ if(!this._pool||!this._pool.length) this._pool=shuffle(this.questionPool()); return this._pool.pop(); },
+  ask(cb,badge){
+    const q=this.nextQ(); this._cb=cb;
+    ov.className='ov on';
+    ov.innerHTML=`<div class="badge">${esc(badge||'Answer to play')}</div>
+      ${this.questionView(q)}
+      <div class="row">
+        <button class="btn ghost" onclick="$('#ansBox').classList.add('on')"><span>Show answer</span></button>
+        <button class="btn" onclick="Game.resolve(true)"><span>✔ Correct</span></button>
+        <button class="btn hot" onclick="Game.resolve(false)"><span>✘ Wrong</span></button>
+      </div>`;
+  },
+  resolve(ok){ ov.classList.remove('on'); const cb=this._cb; this._cb=null; if(cb) cb(ok); },
+
+  /* ---- 7 · PILOTA VALENCIANA (the sport mechanic) ----
+     Right English wins you the strike; the rally is luck. Scored the
+     real way — quinze, trenta, val, joc — so the numbers come free. */
+  pilota(){
+    Teams.init(2);
+    this._pil = Teams.list.map(()=>({p:0,games:0}));
+    this.drawPilota(Teams.list[Teams.turn].name+' serves. Answer to strike the ball.');
+  },
+  drawPilota(msg,ball){
+    const P=['quinze','trenta','val'];
+    stage.innerHTML=`<div class="pad"><div id="teamsBox">${Teams.html()}</div>
+      <div class="court"><div class="wall"></div><div class="net"></div>
+        <div class="line" style="top:50%"></div>
+        <div class="ball ${ball||''}">🎾</div></div>
+      <div class="pilscore">${Teams.list.map((t,i)=>`
+        <div class="pil ${i===Teams.turn?'on':''}">
+          <button class="nm" style="background:transparent;color:inherit;text-align:left" onclick="Teams.select(${i})" aria-label="Select ${esc(t.name)}">${esc(t.name)}</button>
+          <span class="val">${this._pil[i].p?P[this._pil[i].p-1]:'—'}</span>
+          <span class="jocs">jocs ${this._pil[i].games}</span></div>`).join('')}</div>
+      <p class="pmsg">${esc(msg)}</p>
+      <div class="vrow"><button class="btn hot" onclick="Game.serve()"><span>🎾 Serve</span></button>
+        <button class="btn ghost" onclick="Game.pilota()"><span>↻ New match</span></button></div>
+    </div>`;
+  },
+  serve(){
+    this.ask(ok=>{
+      const i=Teams.turn, name=Teams.list[i].name;
+      let msg, ball='hit';
+      if(!ok){ msg='Falta — the English was wrong, no strike.'; ball='miss'; }
+      else if(Math.random()<0.25){ msg='Good English! But the ball hits the net.'; ball='miss'; }
+      else {
+        const s=this._pil[i]; s.p++;
+        if(s.p>=4){ s.games++; Teams.add(10); this._pil.forEach(x=>x.p=0);
+          msg='JOC! '+name+' wins the game — 10 points.'; }
+        else msg=name+' scores '+['quinze','trenta','val'][s.p-1]+'!';
+      }
+      Teams.next();
+      this.drawPilota(msg+' Now '+Teams.list[Teams.turn].name+' serves.',ball);
+    },'Win the strike');
+  },
+
+  /* ---- 8 · LA PAELLA (the territory mechanic) ----
+     Claim ingredients. Build a real Valencian paella and score; reach
+     for the chorizo and the class will tell you about it. */
+  paella(){ Teams.init(3); this._pot=[]; this._claim=false;
+    this.drawPaella('Answer a question, then claim an ingredient.'); },
+  drawPaella(msg){
+    stage.innerHTML=`<div class="pad"><div id="teamsBox">${Teams.html()}</div>
+      <div class="pan">${this._pot.length?this._pot.map(k=>PAELLA[k].e).join(' ')
+        :'<span class="empty">the pan is empty</span>'}</div>
+      <div class="ings">${PAELLA.map((g,k)=>
+        `<button class="ing ${g.ok?'':'bad'} ${this._pot.includes(k)?'taken':''}"
+          onclick="Game.claim(${k})">${g.e}<span>${g.n}</span></button>`).join('')}</div>
+      <p class="pmsg">${esc(msg)}</p>
+      <div class="vrow"><button class="btn hot" onclick="Game.paellaTurn()"><span>▶ Play a turn</span></button>
+        <button class="btn ghost" onclick="Game.paella()"><span>↻ New pan</span></button></div>
+    </div>`;
+  },
+  paellaTurn(){
+    this.ask(ok=>{
+      if(!ok){ Teams.next(); this.drawPaella('Not this time. '+Teams.list[Teams.turn].name+'’s turn.'); return; }
+      this._claim=true;
+      this.drawPaella(Teams.list[Teams.turn].name+' — choose an ingredient for the pan!');
+    },'Win an ingredient');
+  },
+  claim(k){
+    if(!this._claim){ toast('Answer a question first.'); return; }
+    if(this._pot.includes(k)){ toast('Already in the pan.'); return; }
+    const g=PAELLA[k];
+    this._pot.push(k); this._claim=false;
+    if(g.ok){ Teams.add(10); toast(g.n+' — that belongs in a paella. +10'); }
+    else { Teams.add(-10); toast(g.n.toUpperCase()+' in a paella?! −10'); }
+    const done = PAELLA.every((x,idx)=> !x.ok || this._pot.includes(idx));
+    Teams.next();
+    this.drawPaella(done ? 'The paella is finished! Highest score wins.'
+                         : Teams.list[Teams.turn].name+'’s turn.');
+  },
+
+
+  /* ---- 12 · EL MERCAT (build the paella) ----
+     Built 14 Sep 2026 to Hugo's brief. You cannot just grab an
+     ingredient: a correct answer about the reading earns one coin,
+     one coin buys one thing off the stall. At the end the pan is
+     judged against the recipe you chose at the start — and a bad
+     pan gets told off in Valencian, which is the whole joke. */
+  mercat(){
+    stopTimer(); ov.classList.remove('on');
+    this._mk = this.unit.mercat || MERCAT_DEFAULT;
+    this._mkRecipe=null; this._mkBasket=[]; this._mkCredit=0; this._mkVerdict=null;
+    stage.innerHTML=`<div class="pad">
+      <h1 class="h1">El Mercat</h1>
+      <p class="sub">Which paella are you making today? Choose one, then go shopping.</p>
+      <div class="recpick">${this._mk.recipes.map((r,i)=>
+        `<button class="reccard" onclick="Game.mercatStart(${i})">
+           <b>${esc(r.name)}</b><span>${esc(r.blurb)}</span></button>`).join('')}</div>
+    </div>`;
+  },
+  mercatStart(i){
+    this._mkRecipe=this._mk.recipes[i];
+    this._mkBasket=[]; this._mkCredit=0; this._mkVerdict=null;
+    this.drawMercat('Answer a question to earn one ingredient.');
+  },
+  drawMercat(msg){
+    if(this._mkVerdict){ this.drawVerdict(); return; }
+    const R=this._mkRecipe, M=this._mk.market;
+    stage.innerHTML=`<div class="pad mkwrap">
+      <div class="mkbar">
+        <span class="coin ${this._mkCredit?'':'none'}"><span>${this._mkCredit} to spend</span></span>
+        <span class="chip"><span>${esc(R.name)}</span></span>
+        <span class="chip"><span>${this._mkBasket.length} in the pan</span></span>
+      </div>
+      <div class="pan">${this._mkBasket.length
+        ? this._mkBasket.map(k=>M[k].e).join(' ')
+        : '<span class="empty">the pan is empty</span>'}</div>
+      <div class="ings">${M.map((g,k)=>
+        `<button class="ing ${this._mkBasket.includes(k)?'taken':''}"
+          onclick="Game.mercatBuy(${k})">${g.e}<span>${esc(g.n)}</span></button>`).join('')}</div>
+      <p class="pmsg">${esc(msg)}</p>
+      <div class="vrow">
+        <button class="btn hot" onclick="Game.mercatAsk()"><span>Answer for an ingredient</span></button>
+        <button class="btn" onclick="Game.mercatCook()"><span>Cook it!</span></button>
+        <button class="btn ghost" onclick="Game.mercat()"><span>New recipe</span></button>
+      </div></div>`;
+  },
+  mercatAsk(){
+    this.ask(ok=>{
+      if(ok){ this._mkCredit++;
+        this.drawMercat('Correct. Take one thing off the stall.'); }
+      else { this.drawMercat('Not that time. Try another question.'); }
+    },'Answer to earn an ingredient');
+  },
+  mercatBuy(k){
+    if(!this._mkCredit){ toast('Answer a question first.'); return; }
+    if(this._mkBasket.includes(k)){ toast('Already in the pan.'); return; }
+    this._mkCredit--; this._mkBasket.push(k);
+    this.drawMercat(this._mk.market[k].n+' goes in the pan.');
+  },
+  mercatCook(){
+    const R=this._mkRecipe, M=this._mk.market, D=this._mk;
+    const have=this._mkBasket.map(k=>M[k].n);
+    const missing=R.need.filter(n=>!have.includes(n));
+    const wrong=have.filter(n=>!R.need.includes(n) && !(R.extra||[]).includes(n));
+    let v;
+    if(!missing.length && !wrong.length){ v=Object.assign({win:true},D.win); }
+    else if(wrong.length){
+      const named=wrong.find(n=>D.fails[n]);
+      v=Object.assign({win:false}, named?D.fails[named]:D.generic);
+    } else { v=Object.assign({win:false},D.missing); }
+    v.missing=missing; v.wrong=wrong;
+    this._mkVerdict=v; this.drawVerdict();
+  },
+  drawVerdict(){
+    const v=this._mkVerdict, R=this._mkRecipe, M=this._mk.market;
+    const notes=[];
+    if(v.wrong.length)   notes.push('Take out: <b>'+v.wrong.join(', ')+'</b>');
+    if(v.missing.length) notes.push('You forgot: <b>'+v.missing.join(', ')+'</b>');
+    stage.innerHTML=`<div class="pad mkwrap">
+      <div class="mkbar"><span class="chip"><span>${esc(R.name)}</span></span></div>
+      <div class="pan">${this._mkBasket.map(k=>M[k].e).join(' ')}</div>
+      <div class="verdict ${v.win?'win':'lose'}">
+        <div class="party">${v.win?'\u{1F389} \u{1F38A} \u{1F389}':'\u{1F926}'}</div>
+        <div class="val">${esc(v.val)}</div>
+        <div class="en">${esc(v.en)}</div>
+        ${notes.length?`<div class="lst">${notes.join('<br>')}</div>`:''}
+      </div>
+      <div class="vrow">
+        <button class="btn hot" onclick="Game.mercatAgain()"><span>Fix this pan</span></button>
+        <button class="btn ghost" onclick="Game.mercat()"><span>New recipe</span></button>
+      </div></div>`;
+  },
+  mercatAgain(){ this._mkVerdict=null;
+    this.drawMercat('Put it right. Answer again to earn another ingredient.'); },
+
+  /* ---- 9 · SAMBORI (the race mechanic) ----
+     Valencian hopscotch. Right answer, hop forward; some squares
+     throw you up the board and some send you back down. */
+  sambori(){ Teams.init(3); this._pos=Teams.list.map(()=>0);
+    this.drawSambori('First team to CEL wins. Answer to hop.'); },
+  drawSambori(msg){
+    const rows=[[1],[2,3],[4],[5,6],[7],[8,9],[10]];
+    stage.innerHTML=`<div class="pad"><div id="teamsBox">${Teams.html()}</div>
+      <div class="sam">${rows.map(r=>`<div class="samrow">${r.map(n=>{
+        const cls = n===10?'cel' : SAM_UP[n]?'up' : SAM_DOWN[n]?'down' : '';
+        const here = this._pos.map((p,i)=>p===n?TOKENS[i]:'').filter(Boolean).join('');
+        return `<div class="sq ${cls}"><span>${n===10?'CEL':n}</span>${
+          here?`<span class="tok">${here}</span>`:''}</div>`;}).join('')}</div>`).join('')}</div>
+      <p class="pmsg">${esc(msg)}</p>
+      <div class="vrow"><button class="btn hot" onclick="Game.hop()"><span>🦶 Hop</span></button>
+        <button class="btn ghost" onclick="Game.sambori()"><span>↻ New game</span></button></div>
+    </div>`;
+  },
+  hop(){
+    this.ask(ok=>{
+      const i=Teams.turn, name=Teams.list[i].name;
+      let msg;
+      if(!ok){ msg=name+' stays put.'; }
+      else {
+        let p=Math.min(10,this._pos[i]+1);
+        if(SAM_UP[p]){ p=Math.min(10,p+SAM_UP[p]); msg=name+' lands on a sambori — jump to '+p+'!'; }
+        else if(SAM_DOWN[p]){ p=Math.max(1,p-SAM_DOWN[p]); msg=name+' slips back to '+p+'.'; }
+        else msg=name+' hops to '+p+'.';
+        this._pos[i]=p;
+        if(p===10){ Teams.add(30); this.drawSambori(name+' reaches CEL — 30 points! 🏆'); return; }
+      }
+      Teams.next();
+      this.drawSambori(msg+' '+Teams.list[Teams.turn].name+'’s turn.');
+    },'Hop forward');
+  },
+
+  /* ---- 10 · LA FALLA (the build-and-reveal mechanic) ----
+     Every right answer adds a piece. Finish the monument and it burns. */
+  falla(){ Teams.init(3); this._build=Teams.list.map(()=>0); this._burnt=-1;
+    this.drawFalla('Eight pieces to build. Answer to add one.'); },
+  drawFalla(msg){
+    stage.innerHTML=`<div class="pad"><div id="teamsBox">${Teams.html()}</div>
+      <div class="fallas">${Teams.list.map((t,i)=>`
+        <div class="fal ${this._burnt===i?'burning':''}">
+          <span class="ninot">${this._build[i]>=8?'🔥':'✨'}</span>
+          <div class="stack">${Array.from({length:this._build[i]},()=>'<div class="blk"></div>').join('')}</div>
+          <span class="lbl">${esc(t.name)} · ${this._build[i]}/8</span>
+        </div>`).join('')}</div>
+      <p class="pmsg">${esc(msg)}</p>
+      <div class="vrow"><button class="btn hot" onclick="Game.build()"><span>🔨 Build</span></button>
+        <button class="btn ghost" onclick="Game.falla()"><span>↻ New falla</span></button></div>
+    </div>`;
+  },
+  build(){
+    this.ask(ok=>{
+      const i=Teams.turn, name=Teams.list[i].name;
+      let msg;
+      if(!ok){ msg='No piece for '+name+' this time.'; }
+      else {
+        this._build[i]++;
+        if(this._build[i]>=8){ this._burnt=i; Teams.add(30);
+          this.drawFalla('¡'+name+' has finished the falla! LA CREMÀ — 30 points. 🔥');
+          return; }
+        msg=name+' adds a piece ('+this._build[i]+'/8).';
+      }
+      Teams.next();
+      this.drawFalla(msg+' '+Teams.list[Teams.turn].name+'’s turn.');
+    },'Win a piece');
+  },
+
+  /* ---- 6 · THE CASE (escape room) ---- */
+  theCase(){
+    const c=this.unit.case; this._lock=0;
+    stage.innerHTML=`<div class="pad">
+      <h1 class="h1">${esc(c.title)}</h1>
+      <p class="pr" style="max-width:62ch;font-family:var(--sans);font-size:clamp(15px,1.6vw,20px);
+         line-height:1.5;margin-bottom:16px;color:rgba(255,255,255,.9)">${esc(c.intro)}</p>
+      <div class="locks" id="locks"></div></div>`;
+    this.drawLocks();
+  },
+  drawLocks(){
+    const c=this.unit.case;
+    $('#locks').innerHTML = c.locks.map((L,i)=>{
+      const state = i<this._lock?'ok': i===this._lock?'now':'';
+      const icon  = i<this._lock?'🔓': i===this._lock?'🔒':'⋯';
+      return `<div class="lock ${state}"><h4>${esc(L.name)}<span class="st">${icon}</span></h4>
+        <div class="body">${this.lockBody(L,i)}</div></div>`;
+    }).join('') + (this._lock>=c.locks.length
+      ? `<div class="lock ok"><h4>Case closed 🎉</h4><div class="body" style="display:block">
+         <p class="pr">${esc(c.solved)}</p></div></div>` : '');
+  },
+  lockBody(L,i){
+    if(L.type==='choice')
+      return `<p class="pr">${esc(L.prompt)}</p><div class="opts">${L.options.map((o,k)=>
+        `<button class="opt" onclick="Game.answer(${i},${k},this)">${esc(o)}</button>`).join('')}</div>`;
+    if(L.type==='match'){
+      const right=shuffle(L.pairs.map(p=>p[1]));
+      return `<p class="pr">${esc(L.prompt)}</p>
+        <div class="mgrid" id="mL">${L.pairs.map(p=>`<button class="mw" data-k="${esc(p[0])}" onclick="Game.pickL(this)">${esc(p[0])}</button>`).join('')}</div>
+        <div class="mgrid" style="margin-top:10px">${right.map(r=>`<button class="mw" data-v="${esc(r)}" onclick="Game.pickR(this,${i})">${esc(r)}</button>`).join('')}</div>`;
+    }
+    if(L.type==='suspects')
+      return `<div class="clues">${L.clues.map(x=>'✔ '+esc(x)).join('<br>')}</div>
+        <p class="pr">${esc(L.prompt)}</p>
+        <div class="sus">${L.suspects.map(s=>
+          `<button class="suscard" id="sus${s.id}" onclick="Game.cross(this)"><b>Suspect ${s.id}</b>
+            ${esc(s.hair)}<br>${s.glasses?'glasses':'no glasses'}<br>${s.height} m<br>age ${s.age}</button>`).join('')}</div>
+        <p class="pr" style="margin-top:14px;font-size:15px;opacity:.85">Click a card to cross it out. When only one is left, accuse:</p>
+        <div class="row" style="display:flex;gap:8px;flex-wrap:wrap">${L.suspects.map(s=>
+          `<button class="btn hot" style="font-size:14px;padding:.5em 1.1em" onclick="Game.accuse('${s.id}',${i})"><span>Accuse ${s.id}</span></button>`).join('')}</div>`;
+    return '';
+  },
+  answer(i,k,el){
+    const L=this.unit.case.locks[i];
+    if(k===L.answer){ toast('Lock open! 🔓'); this._lock=i+1; this.drawLocks(); }
+    else { toast('Not that one. Try again.'); if(el) el.classList.add('bad'); }
+  },
+  pickL(b){ document.querySelectorAll('#mL .mw').forEach(x=>x.classList.remove('sel')); b.classList.add('sel'); this._sel=b; },
+  pickR(b,i){
+    const L=this.unit.case.locks[i];
+    if(!this._sel){ toast('Choose an English word first.'); return; }
+    const want = (L.pairs.find(p=>p[0]===this._sel.dataset.k)||[])[1];
+    if(want===b.dataset.v){
+      this._sel.classList.add('done'); b.classList.add('done'); this._sel=null;
+      if(document.querySelectorAll('#mL .mw:not(.done)').length===0){ toast('Lock open! 🔓'); this._lock=i+1; this.drawLocks(); }
+    } else { toast('Not a pair.'); }
+  },
+  cross(el){ el.classList.toggle('out'); },
+  accuse(id,i){
+    const L=this.unit.case.locks[i];
+    if(id===L.answer){ toast('That is the thief! 🔓',2400); this._lock=i+1; this.drawLocks(); }
+    else { toast('No. Check the four clues again.',2400);
+           const el=document.getElementById('sus'+id); if(el) el.classList.add('out'); }
+  },
+
+  /* ---- 12 · SOMERSET PURSUIT (Trivial-Pursuit-style board, added
+     25 Sep 2026 for the B2 Conversación Wednesday adults group) ----
+     A ring of 24 spaces, six colours, one HQ per colour (every 4th
+     space). Roll to move; land on a colour, answer a question from
+     that category out loud; land exactly on your colour's own HQ
+     and answer correctly to win that colour's azulejo tile. Collect
+     all six, then press the centre button and answer one final
+     question — any category, teacher's choice — to win.
+
+     Two deliberate adaptations for a classroom screen, both flagged
+     here rather than silently done:
+     1. Turn always passes after one question, correct or not — the
+        same rule Sambori and La Falla already use — instead of
+        Trivial Pursuit's "answer right, roll again", so a round
+        stays a predictable length for a fixed lesson slot.
+     2. There is no physical walk to a literal centre square on a
+        flat ring, so reaching the centre is a button that appears
+        on a team's own turn once they hold all six tiles, rather
+        than a specific board space landed on exactly.
+
+     Same teacher-marking rule as every other game here (see
+     feedback_arcade_no_auto_scoring): Show answer / Correct / Wrong
+     — nothing marks itself. */
+  PURSUIT_RING: null,
+  pursuitRing(){
+    if(this.PURSUIT_RING) return this.PURSUIT_RING;
+    const r=[];
+    for(let c=1;c<=7;c++) r.push([1,c]);      // top row, left to right — 7 spaces
+    for(let ro=2;ro<=6;ro++) r.push([ro,7]);  // right column, down — 5 spaces
+    for(let c=7;c>=1;c--) r.push([7,c]);      // bottom row, right to left — 7 spaces
+    for(let ro=6;ro>=2;ro--) r.push([ro,1]);  // left column, up — 5 spaces
+    this.PURSUIT_RING=r; return r;            // 24 total, the 7×7 grid's border
+  },
+  pursuitCats(){ return this.unit.pursuit.categories; },
+  pursuitCatAt(i){ return Math.floor(i/4)%6; },   // 4-space sectors, one colour each
+  pursuitIsHQ(i){ return i%4===0; },
+  pursuit(){
+    Teams.init(3);
+    this._pTeam = Teams.list.map(()=>({pos:0, tiles:[]}));
+    this._pQueue = {};
+    this.drawPursuit('Roll to move. Land on a colour, answer its question. Land on your colour\'s HQ and answer correctly to win the tile.');
+  },
+  drawPursuit(msg){
+    const cats=this.pursuitCats(), ring=this.pursuitRing(), me=Teams.turn;
+    const cells=ring.map(([row,col],i)=>{
+      const cat=cats[this.pursuitCatAt(i)], hq=this.pursuitIsHQ(i);
+      const here=this._pTeam.map((t,k)=>t.pos===i?TOKENS[k]:'').filter(Boolean).join('');
+      return `<div class="pspace ${hq?'hq':''}" style="grid-row:${row};grid-column:${col};--pc:${cat.colour}"
+        title="${esc(cat.label)}${hq?' · HQ':''}">${hq?`<span class="azulejo sm" style="--pc:${cat.colour}"></span>`:''}${
+        here?`<span class="ptok">${here}</span>`:''}</div>`;
+    }).join('');
+    const canFinal = this._pTeam[me].tiles.length>=6;
+    const hub=`<div class="phub" style="grid-row:2/7;grid-column:2/7">
+      <div class="phubTitle">🏛</div>
+      <div class="phubTeams">${Teams.list.map((t,i)=>`
+        <div class="phubTeam ${i===me?'on':''}">
+          <span class="nm">${esc(t.name)}</span>
+          <span class="tiles">${cats.map(c=>`<span class="azulejo xs ${this._pTeam[i].tiles.includes(c.id)?'':'empty'}"
+            style="--pc:${c.colour}" title="${esc(c.label)}"></span>`).join('')}</span>
+        </div>`).join('')}</div>
+      ${canFinal?`<button class="btn hot" style="font-size:12px;padding:.5em 1em" onclick="Game.pursuitFinal()"><span>🏛 Attempt the centre</span></button>`:''}
+    </div>`;
+    stage.innerHTML = `<div class="pad"><div id="teamsBox">${Teams.html()}</div>
+      <div class="pcatlegend">${cats.map(c=>`<span class="pleg"><span class="azulejo xs" style="--pc:${c.colour}"></span><span>${esc(c.label)}</span></span>`).join('')}</div>
+      <div class="pursuit-wrap"><div class="pursuit-board">${cells}${hub}</div></div>
+      <p class="pmsg">${esc(msg)}</p>
+      <div class="vrow">
+        <button class="btn hot" id="pRoll" onclick="Game.pursuitRoll()"><span id="pDie">🎲 Roll</span></button>
+        <button class="btn ghost" onclick="Game.pursuit()"><span>↻ New game</span></button>
+      </div></div>`;
+  },
+  pursuitRoll(){
+    const btn=$('#pRoll'); if(btn) btn.disabled=true;
+    const faces=['⚀','⚁','⚂','⚃','⚄','⚅'];
+    const el=$('#pDie'); let n=0;
+    const spin=setInterval(()=>{
+      if(el) el.textContent=faces[Math.random()*6|0];
+      n++;
+      if(n>7){ clearInterval(spin); this.pursuitLand(1+Math.floor(Math.random()*6)); }
+    },70);
+  },
+  pursuitLand(roll){
+    const i=Teams.turn, team=this._pTeam[i], name=Teams.list[i].name;
+    team.pos=(team.pos+roll)%24;
+    const cat=this.pursuitCats()[this.pursuitCatAt(team.pos)];
+    const wonTile = this.pursuitIsHQ(team.pos) && !team.tiles.includes(cat.id);
+    this.askPursuit(cat.id, ok=>{
+      let msg;
+      if(ok && wonTile){ team.tiles.push(cat.id); msg=name+' rolled '+roll+' and wins the '+cat.label+' tile! 🏺'; }
+      else if(ok){ Teams.add(1); msg=name+' rolled '+roll+' and answers '+cat.label+' correctly (+1).'; }
+      else { msg=name+' rolled '+roll+' — that '+cat.label+' answer was wrong.'; }
+      Teams.next();
+      this.drawPursuit(msg+' '+Teams.list[Teams.turn].name+'’s turn.');
+    }, cat.label+(wonTile?' · HQ tile':''));
+  },
+  /* Its own question picker rather than the shared nextQ()/questionPool():
+     Pursuit draws from one category's own array, not the unit's flat
+     `questions`, so each colour keeps its own shuffled, non-repeating
+     queue that only reshuffles once that category's 8 questions run out. */
+  askPursuit(catId,cb,badge){
+    const cat=this.pursuitCats().find(c=>c.id===catId);
+    if(!this._pQueue[catId] || !this._pQueue[catId].length)
+      this._pQueue[catId]=shuffle(cat.questions.slice());
+    const q=this._pQueue[catId].pop();
+    ov.className='ov on';
+    ov.innerHTML=`<div class="badge">${esc(badge||cat.label)}</div>
+      <div class="q">${esc(q.q)}</div>
+      <div class="a" id="ansBox">${esc(q.a)}</div>
+      <div class="row">
+        <button class="btn ghost" onclick="$('#ansBox').classList.add('on')"><span>Show answer</span></button>
+        <button class="btn" onclick="Game.resolvePursuit(true)"><span>✔ Correct</span></button>
+        <button class="btn hot" onclick="Game.resolvePursuit(false)"><span>✘ Wrong</span></button>
+      </div>`;
+    this._pCb=cb;
+  },
+  resolvePursuit(ok){ ov.classList.remove('on'); const cb=this._pCb; this._pCb=null; if(cb) cb(ok); },
+  pursuitFinal(){
+    const all=this.pursuitCats().flatMap(c=>c.questions.map(q=>({q:q.q,a:q.a})));
+    const q=shuffle(all)[0];
+    ov.className='ov on';
+    ov.innerHTML=`<div class="badge">🏛 FINAL QUESTION · ANY CATEGORY</div>
+      <div class="q">${esc(q.q)}</div>
+      <div class="a" id="ansBox">${esc(q.a)}</div>
+      <div class="row">
+        <button class="btn ghost" onclick="$('#ansBox').classList.add('on')"><span>Show answer</span></button>
+        <button class="btn" onclick="Game.pursuitWin(true)"><span>✔ Correct — they win!</span></button>
+        <button class="btn hot" onclick="Game.pursuitWin(false)"><span>✘ Wrong — try again next turn</span></button>
+      </div>`;
+  },
+  pursuitWin(ok){
+    ov.classList.remove('on');
+    const name=Teams.list[Teams.turn].name;
+    if(ok){
+      ov.className='ov on winner';
+      ov.innerHTML=`<div class="badge">🏆 SOMERSET PURSUIT</div>
+        <div class="q winnerName">${esc(name)}</div>
+        <div class="q" style="font-size:clamp(20px,3vw,40px);color:var(--gold)">All six tiles collected — champions! 🏺</div>
+        <div class="row"><button class="btn" onclick="ov.classList.remove('on')"><span>Close</span></button></div>`;
+    } else {
+      Teams.next();
+      this.drawPursuit(name+' just missed the final question — back in the ring. '+Teams.list[Teams.turn].name+'’s turn.');
+    }
+  }
+};
+function tile(ic,t,p,fn,i){ return `<button class="tile" style="--i:${i}" onclick="${/^Game\.(pickClass|load|intro|startVersion)/.test(fn)?fn:`Game.versions(${esc(JSON.stringify(fn)).replace(/"/g,'&quot;')},${esc(JSON.stringify(t)).replace(/"/g,'&quot;')})`}"><span class="ic">${ic}</span>
+  <div><h3>${t}</h3><p>${p}</p></div></button>`; }
+function tileCase(u,i){ return `<button class="tile case" style="--i:${i}" onclick="Game.versions('Game.theCase()','The Case')"><span class="ic">🔦</span>
+  <div><h3>The Case</h3><p>${esc(u.case.title)} — four locks. The whole class against the clock.</p></div></button>`; }
+
+/* Somerset Pursuit gets its own tile, calling Game.pursuit() directly
+   rather than going through Game.versions() — the Original/True-or-
+   false/Fill-in/Multiple-choice submenu that wraps the other eleven
+   games doesn't apply to a board game with its own built-in
+   teacher-marked flow (see Game.pursuit()). Only appears when a unit
+   declares a `pursuit` block, so no other group or unit is affected. */
+function tilePursuit(u,i){ return `<button class="tile pursuit" style="--i:${i}" onclick="Game.pursuit()"><span class="ic">🎲</span>
+  <div><h3>Somerset Pursuit</h3><p>Roll the die, answer a category question, win the azulejo tile. Collect all six and answer the centre question to win.</p></div></button>`; }
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){ ov.classList.remove('on'); stopTimer(); }
+  /* Hangman: type the letter instead of hunting for it with the mouse.
+     While that board is up the keyboard belongs to the game — including F,
+     which is a letter students need far more often than fullscreen. */
+  const hmLive = Game._hm && !ov.classList.contains('on') && stage.querySelector('.hmkeys');
+  if(hmLive && /^[a-zA-Z]$/.test(e.key) && !(e.metaKey||e.ctrlKey||e.altKey)){
+    Game.hangmanGuess(e.key.toUpperCase()); return;
+  }
+  if(e.key==='f'||e.key==='F') toggleFS();
+});
+/* Guess Who: shared, photo-checked starter set; worksheet uses these same IDs. */
+const GuessPhotos = {
+  1:['Short dark hair; dark glasses; a bow tie and blue backpack straps.','A pale wall and green leaves.'],
+  2:['Short dark hair; pale blue glasses; a green jacket.','A blurred red object behind the person.'],
+  3:['Short brown hair; red glasses; a red bow tie and blue jumper.','A dark background.'],
+  4:['Very short light hair; blue glasses; a white shirt.','Outdoors, with trees and another child behind.'],
+  6:['Long straight dark hair; a white shirt and green cardigan.','Green leaves and yellow flowers.'],
+  8:['Light straight hair; one hand under the chin.','A pale blue background.'],
+  9:['Short curly brown hair; a light grey top.','A dark, blurred background.'],
+  15:['Light curly hair; a white top and a necklace.','A pale background.'],
+  16:['Long dark curly hair; a green patterned dress.','A pale pink wall.'],
+  18:['Brown shoulder-length hair; a patterned top; an arm reaching out.','Green trees outdoors.'],
+  19:['Long dark hair; a white top and pink skirt.','Green leaves and branches.'],
+  22:['Grey hair pulled back; a grey top with colourful flowers.','Trees and warm-coloured leaves outdoors.']
+};
+Object.assign(Game, {
+  guessWho(){
+    stopTimer(); ov.classList.remove('on'); this._gwClosed=false;
+    this._gwCards=(this.unit.cards||[]).filter(c=>GuessPhotos[c.n]);
+    if(!this._gwCards.length){ toast('No photo set is available for this unit yet.'); return; }
+    this._secret=shuffle(this._gwCards)[0]; this._gwOut=new Set(); this._gwHistory=[];this._gwWon=false;
+    this.drawGuess();this.refreshTeacher();
+  },
+  drawGuess(){
+    stage.innerHTML=`<div class="pad memory-game"><h1 style="font-size:28px;margin:0 0 10px">Guess Who · ${this._gwHistory.length} / 10 questions</h1>
+    <div class="legend"><span class="chip"><span>Discuss in teams. Take turns asking yes/no questions.</span></span><button class="btn" onclick="Game.peek()"><span>Teacher panel</span></button><button class="btn ghost" onclick="Game.guessWho()"><span>New round</span></button><button class="btn ghost" onclick="window.open('guess-who-worksheet-preview.html','worksheet')"><span>Worksheet preview</span></button></div>
+    <div class="board" style="grid-template-columns:repeat(6,1fr)">${this._gwCards.map(c=>`<button class="pc flip ${this._gwOut.has(c.n)?'out':''}" aria-label="Toggle photo ${c.n}" onclick="Game.crossGuess(${c.n})"><img src="${c.img}" alt="Photo ${c.n}"><span class="tagn">${c.n}</span></button>`).join('')}</div>
+    <p style="margin:10px 0 0">${this._gwWon?'Solved!':this._gwHistory.length>=10?'Question limit reached — make your final guess.':'Click a photo to cross it out or restore it.'}</p>
+    <div style="font-size:16px;margin-top:8px">${this._gwHistory.slice(-3).map(h=>esc(h.q)+' — <b>'+esc(h.a)+'</b>').join('<br>')}</div></div>`;
+  },
+  crossGuess(n){this._gwOut.has(n)?this._gwOut.delete(n):this._gwOut.add(n);this.drawGuess();this.refreshTeacher();},
+  peek(){
+    if(!this._secret)return;
+    if(this._teacher && !this._teacher.closed){this._teacher.focus();return;}
+    this._teacher=window.open('','somersetTeacher','popup,width=760,height=850');
+    if(!this._teacher){toast('Allow pop-ups for this page, then click Teacher panel again.');return;}
+    this._teacherReady=false; this.refreshTeacher();
+  },
+  refreshTeacher(){
+    const w=this._teacher;if(!w||w.closed)return;
+    w.document.title='Somerset · Private teacher panel';
+    w.document.head.innerHTML='<meta charset="utf-8"><style>body{font:18px Arial;background:#f2f7ec;color:#1a1a1a;padding:24px;margin:auto;max-width:850px}button,select,input{font:inherit;padding:10px;margin:5px;border-radius:6px;border:1px solid #aaa}button{cursor:pointer;background:white}h1{font-size:28px;color:#4d8120}img{max-height:250px;max-width:100%;object-fit:contain}section{background:white;padding:16px;margin:14px 0;border-radius:10px}label{display:block}input{width:90%}.notes{font-size:16px;color:#444}</style>';
+    const body=w.document.body;
+    if(!this._teacherReady){
+      body.innerHTML='<h1>Teacher panel · content hidden</h1><p>Move this window onto your laptop screen. Keep the photo board on the projector.</p><p>Use extended desktop, not mirrored displays. Only continue once students cannot see this window.</p><button id="unlock">Show private content</button>';
+      body.querySelector('#unlock').onclick=()=>{this._teacherReady=true;this.refreshTeacher();};return;
+    }
+    const c=this._secret, desc=GuessPhotos[c.n];
+    body.innerHTML=`<button id="hide">Hide private content</button><h1>Secret photo ${c.n}</h1>
+    <section><img src="${new URL(c.img,document.baseURI).href}" alt="Secret photo ${c.n}"><p>${esc(desc[0])}</p><p><b>Background:</b> ${esc(desc[1])}</p></section>
+    <section><h2>Questions to model</h2><p>Has this person got glasses?<br>Has this person got curly hair?<br>Is this person wearing something blue?<br>Can you see trees in the background?</p><p class="notes">Students ask in Guess Who. For a listening round, read one description clue at a time. Describe visible details only; exact age, height and personality are not established by the photo.</p></section>
+    <section><h2>Record the class question (${this._gwHistory.length}/10)</h2><label>Question<input id="question" placeholder="Has this person got glasses?"></label><button id="yes">Yes</button><button id="no">No</button><button id="unclear">Not clear — ask another</button><button id="undo">Undo last question</button></section>
+    <section><h2>Eliminate photos</h2>${this._gwCards.map(x=>`<button data-card="${x.n}">${this._gwOut.has(x.n)?'Restore':'Cross out'} ${x.n}</button>`).join('')}</section>
+    <section><label>Class guess <select id="guess">${this._gwCards.map(x=>`<option>${x.n}</option>`).join('')}</select></label><button id="check">Check guess</button><button id="reveal">Reveal to class</button><button id="new">New round</button></section>`;
+    body.querySelector('#hide').onclick=()=>{this._teacherReady=false;this.refreshTeacher();};
+    ['yes','no','unclear'].forEach(id=>body.querySelector('#'+id).onclick=()=>{
+      const q=body.querySelector('#question').value.trim();if(!q)return;
+      if(id==='unclear'){body.querySelector('#question').value='';return;}
+      if(this._gwHistory.length>=10||this._gwWon)return;
+      this._gwHistory.push({q,a:id==='yes'?'Yes':'No'});this.drawGuess();this.refreshTeacher();
+    });
+    body.querySelector('#undo').onclick=()=>{this._gwHistory.pop();this.drawGuess();this.refreshTeacher();};
+    body.querySelectorAll('[data-card]').forEach(b=>b.onclick=()=>this.crossGuess(Number(b.dataset.card)));
+    body.querySelector('#check').onclick=()=>{const n=Number(body.querySelector('#guess').value);if(n===c.n){this._gwWon=true;this.drawGuess();this.reveal();}else toast('Not photo '+n+'. Try again.');};
+    body.querySelector('#reveal').onclick=()=>this.reveal();
+    body.querySelector('#new').onclick=()=>this.guessWho();
+  },
+  reveal(){
+    if(!this._secret)return;const c=this._secret;
+    ov.className='ov on picture-tf';ov.innerHTML=`<div class="badge">Secret revealed</div><div class="q">Number ${c.n}</div><img style="max-height:55vh;max-width:80vw;object-fit:contain" src="${c.img}" alt="Photo ${c.n}"><p>${esc(GuessPhotos[c.n][0])}</p><button class="btn" onclick="ov.classList.remove('on')"><span>Back to board</span></button>`;
+  }
+});
+// Leaving the activity conceals the private window and invalidates its controls.
+for(const name of ['home','intro','setup','load']){
+  const original=Game[name];Game[name]=function(...args){if(this._teacher&&!this._teacher.closed){this._teacher.close();}this._teacher=null;this._teacherReady=false;return original.apply(this,args);};
+}
+
+Game.boot();
+</script>
+</body>
+</html>
