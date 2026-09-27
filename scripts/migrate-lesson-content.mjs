@@ -4,15 +4,16 @@
 // generated portal-data.js and into Postgres, so the web Portal's lesson panel can
 // show real content instead of "nothing synced yet".
 //
-// Scope: fce1 and pet1 only (25 Sep 2026) — the two groups Hugo confirmed have
-// content built through the end of the year. Re-run any time portal-data.js is
-// regenerated (`node build.mjs` in Somerset Worksheets/_apps/somerset-portal) to
-// pick up new material; it's a full upsert per (group, date), safe to re-run.
+// Scope: all 4 groups with real lesson content in the Worksheets build —
+// fce1, pet1, flyers, friday-b2 (widened 27 Sep 2026 from the original fce1/pet1-only
+// scope; those were the only two with content built out on 25 Sep). Re-run any time
+// portal-data.js is regenerated (`node build.mjs` in Somerset Worksheets/_apps/somerset-portal)
+// to pick up new material; it's a full upsert per (group, date), safe to re-run.
 import { Pool } from 'pg'
 import fs from 'fs'
 
 const pool = new Pool({ connectionString: process.env.DATABASE_URL })
-const GROUPS = ['fce1', 'pet1']
+const GROUPS = ['fce1', 'pet1', 'flyers', 'friday-b2']
 
 function newId() {
   return Date.now().toString(36) + Math.random().toString(36).slice(2, 7)
