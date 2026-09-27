@@ -12,6 +12,17 @@
 import { Pool } from 'pg'
 import fs from 'fs'
 
+// Node doesn't auto-load .env.local outside `next dev`/`next build` — running
+// this script bare (`node scripts/...`) otherwise gets DATABASE_URL/
+// BLOB_READ_WRITE_TOKEN as undefined, which is what caused the 27 Sep 2026
+// ECONNREFUSED-to-localhost and "no Blob token" failures. Load it ourselves;
+// swallow the error so this stays harmless in Vercel/CI where the file
+// doesn't exist and the real env vars are already injected.
+try {
+  process.loadEnvFile(new URL('../.env.local', import.meta.url))
+} catch {}
+
+
 const pool = new Pool({ connectionString: process.env.DATABASE_URL })
 const GROUPS = ['fce1', 'pet1', 'flyers', 'friday-b2']
 
