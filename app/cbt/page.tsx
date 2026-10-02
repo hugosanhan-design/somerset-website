@@ -139,6 +139,10 @@ function CbtPageInner() {
   const EXAM = examEntry.data
   const audioFolder = examEntry.audioFolder
   const LS_KEY = `${LS_KEY_BASE}-${EXAM.id}`
+  // When arriving from a catch-up pack link (?paper=reading-uoe etc.), skip the paper-choice UI.
+  const forcedPaper = (searchParams.get('paper') as PaperId | null) ?? null
+  const validForcedPaper: PaperId | null = forcedPaper && EXAM.papers[forcedPaper] ? forcedPaper : null
+  const catchupPackId = searchParams.get('pack_id') ?? null
 
   const [screen, setScreen] = useState<'welcome' | 'exam' | 'done'>('welcome')
   const [name, setName] = useState('')
@@ -448,7 +452,7 @@ function CbtPageInner() {
       const res = await fetch('/api/cbt/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ examId: EXAM.id, studentName: name, paper, answers: payload, startedAt: startedAt.current }),
+        body: JSON.stringify({ examId: EXAM.id, studentName: name, paper, answers: payload, startedAt: startedAt.current, ...(catchupPackId ? { pack_id: catchupPackId } : {}) }),
       })
       if (!res.ok) throw new Error((await res.json()).error || 'Submit failed')
       if (resumeCodeRef.current) {
@@ -704,18 +708,29 @@ function CbtPageInner() {
             <label style={{ fontSize: 13, fontWeight: 700, display: 'block', marginBottom: 6 }}>Your name</label>
             <input value={name} onChange={e => setName(e.target.value)} placeholder="First name and surname" className="som-input"
               style={{ width: '100%', padding: '12px 14px', fontSize: 15, fontFamily: sans, border: '1.5px solid #D8E4C8', borderRadius: 10, marginBottom: 26, background: '#fff', color: '#1a1a1a', outline: 'none' }} />
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-              {(Object.entries(EXAM.papers) as [PaperId, { name: string; durationMin: number }][]).map(([id, p]) => (
-                <button key={id} disabled={!name.trim()} onClick={() => startPaper(id)} className={name.trim() ? 'som-paper-btn' : undefined} style={{
-                  display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '15px 20px',
-                  borderRadius: 10, border: '1.5px solid #D8E4C8', background: name.trim() ? '#fff' : '#F2F7EC',
-                  cursor: name.trim() ? 'pointer' : 'not-allowed', fontFamily: sans, fontSize: 15.5, fontWeight: 600, color: '#1a1a1a',
-                }}>
-                  <span>{p.name}</span>
-                  <span style={{ fontSize: 13, color: '#6BAE2E', fontWeight: 700 }}>{p.durationMin} min</span>
-                </button>
-              ))}
-            </div>
+            {validForcedPaper ? (
+              <button disabled={!name.trim()} onClick={() => startPaper(validForcedPaper)} className={name.trim() ? 'som-paper-btn' : undefined} style={{
+                display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '15px 20px',
+                borderRadius: 10, border: '1.5px solid #D8E4C8', background: name.trim() ? '#fff' : '#F2F7EC',
+                cursor: name.trim() ? 'pointer' : 'not-allowed', fontFamily: sans, fontSize: 15.5, fontWeight: 600, color: '#1a1a1a',
+              }}>
+                <span>{EXAM.papers[validForcedPaper].name}</span>
+                <span style={{ fontSize: 13, color: '#6BAE2E', fontWeight: 700 }}>{EXAM.papers[validForcedPaper].durationMin} min</span>
+              </button>
+            ) : (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                {(Object.entries(EXAM.papers) as [PaperId, { name: string; durationMin: number }][]).map(([id, p]) => (
+                  <button key={id} disabled={!name.trim()} onClick={() => startPaper(id)} className={name.trim() ? 'som-paper-btn' : undefined} style={{
+                    display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '15px 20px',
+                    borderRadius: 10, border: '1.5px solid #D8E4C8', background: name.trim() ? '#fff' : '#F2F7EC',
+                    cursor: name.trim() ? 'pointer' : 'not-allowed', fontFamily: sans, fontSize: 15.5, fontWeight: 600, color: '#1a1a1a',
+                  }}>
+                    <span>{p.name}</span>
+                    <span style={{ fontSize: 13, color: '#6BAE2E', fontWeight: 700 }}>{p.durationMin} min</span>
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Cross-device resume: type the code shown when the exam was started. */}

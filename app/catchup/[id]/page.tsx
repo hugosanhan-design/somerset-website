@@ -42,6 +42,11 @@ export default function CatchupPage() {
     listening: 'Listening',
     writing: 'Writing',
   }
+  const cbtPaperId: Record<string, string> = {
+    reading: 'reading-uoe',
+    listening: 'listening',
+    writing: 'writing',
+  }
 
   return (
     <div style={{
@@ -117,7 +122,7 @@ export default function CatchupPage() {
                 )}
 
                 {pack.cbt_paper && (
-                  <a href="/cbt" style={taskCard}>
+                  <a href={`/cbt?paper=${cbtPaperId[pack.cbt_paper] || pack.cbt_paper}&pack_id=${pack.id}`} style={taskCard}>
                     <span style={{ fontSize: 26 }}>🖥️</span>
                     <div style={{ flex: 1 }}>
                       <div style={taskTitle}>Practice exam — {cbtLabel[pack.cbt_paper] || pack.cbt_paper}</div>
