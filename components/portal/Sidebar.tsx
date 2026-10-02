@@ -22,9 +22,11 @@ const PRIMARY = [
   { href: '/dashboard', icon: '📅', label: 'Dashboard' },
   { href: '/groups', icon: '🏫', label: 'Groups' },
   { href: '/students', icon: '📊', label: 'Students' },
+  { href: '/classroom', icon: '🖐️', label: 'Student input' },
   { href: '/scan', icon: '📷', label: 'Scan work' },
   { href: '/correct-queue', icon: '✅', label: 'To correct' },
   { href: '/correct', icon: '✍️', label: 'Correct writing' },
+  { href: '/catchup', icon: '📬', label: 'Catch-up packs' },
 ]
 
 const EXTRAS = [

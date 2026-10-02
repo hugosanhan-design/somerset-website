@@ -137,6 +137,21 @@ async function initSchema(): Promise<void> {
       UNIQUE(group_id, student_id, date)
     );
 
+    CREATE TABLE IF NOT EXISTS exercise_answers (
+      id         TEXT PRIMARY KEY,
+      group_id   TEXT NOT NULL REFERENCES groups(id) ON DELETE CASCADE,
+      student_id TEXT NOT NULL REFERENCES students(id) ON DELETE CASCADE,
+      date       TEXT NOT NULL,
+      exercise_id TEXT NOT NULL,
+      item_n     INTEGER NOT NULL,
+      chosen     TEXT NOT NULL,
+      correct_key TEXT NOT NULL,
+      is_correct INTEGER NOT NULL DEFAULT 0,
+      created_at TEXT DEFAULT (now()::text),
+      updated_at TEXT DEFAULT (now()::text),
+      UNIQUE(student_id, date, exercise_id, item_n)
+    );
+
     CREATE TABLE IF NOT EXISTS mock_exams (
       id         TEXT PRIMARY KEY,
       title      TEXT NOT NULL,
@@ -246,6 +261,22 @@ async function initSchema(): Promise<void> {
       error_types TEXT DEFAULT '[]',
       created_at  TEXT DEFAULT (now()::text)
     );
+
+    -- Phase 1 online course: teacher creates a catch-up pack after class for absent students.
+    -- Each pack gets a public shareable URL (/catchup/[id]) with no login required.
+    CREATE TABLE IF NOT EXISTS catchup_packs (
+      id             TEXT PRIMARY KEY,
+      group_id       TEXT REFERENCES groups(id) ON DELETE CASCADE,
+      date           TEXT NOT NULL,
+      unit_title     TEXT NOT NULL DEFAULT '',
+      writing_prompt TEXT DEFAULT '',
+      cbt_paper      TEXT DEFAULT '',
+      reading_url    TEXT DEFAULT '',
+      reading_label  TEXT DEFAULT '',
+      note           TEXT DEFAULT '',
+      created_by     TEXT REFERENCES teachers(id) ON DELETE SET NULL,
+      created_at     TEXT DEFAULT (now()::text)
+    );
   `)
 
   await addColumnIfMissing(pool, 'students', 'group_id', "TEXT REFERENCES groups(id) ON DELETE SET NULL")
@@ -255,6 +286,9 @@ async function initSchema(): Promise<void> {
   await addColumnIfMissing(pool, 'work_entries', 'image_url', "TEXT DEFAULT ''")
   await addColumnIfMissing(pool, 'work_entries', 'corrected_at', "TEXT DEFAULT NULL")
   await addColumnIfMissing(pool, 'work_entries', 'cefr_estimate', "TEXT DEFAULT ''")
+  await addColumnIfMissing(pool, 'work_entries', 'criteria', "TEXT DEFAULT ''")
+  await addColumnIfMissing(pool, 'work_entries', 'transcribed_text', "TEXT DEFAULT ''")
+  await addColumnIfMissing(pool, 'work_entries', 'criteria_check', "TEXT DEFAULT '[]'")
   await addColumnIfMissing(pool, 'groups', 'teacher_id', "TEXT REFERENCES teachers(id) ON DELETE SET NULL")
   await addColumnIfMissing(pool, 'teachers', 'reset_token', "TEXT DEFAULT NULL")
   await addColumnIfMissing(pool, 'teachers', 'reset_token_expires', "TEXT DEFAULT NULL")
