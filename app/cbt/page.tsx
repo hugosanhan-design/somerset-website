@@ -705,6 +705,20 @@ function CbtPageInner() {
             <p style={{ fontSize: 14, color: '#666', marginBottom: 26, lineHeight: 1.6 }}>
               Enter your name, then choose the paper your teacher has told you to do. The timer starts as soon as you open the paper.
             </p>
+            {!validForcedPaper && (
+              <div style={{ marginBottom: 22 }}>
+                <label style={{ fontSize: 13, fontWeight: 700, display: 'block', marginBottom: 6 }}>Exam</label>
+                <select
+                  value={EXAM.id}
+                  onChange={e => { window.location.href = '/cbt?exam=' + e.target.value }}
+                  style={{ width: '100%', padding: '11px 14px', fontSize: 14.5, fontFamily: sans, border: '1.5px solid #D8E4C8', borderRadius: 10, background: '#fff', color: '#1a1a1a' }}
+                >
+                  {Object.entries(EXAM_REGISTRY).map(([id, entry]) => (
+                    <option key={id} value={id}>{entry.data.title}</option>
+                  ))}
+                </select>
+              </div>
+            )}
             <label style={{ fontSize: 13, fontWeight: 700, display: 'block', marginBottom: 6 }}>Your name</label>
             <input value={name} onChange={e => setName(e.target.value)} placeholder="First name and surname" className="som-input"
               style={{ width: '100%', padding: '12px 14px', fontSize: 15, fontFamily: sans, border: '1.5px solid #D8E4C8', borderRadius: 10, marginBottom: 26, background: '#fff', color: '#1a1a1a', outline: 'none' }} />
