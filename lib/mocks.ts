@@ -59,7 +59,7 @@ export const B2_FIRST_PARTS: ExamPartDefinition[] = [
 
 // Exams seeded on first use. Test 6 is the exam Mock 1 was sat on (10 Jul 2026).
 export const SEED_EXAMS: ExamDefinition[] = [
-  { id: 'test4-b2first', title: 'Cambridge B2 First — Practice Test 4 (CBT trial)', parts: B2_FIRST_PARTS },
+  { id: 'test4-b2first', title: 'Cambridge FCE Style Test', parts: B2_FIRST_PARTS },
   { id: 'test6-b2first', title: 'Cambridge B2 First — Test 6', parts: B2_FIRST_PARTS },
   { id: 'test7-b2first', title: 'Cambridge B2 First — Test 7', parts: B2_FIRST_PARTS },
 ]
