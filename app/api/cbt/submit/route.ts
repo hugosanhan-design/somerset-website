@@ -61,7 +61,7 @@ export async function POST(req: NextRequest) {
           ).get(body.pack_id) as { unit_title: string; date: string; group_name: string; teacher_email: string; teacher_name: string } | undefined
           if (pack?.teacher_email) {
             const paperLabel: Record<string, string> = { 'reading-uoe': 'Reading & Use of English', listening: 'Listening', writing: 'Writing' }
-            const scoreText = score ? ` · Score: ${score.correct}/${score.total} (${Math.round(score.correct / score.total * 100)}%)` : ''
+            const scoreText = score ? ` · Score: ${score.correct}/${score.total} (${Math.round(Number(score.correct) / Number(score.total) * 100)}%)` : ''
             await transporter.sendMail({
               from: FROM,
               to: pack.teacher_email,
