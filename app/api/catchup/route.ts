@@ -33,7 +33,7 @@ export async function POST(req: NextRequest) {
   if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
   const body = (await req.json().catch(() => ({}))) as Record<string, string>
-  const { group_id, date, unit_title, writing_prompt, cbt_paper, reading_url, reading_label, note } = body
+  const { group_id, date, unit_title, writing_prompt, cbt_paper, cbt_exam_id, reading_url, reading_label, note } = body
 
   if (!group_id?.trim() || !date?.trim() || !unit_title?.trim()) {
     return NextResponse.json({ error: 'group_id, date, and unit_title are required' }, { status: 400 })
@@ -44,11 +44,11 @@ export async function POST(req: NextRequest) {
 
   await db.prepare(`
     INSERT INTO catchup_packs
-      (id, group_id, date, unit_title, writing_prompt, cbt_paper, reading_url, reading_label, note, created_by)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      (id, group_id, date, unit_title, writing_prompt, cbt_paper, cbt_exam_id, reading_url, reading_label, note, created_by)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
   `).run(
     id, group_id, date, unit_title.trim(),
-    writing_prompt || '', cbt_paper || '',
+    writing_prompt || '', cbt_paper || '', cbt_exam_id || '',
     reading_url || '', reading_label || '',
     note || '', session.user.id,
   )

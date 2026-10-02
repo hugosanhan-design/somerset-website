@@ -25,6 +25,11 @@ const CBT_PAPERS = [
   { value: 'writing', label: 'Writing' },
 ]
 
+const CBT_EXAMS = [
+  { value: 'test4-b2first', label: 'Practice Test 4' },
+  { value: 'gen01-b2first', label: 'Somerset Original (GEN01)' },
+]
+
 export default function CatchupPacksPage() {
   const [groups, setGroups] = useState<Group[]>([])
   const [packs, setPacks] = useState<Pack[]>([])
@@ -35,6 +40,7 @@ export default function CatchupPacksPage() {
   const [unitTitle, setUnitTitle] = useState('')
   const [writingPrompt, setWritingPrompt] = useState('')
   const [cbtPaper, setCbtPaper] = useState('')
+  const [cbtExamId, setCbtExamId] = useState('test4-b2first')
   const [readingUrl, setReadingUrl] = useState('')
   const [readingLabel, setReadingLabel] = useState('')
   const [note, setNote] = useState('')
@@ -60,13 +66,13 @@ export default function CatchupPacksPage() {
       const r = await fetch('/api/catchup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ group_id: groupId, date, unit_title: unitTitle, writing_prompt: writingPrompt, cbt_paper: cbtPaper, reading_url: readingUrl, reading_label: readingLabel, note }),
+        body: JSON.stringify({ group_id: groupId, date, unit_title: unitTitle, writing_prompt: writingPrompt, cbt_paper: cbtPaper, cbt_exam_id: cbtPaper ? cbtExamId : '', reading_url: readingUrl, reading_label: readingLabel, note }),
       })
       if (!r.ok) throw new Error(await r.text())
       const pack = await r.json()
       setSavedPack(pack)
       setPacks(prev => [pack, ...prev])
-      setUnitTitle(''); setWritingPrompt(''); setCbtPaper(''); setReadingUrl(''); setReadingLabel(''); setNote('')
+      setUnitTitle(''); setWritingPrompt(''); setCbtPaper(''); setCbtExamId('test4-b2first'); setReadingUrl(''); setReadingLabel(''); setNote('')
     } finally {
       setSaving(false)
     }
@@ -127,6 +133,15 @@ export default function CatchupPacksPage() {
               {CBT_PAPERS.map(p => <option key={p.value} value={p.value}>{p.label}</option>)}
             </select>
           </div>
+
+          {cbtPaper && cbtPaper !== 'writing' && (
+            <div style={{ ...row, paddingLeft: 12, borderLeft: `2px solid ${COLORS.line}` }}>
+              <label style={label}>Which exam?</label>
+              <select style={input} value={cbtExamId} onChange={e => setCbtExamId(e.target.value)}>
+                {CBT_EXAMS.map(e => <option key={e.value} value={e.value}>{e.label}</option>)}
+              </select>
+            </div>
+          )}
 
           <div style={{ display: 'flex', gap: 10 }}>
             <div style={{ ...row, flex: 2 }}>

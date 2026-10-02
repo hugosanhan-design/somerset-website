@@ -296,6 +296,7 @@ async function initSchema(): Promise<void> {
   await addColumnIfMissing(pool, 'groups', 'active', "INTEGER NOT NULL DEFAULT 1")
   // Defensive: if an earlier deploy created cbt_drafts before the extras column existed.
   await addColumnIfMissing(pool, 'cbt_drafts', 'extras', "TEXT NOT NULL DEFAULT '{}'")
+  await addColumnIfMissing(pool, 'catchup_packs', 'cbt_exam_id', "TEXT DEFAULT ''")
   await migrateGroupNamesToGroups(pool)
 }
 

@@ -15,6 +15,7 @@ interface CatchupPack {
   unit_title: string
   writing_prompt: string
   cbt_paper: string
+  cbt_exam_id: string
   reading_url: string
   reading_label: string
   note: string
@@ -122,7 +123,7 @@ export default function CatchupPage() {
                 )}
 
                 {pack.cbt_paper && (
-                  <a href={`/cbt?paper=${cbtPaperId[pack.cbt_paper] || pack.cbt_paper}&pack_id=${pack.id}`} style={taskCard}>
+                  <a href={`/cbt?paper=${cbtPaperId[pack.cbt_paper] || pack.cbt_paper}&pack_id=${pack.id}${pack.cbt_exam_id ? `&exam=${pack.cbt_exam_id}` : ''}`} style={taskCard}>
                     <span style={{ fontSize: 26 }}>🖥️</span>
                     <div style={{ flex: 1 }}>
                       <div style={taskTitle}>Practice exam — {cbtLabel[pack.cbt_paper] || pack.cbt_paper}</div>
