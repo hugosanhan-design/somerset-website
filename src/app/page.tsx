@@ -306,7 +306,7 @@ export default function Home() {
         prevPhase = phase
         if (state === 'hanging') {
           place(hangX, hangY, 0)
-          if (phase > 0.585 && phase < 0.68) { state = 'falling'; fallStart = ts }
+          if (phase > 0.605 && phase < 0.68) { state = 'falling'; fallStart = ts }
         } else if (state === 'falling') {
           const t = Math.min((ts - fallStart) / FALL_MS, 1)
           place(hangX, hangY + (floorY - hangY) * t * t, 52 * t * t)
@@ -647,10 +647,10 @@ export default function Home() {
         @keyframes crow-fly {
           0% { transform: translate(-6vw,0) rotate(0deg); opacity: 0; } 8% { opacity: 1; }
           30% { transform: translate(26vw,-16px) rotate(0deg); } 48% { transform: translate(50vw,-4px) rotate(0deg); }
-          56% { transform: translate(66vw,16px) rotate(8deg); } 61% { transform: translate(72vw,30px) rotate(12deg); }
-          64% { transform: translate(70vw,24px) rotate(-10deg); } 74% { transform: translate(71vw,26px) rotate(5deg); }
-          80% { transform: translate(73vw,18px) rotate(-8deg); } 90% { transform: translate(86vw,0px) rotate(-4deg); }
-          100% { transform: translate(102vw,-16px) rotate(0deg); opacity: 1; }
+          56% { transform: translate(77vw,7px) rotate(7deg); } 61% { transform: translate(89vw,19px) rotate(17deg); }
+          64% { transform: translate(86vw,10px) rotate(-24deg); } 74% { transform: translate(78vw,-16px) rotate(-8deg); }
+          80% { transform: translate(82vw,-22px) rotate(-5deg); } 90% { transform: translate(94vw,-28px) rotate(-4deg); }
+          100% { transform: translate(108vw,-35px) rotate(0deg); opacity: 1; }
         }
         @keyframes tree-shake { 0%,58% { transform: rotate(0deg); } 61% { transform: rotate(1.6deg); } 64% { transform: rotate(-1.4deg); } 67% { transform: rotate(0.7deg); } 70%,100% { transform: rotate(0deg); } }
         .falling-apple.eaten { opacity: 0 !important; }
@@ -918,14 +918,49 @@ export default function Home() {
         body.intro-skip .hero-bg { animation: hero-kenburns 38s ease-in-out infinite alternate; }
 
         /* Coloured-pencil panorama: registered seasonal plates and live weather. */
-        :root { --scene-h: clamp(240px, 31vh, 340px); }
-        .scene { overflow: hidden; isolation: isolate; -webkit-mask-image: none; mask-image: none; filter: none; background: #f5eddc; box-shadow: 0 -12px 28px rgba(45, 50, 31, 0.08); }
+        :root { --scene-h: clamp(170px, 24vh, 230px); }
+        .hero { background: radial-gradient(ellipse at 50% 52%, #fff9ea 0%, #f4e5bf 57%, #d7ae6d 100%); padding-bottom: var(--scene-h); }
+        .hero::before, .hero::after, .hero-bg { display: none; }
+        .hero h1 { color: #273e32; text-shadow: none; }
+        .hero h1 em { color: #8b653c; }
+        .hero-lead { color: #405048; text-shadow: none; }
+        .hero .eyebrow { color: #4a5947; background: rgba(255,250,230,.55); border-color: rgba(78,76,46,.25); backdrop-filter: none; }
+        .hero .btn-outline-white { color: #294335; background: rgba(255,250,231,.45); border-color: rgba(37,65,48,.5); backdrop-filter: none; }
+        .hero .btn-outline-white:hover { background: rgba(255,250,231,.8); border-color: #294335; }
+        .nav:not(.scrolled) { background: linear-gradient(to bottom, rgba(255,248,223,.65), transparent); }
+        .nav:not(.scrolled) .nav-logo-name, .nav:not(.scrolled) .nav-links a { color: #263d31; }
+        .nav:not(.scrolled) .nav-logo-name b { color: #416b3c; }
+        .nav:not(.scrolled) .nav-logo-sub, .nav:not(.scrolled) .nav-links .nav-sec a { color: #62705c; }
+        .nav:not(.scrolled) .nav-links a:hover, .nav:not(.scrolled) .nav-links .nav-sec a:hover { color: #12291e; }
+        .nav:not(.scrolled) .nav-links .nav-cta a { background: rgba(255,250,231,.5); border-color: rgba(37,65,48,.42); color: #263d31; }
+        .nav:not(.scrolled) .nav-links .nav-cta a:hover { background: rgba(255,250,231,.85); }
+        .nav:not(.scrolled) .nav-links .nav-sep { background: rgba(38,61,49,.25); }
+        .nav:not(.scrolled) .nav-burger { background: rgba(255,250,231,.55); border-color: rgba(37,65,48,.4); }
+        .nav:not(.scrolled) .nav-burger span { background: #263d31; }
+        body.night .hero { background: radial-gradient(ellipse at 50% 50%, #3d4a4a 0%, #555b57 53%, #aa8256 100%); }
+        body.night .hero h1, body.night .hero-lead { color: #fff9e9; }
+        body.night .hero h1 em { color: #f0ce91; }
+        body.night .hero .eyebrow { color: #fff3d7; background: rgba(32,47,44,.2); border-color: rgba(255,243,215,.35); }
+        body.night .hero .btn-outline-white { color: #fff9e9; background: rgba(32,47,44,.12); border-color: rgba(255,249,233,.65); }
+        body.night .nav:not(.scrolled) { background: linear-gradient(to bottom, rgba(25,39,39,.45), transparent); }
+        body.night .nav:not(.scrolled) .nav-logo-name, body.night .nav:not(.scrolled) .nav-links a { color: #fff9e9; }
+        body.night .nav:not(.scrolled) .nav-logo-name b { color: #d8e8bd; }
+        body.night .nav:not(.scrolled) .nav-logo-sub, body.night .nav:not(.scrolled) .nav-links .nav-sec a { color: rgba(255,249,233,.75); }
+        body.night .nav:not(.scrolled) .nav-links .nav-cta a { color: #fff9e9; background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.5); }
+        body.night .nav:not(.scrolled) .nav-burger span { background: #fff9e9; }
+        .scene { position: absolute; overflow: hidden; isolation: isolate; -webkit-mask-image: none; mask-image: none; filter: none; background: transparent; box-shadow: none; }
         .scene::after { display: none; }
-        .landscape { position: absolute; inset: 0; z-index: 1; background-image: url('/scene/pencil/summer.webp'); background-size: 100% 100%; background-repeat: no-repeat; filter: brightness(var(--landscape-brightness, 1)); transition: filter var(--solar-transition, 0s) linear, background-image 0.5s ease; }
-        body.season-spring .landscape { background-image: url('/scene/pencil/spring.webp'); }
-        body.season-autumn .landscape { background-image: url('/scene/pencil/autumn.webp'); }
-        body.season-winter .landscape { background-image: url('/scene/pencil/winter.webp'); }
-        body.wx-snow .landscape { background-image: url('/scene/pencil/winter-snow.webp'); }
+        .landscape { position: absolute; inset: 0; z-index: 1; background-image: url('/scene/pencil/summer-integrated.webp'); background-size: 100% 100%; background-repeat: no-repeat; filter: brightness(var(--landscape-brightness, 1)); transition: filter var(--solar-transition, 0s) linear, background-image 0.5s ease; }
+        body.season-spring .landscape { background-image: url('/scene/pencil/spring-integrated.webp'); }
+        body.season-autumn .landscape { background-image: url('/scene/pencil/autumn-integrated.webp'); }
+        body.season-winter .landscape { background-image: url('/scene/pencil/winter-integrated.webp'); }
+        body.wx-snow .landscape { background-image: url('/scene/pencil/winter-snow-integrated.webp'); }
+        .scene { --landscape-mask: url('/scene/pencil/summer-integrated.webp'); }
+        body.season-spring .scene { --landscape-mask: url('/scene/pencil/spring-integrated.webp'); }
+        body.season-autumn .scene { --landscape-mask: url('/scene/pencil/autumn-integrated.webp'); }
+        body.season-winter .scene { --landscape-mask: url('/scene/pencil/winter-integrated.webp'); }
+        body.wx-snow .scene { --landscape-mask: url('/scene/pencil/winter-snow-integrated.webp'); }
+        .scene .weather-shade, .scene .solar-glow, .scene .night-veil { -webkit-mask-image: var(--landscape-mask); mask-image: var(--landscape-mask); -webkit-mask-size: 100% 100%; mask-size: 100% 100%; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; }
         .solar-glow { position: absolute; inset: 0; z-index: 3; pointer-events: none; transition: opacity var(--solar-transition, 0s) linear; }
         .solar-glow.dawn { opacity: var(--dawn-opacity, 0); background: radial-gradient(ellipse at 28% 52%, rgba(246,179,100,.8), transparent 42%), linear-gradient(to top, rgba(241,159,117,.42), transparent 72%); mix-blend-mode: multiply; }
         .solar-glow.afternoon { opacity: var(--afternoon-opacity, 0); background: linear-gradient(145deg, rgba(248,206,125,.15), rgba(229,163,82,.7) 78%, transparent); mix-blend-mode: multiply; }
@@ -945,7 +980,8 @@ export default function Home() {
         .scene-hotspot { position: absolute; z-index: 7; display: block; border: 0; background: transparent; padding: 0; color: transparent; pointer-events: auto; cursor: pointer; }
         .castle-hotspot { left: 5%; top: 14%; width: 19%; height: 56%; }
         .cottage-hotspot { left: 66%; top: 53%; width: 18%; height: 31%; }
-        .pony-hotspot { left: 82%; top: 56%; width: 14%; height: 36%; }
+        .pony-hotspot { left: 72%; top: 67%; width: 7%; height: 27%; z-index: 16; }
+        .pony { position: absolute; z-index: 11; left: 72%; bottom: 6%; width: clamp(45px, 6.4vw, 90px); height: auto; pointer-events: none; filter: brightness(var(--landscape-brightness, 1)) saturate(.82); }
         .scene-hotspot.apple-tree { left: 86%; top: 18%; width: 14%; height: 70%; transform: none; animation: none; }
         .scene-hotspot:focus-visible, .sheep-walk:focus-visible, .crow:focus-visible { outline: 2px dashed #265646; outline-offset: 3px; }
         .castle-lights, .cottage-lights { position: absolute; z-index: 12; pointer-events: none; }
@@ -966,7 +1002,7 @@ export default function Home() {
         .chimney-smoke span { position: absolute; bottom: 0; left: 10px; width: 12px; height: 8px; border: 2px solid rgba(108,105,98,.66); border-left-color: transparent; border-bottom-color: transparent; border-radius: 50%; filter: blur(.5px); animation: pencil-smoke 4s ease-out infinite; opacity: 0; }
         .chimney-smoke span:nth-child(2) { animation-delay: 1.3s; } .chimney-smoke span:nth-child(3) { animation-delay: 2.6s; }
         @keyframes pencil-smoke { 0%{transform:translate(0,1px) scale(.6);opacity:0} 20%{opacity:.7} 100%{transform:translate(var(--smoke-drift, -9px),-34px) scale(1.7);opacity:0} }
-        .sheep-walk { z-index: 15; width: clamp(78px, 7.5vw, 112px); height: clamp(65px, 6.6vw, 96px); transform: translateX(-50%); animation: none; transition: left .12s linear, bottom .12s linear; }
+        .sheep-walk { z-index: 15; width: clamp(56px, 5.1vw, 76px); height: clamp(50px, 4.7vw, 68px); transform: translateX(-50%); animation: none; transition: left .12s linear, bottom .12s linear; filter: brightness(var(--landscape-brightness, 1)) saturate(.72) contrast(.92); }
         .sheep-walk.walking { animation: pencil-sheep-bob .36s ease-in-out infinite; }
         @keyframes pencil-sheep-bob { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(-2px)} }
         .sheep-legs { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
@@ -974,7 +1010,11 @@ export default function Home() {
         .sheep-leg path { fill: none; stroke: #302d29; stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; }
         .sheep-leg.rear path { stroke: #51473d; stroke-width: 3; }
         .sheep-body { position: absolute; z-index: 1; left: 0; top: 0; width: 100%; height: 74%; object-fit: contain; pointer-events: none; }
-        .crow { z-index: 16; width: clamp(34px, 3.8vw, 50px); display: block; margin-left: var(--crow-wind-offset, 0px); filter: drop-shadow(0 1px 1px rgba(23,20,16,.25)); }
+        .crow { z-index: 16; width: clamp(37px, 3.6vw, 52px); display: block; margin-left: var(--crow-wind-offset, 0px); filter: drop-shadow(0 1px 1px rgba(23,20,16,.25)); }
+        .tree-impact { position: absolute; z-index: 17; left: 91%; top: 33%; width: 24px; height: 24px; opacity: 0; pointer-events: none; animation: tree-impact 9s linear infinite; }
+        .tree-impact::before, .tree-impact::after { content: ''; position: absolute; inset: 6px; border-top: 2px solid #493c2d; border-left: 1px solid #493c2d; transform: rotate(25deg); }
+        .tree-impact::after { transform: rotate(120deg); }
+        @keyframes tree-impact { 0%,60%,65%,100% { opacity: 0; transform: scale(.3) rotate(0deg); } 61%,63% { opacity: .85; transform: scale(1) rotate(30deg); } }
         .crow-wings { animation-duration: var(--wing-duration, .34s); }
         .falling-apple { z-index: 15; }
         .precip { z-index: 14; }
@@ -1010,12 +1050,14 @@ export default function Home() {
         .wx-badge { z-index: 20; right: 14px; bottom: 9px; color: #26392f; background: rgba(255,251,239,.88); box-shadow: 0 1px 8px rgba(31,38,31,.14); font-size: .67rem; letter-spacing: .01em; }
         .fireflies { z-index: 13; }
         @media (max-width: 600px) {
-          :root { --scene-h: clamp(145px, 22vh, 190px); }
+          :root { --scene-h: clamp(115px, 19vh, 150px); }
           .scene { overflow: hidden; }
+          .hero { padding-bottom: var(--scene-h); }
           .landscape { background-size: 100% 100%; background-position: center bottom; }
           .castle-hotspot, .cottage-hotspot, .pony-hotspot, .apple-tree, .castle-lights, .cottage-lights, .chimney-smoke { display: none; }
           .falling-apple { display: none; }
-          .sheep-walk { width: 62px; height: 62px; }
+          .sheep-walk { width: 45px; height: 45px; }
+          .pony { width: 32px; }
           .crow { display: block; }
           .wx-badge { display: block; font-size: .55rem; max-width: calc(100% - 20px); overflow: hidden; text-overflow: ellipsis; right: 10px; bottom: 5px; }
         }
@@ -1126,6 +1168,8 @@ export default function Home() {
           <button type="button" className="scene-hotspot cottage-hotspot clickable" data-info="cottage" aria-label="Discover Somerset cottages" />
           <button type="button" className="scene-hotspot pony-hotspot clickable" data-info="pony" aria-label="Discover the Exmoor pony" />
           <button type="button" className="scene-hotspot apple-tree clickable" data-info="apple" aria-label="Discover the apple tree" />
+          <Image className="pony" src="/scene/pencil/pony-distant.webp" alt="" width={1457} height={1005} unoptimized />
+          <span className="tree-impact" aria-hidden="true" />
 
           <div className="castle-lights" aria-hidden="true">
             <span className="window-light l1" /><span className="window-light l2" /><span className="window-light l3" /><span className="window-light l4" /><span className="window-light l5" />
@@ -1151,10 +1195,15 @@ export default function Home() {
             <Image className="sheep-body" src="/scene/pencil/sheep-body.webp" alt="" width={1536} height={1024} unoptimized />
           </div>
 
-          <svg className="crow clickable" id="crow" data-info="crow" viewBox="0 0 48 24" xmlns="http://www.w3.org/2000/svg" role="button" tabIndex={0} aria-label="Discover the crow">
-            <g fill="#292826" stroke="#312f2b" strokeWidth="0.4"><ellipse cx="22" cy="15" rx="9" ry="3.4" /><circle cx="32" cy="13" r="3.1" /><polygon points="35,12 42,13.5 35,15" /><polygon points="13,15 3,11 7,17" /></g>
-            <g className="crow-wings"><path d="M23,13 Q20,1 30,4 Q25,10 23,13 Z" fill="#292826" /><path d="M21,13 Q12,3 8,9 Q17,12 21,13 Z" fill="#383734" /></g>
-            <path d="M16 14l8 1m-3-3l7 1" stroke="#b2a994" strokeWidth="0.6" opacity="0.5" />
+          <svg className="crow clickable" id="crow" data-info="crow" viewBox="0 0 58 40" xmlns="http://www.w3.org/2000/svg" role="button" tabIndex={0} aria-label="Discover the crow">
+            <path d="M18 23 3 16 9 26 1 27 19 29Z" fill="#252525" stroke="#716b60" strokeWidth=".8" strokeLinejoin="round" />
+            <path d="M14 19q8-7 20-2l7 6-6 5-17 2q-7-3-4-11Z" fill="#282c2b" stroke="#131918" strokeWidth="1" />
+            <path d="M33 18q1-8 7-8 6 0 7 7l-3 7-8-2Z" fill="#2b302e" stroke="#131918" strokeWidth="1" />
+            <path d="m46 16 11 3-11 3Z" fill="#584b39" stroke="#292a26" strokeWidth=".8" />
+            <circle cx="42" cy="15" r="1" fill="#e8d8ae" />
+            <g className="crow-wings"><path d="M25 22Q19 11 23 1l5 10 2-9 5 11 2-7q5 9-1 19Z" fill="#303735" stroke="#161b1a" strokeWidth="1.1" strokeLinejoin="round" /><path d="M27 23Q20 24 16 34l9-5 3 8 5-9 4 6 1-11Z" fill="#222a29" stroke="#121817" strokeWidth="1" /></g>
+            <path d="m18 25 11 1m-8-4 8 1m-4-5 7 2m-6-7 5 6m4 3 7 1" fill="none" stroke="#a9a393" strokeWidth=".7" opacity=".65" />
+            <path d="m28 28 1 6 4 2m5-9 2 6 5 2" fill="none" stroke="#403a34" strokeWidth="1.1" strokeLinecap="round" />
           </svg>
 
           <div className="wx-badge" id="wxBadge">Checking the weather in Dunster…</div>
