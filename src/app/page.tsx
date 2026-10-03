@@ -6,7 +6,7 @@
 // night mode, mist, fireflies and Exmoor ponies.
 import { useEffect, useLayoutEffect, useState } from 'react'
 import Image from 'next/image'
-import { classifyWeather, meadowGround, rainDropCount, somersetSeason, windMotion } from '@/lib/scene-weather'
+import { classifyWeather, meadowGround, rainDropCount, solarLighting, somersetSeason, windMotion } from '@/lib/scene-weather'
 
 const ffStyle = (l: string, b: string, d: string, dl: string) =>
   ({ left: l, bottom: b, '--d': d, '--dl': dl } as React.CSSProperties)
@@ -200,7 +200,7 @@ export default function Home() {
         }
         lastSheepX = x
       }
-      document.body.classList.toggle('night', document.body.dataset.wxNight === '1')
+      document.body.classList.toggle('night', (document.body.dataset.solarNight ?? document.body.dataset.wxNight) === '1')
     }
     window.addEventListener('scroll', update, { passive: true })
     window.addEventListener('resize', update)
@@ -333,16 +333,46 @@ export default function Home() {
     }
     setSeason()
     let active = true
+    let solarTimes: { sunrise: number; sunset: number } | null = null
+    let weatherSummary = 'Checking the weather in Dunster…'
+    let weatherKind = 'clear'
+    let solarTransitionTimer = 0
+    const enableSolarTransitions = () => {
+      if (!scene || solarTransitionTimer) return
+      solarTransitionTimer = window.setTimeout(() => scene.style.setProperty('--solar-transition', '60s'), 100)
+    }
+    const applySolar = () => {
+      if (!solarTimes || !scene) return
+      const light = solarLighting(Date.now() / 1000, solarTimes.sunrise, solarTimes.sunset)
+      if (!light) return
+      scene.style.setProperty('--night-opacity', String(light.night))
+      scene.style.setProperty('--landscape-brightness', String(light.brightness))
+      const skyVisibility = weatherKind === 'clear' ? 1 : weatherKind === 'cloudy' ? 0.55 : 0.2
+      scene.style.setProperty('--dawn-opacity', String(light.dawn * 0.67 * skyVisibility))
+      scene.style.setProperty('--afternoon-opacity', String(light.afternoon * 0.21 * skyVisibility))
+      scene.style.setProperty('--dusk-opacity', String(light.dusk * 0.72 * skyVisibility))
+      scene.style.setProperty('--sun-x', `${light.sunX}%`)
+      scene.style.setProperty('--sun-y', `${light.sunY}%`)
+      scene.style.setProperty('--sun-opacity', String(light.sunOpacity * (weatherKind === 'clear' ? 1 : weatherKind === 'cloudy' ? 0.28 : 0.06)))
+      document.body.dataset.solarNight = light.lightsOn ? '1' : '0'
+      update()
+      if (badge) badge.textContent = `${weatherSummary} · ${light.phase}`
+      enableSolarTransitions()
+    }
     const refreshWeather = async () => {
       setSeason()
       try {
-        const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=51.18&longitude=-3.44&current=temperature_2m,weather_code,is_day,precipitation,wind_speed_10m,wind_direction_10m,wind_gusts_10m&timezone=Europe%2FLondon')
+        const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=51.18&longitude=-3.44&current=temperature_2m,weather_code,is_day,precipitation,wind_speed_10m,wind_direction_10m,wind_gusts_10m&daily=sunrise,sunset&forecast_days=1&timeformat=unixtime&timezone=Europe%2FLondon')
         if (!response.ok) throw new Error(String(response.status))
         const data = await response.json()
         if (!active) return
         const current = data.current
         if (!current || !Number.isFinite(current.weather_code) || !Number.isFinite(current.temperature_2m)) throw new Error('Invalid weather response')
         const { weather, label } = classifyWeather(current.weather_code)
+        weatherKind = weather
+        const sunrise = data.daily?.sunrise?.[0]
+        const sunset = data.daily?.sunset?.[0]
+        if (Number.isFinite(sunrise) && Number.isFinite(sunset) && sunset > sunrise) solarTimes = { sunrise, sunset }
         const windSpeed = Number.isFinite(current.wind_speed_10m) ? current.wind_speed_10m : 0
         const gustSpeed = Number.isFinite(current.wind_gusts_10m) ? current.wind_gusts_10m : windSpeed
         const wind = windMotion(windSpeed, current.wind_direction_10m, gustSpeed)
@@ -364,6 +394,11 @@ export default function Home() {
         document.body.classList.add('wx-' + weather)
         document.body.dataset.wxNight = current.is_day === 0 ? '1' : '0'
         document.body.classList.toggle('cool-weather', current.temperature_2m < 14)
+        if (!solarTimes && scene) {
+          scene.style.setProperty('--night-opacity', current.is_day === 0 ? '1' : '0')
+          scene.style.setProperty('--landscape-brightness', current.is_day === 0 ? '.77' : '1')
+          enableSolarTransitions()
+        }
         update()
         scene?.querySelector('.precip')?.remove()
         if ((weather === 'rain' || weather === 'snow' || weather === 'thunder') && scene) {
@@ -382,20 +417,24 @@ export default function Home() {
           }
           scene.appendChild(wrap)
         }
-        if (badge) badge.textContent = `Dunster, Somerset · ${Math.round(current.temperature_2m)}° · ${label}${wind.active ? ` · wind ${Math.round(windSpeed)} km/h${gustSpeed >= windSpeed + 8 ? ` (gusts ${Math.round(gustSpeed)})` : ''}` : ''}${current.is_day === 0 ? ' · night' : ''}`
+        weatherSummary = `Dunster, Somerset · ${Math.round(current.temperature_2m)}° · ${label}${wind.active ? ` · wind ${Math.round(windSpeed)} km/h${gustSpeed >= windSpeed + 8 ? ` (gusts ${Math.round(gustSpeed)})` : ''}` : ''}`
+        if (badge) badge.textContent = `${weatherSummary}${current.is_day === 0 ? ' · night' : ''}`
+        applySolar()
       } catch {
-        if (active && badge) badge.textContent = 'Dunster weather temporarily unavailable'
+        if (active) { weatherSummary = 'Dunster weather temporarily unavailable'; if (badge) badge.textContent = weatherSummary; applySolar() }
       }
     }
     void refreshWeather()
     const weatherInterval = window.setInterval(() => { void refreshWeather() }, 15 * 60 * 1000)
-    cleanups.push(() => { active = false; window.clearInterval(weatherInterval); scene?.querySelector('.precip')?.remove() })
+    const solarInterval = window.setInterval(() => { setSeason(); applySolar() }, 60 * 1000)
+    cleanups.push(() => { active = false; window.clearInterval(weatherInterval); window.clearInterval(solarInterval); window.clearTimeout(solarTransitionTimer); scene?.querySelector('.precip')?.remove() })
 
     /* body classes must not leak to other pages on client-side navigation */
     cleanups.push(() => {
       document.body.classList.remove('night', 'curtain-done', 'cool-weather')
       Array.from(document.body.classList).forEach(cl => { if (cl.startsWith('wx-') || cl.startsWith('season-')) document.body.classList.remove(cl) })
       delete document.body.dataset.wxNight
+      delete document.body.dataset.solarNight
     })
 
     return () => cleanups.forEach(fn => fn())
@@ -882,11 +921,16 @@ export default function Home() {
         :root { --scene-h: clamp(240px, 31vh, 340px); }
         .scene { overflow: hidden; isolation: isolate; -webkit-mask-image: none; mask-image: none; filter: none; background: #f5eddc; box-shadow: 0 -12px 28px rgba(45, 50, 31, 0.08); }
         .scene::after { display: none; }
-        .landscape { position: absolute; inset: 0; z-index: 1; background-image: url('/scene/pencil/summer.webp'); background-size: 100% 100%; background-repeat: no-repeat; transition: filter 1.4s ease, background-image 0.5s ease; }
+        .landscape { position: absolute; inset: 0; z-index: 1; background-image: url('/scene/pencil/summer.webp'); background-size: 100% 100%; background-repeat: no-repeat; filter: brightness(var(--landscape-brightness, 1)); transition: filter var(--solar-transition, 0s) linear, background-image 0.5s ease; }
         body.season-spring .landscape { background-image: url('/scene/pencil/spring.webp'); }
         body.season-autumn .landscape { background-image: url('/scene/pencil/autumn.webp'); }
         body.season-winter .landscape { background-image: url('/scene/pencil/winter.webp'); }
         body.wx-snow .landscape { background-image: url('/scene/pencil/winter-snow.webp'); }
+        .solar-glow { position: absolute; inset: 0; z-index: 3; pointer-events: none; transition: opacity var(--solar-transition, 0s) linear; }
+        .solar-glow.dawn { opacity: var(--dawn-opacity, 0); background: radial-gradient(ellipse at 28% 52%, rgba(246,179,100,.8), transparent 42%), linear-gradient(to top, rgba(241,159,117,.42), transparent 72%); mix-blend-mode: multiply; }
+        .solar-glow.afternoon { opacity: var(--afternoon-opacity, 0); background: linear-gradient(145deg, rgba(248,206,125,.15), rgba(229,163,82,.7) 78%, transparent); mix-blend-mode: multiply; }
+        .solar-glow.dusk { opacity: var(--dusk-opacity, 0); background: radial-gradient(ellipse at 74% 52%, rgba(247,174,80,.85), transparent 39%), linear-gradient(to top, rgba(152,105,149,.5), transparent 75%); mix-blend-mode: multiply; }
+        .pencil-sun { position: absolute; z-index: 3; left: var(--sun-x, 50%); top: var(--sun-y, 18%); width: clamp(22px, 2.9vw, 40px); height: clamp(22px, 2.9vw, 40px); transform: translate(-50%, -50%); opacity: var(--sun-opacity, 0); pointer-events: none; transition: left var(--solar-transition, 0s) linear, top var(--solar-transition, 0s) linear, opacity var(--solar-transition, 0s) linear; filter: drop-shadow(0 0 10px rgba(245,194,103,.52)); }
         .weather-shade { position: absolute; inset: 0; z-index: 2; pointer-events: none; opacity: 0; transition: opacity 1.5s ease; }
         body.wx-cloudy .weather-shade { opacity: 0.52; background: linear-gradient(#aabac4 0%, transparent 68%); }
         body.wx-rain .weather-shade, body.wx-thunder .weather-shade { opacity: 0.63; background: linear-gradient(#667f91 0%, #7c8a82 53%, transparent 100%); mix-blend-mode: multiply; }
@@ -897,8 +941,7 @@ export default function Home() {
         body.wx-fog .mist { z-index: 3; opacity: 0.9; }
         .scene .mist { z-index: 3; opacity: 0; }
         .night-veil { z-index: 4; background: linear-gradient(160deg, rgba(17,31,60,.64), rgba(37,49,71,.48) 55%, rgba(22,34,51,.54)); }
-        body.night .night-veil { opacity: 1; }
-        body.night .landscape { filter: saturate(.68) brightness(.78); }
+        body .scene .night-veil { opacity: var(--night-opacity, 0); transition: opacity var(--solar-transition, 0s) linear; }
         .scene-hotspot { position: absolute; z-index: 7; display: block; border: 0; background: transparent; padding: 0; color: transparent; pointer-events: auto; cursor: pointer; }
         .castle-hotspot { left: 5%; top: 14%; width: 19%; height: 56%; }
         .cottage-hotspot { left: 66%; top: 53%; width: 18%; height: 31%; }
@@ -977,7 +1020,7 @@ export default function Home() {
           .wx-badge { display: block; font-size: .55rem; max-width: calc(100% - 20px); overflow: hidden; text-overflow: ellipsis; right: 10px; bottom: 5px; }
         }
         @media (prefers-reduced-motion: reduce) {
-          .sheep-walk, .sheep-walk.walking, .crow, .crow-wings, .chimney-smoke span, .window-light, .weather-shade, .mist, .ff, .drop, .flake, .wind-strokes span, .wind-grass span, .wind-leaves span { animation: none !important; transition: none !important; }
+          .sheep-walk, .sheep-walk.walking, .crow, .crow-wings, .chimney-smoke span, .window-light, .weather-shade, .landscape, .solar-glow, .pencil-sun, .night-veil, .mist, .ff, .drop, .flake, .wind-strokes span, .wind-grass span, .wind-leaves span { animation: none !important; transition: none !important; }
           .wind-strokes, .wind-grass, .wind-leaves { display: none !important; }
           body.night .window-light { opacity: .82; }
           .drop, .flake { display: none; }
@@ -1063,6 +1106,14 @@ export default function Home() {
         <div className="scene" aria-label="A hand-drawn Somerset landscape that changes with the local season and weather">
           <div className="landscape" aria-hidden="true" />
           <div className="weather-shade" aria-hidden="true" />
+          <div className="solar-glow dawn" aria-hidden="true" />
+          <div className="solar-glow afternoon" aria-hidden="true" />
+          <div className="solar-glow dusk" aria-hidden="true" />
+          <svg className="pencil-sun" viewBox="0 0 48 48" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="24" r="15" fill="#f4d083" fillOpacity=".75" stroke="#a77b45" strokeWidth="1.1" />
+            <circle cx="24" cy="24" r="12.5" fill="none" stroke="#fff0bf" strokeWidth="1" strokeDasharray="3 2" opacity=".7" />
+            <path d="M11 19l8-5m-7 11l7-4m7-8l7 3m-5 13l8 3m-22 0l6-4" fill="none" stroke="#bd945b" strokeWidth=".7" opacity=".5" />
+          </svg>
           <div className="mist m1" aria-hidden="true" />
           <div className="mist m2" aria-hidden="true" />
           <div className="wind-strokes" aria-hidden="true"><span /><span /><span /><span /><span /></div>

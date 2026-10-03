@@ -40,6 +40,38 @@ export function rainDropCount(code: number, precipitation: number): number {
   return Math.min(64, Math.max(22, Math.round(22 + rate * 10 + codeWeight * 18)))
 }
 
+const clamp01 = (value: number) => Math.max(0, Math.min(1, value))
+
+export function solarLighting(now: number, sunrise: number, sunset: number) {
+  if (![now, sunrise, sunset].every(Number.isFinite) || sunset <= sunrise) return null
+  const hour = 60 * 60
+  const progress = clamp01((now - sunrise) / (sunset - sunrise))
+  const sunUp = now >= sunrise && now < sunset
+  const dawn = clamp01(1 - Math.abs(now - sunrise) / (1.4 * hour))
+  const dusk = clamp01(1 - Math.abs(now - sunset) / (1.4 * hour))
+  const night = now < sunrise ? clamp01((sunrise - now) / hour) : now >= sunset ? clamp01((now - sunset) / hour) : 0
+  const sunHeight = Math.sin(Math.PI * progress)
+  const afternoon = sunUp ? clamp01((progress - 0.45) / 0.55) : 0
+  let phase = 'night'
+  if (Math.abs(now - sunrise) < 30 * 60) phase = 'sunrise'
+  else if (Math.abs(now - sunset) < 30 * 60) phase = 'sunset'
+  else if (sunUp) phase = progress < 0.38 ? 'morning' : progress < 0.66 ? 'midday' : 'afternoon'
+  else if (dawn > 0) phase = 'dawn'
+  else if (dusk > 0) phase = 'dusk'
+  return {
+    phase,
+    lightsOn: now < sunrise || now >= sunset,
+    night,
+    dawn,
+    dusk,
+    afternoon,
+    brightness: 1 + (sunUp ? sunHeight * 0.04 : 0) - night * 0.23,
+    sunX: 27 + progress * 47,
+    sunY: 52 - sunHeight * 37,
+    sunOpacity: sunUp ? 0.68 + sunHeight * 0.17 : 0,
+  }
+}
+
 // The foreground in all four plates is registered to the same curve.
 // Returns the fraction of scene height measured up from its bottom edge.
 export function meadowGround(x: number): number {
