@@ -1,0 +1,10 @@
+[
+  {
+    "id": "err-20261003-001",
+    "date": "2026-10-03",
+    "severity": "low",
+    "category": "config",
+    "context": "In an isolated Git worktree, linking the parent checkout's node_modules made Next.js 16 Turbopack fail because the symlink pointed outside the project filesystem root.",
+    "workaround": "Built successfully with the existing dependency installation using the Webpack option; removed the temporary symlink after verification. For future isolated builds, install dependencies in the worktree or use Webpack."
+  }
+]

@@ -5,6 +5,8 @@
 // curtain opening · live Somerset weather + seasons · countryside scene with
 // night mode, mist, fireflies and Exmoor ponies.
 import { useEffect, useLayoutEffect, useState } from 'react'
+import Image from 'next/image'
+import { classifyWeather, meadowGround, somersetSeason } from '@/lib/scene-weather'
 
 const ffStyle = (l: string, b: string, d: string, dl: string) =>
   ({ left: l, bottom: b, '--d': d, '--dl': dl } as React.CSSProperties)
@@ -171,27 +173,39 @@ export default function Home() {
       document.body.classList.remove('menu-open')
     })
 
-    /* ── Sheep walk, cloud drift, hill parallax, night-at-footer ── */
+    /* The walking sheep follows the registered meadow edge as scrolling moves it. */
     const sheep = $('sheepWalk')
-    const clouds = document.querySelectorAll<HTMLElement>('.cloud')
-    const hFar = $('h1hill'), hMid = $('h2')
-    const footerEl = document.querySelector<HTMLElement>('.v6footer')
+    const scene = document.querySelector<HTMLElement>('.scene')
+    let sheepRestTimer = 0
+    let lastSheepX = -1
     const update = () => {
-      const y = window.scrollY
       const max = document.documentElement.scrollHeight - window.innerHeight
-      const p = max > 0 ? Math.min(Math.max(y / max, 0), 1) : 0
-      if (sheep) sheep.style.left = (2 + 86 * p) + '%'
-      clouds.forEach(c => { const s = parseFloat(c.dataset.speed || '0.2'); c.style.transform = `translateX(${y * s}px)` })
-      if (hFar) hFar.style.transform = `translateX(${Math.min(y * 0.012, 28)}px)`
-      if (hMid) hMid.style.transform = `translateX(${-Math.min(y * 0.008, 20)}px)`
-      document.body.classList.toggle('night',
-        document.body.dataset.wxNight === '1' ||
-        (!!footerEl && footerEl.getBoundingClientRect().top < window.innerHeight * 0.85))
+      const progress = max > 0 ? Math.min(Math.max(window.scrollY / max, 0), 1) : 0
+      const x = 0.29 + 0.33 * progress
+      if (sheep && scene) {
+        sheep.style.left = `${x * 100}%`
+        sheep.style.bottom = `${meadowGround(x) * scene.clientHeight}px`
+        if (lastSheepX >= 0 && Math.abs(x - lastSheepX) > 0.0001 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          const phase = progress * 68
+          sheep.querySelectorAll<SVGElement>('.sheep-leg').forEach((leg, i) => {
+            const swing = Math.sin(phase + (i % 2 ? Math.PI : 0)) * 22
+            leg.style.transform = `rotate(${swing}deg)`
+          })
+          sheep.classList.add('walking')
+          window.clearTimeout(sheepRestTimer)
+          sheepRestTimer = window.setTimeout(() => {
+            sheep.classList.remove('walking')
+            sheep.querySelectorAll<SVGElement>('.sheep-leg').forEach(leg => { leg.style.transform = 'rotate(0deg)' })
+          }, 220)
+        }
+        lastSheepX = x
+      }
+      document.body.classList.toggle('night', document.body.dataset.wxNight === '1')
     }
     window.addEventListener('scroll', update, { passive: true })
     window.addEventListener('resize', update)
     update()
-    cleanups.push(() => { window.removeEventListener('scroll', update); window.removeEventListener('resize', update) })
+    cleanups.push(() => { window.removeEventListener('scroll', update); window.removeEventListener('resize', update); window.clearTimeout(sheepRestTimer) })
 
     /* ── Reveal on scroll ── */
     const io = new IntersectionObserver(entries => {
@@ -237,7 +251,13 @@ export default function Home() {
     }
     const closePop = () => { if (!pop) return; pop.classList.remove('show'); setTimeout(() => { pop.hidden = true }, 220) }
     document.querySelectorAll<HTMLElement>('.scene .clickable').forEach(el => {
-      el.addEventListener('click', e => { e.stopPropagation(); openPop(el.dataset.info || '') })
+      const onClick = (e: MouseEvent) => { e.stopPropagation(); openPop(el.dataset.info || '') }
+      const onActivate = (e: KeyboardEvent) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openPop(el.dataset.info || '') }
+      }
+      el.addEventListener('click', onClick)
+      el.addEventListener('keydown', onActivate)
+      cleanups.push(() => { el.removeEventListener('click', onClick); el.removeEventListener('keydown', onActivate) })
     })
     $('infoClose')?.addEventListener('click', closePop)
     const onDocClick = (e: MouseEvent) => {
@@ -250,7 +270,6 @@ export default function Home() {
 
     /* ── Apple hangs, crow knocks it loose, sheep eats it ── */
     let rafId = 0
-    const scene = document.querySelector<HTMLElement>('.scene')
     const tree = document.querySelector<HTMLElement>('.apple-tree')
     const crow = $('crow')
     const apple = document.querySelector<HTMLElement>('.falling-apple')
@@ -306,45 +325,56 @@ export default function Home() {
       cleanups.push(() => cancelAnimationFrame(rafId))
     }
 
-    /* ── Live Somerset weather + season (Open-Meteo, Dunster; free, no key) ── */
-    const m = new Date().getMonth() + 1
-    const season = (m >= 3 && m <= 5) ? 'spring' : (m >= 6 && m <= 8) ? 'summer' : (m >= 9 && m <= 11) ? 'autumn' : 'winter'
-    document.body.classList.add('season-' + season)
+    /* Live conditions at Dunster, refreshed while the page stays open. */
     const badge = $('wxBadge')
-    fetch('https://api.open-meteo.com/v1/forecast?latitude=51.18&longitude=-3.44&current=temperature_2m,weather_code,is_day&timezone=Europe%2FLondon')
-      .then(r => { if (!r.ok) throw new Error(String(r.status)); return r.json() })
-      .then(d => {
-        const c = d.current, code = c.weather_code
-        let wx = 'clear', label = 'clear skies'
-        if (code === 45 || code === 48) { wx = 'fog'; label = 'fog on the moor' }
-        else if ((code >= 51 && code <= 67) || (code >= 80 && code <= 82)) { wx = 'rain'; label = 'rain' }
-        else if ((code >= 71 && code <= 77) || code === 85 || code === 86) { wx = 'snow'; label = 'snow' }
-        else if (code >= 95) { wx = 'rain'; label = 'a thunderstorm' }
-        else if (code === 2 || code === 3) { wx = 'cloudy'; label = 'cloudy skies' }
-        else if (code === 1) { label = 'mostly clear' }
-        document.body.classList.add('wx-' + wx)
-        if (c.is_day === 0) { document.body.dataset.wxNight = '1'; label += ' · night-time'; update() }
-        if ((wx === 'rain' || wx === 'snow') && scene) {
+    const setSeason = () => {
+      Array.from(document.body.classList).forEach(cl => { if (cl.startsWith('season-')) document.body.classList.remove(cl) })
+      document.body.classList.add('season-' + somersetSeason(new Date()))
+    }
+    setSeason()
+    let active = true
+    const refreshWeather = async () => {
+      setSeason()
+      try {
+        const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=51.18&longitude=-3.44&current=temperature_2m,weather_code,is_day&timezone=Europe%2FLondon')
+        if (!response.ok) throw new Error(String(response.status))
+        const data = await response.json()
+        if (!active) return
+        const current = data.current
+        if (!current || !Number.isFinite(current.weather_code) || !Number.isFinite(current.temperature_2m)) throw new Error('Invalid weather response')
+        const { weather, label } = classifyWeather(current.weather_code)
+        Array.from(document.body.classList).forEach(cl => { if (cl.startsWith('wx-')) document.body.classList.remove(cl) })
+        document.body.classList.add('wx-' + weather)
+        document.body.dataset.wxNight = current.is_day === 0 ? '1' : '0'
+        document.body.classList.toggle('cool-weather', current.temperature_2m < 14)
+        update()
+        scene?.querySelector('.precip')?.remove()
+        if ((weather === 'rain' || weather === 'snow' || weather === 'thunder') && scene) {
           const wrap = document.createElement('div')
           wrap.className = 'precip'
-          const n = wx === 'rain' ? 26 : 18
-          for (let i = 0; i < n; i++) {
-            const pcl = document.createElement('span')
-            pcl.className = wx === 'rain' ? 'drop' : 'flake'
-            pcl.style.left = (Math.random() * 100) + '%'
-            pcl.style.animationDuration = (wx === 'rain' ? 0.9 + Math.random() * 0.7 : 4 + Math.random() * 4) + 's'
-            pcl.style.animationDelay = (Math.random() * 4) + 's'
-            wrap.appendChild(pcl)
+          const isSnow = weather === 'snow'
+          for (let i = 0; i < (isSnow ? 22 : 36); i++) {
+            const particle = document.createElement('span')
+            particle.className = isSnow ? 'flake' : 'drop'
+            particle.style.left = `${Math.random() * 100}%`
+            particle.style.animationDuration = `${isSnow ? 4 + Math.random() * 4 : 0.9 + Math.random() * 0.7}s`
+            particle.style.animationDelay = `${Math.random() * 4}s`
+            wrap.appendChild(particle)
           }
           scene.appendChild(wrap)
         }
-        if (badge) badge.textContent = `Right now in Somerset: ${Math.round(c.temperature_2m)}° · ${label}`
-      })
-      .catch(() => { badge?.remove() })
+        if (badge) badge.textContent = `Dunster, Somerset · ${Math.round(current.temperature_2m)}° · ${label}${current.is_day === 0 ? ' · night' : ''}`
+      } catch {
+        if (active && badge) badge.textContent = 'Dunster weather temporarily unavailable'
+      }
+    }
+    void refreshWeather()
+    const weatherInterval = window.setInterval(() => { void refreshWeather() }, 15 * 60 * 1000)
+    cleanups.push(() => { active = false; window.clearInterval(weatherInterval); scene?.querySelector('.precip')?.remove() })
 
     /* body classes must not leak to other pages on client-side navigation */
     cleanups.push(() => {
-      document.body.classList.remove('night', 'curtain-done')
+      document.body.classList.remove('night', 'curtain-done', 'cool-weather')
       Array.from(document.body.classList).forEach(cl => { if (cl.startsWith('wx-') || cl.startsWith('season-')) document.body.classList.remove(cl) })
       delete document.body.dataset.wxNight
     })
@@ -828,6 +858,83 @@ export default function Home() {
         body.intro-skip .hero-actions { opacity: 1; animation: none; }
         body.intro-skip .hl > span { transform: none; animation: none; }
         body.intro-skip .hero-bg { animation: hero-kenburns 38s ease-in-out infinite alternate; }
+
+        /* Coloured-pencil panorama: registered seasonal plates and live weather. */
+        :root { --scene-h: clamp(240px, 31vh, 340px); }
+        .scene { overflow: hidden; isolation: isolate; -webkit-mask-image: none; mask-image: none; filter: none; background: #f5eddc; box-shadow: 0 -12px 28px rgba(45, 50, 31, 0.08); }
+        .scene::after { display: none; }
+        .landscape { position: absolute; inset: 0; z-index: 1; background-image: url('/scene/pencil/summer.webp'); background-size: 100% 100%; background-repeat: no-repeat; transition: filter 1.4s ease, background-image 0.5s ease; }
+        body.season-spring .landscape { background-image: url('/scene/pencil/spring.webp'); }
+        body.season-autumn .landscape { background-image: url('/scene/pencil/autumn.webp'); }
+        body.season-winter .landscape { background-image: url('/scene/pencil/winter.webp'); }
+        body.wx-snow .landscape { background-image: url('/scene/pencil/winter-snow.webp'); }
+        .weather-shade { position: absolute; inset: 0; z-index: 2; pointer-events: none; opacity: 0; transition: opacity 1.5s ease; }
+        body.wx-cloudy .weather-shade { opacity: 0.52; background: linear-gradient(#aabac4 0%, transparent 68%); }
+        body.wx-rain .weather-shade, body.wx-thunder .weather-shade { opacity: 0.63; background: linear-gradient(#667f91 0%, #7c8a82 53%, transparent 100%); mix-blend-mode: multiply; }
+        body.wx-thunder .weather-shade { opacity: .78; background: linear-gradient(#344d66, #60717b 65%, transparent); animation: storm-light 11s linear infinite; }
+        @keyframes storm-light { 0%,67%,70%,100%{opacity:.78} 68%,69%{opacity:.24} }
+        body.wx-snow .weather-shade { opacity: 0.45; background: linear-gradient(#d2e0eb, transparent 75%); }
+        body.wx-fog .weather-shade { opacity: 0.58; background: linear-gradient(#ecebe4, #e1e5df 75%, transparent); }
+        body.wx-fog .mist { z-index: 3; opacity: 0.9; }
+        .scene .mist { z-index: 3; opacity: 0; }
+        .night-veil { z-index: 4; background: linear-gradient(160deg, rgba(17,31,60,.64), rgba(37,49,71,.48) 55%, rgba(22,34,51,.54)); }
+        body.night .night-veil { opacity: 1; }
+        body.night .landscape { filter: saturate(.68) brightness(.78); }
+        .scene-hotspot { position: absolute; z-index: 7; display: block; border: 0; background: transparent; padding: 0; color: transparent; pointer-events: auto; cursor: pointer; }
+        .castle-hotspot { left: 5%; top: 14%; width: 19%; height: 56%; }
+        .cottage-hotspot { left: 66%; top: 53%; width: 18%; height: 31%; }
+        .pony-hotspot { left: 82%; top: 56%; width: 14%; height: 36%; }
+        .scene-hotspot.apple-tree { left: 86%; top: 18%; width: 14%; height: 70%; transform: none; animation: none; }
+        .scene-hotspot:focus-visible, .sheep-walk:focus-visible, .crow:focus-visible { outline: 2px dashed #265646; outline-offset: 3px; }
+        .castle-lights, .cottage-lights { position: absolute; z-index: 12; pointer-events: none; }
+        .castle-lights { left: 7.4%; top: 28%; width: 15.2%; height: 37%; }
+        .cottage-lights { left: 68%; top: 66%; width: 12.3%; height: 16%; }
+        .window-light { position: absolute; display: block; width: clamp(2px, .3vw, 5px); height: clamp(3px, .5vw, 7px); background: #f9d981; border-radius: 40% 40% 15% 15%; box-shadow: 0 0 5px 2px rgba(251,203,99,.7), 0 0 14px 4px rgba(246,175,69,.36); opacity: 0; }
+        .castle-lights .l1 { left: 10%; top: 18%; } .castle-lights .l2 { left: 14%; top: 40%; } .castle-lights .l3 { left: 37%; top: 55%; } .castle-lights .l4 { left: 61%; top: 46%; } .castle-lights .l5 { left: 82%; top: 62%; }
+        .cottage-lights .l1 { left: 12%; top: 47%; } .cottage-lights .l2 { left: 40%; top: 33%; } .cottage-lights .l3 { left: 69%; top: 54%; } .cottage-lights .l4 { left: 86%; top: 38%; }
+        body.night .window-light { animation: pencil-window 7s ease-in-out infinite; }
+        body.night .window-light:nth-child(2) { animation-delay: -3.1s; animation-duration: 9s; }
+        body.night .window-light:nth-child(3) { animation-delay: -5s; animation-duration: 11s; }
+        body.night .window-light:nth-child(4) { animation-delay: -1.5s; animation-duration: 8s; }
+        body.night .window-light:nth-child(5) { animation-delay: -4s; animation-duration: 12s; }
+        @keyframes pencil-window { 0%,12%,90%,100%{opacity:0} 16%,82%{opacity:.94} 84%,87%{opacity:.55} }
+        .chimney-smoke { position: absolute; z-index: 13; width: 28px; height: 45px; opacity: 0; pointer-events: none; transition: opacity 1s ease; }
+        .smoke-a { left: 70.3%; top: 48%; } .smoke-b { left: 79.3%; top: 49%; }
+        body.cool-weather .chimney-smoke, body.night .chimney-smoke { opacity: .75; }
+        .chimney-smoke span { position: absolute; bottom: 0; left: 10px; width: 12px; height: 8px; border: 2px solid rgba(108,105,98,.66); border-left-color: transparent; border-bottom-color: transparent; border-radius: 50%; filter: blur(.5px); animation: pencil-smoke 4s ease-out infinite; opacity: 0; }
+        .chimney-smoke span:nth-child(2) { animation-delay: 1.3s; } .chimney-smoke span:nth-child(3) { animation-delay: 2.6s; }
+        @keyframes pencil-smoke { 0%{transform:translate(0,1px) scale(.6);opacity:0} 20%{opacity:.7} 100%{transform:translate(-9px,-34px) scale(1.7);opacity:0} }
+        .sheep-walk { z-index: 15; width: clamp(78px, 7.5vw, 112px); height: clamp(65px, 6.6vw, 96px); transform: translateX(-50%); animation: none; transition: left .12s linear, bottom .12s linear; }
+        .sheep-walk.walking { animation: pencil-sheep-bob .36s ease-in-out infinite; }
+        @keyframes pencil-sheep-bob { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(-2px)} }
+        .sheep-legs { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+        .sheep-leg { transition: transform .13s ease-out; }
+        .sheep-leg path { fill: none; stroke: #302d29; stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; }
+        .sheep-leg.rear path { stroke: #51473d; stroke-width: 3; }
+        .sheep-body { position: absolute; z-index: 1; left: 0; top: 0; width: 100%; height: 74%; object-fit: contain; pointer-events: none; }
+        .crow { z-index: 16; width: clamp(34px, 3.8vw, 50px); display: block; filter: drop-shadow(0 1px 1px rgba(23,20,16,.25)); }
+        .falling-apple { z-index: 15; }
+        .precip { z-index: 14; }
+        .drop { background: linear-gradient(to bottom, transparent, rgba(76,100,120,.62)); }
+        .flake { background: #fbfaf2; border: 1px solid #a6b6bf; }
+        .wx-badge { z-index: 20; right: 14px; bottom: 9px; color: #26392f; background: rgba(255,251,239,.88); box-shadow: 0 1px 8px rgba(31,38,31,.14); font-size: .67rem; letter-spacing: .01em; }
+        .fireflies { z-index: 13; }
+        @media (max-width: 600px) {
+          :root { --scene-h: clamp(145px, 22vh, 190px); }
+          .scene { overflow: hidden; }
+          .landscape { background-size: 100% 100%; background-position: center bottom; }
+          .castle-hotspot, .cottage-hotspot, .pony-hotspot, .apple-tree, .castle-lights, .cottage-lights, .chimney-smoke { display: none; }
+          .falling-apple { display: none; }
+          .sheep-walk { width: 62px; height: 62px; }
+          .crow { display: block; }
+          .wx-badge { display: block; font-size: .55rem; max-width: calc(100% - 20px); overflow: hidden; text-overflow: ellipsis; right: 10px; bottom: 5px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .sheep-walk, .sheep-walk.walking, .crow, .crow-wings, .chimney-smoke span, .window-light, .weather-shade, .mist, .ff, .drop, .flake { animation: none !important; transition: none !important; }
+          body.night .window-light { opacity: .82; }
+          .drop, .flake { display: none; }
+          .crow { left: 50%; opacity: 1; transform: none; }
+        }
       `}</style>
 
       <div className="grain" aria-hidden="true" />
@@ -905,217 +1012,54 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="scene" aria-hidden="true">
-          <svg className="cloud" data-speed="0.26" style={{ top: '5%', left: '7%', width: 88, opacity: 0.9 }} viewBox="0 0 120 50" xmlns="http://www.w3.org/2000/svg"><g fill="#fff"><ellipse cx="38" cy="30" rx="24" ry="15" /><ellipse cx="66" cy="24" rx="28" ry="19" /><ellipse cx="92" cy="31" rx="22" ry="14" /><ellipse cx="64" cy="39" rx="42" ry="11" /></g></svg>
-          <svg className="cloud" data-speed="0.13" style={{ top: '17%', left: '45%', width: 66, opacity: 0.72 }} viewBox="0 0 120 50" xmlns="http://www.w3.org/2000/svg"><g fill="#fff"><ellipse cx="38" cy="30" rx="24" ry="15" /><ellipse cx="66" cy="24" rx="28" ry="19" /><ellipse cx="92" cy="31" rx="22" ry="14" /><ellipse cx="64" cy="39" rx="42" ry="11" /></g></svg>
-          <svg className="cloud" data-speed="0.34" style={{ top: '2%', left: '73%', width: 80, opacity: 0.84 }} viewBox="0 0 120 50" xmlns="http://www.w3.org/2000/svg"><g fill="#fff"><ellipse cx="38" cy="30" rx="24" ry="15" /><ellipse cx="66" cy="24" rx="28" ry="19" /><ellipse cx="92" cy="31" rx="22" ry="14" /><ellipse cx="64" cy="39" rx="42" ry="11" /></g></svg>
-
-          <div className="hill far" id="h1hill">
-            <svg viewBox="0 0 1600 300" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
-              <path d="M-100,215 C120,148 340,196 560,170 C780,144 940,205 1160,162 C1340,128 1520,188 1700,160 L1700,300 L-100,300 Z" fill="#9DB292" opacity="0.8" />
-              <path d="M-100,215 C120,148 340,196 560,170 C780,144 940,205 1160,162 C1340,128 1520,188 1700,160" fill="none" stroke="#EFCB8F" strokeWidth="3" opacity="0.5" />
-            </svg>
-          </div>
+        <div className="scene" aria-label="A hand-drawn Somerset landscape that changes with the local season and weather">
+          <div className="landscape" aria-hidden="true" />
+          <div className="weather-shade" aria-hidden="true" />
           <div className="mist m1" aria-hidden="true" />
-          <div className="hill" id="h2">
-            <svg viewBox="0 0 1600 300" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
-              <path d="M-100,255 C80,195 220,240 400,215 C580,190 700,258 900,205 C1100,152 1280,235 1470,198 Q1590,175 1700,215 L1700,300 L-100,300 Z" fill="#7AA45F" />
-              <path d="M-100,255 C80,195 220,240 400,215 C580,190 700,258 900,205 C1100,152 1280,235 1470,198 Q1590,175 1700,215" fill="none" stroke="#EFCB8F" strokeWidth="4" opacity="0.55" />
-              <g fill="#9A7AA8" fillOpacity="0.5">
-                <ellipse cx="200" cy="236" rx="9" ry="5" /><ellipse cx="240" cy="242" rx="7" ry="4" />
-                <ellipse cx="320" cy="232" rx="8" ry="5" /><ellipse cx="360" cy="240" rx="7" ry="4" />
-                <ellipse cx="700" cy="244" rx="8" ry="5" /><ellipse cx="740" cy="250" rx="6" ry="4" />
-                <ellipse cx="980" cy="226" rx="8" ry="5" /><ellipse cx="1020" cy="234" rx="7" ry="4" />
-                <ellipse cx="1300" cy="232" rx="8" ry="5" /><ellipse cx="1340" cy="240" rx="6" ry="4" />
-              </g>
-            </svg>
-          </div>
           <div className="mist m2" aria-hidden="true" />
-          <div className="hill" id="h3">
-            <svg viewBox="0 0 1600 300" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
-              <path d="M-100,278 C60,255 170,272 320,260 C470,248 565,268 710,256 C855,244 960,264 1095,252 C1230,240 1355,260 1480,250 C1570,243 1640,252 1700,250 L1700,300 L-100,300 Z" fill="#557E45" />
-              <path d="M-100,278 C60,255 170,272 320,260 C470,248 565,268 710,256 C855,244 960,264 1095,252 C1230,240 1355,260 1480,250 C1570,243 1640,252 1700,250" fill="none" stroke="#E8BE85" strokeWidth="3" opacity="0.35" />
-            </svg>
+
+          <button type="button" className="scene-hotspot castle-hotspot clickable" data-info="castle" aria-label="Discover Dunster Castle" />
+          <button type="button" className="scene-hotspot cottage-hotspot clickable" data-info="cottage" aria-label="Discover Somerset cottages" />
+          <button type="button" className="scene-hotspot pony-hotspot clickable" data-info="pony" aria-label="Discover the Exmoor pony" />
+          <button type="button" className="scene-hotspot apple-tree clickable" data-info="apple" aria-label="Discover the apple tree" />
+
+          <div className="castle-lights" aria-hidden="true">
+            <span className="window-light l1" /><span className="window-light l2" /><span className="window-light l3" /><span className="window-light l4" /><span className="window-light l5" />
           </div>
-
-          <svg className="castle clickable" data-info="castle" viewBox="0 0 172 185" xmlns="http://www.w3.org/2000/svg" aria-label="Dunster Castle">
-            <path d="M-6,185 Q86,104 178,185 Z" fill="#7AA45F" />
-            <path d="M-6,185 Q86,150 178,185 Z" fill="#557E45" />
-            <g fill="#4F7A42"><circle cx="30" cy="102" r="16" /><circle cx="46" cy="90" r="13" /><circle cx="128" cy="88" r="17" /><circle cx="146" cy="102" r="14" /><circle cx="112" cy="78" r="13" /></g>
-            <polygon points="42,118 42,68 47,68 47,62 52,62 52,68 57,68 57,62 62,62 62,68 66,68 66,118" fill="#C5AA9F" />
-            <rect x="60" y="70" width="6" height="48" fill="#AE8F85" />
-            <polygon points="64,118 64,76 110,76 110,118" fill="#C5AA9F" />
-            <rect x="104" y="78" width="6" height="40" fill="#AE8F85" />
-            <polygon points="78,76 78,50 96,50 96,76" fill="#CBB1A7" />
-            <polygon points="75,50 87,37 99,50" fill="#695D54" />
-            <line x1="87" y1="37" x2="87" y2="31" stroke="#695D54" strokeWidth="1.5" />
-            <rect x="78" y="44" width="3" height="7" fill="#CBB1A7" /><rect x="93" y="44" width="3" height="7" fill="#CBB1A7" />
-            <polygon points="106,118 106,66 111,66 111,60 116,60 116,66 121,66 121,60 126,60 126,66 130,66 130,118" fill="#C2A79D" />
-            <rect x="124" y="68" width="6" height="50" fill="#A98A80" />
-            <g fill="#54453E">
-              <rect x="48" y="76" width="4" height="7" /><rect x="48" y="90" width="4" height="7" /><rect x="48" y="104" width="4" height="7" />
-              <rect x="71" y="84" width="4" height="7" /><rect x="81" y="84" width="4" height="7" /><rect x="91" y="84" width="4" height="7" /><rect x="100" y="84" width="4" height="7" />
-              <rect x="71" y="98" width="4" height="7" /><rect x="81" y="98" width="4" height="7" /><rect x="91" y="98" width="4" height="7" /><rect x="100" y="98" width="4" height="7" />
-              <rect x="84" y="60" width="5" height="8" />
-              <rect x="115" y="74" width="4" height="7" /><rect x="115" y="88" width="4" height="7" /><rect x="115" y="102" width="4" height="7" />
-            </g>
-            <rect className="win-glow l1" x="48" y="90" width="4" height="7" fill="#F6D98C" />
-            <rect className="win-glow l2" x="100" y="98" width="4" height="7" fill="#F6D98C" />
-            <rect className="win-glow l3" x="115" y="88" width="4" height="7" fill="#F6D98C" />
-            <g className="castle-person">
-              <rect x="84" y="60" width="5" height="8" fill="#F4D58A" />
-              <g className="fig" fill="#3a2f28"><circle cx="86.5" cy="63.2" r="1.5" /><rect x="84.7" y="64.6" width="3.6" height="3.4" /></g>
-            </g>
-            <g fill="#5E8A4E"><circle cx="30" cy="132" r="16" /><circle cx="48" cy="138" r="13" /><circle cx="124" cy="134" r="16" /><circle cx="140" cy="140" r="12" /></g>
-            <g fill="#4F7A42"><circle cx="18" cy="140" r="12" /><circle cx="150" cy="142" r="11" /><circle cx="64" cy="142" r="11" /><circle cx="98" cy="143" r="11" /></g>
-          </svg>
-
-          <svg className="prop cottage clickable" data-info="cottage" style={{ left: '30%' }} viewBox="0 0 72 60" xmlns="http://www.w3.org/2000/svg">
-            <rect x="46" y="12" width="7" height="16" fill="#CFC2A6" /><rect x="16" y="32" width="40" height="26" rx="2" fill="#EFE7D4" />
-            <path d="M9,36 Q11,16 36,12 Q61,16 63,36 Q63,39 58,37 Q36,28 14,37 Q9,39 9,36 Z" fill="#C7A452" />
-            <path d="M16,23 Q36,16 56,23" stroke="#A4823A" strokeWidth="1.4" fill="none" />
-            <rect x="31" y="42" width="10" height="16" rx="1" fill="#785636" />
-            <rect x="20" y="40" width="8" height="8" rx="1" fill="#A7B6B8" /><rect x="44" y="40" width="8" height="8" rx="1" fill="#A7B6B8" />
-            <rect className="win-glow l4" x="44" y="40" width="8" height="8" rx={1} fill="#F6D98C" />
-            <g fill="#E4E0D6"><circle className="smoke s1" cx="49.5" cy="10" r="2.4" /><circle className="smoke s2" cx="49.5" cy="10" r="2.4" /><circle className="smoke s3" cx="49.5" cy="10" r="2.4" /></g>
-          </svg>
-          <svg className="prop cottage small clickable" data-info="cottage" style={{ left: '39%' }} viewBox="0 0 72 60" xmlns="http://www.w3.org/2000/svg">
-            <rect x="19" y="14" width="6" height="14" fill="#CFC2A6" /><rect x="16" y="32" width="40" height="26" rx="2" fill="#E8DFC9" />
-            <path d="M9,36 Q11,16 36,12 Q61,16 63,36 Q63,39 58,37 Q36,28 14,37 Q9,39 9,36 Z" fill="#BE9A48" />
-            <path d="M16,23 Q36,16 56,23" stroke="#9C7A34" strokeWidth="1.4" fill="none" />
-            <rect x="31" y="43" width="9" height="15" rx="1" fill="#785636" />
-            <rect x="21" y="41" width="7" height="7" rx="1" fill="#A7B6B8" /><rect x="45" y="41" width="7" height="7" rx="1" fill="#A7B6B8" />
-            <rect className="win-glow l5" x="45" y="41" width="7" height="7" rx={1} fill="#F6D98C" />
-            <g fill="#E4E0D6"><circle className="smoke s1" cx="22" cy="12" r="2" /><circle className="smoke s2" cx="22" cy="12" r="2" /><circle className="smoke s3" cx="22" cy="12" r="2" /></g>
-          </svg>
-
-          <svg className="prop heather" style={{ left: '9%' }} viewBox="0 0 40 30" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="20" cy="26" rx="13" ry="4" fill="#557E45" />
-            <g fill="#9A7AA8"><circle cx="9" cy="18" r="3" /><circle cx="15" cy="14" r="3.5" /><circle cx="21" cy="16" r="3" /><circle cx="27" cy="19" r="3" /><circle cx="20" cy="21" r="3" /><circle cx="13" cy="22" r="2.4" /><circle cx="26" cy="14" r="2.4" /></g>
-          </svg>
-          <svg className="prop heather" style={{ left: '62%' }} viewBox="0 0 40 30" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="20" cy="26" rx="13" ry="4" fill="#557E45" />
-            <g fill="#9A7AA8"><circle cx="9" cy="18" r="3" /><circle cx="15" cy="14" r="3.5" /><circle cx="21" cy="16" r="3" /><circle cx="27" cy="19" r="3" /><circle cx="20" cy="21" r="3" /><circle cx="13" cy="22" r="2.4" /><circle cx="26" cy="14" r="2.4" /></g>
-          </svg>
-          <svg className="prop heather small" style={{ left: '70%' }} viewBox="0 0 40 30" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="20" cy="26" rx="13" ry="4" fill="#557E45" />
-            <g fill="#9A7AA8"><circle cx="9" cy="18" r="3" /><circle cx="15" cy="14" r="3.5" /><circle cx="21" cy="16" r="3" /><circle cx="27" cy="19" r="3" /><circle cx="20" cy="21" r="3" /><circle cx="13" cy="22" r="2.4" /><circle cx="26" cy="14" r="2.4" /></g>
-          </svg>
-
-          <svg className="prop hay" style={{ left: '13%' }} viewBox="0 0 60 50" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="30" cy="30" rx="22" ry="18" fill="#CDA552" stroke="#9C7C36" strokeWidth="2" />
-            <ellipse cx="30" cy="30" rx="14" ry="11.5" fill="none" stroke="#9C7C36" strokeWidth="1.4" opacity="0.8" />
-            <ellipse cx="30" cy="30" rx="6" ry="5" fill="none" stroke="#9C7C36" strokeWidth="1.2" opacity="0.7" />
-          </svg>
-          <svg className="prop hay small" style={{ left: '23%' }} viewBox="0 0 60 50" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="30" cy="30" rx="22" ry="18" fill="#CDA552" stroke="#9C7C36" strokeWidth="2" />
-            <ellipse cx="30" cy="30" rx="14" ry="11.5" fill="none" stroke="#9C7C36" strokeWidth="1.4" opacity="0.8" />
-            <ellipse cx="30" cy="30" rx="6" ry="5" fill="none" stroke="#9C7C36" strokeWidth="1.2" opacity="0.7" />
-          </svg>
-
-          <svg className="prop graze clickable" data-info="sheep" style={{ left: '48%' }} viewBox="0 0 54 44" xmlns="http://www.w3.org/2000/svg">
-            <rect x="18" y="28" width="2.4" height="11" fill="#33302a" /><rect x="32" y="28" width="2.4" height="11" fill="#33302a" />
-            <ellipse cx="28" cy="22" rx="16" ry="12" fill="#EFE9DA" />
-            <circle cx="16" cy="16" r="6" fill="#EFE9DA" /><circle cx="27" cy="12" r="7" fill="#EFE9DA" /><circle cx="39" cy="16" r="6" fill="#EFE9DA" />
-            <ellipse cx="12" cy="28" rx="4.5" ry="6.5" fill="#3a342b" transform="rotate(-15 12 28)" />
-            <ellipse cx="15" cy="23" rx="2.4" ry="1.4" fill="#3a342b" />
-          </svg>
-          <svg className="prop graze small clickable" data-info="sheep" style={{ left: '57%' }} viewBox="0 0 54 44" xmlns="http://www.w3.org/2000/svg">
-            <rect x="18" y="28" width="2.4" height="11" fill="#33302a" /><rect x="32" y="28" width="2.4" height="11" fill="#33302a" />
-            <ellipse cx="28" cy="22" rx="16" ry="12" fill="#EFE9DA" />
-            <circle cx="16" cy="16" r="6" fill="#EFE9DA" /><circle cx="27" cy="12" r="7" fill="#EFE9DA" /><circle cx="39" cy="16" r="6" fill="#EFE9DA" />
-            <ellipse cx="12" cy="28" rx="4.5" ry="6.5" fill="#3a342b" transform="rotate(-15 12 28)" />
-            <ellipse cx="15" cy="23" rx="2.4" ry="1.4" fill="#3a342b" />
-          </svg>
-
-          <svg className="prop pony clickable" data-info="pony" style={{ left: '43%' }} viewBox="0 0 70 54" xmlns="http://www.w3.org/2000/svg">
-            <path d="M55,20 Q61,24 59,34 Q57,42 52,44 Q56,35 51,28 Z" fill="#33241A" />
-            <rect x="25" y="32" width="2.8" height="15" rx="1.3" fill="#3E2B1D" />
-            <rect x="32" y="33" width="2.8" height="14" rx="1.3" fill="#4A3524" />
-            <rect x="45" y="32" width="2.8" height="15" rx="1.3" fill="#3E2B1D" />
-            <rect x="51" y="33" width="2.8" height="14" rx="1.3" fill="#4A3524" />
-            <ellipse cx="39" cy="25" rx="17" ry="10" fill="#8A5A33" />
-            <ellipse cx="39" cy="31" rx="12" ry="4.5" fill="#A97A4C" opacity="0.75" />
-            <path d="M28,17 Q18,21 13,33 L21,39 Q26,28 33,23 Z" fill="#8A5A33" />
-            <ellipse cx="14" cy="38" rx="6.4" ry="4.6" transform="rotate(-38 14 38)" fill="#7C4F2C" />
-            <ellipse cx="10" cy="43" rx="3.4" ry="2.5" transform="rotate(-30 10 43)" fill="#D9C29A" />
-            <circle cx="14.5" cy="35.5" r="1" fill="#241812" />
-            <path d="M17,30 l2.5,-4 l1.5,4.5 Z" fill="#5C3B24" />
-            <path d="M29,15 Q20,19 15,30" stroke="#33241A" strokeWidth="4" fill="none" strokeLinecap="round" />
-          </svg>
-          <svg className="prop pony small clickable" data-info="pony" style={{ left: '66%' }} viewBox="0 0 70 54" xmlns="http://www.w3.org/2000/svg">
-            <path d="M55,20 Q61,24 59,34 Q57,42 52,44 Q56,35 51,28 Z" fill="#33241A" />
-            <rect x="25" y="32" width="2.8" height="15" rx="1.3" fill="#3E2B1D" />
-            <rect x="32" y="33" width="2.8" height="14" rx="1.3" fill="#4A3524" />
-            <rect x="45" y="32" width="2.8" height="15" rx="1.3" fill="#3E2B1D" />
-            <rect x="51" y="33" width="2.8" height="14" rx="1.3" fill="#4A3524" />
-            <ellipse cx="39" cy="25" rx="17" ry="10" fill="#96633A" />
-            <ellipse cx="39" cy="31" rx="12" ry="4.5" fill="#B08151" opacity="0.75" />
-            <path d="M28,17 Q18,21 13,33 L21,39 Q26,28 33,23 Z" fill="#96633A" />
-            <ellipse cx="14" cy="38" rx="6.4" ry="4.6" transform="rotate(-38 14 38)" fill="#875732" />
-            <ellipse cx="10" cy="43" rx="3.4" ry="2.5" transform="rotate(-30 10 43)" fill="#DFC9A2" />
-            <circle cx="14.5" cy="35.5" r="1" fill="#241812" />
-            <path d="M17,30 l2.5,-4 l1.5,4.5 Z" fill="#6B4429" />
-            <path d="M29,15 Q20,19 15,30" stroke="#33241A" strokeWidth="4" fill="none" strokeLinecap="round" />
-          </svg>
-
-          <svg className="apple-tree clickable" data-info="apple" viewBox="0 0 96 120" xmlns="http://www.w3.org/2000/svg">
-            <path d="M44,118 C44,98 41,84 41,70 L55,70 C55,84 52,98 52,118 Z" fill="#6E5238" />
-            <path d="M48,86 C44,80 40,78 36,80 M48,92 C52,86 57,85 60,88" stroke="#6E5238" strokeWidth="3.5" fill="none" strokeLinecap="round" />
-            <g className="canopy1" fill="#5E8A4E">
-              <circle cx="48" cy="44" r="28" /><circle cx="28" cy="54" r="19" /><circle cx="68" cy="54" r="19" /><circle cx="48" cy="62" r="22" />
-            </g>
-            <g className="canopy2" fill="#6E9A5A" opacity="0.7"><circle cx="40" cy="38" r="9" /><circle cx="58" cy="48" r="8" /></g>
-            <g className="apples" fill="#AF4A3C">
-              <circle cx="34" cy="50" r="3.2" /><circle cx="54" cy="40" r="3.2" /><circle cx="62" cy="58" r="3.2" />
-              <circle cx="44" cy="62" r="3.2" /><circle cx="26" cy="54" r="2.8" />
-            </g>
-          </svg>
+          <div className="cottage-lights" aria-hidden="true">
+            <span className="window-light l1" /><span className="window-light l2" /><span className="window-light l3" /><span className="window-light l4" />
+          </div>
+          <div className="chimney-smoke smoke-a" aria-hidden="true"><span /><span /><span /></div>
+          <div className="chimney-smoke smoke-b" aria-hidden="true"><span /><span /><span /></div>
 
           <svg className="falling-apple" viewBox="0 0 16 18" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <path d="M8,6 C6,3 2,4 2,9 C2,14 5,17 8,17 C11,17 14,14 14,9 C14,4 10,3 8,6 Z" fill="#AF4A3C" />
             <path d="M8,6 C8,3 9,2 8,1" stroke="#6E5238" strokeWidth="1.4" fill="none" strokeLinecap="round" />
-            <path d="M8.5,3 C11,1 13,3.5 10.5,5 C9.2,5.8 8.4,4.2 8.5,3 Z" fill="#5E8A4E" />
           </svg>
 
-          <svg className="sheep-walk clickable" id="sheepWalk" data-info="sheep" viewBox="0 0 60 46" xmlns="http://www.w3.org/2000/svg">
-            <rect x="17" y="30" width="2.6" height="12" rx="1.2" fill="#33302a" />
-            <rect x="25" y="30" width="2.6" height="12" rx="1.2" fill="#33302a" />
-            <rect x="37" y="30" width="2.6" height="12" rx="1.2" fill="#33302a" />
-            <circle cx="12" cy="21" r="4" fill="#F2ECDD" />
-            <ellipse cx="29" cy="22" rx="17" ry="12.5" fill="#F2ECDD" />
-            <circle cx="17" cy="16" r="6.5" fill="#F2ECDD" /><circle cx="28" cy="12" r="7.5" fill="#F2ECDD" /><circle cx="40" cy="15" r="6.5" fill="#F2ECDD" />
-            <ellipse cx="48" cy="20" rx="6" ry="7" fill="#3a342b" />
-            <ellipse cx="44.5" cy="14" rx="3" ry="1.9" fill="#3a342b" transform="rotate(-28 44.5 14)" />
-            <ellipse cx="53.2" cy="22.5" rx="2.7" ry="2" fill="#2c2823" />
-            <circle cx="49" cy="18.5" r="1.3" fill="#F2ECDD" />
+          <div className="sheep-walk clickable" id="sheepWalk" data-info="sheep" role="button" tabIndex={0} aria-label="Discover Somerset sheep">
+            <svg className="sheep-legs" viewBox="0 0 100 88" aria-hidden="true">
+              <g className="sheep-leg rear" style={{ transformOrigin: '24px 47px' }}><path d="M24 47 Q21 62 19 81" /></g>
+              <g className="sheep-leg rear" style={{ transformOrigin: '42px 48px' }}><path d="M42 48 Q42 64 41 82" /></g>
+              <g className="sheep-leg" style={{ transformOrigin: '59px 48px' }}><path d="M59 48 Q57 65 58 82" /></g>
+              <g className="sheep-leg" style={{ transformOrigin: '77px 45px' }}><path d="M77 45 Q78 61 76 81" /></g>
+            </svg>
+            <Image className="sheep-body" src="/scene/pencil/sheep-body.webp" alt="" width={1536} height={1024} unoptimized />
+          </div>
+
+          <svg className="crow clickable" id="crow" data-info="crow" viewBox="0 0 48 24" xmlns="http://www.w3.org/2000/svg" role="button" tabIndex={0} aria-label="Discover the crow">
+            <g fill="#292826" stroke="#312f2b" strokeWidth="0.4"><ellipse cx="22" cy="15" rx="9" ry="3.4" /><circle cx="32" cy="13" r="3.1" /><polygon points="35,12 42,13.5 35,15" /><polygon points="13,15 3,11 7,17" /></g>
+            <g className="crow-wings"><path d="M23,13 Q20,1 30,4 Q25,10 23,13 Z" fill="#292826" /><path d="M21,13 Q12,3 8,9 Q17,12 21,13 Z" fill="#383734" /></g>
+            <path d="M16 14l8 1m-3-3l7 1" stroke="#b2a994" strokeWidth="0.6" opacity="0.5" />
           </svg>
 
-          <svg className="crow clickable" id="crow" data-info="crow" viewBox="0 0 48 24" xmlns="http://www.w3.org/2000/svg">
-            <g fill="#1d2614">
-              <ellipse cx="22" cy="15" rx="9" ry="3.4" />
-              <circle cx="32" cy="13" r="3.1" />
-              <polygon points="35,12 42,13.5 35,15" />
-              <polygon points="13,15 3,11 7,17" />
-            </g>
-            <g className="crow-wings">
-              <path d="M23,13 Q20,1 30,4 Q25,10 23,13 Z" fill="#1d2614" />
-              <path d="M21,13 Q12,3 8,9 Q17,12 21,13 Z" fill="#26331a" />
-            </g>
-          </svg>
-
-          <div className="wx-badge" id="wxBadge">Checking the weather in Somerset…</div>
-
+          <div className="wx-badge" id="wxBadge">Checking the weather in Dunster…</div>
           <div className="night-veil" aria-hidden="true" />
           <div className="fireflies" aria-hidden="true">
             <span className="ff" style={ffStyle('14%', '32%', '6.5s', '0s')} />
             <span className="ff" style={ffStyle('26%', '24%', '8.2s', '1.4s')} />
-            <span className="ff" style={ffStyle('37%', '40%', '7.1s', '2.8s')} />
             <span className="ff" style={ffStyle('52%', '28%', '9s', '0.7s')} />
-            <span className="ff" style={ffStyle('63%', '44%', '6.8s', '3.5s')} />
             <span className="ff" style={ffStyle('71%', '22%', '8.6s', '1.9s')} />
-            <span className="ff" style={ffStyle('83%', '36%', '7.6s', '0.4s')} />
-            <span className="ff" style={ffStyle('92%', '27%', '8.9s', '2.2s')} />
           </div>
         </div>
       </section>
