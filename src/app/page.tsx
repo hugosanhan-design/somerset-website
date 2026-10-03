@@ -179,8 +179,8 @@ export default function Home() {
     let sheepRestTimer = 0
     let lastSheepX = -1
     const update = () => {
-      const max = document.documentElement.scrollHeight - window.innerHeight
-      const progress = max > 0 ? Math.min(Math.max(window.scrollY / max, 0), 1) : 0
+      const travel = Math.max(window.innerHeight * 0.75, 1)
+      const progress = Math.min(Math.max(window.scrollY / travel, 0), 1)
       const x = 0.29 + 0.33 * progress
       if (sheep && scene) {
         sheep.style.left = `${x * 100}%`
