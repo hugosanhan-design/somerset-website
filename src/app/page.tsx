@@ -647,9 +647,9 @@ export default function Home() {
         @keyframes crow-fly {
           0% { transform: translate(-6vw,0) rotate(0deg); opacity: 0; } 8% { opacity: 1; }
           30% { transform: translate(26vw,-16px) rotate(0deg); } 48% { transform: translate(50vw,-4px) rotate(0deg); }
-          56% { transform: translate(77vw,7px) rotate(7deg); } 61% { transform: translate(89vw,19px) rotate(17deg); }
-          64% { transform: translate(86vw,10px) rotate(-24deg); } 74% { transform: translate(78vw,-16px) rotate(-8deg); }
-          80% { transform: translate(82vw,-22px) rotate(-5deg); } 90% { transform: translate(94vw,-28px) rotate(-4deg); }
+          56% { transform: translate(82vw,7px) rotate(7deg); } 61% { transform: translate(94vw,19px) rotate(17deg); }
+          64% { transform: translate(91vw,10px) rotate(-24deg); } 74% { transform: translate(82vw,-16px) rotate(-8deg); }
+          80% { transform: translate(86vw,-22px) rotate(-5deg); } 90% { transform: translate(98vw,-28px) rotate(-4deg); }
           100% { transform: translate(108vw,-35px) rotate(0deg); opacity: 1; }
         }
         @keyframes tree-shake { 0%,58% { transform: rotate(0deg); } 61% { transform: rotate(1.6deg); } 64% { transform: rotate(-1.4deg); } 67% { transform: rotate(0.7deg); } 70%,100% { transform: rotate(0deg); } }
@@ -950,16 +950,16 @@ export default function Home() {
         body.night .nav:not(.scrolled) .nav-burger span { background: #fff9e9; }
         .scene { position: fixed; overflow: hidden; isolation: isolate; -webkit-mask-image: none; mask-image: none; filter: none; background: transparent; box-shadow: none; }
         .scene::after { display: none; }
-        .landscape { position: absolute; inset: 0; z-index: 1; background-image: url('/scene/pencil/summer-integrated.webp'); background-size: 100% 100%; background-repeat: no-repeat; filter: brightness(var(--landscape-brightness, 1)); transition: filter var(--solar-transition, 0s) linear, background-image 0.5s ease; }
-        body.season-spring .landscape { background-image: url('/scene/pencil/spring-integrated.webp'); }
-        body.season-autumn .landscape { background-image: url('/scene/pencil/autumn-integrated.webp'); }
-        body.season-winter .landscape { background-image: url('/scene/pencil/winter-integrated.webp'); }
-        body.wx-snow .landscape { background-image: url('/scene/pencil/winter-snow-integrated.webp'); }
-        .scene { --landscape-mask: url('/scene/pencil/summer-integrated.webp'); }
-        body.season-spring .scene { --landscape-mask: url('/scene/pencil/spring-integrated.webp'); }
-        body.season-autumn .scene { --landscape-mask: url('/scene/pencil/autumn-integrated.webp'); }
-        body.season-winter .scene { --landscape-mask: url('/scene/pencil/winter-integrated.webp'); }
-        body.wx-snow .scene { --landscape-mask: url('/scene/pencil/winter-snow-integrated.webp'); }
+        .landscape { position: absolute; inset: 0; z-index: 1; background-image: url('/scene/pencil/summer-proportioned.webp'); background-size: 100% 100%; background-repeat: no-repeat; filter: brightness(var(--landscape-brightness, 1)); transition: filter var(--solar-transition, 0s) linear, background-image 0.5s ease; }
+        body.season-spring .landscape { background-image: url('/scene/pencil/spring-proportioned.webp'); }
+        body.season-autumn .landscape { background-image: url('/scene/pencil/autumn-proportioned.webp'); }
+        body.season-winter .landscape { background-image: url('/scene/pencil/winter-proportioned.webp'); }
+        body.wx-snow .landscape { background-image: url('/scene/pencil/winter-snow-proportioned.webp'); }
+        .scene { --landscape-mask: url('/scene/pencil/summer-proportioned.webp'); }
+        body.season-spring .scene { --landscape-mask: url('/scene/pencil/spring-proportioned.webp'); }
+        body.season-autumn .scene { --landscape-mask: url('/scene/pencil/autumn-proportioned.webp'); }
+        body.season-winter .scene { --landscape-mask: url('/scene/pencil/winter-proportioned.webp'); }
+        body.wx-snow .scene { --landscape-mask: url('/scene/pencil/winter-snow-proportioned.webp'); }
         .scene .weather-shade, .scene .solar-glow, .scene .night-veil { -webkit-mask-image: var(--landscape-mask); mask-image: var(--landscape-mask); -webkit-mask-size: 100% 100%; mask-size: 100% 100%; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; }
         .solar-glow { position: absolute; inset: 0; z-index: 3; pointer-events: none; transition: opacity var(--solar-transition, 0s) linear; }
         .solar-glow.dawn { opacity: var(--dawn-opacity, 0); background: radial-gradient(ellipse at 28% 52%, rgba(246,179,100,.8), transparent 42%), linear-gradient(to top, rgba(241,159,117,.42), transparent 72%); mix-blend-mode: multiply; }
@@ -978,15 +978,15 @@ export default function Home() {
         .night-veil { z-index: 4; background: linear-gradient(160deg, rgba(17,31,60,.64), rgba(37,49,71,.48) 55%, rgba(22,34,51,.54)); }
         body .scene .night-veil { opacity: var(--night-opacity, 0); transition: opacity var(--solar-transition, 0s) linear; }
         .scene-hotspot { position: absolute; z-index: 7; display: block; border: 0; background: transparent; padding: 0; color: transparent; pointer-events: auto; cursor: pointer; }
-        .castle-hotspot { left: 5%; top: 14%; width: 19%; height: 56%; }
-        .cottage-hotspot { left: 66%; top: 53%; width: 18%; height: 31%; }
+        .castle-hotspot { left: 3%; top: 14%; width: 13%; height: 56%; }
+        .cottage-hotspot { left: 79%; top: 53%; width: 14%; height: 31%; }
         .pony-hotspot { left: 72%; top: 67%; width: 7%; height: 27%; z-index: 16; }
         .pony { position: absolute; z-index: 11; left: 72%; bottom: 6%; width: clamp(45px, 6.4vw, 90px); height: auto; pointer-events: none; filter: brightness(var(--landscape-brightness, 1)) saturate(.82); }
-        .scene-hotspot.apple-tree { left: 86%; top: 18%; width: 14%; height: 70%; transform: none; animation: none; }
+        .scene-hotspot.apple-tree { left: 91%; top: 18%; width: 9%; height: 70%; transform: none; animation: none; }
         .scene-hotspot:focus-visible, .sheep-walk:focus-visible, .crow:focus-visible { outline: 2px dashed #265646; outline-offset: 3px; }
         .castle-lights, .cottage-lights { position: absolute; z-index: 12; pointer-events: none; }
-        .castle-lights { left: 7.4%; top: 28%; width: 15.2%; height: 37%; }
-        .cottage-lights { left: 68%; top: 66%; width: 12.3%; height: 16%; }
+        .castle-lights { left: 4%; top: 28%; width: 11%; height: 37%; }
+        .cottage-lights { left: 80%; top: 66%; width: 12%; height: 16%; }
         .window-light { position: absolute; display: block; width: clamp(2px, .3vw, 5px); height: clamp(3px, .5vw, 7px); background: #f9d981; border-radius: 40% 40% 15% 15%; box-shadow: 0 0 5px 2px rgba(251,203,99,.7), 0 0 14px 4px rgba(246,175,69,.36); opacity: 0; }
         .castle-lights .l1 { left: 10%; top: 18%; } .castle-lights .l2 { left: 14%; top: 40%; } .castle-lights .l3 { left: 37%; top: 55%; } .castle-lights .l4 { left: 61%; top: 46%; } .castle-lights .l5 { left: 82%; top: 62%; }
         .cottage-lights .l1 { left: 12%; top: 47%; } .cottage-lights .l2 { left: 40%; top: 33%; } .cottage-lights .l3 { left: 69%; top: 54%; } .cottage-lights .l4 { left: 86%; top: 38%; }
@@ -997,7 +997,7 @@ export default function Home() {
         body.night .window-light:nth-child(5) { animation-delay: -4s; animation-duration: 12s; }
         @keyframes pencil-window { 0%,12%,90%,100%{opacity:0} 16%,82%{opacity:.94} 84%,87%{opacity:.55} }
         .chimney-smoke { position: absolute; z-index: 13; width: 28px; height: 45px; opacity: 0; pointer-events: none; transition: opacity 1s ease; }
-        .smoke-a { left: 70.3%; top: 48%; } .smoke-b { left: 79.3%; top: 49%; }
+        .smoke-a { left: 82%; top: 48%; } .smoke-b { left: 89%; top: 49%; }
         body.cool-weather .chimney-smoke, body.night .chimney-smoke { opacity: .75; }
         .chimney-smoke span { position: absolute; bottom: 0; left: 10px; width: 12px; height: 8px; border: 2px solid rgba(108,105,98,.66); border-left-color: transparent; border-bottom-color: transparent; border-radius: 50%; filter: blur(.5px); animation: pencil-smoke 4s ease-out infinite; opacity: 0; }
         .chimney-smoke span:nth-child(2) { animation-delay: 1.3s; } .chimney-smoke span:nth-child(3) { animation-delay: 2.6s; }
@@ -1011,7 +1011,7 @@ export default function Home() {
         .sheep-leg.rear path { stroke: #51473d; stroke-width: 3; }
         .sheep-body { position: absolute; z-index: 1; left: 0; top: 0; width: 100%; height: 74%; object-fit: contain; pointer-events: none; }
         .crow { z-index: 16; width: clamp(37px, 3.6vw, 52px); display: block; margin-left: var(--crow-wind-offset, 0px); filter: drop-shadow(0 1px 1px rgba(23,20,16,.25)); }
-        .tree-impact { position: absolute; z-index: 17; left: 91%; top: 33%; width: 24px; height: 24px; opacity: 0; pointer-events: none; animation: tree-impact 9s linear infinite; }
+        .tree-impact { position: absolute; z-index: 17; left: 96%; top: 33%; width: 24px; height: 24px; opacity: 0; pointer-events: none; animation: tree-impact 9s linear infinite; }
         .tree-impact::before, .tree-impact::after { content: ''; position: absolute; inset: 6px; border-top: 2px solid #493c2d; border-left: 1px solid #493c2d; transform: rotate(25deg); }
         .tree-impact::after { transform: rotate(120deg); }
         @keyframes tree-impact { 0%,60%,65%,100% { opacity: 0; transform: scale(.3) rotate(0deg); } 61%,63% { opacity: .85; transform: scale(1) rotate(30deg); } }
@@ -1054,6 +1054,16 @@ export default function Home() {
           .scene { overflow: hidden; }
           .hero { padding-bottom: var(--scene-h); }
           .landscape { background-size: 100% 100%; background-position: center bottom; }
+          .landscape { background-image: url('/scene/pencil/summer-integrated.webp'); }
+          body.season-spring .landscape { background-image: url('/scene/pencil/spring-integrated.webp'); }
+          body.season-autumn .landscape { background-image: url('/scene/pencil/autumn-integrated.webp'); }
+          body.season-winter .landscape { background-image: url('/scene/pencil/winter-integrated.webp'); }
+          body.wx-snow .landscape { background-image: url('/scene/pencil/winter-snow-integrated.webp'); }
+          .scene { --landscape-mask: url('/scene/pencil/summer-integrated.webp'); }
+          body.season-spring .scene { --landscape-mask: url('/scene/pencil/spring-integrated.webp'); }
+          body.season-autumn .scene { --landscape-mask: url('/scene/pencil/autumn-integrated.webp'); }
+          body.season-winter .scene { --landscape-mask: url('/scene/pencil/winter-integrated.webp'); }
+          body.wx-snow .scene { --landscape-mask: url('/scene/pencil/winter-snow-integrated.webp'); }
           .castle-hotspot, .cottage-hotspot, .pony-hotspot, .apple-tree, .castle-lights, .cottage-lights, .chimney-smoke { display: none; }
           .falling-apple { display: none; }
           .sheep-walk { width: 45px; height: 45px; }
