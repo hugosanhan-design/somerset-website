@@ -837,6 +837,8 @@ export default function Home() {
         body.night .hero .eyebrow { color: #fff3d7; background: rgba(32,47,44,.2); border-color: rgba(255,243,215,.35); }
         body.night .hero .btn-outline-white { color: #fff9e9; background: rgba(32,47,44,.12); border-color: rgba(255,249,233,.65); }
         .scene { position: fixed; overflow: hidden; isolation: isolate; -webkit-mask-image: none; mask-image: none; filter: none; background: transparent; box-shadow: none; }
+        .sl-shell:not(.sl-narrow) .scene { left: var(--sl-w); width: calc(100% - var(--sl-w)); transition: left .28s ease, width .28s ease; }
+        .sl-shell.sl-narrow .scene { left: 0; width: 100%; }
         .scene::after { display: none; }
         .landscape { position: absolute; inset: 0; z-index: 1; background-image: url('/scene/pencil/summer-proportioned.webp'); background-size: 100% 100%; background-repeat: no-repeat; filter: brightness(var(--landscape-brightness, 1)); transition: filter var(--solar-transition, 0s) linear, background-image 0.5s ease; }
         body.season-spring .landscape { background-image: url('/scene/pencil/spring-proportioned.webp'); }
@@ -935,7 +937,7 @@ export default function Home() {
         .wind-leaves span:nth-child(3) { top: 59%; animation-delay: -6s; }
         .wind-leaves span:nth-child(4) { top: 74%; animation-delay: -8s; }
         @keyframes pencil-leaf { to { translate: 110vw 18px; rotate: 540deg; } }
-        .wx-badge { z-index: 20; right: 14px; bottom: 9px; color: #26392f; background: rgba(255,251,239,.88); box-shadow: 0 1px 8px rgba(31,38,31,.14); font-size: .67rem; letter-spacing: .01em; }
+        .wx-badge { z-index: 20; right: 78px; bottom: 9px; color: #26392f; background: rgba(255,251,239,.88); box-shadow: 0 1px 8px rgba(31,38,31,.14); font-size: .67rem; letter-spacing: .01em; }
         .fireflies { z-index: 13; }
         @media (max-width: 600px) {
           :root { --scene-h: clamp(115px, 19vh, 150px); }
@@ -957,7 +959,7 @@ export default function Home() {
           .sheep-walk { width: 45px; height: 45px; }
           .pony { width: 32px; }
           .crow { display: block; }
-          .wx-badge { display: block; font-size: .55rem; max-width: calc(100% - 20px); overflow: hidden; text-overflow: ellipsis; right: 10px; bottom: 5px; }
+          .wx-badge { display: block; font-size: .55rem; max-width: calc(100% - 90px); overflow: hidden; text-overflow: ellipsis; right: 76px; bottom: 7px; }
         }
         @media (prefers-reduced-motion: reduce) {
           .sheep-walk, .sheep-walk.walking, .crow, .crow-wings, .chimney-smoke span, .window-light, .weather-shade, .landscape, .solar-glow, .pencil-sun, .night-veil, .mist, .ff, .drop, .flake, .wind-strokes span, .wind-grass span, .wind-leaves span { animation: none !important; transition: none !important; }
