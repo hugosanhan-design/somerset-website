@@ -19,6 +19,27 @@ export function classifyWeather(code: number): { weather: SceneWeather; label: s
   return { weather: 'clear', label: 'clear skies' }
 }
 
+export function windMotion(speed: number, direction: number, gusts = speed) {
+  const safeSpeed = Math.max(0, Number.isFinite(speed) ? speed : 0)
+  const safeGusts = Math.max(safeSpeed, Number.isFinite(gusts) ? gusts : safeSpeed)
+  const strength = Math.min(1, Math.max(safeSpeed, safeGusts * 0.7) / 45)
+  // Meteorological direction names where the air comes FROM; west wind travels right.
+  const eastward = -Math.sin((Number.isFinite(direction) ? direction : 0) * Math.PI / 180)
+  return {
+    active: safeSpeed >= 12 || safeGusts >= 22,
+    strength,
+    eastward,
+    drift: Math.round(eastward * strength * 110),
+  }
+}
+
+export function rainDropCount(code: number, precipitation: number): number {
+  if (!((code >= 51 && code <= 67) || (code >= 80 && code <= 82) || (code >= 95 && code <= 99))) return 0
+  const rate = Math.max(0, Number.isFinite(precipitation) ? precipitation : 0)
+  const codeWeight = [55, 65, 67, 82, 95, 96, 97, 99].includes(code) ? 1 : 0
+  return Math.min(64, Math.max(22, Math.round(22 + rate * 10 + codeWeight * 18)))
+}
+
 // The foreground in all four plates is registered to the same curve.
 // Returns the fraction of scene height measured up from its bottom edge.
 export function meadowGround(x: number): number {

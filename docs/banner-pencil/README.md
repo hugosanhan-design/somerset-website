@@ -7,7 +7,8 @@ The attached screenshot of the first coloured-pencil study is the approved visua
 - Autumn: copper leaves and harvest grass.
 - Winter: leafless and tawny, without snow.
 - Snow: a separate winter snow plate, selected only for live snow codes.
-- Weather: Open-Meteo current conditions near Dunster (`51.18, -3.44`); checked on load and every 15 minutes. Fog, cloud, rain, snow, and thunder alter the plate with overlays/particles. The badge reports current conditions or states when unavailable.
+- Weather: Open-Meteo current conditions near Dunster (`51.18, -3.44`); checked on load and every 15 minutes. Fog, cloud, rain, snow, and thunder alter the plate with overlays/particles. Rain density uses the current precipitation reading and weather code. The badge reports current conditions or states when unavailable.
+- Wind: the same request reads speed, direction, and gusts at 10 m. When breezy, pencil wind strokes, meadow grass, and autumn leaves move; stronger wind increases motion. Rain and snow drift with the horizontal wind component, chimney smoke follows it, and the crow flaps faster. Meteorological direction is converted from the direction wind comes from into the direction it travels on screen.
 - Time: season uses the Europe/London calendar. The scene darkens and windows light when the weather service reports night. Cottage smoke rises in cool weather and at night.
 - Motion: scroll moves the sheep along the foreground ground curve; leg angles change with distance. The crow follows its existing flight and wing-flap animation. Reduced-motion settings stop decorative movement.
 

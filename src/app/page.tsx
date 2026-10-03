@@ -6,7 +6,7 @@
 // night mode, mist, fireflies and Exmoor ponies.
 import { useEffect, useLayoutEffect, useState } from 'react'
 import Image from 'next/image'
-import { classifyWeather, meadowGround, somersetSeason } from '@/lib/scene-weather'
+import { classifyWeather, meadowGround, rainDropCount, somersetSeason, windMotion } from '@/lib/scene-weather'
 
 const ffStyle = (l: string, b: string, d: string, dl: string) =>
   ({ left: l, bottom: b, '--d': d, '--dl': dl } as React.CSSProperties)
@@ -336,13 +336,30 @@ export default function Home() {
     const refreshWeather = async () => {
       setSeason()
       try {
-        const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=51.18&longitude=-3.44&current=temperature_2m,weather_code,is_day&timezone=Europe%2FLondon')
+        const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=51.18&longitude=-3.44&current=temperature_2m,weather_code,is_day,precipitation,wind_speed_10m,wind_direction_10m,wind_gusts_10m&timezone=Europe%2FLondon')
         if (!response.ok) throw new Error(String(response.status))
         const data = await response.json()
         if (!active) return
         const current = data.current
         if (!current || !Number.isFinite(current.weather_code) || !Number.isFinite(current.temperature_2m)) throw new Error('Invalid weather response')
         const { weather, label } = classifyWeather(current.weather_code)
+        const windSpeed = Number.isFinite(current.wind_speed_10m) ? current.wind_speed_10m : 0
+        const gustSpeed = Number.isFinite(current.wind_gusts_10m) ? current.wind_gusts_10m : windSpeed
+        const wind = windMotion(windSpeed, current.wind_direction_10m, gustSpeed)
+        if (scene) {
+          scene.classList.toggle('windy', wind.active)
+          scene.style.setProperty('--wind-opacity', String(Math.min(0.72, wind.strength * Math.min(1, Math.abs(wind.eastward) * 1.4))))
+          scene.style.setProperty('--wind-sign', wind.eastward < 0 ? '-1' : '1')
+          scene.style.setProperty('--wind-drift', `${wind.drift}px`)
+          scene.style.setProperty('--snow-drift', `${wind.drift * 0.45}px`)
+          scene.style.setProperty('--wind-lean', `${wind.eastward * wind.strength * 15}deg`)
+          scene.style.setProperty('--wind-lean-back', `${wind.eastward * wind.strength * -5}deg`)
+          scene.style.setProperty('--smoke-drift', `${-9 + wind.drift * 0.32}px`)
+          scene.style.setProperty('--crow-wind-offset', `${wind.drift * 0.18}px`)
+          scene.style.setProperty('--wind-speed', `${Math.max(2.3, 6 - wind.strength * 3)}s`)
+          scene.style.setProperty('--leaf-speed', `${Math.max(5, 11 - wind.strength * 5)}s`)
+          scene.style.setProperty('--wing-duration', `${Math.max(0.22, 0.34 - wind.strength * 0.08)}s`)
+        }
         Array.from(document.body.classList).forEach(cl => { if (cl.startsWith('wx-')) document.body.classList.remove(cl) })
         document.body.classList.add('wx-' + weather)
         document.body.dataset.wxNight = current.is_day === 0 ? '1' : '0'
@@ -353,17 +370,19 @@ export default function Home() {
           const wrap = document.createElement('div')
           wrap.className = 'precip'
           const isSnow = weather === 'snow'
-          for (let i = 0; i < (isSnow ? 22 : 36); i++) {
+          const count = isSnow ? 22 : rainDropCount(current.weather_code, current.precipitation)
+          for (let i = 0; i < count; i++) {
             const particle = document.createElement('span')
             particle.className = isSnow ? 'flake' : 'drop'
             particle.style.left = `${Math.random() * 100}%`
-            particle.style.animationDuration = `${isSnow ? 4 + Math.random() * 4 : 0.9 + Math.random() * 0.7}s`
+            particle.style.animationDuration = `${isSnow ? 4 + Math.random() * 4 : 0.75 + Math.random() * 0.7 - wind.strength * 0.14}s`
             particle.style.animationDelay = `${Math.random() * 4}s`
+            if (!isSnow) particle.style.height = `${8 + Math.random() * 10}px`
             wrap.appendChild(particle)
           }
           scene.appendChild(wrap)
         }
-        if (badge) badge.textContent = `Dunster, Somerset · ${Math.round(current.temperature_2m)}° · ${label}${current.is_day === 0 ? ' · night' : ''}`
+        if (badge) badge.textContent = `Dunster, Somerset · ${Math.round(current.temperature_2m)}° · ${label}${wind.active ? ` · wind ${Math.round(windSpeed)} km/h${gustSpeed >= windSpeed + 8 ? ` (gusts ${Math.round(gustSpeed)})` : ''}` : ''}${current.is_day === 0 ? ' · night' : ''}`
       } catch {
         if (active && badge) badge.textContent = 'Dunster weather temporarily unavailable'
       }
@@ -903,7 +922,7 @@ export default function Home() {
         body.cool-weather .chimney-smoke, body.night .chimney-smoke { opacity: .75; }
         .chimney-smoke span { position: absolute; bottom: 0; left: 10px; width: 12px; height: 8px; border: 2px solid rgba(108,105,98,.66); border-left-color: transparent; border-bottom-color: transparent; border-radius: 50%; filter: blur(.5px); animation: pencil-smoke 4s ease-out infinite; opacity: 0; }
         .chimney-smoke span:nth-child(2) { animation-delay: 1.3s; } .chimney-smoke span:nth-child(3) { animation-delay: 2.6s; }
-        @keyframes pencil-smoke { 0%{transform:translate(0,1px) scale(.6);opacity:0} 20%{opacity:.7} 100%{transform:translate(-9px,-34px) scale(1.7);opacity:0} }
+        @keyframes pencil-smoke { 0%{transform:translate(0,1px) scale(.6);opacity:0} 20%{opacity:.7} 100%{transform:translate(var(--smoke-drift, -9px),-34px) scale(1.7);opacity:0} }
         .sheep-walk { z-index: 15; width: clamp(78px, 7.5vw, 112px); height: clamp(65px, 6.6vw, 96px); transform: translateX(-50%); animation: none; transition: left .12s linear, bottom .12s linear; }
         .sheep-walk.walking { animation: pencil-sheep-bob .36s ease-in-out infinite; }
         @keyframes pencil-sheep-bob { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(-2px)} }
@@ -912,11 +931,39 @@ export default function Home() {
         .sheep-leg path { fill: none; stroke: #302d29; stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; }
         .sheep-leg.rear path { stroke: #51473d; stroke-width: 3; }
         .sheep-body { position: absolute; z-index: 1; left: 0; top: 0; width: 100%; height: 74%; object-fit: contain; pointer-events: none; }
-        .crow { z-index: 16; width: clamp(34px, 3.8vw, 50px); display: block; filter: drop-shadow(0 1px 1px rgba(23,20,16,.25)); }
+        .crow { z-index: 16; width: clamp(34px, 3.8vw, 50px); display: block; margin-left: var(--crow-wind-offset, 0px); filter: drop-shadow(0 1px 1px rgba(23,20,16,.25)); }
+        .crow-wings { animation-duration: var(--wing-duration, .34s); }
         .falling-apple { z-index: 15; }
         .precip { z-index: 14; }
-        .drop { background: linear-gradient(to bottom, transparent, rgba(76,100,120,.62)); }
+        .drop { width: 1px; background: linear-gradient(to bottom, transparent, rgba(76,100,120,.68)); box-shadow: 1px 0 rgba(244,242,230,.3); rotate: var(--wind-lean, 0deg); }
+        @keyframes rain-fall { to { transform: translate(var(--wind-drift, 0px), calc(var(--scene-h) + 60px)); } }
+        @keyframes snow-fall { to { transform: translate(var(--snow-drift, 0px), calc(var(--scene-h) + 50px)); } }
         .flake { background: #fbfaf2; border: 1px solid #a6b6bf; }
+        .wind-strokes { position: absolute; inset: 0; z-index: 13; pointer-events: none; transform: scaleX(var(--wind-sign, 1)); opacity: 0; transition: opacity 1.3s ease; }
+        .scene.windy .wind-strokes { opacity: var(--wind-opacity, .35); }
+        .wind-strokes span { position: absolute; left: -14%; display: block; width: clamp(38px, 8vw, 110px); height: 14px; border-top: 1px solid rgba(73,83,72,.67); border-radius: 50%; box-shadow: 0 -2px 0 -1px rgba(75,84,73,.28); animation: pencil-wind var(--wind-speed, 4s) linear infinite; }
+        .wind-strokes span:nth-child(1) { top: 30%; animation-delay: -2.8s; }
+        .wind-strokes span:nth-child(2) { top: 45%; animation-delay: -1.1s; width: 60px; }
+        .wind-strokes span:nth-child(3) { top: 60%; animation-delay: -3.9s; width: 76px; }
+        .wind-strokes span:nth-child(4) { top: 73%; animation-delay: -.4s; width: 48px; }
+        .wind-strokes span:nth-child(5) { top: 24%; animation-delay: -4.8s; width: 58px; }
+        body.night .wind-strokes span { border-color: rgba(222,224,216,.65); box-shadow: 0 -2px 0 -1px rgba(222,224,216,.26); }
+        @keyframes pencil-wind { to { translate: 125vw 0; } }
+        .wind-grass { position: absolute; inset: auto 0 0; height: 19%; z-index: 13; pointer-events: none; opacity: 0; transition: opacity 1.3s ease; }
+        .scene.windy .wind-grass { opacity: .8; }
+        .wind-grass span { position: absolute; bottom: 1%; width: 9px; height: 26px; border-left: 1px solid rgba(88,104,59,.72); border-radius: 62% 0 0 0; transform-origin: bottom; animation: pencil-grass 2.1s ease-in-out infinite alternate; }
+        .wind-grass span:nth-child(2n) { height: 19px; animation-delay: -.7s; }
+        .wind-grass span:nth-child(3n) { height: 31px; animation-delay: -1.5s; }
+        body.season-autumn .wind-grass span, body.season-winter .wind-grass span { border-color: rgba(118,93,61,.7); }
+        @keyframes pencil-grass { from { transform: rotate(var(--wind-lean-back, 0deg)) scaleY(.92); } to { transform: rotate(var(--wind-lean, 0deg)) scaleY(1.06); } }
+        .wind-leaves { position: absolute; inset: 0; z-index: 13; pointer-events: none; display: none; opacity: var(--wind-opacity, .4); transform: scaleX(var(--wind-sign, 1)); }
+        body.season-autumn .scene.windy .wind-leaves { display: block; }
+        .wind-leaves span { position: absolute; left: -5%; width: 7px; height: 4px; border: 1px solid #9b6b3a; border-radius: 70% 10% 70% 10%; background: #bb8345; opacity: .7; animation: pencil-leaf var(--leaf-speed, 8s) linear infinite; }
+        .wind-leaves span:nth-child(1) { top: 68%; animation-delay: -1s; }
+        .wind-leaves span:nth-child(2) { top: 81%; animation-delay: -4s; }
+        .wind-leaves span:nth-child(3) { top: 59%; animation-delay: -6s; }
+        .wind-leaves span:nth-child(4) { top: 74%; animation-delay: -8s; }
+        @keyframes pencil-leaf { to { translate: 110vw 18px; rotate: 540deg; } }
         .wx-badge { z-index: 20; right: 14px; bottom: 9px; color: #26392f; background: rgba(255,251,239,.88); box-shadow: 0 1px 8px rgba(31,38,31,.14); font-size: .67rem; letter-spacing: .01em; }
         .fireflies { z-index: 13; }
         @media (max-width: 600px) {
@@ -930,7 +977,8 @@ export default function Home() {
           .wx-badge { display: block; font-size: .55rem; max-width: calc(100% - 20px); overflow: hidden; text-overflow: ellipsis; right: 10px; bottom: 5px; }
         }
         @media (prefers-reduced-motion: reduce) {
-          .sheep-walk, .sheep-walk.walking, .crow, .crow-wings, .chimney-smoke span, .window-light, .weather-shade, .mist, .ff, .drop, .flake { animation: none !important; transition: none !important; }
+          .sheep-walk, .sheep-walk.walking, .crow, .crow-wings, .chimney-smoke span, .window-light, .weather-shade, .mist, .ff, .drop, .flake, .wind-strokes span, .wind-grass span, .wind-leaves span { animation: none !important; transition: none !important; }
+          .wind-strokes, .wind-grass, .wind-leaves { display: none !important; }
           body.night .window-light { opacity: .82; }
           .drop, .flake { display: none; }
           .crow { left: 50%; opacity: 1; transform: none; }
@@ -1017,6 +1065,11 @@ export default function Home() {
           <div className="weather-shade" aria-hidden="true" />
           <div className="mist m1" aria-hidden="true" />
           <div className="mist m2" aria-hidden="true" />
+          <div className="wind-strokes" aria-hidden="true"><span /><span /><span /><span /><span /></div>
+          <div className="wind-grass" aria-hidden="true">
+            {[4, 9, 17, 22, 31, 39, 47, 55, 63, 72, 81, 89, 96].map(x => <span key={x} style={{ left: `${x}%` }} />)}
+          </div>
+          <div className="wind-leaves" aria-hidden="true"><span /><span /><span /><span /></div>
 
           <button type="button" className="scene-hotspot castle-hotspot clickable" data-info="castle" aria-label="Discover Dunster Castle" />
           <button type="button" className="scene-hotspot cottage-hotspot clickable" data-info="cottage" aria-label="Discover Somerset cottages" />
