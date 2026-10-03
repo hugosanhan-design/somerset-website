@@ -173,13 +173,13 @@ export default function Home() {
       document.body.classList.remove('menu-open')
     })
 
-    /* The walking sheep follows the registered meadow edge as scrolling moves it. */
+    /* The fixed landscape stays in view while the sheep follows its meadow edge. */
     const sheep = $('sheepWalk')
     const scene = document.querySelector<HTMLElement>('.scene')
     let sheepRestTimer = 0
     let lastSheepX = -1
     const update = () => {
-      const travel = Math.max(window.innerHeight * 0.75, 1)
+      const travel = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1)
       const progress = Math.min(Math.max(window.scrollY / travel, 0), 1)
       const x = 0.29 + 0.33 * progress
       if (sheep && scene) {
@@ -948,7 +948,7 @@ export default function Home() {
         body.night .nav:not(.scrolled) .nav-logo-sub, body.night .nav:not(.scrolled) .nav-links .nav-sec a { color: rgba(255,249,233,.75); }
         body.night .nav:not(.scrolled) .nav-links .nav-cta a { color: #fff9e9; background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.5); }
         body.night .nav:not(.scrolled) .nav-burger span { background: #fff9e9; }
-        .scene { position: absolute; overflow: hidden; isolation: isolate; -webkit-mask-image: none; mask-image: none; filter: none; background: transparent; box-shadow: none; }
+        .scene { position: fixed; overflow: hidden; isolation: isolate; -webkit-mask-image: none; mask-image: none; filter: none; background: transparent; box-shadow: none; }
         .scene::after { display: none; }
         .landscape { position: absolute; inset: 0; z-index: 1; background-image: url('/scene/pencil/summer-integrated.webp'); background-size: 100% 100%; background-repeat: no-repeat; filter: brightness(var(--landscape-brightness, 1)); transition: filter var(--solar-transition, 0s) linear, background-image 0.5s ease; }
         body.season-spring .landscape { background-image: url('/scene/pencil/spring-integrated.webp'); }
