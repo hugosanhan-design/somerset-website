@@ -12,8 +12,8 @@
   --sl-ink:#17281B;
   --sl-ink-2:#3A4A38;
   --sl-muted:#5C6657;
-  --sl-green:#57B82C;
-  --sl-green-2:#3D8B1F;
+  --sl-green:#557a49;
+  --sl-green-2:#365c3a;
   --sl-forest:#1E4227;
   --sl-forest-2:#15301C;
   --sl-rule:#D9D2BC;
@@ -68,7 +68,7 @@
    computed-style check caught it). min-height + no shrinking keeps that impossible. */
 .sl-rail > *{flex-shrink:0}
 .sl-railtop{display:flex;justify-content:flex-end;align-items:center;min-height:26px;padding:0 2px}
-.sl-mark{width:38px;height:38px;border-radius:11px;background:var(--sl-green);color:#0F2410;display:grid;place-items:center;font-family:var(--sl-brand);font-weight:700;font-size:18px}
+.sl-mark{width:38px;height:38px;border-radius:11px;background:var(--sl-green);color:#fff;display:grid;place-items:center;font-family:var(--sl-brand);font-weight:700;font-size:18px}
 .sl-brandtext{min-width:0;overflow:hidden}
 .sl-name{display:block;font-family:var(--sl-brand);font-weight:700;font-size:13.5px;line-height:1.25;letter-spacing:-.01em;color:var(--sl-ink)}
 .sl-name b{color:var(--sl-green-2);font-weight:700}
