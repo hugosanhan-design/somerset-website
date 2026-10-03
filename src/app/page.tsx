@@ -423,7 +423,7 @@ export default function Home() {
         :root {
           --paper: #F5F1E6; --paper-2: #EDE7D6;
           --ink: #17281B; --racing: #1E4227; --racing-2: #2A5636;
-          --green: #57B82C; --green-dk: #3D8B1F; --leaf: #A8D77E;
+          --green: #557a49; --green-dk: #365c3a; --leaf: #b9cd9d;
           --brass: #C9A24B; --heather: #8C5E9C; --cheddar: #E3A33A; --cider: #B23A2C;
           --muted: #5C6657; --line: #D9D2BC; --ink-soft: #3A3024;
           --serif: 'Fraunces', Georgia, serif;
@@ -971,6 +971,24 @@ export default function Home() {
         .hero .btn-primary { background: #284735; border-color: #284735; color: #fffaf0; box-shadow: 0 7px 18px rgba(30,54,39,.16); }
         .hero .btn-primary:hover { background: #193a2c; border-color: #193a2c; box-shadow: 0 10px 22px rgba(30,54,39,.22); }
         .hero .eyebrow .dot { background: #a18350; box-shadow: 0 0 0 3px rgba(161,131,80,.18); }
+        .btn-primary { box-shadow: 0 7px 19px rgba(30,54,39,.15); }
+        .btn-primary:hover { box-shadow: 0 10px 24px rgba(30,54,39,.22); }
+        @media (max-width: 600px) {
+          .hero { padding-top: 3rem; }
+          .hero-content { padding-top: 0; }
+          .hero .eyebrow { margin-top: .5rem; margin-bottom: 1.25rem; }
+          .hero h1 { margin-bottom: 1.1rem; }
+          .hero-lead { margin-bottom: 1.7rem; }
+          .hero-actions { gap: .7rem; }
+        }
+        @media (max-width: 600px) and (max-height: 740px) {
+          .hero { padding-top: 1rem; }
+          .hero h1 { font-size: clamp(2.45rem, 10.5vw, 3rem); line-height: 1; margin-bottom: .75rem; }
+          .hero .eyebrow { margin-top: 0; margin-bottom: .75rem; }
+          .hero-lead { font-size: .91rem; line-height: 1.5; margin-bottom: .95rem; }
+          .hero-actions { gap: .5rem; }
+          .hero-actions .btn { padding: .7rem 1.3rem; }
+        }
       `}</style>
 
       <div className="grain" aria-hidden="true" />
