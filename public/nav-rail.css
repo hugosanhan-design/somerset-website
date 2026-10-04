@@ -26,12 +26,10 @@
 }
 
 /* ---------- shell ---------- */
-.sl-shell{display:grid;grid-template-columns:var(--sl-w) 1fr;grid-template-rows:auto 1fr;min-height:100vh;min-height:100dvh;transition:grid-template-columns .28s var(--sl-ease);position:relative;background:var(--sl-cream)}
-.sl-shell:has(.hero){background:linear-gradient(115deg,#dcc28e 0%,#ecdbb9 43%,#f5f1e6 100%)}
+.sl-shell{display:grid;grid-template-columns:var(--sl-w) 1fr;grid-template-rows:auto 1fr;min-height:100vh;min-height:100dvh;transition:grid-template-columns .28s var(--sl-ease);position:relative;background:linear-gradient(115deg,#dcc28e 0%,#ecdbb9 43%,#f5f1e6 100%)}
 .sl-shell.sl-collapsed{--sl-w:78px}
 .sl-shell.sl-narrow{grid-template-columns:1fr}
-.sl-col{min-width:0;display:flex;flex-direction:column}
-.sl-shell:has(.hero) .sl-col{background:var(--sl-cream)}
+.sl-col{min-width:0;display:flex;flex-direction:column;background:var(--sl-cream)}
 .sl-shell > main{min-width:0}
 
 
