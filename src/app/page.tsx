@@ -246,12 +246,28 @@ export default function Home() {
     const tree = document.querySelector<HTMLElement>('.apple-tree')
     const crow = $('crow')
     const apple = document.querySelector<HTMLElement>('.falling-apple')
+    const impact = document.querySelector<HTMLElement>('.tree-impact')
+    if (scene && crow && impact) {
+      // Aim the beak at the branch in this scene, rather than flying a fixed
+      // viewport distance that misses when the rail or viewport changes size.
+      const aimCrow = () => {
+        const s = scene.getBoundingClientRect()
+        const c = crow.getBoundingClientRect()
+        const target = getComputedStyle(impact)
+        const baseTop = s.bottom - s.height * .5 - c.height
+        crow.style.setProperty('--crow-crash-x', `${parseFloat(target.left) - c.width * .96}px`)
+        crow.style.setProperty('--crow-crash-y', `${s.top + parseFloat(target.top) - baseTop - c.height * .45}px`)
+      }
+      aimCrow()
+      window.addEventListener('resize', aimCrow)
+      cleanups.push(() => window.removeEventListener('resize', aimCrow))
+    }
     if (scene && tree && crow && apple && sheep) {
       const onEatEnd = (e: AnimationEvent) => { if (e.animationName === 'sheep-eat') sheep.classList.remove('eating') }
       sheep.addEventListener('animationend', onEatEnd)
       cleanups.push(() => sheep.removeEventListener('animationend', onEatEnd))
       const FALL_MS = 950
-      let state = 'hanging', fallStart = 0, hangX = 0, hangY = 0, floorY = 0, prevPhase = 0, started = false
+      let state = 'hanging', fallStart = 0, hangX = 0, hangY = 0, floorY = 0
       const geom = () => {
         const s = scene.getBoundingClientRect(), t = tree.getBoundingClientRect(), w = sheep.getBoundingClientRect()
         hangX = (t.left - s.left) + t.width * 0.52
@@ -270,16 +286,14 @@ export default function Home() {
         const a = crow.getAnimations && crow.getAnimations()[0]
         if (!a) return 0
         const dur = Number((a.effect?.getTiming?.().duration as number) || 9000)
-        return (Number(a.currentTime || 0) % dur) / dur
+        return Math.min(Number(a.currentTime || 0) / dur, 1)
       }
       const loop = (ts: number) => {
         const phase = crowPhase()
-        if (!started) { prevPhase = phase; started = true }
-        if (phase < prevPhase) { state = 'hanging'; geom(); place(hangX, hangY, 0); apple.style.opacity = '1' }
-        prevPhase = phase
+        if (phase >= .63) crow.classList.add('stuck')
         if (state === 'hanging') {
           place(hangX, hangY, 0)
-          if (phase > 0.605 && phase < 0.68) { state = 'falling'; fallStart = ts }
+          if (phase >= .61) { state = 'falling'; fallStart = ts }
         } else if (state === 'falling') {
           const t = Math.min((ts - fallStart) / FALL_MS, 1)
           place(hangX, hangY + (floorY - hangY) * t * t, 52 * t * t)
@@ -551,16 +565,18 @@ export default function Home() {
         .info-pop .info-body { font-size: 0.9rem; line-height: 1.62; color: var(--muted); }
         .sheep-walk { width: 56px; bottom: 18%; left: 4%; transition: left 0.08s linear; animation: sheep-bob 0.62s ease-in-out infinite; }
         @keyframes sheep-bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
-        .crow { width: 46px; bottom: 50%; left: 0; animation: crow-fly 9s ease-in-out infinite; }
+        .crow { width: 46px; bottom: 50%; left: 0; animation: crow-fly 7.5s ease-in-out both; }
         .crow-wings { transform-origin: 21px 13px; animation: crow-flap 0.34s ease-in-out infinite; }
+        .crow.stuck .crow-wings { animation: none; transform: scaleY(.65) rotate(-11deg); }
         @keyframes crow-flap { 0%,100% { transform: scaleY(1); } 50% { transform: scaleY(0.34) translateY(-2px); } }
         @keyframes crow-fly {
-          0% { transform: translate(-6vw,0) rotate(0deg); opacity: 0; } 8% { opacity: 1; }
-          30% { transform: translate(26vw,-16px) rotate(0deg); } 48% { transform: translate(50vw,-4px) rotate(0deg); }
-          56% { transform: translate(66vw,16px) rotate(8deg); } 61% { transform: translate(72vw,30px) rotate(12deg); }
-          64% { transform: translate(70vw,24px) rotate(-10deg); } 74% { transform: translate(71vw,26px) rotate(5deg); }
-          80% { transform: translate(73vw,18px) rotate(-8deg); } 90% { transform: translate(86vw,0px) rotate(-4deg); }
-          100% { transform: translate(102vw,-16px) rotate(0deg); opacity: 1; }
+          0% { transform: translate(-55px,-18px) rotate(-5deg); opacity: 0; }
+          8% { opacity: 1; }
+          32% { transform: translate(calc(var(--crow-crash-x, 90vw) * .42),-24px) rotate(-3deg); }
+          52% { transform: translate(calc(var(--crow-crash-x, 90vw) * .78),calc(var(--crow-crash-y, 0px) - 18px)) rotate(4deg); }
+          61% { transform: translate(var(--crow-crash-x, 90vw),var(--crow-crash-y, 0px)) rotate(15deg); }
+          65% { transform: translate(calc(var(--crow-crash-x, 90vw) - 9px),calc(var(--crow-crash-y, 0px) + 3px)) rotate(-20deg); }
+          70%,100% { transform: translate(var(--crow-crash-x, 90vw),var(--crow-crash-y, 0px)) rotate(12deg); opacity: 1; }
         }
         @keyframes tree-shake { 0%,58% { transform: rotate(0deg); } 61% { transform: rotate(1.6deg); } 64% { transform: rotate(-1.4deg); } 67% { transform: rotate(0.7deg); } 70%,100% { transform: rotate(0deg); } }
         .falling-apple.eaten { opacity: 0 !important; }
@@ -900,11 +916,11 @@ export default function Home() {
         .sheep-leg path { fill: none; stroke: #302d29; stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; }
         .sheep-leg.rear path { stroke: #51473d; stroke-width: 3; }
         .sheep-body { position: absolute; z-index: 1; left: 0; top: 0; width: 100%; height: 74%; object-fit: contain; pointer-events: none; }
-        .crow { z-index: 16; width: clamp(37px, 3.6vw, 52px); display: block; margin-left: var(--crow-wind-offset, 0px); filter: drop-shadow(0 1px 1px rgba(23,20,16,.25)); }
-        .tree-impact { position: absolute; z-index: 17; left: 96%; top: 33%; width: 24px; height: 24px; opacity: 0; pointer-events: none; animation: tree-impact 9s linear infinite; }
+        .crow { z-index: 16; width: clamp(37px, 3.6vw, 52px); display: block; filter: drop-shadow(0 1px 1px rgba(23,20,16,.25)); }
+        .tree-impact { position: absolute; z-index: 17; left: 96%; top: 33%; width: 24px; height: 24px; opacity: 0; pointer-events: none; animation: tree-impact 7.5s linear both; }
         .tree-impact::before, .tree-impact::after { content: ''; position: absolute; inset: 6px; border-top: 2px solid #493c2d; border-left: 1px solid #493c2d; transform: rotate(25deg); }
         .tree-impact::after { transform: rotate(120deg); }
-        @keyframes tree-impact { 0%,60%,65%,100% { opacity: 0; transform: scale(.3) rotate(0deg); } 61%,63% { opacity: .85; transform: scale(1) rotate(30deg); } }
+        @keyframes tree-impact { 0%,59%,68%,100% { opacity: 0; transform: scale(.3) rotate(0deg); } 61%,64% { opacity: .85; transform: scale(1) rotate(30deg); } }
         .crow-wings { animation-duration: var(--wing-duration, .34s); }
         .falling-apple { z-index: 15; }
         .precip { z-index: 14; }
@@ -966,7 +982,8 @@ export default function Home() {
           .wind-strokes, .wind-grass, .wind-leaves { display: none !important; }
           body.night .window-light { opacity: .82; }
           .drop, .flake { display: none; }
-          .crow { left: 50%; opacity: 1; transform: none; }
+          .crow { left: 0; opacity: 1; transform: translate(var(--crow-crash-x, 90vw),var(--crow-crash-y, 0px)) rotate(12deg); }
+          .crow-wings { transform: scaleY(.65) rotate(-11deg); }
         }
 
         /* Muted, confident action colour for the newer site. */
