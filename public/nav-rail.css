@@ -26,7 +26,7 @@
 }
 
 /* ---------- shell ---------- */
-.sl-shell{display:grid;grid-template-columns:var(--sl-w) 1fr;grid-template-rows:auto 1fr;min-height:100vh;min-height:100dvh;transition:grid-template-columns .28s var(--sl-ease);position:relative;background:linear-gradient(115deg,#dcc28e 0%,#ecdbb9 43%,#f5f1e6 100%)}
+.sl-shell{display:grid;grid-template-columns:var(--sl-w) 1fr;grid-template-rows:auto 1fr;min-height:100vh;min-height:100dvh;transition:grid-template-columns .28s var(--sl-ease);position:relative;background:radial-gradient(ellipse at 8% 2%,rgba(152,108,52,.26),transparent 32%),radial-gradient(ellipse at 72% 1%,rgba(255,247,218,.68),transparent 36%),linear-gradient(115deg,#d5b779 0%,#ecdbb8 46%,#f5f1e6 100%)}
 .sl-shell.sl-collapsed{--sl-w:68px}
 .sl-shell.sl-narrow{grid-template-columns:1fr}
 .sl-col{min-width:0;display:flex;flex-direction:column;background:var(--sl-cream)}
@@ -37,7 +37,7 @@
 /* The lockup is FLEXBOX TEXT, never an <img> of logo-colour.svg — those SVGs are
    live <text> at absolute x coords and overlap "Somerset" with LANGUAGE/CENTRE
    whenever the font renders wide. Three recorded recurrences. Do not swap it. */
-.sl-masthead{grid-column:1 / -1;height:var(--sl-mast);display:flex;align-items:center;gap:18px;padding:0 26px;background:rgba(255,253,248,.68);border-bottom:1px solid rgba(125,103,65,.18);box-shadow:inset 0 1px rgba(255,255,255,.55),0 3px 12px rgba(80,64,35,.035);-webkit-backdrop-filter:blur(16px) saturate(1.05);backdrop-filter:blur(16px) saturate(1.05);font-family:var(--sl-sans);position:relative;z-index:110}
+.sl-masthead{grid-column:1 / -1;height:var(--sl-mast);display:flex;align-items:center;gap:18px;padding:0 26px;background:linear-gradient(115deg,rgba(255,255,255,.56),rgba(255,255,255,.17) 48%,rgba(255,255,255,.34));border-bottom:1px solid rgba(255,255,255,.67);box-shadow:inset 0 1px rgba(255,255,255,.82),inset 0 -1px rgba(116,89,44,.09),0 8px 24px rgba(72,54,26,.095);-webkit-backdrop-filter:blur(26px) saturate(1.3);backdrop-filter:blur(26px) saturate(1.3);font-family:var(--sl-sans);position:relative;z-index:110}
 .sl-lockup{display:flex;align-items:flex-end;gap:10px;text-decoration:none;line-height:1}
 .sl-lk-word{font-family:var(--sl-brand);font-weight:700;font-size:36px;letter-spacing:-.022em;line-height:.86;color:var(--sl-green)}
 .sl-lk-sub{display:flex;flex-direction:column;font-weight:700;font-size:9.5px;letter-spacing:.23em;line-height:1.22;color:var(--sl-ink);padding-bottom:4px}
@@ -61,7 +61,7 @@
 .sl-narrow .sl-mast-meta{display:none}
 
 /* ---------- rail ---------- */
-.sl-rail{background:rgba(245,239,223,.62);border-right:1px solid rgba(125,103,65,.18);box-shadow:inset 1px 0 rgba(255,255,255,.45),3px 0 12px rgba(80,64,35,.025);-webkit-backdrop-filter:blur(16px) saturate(1.05);backdrop-filter:blur(16px) saturate(1.05);display:flex;flex-direction:column;padding:12px 12px 14px;position:sticky;top:0;min-height:calc(100dvh - var(--sl-mast));align-self:start;overflow:visible;z-index:100;font-family:var(--sl-sans)}
+.sl-rail{background:linear-gradient(105deg,rgba(255,255,255,.48),rgba(255,255,255,.12) 58%,rgba(255,255,255,.28));border-right:1px solid rgba(255,255,255,.62);box-shadow:inset 1px 0 rgba(255,255,255,.7),inset -1px 0 rgba(113,87,48,.08),6px 0 24px rgba(72,54,26,.075);-webkit-backdrop-filter:blur(26px) saturate(1.3);backdrop-filter:blur(26px) saturate(1.3);display:flex;flex-direction:column;padding:12px 12px 14px;position:sticky;top:0;min-height:calc(100dvh - var(--sl-mast));align-self:start;overflow:visible;z-index:100;font-family:var(--sl-sans)}
 /* The rail is a column flex container. Never give it a FIXED height: once the
    masthead took space, the content no longer fit and flexbox silently shrank the
    group labels to height:0 (they stayed in the DOM and the a11y tree, so only a
@@ -153,7 +153,7 @@
 .sl-burger{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;color:var(--sl-ink);border:0;background:none;cursor:pointer}
 .sl-scrim{position:fixed;inset:0;background:rgba(21,48,28,.42);opacity:0;pointer-events:none;transition:opacity .24s;z-index:95}
 .sl-narrow .sl-topbar{display:flex}
-.sl-narrow .sl-rail{position:fixed;top:0;bottom:0;left:0;width:266px;--sl-w:266px;height:100%;transform:translateX(-100%);transition:transform .28s var(--sl-ease);box-shadow:14px 0 44px -14px rgba(21,48,28,.4);overflow-y:auto}
+.sl-narrow .sl-rail{position:fixed;top:0;bottom:0;left:0;width:266px;--sl-w:266px;height:100%;background:linear-gradient(115deg,rgba(255,253,244,.88),rgba(255,250,235,.76));transform:translateX(-100%);transition:transform .28s var(--sl-ease);box-shadow:14px 0 44px -14px rgba(21,48,28,.4);overflow-y:auto}
 .sl-narrow .sl-toggle{display:none}
 .sl-narrow .sl-div{display:none}
 .sl-narrow .sl-item,.sl-narrow .sl-cta,.sl-narrow .sl-account{grid-template-columns:34px 1fr}
