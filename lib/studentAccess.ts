@@ -19,7 +19,25 @@ export interface StudentArea {
   links: StudentLink[]
 }
 
+// ── Shared course links ─────────────────────────────────────────────────────
+// Add these to any student's `links` array when they are enrolled in that course.
+const B1_UNIT1_COURSE: StudentLink = {
+  emoji: '📚',
+  title: 'B1 Unit 1 — Online Course',
+  desc: 'Me & My Day · vocabulary, grammar, reading, speaking and writing — all in one place.',
+  href: '/courses/b1-unit-1',
+}
+
 const STUDENTS: Record<string, { code: string; area: StudentArea }> = {
+  // Teacher's own test account — sees every course so new material can be checked
+  // from the student side before it is assigned to anyone.
+  hugo: {
+    code: 'HUGO-TEST',
+    area: {
+      displayName: 'Hugo',
+      links: [B1_UNIT1_COURSE],
+    },
+  },
   miriam: {
     code: 'MIRIAM-EIRE',
     area: {

@@ -11,6 +11,9 @@
 // to pick up new material; it's a full upsert per (group, date), safe to re-run.
 import { Pool } from 'pg'
 import fs from 'fs'
+import path from 'path'
+import { fileURLToPath } from 'url'
+import { execFileSync } from 'child_process'
 
 // Node doesn't auto-load .env.local outside `next dev`/`next build` — running
 // this script bare (`node scripts/...`) otherwise gets DATABASE_URL/
@@ -26,6 +29,82 @@ try {
 const pool = new Pool({ connectionString: process.env.DATABASE_URL })
 const GROUPS = ['fce1', 'pet1', 'flyers', 'friday-b2']
 
+// Copy real material files (worksheets, keys, slides, notes, review plays) out of the
+// Worksheets repo and into this app's public/materials-src/, mirroring their folder
+// structure, then rewrite each href in-place from a local-relative path to a public
+// URL path. Added 28 Sep 2026 after discovering these links 404'd on the deployed
+// site — they'd only ever been resolved relative to the local static portal.
+//
+// NEVER copies anything under _source-books/ (publisher book audio/scans) — that
+// stays "not synced yet" on purpose, see reference_somerset_portal.md's copyright note.
+// Only shelves.{worksheet,key,slides,notes,other,plan} and play/plays hrefs are
+// touched; unitAudio / shelves.audio are left completely alone.
+function syncMaterials(D, relBase) {
+  const worksheetsRoot = path.resolve(relBase, '..', '..')
+  const publicRoot = fileURLToPath(new URL('../public/materials-src/', import.meta.url))
+  const copiedDirs = new Set()
+  let filesRewritten = 0, skippedCopyright = 0
+
+  function toPublicHref(absPath) {
+    const relFromRoot = path.relative(worksheetsRoot, absPath)
+    if (relFromRoot.startsWith('..')) return null // outside the Worksheets repo entirely
+    if (relFromRoot.includes('_source-books')) { skippedCopyright++; return null }
+    const srcDir = path.dirname(absPath)
+    const destDir = path.join(publicRoot, path.dirname(relFromRoot))
+    if (!copiedDirs.has(srcDir)) {
+      copiedDirs.add(srcDir)
+      try {
+        // fs.cpSync's permission-preserving copy throws EACCES on this FUSE mount;
+        // plain `cp -R` (no -p) works fine and is all we need for static assets.
+        // Trailing `/.` on the source copies CONTENTS into destDir, which we create
+        // first — idempotent whether or not destDir already exists from a prior run.
+        fs.mkdirSync(destDir, { recursive: true })
+        execFileSync('cp', ['-R', srcDir + '/.', destDir])
+      } catch (e) {
+        console.warn(`  ! could not copy ${srcDir}: ${e.message}`)
+        return null
+      }
+    }
+    filesRewritten++
+    return '/materials-src/' + relFromRoot.split(path.sep).map(encodeURIComponent).join('/')
+  }
+
+  function rewriteShelfItem(item) {
+    if (!item || !item.files) return
+    for (const fmt of Object.keys(item.files)) {
+      const rel = item.files[fmt]
+      if (!rel || typeof rel !== 'string' || /^https?:\/\//.test(rel)) continue
+      const abs = path.resolve(relBase, rel)
+      const href = toPublicHref(abs)
+      if (href) item.files[fmt] = href
+    }
+  }
+
+  function rewritePlay(play) {
+    if (!play) return
+    const list = Array.isArray(play) ? play : [play]
+    for (const p of list) {
+      if (!p || !p.href || /^https?:\/\//.test(p.href)) continue
+      const abs = path.resolve(relBase, p.href)
+      const href = toPublicHref(abs)
+      if (href) p.href = href
+    }
+  }
+
+  for (const day of Object.values(D.days)) {
+    for (const c of day.classes || []) {
+      if (!GROUPS.includes(c.classId)) continue
+      const L = c.lesson || {}
+      const shelves = c.shelves || {}
+      for (const cat of ['worksheet', 'key', 'slides', 'notes', 'other', 'plan']) {
+        for (const item of shelves[cat] || []) rewriteShelfItem(item)
+      }
+      rewritePlay(L.play || L.plays)
+    }
+  }
+  console.log(`materials-src: ${copiedDirs.size} folders copied, ${filesRewritten} links rewritten, ${skippedCopyright} skipped (publisher copyright)`)
+}
+
 function newId() {
   return Date.now().toString(36) + Math.random().toString(36).slice(2, 7)
 }
@@ -40,6 +119,8 @@ async function main() {
   const jsonText = raw.split('window.PORTAL_DATA = ')[1].split(/;\s*$/)[0]
   const D = JSON.parse(jsonText)
 
+  syncMaterials(D, path.dirname(portalDataPath))
+
   await pool.query(`
     CREATE TABLE IF NOT EXISTS lesson_content (
       id TEXT PRIMARY KEY,
@@ -48,6 +129,7 @@ async function main() {
       unit TEXT, unit_approx INTEGER NOT NULL DEFAULT 0,
       title TEXT, pages TEXT, grammar TEXT, vocab TEXT, warmer TEXT,
       plan TEXT, print_note TEXT, flag TEXT, note TEXT,
+      booklet_digital_web TEXT,
       play_json TEXT NOT NULL DEFAULT 'null',
       arcade_json TEXT NOT NULL DEFAULT 'null',
       shelves_json TEXT NOT NULL DEFAULT 'null',
@@ -56,6 +138,9 @@ async function main() {
       UNIQUE(group_slug, date)
     );
   `)
+
+  // Additive: column may not exist on a table created before 28 Sep 2026.
+  await pool.query(`ALTER TABLE lesson_content ADD COLUMN IF NOT EXISTS booklet_digital_web TEXT;`)
 
   let upserted = 0, skipped = 0
   for (const [date, day] of Object.entries(D.days)) {
@@ -66,14 +151,16 @@ async function main() {
       await pool.query(
         `INSERT INTO lesson_content
            (id, group_slug, date, unit, unit_approx, title, pages, grammar, vocab, warmer,
-            plan, print_note, flag, note, play_json, arcade_json, shelves_json, unit_audio_json, generated_at)
-         VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19)
+            plan, print_note, flag, note, play_json, arcade_json, shelves_json, unit_audio_json, generated_at,
+            booklet_digital_web)
+         VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20)
          ON CONFLICT (group_slug, date) DO UPDATE SET
            unit=EXCLUDED.unit, unit_approx=EXCLUDED.unit_approx, title=EXCLUDED.title,
            pages=EXCLUDED.pages, grammar=EXCLUDED.grammar, vocab=EXCLUDED.vocab, warmer=EXCLUDED.warmer,
            plan=EXCLUDED.plan, print_note=EXCLUDED.print_note, flag=EXCLUDED.flag, note=EXCLUDED.note,
            play_json=EXCLUDED.play_json, arcade_json=EXCLUDED.arcade_json, shelves_json=EXCLUDED.shelves_json,
-           unit_audio_json=EXCLUDED.unit_audio_json, generated_at=EXCLUDED.generated_at`,
+           unit_audio_json=EXCLUDED.unit_audio_json, generated_at=EXCLUDED.generated_at,
+           booklet_digital_web=EXCLUDED.booklet_digital_web`,
         [
           newId(), c.classId, date,
           L.unit || null, L.unitApprox ? 1 : 0, L.title || null, L.pages || null,
@@ -84,6 +171,7 @@ async function main() {
           JSON.stringify(c.shelves || null),
           JSON.stringify((c.audio || []).concat(c.unitAudio || [])),
           D.generatedAt || null,
+          L.bookletDigitalWeb || null,
         ]
       )
       upserted++

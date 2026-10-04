@@ -24,6 +24,7 @@ export default auth((req) => {
   if (pathname === '/' || pathname === '/student' || pathname.startsWith('/student/')) return
   if (pathname.startsWith('/catchup/')) return
   if (pathname.startsWith('/write/')) return
+  if (pathname.startsWith('/courses/')) return
 
   if (!req.auth) {
     if (req.nextUrl.pathname.startsWith('/api/')) {
@@ -37,6 +38,6 @@ export default auth((req) => {
 
 export const config = {
   matcher: [
-    '/((?!api/auth|api/intake|api/teachers/bootstrap|api/admin/recover|api/correct|api/correct-docx|api/extract|api/detect-ai|api/cbt/submit|api/cbt/draft|api/speaking/practice|api/aoife|aoife|api/student/access|api/catchup/[^/]+|catchup|api/correct-student|write|cbt|login|setup|forgot-password|reset-password|intake|placement|games|uploads|sara|cbt-audio|_next/static|_next/image|favicon.ico|manifest.json|icons|.*\\.(?:png|jpg|jpeg|svg|ico|webp|mp3|html)$).*)',
+    '/((?!api/auth|api/intake|api/teachers/bootstrap|api/admin/recover|api/correct|api/correct-docx|api/extract|api/detect-ai|api/cbt/submit|api/cbt/draft|api/speaking/practice|api/aoife|aoife|api/student/access|api/catchup/[^/]+|catchup|api/correct-student|api/courses|write|cbt|login|setup|forgot-password|reset-password|intake|placement|games|uploads|sara|cbt-audio|_next/static|_next/image|favicon.ico|manifest.json|icons|.*\\.(?:png|jpg|jpeg|svg|ico|webp|mp3|html)$).*)',
   ],
 }

@@ -320,6 +320,132 @@ window.SOMERSET_UNITS['unit-02'] = {
    "a": "b) I'd like",
    "type": "choice",
    "topic": "before"
+  },
+  {
+   "q": "You use a spade to make a hole in the ground. You ___.  a) dig  b) pick  c) water",
+   "a": "a) dig",
+   "type": "choice",
+   "topic": "unit 2"
+  },
+  {
+   "q": "You ___ the plants with a watering can.",
+   "a": "water",
+   "type": "gap",
+   "topic": "unit 2"
+  },
+  {
+   "q": "A tomato is ripe. You take it from the plant. You ___ it.  a) pick  b) plant  c) dig",
+   "a": "a) pick",
+   "type": "choice",
+   "topic": "unit 2"
+  },
+  {
+   "q": "Say TWO things you do in a garden.",
+   "a": "dig · plant · water · weed · pick",
+   "type": "say",
+   "topic": "unit 2"
+  },
+  {
+   "q": "Ana's brother ___ do his homework before dinner.",
+   "a": "has to",
+   "type": "gap",
+   "topic": "unit 2"
+  },
+  {
+   "q": "Make it correct: 'My brother have to wash the dishes.'",
+   "a": "My brother HAS TO wash the dishes.",
+   "type": "fix",
+   "topic": "unit 2"
+  },
+  {
+   "q": "___ your dad have to work on Sundays? — No, he doesn't.",
+   "a": "Does",
+   "type": "gap",
+   "topic": "unit 2"
+  },
+  {
+   "q": "You ___ pay to go into the Mercado Central. It's free!  a) don't have to  b) have to  c) has to",
+   "a": "a) don't have to",
+   "type": "choice",
+   "topic": "unit 2"
+  },
+  {
+   "q": "Say TWO things you have to do at school.",
+   "a": "I have to do homework / listen / wear a uniform...",
+   "type": "say",
+   "topic": "unit 2"
+  },
+  {
+   "q": "Chips are made from ___.",
+   "a": "potatoes",
+   "type": "gap",
+   "topic": "unit 2"
+  },
+  {
+   "q": "Bugs Bunny loves eating ___.  a) carrots  b) chillis  c) pumpkins",
+   "a": "a) carrots",
+   "type": "choice",
+   "topic": "unit 2"
+  },
+  {
+   "q": "Which one is NOT a vegetable?  a) courgette  b) banana  c) potato",
+   "a": "b) banana",
+   "type": "choice",
+   "topic": "unit 2"
+  },
+  {
+   "q": "Make it correct: 'We need three potatos.'",
+   "a": "We need three POTATOES.",
+   "type": "fix",
+   "topic": "unit 2"
+  },
+  {
+   "q": "Which is the polite way to ask?  a) Give me a carrot.  b) I'd like a carrot, please.  c) I want carrot.",
+   "a": "b) I'd like a carrot, please.",
+   "type": "choice",
+   "topic": "unit 2"
+  },
+  {
+   "q": "A: Would you like a green salad? B: Yes, I ___.",
+   "a": "would",
+   "type": "gap",
+   "topic": "unit 2"
+  },
+  {
+   "q": "You are at the market. Ask for TWO vegetables. Start: 'I'd like...'",
+   "a": "I'd like two carrots and a potato, please.",
+   "type": "say",
+   "topic": "unit 2"
+  },
+  {
+   "q": "How often do you have a birthday?  a) Once a year  b) Every day  c) Twice a week",
+   "a": "a) Once a year",
+   "type": "choice",
+   "topic": "unit 2"
+  },
+  {
+   "q": "Say how often you have English class.",
+   "a": "twice a week (Monday and Wednesday)",
+   "type": "say",
+   "topic": "unit 2"
+  },
+  {
+   "q": "Once a month means ___.  a) one day every month  b) one day every week  c) every day",
+   "a": "a) one day every month",
+   "type": "choice",
+   "topic": "unit 2"
+  },
+  {
+   "q": "The Mercado Central in Valencia is a place where you can buy ___.  a) fresh food  b) cars  c) shoes",
+   "a": "a) fresh food",
+   "type": "choice",
+   "topic": "unit 2"
+  },
+  {
+   "q": "Indoor farms grow food ___.  a) inside a building  b) in the sea  c) on the moon",
+   "a": "a) inside a building",
+   "type": "choice",
+   "topic": "unit 2"
   }
  ],
  "cards": [

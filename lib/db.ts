@@ -277,6 +277,25 @@ async function initSchema(): Promise<void> {
       created_by     TEXT REFERENCES teachers(id) ON DELETE SET NULL,
       created_at     TEXT DEFAULT (now()::text)
     );
+
+    -- Self-study course progress (spaced-repetition boxes, active days, game bests),
+    -- one JSON document per student per course. Keyed by the Student's Corner name.
+    CREATE TABLE IF NOT EXISTS course_progress (
+      student_key TEXT NOT NULL,
+      course      TEXT NOT NULL,
+      data        TEXT NOT NULL DEFAULT '{}',
+      updated_at  TEXT DEFAULT (now()::text),
+      PRIMARY KEY (student_key, course)
+    );
+
+    -- Azure speech sessions per student per day: the app's own spending cap,
+    -- because Azure pay-as-you-go has none.
+    CREATE TABLE IF NOT EXISTS speech_usage (
+      day         TEXT NOT NULL,
+      student_key TEXT NOT NULL,
+      sessions    INTEGER NOT NULL DEFAULT 0,
+      PRIMARY KEY (day, student_key)
+    );
   `)
 
   await addColumnIfMissing(pool, 'students', 'group_id', "TEXT REFERENCES groups(id) ON DELETE SET NULL")
