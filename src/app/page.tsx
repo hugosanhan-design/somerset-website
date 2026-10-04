@@ -155,18 +155,28 @@ export default function Home() {
     /* The fixed landscape stays in view while the sheep follows its meadow edge. */
     const sheep = $('sheepWalk')
     const scene = document.querySelector<HTMLElement>('.scene')
+    let sheepWalkTimer = 0
     let sheepRestTimer = 0
+    let sheepLowerTimer = 0
     let lastSheepX = -1
     let lastScrollY = window.scrollY
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const beginLowering = () => {
+      if (!sheep || reduceMotion) return
+      if (sheep.classList.contains('eating') || sheep.classList.contains('walking') || sheep.classList.contains('lowering') || sheep.classList.contains('grazing')) return
+      sheep.classList.add('lowering')
+      sheepLowerTimer = window.setTimeout(() => {
+        sheep.classList.remove('lowering')
+        if (!sheep.classList.contains('walking') && !sheep.classList.contains('eating')) sheep.classList.add('grazing')
+      }, 680)
+    }
     const settleSheep = () => {
       if (!sheep || reduceMotion) return
+      window.clearTimeout(sheepWalkTimer)
       window.clearTimeout(sheepRestTimer)
-      sheepRestTimer = window.setTimeout(() => {
-        sheep.classList.remove('walking')
-        sheep.querySelectorAll<SVGElement>('.sheep-leg').forEach(leg => { leg.style.transform = 'rotate(0deg)' })
-        if (!sheep.classList.contains('eating')) sheep.classList.add('grazing')
-      }, 2000)
+      window.clearTimeout(sheepLowerTimer)
+      sheepWalkTimer = window.setTimeout(() => sheep.classList.remove('walking'), 170)
+      sheepRestTimer = window.setTimeout(beginLowering, 2000)
     }
     const update = () => {
       const scrollY = window.scrollY
@@ -178,12 +188,7 @@ export default function Home() {
         sheep.style.bottom = `${meadowGround(x) * scene.clientHeight}px`
         if (lastSheepX >= 0 && Math.abs(scrollY - lastScrollY) > 0.5 && !reduceMotion) {
           sheep.classList.toggle('reverse', scrollY < lastScrollY)
-          sheep.classList.remove('grazing')
-          const phase = progress * 68
-          sheep.querySelectorAll<SVGElement>('.sheep-leg').forEach((leg, i) => {
-            const swing = Math.sin(phase + (i % 2 ? Math.PI : 0)) * 22
-            leg.style.transform = `rotate(${swing}deg)`
-          })
+          sheep.classList.remove('lowering', 'grazing')
           sheep.classList.add('walking')
           settleSheep()
         }
@@ -196,7 +201,7 @@ export default function Home() {
     window.addEventListener('resize', update)
     update()
     settleSheep()
-    cleanups.push(() => { window.removeEventListener('scroll', update); window.removeEventListener('resize', update); window.clearTimeout(sheepRestTimer) })
+    cleanups.push(() => { window.removeEventListener('scroll', update); window.removeEventListener('resize', update); window.clearTimeout(sheepWalkTimer); window.clearTimeout(sheepRestTimer); window.clearTimeout(sheepLowerTimer) })
 
     /* ── Reveal on scroll ── */
     const io = new IntersectionObserver(entries => {
@@ -278,7 +283,7 @@ export default function Home() {
       const onEatEnd = (e: AnimationEvent) => {
         if (e.animationName !== 'sheep-eat') return
         sheep.classList.remove('eating')
-        if (!sheep.classList.contains('walking') && !reduceMotion) sheep.classList.add('grazing')
+        if (!sheep.classList.contains('walking') && !reduceMotion) beginLowering()
       }
       sheep.addEventListener('animationend', onEatEnd)
       cleanups.push(() => sheep.removeEventListener('animationend', onEatEnd))
@@ -322,7 +327,8 @@ export default function Home() {
           const sxL = w.left - s.left, sxR = w.right - s.left
           if (hangX > sxL + w.width * 0.15 && hangX < sxR - w.width * 0.10) {
             state = 'eaten'; apple.style.opacity = '0'
-            sheep.classList.remove('grazing', 'eating'); void (sheep as HTMLElement).offsetWidth; sheep.classList.add('eating')
+            window.clearTimeout(sheepRestTimer); window.clearTimeout(sheepLowerTimer)
+            sheep.classList.remove('lowering', 'grazing', 'eating'); void (sheep as HTMLElement).offsetWidth; sheep.classList.add('eating')
           }
         }
         rafId = requestAnimationFrame(loop)
@@ -939,23 +945,28 @@ export default function Home() {
         @keyframes pencil-sheep-bob { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(-2px)} }
         .sheep-figure { position: absolute; inset: 0; transform-origin: center center; transition: transform .22s ease; }
         .sheep-walk.reverse .sheep-figure { transform: scaleX(-1); }
-        .sheep-legs { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; transition: opacity 1.1s ease-in-out; }
-        .sheep-leg { transition: transform .13s ease-out; }
+        .sheep-legs { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; transition: opacity .65s ease-in-out; }
+        .sheep-leg { transition: transform .18s ease-out; }
         .sheep-leg path { fill: none; stroke: #302d29; stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; }
         .sheep-leg.rear path { stroke: #51473d; stroke-width: 3; }
-        .sheep-body { position: absolute; z-index: 1; left: 0; top: 0; width: 100%; height: 74%; object-fit: contain; pointer-events: none; transform-origin: 43% 76%; transition: opacity 1.1s ease-in-out, transform 1.25s ease-in-out; }
-        .sheep-graze-form { position: absolute; z-index: 2; inset: 0; opacity: 0; pointer-events: none; transition: opacity 1.1s ease-in-out; }
-        .sheep-graze-pose { position: absolute; left: 0; top: 0; width: 100%; height: auto; transform-origin: top center; transform: translateY(-4px) scaleY(1.13); transition: transform 1.25s ease-in-out; }
+        .sheep-walk.walking .sheep-leg { animation: sheep-stride .68s ease-in-out infinite; }
+        .sheep-walk.walking .sheep-leg:nth-child(2), .sheep-walk.walking .sheep-leg:nth-child(3) { animation-delay: -.34s; }
+        @keyframes sheep-stride { 0%,100% { transform: rotate(-15deg); } 25% { transform: rotate(5deg); } 50% { transform: rotate(19deg); } 75% { transform: rotate(4deg); } }
+        .sheep-body { position: absolute; z-index: 1; left: 0; top: 0; width: 100%; height: 74%; object-fit: contain; pointer-events: none; transform-origin: 43% 76%; transition: opacity .65s ease-in-out, transform .7s ease-in-out; }
+        .sheep-lowering-form, .sheep-graze-form { position: absolute; inset: 0; opacity: 0; pointer-events: none; transition: opacity .68s ease-in-out; }
+        .sheep-lowering-form { z-index: 2; }
+        .sheep-graze-form { z-index: 3; }
+        .sheep-lowering-pose, .sheep-graze-pose { position: absolute; left: 0; top: 0; width: 100%; height: auto; transform-origin: top center; transform: translateY(3px) scaleY(1.25); }
         .sheep-chew { position: absolute; right: 4%; bottom: 6%; width: 8px; height: 3px; border-bottom: 1px solid #3e332a; border-radius: 50%; opacity: 0; transform-origin: left center; animation: sheep-jaw .52s ease-in-out infinite alternate; }
         .sheep-graze-grass { position: absolute; right: 1%; bottom: 1px; width: 12px; height: 8px; border-left: 1px solid #687a3e; border-right: 1px solid #79864d; border-radius: 50% 50% 0 0; transform: rotate(-12deg); }
         .sheep-graze-grass::after { content: ''; position: absolute; left: 5px; bottom: 0; width: 1px; height: 7px; background: #71824a; transform: rotate(25deg); transform-origin: bottom; }
-        .sheep-walk.grazing .sheep-body, .sheep-walk.grazing .sheep-legs { opacity: 0; }
+        .sheep-walk.lowering .sheep-body, .sheep-walk.lowering .sheep-legs, .sheep-walk.grazing .sheep-body, .sheep-walk.grazing .sheep-legs { opacity: 0; }
+        .sheep-walk.lowering .sheep-body { transform: translateY(1px) rotate(7deg); }
         .sheep-walk.grazing .sheep-body { transform: translateY(3px) rotate(14deg); }
+        .sheep-walk.lowering .sheep-lowering-form { opacity: 1; }
         .sheep-walk.grazing .sheep-graze-form { opacity: 1; }
-        .sheep-walk.grazing .sheep-graze-pose { transform: translateY(3px) scaleY(1.25); }
         .sheep-walk.grazing .sheep-chew { opacity: .9; }
-        .sheep-walk.walking .sheep-body, .sheep-walk.walking .sheep-legs, .sheep-walk.walking .sheep-graze-form { transition-duration: .25s; }
-        .sheep-walk.walking .sheep-graze-pose { transition-duration: .3s; }
+        .sheep-walk.walking .sheep-body, .sheep-walk.walking .sheep-legs, .sheep-walk.walking .sheep-lowering-form, .sheep-walk.walking .sheep-graze-form { transition-duration: .25s; }
         @keyframes sheep-jaw { from { transform: translateY(0) rotate(-3deg); } to { transform: translateY(1.5px) rotate(7deg); } }
         .crow { z-index: 16; width: clamp(37px, 3.6vw, 52px); display: block; filter: drop-shadow(0 1px 1px rgba(23,20,16,.25)); }
         .tree-impact { position: absolute; z-index: 17; left: 96%; top: 33%; width: 24px; height: 24px; opacity: 0; pointer-events: none; animation: tree-impact 16s linear infinite; }
@@ -1025,7 +1036,7 @@ export default function Home() {
           .wx-badge { display: block; font-size: .55rem; max-width: calc(100% - 90px); overflow: hidden; text-overflow: ellipsis; right: 76px; bottom: 7px; }
         }
         @media (prefers-reduced-motion: reduce) {
-          .sheep-walk, .sheep-walk.walking, .sheep-body, .sheep-figure, .sheep-graze-pose, .sheep-chew, .crow, .crow-wings, .flag-cloth, .chimney-smoke span, .window-light, .weather-shade, .landscape, .solar-glow, .pencil-sun, .night-veil, .mist, .ff, .drop, .flake, .wind-grass span, .wind-leaves span { animation: none !important; transition: none !important; }
+          .sheep-walk, .sheep-walk.walking, .sheep-leg, .sheep-body, .sheep-figure, .sheep-lowering-form, .sheep-graze-form, .sheep-chew, .crow, .crow-wings, .flag-cloth, .chimney-smoke span, .window-light, .weather-shade, .landscape, .solar-glow, .pencil-sun, .night-veil, .mist, .ff, .drop, .flake, .wind-grass span, .wind-leaves span { animation: none !important; transition: none !important; }
           .wind-grass, .wind-leaves { display: none !important; }
           body.night .window-light { opacity: .82; }
           .drop, .flake { display: none; }
@@ -1145,12 +1156,15 @@ export default function Home() {
           <div className="sheep-walk clickable" id="sheepWalk" data-info="sheep" role="button" tabIndex={0} aria-label="Discover Somerset sheep">
             <div className="sheep-figure" aria-hidden="true">
               <svg className="sheep-legs" viewBox="0 0 100 88">
-                <g className="sheep-leg rear" style={{ transformOrigin: '24px 47px' }}><path d="M24 47 Q21 62 19 81" /></g>
-                <g className="sheep-leg rear" style={{ transformOrigin: '42px 48px' }}><path d="M42 48 Q42 64 41 82" /></g>
-                <g className="sheep-leg" style={{ transformOrigin: '59px 48px' }}><path d="M59 48 Q57 65 58 82" /></g>
-                <g className="sheep-leg" style={{ transformOrigin: '77px 45px' }}><path d="M77 45 Q78 61 76 81" /></g>
+                <g className="sheep-leg rear" style={{ transformOrigin: '24px 47px' }}><path d="M24 47 Q23 58 21 66 L19 80 L25 81" /></g>
+                <g className="sheep-leg rear" style={{ transformOrigin: '42px 48px' }}><path d="M42 48 Q43 60 40 68 L40 81 L46 82" /></g>
+                <g className="sheep-leg" style={{ transformOrigin: '59px 48px' }}><path d="M59 48 Q58 60 61 68 L60 81 L66 82" /></g>
+                <g className="sheep-leg" style={{ transformOrigin: '77px 45px' }}><path d="M77 45 Q78 58 75 66 L76 80 L82 81" /></g>
               </svg>
               <Image className="sheep-body" src="/scene/pencil/sheep-body.webp" alt="" width={1536} height={1024} unoptimized />
+              <div className="sheep-lowering-form">
+                <Image className="sheep-lowering-pose" src="/scene/pencil/sheep-lowering.webp" alt="" width={1536} height={1024} unoptimized />
+              </div>
               <div className="sheep-graze-form">
                 <Image className="sheep-graze-pose" src="/scene/pencil/sheep-grazing.webp" alt="" width={1536} height={1024} unoptimized />
                 <span className="sheep-chew" /><span className="sheep-graze-grass" />
