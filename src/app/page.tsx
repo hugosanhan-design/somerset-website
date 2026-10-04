@@ -945,15 +945,15 @@ export default function Home() {
         @keyframes pencil-sheep-bob { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(-2px)} }
         .sheep-figure { position: absolute; inset: 0; transform-origin: center center; transition: transform .22s ease; }
         .sheep-walk.reverse .sheep-figure { transform: scaleX(-1); }
-        .sheep-legs { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; transition: opacity .65s ease-in-out; }
+        .sheep-legs { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; transition: opacity .2s ease-in-out; }
         .sheep-leg { transition: transform .18s ease-out; }
         .sheep-leg path { fill: none; stroke: #302d29; stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; }
         .sheep-leg.rear path { stroke: #51473d; stroke-width: 3; }
         .sheep-walk.walking .sheep-leg { animation: sheep-stride .68s ease-in-out infinite; }
         .sheep-walk.walking .sheep-leg:nth-child(2), .sheep-walk.walking .sheep-leg:nth-child(3) { animation-delay: -.34s; }
         @keyframes sheep-stride { 0%,100% { transform: rotate(-15deg); } 25% { transform: rotate(5deg); } 50% { transform: rotate(19deg); } 75% { transform: rotate(4deg); } }
-        .sheep-body { position: absolute; z-index: 1; left: 0; top: 0; width: 100%; height: 74%; object-fit: contain; pointer-events: none; transform-origin: 43% 76%; transition: opacity .65s ease-in-out, transform .7s ease-in-out; }
-        .sheep-lowering-form, .sheep-graze-form { position: absolute; inset: 0; opacity: 0; pointer-events: none; transition: opacity .68s ease-in-out; }
+        .sheep-body { position: absolute; z-index: 1; left: 0; top: 0; width: 100%; height: 74%; object-fit: contain; pointer-events: none; transform-origin: 43% 76%; transition: opacity .2s ease-in-out, transform .5s ease-in-out; }
+        .sheep-lowering-form, .sheep-graze-form { position: absolute; inset: 0; opacity: 0; pointer-events: none; transition: opacity .2s ease-in-out; }
         .sheep-lowering-form { z-index: 2; }
         .sheep-graze-form { z-index: 3; }
         .sheep-lowering-pose, .sheep-graze-pose { position: absolute; left: 0; top: 0; width: 100%; height: auto; transform-origin: top center; transform: translateY(3px) scaleY(1.25); }
