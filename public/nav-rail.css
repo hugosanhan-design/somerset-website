@@ -37,7 +37,7 @@
 /* The lockup is FLEXBOX TEXT, never an <img> of logo-colour.svg — those SVGs are
    live <text> at absolute x coords and overlap "Somerset" with LANGUAGE/CENTRE
    whenever the font renders wide. Three recorded recurrences. Do not swap it. */
-.sl-masthead{grid-column:1 / -1;height:var(--sl-mast);display:flex;align-items:center;gap:24px;padding:0 34px;background:var(--sl-cream);border-bottom:1px solid var(--sl-rule);font-family:var(--sl-sans);position:relative;z-index:110}
+.sl-masthead{grid-column:1 / -1;height:var(--sl-mast);display:flex;align-items:center;gap:24px;padding:0 34px;background:rgba(255,253,248,.78);border-bottom:1px solid var(--sl-rule);box-shadow:inset 0 1px rgba(255,255,255,.5);-webkit-backdrop-filter:blur(14px) saturate(1.08);backdrop-filter:blur(14px) saturate(1.08);font-family:var(--sl-sans);position:relative;z-index:110}
 .sl-lockup{display:flex;align-items:flex-end;gap:12px;text-decoration:none;line-height:1}
 .sl-lk-word{font-family:var(--sl-brand);font-weight:700;font-size:42px;letter-spacing:-.022em;line-height:.86;color:var(--sl-green)}
 .sl-lk-sub{display:flex;flex-direction:column;font-weight:700;font-size:10.5px;letter-spacing:.24em;line-height:1.22;color:var(--sl-ink);padding-bottom:5px}
@@ -61,7 +61,7 @@
 .sl-narrow .sl-mast-meta{display:none}
 
 /* ---------- rail ---------- */
-.sl-rail{background:var(--sl-rail);border-right:1px solid var(--sl-rule);display:flex;flex-direction:column;padding:14px 14px 16px;position:sticky;top:0;min-height:calc(100dvh - var(--sl-mast));align-self:start;overflow:visible;z-index:100;font-family:var(--sl-sans)}
+.sl-rail{background:rgba(237,231,214,.76);border-right:1px solid var(--sl-rule);box-shadow:inset 1px 0 rgba(255,255,255,.38);-webkit-backdrop-filter:blur(14px) saturate(1.08);backdrop-filter:blur(14px) saturate(1.08);display:flex;flex-direction:column;padding:14px 14px 16px;position:sticky;top:0;min-height:calc(100dvh - var(--sl-mast));align-self:start;overflow:visible;z-index:100;font-family:var(--sl-sans)}
 /* The rail is a column flex container. Never give it a FIXED height: once the
    masthead took 90px, the content no longer fit and flexbox silently shrank the
    group labels to height:0 (they stayed in the DOM and the a11y tree, so only a
