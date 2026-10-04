@@ -157,33 +157,45 @@ export default function Home() {
     const scene = document.querySelector<HTMLElement>('.scene')
     let sheepRestTimer = 0
     let lastSheepX = -1
+    let lastScrollY = window.scrollY
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const settleSheep = () => {
+      if (!sheep || reduceMotion) return
+      window.clearTimeout(sheepRestTimer)
+      sheepRestTimer = window.setTimeout(() => {
+        sheep.classList.remove('walking')
+        sheep.querySelectorAll<SVGElement>('.sheep-leg').forEach(leg => { leg.style.transform = 'rotate(0deg)' })
+        if (!sheep.classList.contains('eating')) sheep.classList.add('grazing')
+      }, 900)
+    }
     const update = () => {
+      const scrollY = window.scrollY
       const travel = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1)
-      const progress = Math.min(Math.max(window.scrollY / travel, 0), 1)
+      const progress = Math.min(Math.max(scrollY / travel, 0), 1)
       const x = 0.29 + 0.33 * progress
       if (sheep && scene) {
         sheep.style.left = `${x * 100}%`
         sheep.style.bottom = `${meadowGround(x) * scene.clientHeight}px`
-        if (lastSheepX >= 0 && Math.abs(x - lastSheepX) > 0.0001 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        if (lastSheepX >= 0 && Math.abs(scrollY - lastScrollY) > 0.5 && !reduceMotion) {
+          sheep.classList.toggle('reverse', scrollY < lastScrollY)
+          sheep.classList.remove('grazing')
           const phase = progress * 68
           sheep.querySelectorAll<SVGElement>('.sheep-leg').forEach((leg, i) => {
             const swing = Math.sin(phase + (i % 2 ? Math.PI : 0)) * 22
             leg.style.transform = `rotate(${swing}deg)`
           })
           sheep.classList.add('walking')
-          window.clearTimeout(sheepRestTimer)
-          sheepRestTimer = window.setTimeout(() => {
-            sheep.classList.remove('walking')
-            sheep.querySelectorAll<SVGElement>('.sheep-leg').forEach(leg => { leg.style.transform = 'rotate(0deg)' })
-          }, 220)
+          settleSheep()
         }
         lastSheepX = x
       }
+      lastScrollY = scrollY
       document.body.classList.toggle('night', (document.body.dataset.solarNight ?? document.body.dataset.wxNight) === '1')
     }
     window.addEventListener('scroll', update, { passive: true })
     window.addEventListener('resize', update)
     update()
+    settleSheep()
     cleanups.push(() => { window.removeEventListener('scroll', update); window.removeEventListener('resize', update); window.clearTimeout(sheepRestTimer) })
 
     /* ── Reveal on scroll ── */
@@ -263,7 +275,11 @@ export default function Home() {
       cleanups.push(() => window.removeEventListener('resize', aimCrow))
     }
     if (scene && tree && crow && apple && sheep) {
-      const onEatEnd = (e: AnimationEvent) => { if (e.animationName === 'sheep-eat') sheep.classList.remove('eating') }
+      const onEatEnd = (e: AnimationEvent) => {
+        if (e.animationName !== 'sheep-eat') return
+        sheep.classList.remove('eating')
+        if (!sheep.classList.contains('walking') && !reduceMotion) sheep.classList.add('grazing')
+      }
       sheep.addEventListener('animationend', onEatEnd)
       cleanups.push(() => sheep.removeEventListener('animationend', onEatEnd))
       const FALL_MS = 950
@@ -306,7 +322,7 @@ export default function Home() {
           const sxL = w.left - s.left, sxR = w.right - s.left
           if (hangX > sxL + w.width * 0.15 && hangX < sxR - w.width * 0.10) {
             state = 'eaten'; apple.style.opacity = '0'
-            sheep.classList.remove('eating'); void (sheep as HTMLElement).offsetWidth; sheep.classList.add('eating')
+            sheep.classList.remove('grazing', 'eating'); void (sheep as HTMLElement).offsetWidth; sheep.classList.add('eating')
           }
         }
         rafId = requestAnimationFrame(loop)
@@ -595,7 +611,7 @@ export default function Home() {
         @keyframes tree-shake { 0%,58% { transform: rotate(0deg); } 61% { transform: rotate(1.6deg); } 64% { transform: rotate(-1.4deg); } 67% { transform: rotate(0.7deg); } 70%,100% { transform: rotate(0deg); } }
         .falling-apple.eaten { opacity: 0 !important; }
         .sheep-walk.eating { animation: sheep-eat 1.1s ease-in-out; }
-        @keyframes sheep-eat { 0%{transform:translateY(0) rotate(0deg)} 20%{transform:translateY(6px) rotate(3deg)} 45%{transform:translateY(3px) rotate(1deg)} 62%{transform:translateY(5px) rotate(2deg)} 80%{transform:translateY(2px) rotate(0.5deg)} 100%{transform:translateY(0) rotate(0deg)} }
+        @keyframes sheep-eat { 0%{transform:translateX(-50%) translateY(0) rotate(0deg)} 20%{transform:translateX(-50%) translateY(6px) rotate(3deg)} 45%{transform:translateX(-50%) translateY(3px) rotate(1deg)} 62%{transform:translateX(-50%) translateY(5px) rotate(2deg)} 80%{transform:translateX(-50%) translateY(2px) rotate(0.5deg)} 100%{transform:translateX(-50%) translateY(0) rotate(0deg)} }
         .smoke { transform-box: fill-box; transform-origin: center; }
         .smoke.s1 { animation: smoke 3.2s ease-out infinite; }
         .smoke.s2 { animation: smoke 3.2s ease-out 1.1s infinite; }
@@ -925,11 +941,15 @@ export default function Home() {
         .sheep-walk { z-index: 15; width: clamp(56px, 5.1vw, 76px); height: clamp(50px, 4.7vw, 68px); transform: translateX(-50%); animation: none; transition: left .12s linear, bottom .12s linear; filter: brightness(var(--landscape-brightness, 1)) saturate(.72) contrast(.92); }
         .sheep-walk.walking { animation: pencil-sheep-bob .36s ease-in-out infinite; }
         @keyframes pencil-sheep-bob { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(-2px)} }
+        .sheep-figure { position: absolute; inset: 0; transform-origin: center center; transition: transform .22s ease; }
+        .sheep-walk.reverse .sheep-figure { transform: scaleX(-1); }
         .sheep-legs { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
         .sheep-leg { transition: transform .13s ease-out; }
         .sheep-leg path { fill: none; stroke: #302d29; stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; }
         .sheep-leg.rear path { stroke: #51473d; stroke-width: 3; }
-        .sheep-body { position: absolute; z-index: 1; left: 0; top: 0; width: 100%; height: 74%; object-fit: contain; pointer-events: none; }
+        .sheep-body { position: absolute; z-index: 1; left: 0; top: 0; width: 100%; height: 74%; object-fit: contain; pointer-events: none; transform-origin: 43% 76%; }
+        .sheep-walk.grazing .sheep-body { animation: sheep-graze 3.4s ease-in-out infinite; }
+        @keyframes sheep-graze { 0%,8%,92%,100% { transform: rotate(0deg); } 24%,68% { transform: translateY(3px) rotate(12deg); } 46% { transform: translateY(5px) rotate(15deg); } 76% { transform: translateY(2px) rotate(7deg); } }
         .crow { z-index: 16; width: clamp(37px, 3.6vw, 52px); display: block; filter: drop-shadow(0 1px 1px rgba(23,20,16,.25)); }
         .tree-impact { position: absolute; z-index: 17; left: 96%; top: 33%; width: 24px; height: 24px; opacity: 0; pointer-events: none; animation: tree-impact 16s linear infinite; }
         .tree-impact::before, .tree-impact::after { content: ''; position: absolute; inset: 6px; border-top: 2px solid #493c2d; border-left: 1px solid #493c2d; transform: rotate(25deg); }
@@ -997,7 +1017,7 @@ export default function Home() {
           .wx-badge { display: block; font-size: .55rem; max-width: calc(100% - 90px); overflow: hidden; text-overflow: ellipsis; right: 76px; bottom: 7px; }
         }
         @media (prefers-reduced-motion: reduce) {
-          .sheep-walk, .sheep-walk.walking, .crow, .crow-wings, .flag-cloth, .chimney-smoke span, .window-light, .weather-shade, .landscape, .solar-glow, .pencil-sun, .night-veil, .mist, .ff, .drop, .flake, .wind-strokes span, .wind-grass span, .wind-leaves span { animation: none !important; transition: none !important; }
+          .sheep-walk, .sheep-walk.walking, .sheep-body, .sheep-figure, .crow, .crow-wings, .flag-cloth, .chimney-smoke span, .window-light, .weather-shade, .landscape, .solar-glow, .pencil-sun, .night-veil, .mist, .ff, .drop, .flake, .wind-strokes span, .wind-grass span, .wind-leaves span { animation: none !important; transition: none !important; }
           .wind-strokes, .wind-grass, .wind-leaves { display: none !important; }
           body.night .window-light { opacity: .82; }
           .drop, .flake { display: none; }
@@ -1116,13 +1136,15 @@ export default function Home() {
           </svg>
 
           <div className="sheep-walk clickable" id="sheepWalk" data-info="sheep" role="button" tabIndex={0} aria-label="Discover Somerset sheep">
-            <svg className="sheep-legs" viewBox="0 0 100 88" aria-hidden="true">
-              <g className="sheep-leg rear" style={{ transformOrigin: '24px 47px' }}><path d="M24 47 Q21 62 19 81" /></g>
-              <g className="sheep-leg rear" style={{ transformOrigin: '42px 48px' }}><path d="M42 48 Q42 64 41 82" /></g>
-              <g className="sheep-leg" style={{ transformOrigin: '59px 48px' }}><path d="M59 48 Q57 65 58 82" /></g>
-              <g className="sheep-leg" style={{ transformOrigin: '77px 45px' }}><path d="M77 45 Q78 61 76 81" /></g>
-            </svg>
-            <Image className="sheep-body" src="/scene/pencil/sheep-body.webp" alt="" width={1536} height={1024} unoptimized />
+            <div className="sheep-figure" aria-hidden="true">
+              <svg className="sheep-legs" viewBox="0 0 100 88">
+                <g className="sheep-leg rear" style={{ transformOrigin: '24px 47px' }}><path d="M24 47 Q21 62 19 81" /></g>
+                <g className="sheep-leg rear" style={{ transformOrigin: '42px 48px' }}><path d="M42 48 Q42 64 41 82" /></g>
+                <g className="sheep-leg" style={{ transformOrigin: '59px 48px' }}><path d="M59 48 Q57 65 58 82" /></g>
+                <g className="sheep-leg" style={{ transformOrigin: '77px 45px' }}><path d="M77 45 Q78 61 76 81" /></g>
+              </svg>
+              <Image className="sheep-body" src="/scene/pencil/sheep-body.webp" alt="" width={1536} height={1024} unoptimized />
+            </div>
           </div>
 
           <svg className="crow clickable" id="crow" data-info="crow" viewBox="0 0 58 40" xmlns="http://www.w3.org/2000/svg" role="button" tabIndex={0} aria-label="Discover the crow">
