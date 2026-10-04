@@ -954,6 +954,8 @@ export default function Home() {
         .sheep-walk.grazing .sheep-graze-form { opacity: 1; }
         .sheep-walk.grazing .sheep-graze-pose { transform: translateY(3px) scaleY(1.25); }
         .sheep-walk.grazing .sheep-chew { opacity: .9; }
+        .sheep-walk.walking .sheep-body, .sheep-walk.walking .sheep-legs, .sheep-walk.walking .sheep-graze-form { transition-duration: .25s; }
+        .sheep-walk.walking .sheep-graze-pose { transition-duration: .3s; }
         @keyframes sheep-jaw { from { transform: translateY(0) rotate(-3deg); } to { transform: translateY(1.5px) rotate(7deg); } }
         .crow { z-index: 16; width: clamp(37px, 3.6vw, 52px); display: block; filter: drop-shadow(0 1px 1px rgba(23,20,16,.25)); }
         .tree-impact { position: absolute; z-index: 17; left: 96%; top: 33%; width: 24px; height: 24px; opacity: 0; pointer-events: none; animation: tree-impact 16s linear infinite; }
