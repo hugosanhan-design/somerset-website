@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vocabulary &amp; Grammar: PET I Unit 4, p.48-49</title>
+<style>
+  :root{ --green:#6BAE2E; --green-dark:#4d8120; --ink:#1a1a1a; --bg:#ffffff; --amber:#E08A1E; }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;background:var(--bg);color:var(--ink);}
+  header{display:flex;justify-content:space-between;align-items:flex-end;padding:clamp(16px,2.2vh,32px) clamp(24px,3.5vw,64px);border-bottom:4px solid var(--green);flex-wrap:wrap;gap:16px;}
+  .logo{display:flex;align-items:flex-end;gap:clamp(8px,1vw,16px);}
+  .logo .word{font-family:Arial,Helvetica,sans-serif;font-weight:800;font-size:clamp(30pt,3.4vw,46pt);letter-spacing:-1.2px;line-height:.9;color:#6BAE2E;}
+  .logo .lc{font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:clamp(8pt,0.85vw,12pt);letter-spacing:2.5px;line-height:1.18;padding-bottom:4px;color:#4d8120;}
+  .title-block{text-align:right;}
+  .title-block h1{margin:0;font-size:clamp(20px,2.1vw,30px);font-weight:700;color:var(--ink);}
+  .title-block p{margin:4px 0 0;font-size:clamp(13px,1.1vw,17px);color:#555;letter-spacing:.5px;text-transform:uppercase;}
+  .nav-bar{position:fixed;bottom:0;left:0;right:0;display:flex;align-items:center;justify-content:center;gap:20px;padding:16px 0 22px;background:linear-gradient(to top, rgba(255,255,255,0.96), rgba(255,255,255,0));z-index:30;}
+  .nav-bar button{background:var(--green);color:#fff;border:none;border-radius:999px;width:clamp(44px,4vw,64px);height:clamp(44px,4vw,64px);font-size:clamp(20px,2vw,28px);font-weight:700;cursor:pointer;}
+  .nav-bar button:disabled{opacity:.3;cursor:default;}
+  .nav-bar .count{font-size:clamp(14px,1.4vw,20px);color:#555;min-width:70px;text-align:center;}
+  main{max-width:1800px;margin:0 auto;padding:clamp(8px,1.5vh,20px) clamp(24px,4vw,72px) 96px;min-height:calc(100vh - 110px);display:flex;flex-direction:column;justify-content:center;}
+  .slide{display:none;}
+  .slide.active{display:block;animation:fade .15s ease;}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  .kicker{font-size:clamp(14px,1.4vw,20px);font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--green);margin:clamp(10px,min(1.8vh,2.4vw),26px) 0 8px;}
+  h2{font-size:clamp(28px,min(3.8vw,6vh),48px);margin:0 0 clamp(10px,min(1.8vh,2.4vw),24px);color:var(--ink);line-height:1.25;}
+  h2 .accent{color:var(--green-dark);}
+  .item-list{list-style:none;margin:0 0 clamp(14px,2vh,22px);padding:0;max-width:1200px;}
+  .item{background:#fff;border:2px solid #ddd;border-radius:14px;padding:clamp(12px,1.6vh,18px) clamp(18px,2.2vw,26px);margin-bottom:clamp(9px,1.2vh,14px);font-size:clamp(17px,1.9vw,24px);line-height:1.4;}
+  .item .num{color:#999;font-weight:800;margin-right:10px;}
+  .reveal-all{background:var(--green);color:#fff;border:none;border-radius:999px;padding:10px 26px;font-size:clamp(14px,1.4vw,18px);font-weight:700;cursor:pointer;}
+  .reveal-all:hover{background:var(--green-dark);}
+  .whybox{display:none;margin-top:clamp(14px,2vh,20px);max-width:1200px;background:#F4F8EE;border-left:5px solid var(--green-dark);border-radius:0 12px 12px 0;padding:clamp(14px,1.8vh,20px) clamp(18px,2.2vw,26px);font-size:clamp(16px,1.6vw,21px);line-height:1.45;color:#333;}
+  .revealed .whybox{display:block;}
+  .whybox b{color:var(--green-dark);}
+  .valencia-note{margin-top:clamp(16px,2.2vh,28px);font-size:clamp(15px,1.5vw,20px);color:#777;font-style:italic;}
+  footer{text-align:center;padding:20px;font-size:clamp(13px,1.1vw,16px);color:#888;border-top:2px solid #eee;}
+  @page{size:A4;margin:16mm 14mm}
+  @media print{
+    body{background:#fff}
+    .nav-bar{display:none !important}
+    main{max-width:none;padding:0}
+    .slide{display:block !important;page-break-after:always;padding-top:6px;}
+    .slide:last-child{page-break-after:auto;}
+    h2{font-size:19pt}
+    .kicker{font-size:12pt}
+    .item{font-size:12.5pt;page-break-inside:avoid;break-inside:avoid;}
+    .whybox{display:block !important;font-size:12pt;}
+    .reveal-all{display:none !important;}
+  }
+  @media(max-width:700px){ header{flex-direction:column;align-items:center;text-align:center;} .title-block{text-align:center;} h2{font-size:24px;} }
+/* per-item-reveal v1 */
+.item .a-text,.gap-answer{color:transparent !important;background:#EAF4DA;border-radius:6px;padding:0 .35em;min-width:3.2em;display:inline-block;cursor:pointer;user-select:none;}
+.item.shown .a-text,.gap-answer.shown{color:var(--green-dark) !important;background:none;font-weight:700;}
+.showpill{display:inline-block;margin-left:10px;border:2px solid var(--green);color:var(--green-dark);background:#fff;border-radius:999px;padding:1px 12px;font-size:.72em;font-weight:700;cursor:pointer;vertical-align:middle;}
+.item.shown .showpill{display:none;}
+@media print{.item .a-text,.gap-answer{color:var(--green-dark) !important;background:none;}.showpill{display:none !important;}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+  <div class="title-block"><h1>Vocabulary &amp; Grammar</h1><p>Unit 4 &middot; p.48-49 &middot; shopping, phrasal verbs &amp; time clauses</p></div>
+</header>
+<main>
+
+<div class="slide active">
+  <div class="kicker">Unit 4 &middot; pages 48-49</div>
+  <h2>That's the fashion <span class="accent">shopping &amp; time clauses</span></h2>
+  <p class="valencia-note">Tap "Show answers" on each slide. Eleven exercises, in book order.</p>
+</div>
+
+<div class="slide">
+  <div class="kicker">Vocabulary Ex.1 &middot; shopping words</div>
+  <h2>Match the <span class="accent">definition</span></h2>
+  <ul class="item-list">
+    <li class="item"><span class="num">1</span>credit card &rarr; <span class="a-text">c, a small piece of plastic that you use to pay for things</span></li>
+    <li class="item"><span class="num">2</span>customer &rarr; <span class="a-text">d, a person who buys something</span></li>
+    <li class="item"><span class="num">3</span>label &rarr; <span class="a-text">b, a piece of paper or material that gives information about an object</span></li>
+    <li class="item"><span class="num">4</span>receipt &rarr; <span class="a-text">f, a piece of paper to show that you have paid money for something</span></li>
+    <li class="item"><span class="num">5</span>cash &rarr; <span class="a-text">a, money in notes and coins</span></li>
+    <li class="item"><span class="num">6</span>bargain &rarr; <span class="a-text">e, something that costs less than normal</span></li>
+  </ul>
+  <button class="reveal-all">Show answers</button>
+  <div class="whybox">All six words appear again in Ex.2's sentences and in Ex.5-6's shop conversation.</div>
+</div>
+
+<div class="slide">
+  <div class="kicker">Vocabulary Ex.2 &middot; use the words</div>
+  <h2>Complete the <span class="accent">sentence</span></h2>
+  <ul class="item-list">
+    <li class="item"><span class="num">1</span>This jacket was a <span class="a-text">bargain</span>! Only &pound;30.</li>
+    <li class="item"><span class="num">2</span>Can I pay by <span class="a-text">credit card</span>?</li>
+    <li class="item"><span class="num">3</span>You can return this if you still have the <span class="a-text">receipt</span>.</li>
+    <li class="item"><span class="num">4</span>We don't accept credit cards, we only take <span class="a-text">cash</span>.</li>
+    <li class="item"><span class="num">5</span>The <span class="a-text">customer</span> left without paying.</li>
+    <li class="item"><span class="num">6</span>There's no <span class="a-text">label</span> on this shirt.</li>
+  </ul>
+  <button class="reveal-all">Show answers</button>
+  <div class="whybox">Notice how the same six words recombine in new, everyday shopping situations.</div>
+</div>
+
+<div class="slide">
+  <div class="kicker">Phrasal verbs (1) Ex.3 &middot; complete the text</div>
+  <h2>Add the right <span class="accent">preposition</span></h2>
+  <ul class="item-list">
+    <li class="item"><span class="num">1</span>find <span class="a-text">out</span></li>
+    <li class="item"><span class="num">2</span>go <span class="a-text">with</span></li>
+    <li class="item"><span class="num">3</span>look <span class="a-text">at</span></li>
+    <li class="item"><span class="num">4</span>pay <span class="a-text">for</span></li>
+    <li class="item"><span class="num">5</span>pick <span class="a-text">up</span></li>
+    <li class="item"><span class="num">6</span>shop <span class="a-text">around</span></li>
+    <li class="item"><span class="num">7</span>try <span class="a-text">on</span></li>
+    <li class="item"><span class="num">8</span>wear <span class="a-text">out</span></li>
+  </ul>
+  <button class="reveal-all">Show answers</button>
+  <div class="whybox">The text contrasts two shopping styles: buying online (shop around, find out which website is best) vs visiting real shops (try on, pick up and touch the fabric before buying).</div>
+</div>
+
+<div class="slide">
+  <div class="kicker">Phrasal verbs (1) Ex.4 &middot; personalise</div>
+  <h2>Complete the <span class="accent">question</span></h2>
+  <ul class="item-list">
+    <li class="item"><span class="num">1</span>Do you usually shop <span class="a-text">around</span> when you want to buy something?</li>
+    <li class="item"><span class="num">2</span>How do you find <span class="a-text">out</span> about good bargains?</li>
+    <li class="item"><span class="num">3</span>Do you always try <span class="a-text">on</span> clothes before you buy them?</li>
+    <li class="item"><span class="num">4</span>Do you wear your clothes and shoes until they wear <span class="a-text">out</span>?</li>
+  </ul>
+  <button class="reveal-all">Show answers</button>
+  <div class="whybox">Same four phrasal verbs from Ex.3, now used to ask real questions &mdash; ask and answer in pairs.</div>
+</div>
+
+<div class="slide">
+  <div class="kicker">Vocabulary Ex.5-6 &middot; Track 4.8, shop conversation</div>
+  <h2>Choose, then <span class="accent">check by listening</span></h2>
+  <ul class="item-list">
+    <li class="item"><span class="num">1</span>I'm looking for a shirt to <span class="a-text">go with</span> these trousers.</li>
+    <li class="item"><span class="num">2</span>It's a <span class="a-text">bargain</span>, only &euro;15.</li>
+    <li class="item"><span class="num">3</span>I'd like to <span class="a-text">try on</span> this jacket as well.</li>
+    <li class="item"><span class="num">4</span>Can I <span class="a-text">pay for</span> it with my credit card?</li>
+    <li class="item"><span class="num">5</span>Can I pay with my <span class="a-text">credit card</span>?</li>
+    <li class="item"><span class="num">6</span>I'm sorry, we only take <span class="a-text">cash</span> here.</li>
+    <li class="item"><span class="num">7</span>Don't forget your <span class="a-text">receipt</span>, sir!</li>
+  </ul>
+  <button class="reveal-all">Show answers</button>
+  <div class="whybox">The jacket doesn't fit ("too big"), but the shirt does &mdash; the customer only pays for the shirt, and the shop turns out to be cash-only.</div>
+</div>
+
+<div class="slide">
+  <div class="kicker">Grammar Ex.1-2 &middot; concept check</div>
+  <h2>Present simple, or <span class="accent">present perfect?</span></h2>
+  <ul class="item-list">
+    <li class="item"><span class="num">Rule 1</span>Future time clauses use the <span class="a-text">present simple</span> (not will).</li>
+    <li class="item"><span class="num">Rule 2</span>To emphasise one action finishes before another begins, we use the <span class="a-text">present perfect simple</span>.</li>
+    <li class="item"><span class="num">Ex.1 &middot; 1</span>Michael will call as soon as he <span class="a-text">has</span> any news.</li>
+    <li class="item"><span class="num">2</span>When we <span class="a-text">go</span> to Italy, we'll visit our cousins.</li>
+    <li class="item"><span class="num">3</span>I won't buy new shoes until these ones <span class="a-text">have worn out</span>.</li>
+    <li class="item"><span class="num">4</span>Check you have your credit card before you <span class="a-text">leave</span>.</li>
+    <li class="item"><span class="num">5</span>Please call me the moment the manager <span class="a-text">arrives</span>.</li>
+  </ul>
+  <button class="reveal-all">Show answers</button>
+  <div class="whybox"><b>LOOK!:</b> "You can go out and play when you've tidied your room" emphasises the tidying finishes first &mdash; that's why it's present perfect, not present simple.</div>
+</div>
+
+<div class="slide">
+  <div class="kicker">Grammar Ex.3-4 &middot; practice</div>
+  <h2>Before, until or <span class="accent">as soon as?</span></h2>
+  <ul class="item-list">
+    <li class="item"><span class="num">Ex.3 &middot; 1</span>I'll return this jacket <span class="a-text">as soon as</span> I've found the receipt.</li>
+    <li class="item"><span class="num">2</span>When I <span class="a-text">finish</span> university, I'll travel the world.</li>
+    <li class="item"><span class="num">3</span><span class="a-text">The moment</span> Jenny arrives, we'll have dinner.</li>
+    <li class="item"><span class="num">4</span>I'll text you as soon as the postman <span class="a-text">delivers</span> the parcel.</li>
+    <li class="item"><span class="num">5</span>I won't go home <span class="a-text">until</span> I've found a present.</li>
+    <li class="item"><span class="num">6</span>Harry will buy a jumper after he <span class="a-text">has saved</span> enough money.</li>
+    <li class="item"><span class="num">Ex.4 &middot; 1</span>He'll shop around <span class="a-text">before</span> he decides which computer to buy.</li>
+    <li class="item"><span class="num">2</span><span class="a-text">As soon as</span> I get home, I'll walk the dog.</li>
+    <li class="item"><span class="num">3</span>Ameira will go shopping <span class="a-text">as soon as</span> she gets her pocket money.</li>
+    <li class="item"><span class="num">4</span>You can watch TV <span class="a-text">until</span> it's time for lunch.</li>
+    <li class="item"><span class="num">5</span>I'll turn off the lights <span class="a-text">before</span> I leave the house.</li>
+    <li class="item"><span class="num">6</span><span class="a-text">Until</span> you get another bike, I'll drive you to school.</li>
+  </ul>
+  <button class="reveal-all">Show answers</button>
+  <div class="whybox">Each of before/until/as soon as is used exactly twice in Ex.4 &mdash; a good check that you haven't repeated one and skipped another.</div>
+</div>
+
+<div class="slide">
+  <div class="kicker">Exam Task &middot; open cloze</div>
+  <h2>An 18th birthday <span class="accent">celebration</span></h2>
+  <ul class="item-list">
+    <li class="item"><span class="num">1</span>As soon <span class="a-text">as</span> he gets home, we'll give him his presents.</li>
+    <li class="item"><span class="num">2</span>It will go <span class="a-text">with</span> his favourite trousers.</li>
+    <li class="item"><span class="num">3</span>His favourite trousers, <span class="a-text">which</span> are from a second-hand store in Paris.</li>
+    <li class="item"><span class="num">4</span>He hasn't tried it <span class="a-text">on</span> yet.</li>
+    <li class="item"><span class="num">5</span>We <span class="a-text">will</span> leave home after we've had a video call.</li>
+    <li class="item"><span class="num">6</span>They will want to say happy birthday <span class="a-text">before</span> they go to bed.</li>
+  </ul>
+  <button class="reveal-all">Show answers</button>
+  <div class="whybox"><b>Strategy:</b> gap 3 needs a relative pronoun (revision from p.45); gaps 1, 4 and 6 are time expressions or phrasal-verb prepositions from today's other exercises.</div>
+</div>
+
+</main>
+<div class="nav-bar"><button id="prevBtn" title="Previous">&#8592;</button><span class="count" id="count"></span><button id="nextBtn" title="Next">&#8594;</button></div>
+<footer>Somerset Language Centre &middot; Valencia &middot; Unit 4, p.48-49</footer>
+<script>
+  var slides = document.querySelectorAll('.slide');
+  var idx = 0;
+  var prevBtn = document.getElementById('prevBtn');
+  var nextBtn = document.getElementById('nextBtn');
+  var count = document.getElementById('count');
+  function render(){ slides.forEach(function(s,i){ s.classList.toggle('active', i===idx); }); count.textContent=(idx+1)+' / '+slides.length; prevBtn.disabled=idx===0; nextBtn.disabled=idx===slides.length-1; window.scrollTo(0,0); }
+  function go(d){ idx=Math.max(0,Math.min(slides.length-1,idx+d)); render(); }
+  prevBtn.addEventListener('click', function(){ go(-1); });
+  nextBtn.addEventListener('click', function(){ go(1); });
+  document.addEventListener('keydown', function(e){ if(e.key==='ArrowRight') go(1); else if(e.key==='ArrowLeft') go(-1); });
+  document.querySelectorAll('.slide').forEach(function(slide){
+    var btn = slide.querySelector('.reveal-all');
+    if(!btn) return;
+    btn.addEventListener('click', function(){ var on = slide.classList.toggle('revealed'); btn.textContent = on ? 'Hide answers' : 'Show answers'; });
+  });
+  render();
+</script>
+<script>/* per-item-reveal v1 */
+document.querySelectorAll('.item').forEach(function(it){
+  if(!it.querySelector('.a-text')) return;
+  var b=document.createElement('button'); b.className='showpill'; b.type='button'; b.textContent='Show answer';
+  b.addEventListener('click',function(e){e.stopPropagation(); it.classList.add('shown');});
+  it.appendChild(b);
+  it.querySelectorAll('.a-text').forEach(function(a){a.addEventListener('click',function(e){e.stopPropagation(); it.classList.toggle('shown');});});
+});
+document.querySelectorAll('.gap-answer').forEach(function(g){g.title='Click to show / hide'; g.addEventListener('click',function(){g.classList.toggle('shown');});});
+document.querySelectorAll('.reveal-all').forEach(function(b){
+  var s=b.closest('.slide'); if(!s||!s.querySelector('.whybox')){b.style.display='none';return;}
+  var mc=!!s.querySelector('.mc-opt'); var L=mc?['Show answer','Hide answer']:['Why?','Hide why'];  /* MC slides reveal the right option (registry D07) */
+  var fresh=b.cloneNode(true); b.parentNode.replaceChild(fresh,b); fresh.textContent=L[0];
+  fresh.addEventListener('click',function(){var on=s.classList.toggle('revealed'); fresh.textContent=on?L[1]:L[0];});
+});
+</script>
+</body>
+</html>

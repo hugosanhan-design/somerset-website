@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vocabulary &amp; Grammar: PET I Unit 6, p.72-73</title>
+<style>
+  :root{ --green:#6BAE2E; --green-dark:#4d8120; --ink:#1a1a1a; --bg:#ffffff; --amber:#E08A1E; }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;background:var(--bg);color:var(--ink);}
+  header{display:flex;justify-content:space-between;align-items:flex-end;padding:clamp(16px,2.2vh,32px) clamp(24px,3.5vw,64px);border-bottom:4px solid var(--green);flex-wrap:wrap;gap:16px;}
+  .logo{display:flex;align-items:flex-end;gap:clamp(8px,1vw,16px);}
+  .logo .word{font-family:Arial,Helvetica,sans-serif;font-weight:800;font-size:clamp(30pt,3.4vw,46pt);letter-spacing:-1.2px;line-height:.9;color:#6BAE2E;}
+  .logo .lc{font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:clamp(8pt,0.85vw,12pt);letter-spacing:2.5px;line-height:1.18;padding-bottom:4px;color:#4d8120;}
+  .title-block{text-align:right;}
+  .title-block h1{margin:0;font-size:clamp(20px,2.1vw,30px);font-weight:700;color:var(--ink);}
+  .title-block p{margin:4px 0 0;font-size:clamp(13px,1.1vw,17px);color:#555;letter-spacing:.5px;text-transform:uppercase;}
+  .nav-bar{position:fixed;bottom:0;left:0;right:0;display:flex;align-items:center;justify-content:center;gap:20px;padding:16px 0 22px;background:linear-gradient(to top, rgba(255,255,255,0.96), rgba(255,255,255,0));z-index:30;}
+  .nav-bar button{background:var(--green);color:#fff;border:none;border-radius:999px;width:clamp(44px,4vw,64px);height:clamp(44px,4vw,64px);font-size:clamp(20px,2vw,28px);font-weight:700;cursor:pointer;}
+  .nav-bar button:disabled{opacity:.3;cursor:default;}
+  .nav-bar .count{font-size:clamp(14px,1.4vw,20px);color:#555;min-width:70px;text-align:center;}
+  main{max-width:1800px;margin:0 auto;padding:clamp(8px,1.5vh,20px) clamp(24px,4vw,72px) 96px;min-height:calc(100vh - 110px);display:flex;flex-direction:column;justify-content:center;}
+  .slide{display:none;}
+  .slide.active{display:block;animation:fade .15s ease;}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  .kicker{font-size:clamp(14px,1.4vw,20px);font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--green);margin:clamp(10px,min(1.8vh,2.4vw),26px) 0 8px;}
+  h2{font-size:clamp(28px,min(3.8vw,6vh),48px);margin:0 0 clamp(10px,min(1.8vh,2.4vw),24px);color:var(--ink);line-height:1.25;}
+  h2 .accent{color:var(--green-dark);}
+  .item-list{list-style:none;margin:0 0 clamp(14px,2vh,22px);padding:0;max-width:1200px;}
+  .item{background:#fff;border:2px solid #ddd;border-radius:14px;padding:clamp(12px,1.6vh,18px) clamp(18px,2.2vw,26px);margin-bottom:clamp(9px,1.2vh,14px);font-size:clamp(17px,1.9vw,24px);line-height:1.4;}
+  .item .num{color:#999;font-weight:800;margin-right:10px;}
+  .reveal-all{background:var(--green);color:#fff;border:none;border-radius:999px;padding:10px 26px;font-size:clamp(14px,1.4vw,18px);font-weight:700;cursor:pointer;}
+  .reveal-all:hover{background:var(--green-dark);}
+  .whybox{display:none;margin-top:clamp(14px,2vh,20px);max-width:1200px;background:#F4F8EE;border-left:5px solid var(--green-dark);border-radius:0 12px 12px 0;padding:clamp(14px,1.8vh,20px) clamp(18px,2.2vw,26px);font-size:clamp(16px,1.6vw,21px);line-height:1.45;color:#333;}
+  .revealed .whybox{display:block;}
+  .whybox b{color:var(--green-dark);}
+  .valencia-note{margin-top:clamp(16px,2.2vh,28px);font-size:clamp(15px,1.5vw,20px);color:#777;font-style:italic;}
+  footer{text-align:center;padding:20px;font-size:clamp(13px,1.1vw,16px);color:#888;border-top:2px solid #eee;}
+  @page{size:A4;margin:16mm 14mm}
+  @media print{
+    body{background:#fff}
+    .nav-bar{display:none !important}
+    main{max-width:none;padding:0}
+    .slide{display:block !important;page-break-after:always;padding-top:6px;}
+    .slide:last-child{page-break-after:auto;}
+    h2{font-size:19pt}
+    .kicker{font-size:12pt}
+    .item{font-size:12.5pt;page-break-inside:avoid;break-inside:avoid;}
+    .whybox{display:block !important;font-size:12pt;}
+    .reveal-all{display:none !important;}
+  }
+  @media(max-width:700px){ header{flex-direction:column;align-items:center;text-align:center;} .title-block{text-align:center;} h2{font-size:24px;} }
+/* per-item-reveal v1 */
+.item .a-text,.gap-answer{color:transparent !important;background:#EAF4DA;border-radius:6px;padding:0 .35em;min-width:3.2em;display:inline-block;cursor:pointer;user-select:none;}
+.item.shown .a-text,.gap-answer.shown{color:var(--green-dark) !important;background:none;font-weight:700;}
+.showpill{display:inline-block;margin-left:10px;border:2px solid var(--green);color:var(--green-dark);background:#fff;border-radius:999px;padding:1px 12px;font-size:.72em;font-weight:700;cursor:pointer;vertical-align:middle;}
+.item.shown .showpill{display:none;}
+@media print{.item .a-text,.gap-answer{color:var(--green-dark) !important;background:none;}.showpill{display:none !important;}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+  <div class="title-block"><h1>Vocabulary &amp; Grammar</h1><p>Unit 6 &middot; p.72-73 &middot; sports clothes &amp; second conditional</p></div>
+</header>
+<main>
+
+<div class="slide active">
+  <div class="kicker">Unit 6 &middot; pages 72-73</div>
+  <h2>Go for it! <span class="accent">clothes &amp; second conditional</span></h2>
+  <p class="valencia-note">Tap "Show answers" on each slide. Ten exercises, in book order.</p>
+</div>
+
+<div class="slide">
+  <div class="kicker">Vocabulary Ex.1 &middot; sports clothes</div>
+  <h2>Match to the <span class="accent">photo</span></h2>
+  <ul class="item-list">
+    <li class="item"><span class="num">1</span><span class="a-text">helmet</span></li>
+    <li class="item"><span class="num">2</span><span class="a-text">tracksuit</span></li>
+    <li class="item"><span class="num">3</span><span class="a-text">gloves</span></li>
+    <li class="item"><span class="num">4</span><span class="a-text">trainers</span></li>
+    <li class="item"><span class="num">5</span><span class="a-text">swimming costume</span></li>
+    <li class="item"><span class="num">6</span><span class="a-text">ice skates</span></li>
+  </ul>
+  <button class="reveal-all">Show answers</button>
+  <div class="whybox">Each item pairs with a sport from p.68 &mdash; a cyclist's helmet, a runner's tracksuit and trainers, boxing gloves, a swimmer's costume, a skater's ice skates.</div>
+</div>
+
+<div class="slide">
+  <div class="kicker">Vocabulary Ex.3 &middot; verb + noun collocations</div>
+  <h2>Match the <span class="accent">verb and noun</span></h2>
+  <ul class="item-list">
+    <li class="item"><span class="num">1</span>do &rarr; <span class="a-text">g, a workout</span></li>
+    <li class="item"><span class="num">2</span>enter &rarr; <span class="a-text">a, a competition</span></li>
+    <li class="item"><span class="num">3</span>hit &rarr; <span class="a-text">d, a ball</span></li>
+    <li class="item"><span class="num">4</span>join &rarr; <span class="a-text">f, a club</span></li>
+    <li class="item"><span class="num">5</span>practise &rarr; <span class="a-text">c, a skill</span></li>
+    <li class="item"><span class="num">6</span>ride &rarr; <span class="a-text">h, a horse</span></li>
+    <li class="item"><span class="num">7</span>sail &rarr; <span class="a-text">e, a boat</span></li>
+    <li class="item"><span class="num">8</span>score &rarr; <span class="a-text">b, a goal</span></li>
+  </ul>
+  <button class="reveal-all">Show answers</button>
+  <div class="whybox">These collocations recur across many sports contexts &mdash; useful for both speaking and the test's vocabulary section.</div>
+</div>
+
+<div class="slide">
+  <div class="kicker">Vocabulary Ex.4 &middot; word building table</div>
+  <h2>Complete the <span class="accent">table</span></h2>
+  <ul class="item-list">
+    <li class="item"><span class="num">1</span>competition/competitor (n) &rarr; <span class="a-text">compete</span> (verb)</li>
+    <li class="item"><span class="num">2</span>danger (n) &rarr; <span class="a-text">dangerous</span> (adjective)</li>
+    <li class="item"><span class="num">3</span>depth (n) &rarr; <span class="a-text">deep</span> (adjective)</li>
+    <li class="item"><span class="num">4</span>diving/diver (n) &rarr; <span class="a-text">dive</span> (verb)</li>
+    <li class="item"><span class="num">5</span>fitness (n) &rarr; <span class="a-text">fit</span> (adjective)</li>
+    <li class="item"><span class="num">6</span>freedom (n) &rarr; <span class="a-text">free</span> (adjective)</li>
+    <li class="item"><span class="num">7</span>profession/professional (n/adj) &rarr; <span class="a-text">professionally</span> (adverb)</li>
+    <li class="item"><span class="num">8</span>strength (n) &rarr; <span class="a-text">strong</span> (adjective)</li>
+  </ul>
+  <button class="reveal-all">Show answers</button>
+  <div class="whybox">Four word families in a row: noun, verb, adjective, adverb &mdash; check which column each numbered gap actually needs.</div>
+</div>
+
+<div class="slide">
+  <div class="kicker">Vocabulary Ex.5 &middot; Free diving text</div>
+  <h2>Choose the correct <span class="accent">option</span></h2>
+  <ul class="item-list">
+    <li class="item"><span class="num">1</span>It is also a <span class="a-text">competitive</span> sport.</li>
+    <li class="item"><span class="num">2</span>They have to be very <span class="a-text">fit</span>.</li>
+    <li class="item"><span class="num">3</span>They have to have very <span class="a-text">strong</span> lungs.</li>
+    <li class="item"><span class="num">4</span>The best free <span class="a-text">divers</span> in the world...</li>
+    <li class="item"><span class="num">5</span>...can swim down to a <span class="a-text">depth</span> of over 200 metres.</li>
+    <li class="item"><span class="num">6</span>...gives them a feeling of <span class="a-text">freedom</span>.</li>
+    <li class="item"><span class="num">7</span>You should always find a <span class="a-text">professional</span> instructor.</li>
+    <li class="item"><span class="num">8</span>It can be a very <span class="a-text">dangerous</span> sport.</li>
+  </ul>
+  <button class="reveal-all">Show answers</button>
+  <div class="whybox">Same eight word families as Ex.4, now chosen in context &mdash; check whether each gap needs a noun, verb, adjective or adverb.</div>
+</div>
+
+<div class="slide">
+  <div class="kicker">Grammar Ex.1-3 &middot; concept check</div>
+  <h2>How does <span class="accent">second conditional</span> work?</h2>
+  <ul class="item-list">
+    <li class="item"><span class="num">Rule</span>if-clause: <span class="a-text">past simple</span>; main clause: <span class="a-text">would</span> + infinitive.</li>
+    <li class="item"><span class="num">Ex.2 &middot; 1</span>"If I were you, I'd eat healthier food" &rarr; <span class="a-text">b, giving advice</span></li>
+    <li class="item"><span class="num">2</span>"If I won Wimbledon, I'd be famous" &rarr; <span class="a-text">a, imagined unlikely/impossible</span></li>
+    <li class="item"><span class="num">Ex.3</span>we can use <span class="a-text">could</span> instead of would, to talk about ability</li>
+  </ul>
+  <button class="reveal-all">Show answers</button>
+  <div class="whybox">Second conditional talks about the present/future as imagined or unlikely &mdash; unlike first conditional, which talks about what's realistically likely.</div>
+</div>
+
+<div class="slide">
+  <div class="kicker">Grammar Ex.4 &middot; complete the sentences</div>
+  <h2>Correct <span class="accent">verb form</span></h2>
+  <ul class="item-list">
+    <li class="item"><span class="num">1</span>If I <span class="a-text">lived</span> near the sea, I would learn how to scuba dive.</li>
+    <li class="item"><span class="num">2</span>If I were richer, I <span class="a-text">would/could buy</span> a paddleboard.</li>
+    <li class="item"><span class="num">3</span>If my family <span class="a-text">didn't enjoy</span> sport, we wouldn't go to the sports centre every weekend.</li>
+    <li class="item"><span class="num">4</span>You would get into the team if you <span class="a-text">practised</span> more.</li>
+    <li class="item"><span class="num">5</span>If she didn't spend all her time skateboarding, she <span class="a-text">would/could get</span> better grades at school.</li>
+    <li class="item"><span class="num">6</span>You <span class="a-text">wouldn't feel</span> so tired if you went to bed earlier.</li>
+  </ul>
+  <button class="reveal-all">Show answers</button>
+  <div class="whybox">Every sentence follows the pattern: past simple in one clause, would/could + infinitive in the other.</div>
+</div>
+
+<div class="slide">
+  <div class="kicker">Grammar Ex.5 &middot; rewrite as second conditional</div>
+  <h2>Same idea, <span class="accent">imagined</span></h2>
+  <ul class="item-list">
+    <li class="item"><span class="num">1 (example)</span>If I had a bike, I wouldn't get the bus to the football club.</li>
+    <li class="item"><span class="num">2</span><span class="a-text">If he did some exercise, he would get fit/fitter.</span></li>
+    <li class="item"><span class="num">3</span><span class="a-text">If she was/were better at running, she would get chosen for teams.</span></li>
+    <li class="item"><span class="num">4</span><span class="a-text">If we had some money, we could buy new team uniforms.</span></li>
+    <li class="item"><span class="num">5</span><span class="a-text">If we had enough players, we wouldn't have to cancel the match.</span></li>
+    <li class="item"><span class="num">6</span><span class="a-text">If my friends had tickets, they could come into the stadium.</span></li>
+  </ul>
+  <button class="reveal-all">Show answers</button>
+  <div class="whybox">Each original sentence gives a real reason ("he doesn't do exercise, so he isn't fit"); the second conditional version imagines the opposite.</div>
+</div>
+
+<div class="slide">
+  <div class="kicker">Grammar Ex.6 &middot; mixed conditional dialogue</div>
+  <h2>First or <span class="accent">second?</span></h2>
+  <ul class="item-list">
+    <li class="item"><span class="num">1</span>If I <span class="a-text">were</span> you, I <span class="a-text">wouldn't play</span> either.</li>
+    <li class="item"><span class="num">2</span>If he gets one more point, <span class="a-text">will he win</span> the tournament?</li>
+    <li class="item"><span class="num">3</span>If you <span class="a-text">open</span> the cupboard, you <span class="a-text">'ll/will see</span> lots of food.</li>
+    <li class="item"><span class="num">4</span>If we get Dad to drive us, we <span class="a-text">'ll make</span> it on time.</li>
+    <li class="item"><span class="num">5</span>What <span class="a-text">would you do</span> if you won an Olympic medal? &mdash; I <span class="a-text">would run</span> around the track for hours!</li>
+    <li class="item"><span class="num">6</span>If you <span class="a-text">were</span> taller, <span class="a-text">would you play</span> for your school basketball team?</li>
+  </ul>
+  <button class="reveal-all">Show answers</button>
+  <div class="whybox">Items 2-4 are realistic/likely (first conditional); items 1, 5 and 6 are imagined or unlikely (second conditional).</div>
+</div>
+
+</main>
+<div class="nav-bar"><button id="prevBtn" title="Previous">&#8592;</button><span class="count" id="count"></span><button id="nextBtn" title="Next">&#8594;</button></div>
+<footer>Somerset Language Centre &middot; Valencia &middot; Unit 6, p.72-73</footer>
+<script>
+  var slides = document.querySelectorAll('.slide');
+  var idx = 0;
+  var prevBtn = document.getElementById('prevBtn');
+  var nextBtn = document.getElementById('nextBtn');
+  var count = document.getElementById('count');
+  function render(){ slides.forEach(function(s,i){ s.classList.toggle('active', i===idx); }); count.textContent=(idx+1)+' / '+slides.length; prevBtn.disabled=idx===0; nextBtn.disabled=idx===slides.length-1; window.scrollTo(0,0); }
+  function go(d){ idx=Math.max(0,Math.min(slides.length-1,idx+d)); render(); }
+  prevBtn.addEventListener('click', function(){ go(-1); });
+  nextBtn.addEventListener('click', function(){ go(1); });
+  document.addEventListener('keydown', function(e){ if(e.key==='ArrowRight') go(1); else if(e.key==='ArrowLeft') go(-1); });
+  document.querySelectorAll('.slide').forEach(function(slide){
+    var btn = slide.querySelector('.reveal-all');
+    if(!btn) return;
+    btn.addEventListener('click', function(){ var on = slide.classList.toggle('revealed'); btn.textContent = on ? 'Hide answers' : 'Show answers'; });
+  });
+  render();
+</script>
+<script>/* per-item-reveal v1 */
+document.querySelectorAll('.item').forEach(function(it){
+  if(!it.querySelector('.a-text')) return;
+  var b=document.createElement('button'); b.className='showpill'; b.type='button'; b.textContent='Show answer';
+  b.addEventListener('click',function(e){e.stopPropagation(); it.classList.add('shown');});
+  it.appendChild(b);
+  it.querySelectorAll('.a-text').forEach(function(a){a.addEventListener('click',function(e){e.stopPropagation(); it.classList.toggle('shown');});});
+});
+document.querySelectorAll('.gap-answer').forEach(function(g){g.title='Click to show / hide'; g.addEventListener('click',function(){g.classList.toggle('shown');});});
+document.querySelectorAll('.reveal-all').forEach(function(b){
+  var s=b.closest('.slide'); if(!s||!s.querySelector('.whybox')){b.style.display='none';return;}
+  var mc=!!s.querySelector('.mc-opt'); var L=mc?['Show answer','Hide answer']:['Why?','Hide why'];  /* MC slides reveal the right option (registry D07) */
+  var fresh=b.cloneNode(true); b.parentNode.replaceChild(fresh,b); fresh.textContent=L[0];
+  fresh.addEventListener('click',function(){var on=s.classList.toggle('revealed'); fresh.textContent=on?L[1]:L[0];});
+});
+</script>
+</body>
+</html>

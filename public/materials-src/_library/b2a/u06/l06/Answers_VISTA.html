@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Use your English: FCE I / Friday B2 Unit 6, p.73</title>
+<style>
+  :root{ --green:#6BAE2E; --green-dark:#4d8120; --ink:#1a1a1a; --bg:#ffffff; --amber:#E08A1E; }
+  *{box-sizing:border-box;}
+  body{ margin:0; font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background:var(--bg); color:var(--ink); }
+  header{ display:flex; justify-content:space-between; align-items:flex-end; padding:clamp(16px,2.2vh,32px) clamp(24px,3.5vw,64px); border-bottom:4px solid var(--green); flex-wrap:wrap; gap:16px; }
+  .logo{display:flex;align-items:flex-end;gap:clamp(8px,1vw,16px);}
+  .logo .word{font-family:Arial,Helvetica,sans-serif;font-weight:800;font-size:clamp(30pt,3.4vw,46pt);letter-spacing:-1.2px;line-height:.9;color:#6BAE2E;}
+  .logo .lc{font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:clamp(8pt,0.85vw,12pt);letter-spacing:2.5px;line-height:1.18;padding-bottom:4px;color:#4d8120;}
+  .title-block{text-align:right;}
+  .title-block h1{margin:0;font-size:clamp(20px,2.1vw,30px);font-weight:700;color:var(--ink);}
+  .title-block p{margin:4px 0 0;font-size:clamp(13px,1.1vw,17px);color:#555;letter-spacing:.5px;text-transform:uppercase;}
+  .nav-bar{ position:fixed; bottom:0; left:0; right:0; display:flex; align-items:center; justify-content:center; gap:20px; padding:16px 0 22px; background:linear-gradient(to top, rgba(255,255,255,0.96), rgba(255,255,255,0)); z-index:30; }
+  .nav-bar button{ background:var(--green); color:#fff; border:none; border-radius:999px; width:clamp(44px,4vw,64px); height:clamp(44px,4vw,64px); font-size:clamp(20px,2vw,28px); font-weight:700; cursor:pointer; }
+  .nav-bar button:disabled{opacity:.3; cursor:default;}
+  .nav-bar .count{font-size:clamp(14px,1.4vw,20px); color:#555; min-width:70px; text-align:center;}
+  main{max-width:1800px;margin:0 auto;padding:clamp(8px,1.5vh,20px) clamp(24px,4vw,72px) 96px;min-height:calc(100vh - 110px);display:flex;flex-direction:column;justify-content:center;}
+  .slide{display:none;}
+  .slide.active{display:block; animation:fade .15s ease;}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  .kicker{ font-size:clamp(14px,1.4vw,20px);font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--green); margin:clamp(10px,min(1.8vh,2.4vw),26px) 0 8px; }
+  h2{font-size:clamp(28px,min(3.8vw,6vh),48px);margin:0 0 clamp(10px,min(1.8vh,2.4vw),24px);color:var(--ink);line-height:1.25;}
+  h2 .accent{color:var(--green-dark);}
+  .item-list{list-style:none;margin:0 0 clamp(14px,2vh,22px);padding:0;max-width:1200px;}
+  .item{ background:#fff;border:2px solid #ddd;border-radius:14px; padding:clamp(12px,1.6vh,18px) clamp(18px,2.2vw,26px); margin-bottom:clamp(9px,1.2vh,14px); font-size:clamp(17px,1.9vw,24px);line-height:1.4; }
+  .item .num{color:#999;font-weight:800;margin-right:10px;}
+  .reveal-all{ background:var(--green);color:#fff;border:none;border-radius:999px; padding:10px 26px;font-size:clamp(14px,1.4vw,18px);font-weight:700;cursor:pointer; }
+  .reveal-all:hover{background:var(--green-dark);}
+  .whybox{ display:none;margin-top:clamp(14px,2vh,20px);max-width:1200px; background:#F4F8EE;border-left:5px solid var(--green-dark);border-radius:0 12px 12px 0; padding:clamp(14px,1.8vh,20px) clamp(18px,2.2vw,26px); font-size:clamp(16px,1.6vw,21px);line-height:1.45;color:#333; }
+  .revealed .whybox{display:block;}
+  .whybox b{color:var(--green-dark);}
+  .valencia-note{margin-top:clamp(16px,2.2vh,28px);font-size:clamp(15px,1.5vw,20px);color:#777;font-style:italic;}
+  footer{text-align:center;padding:20px;font-size:clamp(13px,1.1vw,16px);color:#888;border-top:2px solid #eee;}
+  @page{size:A4;margin:16mm 14mm}
+  @media print{
+    body{background:#fff} .nav-bar{display:none !important} main{max-width:none;padding:0}
+    .slide{display:block !important;page-break-after:always;padding-top:6px;} .slide:last-child{page-break-after:auto;}
+    h2{font-size:19pt} .kicker{font-size:12pt} .item{font-size:12.5pt;page-break-inside:avoid;break-inside:avoid;}
+    .whybox{display:block !important;font-size:12pt;} .reveal-all{display:none !important;}
+  }
+  @media(max-width:700px){ header{flex-direction:column;align-items:center;text-align:center;} .title-block{text-align:center;} h2{font-size:24px;} }
+/* per-item-reveal v1 */
+.item .a-text,.gap-answer{color:transparent !important;background:#EAF4DA;border-radius:6px;padding:0 .35em;min-width:3.2em;display:inline-block;cursor:pointer;user-select:none;}
+.item.shown .a-text,.gap-answer.shown{color:var(--green-dark) !important;background:none;font-weight:700;}
+.showpill{display:inline-block;margin-left:10px;border:2px solid var(--green);color:var(--green-dark);background:#fff;border-radius:999px;padding:1px 12px;font-size:.72em;font-weight:700;cursor:pointer;vertical-align:middle;}
+.item.shown .showpill{display:none;}
+@media print{.item .a-text,.gap-answer{color:var(--green-dark) !important;background:none;}.showpill{display:none !important;}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+  <div class="title-block">
+    <h1>Use your English</h1>
+    <p>Unit 6 &middot; p.73 &middot; phrasal verbs, prepositions, collocations, exam task</p>
+  </div>
+</header>
+
+<main>
+
+  <div class="slide active">
+    <div class="kicker">Use your English</div>
+    <h2>Unit 6 &middot; p.73</h2>
+    <p class="valencia-note">Tap "Show answer" next to each question.</p>
+  </div>
+
+  <div class="slide">
+    <div class="kicker">Exercise 1 &middot; phrasal verbs</div>
+    <h2>Complete with the <span class="accent">right form</span></h2>
+    <ul class="item-list">
+      <li class="item"><span class="num">1</span>I used to belong to a dance group, but I <span class="a-text">gave up</span> when I started secondary school.</li>
+      <li class="item"><span class="num">2</span>It really <span class="a-text">took off</span> in the 1990s, when it became a popular sport.</li>
+      <li class="item"><span class="num">3</span>I was playing football when I was <span class="a-text">knocked over</span> by another player.</li>
+      <li class="item"><span class="num">4</span>She ran so fast I couldn't <span class="a-text">keep up with</span> her.</li>
+      <li class="item"><span class="num">5</span>When the clown fell over, everyone <span class="a-text">burst out</span> laughing.</li>
+      <li class="item"><span class="num">6</span>Stop <span class="a-text">showing off</span>! I already know you can juggle.</li>
+    </ul>
+  </div>
+
+  <div class="slide">
+    <div class="kicker">Exercise 2 &middot; prepositions</div>
+    <h2>Choose the <span class="accent">right preposition</span></h2>
+    <ul class="item-list">
+      <li class="item"><span class="num">1</span>I'd never go to an amusement park just <span class="a-text">for</span> the rides.</li>
+      <li class="item"><span class="num">2</span>I think you're <span class="a-text">onto</span> something. Let's try it.</li>
+      <li class="item"><span class="num">3</span>Circuses appeal <span class="a-text">to</span> people of all ages.</li>
+      <li class="item"><span class="num">4</span>I want to move <span class="a-text">on</span> now and talk about another topic.</li>
+      <li class="item"><span class="num">5</span>Circuses are a combination <span class="a-text">of</span> acrobatic skills and entertainment.</li>
+    </ul>
+  </div>
+
+  <div class="slide">
+    <div class="kicker">Exercise 3 &middot; collocations</div>
+    <h2>Complete with the <span class="accent">right verb</span></h2>
+    <ul class="item-list">
+      <li class="item"><span class="num">1</span>I like Damian because he doesn't <span class="a-text">take</span> himself too seriously.</li>
+      <li class="item"><span class="num">2</span>Our national team has never <span class="a-text">come</span> close to winning the World Cup.</li>
+      <li class="item"><span class="num">3</span>He wanted to continue his hobby without <span class="a-text">putting</span> his life at risk.</li>
+      <li class="item"><span class="num">4</span>Half-price tickets would <span class="a-text">make</span> a big difference.</li>
+      <li class="item"><span class="num">5</span>I don't <span class="a-text">know</span> the first thing about making jewellery.</li>
+      <li class="item"><span class="num">6</span>This sport used to <span class="a-text">hold</span> an important place in Mesoamerican culture.</li>
+    </ul>
+  </div>
+
+  <div class="slide">
+    <div class="kicker">Exam Task &middot; Ex.4 &middot; sentence transformation</div>
+    <h2>Key-word <span class="accent">transformation</span></h2>
+    <ul class="item-list">
+      <li class="item"><span class="num">1</span>Are there any tickets left? &rarr; Could you <span class="a-text">tell me whether there are</span> any tickets left?</li>
+      <li class="item"><span class="num">2</span>Wild animals shouldn't be forced to perform tricks. &rarr; I don't think they <span class="a-text">should make wild animals</span> perform tricks.</li>
+      <li class="item"><span class="num">3</span>The game combines strength and speed really cleverly. &rarr; The game involves <span class="a-text">a really clever combination of</span> strength and speed.</li>
+      <li class="item"><span class="num">4</span>What time does the treasure hunt start? &rarr; I'd like to know <span class="a-text">when the treasure hunt starts</span>.</li>
+      <li class="item"><span class="num">5</span>I wasn't told about the party! Why was that? &rarr; <span class="a-text">Why didn't anyone tell</span> me about the party?</li>
+      <li class="item"><span class="num">6</span>I don't really like the idea of bungee jumping. &rarr; Bungee jumping <span class="a-text">doesn't (really) appeal to me</span>.</li>
+    </ul>
+    <p class="valencia-note">Valencia link: try one more key-word sentence with KNOW, e.g. "I don't know the first thing about making paella."</p>
+  </div>
+
+</main>
+
+<div class="nav-bar">
+  <button id="prevBtn">&larr;</button>
+  <span class="count" id="count">1 / 5</span>
+  <button id="nextBtn">&rarr;</button>
+</div>
+
+<footer>Somerset Language Centre &middot; Valencia &middot; Unit 6, p.73</footer>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+let idx = 0;
+function show(i){ slides.forEach((s,n)=>s.classList.toggle('active', n===i)); document.getElementById('count').textContent = (i+1)+' / '+slides.length; document.getElementById('prevBtn').disabled = i===0; document.getElementById('nextBtn').disabled = i===slides.length-1; }
+document.getElementById('prevBtn').addEventListener('click', ()=>{ if(idx>0){idx--; show(idx);} });
+document.getElementById('nextBtn').addEventListener('click', ()=>{ if(idx<slides.length-1){idx++; show(idx);} });
+document.addEventListener('keydown', (e)=>{ if(e.key==='ArrowRight' && idx<slides.length-1){idx++; show(idx);} if(e.key==='ArrowLeft' && idx>0){idx--; show(idx);} });
+show(0);
+/* per-item-reveal v1 */
+document.querySelectorAll('.item').forEach(function(it){
+  var spans = it.querySelectorAll('.a-text, .gap-answer');
+  if(!spans.length) return;
+  var pill = document.createElement('span');
+  pill.className = 'showpill';
+  pill.textContent = 'Show answer';
+  it.appendChild(pill);
+  function reveal(){ it.classList.add('shown'); }
+  function hide(){ it.classList.remove('shown'); }
+  pill.addEventListener('click', function(e){ e.stopPropagation(); reveal(); });
+  spans.forEach(function(sp){ sp.addEventListener('click', function(e){ e.stopPropagation(); if(it.classList.contains('shown')) hide(); else reveal(); }); });
+});
+</script>
+</body>
+</html>

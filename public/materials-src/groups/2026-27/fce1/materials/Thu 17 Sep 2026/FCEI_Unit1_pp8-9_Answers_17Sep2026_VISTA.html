@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 1, pp. 8–9 — Answers · FCE I · Somerset Vista</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<!-- SOMERSET VISTA — FCE I, Unit 1 pp.8-9 answer key. Cumulative reveal, one answer
+     per press, rebuilt from FCEI_Unit1_pp8-9_Answers_17Sep2026.pptx (50 slides). -->
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{ --ink:#161b24; --ink2:#0e131b; --panel:#1e2531; --green:#6BAE2E; --greenL:#A6D46A;
+  --err:#F0563F; --sand:#EAD9AC; --sun:#E8A93C; }
+html,body{width:100%;height:100%;overflow:hidden;background:#000;font-family:'Lato',sans-serif;}
+#show{position:fixed;inset:0;}
+.slide{position:absolute;inset:0;display:none;flex-direction:column;}
+.slide.active{display:flex;}
+.bg{position:absolute;inset:0;}
+.wm{position:absolute;top:3vh;left:3.5vw;z-index:6;display:flex;align-items:baseline;gap:8px;}
+.wm .w{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(18px,1.9vw,28px);color:#fff;}
+.wm .lc{font-size:clamp(8px,.8vw,11px);letter-spacing:3px;color:var(--greenL);font-weight:900;}
+.tag{position:absolute;top:3.2vh;right:4vw;z-index:6;font-size:clamp(10px,1vw,14px);letter-spacing:2px;text-transform:uppercase;font-weight:900;color:var(--sand);}
+.sc{position:relative;z-index:3;flex:1;display:flex;flex-direction:column;justify-content:center;padding:10.5vh 6vw 9vh;}
+.sc.centre{align-items:center;text-align:center;}
+.pill{display:inline-block;align-self:flex-start;border:1.5px solid var(--sun);color:var(--sun);font-size:clamp(11px,1.1vw,16px);letter-spacing:3px;text-transform:uppercase;padding:5px 20px;margin-bottom:14px;font-weight:900;}
+.pill.centre{align-self:center;}
+.t-super{font-family:'Playfair Display',serif;font-size:clamp(44px,7vw,104px);color:#fff;font-weight:900;}
+.t-big{font-family:'Playfair Display',serif;font-size:clamp(24px,3.4vw,50px);color:#fff;font-weight:700;}
+.rt{font-family:'Playfair Display',serif;font-size:clamp(24px,3vw,42px);color:#fff;font-weight:900;margin-bottom:16px;line-height:1.08;}
+.lead{font-size:clamp(18px,1.9vw,28px);color:var(--sand);font-weight:600;line-height:1.45;max-width:1100px;}
+.rule{display:flex;align-items:center;gap:12px;width:100%;max-width:480px;margin:18px auto;}
+.rule::before,.rule::after{content:'';flex:1;height:1px;background:var(--sun);opacity:.6;}
+.rule .gem{width:8px;height:8px;background:var(--sun);transform:rotate(45deg);}
+.strip{position:absolute;bottom:0;left:0;right:0;height:7px;z-index:4;background:repeating-linear-gradient(90deg,var(--green) 0 22px,var(--sand) 22px 44px,var(--err) 44px 66px,var(--sun) 66px 88px);}
+#nav{position:fixed;bottom:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:center;gap:22px;padding:9px;background:rgba(10,14,20,.6);backdrop-filter:blur(6px);}
+.nb{background:transparent;border:1.5px solid var(--sun);color:var(--sun);font-size:18px;cursor:pointer;width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.nb:hover{background:var(--sun);color:#fff;}
+#count{color:var(--sand);font-size:13px;letter-spacing:2px;min-width:64px;text-align:center;}
+.hint{position:fixed;top:14px;right:1.6vw;z-index:100;color:rgba(255,255,255,.4);font-size:12px;letter-spacing:1px;}
+
+/* ---- list rows (Tasks 1-3, 4A) ---- */
+.list{width:100%;max-width:1500px;margin:0 auto;display:flex;flex-direction:column;justify-content:center;flex:1;gap:.6vh;}
+.row{display:flex;align-items:baseline;gap:1.1vw;padding:.35vh 0;border-bottom:1px solid rgba(255,255,255,.07);}
+.row:last-child{border-bottom:none;}
+.num{flex:0 0 auto;width:2.2em;font-weight:900;color:var(--greenL);text-align:right;font-size:.85em;}
+.term{flex:0 0 auto;color:var(--sand);font-weight:700;}
+.list--dense .term{flex-basis:34%;}
+.list--mid .term{flex-basis:38%;}
+.arrow{color:var(--sun);font-weight:900;flex:0 0 auto;visibility:hidden;}
+.row.on .arrow{visibility:visible;}
+.ans{color:var(--greenL);font-weight:900;font-family:'Playfair Display',serif;}
+.badge{display:inline-flex;align-items:center;justify-content:center;min-width:1.6em;height:1.6em;border-radius:50%;border:1.5px solid var(--greenL);color:var(--greenL);font-weight:900;font-size:.72em;margin-right:.3em;}
+.badge.mark{border-color:var(--sun);color:var(--sun);border-radius:6px;min-width:1.4em;padding:0 .3em;}
+.warnnote{color:var(--err);font-weight:700;font-size:.72em;letter-spacing:.3px;margin-left:.6em;}
+.gramnote{color:var(--sand);opacity:.75;font-style:italic;font-weight:600;font-size:.7em;margin-left:.6em;}
+.list--dense .row{font-size:clamp(14px,1.55vw,23px);}
+.list--mid .row{font-size:clamp(16px,2vw,28px);}
+.list--loose .row{font-size:clamp(19px,2.6vw,36px);}
+
+/* ---- comparison table (Task 4 Part B) ---- */
+.tbl{width:100%;max-width:1400px;margin:0 auto;flex:1;display:flex;flex-direction:column;justify-content:center;gap:1vh;}
+.tbl-hdr{display:grid;grid-template-columns:1.15fr 1fr 1fr;gap:1.4vw;margin-bottom:.4vh;}
+.tbl-hdr span{font-family:'Playfair Display',serif;font-weight:900;color:#fff;font-size:clamp(18px,2.1vw,30px);text-align:center;}
+.tbl-hdr span:first-child{text-align:left;visibility:hidden;}
+.trow{display:grid;grid-template-columns:1.15fr 1fr 1fr;gap:1.4vw;align-items:center;padding:1vh 0;border-bottom:1px solid rgba(255,255,255,.08);}
+.trow:last-child{border-bottom:none;}
+.cat{color:var(--sand);font-weight:700;font-size:clamp(15px,1.7vw,22px);}
+.val{color:var(--greenL);font-weight:800;font-family:'Playfair Display',serif;font-size:clamp(15px,1.7vw,22px);text-align:center;opacity:0;transform:translateY(4px);}
+.val.on{opacity:1;transform:none;}
+</style>
+</head>
+<body>
+<div id="show"></div>
+<div class="hint">&larr; &rarr; · click to reveal / advance</div>
+<div id="nav"><button class="nb" onclick="go(-1)">&#8249;</button><span id="count"></span><button class="nb" onclick="go(1)">&#8250;</button></div>
+<script>
+/* ============ SOURCE DATA — extracted verbatim from the 50-slide pptx key ============ */
+const TASK1 = {pill:"TASK 1", title:"From the noun to the adjective", dense:"loose", items:[
+ {n:"joy", a:"overjoyed"},
+ {n:"confidence", a:"confident"},
+ {n:"relief", a:"relieved"},
+ {n:"amazement", a:"amazed"},
+ {n:"despair", a:"desperate", note:"does not look like its noun"},
+ {n:"guilt", a:"guilty"},
+ {n:"embarrassment", a:"embarrassed", note:"double r, double s"},
+ {n:"anxiety", a:"anxious", note:'not "nervous"'},
+ {n:"frustration", a:"frustrated"},
+ {n:"sympathy", a:"sympathetic", note:"ends in -ic"},
+]};
+
+const TASK2 = {pill:"TASK 2", title:"Five expressions the exam likes", dense:"loose", items:[
+ {n:"to be in agony", letter:"b", a:"feeling a lot of pain"},
+ {n:"on the edge of your seat", letter:"e", a:"very excited"},
+ {n:"to get under someone's skin", letter:"a", a:"make someone upset or irritated"},
+ {n:"to be lost for words", letter:"c", a:"shocked and surprised"},
+ {n:"with regret", letter:"d", a:"feeling sadness. formal"},
+]};
+
+const TASK3 = {pill:"TASK 3", title:"Plus, minus, or both", dense:"mid", items:[
+ {n:"aggressive", mark:"–", a:"calm, gentle"},
+ {n:"arrogant", mark:"–", a:"modest, humble"},
+ {n:"bad-tempered", mark:"–", a:"good-tempered, cheerful"},
+ {n:"loyal", mark:"+", a:"disloyal"},
+ {n:"mature", mark:"+", a:"childish, immature"},
+ {n:"mean", mark:"–", a:"kind, generous"},
+ {n:"stubborn", mark:"–", a:"no single word: open to reason"},
+ {n:"sensitive", mark:"B", a:"insensitive"},
+ {n:"reliable", mark:"+", a:"unreliable"},
+ {n:"childish", mark:"–", a:"mature, grown-up"},
+]};
+
+const TASK4A = {pill:"TASK 4 · PART A", title:"The letter, thirteen gaps", dense:"dense", items:[
+ {n:"Shrewsbury ___ (look) tiny next to Valencia", a:"looks", note:"a general truth"},
+ {n:"but I ___ (love) that river", a:"love", note:"stative verb"},
+ {n:"in the second photo you ___ (stand) outside a school", a:"are standing", note:"describing a picture"},
+ {n:"Normally I ___ (get) the metro at half past seven", a:"get", note:"habit"},
+ {n:"they ___ (repair) the line all this month", a:"are repairing", note:"temporary"},
+ {n:"so I ___ (walk) instead", a:"am walking", note:"temporary"},
+ {n:"It ___ (take) forty minutes", a:"takes", note:"a fact"},
+ {n:"my English ___ (get) better and better", a:"is getting", note:"a changing situation"},
+ {n:"My sister ___ (stay) with us until December", a:"is staying", note:"temporary"},
+ {n:"She ___ (always, leave) her wet towels on my bed", a:"is always leaving", note:"an annoying habit"},
+ {n:"Our train ___ (leave) at 7.40 on Friday", a:"leaves", note:"a timetable"},
+ {n:"and we ___ (meet) my cousin there at lunchtime", a:"are meeting", note:"a fixed arrangement"},
+ {n:"I ___ (want) to hear about the new school", a:"want", note:"stative verb"},
+]};
+
+const TASK4B = {pill:"TASK 4 · PART B", title:"Nora and Diego", rows:[
+ {cat:"Lives", nora:"in Ruzafa, staying in Gandia this month", diego:"in Benimaclet, shares with three others"},
+ {cat:"Studies or works", nora:"architecture, café on Saturdays", diego:"teaches swimming every morning"},
+ {cat:"Doing this month or term", nora:"learning French", diego:"a sports nutrition course"},
+ {cat:"Always doing it, and it annoys", nora:"always losing her keys", diego:"always telling the same three stories"},
+ {cat:"Already arranged", nora:"Toulouse in January, flight at 6.15", diego:"Shrewsbury in July"},
+]};
+
+/* ============ generic renderers ============ */
+function rowHTML(item, i, revealed){
+  let right = '';
+  if(revealed){
+    if('letter' in item){
+      right = `<span class="arrow on">&rarr;</span><span class="badge">${item.letter}</span><span class="ans">${item.a}</span>`;
+    } else if('mark' in item){
+      right = `<span class="arrow on">&rarr;</span><span class="badge mark">${item.mark}</span><span class="ans">${item.a}</span>`;
+    } else if(item.note && ('letter' in item === false) && !('mark' in item)){
+      // could be task1 (warning) or task4A (neutral grammar note) — distinguished by caller via item._warn
+      right = `<span class="arrow on">&rarr;</span><span class="ans">${item.a}</span>` +
+        (item._warn ? `<span class="warnnote">&#9888; ${item.note}</span>` : `<span class="gramnote">${item.note}</span>`);
+    } else {
+      right = `<span class="arrow on">&rarr;</span><span class="ans">${item.a}</span>`;
+    }
+  } else {
+    right = `<span class="arrow">&rarr;</span>`;
+  }
+  return `<div class="row${revealed?' on':''}"><span class="num">${i+1}</span><span class="term">${item.n}</span>${right}</div>`;
+}
+
+function buildListSlides(S, task, warn){
+  if(warn) task.items.forEach(it=>{ if(it.note) it._warn = true; });
+  const dense = task.dense === 'dense' ? 'list--dense' : task.dense === 'mid' ? 'list--mid' : 'list--loose';
+  for(let revealed=0; revealed<=task.items.length; revealed++){
+    const rows = task.items.map((it,i)=>rowHTML(it, i, i<revealed)).join('');
+    S.push(`<div class="bg" style="background:linear-gradient(150deg,var(--panel),var(--ink2) 74%);"></div>
+     <div class="wm"><span class="w">Somerset</span><span class="lc">LANGUAGE&nbsp;CENTRE</span></div>
+     <div class="tag">FCE I &middot; Unit 1, pp. 8&ndash;9</div>
+     <div class="sc"><div class="pill">${task.pill}</div>
+      <h2 class="rt">${task.title}</h2>
+      <div class="list ${dense}">${rows}</div>
+     </div><div class="strip"></div>`);
+  }
+}
+
+function buildTableSlides(S, task){
+  for(let revealed=0; revealed<=task.rows.length; revealed++){
+    const trows = task.rows.map((r,i)=>{
+      const on = i<revealed;
+      return `<div class="trow">
+        <span class="cat">${r.cat}</span>
+        <span class="val${on?' on':''}">${on?r.nora:''}</span>
+        <span class="val${on?' on':''}">${on?r.diego:''}</span>
+      </div>`;
+    }).join('');
+    S.push(`<div class="bg" style="background:linear-gradient(150deg,var(--panel),var(--ink2) 74%);"></div>
+     <div class="wm"><span class="w">Somerset</span><span class="lc">LANGUAGE&nbsp;CENTRE</span></div>
+     <div class="tag">FCE I &middot; Unit 1, pp. 8&ndash;9</div>
+     <div class="sc"><div class="pill">${task.pill}</div>
+      <h2 class="rt">${task.title}</h2>
+      <div class="tbl">
+       <div class="tbl-hdr"><span></span><span>Nora</span><span>Diego</span></div>
+       ${trows}
+      </div>
+     </div><div class="strip"></div>`);
+  }
+}
+
+/* ============ assemble the 50 slides, in the pptx's own order ============ */
+const S = [];
+
+// Slide 1 — title
+S.push(`<div class="bg" style="background:linear-gradient(150deg,var(--panel),var(--ink2) 65%,#000);"></div>
+ <div class="wm"><span class="w">Somerset</span><span class="lc">LANGUAGE&nbsp;CENTRE</span></div>
+ <div class="sc centre"><div class="pill centre">Unit 1, pages 8 and 9</div>
+ <h1 class="t-super">Answers, one at a time</h1>
+ <div class="rule"><span class="gem"></span><span class="gem"></span><span class="gem"></span></div>
+ <p class="lead" style="text-align:center">Press the right arrow. One answer appears each time.<br>Say the whole thing before I press it.</p></div><div class="strip"></div>`);
+
+buildListSlides(S, TASK1, true);   // slides 2–12  (11)
+buildListSlides(S, TASK2, false);  // slides 13–18 (6)
+buildListSlides(S, TASK3, false);  // slides 19–29 (11)
+buildListSlides(S, TASK4A, false); // slides 30–43 (14)
+buildTableSlides(S, TASK4B);       // slides 44–49 (6)
+
+// Slide 50 — homework
+S.push(`<div class="bg" style="background:linear-gradient(150deg,var(--green),#3f6d16 70%,var(--ink2));"></div>
+ <div class="wm"><span class="w">Somerset</span><span class="lc">LANGUAGE&nbsp;CENTRE</span></div>
+ <div class="sc centre"><div class="pill centre" style="border-color:#fff;color:#fff">Before Monday</div>
+ <h2 class="t-super" style="font-size:clamp(34px,5.5vw,78px)">Page 9, exercise 5</h2>
+ <p class="lead" style="text-align:center;margin-top:20px;max-width:1000px">Then five true sentences about yourself, three present simple and two present continuous, and one more that is false. Your partner has to find it. Make it hard.</p>
+ <p class="t-big" style="color:#fff;font-size:clamp(15px,1.5vw,20px);margin-top:30px">Somerset Language Centre &middot; València</p></div><div class="strip"></div>`);
+
+/* ============ engine (Vista standard) ============ */
+const show=document.getElementById('show');
+show.innerHTML=S.map((h,i)=>`<div class="slide${i===0?' active':''}">${h}</div>`).join('');
+const els=[...document.querySelectorAll('.slide')];let i=0;
+function render(){els.forEach((s,k)=>s.classList.toggle('active',k===i));document.getElementById('count').textContent=(i+1)+' / '+els.length;}
+function go(d){i=(i+d+els.length)%els.length;render();}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')go(1);if(e.key==='ArrowLeft')go(-1);});
+show.addEventListener('click',e=>{if(!e.target.closest('#nav'))go(1);});
+render();
+</script>
+</body>
+</html>

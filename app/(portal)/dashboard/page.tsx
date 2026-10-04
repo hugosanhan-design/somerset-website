@@ -416,6 +416,7 @@ interface LessonContent {
   arcade: { unit: string; game: string; href?: string; missing?: false } | { missing: true; why: string } | null
   shelves: Shelves | null
   unitAudio: { label: string; track?: number; path: string }[]
+  bookletDigitalWeb: string | null
 }
 
 function LessonPanel({ date, group, onClose, onToggle }: {
@@ -467,7 +468,7 @@ function LessonPanel({ date, group, onClose, onToggle }: {
             marginTop: 18, background: PORTAL.panel, borderRadius: 10, padding: '14px 16px', fontSize: 14, color: PORTAL.ink, lineHeight: 1.55,
           }}>
             <strong style={{ display: 'block', marginBottom: 4 }}>No lesson content synced for this class yet</strong>
-            Only FCE I and PET I have been brought over from the local Somerset Portal so far. Run
+            This class isn't wired into the local Somerset Portal's lesson data yet (FCE I, PET I, Flyers and Friday B2 are). Run
             <code style={{ background: '#fff', padding: '1px 5px', borderRadius: 4 }}> node scripts/migrate-lesson-content.mjs</code> after
             rebuilding the local portal to sync more, or open <strong>Somerset Portal.app</strong> on your Mac
             for this class&rsquo;s material.
@@ -483,8 +484,24 @@ function LessonPanel({ date, group, onClose, onToggle }: {
               </div>
             )}
 
+            {content.bookletDigitalWeb && (
+              <ShelfSection title="Booklet">
+                <LinkRow
+                  label="Digital booklet (screen, correct together)"
+                  href={content.pages
+                    ? `${content.bookletDigitalWeb}?p=${(content.pages.match(/\d+/) || [])[0] || ''}`
+                    : content.bookletDigitalWeb}
+                  openLabel="Open"
+                />
+              </ShelfSection>
+            )}
             {content.plan && (
-              <ShelfBox title="The plan" text={content.plan} />
+              <div style={{ background: PORTAL.panel, borderRadius: 9, padding: '13px 15px', fontSize: 15, marginBottom: 14 }}>
+                <h3 style={{ margin: '0 0 5px', fontSize: 12, textTransform: 'uppercase', letterSpacing: '.04em', color: PORTAL.muted }}>
+                  The plan{content.bookletDigitalWeb || (content.arcade && !('missing' in content.arcade && content.arcade.missing)) ? ' · click a step to open it' : ''}
+                </h3>
+                <PlanSteps plan={content.plan} bookletDigitalWeb={content.bookletDigitalWeb} arcade={content.arcade} />
+              </div>
             )}
             {content.flag && (
               <div style={{ background: PORTAL.amberBg, border: `1px solid ${PORTAL.amberLine}`, borderRadius: 10, padding: '12px 15px', fontSize: 14, color: '#6B4B05', marginBottom: 14 }}>
@@ -552,6 +569,55 @@ function LessonPanel({ date, group, onClose, onToggle }: {
       </div>
     </div>
   )
+}
+
+function PlanSteps({ plan, bookletDigitalWeb, arcade }: {
+  plan: string
+  bookletDigitalWeb?: string | null
+  arcade: LessonContent['arcade']
+}) {
+  let steps = plan.split('\u2192').map(s => s.trim()).filter(Boolean)
+  if (steps.length < 2) steps = plan.split('\u00b7').map(s => s.trim()).filter(Boolean)
+  if (!steps.length) steps = [plan]
+
+  const arcadeHref = arcade && !('missing' in arcade && arcade.missing) && 'href' in arcade ? arcade.href : null
+  const linkStyle: React.CSSProperties = {
+    color: PORTAL.greenDeep, textDecoration: 'underline', textDecorationStyle: 'dotted', fontWeight: 700,
+  }
+
+  function linkifyStep(step: string, stepKey: number) {
+    const pattern = /\bpp?\.\s?\d+\b|\b(?:arcade(?:\s+point\s+grab)?|point\s+grab)\b/gi
+    const nodes: React.ReactNode[] = []
+    let last = 0
+    let match: RegExpExecArray | null
+    let i = 0
+    while ((match = pattern.exec(step))) {
+      if (match.index > last) nodes.push(step.slice(last, match.index))
+      const token = match[0]
+      const isPage = /^pp?\./i.test(token)
+      if (isPage && bookletDigitalWeb) {
+        const num = token.match(/\d+/)?.[0]
+        nodes.push(
+          <a key={i++} href={`${bookletDigitalWeb}?p=${num}`} target="_blank" rel="noopener noreferrer" style={linkStyle}>
+            {token}
+          </a>
+        )
+      } else if (!isPage && arcadeHref) {
+        nodes.push(
+          <a key={i++} href={arcadeHref} target="_blank" rel="noopener noreferrer" style={linkStyle}>
+            {token}
+          </a>
+        )
+      } else {
+        nodes.push(token)
+      }
+      last = match.index + token.length
+    }
+    if (last < step.length) nodes.push(step.slice(last))
+    return <li key={stepKey} style={{ marginBottom: 6 }}>{nodes}</li>
+  }
+
+  return <ol style={{ margin: 0, paddingLeft: 20 }}>{steps.map((s, idx) => linkifyStep(s, idx))}</ol>
 }
 
 function ShelfBox({ title, text }: { title: string; text: string }) {

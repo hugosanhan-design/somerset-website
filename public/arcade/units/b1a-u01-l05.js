@@ -17,6 +17,12 @@ window.SOMERSET_UNITS['b1a-u01-l05'] = {
   {"q": "In the model answer, what feature of the task did the student forget to include?", "a": "a question back to Gregor about the job fair", "type": "say", "topic": "writing"},
   {"q": "About how many words should a PET informal email reply be?", "a": "about 100 words", "type": "say", "topic": "writing"},
   {"q": "Give an informal greeting to open a personal email.", "a": "e.g. Hi Erik / Dear Erik (less formal than 'Dear Mr...')", "type": "say", "topic": "writing"},
-  {"q": "Give an informal way to close a personal email.", "a": "e.g. Take care / All the best / See you soon", "type": "say", "topic": "writing"}
+  {"q": "Give an informal way to close a personal email.", "a": "e.g. Take care / All the best / See you soon", "type": "say", "topic": "writing"},
+  {"q": "Give an informal way to say 'I would love to meet your cousins.'", "a": "I'd love to meet your cousins!", "type": "gap", "topic": "writing"},
+  {"q": "Give an informal way to say 'That was a lovely meal.'", "a": "Lovely meal! / Great meal!", "type": "say", "topic": "writing"},
+  {"q": "What does the Unit 1 'Live Well, Study Well' page (SB p.16) focus on?", "a": "resilience and positive/negative thinking", "type": "say", "topic": "writing"},
+  {"q": "True or false: SB p.16 'Live Well, Study Well' includes a video to watch.", "a": "false \u2014 no video component on this page", "type": "say", "topic": "writing"},
+  {"q": "What kind of writing task does this lesson prepare students for?", "a": "a PET-style informal email/letter reply, about 100 words", "type": "say", "topic": "writing"},
+  {"q": "Besides missing a question back to Gregor, what other feature did Ex.3 ask students to fix in the model reply?", "a": "two overly formal phrases: 'Thank you so much for your email' and 'With kind regards'", "type": "say", "topic": "writing"}
  ]
 };

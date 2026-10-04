@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 5 — Where we live — Review Play 1 — Review Plays</title>
+<style>
+  :root{
+    --green:#6BAE2E;
+    --green-dark:#4d8120;
+    --ink:#1a1a1a;
+    --bg:#ffffff;
+    --char-a:#0F7B6C;
+    --char-b:#6B3FA0;
+    --char-c:#C2540A;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+  }
+  header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    padding:24px 40px;
+    border-bottom:4px solid var(--green);
+    flex-wrap:wrap;
+    gap:16px;
+  }
+  .logo{display:flex;align-items:flex-end;gap:11px;}
+  .logo .word{font-family:Arial,Helvetica,sans-serif;font-weight:800;font-size:33pt;letter-spacing:-1.2px;line-height:.9;color:#6BAE2E;}
+  .logo .lc{font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:8.5pt;letter-spacing:2.5px;line-height:1.18;padding-bottom:4px;color:#4d8120;}
+  .title-block{text-align:right;}
+  .title-block h1{margin:0;font-size:24px;font-weight:700;color:var(--ink);}
+  .title-block p{margin:6px 0 0;font-size:15px;color:#555;letter-spacing:.5px;text-transform:uppercase;}
+
+  .toggle-row{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:16px;
+    padding:20px 20px 4px;
+  }
+  .toggle-btn{
+    font-size:19px;
+    font-weight:700;
+    padding:14px 26px;
+    border-radius:12px;
+    border:3px solid var(--green);
+    background:#fff;
+    color:var(--green-dark);
+    cursor:pointer;
+    transition:all .15s ease;
+    font-family:inherit;
+  }
+  .toggle-btn:hover{background:#EAF4DA;}
+  .toggle-btn.active{background:var(--green);color:#fff;}
+  .version-btn{font-size:22px;padding:16px 36px;}
+
+  .scene-setup{
+    max-width:900px;
+    margin:14px auto 0;
+    padding:0 24px;
+    text-align:center;
+    font-size:19px;
+    color:#444;
+    font-style:italic;
+  }
+
+  .focus-tags{
+    max-width:900px;
+    margin:10px auto 0;
+    padding:0 24px;
+    text-align:center;
+    font-size:14px;
+    color:#6BAE2E;
+    font-weight:700;
+    letter-spacing:.4px;
+    text-transform:uppercase;
+  }
+
+  main{max-width:960px;margin:0 auto;padding:20px 24px 90px;}
+  .script-panel{display:none;}
+  .script-panel.active{display:block;}
+  .version{display:none;}
+  .version.active{display:block;}
+
+  .line{
+    display:flex;
+    gap:24px;
+    align-items:baseline;
+    margin-bottom:30px;
+    padding-bottom:30px;
+    border-bottom:1px solid #eee;
+  }
+  .line:last-child{border-bottom:none;}
+  .char-name{
+    flex:0 0 180px;
+    font-size:22px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+  }
+  .char-a .char-name{color:var(--char-a);}
+  .char-b .char-name{color:var(--char-b);}
+  .char-c .char-name{color:var(--char-c);}
+  .line-text{
+    font-size:30px;
+    line-height:1.5;
+    flex:1;
+  }
+  .stage-direction{
+    font-size:20px;
+    color:#777;
+    font-style:italic;
+    text-align:center;
+    margin:24px 0;
+  }
+  .joint-line .char-name{color:#444;}
+
+  footer{
+    text-align:center;
+    padding:24px;
+    font-size:14px;
+    color:#888;
+    border-top:2px solid #eee;
+  }
+
+  @media (max-width:700px){
+    header{flex-direction:column;align-items:center;text-align:center;}
+    .title-block{text-align:center;}
+    .line{flex-direction:column;gap:6px;}
+    .char-name{flex-basis:auto;font-size:19px;}
+    .line-text{font-size:25px;}
+    .toggle-btn{font-size:16px;padding:11px 18px;}
+    .version-btn{font-size:18px;padding:12px 24px;}
+  }
+
+  @page{size:A4;margin:16mm 14mm}
+  @media print{
+    body{background:#fff}
+    .toggle-row{display:none !important}
+    main{max-width:none;padding:0}
+    .scene-setup{font-size:12pt}
+    .focus-tags{font-size:12pt}
+    .char-name{font-size:13pt}
+    .line-text{font-size:14pt;line-height:1.4}
+    .line{margin-bottom:12pt;padding-bottom:10pt;page-break-inside:avoid;break-inside:avoid}
+    .stage-direction{font-size:12pt;margin:10pt 0;page-break-inside:avoid;break-inside:avoid}
+    footer{font-size:12pt;padding:10pt 0 0}
+    .version{display:none !important}
+    .version.active{display:block !important}
+    .script-panel{display:none !important}
+    .script-panel.active{display:block !important}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+  <div class="title-block">
+    <h1>Unit 5 — Where we live</h1>
+    <p>Review Plays &middot; PET I</p>
+  </div>
+</header>
+
+<div class="toggle-row">
+  <button class="toggle-btn active" id="scriptBtnA" onclick="showScript('A')">Script A &middot; The Ruzafa Flat</button>
+  <button class="toggle-btn" id="scriptBtnB" onclick="showScript('B')">Script B &middot; The Estate Agent</button>
+  <button class="toggle-btn" id="scriptBtnC" onclick="showScript('C')">Script C &middot; The Cabanyal Cottage</button>
+</div>
+<div class="toggle-row">
+  <button class="toggle-btn version-btn active" id="verBtn2" onclick="showVersionCount(2)">2 Characters</button>
+  <button class="toggle-btn version-btn" id="verBtn3" onclick="showVersionCount(3)">3 Characters</button>
+  <button class="toggle-btn print-btn" onclick="window.print()">Print</button>
+</div>
+
+<main>
+
+  <div class="script-panel active" id="panel-A">
+    <p class="scene-setup">Two flatmates in a shared flat in Ruzafa, Valencia, deciding what to do about their noisy neighbour and a broken freezer.</p>
+    <p class="focus-tags">Housing &amp; household objects (1) vocabulary &middot; will; be going to</p>
+
+    <div class="version active" id="ver-A-2">
+      <div class="line char-a"><div class="char-name">Bea</div><div class="line-text">Our neighbour is making a lot of noise again. I think I'll go and knock on his door.</div></div>
+      <div class="line char-b"><div class="char-name">Adrian</div><div class="line-text">Good idea. I'm going to finish tidying the kitchen while you do that.</div></div>
+      <div class="line char-a"><div class="char-name">Bea</div><div class="line-text">Also, the freezer isn't working properly. I think it's going to break completely soon.</div></div>
+      <div class="line char-b"><div class="char-name">Adrian</div><div class="line-text">I'll call the landlord about it this evening, I promise.</div></div>
+      <div class="line char-a"><div class="char-name">Bea</div><div class="line-text">Thanks. Are we still going to look for a new flatmate next month?</div></div>
+      <div class="line char-b"><div class="char-name">Adrian</div><div class="line-text">Yes, our rent will be lower if we find someone. I've already put an advert online.</div></div>
+      <div class="line char-a"><div class="char-name">Bea</div><div class="line-text">Perfect. Will you show me the messages when you get some?</div></div>
+      <div class="line char-b"><div class="char-name">Adrian</div><div class="line-text">Of course I will. I think this apartment block will feel much friendlier with the right person.</div></div>
+      <div class="line char-a"><div class="char-name">Bea</div><div class="line-text">I'll go and talk to the neighbour now, then. Wish me luck!</div></div>
+      <div class="line char-b"><div class="char-name">Adrian</div><div class="line-text">Good luck! I'll have a coffee ready for you when you're back.</div></div>
+    </div>
+
+    <div class="version" id="ver-A-3">
+      <div class="line char-a"><div class="char-name">Bea</div><div class="line-text">Our neighbour is making a lot of noise again. I think I'll go and knock on his door.</div></div>
+      <div class="line char-b"><div class="char-name">Adrian</div><div class="line-text">Good idea. I'm going to finish tidying the kitchen while you do that.</div></div>
+      <div class="stage-direction">Nil, their new flatmate, walks in carrying shopping bags.</div>
+      <div class="line char-c"><div class="char-name">Nil</div><div class="line-text">Hi! Is that the freezer making that strange noise? It's going to break completely soon, I think.</div></div>
+      <div class="line char-b"><div class="char-name">Adrian</div><div class="line-text">I'll call the landlord about it this evening, I promise.</div></div>
+      <div class="line char-c"><div class="char-name">Nil</div><div class="line-text">Good. And is our rent going to go down now that I've moved in?</div></div>
+      <div class="line char-b"><div class="char-name">Adrian</div><div class="line-text">Yes, exactly. Our rent will be lower now we're sharing between three people.</div></div>
+      <div class="line char-a"><div class="char-name">Bea</div><div class="line-text">I'll go and talk to the noisy neighbour now, then. Wish me luck!</div></div>
+      <div class="line char-c"><div class="char-name">Nil</div><div class="line-text">Good luck! Will you tell him about the party we're going to have on Saturday, too?</div></div>
+      <div class="line char-a"><div class="char-name">Bea</div><div class="line-text">Of course I will. This apartment block will feel much friendlier with everyone getting along.</div></div>
+      <div class="line char-b"><div class="char-name">Adrian</div><div class="line-text">I'll have a coffee ready for both of you when you're back.</div></div>
+    </div>
+  </div>
+  <div class="script-panel" id="panel-B">
+    <p class="scene-setup">An estate agent's office near the Plaza del Ayuntamiento, Valencia, where a client is looking for a new property.</p>
+    <p class="focus-tags">Housing &amp; household objects (1) vocabulary &middot; will; be going to</p>
+
+    <div class="version active" id="ver-B-2">
+      <div class="line char-a"><div class="char-name">Client</div><div class="line-text">I'm looking for a small flat, maybe with a balcony. Are you going to have anything new this week?</div></div>
+      <div class="line char-b"><div class="char-name">Agent</div><div class="line-text">Actually, yes. A cottage-style property near the port is going to come onto the market on Friday.</div></div>
+      <div class="line char-a"><div class="char-name">Client</div><div class="line-text">That sounds interesting. Will it have a dishwasher and a decent kitchen?</div></div>
+      <div class="line char-b"><div class="char-name">Agent</div><div class="line-text">I'll check the details for you now, one moment.</div></div>
+      <div class="line char-a"><div class="char-name">Client</div><div class="line-text">Thank you. I promise I won't take too much of your time today.</div></div>
+      <div class="line char-b"><div class="char-name">Agent</div><div class="line-text">No problem at all. Yes, it has a dishwasher, a freezer and a nice balcony.</div></div>
+      <div class="line char-a"><div class="char-name">Client</div><div class="line-text">Perfect. I'm going to visit it on Saturday morning, if that's possible.</div></div>
+      <div class="line char-b"><div class="char-name">Agent</div><div class="line-text">Of course. I'll arrange the visit and call you tomorrow to confirm the time.</div></div>
+      <div class="line char-a"><div class="char-name">Client</div><div class="line-text">And what about the rent? Will it be similar to other flats in the area?</div></div>
+      <div class="line char-b"><div class="char-name">Agent</div><div class="line-text">Yes, I think so. I'll send you the exact figure by email this afternoon.</div></div>
+    </div>
+
+    <div class="version" id="ver-B-3">
+      <div class="line char-a"><div class="char-name">Client</div><div class="line-text">I'm looking for a small flat, maybe with a balcony. Are you going to have anything new this week?</div></div>
+      <div class="line char-b"><div class="char-name">Agent</div><div class="line-text">Actually, yes. A cottage-style property near the port is going to come onto the market on Friday.</div></div>
+      <div class="stage-direction">Marc, the agent's colleague, comes over with a folder of photos.</div>
+      <div class="line char-c"><div class="char-name">Marc</div><div class="line-text">I have the photos here. It has a dishwasher, a freezer and a lovely balcony.</div></div>
+      <div class="line char-a"><div class="char-name">Client</div><div class="line-text">That sounds interesting. Will the kitchen be big enough for two people?</div></div>
+      <div class="line char-b"><div class="char-name">Agent</div><div class="line-text">I'll check the exact measurements for you now, one moment.</div></div>
+      <div class="line char-c"><div class="char-name">Marc</div><div class="line-text">I promise it won't be too small — it's actually quite spacious for the price.</div></div>
+      <div class="line char-a"><div class="char-name">Client</div><div class="line-text">Perfect. I'm going to visit it on Saturday morning, if that's possible.</div></div>
+      <div class="line char-b"><div class="char-name">Agent</div><div class="line-text">Of course. I'll arrange the visit and call you tomorrow to confirm the time.</div></div>
+      <div class="line char-c"><div class="char-name">Marc</div><div class="line-text">And will the rent be similar to other flats in the area?</div></div>
+      <div class="line char-a"><div class="char-name">Client</div><div class="line-text">I hope so. I'll wait for your email this afternoon with the exact figure.</div></div>
+    </div>
+  </div>
+  <div class="script-panel" id="panel-C">
+    <p class="scene-setup">A family looking around an old fisherman's cottage in El Cabanyal, Valencia, deciding whether to buy it.</p>
+    <p class="focus-tags">Housing &amp; household objects (1) vocabulary &middot; will; be going to</p>
+
+    <div class="version active" id="ver-C-2">
+      <div class="line char-a"><div class="char-name">Mireia</div><div class="line-text">Look at this cottage! I think we're going to love living here.</div></div>
+      <div class="line char-b"><div class="char-name">Pau</div><div class="line-text">It's very old. Will we need to change the oven and the shower straight away?</div></div>
+      <div class="line char-a"><div class="char-name">Mireia</div><div class="line-text">Probably, yes. I'll ask the owner about the kitchen appliances now.</div></div>
+      <div class="line char-b"><div class="char-name">Pau</div><div class="line-text">Good. And what about a garage? Is there space for one, or are we going to need street parking?</div></div>
+      <div class="line char-a"><div class="char-name">Mireia</div><div class="line-text">There isn't a garage, but I promise I won't mind walking a bit further.</div></div>
+      <div class="line char-b"><div class="char-name">Pau</div><div class="line-text">Okay. Will the neighbours be friendly, do you think? This street feels very quiet.</div></div>
+      <div class="line char-a"><div class="char-name">Mireia</div><div class="line-text">I'm sure they will be. Look, that balcony is going to be perfect for our plants.</div></div>
+      <div class="line char-b"><div class="char-name">Pau</div><div class="line-text">I agree. I'll call the estate agent tonight and make an offer.</div></div>
+      <div class="line char-a"><div class="char-name">Mireia</div><div class="line-text">Wonderful. This is going to be our new home, I can feel it.</div></div>
+      <div class="line char-b"><div class="char-name">Pau</div><div class="line-text">I'll bring the champagne if the owner accepts!</div></div>
+    </div>
+
+    <div class="version" id="ver-C-3">
+      <div class="line char-a"><div class="char-name">Mireia</div><div class="line-text">Look at this cottage! I think we're going to love living here.</div></div>
+      <div class="line char-b"><div class="char-name">Pau</div><div class="line-text">It's very old. Will we need to change the oven and the shower straight away?</div></div>
+      <div class="stage-direction">Their daughter Alba runs in from the small garden at the back.</div>
+      <div class="line char-c"><div class="char-name">Alba</div><div class="line-text">There's no garage, but there's a garden! Can I have the room with the balcony?</div></div>
+      <div class="line char-a"><div class="char-name">Mireia</div><div class="line-text">I promise you'll get the balcony room if we buy it, Alba.</div></div>
+      <div class="line char-b"><div class="char-name">Pau</div><div class="line-text">We'll definitely need to change the oven and the shower straight away, though.</div></div>
+      <div class="line char-c"><div class="char-name">Alba</div><div class="line-text">Will the neighbours be friendly? This street feels very quiet.</div></div>
+      <div class="line char-a"><div class="char-name">Mireia</div><div class="line-text">I'm sure they will be. That balcony is going to be perfect for our plants, Alba.</div></div>
+      <div class="line char-b"><div class="char-name">Pau</div><div class="line-text">I'll call the estate agent tonight and make an offer.</div></div>
+      <div class="line char-c"><div class="char-name">Alba</div><div class="line-text">This is going to be our new home, I can feel it!</div></div>
+      <div class="line char-a"><div class="char-name">Mireia</div><div class="line-text">I'll bring the champagne if the owner accepts!</div></div>
+    </div>
+  </div>
+
+</main>
+
+<footer>Somerset Language Centre &middot; Valencia &middot; PET I Review Plays &middot; Play 1: housing, household objects (1) &amp; will/be going to</footer>
+
+<script>
+let currentScript = 'A';
+let currentVersion = 2;
+const SCRIPT_IDS = ['A','B','C'];
+
+function showScript(s){ currentScript = s; render(); }
+function showVersionCount(v){ currentVersion = v; render(); }
+
+function render(){
+  SCRIPT_IDS.forEach(function(s){
+    document.getElementById('panel-' + s).classList.toggle('active', s === currentScript);
+    document.getElementById('scriptBtn' + s).classList.toggle('active', s === currentScript);
+  });
+  [2,3].forEach(function(v){
+    document.getElementById('verBtn' + v).classList.toggle('active', v === currentVersion);
+  });
+  SCRIPT_IDS.forEach(function(s){
+    [2,3].forEach(function(v){
+      const el = document.getElementById('ver-' + s + '-' + v);
+      if (el) el.classList.toggle('active', v === currentVersion);
+    });
+  });
+}
+render();
+</script>
+</body>
+</html>

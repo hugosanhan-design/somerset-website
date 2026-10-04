@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Somerset &middot; Unit 1 Review Play &mdash; Flyers I</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..900&family=Instrument+Sans:wght@400..700&display=swap" rel="stylesheet">
+<style>
+@page{size:A4;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#6BAE2E; --green-deep:#2F6B1A; --green-ink:#1E4227;
+  --ice:#3A8FA3; --ice-deep:#3A8FA3; --ice-pale:#EAF6F8;
+  --paper:#FFFDF8; --ink:#1B2419; --ink-soft:#4E5A4A; --rule:#DED8C8;
+  --serif:'Fraunces','Playfair Display',Georgia,serif;
+  --sans:'Instrument Sans','Segoe UI',system-ui,sans-serif;
+}
+body{font-family:var(--sans);background:#dcd9d0;color:var(--ink);font-size:12pt;line-height:1.5}
+.pg{width:210mm;height:297mm;background:#fff;margin:0 auto 8px;position:relative;page-break-after:always}
+.pg:last-child{page-break-after:auto}
+.in{display:block;padding:12mm 16mm 10mm}
+@media print{body{background:#fff}.pg{margin:0}}
+
+.logo{display:flex;align-items:flex-end;gap:8px}
+.logo .word{font-family:Arial,Helvetica,sans-serif;font-weight:800;font-size:17pt;letter-spacing:-1px;line-height:.9;color:#6BAE2E}
+.logo .lc{font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:6pt;letter-spacing:2px;line-height:1.15;padding-bottom:2px;color:#4d8120}
+.logo.sm .word{font-size:13pt}
+
+.topbar{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px}
+.topbar.mini{align-items:center;margin-bottom:10px;padding-bottom:8px;border-bottom:1.5px solid var(--rule)}
+.kick{font-size:13pt;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ice-deep)}
+.topbar.mini .kick{font-size:11pt}
+.kick b{color:var(--green-deep)}
+.kick i{text-transform:none;color:var(--ink-soft);font-weight:600}
+h1.hl{font-family:var(--serif);font-weight:600;font-size:19pt;line-height:1.05;letter-spacing:-.02em;margin:2px 0 0;color:var(--ink)}
+
+.gtag{display:inline-block;border:1.6pt solid var(--accent,var(--green));border-radius:999px;padding:3px 14px;font-size:10.5pt;font-weight:700;letter-spacing:.06em;color:var(--accent,var(--green-deep));margin:8px 0 6px}
+.gtag.sm{font-size:10pt;padding:2px 12px;margin:0 0 8px}
+
+.stuname{font-family:var(--serif);font-weight:700;font-size:26pt;line-height:1;color:var(--ink);margin-bottom:4px}
+.stuname .surname{font-weight:400;font-size:16pt;color:var(--ink-soft)}
+.cast{font-size:12.5pt;color:var(--ink-soft);margin-bottom:5px}
+.scenetitle{font-family:var(--serif);font-style:italic;font-size:12.5pt;color:var(--ink-soft);margin-bottom:9px}
+
+.stepsnote{background:#F1F8E8;border:1.5pt solid var(--accent,var(--green));border-radius:9px;padding:8px 14px;font-size:11.5pt;line-height:1.32;color:var(--green-ink);margin-bottom:12px}
+
+.lines{display:block}
+p.ln{font-size:14pt;line-height:1.4;margin:0 0 4px;padding-left:26px;text-indent:-26px}
+p.ln.own{margin-bottom:11px}
+p.ln:not(.own){margin-bottom:0}
+.num{display:inline-block;width:18px;height:18px;border-radius:50%;background:var(--ink-soft);color:var(--ink-soft);font-size:6pt;text-align:center;line-height:18px;margin-right:6px;text-indent:0}
+.num.own{color:var(--accent,var(--green))}
+.blankwrap{display:block;margin:2px 0 10px;padding-left:26px}
+.blankline{display:block;border-bottom:1.5px solid var(--ink-soft);height:17px}
+
+.foot{position:absolute;left:16mm;right:16mm;bottom:8mm;display:flex;justify-content:space-between;align-items:baseline;
+  font-size:8.5pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);border-top:1px solid var(--rule);padding-top:5px}
+.foot .pn{font-family:var(--serif);font-size:11.5pt;font-weight:700;letter-spacing:0;color:var(--green-deep);text-transform:none}
+
+.perform{background:var(--green-ink);color:#fff;border-radius:14px;padding:15px;text-align:center;font-family:var(--serif);font-weight:700;font-size:19pt;margin:14px 0 12px}
+.tiplist{list-style:none}
+.tiplist li{font-size:13.5pt;line-height:1.45;margin-bottom:9px;padding-left:24px;position:relative}
+.tiplist li::before{content:"\2605";position:absolute;left:0;color:var(--green-deep)}
+</style>
+</head>
+<body>
+<div class="pg" style="--accent:var(--green)"><div class="in">
+
+  <div class="topbar">
+    <div>
+      <div class="kick"><b>Somerset</b> &middot; Flyers I &middot; The Play</div>
+      <h1 class="hl">Unit 1 Review Play</h1>
+    </div>
+    <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+  </div>
+  <div class="gtag">GROUP 1 &middot; WHO'S TALLER?</div>
+  <div class="stuname">Enzo</div>
+  <div class="cast">Your group: <b>Enzo (you)</b>, <b>Ona</b> &amp; <b>Vera O.</b></div>
+  <div class="scenetitle">Two cousins meet at a family lunch and can't stop comparing hair and height.</div>
+  <div class="stepsnote">
+    <b>How to use this page:</b> This is your OWN script &mdash; it only shows your lines.
+    &#9312; Read your lines aloud, in order, to your group.
+    &#9313; When it's someone else's turn, listen carefully and write down what they say on your blanks.
+    &#9314; When you're all finished, read the whole play together and check it.
+    &#9315; Turn to the last page before you perform!
+  </div>
+  <div class="lines">
+<p class="ln own"><span class="num own">&#9679;</span><b>You (Enzo):</b> Look! My cousin Ona has curlier hair than me now!</p><p class="ln"><span class="num">&#9679;</span><b>Ona says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Vera O. says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Enzo):</b> Vera, your hair is longer than Ona's hair.</p><p class="ln"><span class="num">&#9679;</span><b>Ona says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Vera O. says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Enzo):</b> My uncle is the tallest person in our family. He's taller than Dad!</p><p class="ln"><span class="num">&#9679;</span><b>Ona says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Vera O. says:</b></p><div class="blankwrap"><span class="blankline"></span></div>
+  </div>
+  <div class="foot"><span>Somerset Language Centre &middot; Valencia</span><span>Group 1 &middot; Enzo &middot; Page 1 of 3</span><span class="pn">Unit 1 Review Play</span></div>
+</div></div><div class="pg" style="--accent:var(--green)"><div class="in">
+
+  <div class="topbar mini">
+    <div class="kick"><b>Somerset</b> &middot; Flyers I &middot; The Play &middot; <i>Unit 1 Review Play (continued)</i></div>
+    <div class="logo sm"><span class="word">Somerset</span></div>
+  </div>
+  <div class="gtag sm">GROUP 1 &middot; Enzo &middot; continued</div>
+  <div class="lines">
+<p class="ln own"><span class="num own">&#9679;</span><b>You (Enzo):</b> No, mine are free, like my grandpa's!</p><p class="ln"><span class="num">&#9679;</span><b>Ona says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Vera O. says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Enzo):</b> Lucky! I'm doing my homework this Saturday... boring!</p><p class="ln"><span class="num">&#9679;</span><b>Ona says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Vera O. says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Enzo):</b> Yes, new ones! They're bigger than his old glasses.</p><p class="ln"><span class="num">&#9679;</span><b>Ona says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Vera O. says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Enzo):</b> [checking a photo] Look at this old photo — Dad's hair was longer than Mum's back then!</p><p class="ln"><span class="num">&#9679;</span><b>Ona says:</b></p><div class="blankwrap"><span class="blankline"></span></div>
+  </div>
+  <div class="foot"><span>Somerset Language Centre &middot; Valencia</span><span>Group 1 &middot; Enzo &middot; Page 2 of 3</span><span class="pn">Unit 1 Review Play</span></div>
+</div></div><div class="pg" style="--accent:var(--green)"><div class="in">
+
+  <div class="topbar mini">
+    <div class="kick"><b>Somerset</b> &middot; Flyers I &middot; The Play &middot; <i>Unit 1 Review Play (continued)</i></div>
+    <div class="logo sm"><span class="word">Somerset</span></div>
+  </div>
+  <div class="gtag sm">GROUP 1 &middot; Enzo &middot; continued</div>
+  <div class="lines">
+<p class="ln"><span class="num">&#9679;</span><b>Vera O. says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Enzo):</b> What are you doing tonight, Ona?</p><p class="ln"><span class="num">&#9679;</span><b>Ona says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Vera O. says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Enzo):</b> Paella again? We're all having lunch at my house next Saturday too!</p><p class="ln"><span class="num">&#9679;</span><b>Ona says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Vera O. says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Enzo):</b> [laughing] True! And she's faster than me when we run in the park.</p><p class="ln"><span class="num">&#9679;</span><b>Ona says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Vera O. says:</b></p><div class="blankwrap"><span class="blankline"></span></div>
+  </div>
+  <div class="foot"><span>Somerset Language Centre &middot; Valencia</span><span>Group 1 &middot; Enzo &middot; Page 3 of 3</span><span class="pn">Unit 1 Review Play</span></div>
+</div></div><div class="pg" style="--accent:var(--green)"><div class="in">
+
+  <div class="topbar">
+    <div>
+      <div class="kick"><b>Somerset</b> &middot; Flyers I &middot; The Play</div>
+      <h1 class="hl">Unit 1 Review Play</h1>
+    </div>
+    <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+  </div>
+  <div class="gtag">GROUP 1 &middot; WHO'S TALLER?</div>
+  <div class="stuname">Ona</div>
+  <div class="cast">Your group: <b>Enzo</b>, <b>Ona (you)</b> &amp; <b>Vera O.</b></div>
+  <div class="scenetitle">Two cousins meet at a family lunch and can't stop comparing hair and height.</div>
+  <div class="stepsnote">
+    <b>How to use this page:</b> This is your OWN script &mdash; it only shows your lines.
+    &#9312; Read your lines aloud, in order, to your group.
+    &#9313; When it's someone else's turn, listen carefully and write down what they say on your blanks.
+    &#9314; When you're all finished, read the whole play together and check it.
+    &#9315; Turn to the last page before you perform!
+  </div>
+  <div class="lines">
+<p class="ln"><span class="num">&#9679;</span><b>Enzo says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Ona):</b> [laughing] And you're taller than last year, Enzo!</p><p class="ln"><span class="num">&#9679;</span><b>Vera O. says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Enzo says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Ona):</b> But my hair is shorter than yours, Enzo — and it's straight, not wavy!</p><p class="ln"><span class="num">&#9679;</span><b>Vera O. says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Enzo says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Ona):</b> My aunt has blonde hair, but my mum's hair is black.</p><p class="ln"><span class="num">&#9679;</span><b>Vera O. says:</b></p><div class="blankwrap"><span class="blankline"></span></div>
+  </div>
+  <div class="foot"><span>Somerset Language Centre &middot; Valencia</span><span>Group 1 &middot; Ona &middot; Page 1 of 3</span><span class="pn">Unit 1 Review Play</span></div>
+</div></div><div class="pg" style="--accent:var(--green)"><div class="in">
+
+  <div class="topbar mini">
+    <div class="kick"><b>Somerset</b> &middot; Flyers I &middot; The Play &middot; <i>Unit 1 Review Play (continued)</i></div>
+    <div class="logo sm"><span class="word">Somerset</span></div>
+  </div>
+  <div class="gtag sm">GROUP 1 &middot; Ona &middot; continued</div>
+  <div class="lines">
+<p class="ln"><span class="num">&#9679;</span><b>Enzo says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Ona):</b> What are you doing this Saturday, Vera?</p><p class="ln"><span class="num">&#9679;</span><b>Vera O. says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Enzo says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Ona):</b> [smiling] I'm meeting my grandma tomorrow. She's older than my grandpa, but faster on her bike!</p><p class="ln"><span class="num">&#9679;</span><b>Vera O. says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Enzo says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Ona):</b> My little cousin is younger than me, but she's already taller!</p><p class="ln"><span class="num">&#9679;</span><b>Vera O. says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Enzo says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Ona):</b> I feel happy when I see old family photos.</p>
+  </div>
+  <div class="foot"><span>Somerset Language Centre &middot; Valencia</span><span>Group 1 &middot; Ona &middot; Page 2 of 3</span><span class="pn">Unit 1 Review Play</span></div>
+</div></div><div class="pg" style="--accent:var(--green)"><div class="in">
+
+  <div class="topbar mini">
+    <div class="kick"><b>Somerset</b> &middot; Flyers I &middot; The Play &middot; <i>Unit 1 Review Play (continued)</i></div>
+    <div class="logo sm"><span class="word">Somerset</span></div>
+  </div>
+  <div class="gtag sm">GROUP 1 &middot; Ona &middot; continued</div>
+  <div class="lines">
+<p class="ln"><span class="num">&#9679;</span><b>Vera O. says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Enzo says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Ona):</b> I'm writing in my diary about today's class!</p><p class="ln"><span class="num">&#9679;</span><b>Vera O. says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Enzo says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Ona):</b> Is your sister coming, Enzo?</p><p class="ln"><span class="num">&#9679;</span><b>Vera O. says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Enzo says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Ona):</b> Families are funny — so many differences, so much fun.</p><p class="ln"><span class="num">&#9679;</span><b>Vera O. says:</b></p><div class="blankwrap"><span class="blankline"></span></div>
+  </div>
+  <div class="foot"><span>Somerset Language Centre &middot; Valencia</span><span>Group 1 &middot; Ona &middot; Page 3 of 3</span><span class="pn">Unit 1 Review Play</span></div>
+</div></div><div class="pg" style="--accent:var(--green)"><div class="in">
+
+  <div class="topbar">
+    <div>
+      <div class="kick"><b>Somerset</b> &middot; Flyers I &middot; The Play</div>
+      <h1 class="hl">Unit 1 Review Play</h1>
+    </div>
+    <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+  </div>
+  <div class="gtag">GROUP 1 &middot; WHO'S TALLER?</div>
+  <div class="stuname">Vera O. <span class="surname">de la Ossa</span></div>
+  <div class="cast">Your group: <b>Enzo</b>, <b>Ona</b> &amp; <b>Vera O. (you)</b></div>
+  <div class="scenetitle">Two cousins meet at a family lunch and can't stop comparing hair and height.</div>
+  <div class="stepsnote">
+    <b>How to use this page:</b> This is your OWN script &mdash; it only shows your lines.
+    &#9312; Read your lines aloud, in order, to your group.
+    &#9313; When it's someone else's turn, listen carefully and write down what they say on your blanks.
+    &#9314; When you're all finished, read the whole play together and check it.
+    &#9315; Turn to the last page before you perform!
+  </div>
+  <div class="lines">
+<p class="ln"><span class="num">&#9679;</span><b>Enzo says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Ona says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Vera O.):</b> My grandma says my hair is just like Grandpa's — straight and grey! Ha, just kidding — it's brown.</p><p class="ln"><span class="num">&#9679;</span><b>Enzo says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Ona says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Vera O.):</b> We're a funny family — tall, short, curly, straight... all different!</p><p class="ln"><span class="num">&#9679;</span><b>Enzo says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Ona says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Vera O.):</b> [comparing] Look, my earlobes are attached — are yours, Enzo?</p>
+  </div>
+  <div class="foot"><span>Somerset Language Centre &middot; Valencia</span><span>Group 1 &middot; Vera O. &middot; Page 1 of 3</span><span class="pn">Unit 1 Review Play</span></div>
+</div></div><div class="pg" style="--accent:var(--green)"><div class="in">
+
+  <div class="topbar mini">
+    <div class="kick"><b>Somerset</b> &middot; Flyers I &middot; The Play &middot; <i>Unit 1 Review Play (continued)</i></div>
+    <div class="logo sm"><span class="word">Somerset</span></div>
+  </div>
+  <div class="gtag sm">GROUP 1 &middot; Vera O. &middot; continued</div>
+  <div class="lines">
+<p class="ln"><span class="num">&#9679;</span><b>Enzo says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Ona says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Vera O.):</b> I'm visiting my cousins in Alicante — we're having a big family lunch.</p><p class="ln"><span class="num">&#9679;</span><b>Enzo says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Ona says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Vera O.):</b> Is your grandpa wearing glasses now, Enzo?</p><p class="ln"><span class="num">&#9679;</span><b>Enzo says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Ona says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Vera O.):</b> That's funny — my cousin is older than me but shorter!</p><p class="ln"><span class="num">&#9679;</span><b>Enzo says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Ona says:</b></p><div class="blankwrap"><span class="blankline"></span></div>
+  </div>
+  <div class="foot"><span>Somerset Language Centre &middot; Valencia</span><span>Group 1 &middot; Vera O. &middot; Page 2 of 3</span><span class="pn">Unit 1 Review Play</span></div>
+</div></div><div class="pg" style="--accent:var(--green)"><div class="in">
+
+  <div class="topbar mini">
+    <div class="kick"><b>Somerset</b> &middot; Flyers I &middot; The Play &middot; <i>Unit 1 Review Play (continued)</i></div>
+    <div class="logo sm"><span class="word">Somerset</span></div>
+  </div>
+  <div class="gtag sm">GROUP 1 &middot; Vera O. &middot; continued</div>
+  <div class="lines">
+<p class="ln own"><span class="num own">&#9679;</span><b>You (Vera O.):</b> Me too — I feel excited for the family lunch this weekend.</p><p class="ln"><span class="num">&#9679;</span><b>Enzo says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Ona says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Vera O.):</b> [proud] I'm helping my grandma tonight — she's making paella.</p><p class="ln"><span class="num">&#9679;</span><b>Enzo says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Ona says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Vera O.):</b> Yes — she's shorter than you, but her hair is curlier than everyone's!</p><p class="ln"><span class="num">&#9679;</span><b>Enzo says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Ona says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Vera O.):</b> [standing up] Come on — let's practise before we perform for the class!</p>
+  </div>
+  <div class="foot"><span>Somerset Language Centre &middot; Valencia</span><span>Group 1 &middot; Vera O. &middot; Page 3 of 3</span><span class="pn">Unit 1 Review Play</span></div>
+</div></div><div class="pg" style="--accent:var(--green)"><div class="in">
+  <div class="topbar">
+    <div>
+      <div class="kick"><b>Somerset</b> &middot; Flyers I &middot; The Play</div>
+      <h1 class="hl">Unit 1 Review Play</h1>
+    </div>
+    <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+  </div>
+  <div class="gtag">GROUP 1 &middot; WHO'S TALLER?</div>
+  <div class="stuname">Enzo, Ona &amp; Vera O. <span class="surname">&mdash; together</span></div>
+  <div class="cast">Both of you use this page once your scripts are complete and checked.</div>
+  <div class="scenetitle">Two cousins meet at a family lunch and can't stop comparing hair and height.</div>
+  <div class="stepsnote">
+    <b>Before you perform:</b> Sit together with your finished pages. Read the whole play out loud once, checking that what you wrote on your blanks matches what your partner actually said. Fix anything that's wrong. Then stand up and perform it for the class &mdash; remember to swap who reads first the second time!
+  </div>
+  <div class="perform">&#9733; Now perform it! &#9733;</div>
+  <ul class="tiplist">
+<li>Speak clearly and look at your partner, not just your page.</li><li>Remember the grammar of the month: comparatives (<b>taller/faster/older than</b>) and plans (<b>What are you doing...? I'm ...ing</b> + tomorrow/later/this afternoon).</li><li>Use the stage directions in <i>[brackets]</i> — act them out!</li><li>When you finish, swap roles and read it again from the top.</li>
+  </ul>
+  <div class="foot"><span>Somerset Language Centre &middot; Valencia</span><span>Group 1 &middot; Perform</span><span class="pn">Unit 1 Review Play</span></div>
+</div></div><div class="pg" style="--accent:var(--ice-deep)"><div class="in">
+
+  <div class="topbar">
+    <div>
+      <div class="kick"><b>Somerset</b> &middot; Flyers I &middot; The Play</div>
+      <h1 class="hl">Unit 1 Review Play</h1>
+    </div>
+    <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+  </div>
+  <div class="gtag">GROUP 2 &middot; WHOSE FAMILY IS IT?</div>
+  <div class="stuname">Lucas</div>
+  <div class="cast">Your group: <b>Lucas (you)</b>, <b>Bruno</b> &amp; <b>Madison</b></div>
+  <div class="scenetitle">Photos, plans and paella — whose family is whose?</div>
+  <div class="stepsnote">
+    <b>How to use this page:</b> This is your OWN script &mdash; it only shows your lines.
+    &#9312; Read your lines aloud, in order, to your group.
+    &#9313; When it's someone else's turn, listen carefully and write down what they say on your blanks.
+    &#9314; When you're all finished, read the whole play together and check it.
+    &#9315; Turn to the last page before you perform!
+  </div>
+  <div class="lines">
+<p class="ln own"><span class="num own">&#9679;</span><b>You (Lucas):</b> Madison, is that your uncle in the photo?</p><p class="ln"><span class="num">&#9679;</span><b>Bruno says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Madison says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Lucas):</b> Paella again? We're having lunch with my cousins next week too!</p><p class="ln"><span class="num">&#9679;</span><b>Bruno says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Madison says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Lucas):</b> My cousin has curlier hair than me — everyone says we look the same though!</p><p class="ln"><span class="num">&#9679;</span><b>Bruno says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Madison says:</b></p><div class="blankwrap"><span class="blankline"></span></div>
+  </div>
+  <div class="foot"><span>Somerset Language Centre &middot; Valencia</span><span>Group 2 &middot; Lucas &middot; Page 1 of 3</span><span class="pn">Unit 1 Review Play</span></div>
+</div></div><div class="pg" style="--accent:var(--ice-deep)"><div class="in">
+
+  <div class="topbar mini">
+    <div class="kick"><b>Somerset</b> &middot; Flyers I &middot; The Play &middot; <i>Unit 1 Review Play (continued)</i></div>
+    <div class="logo sm"><span class="word">Somerset</span></div>
+  </div>
+  <div class="gtag sm">GROUP 2 &middot; Lucas &middot; continued</div>
+  <div class="lines">
+<p class="ln own"><span class="num own">&#9679;</span><b>You (Lucas):</b> [comparing photos] Look, my grandma's hair is straighter than my mum's.</p><p class="ln"><span class="num">&#9679;</span><b>Bruno says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Madison says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Lucas):</b> Yes, he's much taller — and his glasses are bigger too!</p><p class="ln"><span class="num">&#9679;</span><b>Bruno says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Madison says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Lucas):</b> What are you doing tomorrow, Madison?</p><p class="ln"><span class="num">&#9679;</span><b>Bruno says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Madison says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Lucas):</b> [smiling] Lucky! I'm doing my homework tomorrow, then football later.</p><p class="ln"><span class="num">&#9679;</span><b>Bruno says:</b></p><div class="blankwrap"><span class="blankline"></span></div>
+  </div>
+  <div class="foot"><span>Somerset Language Centre &middot; Valencia</span><span>Group 2 &middot; Lucas &middot; Page 2 of 3</span><span class="pn">Unit 1 Review Play</span></div>
+</div></div><div class="pg" style="--accent:var(--ice-deep)"><div class="in">
+
+  <div class="topbar mini">
+    <div class="kick"><b>Somerset</b> &middot; Flyers I &middot; The Play &middot; <i>Unit 1 Review Play (continued)</i></div>
+    <div class="logo sm"><span class="word">Somerset</span></div>
+  </div>
+  <div class="gtag sm">GROUP 2 &middot; Lucas &middot; continued</div>
+  <div class="lines">
+<p class="ln"><span class="num">&#9679;</span><b>Madison says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Lucas):</b> My little brother is younger than me but taller than Mum already!</p><p class="ln"><span class="num">&#9679;</span><b>Bruno says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Madison says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Lucas):</b> We're all having a big lunch this Saturday — is your family coming too?</p><p class="ln"><span class="num">&#9679;</span><b>Bruno says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Madison says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Lucas):</b> What are you doing next Saturday, Bruno?</p><p class="ln"><span class="num">&#9679;</span><b>Bruno says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Madison says:</b></p><div class="blankwrap"><span class="blankline"></span></div>
+  </div>
+  <div class="foot"><span>Somerset Language Centre &middot; Valencia</span><span>Group 2 &middot; Lucas &middot; Page 3 of 3</span><span class="pn">Unit 1 Review Play</span></div>
+</div></div><div class="pg" style="--accent:var(--ice-deep)"><div class="in">
+
+  <div class="topbar">
+    <div>
+      <div class="kick"><b>Somerset</b> &middot; Flyers I &middot; The Play</div>
+      <h1 class="hl">Unit 1 Review Play</h1>
+    </div>
+    <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+  </div>
+  <div class="gtag">GROUP 2 &middot; WHOSE FAMILY IS IT?</div>
+  <div class="stuname">Bruno</div>
+  <div class="cast">Your group: <b>Lucas</b>, <b>Bruno (you)</b> &amp; <b>Madison</b></div>
+  <div class="scenetitle">Photos, plans and paella — whose family is whose?</div>
+  <div class="stepsnote">
+    <b>How to use this page:</b> This is your OWN script &mdash; it only shows your lines.
+    &#9312; Read your lines aloud, in order, to your group.
+    &#9313; When it's someone else's turn, listen carefully and write down what they say on your blanks.
+    &#9314; When you're all finished, read the whole play together and check it.
+    &#9315; Turn to the last page before you perform!
+  </div>
+  <div class="lines">
+<p class="ln"><span class="num">&#9679;</span><b>Lucas says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Bruno):</b> [checking a calendar] I'm meeting my grandpa this afternoon — he's making paella!</p><p class="ln"><span class="num">&#9679;</span><b>Madison says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Lucas says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Bruno):</b> My grandpa is older than my dad, but he's still faster than me!</p><p class="ln"><span class="num">&#9679;</span><b>Madison says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Lucas says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Bruno):</b> I'm doing my homework tonight... and eating churros later!</p><p class="ln"><span class="num">&#9679;</span><b>Madison says:</b></p><div class="blankwrap"><span class="blankline"></span></div>
+  </div>
+  <div class="foot"><span>Somerset Language Centre &middot; Valencia</span><span>Group 2 &middot; Bruno &middot; Page 1 of 3</span><span class="pn">Unit 1 Review Play</span></div>
+</div></div><div class="pg" style="--accent:var(--ice-deep)"><div class="in">
+
+  <div class="topbar mini">
+    <div class="kick"><b>Somerset</b> &middot; Flyers I &middot; The Play &middot; <i>Unit 1 Review Play (continued)</i></div>
+    <div class="logo sm"><span class="word">Somerset</span></div>
+  </div>
+  <div class="gtag sm">GROUP 2 &middot; Bruno &middot; continued</div>
+  <div class="lines">
+<p class="ln"><span class="num">&#9679;</span><b>Lucas says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Bruno):</b> Is your uncle taller than your dad, Lucas?</p><p class="ln"><span class="num">&#9679;</span><b>Madison says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Lucas says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Bruno):</b> Mine are free, like my mum's! Funny family.</p><p class="ln"><span class="num">&#9679;</span><b>Madison says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Lucas says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Bruno):</b> My cousin is younger than me, but she's already faster at football.</p><p class="ln"><span class="num">&#9679;</span><b>Madison says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Lucas says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Bruno):</b> Is your sister shorter than you, Madison?</p>
+  </div>
+  <div class="foot"><span>Somerset Language Centre &middot; Valencia</span><span>Group 2 &middot; Bruno &middot; Page 2 of 3</span><span class="pn">Unit 1 Review Play</span></div>
+</div></div><div class="pg" style="--accent:var(--ice-deep)"><div class="in">
+
+  <div class="topbar mini">
+    <div class="kick"><b>Somerset</b> &middot; Flyers I &middot; The Play &middot; <i>Unit 1 Review Play (continued)</i></div>
+    <div class="logo sm"><span class="word">Somerset</span></div>
+  </div>
+  <div class="gtag sm">GROUP 2 &middot; Bruno &middot; continued</div>
+  <div class="lines">
+<p class="ln"><span class="num">&#9679;</span><b>Madison says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Lucas says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Bruno):</b> [laughing] Families grow so fast — mine changes every year.</p><p class="ln"><span class="num">&#9679;</span><b>Madison says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Lucas says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Bruno):</b> Yes! My aunt and uncle are coming, and my cousins from Albacete.</p><p class="ln"><span class="num">&#9679;</span><b>Madison says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Lucas says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Bruno):</b> I'm going to Turia Park with my cousins — we're racing our bikes!</p><p class="ln"><span class="num">&#9679;</span><b>Madison says:</b></p><div class="blankwrap"><span class="blankline"></span></div>
+  </div>
+  <div class="foot"><span>Somerset Language Centre &middot; Valencia</span><span>Group 2 &middot; Bruno &middot; Page 3 of 3</span><span class="pn">Unit 1 Review Play</span></div>
+</div></div><div class="pg" style="--accent:var(--ice-deep)"><div class="in">
+
+  <div class="topbar">
+    <div>
+      <div class="kick"><b>Somerset</b> &middot; Flyers I &middot; The Play</div>
+      <h1 class="hl">Unit 1 Review Play</h1>
+    </div>
+    <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+  </div>
+  <div class="gtag">GROUP 2 &middot; WHOSE FAMILY IS IT?</div>
+  <div class="stuname">Madison</div>
+  <div class="cast">Your group: <b>Lucas</b>, <b>Bruno</b> &amp; <b>Madison (you)</b></div>
+  <div class="scenetitle">Photos, plans and paella — whose family is whose?</div>
+  <div class="stepsnote">
+    <b>How to use this page:</b> This is your OWN script &mdash; it only shows your lines.
+    &#9312; Read your lines aloud, in order, to your group.
+    &#9313; When it's someone else's turn, listen carefully and write down what they say on your blanks.
+    &#9314; When you're all finished, read the whole play together and check it.
+    &#9315; Turn to the last page before you perform!
+  </div>
+  <div class="lines">
+<p class="ln"><span class="num">&#9679;</span><b>Lucas says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Bruno says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Madison):</b> No, that's my aunt! She's visiting us this Saturday.</p><p class="ln"><span class="num">&#9679;</span><b>Lucas says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Bruno says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Madison):</b> What are you doing tonight, Bruno?</p><p class="ln"><span class="num">&#9679;</span><b>Lucas says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Bruno says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Madison):</b> My aunt's hair is longer than my mum's, and it's blonde, not brown.</p>
+  </div>
+  <div class="foot"><span>Somerset Language Centre &middot; Valencia</span><span>Group 2 &middot; Madison &middot; Page 1 of 3</span><span class="pn">Unit 1 Review Play</span></div>
+</div></div><div class="pg" style="--accent:var(--ice-deep)"><div class="in">
+
+  <div class="topbar mini">
+    <div class="kick"><b>Somerset</b> &middot; Flyers I &middot; The Play &middot; <i>Unit 1 Review Play (continued)</i></div>
+    <div class="logo sm"><span class="word">Somerset</span></div>
+  </div>
+  <div class="gtag sm">GROUP 2 &middot; Madison &middot; continued</div>
+  <div class="lines">
+<p class="ln"><span class="num">&#9679;</span><b>Lucas says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Bruno says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Madison):</b> [thinking] My earlobes are attached, like my dad's — are yours free, Bruno?</p><p class="ln"><span class="num">&#9679;</span><b>Lucas says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Bruno says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Madison):</b> I feel excited about the family photo tomorrow.</p><p class="ln"><span class="num">&#9679;</span><b>Lucas says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Bruno says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Madison):</b> I'm visiting my grandma tomorrow — she's making churros for everyone!</p><p class="ln"><span class="num">&#9679;</span><b>Lucas says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Bruno says:</b></p><div class="blankwrap"><span class="blankline"></span></div>
+  </div>
+  <div class="foot"><span>Somerset Language Centre &middot; Valencia</span><span>Group 2 &middot; Madison &middot; Page 2 of 3</span><span class="pn">Unit 1 Review Play</span></div>
+</div></div><div class="pg" style="--accent:var(--ice-deep)"><div class="in">
+
+  <div class="topbar mini">
+    <div class="kick"><b>Somerset</b> &middot; Flyers I &middot; The Play &middot; <i>Unit 1 Review Play (continued)</i></div>
+    <div class="logo sm"><span class="word">Somerset</span></div>
+  </div>
+  <div class="gtag sm">GROUP 2 &middot; Madison &middot; continued</div>
+  <div class="lines">
+<p class="ln own"><span class="num own">&#9679;</span><b>You (Madison):</b> Yes, much shorter — but her hair is wavier than mine!</p><p class="ln"><span class="num">&#9679;</span><b>Lucas says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Bruno says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Madison):</b> I feel happy when my whole family comes for lunch.</p><p class="ln"><span class="num">&#9679;</span><b>Lucas says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Bruno says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Madison):</b> [checking her diary] Dear diary, today was a great class — new family words!</p><p class="ln"><span class="num">&#9679;</span><b>Lucas says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Bruno says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Madison):</b> [standing up] Let's read it together now, before we perform it!</p>
+  </div>
+  <div class="foot"><span>Somerset Language Centre &middot; Valencia</span><span>Group 2 &middot; Madison &middot; Page 3 of 3</span><span class="pn">Unit 1 Review Play</span></div>
+</div></div><div class="pg" style="--accent:var(--ice-deep)"><div class="in">
+  <div class="topbar">
+    <div>
+      <div class="kick"><b>Somerset</b> &middot; Flyers I &middot; The Play</div>
+      <h1 class="hl">Unit 1 Review Play</h1>
+    </div>
+    <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+  </div>
+  <div class="gtag">GROUP 2 &middot; WHOSE FAMILY IS IT?</div>
+  <div class="stuname">Lucas, Bruno &amp; Madison <span class="surname">&mdash; together</span></div>
+  <div class="cast">Both of you use this page once your scripts are complete and checked.</div>
+  <div class="scenetitle">Photos, plans and paella — whose family is whose?</div>
+  <div class="stepsnote">
+    <b>Before you perform:</b> Sit together with your finished pages. Read the whole play out loud once, checking that what you wrote on your blanks matches what your partner actually said. Fix anything that's wrong. Then stand up and perform it for the class &mdash; remember to swap who reads first the second time!
+  </div>
+  <div class="perform">&#9733; Now perform it! &#9733;</div>
+  <ul class="tiplist">
+<li>Speak clearly and look at your partner, not just your page.</li><li>Remember the grammar of the month: comparatives (<b>taller/faster/older than</b>) and plans (<b>What are you doing...? I'm ...ing</b> + tomorrow/later/this afternoon).</li><li>Use the stage directions in <i>[brackets]</i> — act them out!</li><li>When you finish, swap roles and read it again from the top.</li>
+  </ul>
+  <div class="foot"><span>Somerset Language Centre &middot; Valencia</span><span>Group 2 &middot; Perform</span><span class="pn">Unit 1 Review Play</span></div>
+</div></div><div class="pg" style="--accent:#E2542C"><div class="in">
+
+  <div class="topbar">
+    <div>
+      <div class="kick"><b>Somerset</b> &middot; Flyers I &middot; The Play</div>
+      <h1 class="hl">Unit 1 Review Play</h1>
+    </div>
+    <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+  </div>
+  <div class="gtag">GROUP 3 &middot; DEAR DIARY</div>
+  <div class="stuname">Carla</div>
+  <div class="cast">Your group: <b>Carla (you)</b>, <b>Vera C.</b> &amp; <b>Martin</b></div>
+  <div class="scenetitle">Three diaries, one family tree project, and a lot of comparing.</div>
+  <div class="stepsnote">
+    <b>How to use this page:</b> This is your OWN script &mdash; it only shows your lines.
+    &#9312; Read your lines aloud, in order, to your group.
+    &#9313; When it's someone else's turn, listen carefully and write down what they say on your blanks.
+    &#9314; When you're all finished, read the whole play together and check it.
+    &#9315; Turn to the last page before you perform!
+  </div>
+  <div class="lines">
+<p class="ln own"><span class="num own">&#9679;</span><b>You (Carla):</b> [writing] Dear diary, today I feel happy — my family is coming this Saturday!</p><p class="ln"><span class="num">&#9679;</span><b>Vera C. says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Martin says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Carla):</b> Vera, are you playing football with your cousin later?</p><p class="ln"><span class="num">&#9679;</span><b>Vera C. says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Martin says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Carla):</b> My grandpa's hair is greyer than my dad's, but he's still faster than me at chess!</p><p class="ln"><span class="num">&#9679;</span><b>Vera C. says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Martin says:</b></p><div class="blankwrap"><span class="blankline"></span></div>
+  </div>
+  <div class="foot"><span>Somerset Language Centre &middot; Valencia</span><span>Group 3 &middot; Carla &middot; Page 1 of 3</span><span class="pn">Unit 1 Review Play</span></div>
+</div></div><div class="pg" style="--accent:#E2542C"><div class="in">
+
+  <div class="topbar mini">
+    <div class="kick"><b>Somerset</b> &middot; Flyers I &middot; The Play &middot; <i>Unit 1 Review Play (continued)</i></div>
+    <div class="logo sm"><span class="word">Somerset</span></div>
+  </div>
+  <div class="gtag sm">GROUP 3 &middot; Carla &middot; continued</div>
+  <div class="lines">
+<p class="ln own"><span class="num own">&#9679;</span><b>You (Carla):</b> Yes, much taller! And her glasses are bigger than mine.</p><p class="ln"><span class="num">&#9679;</span><b>Vera C. says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Martin says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Carla):</b> My little brother is younger than me, but he's already stronger!</p><p class="ln"><span class="num">&#9679;</span><b>Vera C. says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Martin says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Carla):</b> What are you doing this afternoon, Vera?</p><p class="ln"><span class="num">&#9679;</span><b>Vera C. says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Martin says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Carla):</b> [checking a photo] Look, my mum's hair was longer than my aunt's back then.</p><p class="ln"><span class="num">&#9679;</span><b>Vera C. says:</b></p><div class="blankwrap"><span class="blankline"></span></div>
+  </div>
+  <div class="foot"><span>Somerset Language Centre &middot; Valencia</span><span>Group 3 &middot; Carla &middot; Page 2 of 3</span><span class="pn">Unit 1 Review Play</span></div>
+</div></div><div class="pg" style="--accent:#E2542C"><div class="in">
+
+  <div class="topbar mini">
+    <div class="kick"><b>Somerset</b> &middot; Flyers I &middot; The Play &middot; <i>Unit 1 Review Play (continued)</i></div>
+    <div class="logo sm"><span class="word">Somerset</span></div>
+  </div>
+  <div class="gtag sm">GROUP 3 &middot; Carla &middot; continued</div>
+  <div class="lines">
+<p class="ln"><span class="num">&#9679;</span><b>Martin says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Carla):</b> Is your cousin shorter than you, Martin?</p><p class="ln"><span class="num">&#9679;</span><b>Vera C. says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Martin says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Carla):</b> We're all having lunch together next Saturday — is your family coming, Martin?</p><p class="ln"><span class="num">&#9679;</span><b>Vera C. says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Martin says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Carla):</b> What are you doing tomorrow, Martin?</p><p class="ln"><span class="num">&#9679;</span><b>Vera C. says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Martin says:</b></p><div class="blankwrap"><span class="blankline"></span></div>
+  </div>
+  <div class="foot"><span>Somerset Language Centre &middot; Valencia</span><span>Group 3 &middot; Carla &middot; Page 3 of 3</span><span class="pn">Unit 1 Review Play</span></div>
+</div></div><div class="pg" style="--accent:#E2542C"><div class="in">
+
+  <div class="topbar">
+    <div>
+      <div class="kick"><b>Somerset</b> &middot; Flyers I &middot; The Play</div>
+      <h1 class="hl">Unit 1 Review Play</h1>
+    </div>
+    <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+  </div>
+  <div class="gtag">GROUP 3 &middot; DEAR DIARY</div>
+  <div class="stuname">Vera C. <span class="surname">Castel</span></div>
+  <div class="cast">Your group: <b>Carla</b>, <b>Vera C. (you)</b> &amp; <b>Martin</b></div>
+  <div class="scenetitle">Three diaries, one family tree project, and a lot of comparing.</div>
+  <div class="stepsnote">
+    <b>How to use this page:</b> This is your OWN script &mdash; it only shows your lines.
+    &#9312; Read your lines aloud, in order, to your group.
+    &#9313; When it's someone else's turn, listen carefully and write down what they say on your blanks.
+    &#9314; When you're all finished, read the whole play together and check it.
+    &#9315; Turn to the last page before you perform!
+  </div>
+  <div class="lines">
+<p class="ln"><span class="num">&#9679;</span><b>Carla says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Vera C.):</b> Martin, look — my earlobes are attached, just like my mum's!</p><p class="ln"><span class="num">&#9679;</span><b>Martin says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Carla says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Vera C.):</b> No, I'm not — I'm visiting my grandma tomorrow instead.</p><p class="ln"><span class="num">&#9679;</span><b>Martin says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Carla says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Vera C.):</b> My cousin's hair is curlier than mine — everyone thinks we're sisters!</p><p class="ln"><span class="num">&#9679;</span><b>Martin says:</b></p><div class="blankwrap"><span class="blankline"></span></div>
+  </div>
+  <div class="foot"><span>Somerset Language Centre &middot; Valencia</span><span>Group 3 &middot; Vera C. &middot; Page 1 of 3</span><span class="pn">Unit 1 Review Play</span></div>
+</div></div><div class="pg" style="--accent:#E2542C"><div class="in">
+
+  <div class="topbar mini">
+    <div class="kick"><b>Somerset</b> &middot; Flyers I &middot; The Play &middot; <i>Unit 1 Review Play (continued)</i></div>
+    <div class="logo sm"><span class="word">Somerset</span></div>
+  </div>
+  <div class="gtag sm">GROUP 3 &middot; Vera C. &middot; continued</div>
+  <div class="lines">
+<p class="ln"><span class="num">&#9679;</span><b>Carla says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Vera C.):</b> What are you doing tonight, Martin?</p><p class="ln"><span class="num">&#9679;</span><b>Martin says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Carla says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Vera C.):</b> [laughing] My family is funny too — tall, short, curly, straight...</p><p class="ln"><span class="num">&#9679;</span><b>Martin says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Carla says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Vera C.):</b> I'm meeting my aunt this afternoon — she's bringing churros!</p><p class="ln"><span class="num">&#9679;</span><b>Martin says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Carla says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Vera C.):</b> My grandma's hair is straighter than my grandpa's — but his is longer!</p>
+  </div>
+  <div class="foot"><span>Somerset Language Centre &middot; Valencia</span><span>Group 3 &middot; Vera C. &middot; Page 2 of 3</span><span class="pn">Unit 1 Review Play</span></div>
+</div></div><div class="pg" style="--accent:#E2542C"><div class="in">
+
+  <div class="topbar mini">
+    <div class="kick"><b>Somerset</b> &middot; Flyers I &middot; The Play &middot; <i>Unit 1 Review Play (continued)</i></div>
+    <div class="logo sm"><span class="word">Somerset</span></div>
+  </div>
+  <div class="gtag sm">GROUP 3 &middot; Vera C. &middot; continued</div>
+  <div class="lines">
+<p class="ln"><span class="num">&#9679;</span><b>Martin says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Carla says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Vera C.):</b> [thinking] My cousin is older than me but shorter — it's funny.</p><p class="ln"><span class="num">&#9679;</span><b>Martin says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Carla says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Vera C.):</b> My family is coming too! My grandma is making paella.</p><p class="ln"><span class="num">&#9679;</span><b>Martin says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Carla says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Vera C.):</b> I'm visiting my grandma tomorrow, remember?</p><p class="ln"><span class="num">&#9679;</span><b>Martin says:</b></p><div class="blankwrap"><span class="blankline"></span></div>
+  </div>
+  <div class="foot"><span>Somerset Language Centre &middot; Valencia</span><span>Group 3 &middot; Vera C. &middot; Page 3 of 3</span><span class="pn">Unit 1 Review Play</span></div>
+</div></div><div class="pg" style="--accent:#E2542C"><div class="in">
+
+  <div class="topbar">
+    <div>
+      <div class="kick"><b>Somerset</b> &middot; Flyers I &middot; The Play</div>
+      <h1 class="hl">Unit 1 Review Play</h1>
+    </div>
+    <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+  </div>
+  <div class="gtag">GROUP 3 &middot; DEAR DIARY</div>
+  <div class="stuname">Martin</div>
+  <div class="cast">Your group: <b>Carla</b>, <b>Vera C.</b> &amp; <b>Martin (you)</b></div>
+  <div class="scenetitle">Three diaries, one family tree project, and a lot of comparing.</div>
+  <div class="stepsnote">
+    <b>How to use this page:</b> This is your OWN script &mdash; it only shows your lines.
+    &#9312; Read your lines aloud, in order, to your group.
+    &#9313; When it's someone else's turn, listen carefully and write down what they say on your blanks.
+    &#9314; When you're all finished, read the whole play together and check it.
+    &#9315; Turn to the last page before you perform!
+  </div>
+  <div class="lines">
+<p class="ln"><span class="num">&#9679;</span><b>Carla says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Vera C. says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Martin):</b> [comparing ears] Mine are free, like my dad's. Isn't that funny?</p><p class="ln"><span class="num">&#9679;</span><b>Carla says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Vera C. says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Martin):</b> [smiling] I feel excited too — my family tree is next!</p><p class="ln"><span class="num">&#9679;</span><b>Carla says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Vera C. says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Martin):</b> Is your aunt taller than your mum, Carla?</p>
+  </div>
+  <div class="foot"><span>Somerset Language Centre &middot; Valencia</span><span>Group 3 &middot; Martin &middot; Page 1 of 3</span><span class="pn">Unit 1 Review Play</span></div>
+</div></div><div class="pg" style="--accent:#E2542C"><div class="in">
+
+  <div class="topbar mini">
+    <div class="kick"><b>Somerset</b> &middot; Flyers I &middot; The Play &middot; <i>Unit 1 Review Play (continued)</i></div>
+    <div class="logo sm"><span class="word">Somerset</span></div>
+  </div>
+  <div class="gtag sm">GROUP 3 &middot; Martin &middot; continued</div>
+  <div class="lines">
+<p class="ln"><span class="num">&#9679;</span><b>Carla says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Vera C. says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Martin):</b> I'm doing my homework tonight, then writing in my diary.</p><p class="ln"><span class="num">&#9679;</span><b>Carla says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Vera C. says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Martin):</b> My uncle's earlobes are free too — just like mine and my dad's!</p><p class="ln"><span class="num">&#9679;</span><b>Carla says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Vera C. says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Martin):</b> Lucky! I'm doing homework this afternoon... not as fun.</p><p class="ln"><span class="num">&#9679;</span><b>Carla says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Vera C. says:</b></p><div class="blankwrap"><span class="blankline"></span></div>
+  </div>
+  <div class="foot"><span>Somerset Language Centre &middot; Valencia</span><span>Group 3 &middot; Martin &middot; Page 2 of 3</span><span class="pn">Unit 1 Review Play</span></div>
+</div></div><div class="pg" style="--accent:#E2542C"><div class="in">
+
+  <div class="topbar mini">
+    <div class="kick"><b>Somerset</b> &middot; Flyers I &middot; The Play &middot; <i>Unit 1 Review Play (continued)</i></div>
+    <div class="logo sm"><span class="word">Somerset</span></div>
+  </div>
+  <div class="gtag sm">GROUP 3 &middot; Martin &middot; continued</div>
+  <div class="lines">
+<p class="ln own"><span class="num own">&#9679;</span><b>You (Martin):</b> I feel proud when I write about my family in my diary.</p><p class="ln"><span class="num">&#9679;</span><b>Carla says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Vera C. says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Martin):</b> Yes, shorter — but he's faster than me when we run in Turia Park.</p><p class="ln"><span class="num">&#9679;</span><b>Carla says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Vera C. says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Martin):</b> [excited] Mine too! Two paellas next week — I'm not complaining!</p><p class="ln"><span class="num">&#9679;</span><b>Carla says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln"><span class="num">&#9679;</span><b>Vera C. says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Martin):</b> [standing up] Let's check our diaries together and then perform it!</p>
+  </div>
+  <div class="foot"><span>Somerset Language Centre &middot; Valencia</span><span>Group 3 &middot; Martin &middot; Page 3 of 3</span><span class="pn">Unit 1 Review Play</span></div>
+</div></div><div class="pg" style="--accent:#E2542C"><div class="in">
+  <div class="topbar">
+    <div>
+      <div class="kick"><b>Somerset</b> &middot; Flyers I &middot; The Play</div>
+      <h1 class="hl">Unit 1 Review Play</h1>
+    </div>
+    <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+  </div>
+  <div class="gtag">GROUP 3 &middot; DEAR DIARY</div>
+  <div class="stuname">Carla, Vera C. &amp; Martin <span class="surname">&mdash; together</span></div>
+  <div class="cast">Both of you use this page once your scripts are complete and checked.</div>
+  <div class="scenetitle">Three diaries, one family tree project, and a lot of comparing.</div>
+  <div class="stepsnote">
+    <b>Before you perform:</b> Sit together with your finished pages. Read the whole play out loud once, checking that what you wrote on your blanks matches what your partner actually said. Fix anything that's wrong. Then stand up and perform it for the class &mdash; remember to swap who reads first the second time!
+  </div>
+  <div class="perform">&#9733; Now perform it! &#9733;</div>
+  <ul class="tiplist">
+<li>Speak clearly and look at your partner, not just your page.</li><li>Remember the grammar of the month: comparatives (<b>taller/faster/older than</b>) and plans (<b>What are you doing...? I'm ...ing</b> + tomorrow/later/this afternoon).</li><li>Use the stage directions in <i>[brackets]</i> — act them out!</li><li>When you finish, swap roles and read it again from the top.</li>
+  </ul>
+  <div class="foot"><span>Somerset Language Centre &middot; Valencia</span><span>Group 3 &middot; Perform</span><span class="pn">Unit 1 Review Play</span></div>
+</div></div><div class="pg" style="--accent:#C98A2E"><div class="in">
+
+  <div class="topbar">
+    <div>
+      <div class="kick"><b>Somerset</b> &middot; Flyers I &middot; The Play</div>
+      <h1 class="hl">Unit 1 Review Play</h1>
+    </div>
+    <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+  </div>
+  <div class="gtag">GROUP 4 &middot; THE RACE</div>
+  <div class="stuname">Gael</div>
+  <div class="cast">Your pair: <b>Gael (you)</b> &amp; <b>Pau</b></div>
+  <div class="scenetitle">Pau's sister is running a race at Turia Park.</div>
+  <div class="stepsnote">
+    <b>How to use this page:</b> This is your OWN script &mdash; it only shows your lines.
+    &#9312; Read your lines aloud, in order, to your partner.
+    &#9313; When it's someone else's turn, listen carefully and write down what they say on your blanks.
+    &#9314; When you're all finished, read the whole play together and check it.
+    &#9315; Turn to the last page before you perform!
+  </div>
+  <div class="lines">
+<p class="ln own"><span class="num own">&#9679;</span><b>You (Gael):</b> Pau, is your sister taller than you now?</p><p class="ln"><span class="num">&#9679;</span><b>Pau says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Gael):</b> I'm cheering for her! Are you coming with me?</p><p class="ln"><span class="num">&#9679;</span><b>Pau says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Gael):</b> What are you doing tomorrow, Pau?</p><p class="ln"><span class="num">&#9679;</span><b>Pau says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Gael):</b> [laughing] Chess is funny — my grandma always beats me too.</p><p class="ln"><span class="num">&#9679;</span><b>Pau says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Gael):</b> Yes, and greyer! But my mum's hair is curlier.</p>
+  </div>
+  <div class="foot"><span>Somerset Language Centre &middot; Valencia</span><span>Group 4 &middot; Gael &middot; Page 1 of 2</span><span class="pn">Unit 1 Review Play</span></div>
+</div></div><div class="pg" style="--accent:#C98A2E"><div class="in">
+
+  <div class="topbar mini">
+    <div class="kick"><b>Somerset</b> &middot; Flyers I &middot; The Play &middot; <i>Unit 1 Review Play (continued)</i></div>
+    <div class="logo sm"><span class="word">Somerset</span></div>
+  </div>
+  <div class="gtag sm">GROUP 4 &middot; Gael &middot; continued</div>
+  <div class="lines">
+<p class="ln"><span class="num">&#9679;</span><b>Pau says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Gael):</b> Mine are free, like my uncle's! Funny family trait.</p><p class="ln"><span class="num">&#9679;</span><b>Pau says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Gael):</b> I'm doing my homework tonight, then writing in my diary.</p><p class="ln"><span class="num">&#9679;</span><b>Pau says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Gael):</b> My cousin is younger than your sister, but she's already faster too.</p><p class="ln"><span class="num">&#9679;</span><b>Pau says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Gael):</b> We're having a family lunch this Saturday — is your family coming?</p><p class="ln"><span class="num">&#9679;</span><b>Pau says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Gael):</b> My grandpa wears glasses now — bigger than his old ones!</p><p class="ln"><span class="num">&#9679;</span><b>Pau says:</b></p><div class="blankwrap"><span class="blankline"></span></div>
+  </div>
+  <div class="foot"><span>Somerset Language Centre &middot; Valencia</span><span>Group 4 &middot; Gael &middot; Page 2 of 2</span><span class="pn">Unit 1 Review Play</span></div>
+</div></div><div class="pg" style="--accent:#C98A2E"><div class="in">
+
+  <div class="topbar">
+    <div>
+      <div class="kick"><b>Somerset</b> &middot; Flyers I &middot; The Play</div>
+      <h1 class="hl">Unit 1 Review Play</h1>
+    </div>
+    <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+  </div>
+  <div class="gtag">GROUP 4 &middot; THE RACE</div>
+  <div class="stuname">Pau</div>
+  <div class="cast">Your pair: <b>Gael</b> &amp; <b>Pau (you)</b></div>
+  <div class="scenetitle">Pau's sister is running a race at Turia Park.</div>
+  <div class="stepsnote">
+    <b>How to use this page:</b> This is your OWN script &mdash; it only shows your lines.
+    &#9312; Read your lines aloud, in order, to your partner.
+    &#9313; When it's someone else's turn, listen carefully and write down what they say on your blanks.
+    &#9314; When you're all finished, read the whole play together and check it.
+    &#9315; Turn to the last page before you perform!
+  </div>
+  <div class="lines">
+<p class="ln"><span class="num">&#9679;</span><b>Gael says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Pau):</b> Yes! And she's faster than me too — she's running in the race at Turia Park this afternoon.</p><p class="ln"><span class="num">&#9679;</span><b>Gael says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Pau):</b> Of course. And later, we're all eating churros together.</p><p class="ln"><span class="num">&#9679;</span><b>Gael says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Pau):</b> I'm visiting my grandpa — he's older than my dad, but faster than me at chess!</p><p class="ln"><span class="num">&#9679;</span><b>Gael says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Pau):</b> Is your grandma's hair longer than your mum's, Gael?</p><p class="ln"><span class="num">&#9679;</span><b>Gael says:</b></p><div class="blankwrap"><span class="blankline"></span></div>
+  </div>
+  <div class="foot"><span>Somerset Language Centre &middot; Valencia</span><span>Group 4 &middot; Pau &middot; Page 1 of 2</span><span class="pn">Unit 1 Review Play</span></div>
+</div></div><div class="pg" style="--accent:#C98A2E"><div class="in">
+
+  <div class="topbar mini">
+    <div class="kick"><b>Somerset</b> &middot; Flyers I &middot; The Play &middot; <i>Unit 1 Review Play (continued)</i></div>
+    <div class="logo sm"><span class="word">Somerset</span></div>
+  </div>
+  <div class="gtag sm">GROUP 4 &middot; Pau &middot; continued</div>
+  <div class="lines">
+<p class="ln own"><span class="num own">&#9679;</span><b>You (Pau):</b> My earlobes are attached — are yours free, Gael?</p><p class="ln"><span class="num">&#9679;</span><b>Gael says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Pau):</b> What are you doing tonight, Gael?</p><p class="ln"><span class="num">&#9679;</span><b>Gael says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Pau):</b> [excited] I feel happy — my sister might win the race tomorrow!</p><p class="ln"><span class="num">&#9679;</span><b>Gael says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Pau):</b> [checking a photo] Look, my dad was taller than my uncle in this old photo.</p><p class="ln"><span class="num">&#9679;</span><b>Gael says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Pau):</b> Yes! My aunt and uncle are coming from Albacete.</p><p class="ln"><span class="num">&#9679;</span><b>Gael says:</b></p><div class="blankwrap"><span class="blankline"></span></div><p class="ln own"><span class="num own">&#9679;</span><b>You (Pau):</b> [standing up] Come on — let's practise before we perform for the class!</p>
+  </div>
+  <div class="foot"><span>Somerset Language Centre &middot; Valencia</span><span>Group 4 &middot; Pau &middot; Page 2 of 2</span><span class="pn">Unit 1 Review Play</span></div>
+</div></div><div class="pg" style="--accent:#C98A2E"><div class="in">
+  <div class="topbar">
+    <div>
+      <div class="kick"><b>Somerset</b> &middot; Flyers I &middot; The Play</div>
+      <h1 class="hl">Unit 1 Review Play</h1>
+    </div>
+    <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+  </div>
+  <div class="gtag">GROUP 4 &middot; THE RACE</div>
+  <div class="stuname">Gael &amp; Pau <span class="surname">&mdash; together</span></div>
+  <div class="cast">Both of you use this page once your scripts are complete and checked.</div>
+  <div class="scenetitle">Pau's sister is running a race at Turia Park.</div>
+  <div class="stepsnote">
+    <b>Before you perform:</b> Sit together with your finished pages. Read the whole play out loud once, checking that what you wrote on your blanks matches what your partner actually said. Fix anything that's wrong. Then stand up and perform it for the class &mdash; remember to swap who reads first the second time!
+  </div>
+  <div class="perform">&#9733; Now perform it! &#9733;</div>
+  <ul class="tiplist">
+<li>Speak clearly and look at your partner, not just your page.</li><li>Remember the grammar of the month: comparatives (<b>taller/faster/older than</b>) and plans (<b>What are you doing...? I'm ...ing</b> + tomorrow/later/this afternoon).</li><li>Use the stage directions in <i>[brackets]</i> — act them out!</li><li>When you finish, swap roles and read it again from the top.</li>
+  </ul>
+  <div class="foot"><span>Somerset Language Centre &middot; Valencia</span><span>Group 4 &middot; Perform</span><span class="pn">Unit 1 Review Play</span></div>
+</div></div>
+</body>
+</html>

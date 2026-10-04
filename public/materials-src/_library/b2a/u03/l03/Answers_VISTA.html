@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grammar: Past Perfect Simple &amp; Continuous — FCE I / Friday B2 Unit 3, p.33</title>
+<style>
+  :root{ --green:#6BAE2E; --green-dark:#4d8120; --ink:#1a1a1a; --bg:#ffffff; --amber:#E08A1E; }
+  *{box-sizing:border-box;}
+  body{ margin:0; font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background:var(--bg); color:var(--ink); }
+  header{ display:flex; justify-content:space-between; align-items:flex-end; padding:clamp(16px,2.2vh,32px) clamp(24px,3.5vw,64px); border-bottom:4px solid var(--green); flex-wrap:wrap; gap:16px; }
+  .logo{display:flex;align-items:flex-end;gap:clamp(8px,1vw,16px);}
+  .logo .word{font-family:Arial,Helvetica,sans-serif;font-weight:800;font-size:clamp(30pt,3.4vw,46pt);letter-spacing:-1.2px;line-height:.9;color:#6BAE2E;}
+  .logo .lc{font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:clamp(8pt,0.85vw,12pt);letter-spacing:2.5px;line-height:1.18;padding-bottom:4px;color:#4d8120;}
+  .title-block{text-align:right;}
+  .title-block h1{margin:0;font-size:clamp(20px,2.1vw,30px);font-weight:700;color:var(--ink);}
+  .title-block p{margin:4px 0 0;font-size:clamp(13px,1.1vw,17px);color:#555;letter-spacing:.5px;text-transform:uppercase;}
+  .nav-bar{ position:fixed; bottom:0; left:0; right:0; display:flex; align-items:center; justify-content:center; gap:20px; padding:16px 0 22px; background:linear-gradient(to top, rgba(255,255,255,0.96), rgba(255,255,255,0)); z-index:30; }
+  .nav-bar button{ background:var(--green); color:#fff; border:none; border-radius:999px; width:clamp(44px,4vw,64px); height:clamp(44px,4vw,64px); font-size:clamp(20px,2vw,28px); font-weight:700; cursor:pointer; }
+  .nav-bar button:disabled{opacity:.3; cursor:default;}
+  .nav-bar .count{font-size:clamp(14px,1.4vw,20px); color:#555; min-width:70px; text-align:center;}
+  main{max-width:1800px;margin:0 auto;padding:clamp(8px,1.5vh,20px) clamp(24px,4vw,72px) 96px;min-height:calc(100vh - 110px);display:flex;flex-direction:column;justify-content:center;}
+  .slide{display:none;}
+  .slide.active{display:block; animation:fade .15s ease;}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  .kicker{ font-size:clamp(14px,1.4vw,20px);font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--green); margin:clamp(10px,min(1.8vh,2.4vw),26px) 0 8px; }
+  h2{font-size:clamp(26px,min(3.6vw,5.6vh),44px);margin:0 0 clamp(10px,min(1.8vh,2.4vw),24px);color:var(--ink);line-height:1.25;}
+  h2 .accent{color:var(--green-dark);}
+  .item-list{list-style:none;margin:0 0 clamp(14px,2vh,22px);padding:0;max-width:1200px;}
+  .item{ background:#fff;border:2px solid #ddd;border-radius:14px; padding:clamp(10px,1.4vh,16px) clamp(18px,2.2vw,26px); margin-bottom:clamp(8px,1vh,12px); font-size:clamp(16px,1.8vw,23px);line-height:1.4; }
+  .item .num{color:#999;font-weight:800;margin-right:10px;}
+  .reveal-all{ background:var(--green);color:#fff;border:none;border-radius:999px; padding:10px 26px;font-size:clamp(14px,1.4vw,18px);font-weight:700;cursor:pointer; }
+  .reveal-all:hover{background:var(--green-dark);}
+  .whybox{ display:none;margin-top:clamp(14px,2vh,20px);max-width:1200px; background:#F4F8EE;border-left:5px solid var(--green-dark);border-radius:0 12px 12px 0; padding:clamp(14px,1.8vh,20px) clamp(18px,2.2vw,26px); font-size:clamp(16px,1.6vw,21px);line-height:1.45;color:#333; }
+  .revealed .whybox{display:block;}
+  .whybox b{color:var(--green-dark);}
+  .valencia-note{margin-top:clamp(16px,2.2vh,28px);font-size:clamp(15px,1.5vw,20px);color:#777;font-style:italic;}
+  footer{text-align:center;padding:20px;font-size:clamp(13px,1.1vw,16px);color:#888;border-top:2px solid #eee;}
+  @page{size:A4;margin:16mm 14mm}
+  @media print{
+    body{background:#fff} .nav-bar{display:none !important} main{max-width:none;padding:0}
+    .slide{display:block !important;page-break-after:always;padding-top:6px;} .slide:last-child{page-break-after:auto;}
+    h2{font-size:19pt} .kicker{font-size:12pt} .item{font-size:12.5pt;page-break-inside:avoid;break-inside:avoid;}
+    .whybox{display:block !important;font-size:12pt;} .reveal-all{display:none !important;}
+  }
+  @media(max-width:700px){ header{flex-direction:column;align-items:center;text-align:center;} .title-block{text-align:center;} h2{font-size:24px;} }
+/* per-item-reveal v1 */
+.item .a-text,.gap-answer{color:transparent !important;background:#EAF4DA;border-radius:6px;padding:0 .35em;min-width:3.2em;display:inline-block;cursor:pointer;user-select:none;}
+.item.shown .a-text,.gap-answer.shown{color:var(--green-dark) !important;background:none;font-weight:700;}
+.showpill{display:inline-block;margin-left:10px;border:2px solid var(--green);color:var(--green-dark);background:#fff;border-radius:999px;padding:1px 12px;font-size:.72em;font-weight:700;cursor:pointer;vertical-align:middle;}
+.item.shown .showpill{display:none;}
+@media print{.item .a-text,.gap-answer{color:var(--green-dark) !important;background:none;}.showpill{display:none !important;}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+  <div class="title-block">
+    <h1>Grammar</h1>
+    <p>Unit 3 &middot; p.33</p>
+  </div>
+</header>
+
+<main>
+
+  <div class="slide active">
+    <div class="kicker">Unit 3 &middot; page 33</div>
+    <h2>Past perfect <span class="accent">simple &amp; continuous</span></h2>
+    <p class="valencia-note">Tap "Show answer" next to each question.</p>
+  </div>
+
+  <div class="slide">
+    <div class="kicker">Exercises 1&ndash;2 &middot; noticing the difference</div>
+    <h2>PPS or <span class="accent">PPC?</span></h2>
+    <ul class="item-list">
+      <li class="item"><span class="num">1</span>"I didn't go... because I had seen the film before." &rarr; <span class="a-text">PPS</span></li>
+      <li class="item"><span class="num">2</span>"The contestants had been living in the house for six months..." &rarr; <span class="a-text">PPC</span></li>
+      <li class="item"><span class="num">3</span>"Victor had just arrived at the restaurant..." &rarr; <span class="a-text">PPS</span></li>
+      <li class="item"><span class="num">4</span>"...I could see that she had been crying." &rarr; <span class="a-text">PPC</span></li>
+      <li class="item"><span class="num">5</span>Which describe a single completed action before another? &rarr; <span class="a-text">1, 3</span></li>
+      <li class="item"><span class="num">6</span>Which describes how long a situation lasted? &rarr; <span class="a-text">2</span></li>
+      <li class="item"><span class="num">7</span>Which describes a process with an immediate result? &rarr; <span class="a-text">4</span></li>
+      <li class="item"><span class="num">8</span>Which talks about the result of something completed some time ago? &rarr; <span class="a-text">1</span></li>
+    </ul>
+    <button class="reveal-all">Show answers</button>
+    <div class="whybox"><b>Rule:</b> past perfect SIMPLE for completed actions/results; past perfect CONTINUOUS for duration or an activity with visible/immediate evidence (red eyes = had been crying).</div>
+  </div>
+
+  <div class="slide">
+    <div class="kicker">Exercise 3 &middot; the celebrity chef story</div>
+    <h2>Choose the <span class="accent">correct form</span></h2>
+    <ul class="item-list">
+      <li class="item"><span class="num">1</span>"<span class="a-text">I'd been sitting</span> there for a few minutes when he came and sat next to me."</li>
+      <li class="item"><span class="num">2</span>"He'd just <span class="a-text">been running</span> (out of breath)."</li>
+      <li class="item"><span class="num">3</span>"I realised I'd <span class="a-text">left</span> my pen at home."</li>
+      <li class="item"><span class="num">4</span>"The battery had <span class="a-text">run out</span>."</li>
+      <li class="item"><span class="num">5</span>"A friend had <span class="a-text">asked</span> him to take her dog for a walk."</li>
+      <li class="item"><span class="num">6</span>"He'd <span class="a-text">been looking</span> for the dog for half an hour."</li>
+      <li class="item"><span class="num">7</span>"It had <span class="a-text">gone</span> home by itself."</li>
+      <li class="item"><span class="num">8</span>"It had probably <span class="a-text">been waiting</span> there the whole time."</li>
+    </ul>
+    <button class="reveal-all">Show answers</button>
+    <div class="whybox"><b>Pattern:</b> completed single actions (left, run out, asked, gone) take the simple form; ongoing/duration actions (been sitting, been running, been looking, been waiting) take the continuous form.</div>
+  </div>
+
+  <div class="slide">
+    <div class="kicker">Exercise 4 &middot; Valentina Tereshkova, the first woman in space</div>
+    <h2>Complete the <span class="accent">text</span></h2>
+    <ul class="item-list">
+      <li class="item"><span class="num">1</span>Yuri Gagarin <span class="a-text">had become</span> the first man in space.</li>
+      <li class="item"><span class="num">2</span>Valentina <span class="a-text">had volunteered</span> to join her country's space programme.</li>
+      <li class="item"><span class="num">3</span>By that time, she <span class="a-text">had been skydiving</span> for two years.</li>
+      <li class="item"><span class="num">4</span>She <span class="a-text">had done</span> more than a hundred jumps.</li>
+      <li class="item"><span class="num">5</span>Although she <span class="a-text">hadn't told</span> her parents about her dangerous hobby.</li>
+      <li class="item"><span class="num">6</span>Valentina <span class="a-text">had been training</span> to travel into space for 15 months.</li>
+      <li class="item"><span class="num">7</span>Local villagers <span class="a-text">had watched / had been watching</span> her falling to Earth.</li>
+      <li class="item"><span class="num">8</span>She <span class="a-text">had travelled</span> around our planet 48 times.</li>
+      <li class="item"><span class="num">9</span>When she <span class="a-text">had finished</span> her mission, she became a role model.</li>
+    </ul>
+    <button class="reveal-all">Show answers</button>
+    <div class="whybox"><b>Valencia/Spain link:</b> Spain's own (so far only) astronaut, Pedro Duque, had been training for over a decade before his 1998 Space Shuttle mission &mdash; a real Spanish example of the same grammar point.</div>
+  </div>
+
+</main>
+
+<div class="nav-bar">
+  <button id="prevBtn" title="Previous">&#8592;</button>
+  <span class="count" id="count"></span>
+  <button id="nextBtn" title="Next">&#8594;</button>
+</div>
+
+<footer>Somerset Language Centre &middot; Valencia &middot; Unit 3, p.33</footer>
+
+<script>
+  var slides = document.querySelectorAll('.slide');
+  var idx = 0;
+  var prevBtn = document.getElementById('prevBtn');
+  var nextBtn = document.getElementById('nextBtn');
+  var count = document.getElementById('count');
+  function render(){
+    slides.forEach(function(s,i){ s.classList.toggle('active', i===idx); });
+    count.textContent = (idx+1) + ' / ' + slides.length;
+    prevBtn.disabled = idx===0;
+    nextBtn.disabled = idx===slides.length-1;
+    window.scrollTo(0,0);
+  }
+  function go(d){ idx = Math.max(0, Math.min(slides.length-1, idx+d)); render(); }
+  prevBtn.addEventListener('click', function(){ go(-1); });
+  nextBtn.addEventListener('click', function(){ go(1); });
+  document.addEventListener('keydown', function(e){
+    if(e.key==='ArrowRight') go(1);
+    else if(e.key==='ArrowLeft') go(-1);
+  });
+  document.querySelectorAll('.slide').forEach(function(slide){
+    var btn = slide.querySelector('.reveal-all');
+    if(!btn) return;
+    btn.addEventListener('click', function(){
+      var on = slide.classList.toggle('revealed');
+      btn.textContent = on ? 'Hide answers' : 'Show answers';
+    });
+  });
+  render();
+</script>
+<script>/* per-item-reveal v1 */
+document.querySelectorAll('.item').forEach(function(it){
+  if(!it.querySelector('.a-text')) return;
+  var b=document.createElement('button'); b.className='showpill'; b.type='button'; b.textContent='Show answer';
+  b.addEventListener('click',function(e){e.stopPropagation(); it.classList.add('shown');});
+  it.appendChild(b);
+  it.querySelectorAll('.a-text').forEach(function(a){a.addEventListener('click',function(e){e.stopPropagation(); it.classList.toggle('shown');});});
+});
+document.querySelectorAll('.gap-answer').forEach(function(g){g.title='Click to show / hide'; g.addEventListener('click',function(){g.classList.toggle('shown');});});
+document.querySelectorAll('.reveal-all').forEach(function(b){
+  var s=b.closest('.slide'); if(!s||!s.querySelector('.whybox')){b.style.display='none';return;}
+  var mc=!!s.querySelector('.mc-opt'); var L=mc?['Show answer','Hide answer']:['Why?','Hide why'];  /* MC slides reveal the right option (registry D07) */
+  var fresh=b.cloneNode(true); b.parentNode.replaceChild(fresh,b); fresh.textContent=L[0];
+  fresh.addEventListener('click',function(){var on=s.classList.toggle('revealed'); fresh.textContent=on?L[1]:L[0];});
+});
+</script>
+</body>
+</html>

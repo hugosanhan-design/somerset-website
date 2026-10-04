@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PET I First Day booklet, 9 Sep 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+<style>
+@page{size:A4;margin:0}
+:root{
+  --green:#6BAE2E; --green-deep:#2F6B1A;
+  --ice-deep:#3A8FA3; --ink:#1B2419; --ink-soft:#4E5A4A; --rule:#DED8C8;
+  --serif:'Fraunces','Playfair Display',Georgia,serif;
+  --sans:'Instrument Sans','Segoe UI',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);font-size:12pt;line-height:1.4;color:var(--ink);background:#dcd9d0}
+.pg{width:210mm;height:297mm;background:#fff;margin:0 auto 8px;position:relative;overflow:hidden;page-break-after:always;display:flex;flex-direction:column}
+.pg:last-child{page-break-after:auto}
+.in{padding:9mm 14mm 18mm;flex:1;display:flex;flex-direction:column}
+@media print{body{background:#fff}.pg{margin:0}}
+
+.logo{display:flex;align-items:flex-end;gap:9px;margin-bottom:3px}
+.logo .word{font-family:Arial,Helvetica,sans-serif;font-weight:800;font-size:24pt;letter-spacing:-1px;line-height:.9;color:var(--green)}
+.logo .lc{font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:6.5pt;letter-spacing:2px;line-height:1.18;padding-bottom:3px;color:#4d8120}
+
+.kick{font-size:8.5pt;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ice-deep)}
+.kick b{color:var(--green-deep)}
+h1.hl{font-family:var(--serif);font-weight:600;font-size:23pt;line-height:1;letter-spacing:-.02em;margin:2px 0 2px;color:var(--ink)}
+.deck{font-family:var(--serif);font-weight:400;font-size:12pt;line-height:1.25;color:var(--ink-soft);margin-bottom:4px}
+
+.rung{display:flex;align-items:baseline;gap:10px;margin:7px 0 4px;padding-bottom:2px;border-bottom:2px solid var(--green);page-break-inside:avoid}
+.rung .badge{font-family:var(--serif);font-weight:700;font-size:10.5pt;color:#fff;background:var(--green-deep);border-radius:999px;padding:2px 11px;white-space:nowrap}
+.rung .t{font-family:var(--serif);font-weight:600;font-size:14pt;color:var(--ink)}
+.rung .s{font-size:9.5pt;color:var(--ink-soft)}
+
+/* First Day pages */
+.rule{background:#F4F8EE;border:1.5px solid var(--green);border-radius:12px;padding:6px 13px;font-size:11pt;line-height:1.3;margin-bottom:6px}
+.rule b{color:var(--green-deep)}
+table{width:100%;border-collapse:collapse;font-size:11.5pt}
+th,td{border:1px solid var(--rule);padding:7px 8px;text-align:left;vertical-align:middle}
+th{background:#F4F8EE;font-family:var(--sans);font-size:8pt;text-transform:uppercase;letter-spacing:.06em;color:var(--green-deep);font-weight:700}
+td.fsw{width:52%}
+td.nm{width:22%}
+td.blank{height:53px}
+td.n{font-family:var(--serif);font-weight:700;color:var(--green-deep);text-align:center;width:22px}
+.help{border:1.5px solid var(--ice-deep);border-radius:12px;padding:7px 13px;margin-top:7px;font-size:11pt;line-height:1.35}
+.help .lab{display:block;font-size:7.5pt;letter-spacing:.14em;text-transform:uppercase;color:var(--ice-deep);font-weight:700;margin-bottom:3px}
+.help i{color:var(--ink-soft)}
+.qlist{display:grid;grid-template-columns:1fr 1fr;gap:5px 16px}
+.qi{border-bottom:1px dotted var(--rule);padding:3px 0 2px;font-size:11.5pt;line-height:1.25}
+.qi .n{font-family:var(--serif);font-weight:700;color:var(--green-deep);margin-right:4px}
+.qi .fill{display:block;border-bottom:1.5px solid var(--ink-soft);height:30px;margin-top:4px}
+.frames{border:1.5px dashed var(--green);border-radius:12px;padding:8px 14px;margin-top:6px}
+.frames .lab{font-size:7.5pt;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--green-deep)}
+.frames h3{font-family:var(--serif);font-size:14pt;font-weight:600;margin:2px 0 4px}
+.frames ol{margin-left:17px;font-size:11.5pt;line-height:2.55}
+.frames b{color:var(--green-deep)}
+.lines .ln{border-bottom:1px solid var(--rule);height:26px}
+
+/* Level Ladder pages */
+.crack{background:#fff;border:1.5px solid var(--ice-deep);border-radius:14px;padding:7px 13px;font-family:var(--serif);font-size:11pt;line-height:1.28;margin-bottom:5px}
+.crack .lab{display:block;font-family:var(--sans);font-size:7.5pt;letter-spacing:.14em;text-transform:uppercase;color:var(--ice-deep);font-weight:700;margin-bottom:3px}
+.owner{background:#fff;border:1px solid var(--rule);border-radius:12px;padding:5px 12px;display:flex;gap:8mm;align-items:baseline;margin-bottom:6px}
+.owner span{font-size:8.5pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);white-space:nowrap}
+.owner .fld{flex:1;border-bottom:1.5px solid var(--ink-soft);height:14px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:3px 16px}
+.q{font-size:12pt;margin-bottom:5px;border-bottom:1px dotted var(--rule);padding-bottom:4px;line-height:1.2;page-break-inside:avoid;break-inside:avoid}
+.q .n{font-family:var(--serif);font-weight:700;color:var(--green-deep);margin-right:4px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:3px 6px;margin-top:4px}
+.opts.wide{grid-template-columns:1fr}
+.opt{display:inline-flex;align-items:center;gap:4px;background:#fff;border:1.2px solid var(--rule);border-radius:999px;padding:3px 9px 3px 8px;font-size:12pt;line-height:1.3;font-weight:500;min-width:0}
+.bub{width:11px;height:11px;border:1.2px solid var(--green);border-radius:50%;display:inline-block;flex-shrink:0}
+.extra{border:1.5px dashed var(--green);border-radius:12px;padding:7px 14px;margin-top:6px}
+.extra .lab{font-size:7.5pt;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--green-deep)}
+.extra h3{font-family:var(--serif);font-size:14pt;font-weight:600;margin:2px 0 2px}
+.extra p{font-size:11pt;color:var(--ink-soft);margin-bottom:4px}
+.extra .lines .ln{height:21px}
+
+.foot{position:absolute;left:14mm;right:14mm;bottom:8mm;display:flex;justify-content:space-between;align-items:baseline;
+  font-size:7.5pt;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);border-top:1px solid var(--rule);padding-top:5px}
+.foot .pn{font-family:var(--serif);font-size:12pt;font-weight:700;letter-spacing:0;color:var(--green-deep)}
+</style>
+</head>
+<body>
+<!-- PAGE 1 -->
+<div class="pg"><div class="in">
+  <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+  <div class="kick"><b>Somerset</b> · PET I · Wednesday 9 September 2026</div>
+  <h1 class="hl">First Day</h1>
+  <div class="deck">Nobody in this room knows everybody yet. By the end of the class, everybody will.</div>
+
+  <div class="rung"><span class="badge">TASK 1</span><span class="t">Tell me a bit about you</span><span class="s">answer for yourself, alone</span></div>
+
+  <div class="rule"><b>Two or three words is enough.</b> You are going to ask other people these same questions in a minute, so answer honestly, not cleverly.</div>
+
+  <table>
+    <tr><th></th><th style="width:56%">Question</th><th>My answer</th></tr>
+    <tr><td class="n">1</td><td>What do people call you?</td><td class="blank"></td></tr>
+    <tr><td class="n">2</td><td>Which part of Valencia do you live in?</td><td class="blank"></td></tr>
+    <tr><td class="n">3</td><td>What do you do first when you get home?</td><td class="blank"></td></tr>
+    <tr><td class="n">4</td><td>What are you watching or listening to at the moment?</td><td class="blank"></td></tr>
+    <tr><td class="n">5</td><td>What sport or activity do you do?</td><td class="blank"></td></tr>
+    <tr><td class="n">6</td><td>What is your favourite food?</td><td class="blank"></td></tr>
+    <tr><td class="n">7</td><td>Which subject do you like most at school?</td><td class="blank"></td></tr>
+    <tr><td class="n">8</td><td>Where do you like going in Valencia?</td><td class="blank"></td></tr>
+    <tr><td class="n">9</td><td>Which country would you most like to visit?</td><td class="blank"></td></tr>
+    <tr><td class="n">10</td><td>What are you good at?</td><td class="blank"></td></tr>
+    <tr><td class="n">11</td><td>What job would you like one day?</td><td class="blank"></td></tr>
+    <tr><td class="n">12</td><td>How would your friends describe you? Two words.</td><td class="blank"></td></tr>
+  </table>
+
+  <div class="foot"><span>Somerset Language Centre · Valencia</span><span class="pn">1</span></div>
+</div></div>
+
+<!-- PAGE 2 -->
+<div class="pg"><div class="in">
+  <div class="kick"><b>Somerset</b> · PET I · First Day</div>
+
+  <div class="rung" style="margin-top:2px"><span class="badge">TASK 2</span><span class="t">Now find your people</span><span class="s">stand up and ask</span></div>
+
+  <div class="rule"><b>Same twelve questions, different people.</b> Ask your classmates the questions from page 1. When somebody gives an answer close to yours, write their name and what they said. <b>You need at least one name from every person in the room.</b></div>
+
+  <table>
+    <tr><th></th><th style="width:34%">Question</th><th style="width:24%">Who is like me?</th><th>What they said</th></tr>
+    <tr><td class="n">1</td><td>What do people call you?</td><td class="blank"></td><td></td></tr>
+    <tr><td class="n">2</td><td>Part of Valencia</td><td class="blank"></td><td></td></tr>
+    <tr><td class="n">3</td><td>First thing at home</td><td class="blank"></td><td></td></tr>
+    <tr><td class="n">4</td><td>Watching or listening to</td><td class="blank"></td><td></td></tr>
+    <tr><td class="n">5</td><td>Sport or activity</td><td class="blank"></td><td></td></tr>
+    <tr><td class="n">6</td><td>Favourite food</td><td class="blank"></td><td></td></tr>
+    <tr><td class="n">7</td><td>Favourite subject</td><td class="blank"></td><td></td></tr>
+    <tr><td class="n">8</td><td>Place in Valencia</td><td class="blank"></td><td></td></tr>
+    <tr><td class="n">9</td><td>Country to visit</td><td class="blank"></td><td></td></tr>
+    <tr><td class="n">10</td><td>Good at</td><td class="blank"></td><td></td></tr>
+    <tr><td class="n">11</td><td>Job one day</td><td class="blank"></td><td></td></tr>
+    <tr><td class="n">12</td><td>Two words</td><td class="blank"></td><td></td></tr>
+  </table>
+
+  <div class="help"><span class="lab">Say this when your answers match</span>
+    <i>Me too. · So do I. · Same here. · I do that too.</i><br>
+    And when they do not: <i>Really? I don't. · Me neither. · Oh, I prefer ______.</i><br>
+    To keep them talking: <i>Why? · Since when? · How often? · Who with?</i>
+  </div>
+
+  <div class="foot"><span>Somerset Language Centre · Valencia</span><span class="pn">2</span></div>
+</div></div>
+
+<!-- PAGE 3 -->
+<div class="pg"><div class="in">
+  <div class="kick"><b>Somerset</b> · PET I · First Day</div>
+
+  <div class="rung" style="margin-top:2px"><span class="badge">TASK 3</span><span class="t">Build your six lines</span><span class="s">use your answers from page 1</span></div>
+
+  <div class="frames">
+    <span class="lab">Write them out in full</span>
+    <ol>
+      <li>My name's <b>____________</b> and people call me <b>____________</b>.</li>
+      <li>I live in <b>____________</b>, and when I get home I usually <b>____________</b>.</li>
+      <li>At the moment I'm watching <b>____________</b> and listening to <b>____________</b>.</li>
+      <li>I'm quite good at <b>____________</b>, and one day I'd like to be <b>____________</b>.</li>
+      <li>My friends would say I'm <b>____________</b> and <b>____________</b>.</li>
+      <li>I found out that <b>____________</b> and I both <b>____________</b>.</li>
+    </ol>
+  </div>
+
+  <div class="rung"><span class="badge">TASK 4</span><span class="t">Practise, then stand up</span><span class="s">partner first, class second</span></div>
+  <div class="rule"><b>Step 1.</b> Say your six lines to the person next to you. They tell you one thing to improve. <b>Step 2.</b> Say them again to the class, standing. About one minute. You can hold the paper, but look up at least twice.</div>
+
+  <div class="rung"><span class="badge">TASK 5</span><span class="t">While you listen</span><span class="s">everybody has a job</span></div>
+  <div class="rule">You are not waiting for your turn. For every classmate, write one thing you learned and one question you will ask them afterwards.</div>
+
+  <table>
+    <tr><th class="nm">Classmate</th><th style="width:40%">One thing I learned</th><th>My question for them</th></tr>
+    <tr><td class="blank" style="height:57px"></td><td></td><td></td></tr>
+    <tr><td class="blank" style="height:57px"></td><td></td><td></td></tr>
+    <tr><td class="blank" style="height:57px"></td><td></td><td></td></tr>
+    <tr><td class="blank" style="height:57px"></td><td></td><td></td></tr>
+  </table>
+
+  <div class="foot"><span>Somerset Language Centre · Valencia</span><span class="pn">3</span></div>
+</div></div>
+
+<!-- PAGE 4 -->
+<div class="pg"><div class="in">
+  <div class="kick"><b>Somerset</b> · PET I · First Day</div>
+
+  <div class="rung" style="margin-top:2px"><span class="badge">TASK 6</span><span class="t">Common ground</span><span class="s">all of you, together</span></div>
+  <div class="rule">As a class, find <b>three things that are true for every single person in this room</b>, including your teacher. They cannot be obvious ones like "we all study English" or "we all live in Spain". You have five minutes and you must all agree.</div>
+
+  <table>
+    <tr><th style="width:22px"></th><th>All of us…</th></tr>
+    <tr><td class="n">1</td><td class="blank" style="height:60px"></td></tr>
+    <tr><td class="n">2</td><td class="blank" style="height:60px"></td></tr>
+    <tr><td class="n">3</td><td class="blank" style="height:60px"></td></tr>
+  </table>
+
+  <div class="rung"><span class="badge">TASK 7</span><span class="t">The person most like me</span><span class="s">one sentence</span></div>
+  <div class="rule">Look back at page 2. Who did you match with most often? Write it out in full.</div>
+  <div class="frames" style="margin-top:0"><ol style="line-height:2.4"><li>I have the most in common with <b>____________</b>, because we both <b>____________</b>.</li></ol></div>
+  <div class="lines" style="margin-top:7px"><div class="ln"></div><div class="ln"></div></div>
+
+  <div class="help" style="margin-top:9px"><span class="lab">Before you leave</span>
+    Write one thing you want to be better at in English by December. Keep this booklet, we will look at it again then.
+    <div class="lines" style="margin-top:6px"><div class="ln"></div><div class="ln"></div><div class="ln"></div></div>
+  </div>
+
+  <div class="foot"><span>Somerset Language Centre · Valencia</span><span class="pn">4</span></div>
+</div></div>
+
+
+<!-- ============ PAGE 1 ============ -->
+<div class="pg"><div class="in">
+  <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+  <div class="kick"><b>Somerset</b> · PET I · Wednesday 9 September 2026</div>
+  <h1 class="hl">The Level Ladder</h1>
+  <div class="deck">Six parts, one for each unit of the book we are about to start. Climb as high as you can.</div>
+  <div class="crack"><span class="lab">Before you start</span>This is not an exam and it does not go on any report. It covers the whole year, so most of it is material we have not taught yet. Nobody is expected to finish, and getting a question wrong today just tells me where to spend our time. Guessing is fine, leaving it blank is fine too.</div>
+  <div class="owner"><span>Name</span><span class="fld"></span><span>Date</span><span class="fld"></span></div>
+
+  <div class="rung"><span class="badge">PART 1</span><span class="t">Perfect for the job</span><span class="s">jobs, personality, present tenses</span></div>
+  <div class="grid">
+    <div class="q"><span class="n">1</span>My cousin ____ in a café in Ruzafa every Saturday.
+      <div class="opts"><span class="opt"><span class="bub"></span>work</span><span class="opt"><span class="bub"></span>works</span><span class="opt"><span class="bub"></span>is working</span><span class="opt"><span class="bub"></span>working</span></div></div>
+    <div class="q"><span class="n">2</span>Be quiet! The baby ____ at the moment.
+      <div class="opts"><span class="opt"><span class="bub"></span>sleeps</span><span class="opt"><span class="bub"></span>sleep</span><span class="opt"><span class="bub"></span>is sleeping</span><span class="opt"><span class="bub"></span>slept</span></div></div>
+    <div class="q"><span class="n">3</span>I ____ this jacket. It's perfect.
+      <div class="opts"><span class="opt"><span class="bub"></span>am liking</span><span class="opt"><span class="bub"></span>like</span><span class="opt"><span class="bub"></span>likes</span><span class="opt"><span class="bub"></span>liking</span></div></div>
+    <div class="q"><span class="n">4</span>She usually cycles, but this week she ____ the metro.
+      <div class="opts"><span class="opt"><span class="bub"></span>takes</span><span class="opt"><span class="bub"></span>take</span><span class="opt"><span class="bub"></span>is taking</span><span class="opt"><span class="bub"></span>took</span></div></div>
+    <div class="q"><span class="n">5</span>A person who designs buildings is a ____.
+      <div class="opts"><span class="opt"><span class="bub"></span>librarian</span><span class="opt"><span class="bub"></span>lawyer</span><span class="opt"><span class="bub"></span>architect</span><span class="opt"><span class="bub"></span>journalist</span></div></div>
+    <div class="q"><span class="n">6</span>Marta always arrives when she says she will. She is very ____.
+      <div class="opts"><span class="opt"><span class="bub"></span>shy</span><span class="opt"><span class="bub"></span>reliable</span><span class="opt"><span class="bub"></span>anxious</span><span class="opt"><span class="bub"></span>unkind</span></div></div>
+  </div>
+
+  <div class="rung"><span class="badge">PART 2</span><span class="t">Delicious!</span><span class="s">food, taste, past tenses</span></div>
+  <div class="grid">
+    <div class="q"><span class="n">7</span>Last summer we ____ paella at a restaurant near the Albufera.
+      <div class="opts"><span class="opt"><span class="bub"></span>eat</span><span class="opt"><span class="bub"></span>eaten</span><span class="opt"><span class="bub"></span>ate</span><span class="opt"><span class="bub"></span>eating</span></div></div>
+    <div class="q"><span class="n">8</span>I ____ dinner when the phone rang.
+      <div class="opts"><span class="opt"><span class="bub"></span>cooked</span><span class="opt"><span class="bub"></span>was cooking</span><span class="opt"><span class="bub"></span>cook</span><span class="opt"><span class="bub"></span>have cooked</span></div></div>
+    <div class="q"><span class="n">9</span>While my father ____ , my mother was setting the table.
+      <div class="opts"><span class="opt"><span class="bub"></span>chopped</span><span class="opt"><span class="bub"></span>has chopped</span><span class="opt"><span class="bub"></span>was chopping</span><span class="opt"><span class="bub"></span>chops</span></div></div>
+    <div class="q"><span class="n">10</span>When I was small, I ____ hate vegetables. Now I like them.
+      <div class="opts"><span class="opt"><span class="bub"></span>used to</span><span class="opt"><span class="bub"></span>use to</span><span class="opt"><span class="bub"></span>am used to</span><span class="opt"><span class="bub"></span>was used</span></div></div>
+    <div class="q"><span class="n">11</span>Lemons are very ____.
+      <div class="opts"><span class="opt"><span class="bub"></span>sour</span><span class="opt"><span class="bub"></span>mild</span><span class="opt"><span class="bub"></span>raw</span><span class="opt"><span class="bub"></span>dull</span></div></div>
+    <div class="q"><span class="n">12</span>Please ____ the milk into the jug.
+      <div class="opts"><span class="opt"><span class="bub"></span>chop</span><span class="opt"><span class="bub"></span>pour</span><span class="opt"><span class="bub"></span>peel</span><span class="opt"><span class="bub"></span>grill</span></div></div>
+  </div>
+
+  <div class="foot"><span>Somerset Language Centre · Valencia</span><span class="pn">5</span></div>
+</div></div>
+
+<!-- ============ PAGE 2 ============ -->
+<div class="pg"><div class="in">
+  <div class="kick"><b>Somerset</b> · PET I · The Level Ladder</div>
+
+  <div class="rung" style="margin-top:2px"><span class="badge">PART 3</span><span class="t">It's natural</span><span class="s">nature, the environment, present perfect</span></div>
+  <div class="grid">
+    <div class="q"><span class="n">13</span>I ____ never ____ to the Bioparc.
+      <div class="opts"><span class="opt"><span class="bub"></span>did / go</span><span class="opt"><span class="bub"></span>have / been</span><span class="opt"><span class="bub"></span>am / being</span><span class="opt"><span class="bub"></span>was / gone</span></div></div>
+    <div class="q"><span class="n">14</span>We ____ in this flat since 2019.
+      <div class="opts"><span class="opt"><span class="bub"></span>live</span><span class="opt"><span class="bub"></span>lived</span><span class="opt"><span class="bub"></span>have lived</span><span class="opt"><span class="bub"></span>are living</span></div></div>
+    <div class="q"><span class="n">15</span>My eyes hurt. I ____ at this screen for three hours.
+      <div class="opts wide"><span class="opt"><span class="bub"></span>have been looking</span><span class="opt"><span class="bub"></span>look</span><span class="opt"><span class="bub"></span>looked</span><span class="opt"><span class="bub"></span>am looking</span></div></div>
+    <div class="q"><span class="n">16</span>The Turia is ____ old river bed that crosses Valencia.
+      <div class="opts"><span class="opt"><span class="bub"></span>a</span><span class="opt"><span class="bub"></span>an</span><span class="opt"><span class="bub"></span>the</span><span class="opt"><span class="bub"></span>no word</span></div></div>
+    <div class="q"><span class="n">17</span>A very large mass of ice that moves slowly is a ____.
+      <div class="opts"><span class="opt"><span class="bub"></span>cliff</span><span class="opt"><span class="bub"></span>valley</span><span class="opt"><span class="bub"></span>glacier</span><span class="opt"><span class="bub"></span>stream</span></div></div>
+    <div class="q"><span class="n">18</span>Wind and solar power are types of ____ energy.
+      <div class="opts"><span class="opt"><span class="bub"></span>fossil</span><span class="opt"><span class="bub"></span>renewable</span><span class="opt"><span class="bub"></span>visible</span><span class="opt"><span class="bub"></span>natural gas</span></div></div>
+  </div>
+
+  <div class="rung"><span class="badge">PART 4</span><span class="t">That's the fashion</span><span class="s">clothes, shopping, relative clauses</span></div>
+  <div class="grid">
+    <div class="q"><span class="n">19</span>That's the shop ____ sells second-hand jackets.
+      <div class="opts"><span class="opt"><span class="bub"></span>who</span><span class="opt"><span class="bub"></span>which</span><span class="opt"><span class="bub"></span>whose</span><span class="opt"><span class="bub"></span>where</span></div></div>
+    <div class="q"><span class="n">20</span>He's the boy ____ sister works at the Central Market.
+      <div class="opts"><span class="opt"><span class="bub"></span>who</span><span class="opt"><span class="bub"></span>which</span><span class="opt"><span class="bub"></span>whose</span><span class="opt"><span class="bub"></span>that</span></div></div>
+    <div class="q"><span class="n">21</span>El Cabanyal, ____ is near the beach, has changed a lot.
+      <div class="opts"><span class="opt"><span class="bub"></span>which</span><span class="opt"><span class="bub"></span>that</span><span class="opt"><span class="bub"></span>where</span><span class="opt"><span class="bub"></span>who</span></div></div>
+    <div class="q"><span class="n">22</span>I'll call you ____ I get home.
+      <div class="opts"><span class="opt"><span class="bub"></span>as soon as</span><span class="opt"><span class="bub"></span>during</span><span class="opt"><span class="bub"></span>since</span><span class="opt"><span class="bub"></span>for</span></div></div>
+    <div class="q"><span class="n">23</span>These gloves are made of ____.
+      <div class="opts"><span class="opt"><span class="bub"></span>leather</span><span class="opt"><span class="bub"></span>tailor</span><span class="opt"><span class="bub"></span>bargain</span><span class="opt"><span class="bub"></span>gardener</span></div></div>
+    <div class="q"><span class="n">24</span>Keep the ____ in case you want to return the shirt.
+      <div class="opts"><span class="opt"><span class="bub"></span>cash</span><span class="opt"><span class="bub"></span>receipt</span><span class="opt"><span class="bub"></span>campaign</span><span class="opt"><span class="bub"></span>backpack</span></div></div>
+  </div>
+
+  <div class="foot"><span>Somerset Language Centre · Valencia</span><span class="pn">6</span></div>
+</div></div>
+
+<!-- ============ PAGE 3 ============ -->
+<div class="pg"><div class="in">
+  <div class="kick"><b>Somerset</b> · PET I · The Level Ladder</div>
+
+  <div class="rung" style="margin-top:2px"><span class="badge">PART 5</span><span class="t">Where we live</span><span class="s">homes, household objects, the future</span></div>
+  <div class="grid">
+    <div class="q"><span class="n">25</span>We've decided: we ____ move to a bigger flat in June.
+      <div class="opts"><span class="opt"><span class="bub"></span>will</span><span class="opt"><span class="bub"></span>are going to</span><span class="opt"><span class="bub"></span>go to</span><span class="opt"><span class="bub"></span>are go to</span></div></div>
+    <div class="q"><span class="n">26</span>That bag looks heavy. ____ carry it for you.
+      <div class="opts"><span class="opt"><span class="bub"></span>I'm going to</span><span class="opt"><span class="bub"></span>I carry</span><span class="opt"><span class="bub"></span>I'll</span><span class="opt"><span class="bub"></span>I'm carrying</span></div></div>
+    <div class="q"><span class="n">27</span>Look at those clouds. It ____ rain.
+      <div class="opts"><span class="opt"><span class="bub"></span>will</span><span class="opt"><span class="bub"></span>is going to</span><span class="opt"><span class="bub"></span>rains</span><span class="opt"><span class="bub"></span>would</span></div></div>
+    <div class="q"><span class="n">28</span>I ____ the dentist at four o'clock tomorrow. It's in my diary.
+      <div class="opts"><span class="opt"><span class="bub"></span>will see</span><span class="opt"><span class="bub"></span>see</span><span class="opt"><span class="bub"></span>am seeing</span><span class="opt"><span class="bub"></span>saw</span></div></div>
+    <div class="q"><span class="n">29</span>You hang your clothes in a ____.
+      <div class="opts"><span class="opt"><span class="bub"></span>wardrobe</span><span class="opt"><span class="bub"></span>cushion</span><span class="opt"><span class="bub"></span>duvet</span><span class="opt"><span class="bub"></span>sink</span></div></div>
+    <div class="q"><span class="n">30</span>My family is going to ____ house next year.
+      <div class="opts"><span class="opt"><span class="bub"></span>make</span><span class="opt"><span class="bub"></span>move</span><span class="opt"><span class="bub"></span>take</span><span class="opt"><span class="bub"></span>rest</span></div></div>
+  </div>
+
+  <div class="rung"><span class="badge">PART 6</span><span class="t">Go for it!</span><span class="s">sport, equipment, conditionals</span></div>
+  <div class="grid">
+    <div class="q"><span class="n">31</span>If you heat water to 100 degrees, it ____.
+      <div class="opts"><span class="opt"><span class="bub"></span>will boil</span><span class="opt"><span class="bub"></span>boils</span><span class="opt"><span class="bub"></span>would boil</span><span class="opt"><span class="bub"></span>boiled</span></div></div>
+    <div class="q"><span class="n">32</span>If Valencia ____ on Sunday, they will go top of the league.
+      <div class="opts"><span class="opt"><span class="bub"></span>win</span><span class="opt"><span class="bub"></span>will win</span><span class="opt"><span class="bub"></span>wins</span><span class="opt"><span class="bub"></span>won</span></div></div>
+    <div class="q"><span class="n">33</span>You can't enter the competition ____ you are sixteen.
+      <div class="opts"><span class="opt"><span class="bub"></span>unless</span><span class="opt"><span class="bub"></span>if</span><span class="opt"><span class="bub"></span>although</span><span class="opt"><span class="bub"></span>however</span></div></div>
+    <div class="q"><span class="n">34</span>If I ____ more time, I would train every day.
+      <div class="opts"><span class="opt"><span class="bub"></span>have</span><span class="opt"><span class="bub"></span>will have</span><span class="opt"><span class="bub"></span>had</span><span class="opt"><span class="bub"></span>would have</span></div></div>
+    <div class="q"><span class="n">35</span>You must wear a ____ when you cycle.
+      <div class="opts"><span class="opt"><span class="bub"></span>paddle</span><span class="opt"><span class="bub"></span>helmet</span><span class="opt"><span class="bub"></span>skate</span><span class="opt"><span class="bub"></span>belt</span></div></div>
+    <div class="q"><span class="n">36</span>The person who trains a team is the ____.
+      <div class="opts"><span class="opt"><span class="bub"></span>champion</span><span class="opt"><span class="bub"></span>competitor</span><span class="opt"><span class="bub"></span>coach</span><span class="opt"><span class="bub"></span>rider</span></div></div>
+  </div>
+
+  <div class="extra">
+    <span class="lab">Extra, only if you finish early</span>
+    <h3>Write me a short message</h3>
+    <p>About 40 words. Tell me one thing you did this summer and one thing you want to get better at in English this year.</p>
+    <div class="lines">
+      <div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div>
+    </div>
+  </div>
+
+  <div class="foot"><span>Somerset Language Centre · Valencia</span><span class="pn">7</span></div>
+</div></div>
+
+
+</body>
+</html>

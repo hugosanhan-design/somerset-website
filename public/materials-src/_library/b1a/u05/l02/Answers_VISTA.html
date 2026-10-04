@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vocabulary &amp; Grammar: PET I Unit 5, p.56-57</title>
+<style>
+  :root{ --green:#6BAE2E; --green-dark:#4d8120; --ink:#1a1a1a; --bg:#ffffff; --amber:#E08A1E; }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;background:var(--bg);color:var(--ink);}
+  header{display:flex;justify-content:space-between;align-items:flex-end;padding:clamp(16px,2.2vh,32px) clamp(24px,3.5vw,64px);border-bottom:4px solid var(--green);flex-wrap:wrap;gap:16px;}
+  .logo{display:flex;align-items:flex-end;gap:clamp(8px,1vw,16px);}
+  .logo .word{font-family:Arial,Helvetica,sans-serif;font-weight:800;font-size:clamp(30pt,3.4vw,46pt);letter-spacing:-1.2px;line-height:.9;color:#6BAE2E;}
+  .logo .lc{font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:clamp(8pt,0.85vw,12pt);letter-spacing:2.5px;line-height:1.18;padding-bottom:4px;color:#4d8120;}
+  .title-block{text-align:right;}
+  .title-block h1{margin:0;font-size:clamp(20px,2.1vw,30px);font-weight:700;color:var(--ink);}
+  .title-block p{margin:4px 0 0;font-size:clamp(13px,1.1vw,17px);color:#555;letter-spacing:.5px;text-transform:uppercase;}
+  .nav-bar{position:fixed;bottom:0;left:0;right:0;display:flex;align-items:center;justify-content:center;gap:20px;padding:16px 0 22px;background:linear-gradient(to top, rgba(255,255,255,0.96), rgba(255,255,255,0));z-index:30;}
+  .nav-bar button{background:var(--green);color:#fff;border:none;border-radius:999px;width:clamp(44px,4vw,64px);height:clamp(44px,4vw,64px);font-size:clamp(20px,2vw,28px);font-weight:700;cursor:pointer;}
+  .nav-bar button:disabled{opacity:.3;cursor:default;}
+  .nav-bar .count{font-size:clamp(14px,1.4vw,20px);color:#555;min-width:70px;text-align:center;}
+  main{max-width:1800px;margin:0 auto;padding:clamp(8px,1.5vh,20px) clamp(24px,4vw,72px) 96px;min-height:calc(100vh - 110px);display:flex;flex-direction:column;justify-content:center;}
+  .slide{display:none;}
+  .slide.active{display:block;animation:fade .15s ease;}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  .kicker{font-size:clamp(14px,1.4vw,20px);font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--green);margin:clamp(10px,min(1.8vh,2.4vw),26px) 0 8px;}
+  h2{font-size:clamp(28px,min(3.8vw,6vh),48px);margin:0 0 clamp(10px,min(1.8vh,2.4vw),24px);color:var(--ink);line-height:1.25;}
+  h2 .accent{color:var(--green-dark);}
+  .item-list{list-style:none;margin:0 0 clamp(14px,2vh,22px);padding:0;max-width:1200px;}
+  .item{background:#fff;border:2px solid #ddd;border-radius:14px;padding:clamp(12px,1.6vh,18px) clamp(18px,2.2vw,26px);margin-bottom:clamp(9px,1.2vh,14px);font-size:clamp(17px,1.9vw,24px);line-height:1.4;}
+  .item .num{color:#999;font-weight:800;margin-right:10px;}
+  .reveal-all{background:var(--green);color:#fff;border:none;border-radius:999px;padding:10px 26px;font-size:clamp(14px,1.4vw,18px);font-weight:700;cursor:pointer;}
+  .reveal-all:hover{background:var(--green-dark);}
+  .whybox{display:none;margin-top:clamp(14px,2vh,20px);max-width:1200px;background:#F4F8EE;border-left:5px solid var(--green-dark);border-radius:0 12px 12px 0;padding:clamp(14px,1.8vh,20px) clamp(18px,2.2vw,26px);font-size:clamp(16px,1.6vw,21px);line-height:1.45;color:#333;}
+  .revealed .whybox{display:block;}
+  .whybox b{color:var(--green-dark);}
+  .valencia-note{margin-top:clamp(16px,2.2vh,28px);font-size:clamp(15px,1.5vw,20px);color:#777;font-style:italic;}
+  footer{text-align:center;padding:20px;font-size:clamp(13px,1.1vw,16px);color:#888;border-top:2px solid #eee;}
+  @page{size:A4;margin:16mm 14mm}
+  @media print{
+    body{background:#fff}
+    .nav-bar{display:none !important}
+    main{max-width:none;padding:0}
+    .slide{display:block !important;page-break-after:always;padding-top:6px;}
+    .slide:last-child{page-break-after:auto;}
+    h2{font-size:19pt}
+    .kicker{font-size:12pt}
+    .item{font-size:12.5pt;page-break-inside:avoid;break-inside:avoid;}
+    .whybox{display:block !important;font-size:12pt;}
+    .reveal-all{display:none !important;}
+  }
+  @media(max-width:700px){ header{flex-direction:column;align-items:center;text-align:center;} .title-block{text-align:center;} h2{font-size:24px;} }
+.item .a-text,.gap-answer{color:transparent !important;background:#EAF4DA;border-radius:6px;padding:0 .35em;min-width:3.2em;display:inline-block;cursor:pointer;user-select:none;}
+.item.shown .a-text,.gap-answer.shown{color:var(--green-dark) !important;background:none;font-weight:700;}
+.showpill{display:inline-block;margin-left:10px;border:2px solid var(--green);color:var(--green-dark);background:#fff;border-radius:999px;padding:1px 12px;font-size:.72em;font-weight:700;cursor:pointer;vertical-align:middle;}
+.item.shown .showpill{display:none;}
+@media print{.item .a-text,.gap-answer{color:var(--green-dark) !important;background:none;}.showpill{display:none !important;}}
+/* per-item-reveal v1 */
+.item .a-text,.gap-answer{color:transparent !important;background:#EAF4DA;border-radius:6px;padding:0 .35em;min-width:3.2em;display:inline-block;cursor:pointer;user-select:none;}
+.item.shown .a-text,.gap-answer.shown{color:var(--green-dark) !important;background:none;font-weight:700;}
+.showpill{display:inline-block;margin-left:10px;border:2px solid var(--green);color:var(--green-dark);background:#fff;border-radius:999px;padding:1px 12px;font-size:.72em;font-weight:700;cursor:pointer;vertical-align:middle;}
+.item.shown .showpill{display:none;}
+@media print{.item .a-text,.gap-answer{color:var(--green-dark) !important;background:none;}.showpill{display:none !important;}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+  <div class="title-block"><h1>Vocabulary &amp; Grammar</h1><p>Unit 5 &middot; p.56-57 &middot; housing &middot; will / be going to</p></div>
+</header>
+<main>
+
+<div class="slide active">
+  <div class="kicker">Unit 5 &middot; pages 56-57</div>
+  <h2>Where we live &middot; <span class="accent">vocab &amp; grammar</span></h2>
+  <p class="valencia-note">Tap "Show answers" on each slide. Ten exercises, in book order.</p>
+</div>
+
+<div class="slide">
+  <div class="kicker">Vocabulary Ex.1 &middot; housing, match to definitions</div>
+  <h2>Match the <span class="accent">words</span></h2>
+  <ul class="item-list">
+    <li class="item"><span class="num">1</span>accommodation &rarr; <span class="a-text">f, a place for someone to stay, live or work in</span></li>
+    <li class="item"><span class="num">2</span>apartment block &rarr; <span class="a-text">b, a large building with flats on lots of different floors</span></li>
+    <li class="item"><span class="num">3</span>cottage &rarr; <span class="a-text">h, a small house in the countryside</span></li>
+    <li class="item"><span class="num">4</span>flat &rarr; <span class="a-text">c, a set of rooms to live in, usually on one floor</span></li>
+    <li class="item"><span class="num">5</span>flatmate &rarr; <span class="a-text">g, a person who shares a flat with other people</span></li>
+    <li class="item"><span class="num">6</span>neighbour &rarr; <span class="a-text">a, a person who lives near or next to you</span></li>
+    <li class="item"><span class="num">7</span>property &rarr; <span class="a-text">e, a building that you own</span></li>
+    <li class="item"><span class="num">8</span>rent &rarr; <span class="a-text">d, money that you pay every week or month to live somewhere</span></li>
+  </ul>
+  <button class="reveal-all">Show answers</button>
+  <div class="whybox"><b>Note:</b> "property" is any building/land you own; "accommodation" is any place you stay or live, including a hotel or a rented flat.</div>
+</div>
+
+<div class="slide">
+  <div class="kicker">Vocabulary Ex.2 &middot; complete the conversation, Track 5.2</div>
+  <h2>Erik's new <span class="accent">flat</span></h2>
+  <ul class="item-list">
+    <li class="item"><span class="num">1</span>Have you moved into your new ___? &rarr; <span class="a-text">flat</span></li>
+    <li class="item"><span class="num">2</span>My ___ are really friendly &rarr; <span class="a-text">flatmates</span></li>
+    <li class="item"><span class="num">3</span>It's in a big ___ near the railway station &rarr; <span class="a-text">apartment block</span></li>
+    <li class="item"><span class="num">4</span>The ___ is 180 euros per week &rarr; <span class="a-text">rent</span></li>
+    <li class="item"><span class="num">5</span>I want to buy my own ___ in the future &rarr; <span class="a-text">property</span></li>
+    <li class="item"><span class="num">6</span>My dream is a sweet little ___ in the countryside &rarr; <span class="a-text">cottage</span></li>
+  </ul>
+  <button class="reveal-all">Show answers</button>
+</div>
+
+<div class="slide">
+  <div class="kicker">Vocabulary Ex.3 &middot; household objects (1), odd one out</div>
+  <h2>Circle the <span class="accent">odd one</span></h2>
+  <ul class="item-list">
+    <li class="item"><span class="num">1</span>microwave / oven / shelf &rarr; <span class="a-text">shelf (furniture; microwave and oven are for cooking)</span></li>
+    <li class="item"><span class="num">2</span>ladder / balcony / bucket &rarr; <span class="a-text">balcony (part of a house; ladder and bucket are for cleaning)</span></li>
+    <li class="item"><span class="num">3</span>shower / freezer / dishwasher &rarr; <span class="a-text">shower (in a bathroom; freezer and dishwasher are in a kitchen)</span></li>
+    <li class="item"><span class="num">4</span>iron / garage / kettle &rarr; <span class="a-text">garage (part of a house; iron and kettle are electrical goods)</span></li>
+    <li class="item"><span class="num">5</span>ceiling / bin / brush &rarr; <span class="a-text">ceiling (part of a room; bin and brush are for cleaning)</span></li>
+    <li class="item"><span class="num">6</span>kitchen / fridge / washing machine &rarr; <span class="a-text">kitchen (a room; fridge and washing machine are appliances)</span></li>
+  </ul>
+  <button class="reveal-all">Show answers</button>
+</div>
+
+<div class="slide">
+  <div class="kicker">Vocabulary Ex.4 &middot; choose the correct option</div>
+  <h2>Complete the <span class="accent">sentences</span></h2>
+  <ul class="item-list">
+    <li class="item"><span class="num">1</span>Put the rubbish in the ___ &rarr; <span class="a-text">a, bin</span></li>
+    <li class="item"><span class="num">2</span>Ice cream in the ___ &rarr; <span class="a-text">b, freezer</span></li>
+    <li class="item"><span class="num">3</span>Clean plates out of the ___ &rarr; <span class="a-text">c, dishwasher</span></li>
+    <li class="item"><span class="num">4</span>A view out of my bathroom ___ &rarr; <span class="a-text">b, window</span></li>
+    <li class="item"><span class="num">5</span>I'll tidy the ___ for you &rarr; <span class="a-text">c, living room</span></li>
+    <li class="item"><span class="num">6</span>Can't open the ___ door &rarr; <span class="a-text">c, oven</span></li>
+    <li class="item"><span class="num">7</span>I love the new ___ in your bathroom &rarr; <span class="a-text">c, shower</span></li>
+  </ul>
+  <button class="reveal-all">Show answers</button>
+</div>
+
+<div class="slide">
+  <div class="kicker">Grammar Ex.1 &middot; will, match to uses</div>
+  <h2>Why do we use <span class="accent">will?</span></h2>
+  <ul class="item-list">
+    <li class="item"><span class="num">1</span>The architect probably won't finish the building &rarr; <span class="a-text">g, uncertain future</span></li>
+    <li class="item"><span class="num">2</span>If you don't put the dishes away, you won't get dessert &rarr; <span class="a-text">d, threat</span></li>
+    <li class="item"><span class="num">3</span>He will become rich one day &rarr; <span class="a-text">f, prediction</span></li>
+    <li class="item"><span class="num">4</span>I'll have a cup of tea &rarr; <span class="a-text">h, sudden decision</span></li>
+    <li class="item"><span class="num">5</span>You can rest, I'll do the washing up &rarr; <span class="a-text">b, offer</span></li>
+    <li class="item"><span class="num">6</span>Her brother will be 18 tomorrow &rarr; <span class="a-text">e, future fact</span></li>
+    <li class="item"><span class="num">7</span>Will you please open the window? &rarr; <span class="a-text">a, ask someone to do something</span></li>
+    <li class="item"><span class="num">8</span>I'll get you a present in Cairo &rarr; <span class="a-text">c, promise</span></li>
+  </ul>
+  <button class="reveal-all">Show answers</button>
+</div>
+
+<div class="slide">
+  <div class="kicker">Grammar Ex.2 &middot; write sentences with will</div>
+  <h2>Form the <span class="accent">future simple</span></h2>
+  <ul class="item-list">
+    <li class="item"><span class="num">1</span>I / think / she / start / her own company one day &rarr; <span class="a-text">I think she will start her own company one day.</span></li>
+    <li class="item"><span class="num">2</span>we / live / underground / one day? &rarr; <span class="a-text">Will we live underground one day?</span></li>
+    <li class="item"><span class="num">3</span>you / buy / me a coffee later? &rarr; <span class="a-text">Will you buy me a coffee later?</span></li>
+    <li class="item"><span class="num">4</span>I / help / you with your homework &rarr; <span class="a-text">I will help you with your homework.</span></li>
+    <li class="item"><span class="num">5</span>If you don't stop now / I / call / the police &rarr; <span class="a-text">If you don't stop now, I will call the police.</span></li>
+    <li class="item"><span class="num">6</span>we / not / read / books in the future &rarr; <span class="a-text">We won't read books in the future.</span></li>
+  </ul>
+  <button class="reveal-all">Show answers</button>
+</div>
+
+<div class="slide">
+  <div class="kicker">Grammar Ex.3 &middot; be going to, match to uses</div>
+  <h2>Plans or <span class="accent">predictions?</span></h2>
+  <ul class="item-list">
+    <li class="item"><span class="num">1</span>They're going to build an apartment block here next year &rarr; <span class="a-text">a, future plans</span></li>
+    <li class="item"><span class="num">2</span>That wall isn't very safe. It's going to fall down &rarr; <span class="a-text">b, predictions based on present evidence</span></li>
+  </ul>
+  <button class="reveal-all">Show answers</button>
+</div>
+
+<div class="slide">
+  <div class="kicker">Grammar Ex.4 &middot; choose the correct option</div>
+  <h2>Will or <span class="accent">be going to?</span></h2>
+  <ul class="item-list">
+    <li class="item"><span class="num">1</span>It's just started raining, so we ___ &rarr; <span class="a-text">won't go for a bike ride now</span></li>
+    <li class="item"><span class="num">2</span>Can I borrow your dictionary? ___ &rarr; <span class="a-text">I'll give it back to you tomorrow</span></li>
+    <li class="item"><span class="num">3</span>My aunt ___ a new flat next month &rarr; <span class="a-text">is going to buy</span></li>
+    <li class="item"><span class="num">4</span>The shop ___ at 9.30 tomorrow &rarr; <span class="a-text">will open</span></li>
+    <li class="item"><span class="num">5</span>___ please turn your music down? &rarr; <span class="a-text">Will you</span></li>
+    <li class="item"><span class="num">6</span>___ tell your sister if you use her phone &rarr; <span class="a-text">I'll</span></li>
+  </ul>
+  <button class="reveal-all">Show answers</button>
+</div>
+
+<div class="slide">
+  <div class="kicker">Grammar Ex.5 &middot; complete the conversations</div>
+  <h2>Will or <span class="accent">going to</span></h2>
+  <ul class="item-list">
+    <li class="item"><span class="num">1</span>What colour ___ (you / get)? &rarr; <span class="a-text">are you going to get</span></li>
+    <li class="item"><span class="num">2</span>Oh, ___ (you / close) the windows, please? &rarr; <span class="a-text">will you close</span></li>
+    <li class="item"><span class="num">3</span>I promise I ___ (not / do) that again &rarr; <span class="a-text">won't do</span></li>
+    <li class="item"><span class="num">4</span>That dog is too close to the cliff! It's ___ (fall) off the edge &rarr; <span class="a-text">going to fall</span></li>
+    <li class="item"><span class="num">5</span>She ___ (be) ten on Friday &rarr; <span class="a-text">will be</span></li>
+  </ul>
+  <button class="reveal-all">Show answers</button>
+</div>
+
+<div class="slide">
+  <div class="kicker">Grammar Ex.6 &middot; complete Charmaine's email</div>
+  <h2>Moving to <span class="accent">Singapore</span></h2>
+  <ul class="item-list">
+    <li class="item"><span class="num">1</span>I ___ (leave) home in September &rarr; <span class="a-text">'m going to leave</span></li>
+    <li class="item"><span class="num">2</span>I'm not sure yet where I ___ (live) &rarr; <span class="a-text">'ll live</span></li>
+    <li class="item"><span class="num">3</span>perhaps I ___ (share) a flat &rarr; <span class="a-text">'ll share</span></li>
+    <li class="item"><span class="num">4</span>I ___ (study) architecture &rarr; <span class="a-text">'m going to study</span></li>
+    <li class="item"><span class="num">5</span>I love imagining how our homes ___ (look) &rarr; <span class="a-text">will look</span></li>
+    <li class="item"><span class="num">6</span>___ (we / live) in big apartment blocks &rarr; <span class="a-text">Will we live</span></li>
+    <li class="item"><span class="num">7</span>or ___ (we / create) our own off-grid communities? &rarr; <span class="a-text">will we create</span></li>
+    <li class="item"><span class="num">8</span>What ___ (you / do) when you leave college? &rarr; <span class="a-text">are you going to do</span></li>
+    <li class="item"><span class="num">9</span>I hope you ___ (come) and visit me &rarr; <span class="a-text">'ll come</span></li>
+  </ul>
+  <button class="reveal-all">Show answers</button>
+  <div class="whybox"><b>Note:</b> Charmaine's already decided to leave and study architecture (fixed intentions, "be going to"), but many details (where she'll live, whether flats will be shared, how homes will look) are uncertain predictions, so "will".</div>
+</div>
+
+</main>
+<div class="nav-bar"><button id="prevBtn" title="Previous">&#8592;</button><span class="count" id="count"></span><button id="nextBtn" title="Next">&#8594;</button></div>
+<footer>Somerset Language Centre &middot; Valencia &middot; Unit 5, p.56-57</footer>
+<script>
+  var slides = document.querySelectorAll('.slide');
+  var idx = 0;
+  var prevBtn = document.getElementById('prevBtn');
+  var nextBtn = document.getElementById('nextBtn');
+  var count = document.getElementById('count');
+  function render(){ slides.forEach(function(s,i){ s.classList.toggle('active', i===idx); }); count.textContent=(idx+1)+' / '+slides.length; prevBtn.disabled=idx===0; nextBtn.disabled=idx===slides.length-1; window.scrollTo(0,0); }
+  function go(d){ idx=Math.max(0,Math.min(slides.length-1,idx+d)); render(); }
+  prevBtn.addEventListener('click', function(){ go(-1); });
+  nextBtn.addEventListener('click', function(){ go(1); });
+  document.addEventListener('keydown', function(e){ if(e.key==='ArrowRight') go(1); else if(e.key==='ArrowLeft') go(-1); });
+  document.querySelectorAll('.slide').forEach(function(slide){
+    var btn = slide.querySelector('.reveal-all');
+    if(!btn) return;
+    btn.addEventListener('click', function(){ var on = slide.classList.toggle('revealed'); btn.textContent = on ? 'Hide answers' : 'Show answers'; });
+  });
+  render();
+</script>
+<script>
+document.querySelectorAll('.item').forEach(function(it){
+  if(!it.querySelector('.a-text')) return;
+  var b=document.createElement('button'); b.className='showpill'; b.type='button'; b.textContent='Show answer';
+  b.addEventListener('click',function(e){e.stopPropagation(); it.classList.add('shown');});
+  it.appendChild(b);
+  it.querySelectorAll('.a-text').forEach(function(a){a.addEventListener('click',function(e){e.stopPropagation(); it.classList.toggle('shown');});});
+});
+document.querySelectorAll('.gap-answer').forEach(function(g){g.title='Click to show / hide'; g.addEventListener('click',function(){g.classList.toggle('shown');});});
+document.querySelectorAll('.reveal-all').forEach(function(b){
+  var s=b.closest('.slide'); if(!s||!s.querySelector('.whybox')){b.style.display='none';return;}
+  var mc=!!s.querySelector('.mc-opt'); var L=mc?['Show answer','Hide answer']:['Why?','Hide why'];  /* MC slides reveal the right option (registry D07) */
+  var fresh=b.cloneNode(true); b.parentNode.replaceChild(fresh,b); fresh.textContent=L[0];
+  fresh.addEventListener('click',function(){var on=s.classList.toggle('revealed'); fresh.textContent=on?L[1]:L[0];});
+});
+</script>
+</body>
+</html>

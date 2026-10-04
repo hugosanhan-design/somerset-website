@@ -12,6 +12,9 @@
 # silently, then reads the deployment URL back out of the streamed log.
 set -uo pipefail
 
+# Always run from the app directory regardless of where the script is called from.
+cd "$(dirname "$0")"
+
 DOMAIN="somerset-language-centre.vercel.app"
 LOG="$(mktemp -t somerset-deploy)"
 

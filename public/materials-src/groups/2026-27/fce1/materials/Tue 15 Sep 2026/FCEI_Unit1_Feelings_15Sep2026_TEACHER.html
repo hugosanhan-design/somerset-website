@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FCE I, Unit 1 Feelings, teacher copy, 15 Sep 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+<style>
+@page{size:A4;margin:0}
+:root{
+  --green:#6BAE2E; --green-deep:#2F6B1A;
+  --ice-deep:#3A8FA3;
+  --ink:#1B2419; --ink-soft:#4E5A4A; --rule:#DED8C8;
+  --serif:'Fraunces',Georgia,'DejaVu Serif',serif;
+  --sans:'Instrument Sans','Helvetica Neue',Arial,'DejaVu Sans',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);font-size:11.5pt;line-height:1.4;color:var(--ink);background:#dcd9d0}
+.pg{width:210mm;height:297mm;background:#fff;margin:0 auto 8px;position:relative;overflow:hidden;page-break-after:always;display:flex;flex-direction:column}
+.pg:last-child{page-break-after:auto}
+.in{padding:9mm 14mm 18mm;flex:1;display:flex;flex-direction:column}
+@media print{body{background:#fff}.pg{margin:0}}
+.logo{display:flex;align-items:flex-end;gap:9px;margin-bottom:4px}
+.logo .word{font-family:Arial,Helvetica,sans-serif;font-weight:800;font-size:24pt;letter-spacing:-1px;line-height:.9;color:var(--green)}
+.logo .lc{font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:6.5pt;letter-spacing:2px;line-height:1.18;padding-bottom:3px;color:#4d8120}
+.kick{font-size:8.5pt;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ice-deep)}
+.kick b{color:var(--green-deep)}
+h1.hl{font-family:var(--serif);font-weight:600;font-size:21pt;line-height:1.02;letter-spacing:-.01em;margin:3px 0 2px;color:var(--ink)}
+.deck{font-family:var(--serif);font-weight:400;font-size:11pt;line-height:1.25;color:var(--ink-soft);margin-bottom:5px}
+.rung{display:flex;align-items:baseline;gap:9px;margin:6px 0 5px;padding-bottom:2px;border-bottom:2px solid var(--green);page-break-inside:avoid}
+.rung .badge{font-family:var(--serif);font-weight:700;font-size:10pt;color:#fff;background:var(--green-deep);border-radius:999px;padding:2px 10px;white-space:nowrap}
+.rung .t{font-family:var(--serif);font-weight:600;font-size:13.5pt;color:var(--ink)}
+.rung .s{font-size:9pt;color:var(--ink-soft)}
+.rule{background:#F4F8EE;border:1.5px solid var(--green);border-radius:12px;padding:6px 13px;font-size:10.5pt;line-height:1.3;margin-bottom:6px}
+.rule b{color:var(--green-deep)}
+.help{border:1.5px solid var(--ice-deep);border-radius:12px;padding:7px 13px;margin-top:7px;font-size:10.5pt;line-height:1.35}
+.help .lab{display:block;font-size:7.5pt;letter-spacing:.14em;text-transform:uppercase;color:var(--ice-deep);font-weight:700;margin-bottom:3px}
+.bank{border:1.5px dashed var(--green);border-radius:12px;padding:7px 13px;margin-bottom:7px}
+.bank .lab{display:block;font-size:7.5pt;letter-spacing:.14em;text-transform:uppercase;color:var(--green-deep);font-weight:700;margin-bottom:4px}
+.chips{display:flex;flex-wrap:wrap;gap:5px}
+.chip{border:1.2px solid var(--rule);border-radius:999px;padding:2px 11px;font-size:11pt;font-weight:600;background:#fff}
+table{width:100%;border-collapse:collapse;font-size:11pt}
+th,td{border:1px solid var(--rule);padding:5px 8px;text-align:left;vertical-align:middle;line-height:1.3}
+th{font-family:var(--sans);background:#F4F8EE;font-size:7.8pt;text-transform:uppercase;letter-spacing:.06em;color:var(--green-deep);font-weight:700}
+td.n{font-family:var(--serif);font-weight:700;color:var(--green-deep);text-align:center;width:24px}
+td.blank{height:30px}
+.foot{position:absolute;left:14mm;right:14mm;bottom:8mm;display:flex;justify-content:space-between;align-items:baseline;font-size:7.5pt;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);border-top:1px solid var(--rule);padding-top:5px}
+.foot .pn{font-family:var(--serif);font-size:12pt;font-weight:700;letter-spacing:0;color:var(--green-deep)}
+.gap{display:inline-block;min-width:90px;border-bottom:1.3px solid var(--ink-soft);height:14px}
+.letter{font-size:11pt;line-height:2.15;margin-top:2px}
+.letter p{margin-bottom:7px}
+.card{border:1.5px solid var(--ink);border-radius:14px;padding:9px 14px;margin-bottom:8px}
+.card .lab{font-size:7.5pt;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--green-deep)}
+.card h3{font-family:var(--serif);font-size:13pt;font-weight:600;margin:1px 0 4px}
+.card ul{margin-left:16px;font-size:10.5pt;line-height:1.45}
+.cut{border-top:2px dashed var(--ink-soft);text-align:center;margin:3px 0 8px;font-size:7.5pt;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.cut span{background:#fff;padding:0 8px;position:relative;top:-7px}
+ol.sent{margin-left:18px;font-size:11pt;line-height:2.05}
+ol.sent li{padding-left:2px}
+.small{font-size:9.5pt;color:var(--ink-soft);line-height:1.35;margin-top:5px}
+body{font-size:10.5pt}
+.logo .word{color:#111;font-size:22pt}
+.logo .lc{color:#666}
+table{font-size:8.6pt}
+th,td{padding:3px 6px}
+td:empty{height:auto}
+.op{border:1.5px solid var(--ink);border-radius:16px;padding:9px 14px;margin-bottom:7px}
+.op .lab{font-size:7.5pt;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--green-deep)}
+.op p{font-size:9.3pt;line-height:1.38;margin-top:4px}
+td.ans{font-weight:800}
+td.t{font-weight:700;font-size:8.4pt;color:var(--green-deep);white-space:nowrap;line-height:1.25}
+h2{font-family:var(--serif);font-weight:600;font-size:12pt;margin:9px 0 3px;color:var(--green-deep);border-bottom:2px solid var(--green);padding-bottom:2px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="pg"><div class="in">
+  <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+  <div class="kick"><b>Teacher run sheet</b> &middot; FCE I &middot; Tuesday 15 September 2026 &middot; 16:20 to 17:20</div>
+  <h1 class="hl">Unit 1, pages 8 and 9, in sixty minutes</h1>
+
+  <div class="op">
+    <span class="lab">Read this before the run order</span>
+    <p><b>This booklet is the Somerset half, not the book.</b> The Student's Book is not on disk, so nothing here reproduces it. Open the book for the vocabulary and grammar boxes on pages 8 and 9, then use these five pages for the practice. Teacher's notes for this spread are at PDF pages 21 to 23 of <i>Close_up_B2_Teachers_Book.md</i>.</p>
+    <p><b>With two students there is no grouping decision.</b> Everything is A and B. That also means nobody can hide, so the pace has to come from you, and silence lasts twice as long as it does in a group of six.</p>
+    <p><b>V&iacute;ctor.</b> The journal for 10 September says he finds it hard to speak confidently. Task 1 is built so he cannot dry up: the answer set is ten words on the page in front of him. In Task 4 part B his card carries the questions he has to ask, written out, so he never has to invent one cold. If he stalls anywhere, ask a prepared question rather than waiting: <i>Which one is closest to you?</i> &middot; <i>Say it again with the whole sentence.</i> &middot; <i>Which word did you want there?</i> Do not let a silence run in a class of two.</p>
+    <p><b>Martina.</b> She learnt her English from series, so Task 1 and the speaking will come easily and the labelling will bore her. Her work is Task 2 and the letter, where the accuracy gap shows. If she finishes part A early, have her write next to each answer <i>which</i> of the six uses it is, in her own words. That is the piece she is missing, not the vocabulary.</p>
+  </div>
+
+  <h2>Run order</h2>
+  <table>
+    <tr><th style="width:12%">Time</th><th style="width:22%">Block</th><th>What you do</th></tr>
+    <tr><td class="t">16:20<br>3 min</td><td><b>Open</b></td><td>No warmer. Ask each of them for one thing that has annoyed them since Thursday, in a full sentence. That is the page 6 to 7 reading recycled in ninety seconds, and it puts the topic back in the room.</td></tr>
+    <tr><td class="t">16:23<br>10 min</td><td><b>Task 1</b><br>page 1</td><td>Book closed, page 1 open. Martina reads 1 to 5, V&iacute;ctor answers, then swap. Insist on the full sentence with <i>because</i>. Then open the Student's Book at page 8 and check against the book's own list.</td></tr>
+    <tr><td class="t">16:33<br>12 min</td><td><b>Task 2 and 2b</b><br>page 2</td><td>Grid alone, two minutes, then compare. Teach the <i>-ed</i> and <i>-ing</i> rule off the book box, not off the worksheet. Do sentence 1 together as the model. The Spanish note at the bottom of the page is the one they will remember, so say it out loud.</td></tr>
+    <tr><td class="t">16:45<br>12 min</td><td><b>Task 3 and 3b</b><br>page 3</td><td>Plus and minus alone, four minutes. Then <b>sensitive</b>, which is the teaching point of the page, not an aside. The flat-share argument must be out loud and must reach an agreement. Two students means they cannot avoid disagreeing.</td></tr>
+    <tr><td class="t">16:57<br>10 min</td><td><b>Task 4 part A</b><br>page 4</td><td>Silent, individual, eight minutes. Do not help. Check together by asking <i>why</i> for every answer, not <i>what</i>. The two stative verbs, <i>love</i> and <i>want</i>, are the ones worth stopping on.</td></tr>
+    <tr><td class="t">17:07<br>11 min</td><td><b>Task 4 part B</b><br>page 5 and grid on page 4</td><td>Fold page 5. Martina takes Nora, V&iacute;ctor takes Diego. They ask, they do not read the card out. Both grids must be full before you stop. If one grid is empty, the questions were wrong, so do those two questions again properly.</td></tr>
+    <tr><td class="t">17:18<br>2 min</td><td><b>Close</b></td><td>Set the five sentences for Thursday. Tell them Nora is going to Toulouse and Diego to Shrewsbury, and ask which one had the summer closer to theirs. Ten seconds each, and it lands.</td></tr>
+  </table>
+
+  <div class="op" style="margin-top:8px">
+    <span class="lab">If you are behind</span>
+    <p>Cut Task 3b, the flat-share argument, and cut it early rather than rushing part B. <b>Never cut Task 4 part B.</b> It is the only speaking in the hour and it is the only place the grammar gets produced rather than filled in. The <i>Before Thursday</i> task at the bottom of page 5 also covers it if the worst happens.</p>
+  </div>
+
+  <div class="foot"><span>Somerset Language Centre &middot; Valencia</span><span class="pn">1</span></div>
+</div></div>
+
+<!-- PAGE 2 -->
+<div class="pg"><div class="in">
+  <div class="kick"><b>Teacher run sheet</b> &middot; FCE I &middot; 15 September 2026 &middot; Answer key</div>
+  <h1 class="hl">Answers, and what to say about them</h1>
+
+  <h2>Task 1, name the feeling</h2>
+  <table>
+    <tr><th style="width:5%">1</th><th style="width:5%">2</th><th style="width:5%">3</th><th style="width:5%">4</th><th style="width:5%">5</th><th style="width:5%">6</th><th style="width:5%">7</th><th style="width:5%">8</th><th style="width:5%">9</th><th style="width:5%">10</th></tr>
+    <tr><td class="ans">frustration</td><td class="ans">sympathy</td><td class="ans">relief</td><td class="ans">embarrassment</td><td class="ans">amazement</td><td class="ans">anxiety</td><td class="ans">guilt</td><td class="ans">confidence</td><td class="ans">joy</td><td class="ans">despair</td></tr>
+  </table>
+  <p class="small">Number 6 is the one they get wrong: they reach for <i>nervous</i>, which is an adjective, not the noun. <i>Anxiety</i> is the word the book wants. Number 10, <i>despair</i>, is stronger than anything they will have felt about revision, so let them enjoy the exaggeration.</p>
+
+  <h2>Task 2, one feeling, three words</h2>
+  <table>
+    <tr><th style="width:6%"></th><th>Noun</th><th>How the person feels</th><th>What causes it</th></tr>
+    <tr><td class="n">1</td><td>amazement</td><td>amazed</td><td class="ans">amazing</td></tr>
+    <tr><td class="n">2</td><td>frustration</td><td class="ans">frustrated</td><td>frustrating</td></tr>
+    <tr><td class="n">3</td><td class="ans">embarrassment</td><td>embarrassed</td><td class="ans">embarrassing</td></tr>
+    <tr><td class="n">4</td><td>excitement</td><td class="ans">excited</td><td class="ans">exciting</td></tr>
+    <tr><td class="n">5</td><td>worry</td><td class="ans">worried</td><td>worrying</td></tr>
+    <tr><td class="n">6</td><td class="ans">annoyance</td><td>annoyed</td><td>annoying</td></tr>
+    <tr><td class="n">7</td><td>disappointment</td><td class="ans">disappointed</td><td class="ans">disappointing</td></tr>
+    <tr><td class="n">8</td><td>confusion</td><td class="ans">confused</td><td class="ans">confusing</td></tr>
+  </table>
+
+  <h2>Task 2b</h2>
+  <table>
+    <tr><th style="width:5%">1</th><th style="width:5%">2</th><th style="width:5%">3</th><th style="width:5%">4</th><th style="width:5%">5</th><th style="width:5%">6</th></tr>
+    <tr><td class="ans">amazed</td><td class="ans">frustrating</td><td class="ans">embarrassed</td><td class="ans">disappointing</td><td class="ans">worried</td><td class="ans">tiring</td></tr>
+  </table>
+
+  <h2>Task 3, personality</h2>
+  <div class="two">
+  <table>
+    <tr><th style="width:8%"></th><th>Adjective</th><th style="width:14%">+ / -</th><th>Opposite</th></tr>
+    <tr><td class="n">1</td><td>reliable</td><td class="ans">+</td><td class="ans">unreliable</td></tr>
+    <tr><td class="n">2</td><td>bad-tempered</td><td class="ans">&minus;</td><td class="ans">good-tempered, cheerful</td></tr>
+    <tr><td class="n">3</td><td>loyal</td><td class="ans">+</td><td class="ans">disloyal</td></tr>
+    <tr><td class="n">4</td><td>mean</td><td class="ans">&minus;</td><td class="ans">kind, generous</td></tr>
+    <tr><td class="n">5</td><td>mature</td><td class="ans">+</td><td class="ans">childish, immature</td></tr>
+  </table>
+  <table>
+    <tr><th style="width:8%"></th><th>Adjective</th><th style="width:14%">+ / -</th><th>Opposite</th></tr>
+    <tr><td class="n">6</td><td>aggressive</td><td class="ans">&minus;</td><td class="ans">calm, gentle</td></tr>
+    <tr><td class="n">7</td><td>cheerful</td><td class="ans">+</td><td class="ans">miserable, gloomy</td></tr>
+    <tr><td class="n">8</td><td>gentle</td><td class="ans">+</td><td class="ans">rough, harsh</td></tr>
+    <tr><td class="n">9</td><td>stubborn</td><td class="ans">&minus;</td><td class="ans">no single word: open to reason</td></tr>
+    <tr><td class="n">10</td><td>sensitive</td><td class="ans">both</td><td class="ans">insensitive</td></tr>
+  </table>
+  </div>
+  <p class="small">The two without a neat single opposite are <b>stubborn</b> and <b>sensitive</b>. Accept any sensible phrase. <b>Sensitive</b> is the item to spend a minute on: positive when it means understanding other people's feelings, negative when it means easily upset. The book makes the same point on page 8.</p>
+
+  <div class="foot"><span>Somerset Language Centre &middot; Valencia</span><span class="pn">2</span></div>
+</div></div>
+
+<!-- PAGE 3 -->
+<div class="pg"><div class="in">
+  <div class="kick"><b>Teacher run sheet</b> &middot; FCE I &middot; 15 September 2026 &middot; Answer key</div>
+  <h1 class="hl">The grammar half</h1>
+
+  <h2>Task 4 part A, the letter</h2>
+  <table>
+    <tr><th style="width:6%"></th><th style="width:26%">Answer</th><th>Why</th></tr>
+    <tr><td class="n">1</td><td class="ans">looks</td><td>a general truth about the place</td></tr>
+    <tr><td class="n">2</td><td class="ans">love</td><td>stative verb, no continuous</td></tr>
+    <tr><td class="n">3</td><td class="ans">get</td><td>habit, and <i>normally</i> is the signal</td></tr>
+    <tr><td class="n">4</td><td class="ans">are repairing</td><td>temporary, <i>all this month</i></td></tr>
+    <tr><td class="n">5</td><td class="ans">am walking</td><td>temporary situation, not his habit</td></tr>
+    <tr><td class="n">6</td><td class="ans">takes</td><td>a fact</td></tr>
+    <tr><td class="n">7</td><td class="ans">are</td><td>a permanent fact</td></tr>
+    <tr><td class="n">8</td><td class="ans">is staying</td><td>temporary, <i>until December</i></td></tr>
+    <tr><td class="n">9</td><td class="ans">is always leaving</td><td>a habit that annoys him, which is why it is continuous</td></tr>
+    <tr><td class="n">10</td><td class="ans">leaves</td><td>timetable, so present simple even though it is the future</td></tr>
+    <tr><td class="n">11</td><td class="ans">want</td><td>stative verb</td></tr>
+  </table>
+  <p class="small">Numbers 9 and 10 are the two that separate a B2 student from a B1 one. Nine is not a mistake in the continuous, it is the whole point of it. Ten looks like a future and is not. If they get those two right and nothing else, the ten minutes were worth it.</p>
+
+  <h2>Task 4 part B, model answers</h2>
+  <table>
+    <tr><th style="width:30%"></th><th>Nora</th><th>Diego</th></tr>
+    <tr><td>Lives</td><td class="ans">in Ruzafa, but she is staying in Gandia this month</td><td class="ans">in Benimaclet, shares with three others</td></tr>
+    <tr><td>Studies or works</td><td class="ans">studies architecture, works in a caf&eacute; on Saturdays</td><td class="ans">teaches swimming every morning</td></tr>
+    <tr><td>Doing this month or term</td><td class="ans">learning French</td><td class="ans">doing a sports nutrition course</td></tr>
+    <tr><td>Always doing it, and it is annoying</td><td class="ans">she is always losing her keys</td><td class="ans">he is always telling the same three stories</td></tr>
+    <tr><td>Already arranged</td><td class="ans">moving to Toulouse in January, flight leaves at 6.15</td><td class="ans">going to Shrewsbury in July</td></tr>
+  </table>
+
+  <div class="foot"><span>Somerset Language Centre &middot; Valencia</span><span class="pn">3</span></div>
+</div></div>
+
+</body>
+</html>

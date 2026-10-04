@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PET I · Unit 1 Test Results (TEMPLATE)</title>
+<style>
+  :root{ --green:#6BAE2E; --green-dark:#4d8120; --ink:#222222; --bg:#ffffff; --amber:#E08A1E; }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:Georgia,'Times New Roman',serif;background:var(--bg);color:var(--ink);}
+  .banner{position:sticky;top:0;z-index:50;background:#E08A1E;color:#fff;font-family:Arial,Helvetica,sans-serif;font-weight:800;font-size:clamp(13px,1.6vw,17px);text-align:center;padding:9px 14px;letter-spacing:.03em;}
+  header{display:flex;justify-content:space-between;align-items:flex-end;padding:clamp(14px,2vh,26px) clamp(24px,3.5vw,64px);border-bottom:4px solid var(--green);flex-wrap:wrap;gap:16px;}
+  .logo{display:flex;align-items:flex-end;gap:clamp(8px,1vw,16px);}
+  .logo .word{font-family:Arial,Helvetica,sans-serif;font-weight:800;font-size:clamp(28pt,3.2vw,42pt);letter-spacing:-1.2px;line-height:.9;color:#6BAE2E;}
+  .logo .lc{font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:clamp(8pt,0.85vw,12pt);letter-spacing:2.5px;line-height:1.18;padding-bottom:4px;color:#4d8120;}
+  .title-block{text-align:right;}
+  .title-block h1{margin:0;font-size:clamp(18px,2vw,26px);font-weight:700;color:var(--ink);}
+  .title-block p{margin:4px 0 0;font-size:clamp(12px,1.05vw,15px);color:#555;letter-spacing:.4px;text-transform:uppercase;}
+  .nav-bar{position:fixed;bottom:0;left:0;right:0;display:flex;align-items:center;justify-content:center;gap:20px;padding:14px 0 20px;background:linear-gradient(to top, rgba(255,255,255,0.97), rgba(255,255,255,0));z-index:30;}
+  .nav-bar button{background:var(--green);color:#fff;border:none;border-radius:999px;width:clamp(42px,4vw,60px);height:clamp(42px,4vw,60px);font-size:clamp(18px,2vw,26px);font-weight:700;cursor:pointer;}
+  .nav-bar button:disabled{opacity:.3;cursor:default;}
+  .nav-bar .count{font-size:clamp(13px,1.3vw,18px);color:#555;min-width:70px;text-align:center;}
+  main{max-width:1700px;margin:0 auto;padding:clamp(8px,1.5vh,18px) clamp(24px,4vw,64px) 92px;min-height:calc(100vh - 150px);display:flex;flex-direction:column;justify-content:center;}
+  .slide{display:none;} .slide.active{display:block;animation:fade .15s ease;} .slide.hidden-card{display:none !important;}
+  .slide.hidden-card.showing{display:block !important;}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  .kicker{font-size:clamp(12px,1.3vw,17px);font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--green-dark);margin:0 0 8px;}
+  h2{font-size:clamp(24px,min(3.4vw,5.4vh),42px);margin:0 0 8px;color:var(--ink);line-height:1.2;font-family:Georgia,serif;}
+  h2 .accent{color:var(--green-dark);}
+  .subline{font-size:clamp(13px,1.2vw,16px);color:#666;margin:0 0 18px;}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;max-width:1400px;}
+  .card{background:#fff;border:2px solid #dcdcd4;border-radius:12px;padding:16px 18px;}
+  .card .lab{font-family:Arial,sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#888;font-weight:700;}
+  .card .num{font-family:Arial,sans-serif;font-size:clamp(26px,2.6vw,38px);font-weight:800;color:var(--green-dark);margin:4px 0;}
+  .card .sub{font-size:13px;color:#555;}
+  .placeholder{color:var(--amber);font-weight:800;}
+  .item-list{list-style:none;margin:0 0 14px;padding:0;max-width:1200px;}
+  .item{background:#fff;border:2px solid #ddd;border-radius:12px;padding:12px 18px;margin-bottom:9px;font-size:clamp(14px,1.5vw,18px);line-height:1.4;display:flex;justify-content:space-between;align-items:center;gap:14px;}
+  .item .qtext{flex:1;}
+  .item .tag{font-family:Arial,sans-serif;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:.03em;}
+  .item .score{font-family:Arial,sans-serif;font-weight:800;color:var(--amber);white-space:nowrap;}
+  .item.notyet{border-color:var(--amber);background:#FFF7E6;}
+  .item.notyet .score{color:var(--amber);}
+  .roadmap{display:flex;flex-wrap:wrap;gap:12px;max-width:1500px;}
+  .runit{flex:1;min-width:180px;background:#fff;border:2px solid #ddd;border-radius:12px;padding:14px 16px;}
+  .runit.here{border-color:var(--green);background:#F4F8EE;}
+  .runit .un{font-family:Arial,sans-serif;font-weight:800;font-size:12px;color:#888;text-transform:uppercase;}
+  .runit .ut{font-weight:700;margin:4px 0;}
+  .runit .ug{font-size:13px;color:#555;}
+  .runit .here-tag{display:inline-block;margin-top:8px;background:var(--green);color:#fff;font-family:Arial,sans-serif;font-size:11px;font-weight:800;padding:3px 9px;border-radius:6px;}
+  .cardbtn{display:block;width:100%;text-align:left;background:#fff;border:2px solid #ddd;border-radius:12px;padding:16px 20px;margin-bottom:10px;font-family:Georgia,serif;font-size:18px;cursor:pointer;}
+  .cardbtn:hover{border-color:var(--green);}
+  .cardbtn .n{font-weight:700;} .cardbtn .s{float:right;color:var(--green-dark);font-family:Arial,sans-serif;font-weight:800;}
+  .back-link{display:inline-block;margin-bottom:14px;background:#eee;border:none;border-radius:999px;padding:8px 18px;font-family:Arial,sans-serif;font-weight:700;font-size:13px;cursor:pointer;}
+  .steps{list-style:none;margin:0;padding:0;max-width:1100px;}
+  .steps li{background:#F4F8EE;border-left:5px solid var(--green-dark);border-radius:0 10px 10px 0;padding:14px 18px;margin-bottom:10px;font-size:clamp(15px,1.5vw,19px);}
+  .steps b{color:var(--green-dark);}
+  footer{text-align:center;padding:18px;font-size:13px;color:#888;border-top:2px solid #eee;font-family:Arial,sans-serif;}
+  @page{size:A4;margin:16mm 14mm}
+  @media print{
+    .banner{position:static} .nav-bar{display:none !important} main{max-width:none;padding:0}
+    .slide{display:block !important;page-break-after:always;} .slide.hidden-card{display:block !important;}
+    .slide:last-child{page-break-after:auto;}
+  }
+</style>
+</head>
+<body>
+<div class="banner">TEMPLATE — fill in the real Unit 1 test scores after marking (test date: Wed 14 Oct 2026). Do not present this deck with placeholder numbers still showing.</div>
+<header>
+  <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+  <div class="title-block"><h1>Unit 1 Test: your results</h1><p>PET I &middot; Wednesday &middot; B1 Preliminary</p></div>
+</header>
+<main>
+
+<div class="slide active">
+  <div class="kicker">Unit 1 test &middot; 14 Oct 2026</div>
+  <h2>The Unit 1 test: <span class="accent">your results</span></h2>
+  <p class="subline">What you already know, what you don't know yet, and when we cover it again this year.</p>
+  <p class="subline">This was Unit 1's real content, not a diagnostic &mdash; every "not yet" here is a page we can revisit before June.</p>
+</div>
+
+<div class="slide">
+  <div class="kicker">How the test worked</div>
+  <h2>Four sections, <span class="accent">38 marks</span></h2>
+  <div class="grid">
+    <div class="card"><div class="lab">Reading</div><div class="num">/ 5</div><div class="sub">Matching a gapped exam text (Ex.6)</div></div>
+    <div class="card"><div class="lab">Vocabulary</div><div class="num">/ 10</div><div class="sub">Personality adjectives, employment collocations</div></div>
+    <div class="card"><div class="lab">Grammar</div><div class="num">/ 15</div><div class="sub">Present simple/continuous, countable/uncountable, quantifiers</div></div>
+    <div class="card"><div class="lab">Listening</div><div class="num">/ 8</div><div class="sub">Matching conversations, true/false</div></div>
+  </div>
+  <p class="subline" style="margin-top:14px;">45 minutes. Writing was not retested &mdash; the p.14-15 email was written and marked in class earlier in the unit.</p>
+</div>
+
+<div class="slide">
+  <div class="kicker">Class score by section</div>
+  <h2>How the class <span class="accent">did</span></h2>
+  <div class="grid">
+    <div class="card"><div class="lab">Reading</div><div class="num placeholder">[ / 5]</div><div class="sub">Fill in after marking</div></div>
+    <div class="card"><div class="lab">Vocabulary</div><div class="num placeholder">[ / 10]</div><div class="sub">Fill in after marking</div></div>
+    <div class="card"><div class="lab">Grammar</div><div class="num placeholder">[ / 15]</div><div class="sub">Fill in after marking</div></div>
+    <div class="card"><div class="lab">Listening</div><div class="num placeholder">[ / 8]</div><div class="sub">Fill in after marking</div></div>
+  </div>
+  <p class="subline" style="margin-top:14px;">Total class average: <span class="placeholder">[ / 38]</span>. A section under half correct gets the amber "not yet" flag on the next slides.</p>
+</div>
+
+<div class="slide">
+  <div class="kicker">Reading &middot; question-by-question</div>
+  <h2>Matching the <span class="accent">gapped text</span></h2>
+  <ul class="item-list">
+    <li class="item"><span class="qtext">Gap 1 &rarr; <b>D</b> "What does Jessica think of working as an explorer?"</span><span class="score placeholder">[ /5]</span></li>
+    <li class="item"><span class="qtext">Gap 2 &rarr; <b>H</b> "This is probably the youngest all-female submarine diving team ever."</span><span class="score placeholder">[ /5]</span></li>
+    <li class="item"><span class="qtext">Gap 3 &rarr; <b>C</b> "So you have to plan things like going to the bathroom very carefully."</span><span class="score placeholder">[ /5]</span></li>
+    <li class="item"><span class="qtext">Gap 4 &rarr; <b>A</b> "That's because the submarine actually attracts them."</span><span class="score placeholder">[ /5]</span></li>
+    <li class="item"><span class="qtext">Gap 5 &rarr; <b>F</b> "Its goal is to research deep areas in the ocean in order to save them."</span><span class="score placeholder">[ /5]</span></li>
+  </ul>
+  <p class="subline">Mark any gap fewer than half the class got right with the amber "not yet" style, and note the pattern (usually: distractor sentences that are almost right).</p>
+</div>
+
+<div class="slide">
+  <div class="kicker">Vocabulary &middot; question-by-question</div>
+  <h2>Personality &amp; <span class="accent">employment words</span></h2>
+  <ul class="item-list">
+    <li class="item"><span class="qtext">hard-working, reliable, jealous, sociable, generous (5 gapped conversations)</span><span class="tag">personality adjectives</span><span class="score placeholder">[ /5]</span></li>
+    <li class="item"><span class="qtext">unemployed, brought up, out of work, part-time, apply for (5 multiple choice)</span><span class="tag">employment collocations</span><span class="score placeholder">[ /5]</span></li>
+  </ul>
+</div>
+
+<div class="slide">
+  <div class="kicker">Grammar &middot; question-by-question</div>
+  <h2>Present tenses, <span class="accent">countable/uncountable</span></h2>
+  <ul class="item-list">
+    <li class="item"><span class="qtext">is working / don't wear / loves / am thinking / Are you looking (5 gapped verbs)</span><span class="tag">present simple vs continuous</span><span class="score placeholder">[ /5]</span></li>
+    <li class="item"><span class="qtext">Countable: children, job, football &middot; Uncountable: advice, time, coffee, news</span><span class="tag">countable/uncountable</span><span class="score placeholder">[ /6]</span></li>
+    <li class="item"><span class="qtext">a little, some, any, a few (quantifiers, 4 items)</span><span class="tag">quantifiers</span><span class="score placeholder">[ /4]</span></li>
+  </ul>
+</div>
+
+<div class="slide">
+  <div class="kicker">Listening &middot; question-by-question</div>
+  <h2>Matching conversations, <span class="accent">true or false</span></h2>
+  <ul class="item-list">
+    <li class="item"><span class="qtext">Conversation 1 C &middot; 2 A &middot; 3 B &middot; 4 D (matching photos)</span><span class="score placeholder">[ /4]</span></li>
+    <li class="item"><span class="qtext">1 castle destroyed in 1670 &middot; 2 dentist a year ago &middot; 3 tuna sandwich &middot; 4 taxi under &euro;12 (True/False)</span><span class="score placeholder">[ /4]</span></li>
+  </ul>
+</div>
+
+<div class="slide">
+  <div class="kicker">The hardest two</div>
+  <h2>Nobody got these right <span class="accent">... yet</span></h2>
+  <div class="grid">
+    <div class="card"><div class="lab">Fill in after marking</div><div class="sub" style="font-size:15px;margin-top:6px;">Question ___, ___ section &mdash; class score <span class="placeholder">[ / ]</span>. We revisit this in Unit ___.</div></div>
+    <div class="card"><div class="lab">Fill in after marking</div><div class="sub" style="font-size:15px;margin-top:6px;">Question ___, ___ section &mdash; class score <span class="placeholder">[ / ]</span>. We revisit this in Unit ___.</div></div>
+  </div>
+</div>
+
+<div class="slide">
+  <div class="kicker">Our year, unit by unit</div>
+  <h2>Where we are: <span class="accent">Unit 2</span></h2>
+  <div class="roadmap">
+    <div class="runit"><div class="un">Unit 1</div><div class="ut">Perfect for the job</div><div class="ug">present simple/continuous, jobs</div></div>
+    <div class="runit here"><div class="un">Unit 2</div><div class="ut">Delicious!</div><div class="ug">past simple/continuous, used to</div><div class="here-tag">YOU ARE HERE</div></div>
+    <div class="runit"><div class="un">Unit 3</div><div class="ut">It's natural</div><div class="ug">present perfect, articles</div></div>
+    <div class="runit"><div class="un">Unit 4</div><div class="ut">That's the fashion</div><div class="ug">relative clauses, time clauses</div></div>
+    <div class="runit"><div class="un">Unit 5</div><div class="ut">Where we live</div><div class="ug">will, going to, future</div></div>
+    <div class="runit"><div class="un">Unit 6</div><div class="ut">Go for it!</div><div class="ug">conditionals, unless</div></div>
+  </div>
+</div>
+
+<div class="slide">
+  <div class="kicker">Click a card to see who it is</div>
+  <h2>How each of you <span class="accent">did</span></h2>
+  <p class="subline">Letters are random, not a ranking.</p>
+  <button class="cardbtn" data-open="cardA"><span class="n">Student A</span><span class="s placeholder">[ /38]</span></button>
+  <button class="cardbtn" data-open="cardB"><span class="n">Student B</span><span class="s placeholder">[ /38]</span></button>
+  <button class="cardbtn" data-open="cardC"><span class="n">Student C</span><span class="s placeholder">[ /38]</span></button>
+  <button class="cardbtn" data-open="cardD"><span class="n">Student D</span><span class="s placeholder">[ /38]</span></button>
+  <button class="cardbtn" data-open="cardE"><span class="n">Student E</span><span class="s placeholder">[ /38]</span></button>
+  <button class="cardbtn" data-open="cardF"><span class="n">Student F</span><span class="s placeholder">[ /38]</span></button>
+</div>
+
+<div class="slide">
+  <div class="kicker">Steps</div>
+  <h2>So what happens <span class="accent">now?</span></h2>
+  <ol class="steps">
+    <li><b>Today, Unit 2:</b> we start Delicious! &mdash; past simple, past continuous and used to, exactly what several of you found hardest on the Level Ladder back in September.</li>
+    <li><b>Every unit:</b> when we reach a section flagged "not yet" above, look back at these questions &mdash; you'll see them get easier.</li>
+    <li><b>Unit 2 test, 9 Dec:</b> we check this section again alongside the new content.</li>
+  </ol>
+</div>
+
+<div class="slide hidden-card" id="cardA">
+  <button class="back-link" data-back>&larr; Back to all cards</button>
+  <div class="kicker">Personal results</div>
+  <h2>This is <span class="accent">Maya</span></h2>
+  <div class="grid">
+    <div class="card"><div class="lab">Total</div><div class="num placeholder">[ /38]</div></div>
+    <div class="card"><div class="lab">Reading</div><div class="num placeholder">[ /5]</div></div>
+    <div class="card"><div class="lab">Vocabulary</div><div class="num placeholder">[ /10]</div></div>
+    <div class="card"><div class="lab">Grammar</div><div class="num placeholder">[ /15]</div></div>
+    <div class="card"><div class="lab">Listening</div><div class="num placeholder">[ /8]</div></div>
+  </div>
+  <p class="subline" style="margin-top:12px;">Next targets: <span class="placeholder">[fill in after marking &mdash; the 2-3 items she missed]</span>.</p>
+</div>
+
+<div class="slide hidden-card" id="cardB">
+  <button class="back-link" data-back>&larr; Back to all cards</button>
+  <div class="kicker">Personal results</div>
+  <h2>This is <span class="accent">Valeria</span></h2>
+  <div class="grid">
+    <div class="card"><div class="lab">Total</div><div class="num placeholder">[ /38]</div></div>
+    <div class="card"><div class="lab">Reading</div><div class="num placeholder">[ /5]</div></div>
+    <div class="card"><div class="lab">Vocabulary</div><div class="num placeholder">[ /10]</div></div>
+    <div class="card"><div class="lab">Grammar</div><div class="num placeholder">[ /15]</div></div>
+    <div class="card"><div class="lab">Listening</div><div class="num placeholder">[ /8]</div></div>
+  </div>
+  <p class="subline" style="margin-top:12px;">Next targets: <span class="placeholder">[fill in after marking]</span>.</p>
+</div>
+
+<div class="slide hidden-card" id="cardC">
+  <button class="back-link" data-back>&larr; Back to all cards</button>
+  <div class="kicker">Personal results</div>
+  <h2>This is <span class="accent">Sergio</span></h2>
+  <div class="grid">
+    <div class="card"><div class="lab">Total</div><div class="num placeholder">[ /38]</div></div>
+    <div class="card"><div class="lab">Reading</div><div class="num placeholder">[ /5]</div></div>
+    <div class="card"><div class="lab">Vocabulary</div><div class="num placeholder">[ /10]</div></div>
+    <div class="card"><div class="lab">Grammar</div><div class="num placeholder">[ /15]</div></div>
+    <div class="card"><div class="lab">Listening</div><div class="num placeholder">[ /8]</div></div>
+  </div>
+  <p class="subline" style="margin-top:12px;">Next targets: <span class="placeholder">[fill in after marking]</span>.</p>
+</div>
+
+<div class="slide hidden-card" id="cardD">
+  <button class="back-link" data-back>&larr; Back to all cards</button>
+  <div class="kicker">Personal results</div>
+  <h2>This is <span class="accent">Álvaro</span></h2>
+  <div class="grid">
+    <div class="card"><div class="lab">Total</div><div class="num placeholder">[ /38]</div></div>
+    <div class="card"><div class="lab">Reading</div><div class="num placeholder">[ /5]</div></div>
+    <div class="card"><div class="lab">Vocabulary</div><div class="num placeholder">[ /10]</div></div>
+    <div class="card"><div class="lab">Grammar</div><div class="num placeholder">[ /15]</div></div>
+    <div class="card"><div class="lab">Listening</div><div class="num placeholder">[ /8]</div></div>
+  </div>
+  <p class="subline" style="margin-top:12px;">Next targets: <span class="placeholder">[fill in after marking]</span>.</p>
+</div>
+
+<div class="slide hidden-card" id="cardE">
+  <button class="back-link" data-back>&larr; Back to all cards</button>
+  <div class="kicker">Personal results</div>
+  <h2>This is <span class="accent">Alejandra</span></h2>
+  <div class="grid">
+    <div class="card"><div class="lab">Total</div><div class="num placeholder">[ /38]</div></div>
+    <div class="card"><div class="lab">Reading</div><div class="num placeholder">[ /5]</div></div>
+    <div class="card"><div class="lab">Vocabulary</div><div class="num placeholder">[ /10]</div></div>
+    <div class="card"><div class="lab">Grammar</div><div class="num placeholder">[ /15]</div></div>
+    <div class="card"><div class="lab">Listening</div><div class="num placeholder">[ /8]</div></div>
+  </div>
+  <p class="subline" style="margin-top:12px;">Next targets: <span class="placeholder">[fill in after marking]</span>.</p>
+</div>
+
+<div class="slide hidden-card" id="cardF">
+  <button class="back-link" data-back>&larr; Back to all cards</button>
+  <div class="kicker">Personal results</div>
+  <h2>This is <span class="accent">Zoe</span></h2>
+  <div class="grid">
+    <div class="card"><div class="lab">Total</div><div class="num placeholder">[ /38]</div></div>
+    <div class="card"><div class="lab">Reading</div><div class="num placeholder">[ /5]</div></div>
+    <div class="card"><div class="lab">Vocabulary</div><div class="num placeholder">[ /10]</div></div>
+    <div class="card"><div class="lab">Grammar</div><div class="num placeholder">[ /15]</div></div>
+    <div class="card"><div class="lab">Listening</div><div class="num placeholder">[ /8]</div></div>
+  </div>
+  <p class="subline" style="margin-top:12px;">Zoe joined the group 23 Sep 2026, after Unit 1 was already underway &mdash; check her Level Ladder diagnostic (once graded) alongside this test before setting her targets.</p>
+</div>
+
+</main>
+<div class="nav-bar"><button id="prevBtn" title="Previous">&#8592;</button><span class="count" id="count"></span><button id="nextBtn" title="Next">&#8594;</button></div>
+<footer>Somerset Language Centre &middot; Valencia &middot; PET I &middot; Unit 1 Test Results (template)</footer>
+<script>
+  var mainSlides = Array.prototype.slice.call(document.querySelectorAll('main > .slide:not(.hidden-card)'));
+  var idx = 0;
+  var prevBtn = document.getElementById('prevBtn');
+  var nextBtn = document.getElementById('nextBtn');
+  var count = document.getElementById('count');
+  function render(){
+    mainSlides.forEach(function(s,i){ s.classList.toggle('active', i===idx); });
+    count.textContent = (idx+1) + ' / ' + mainSlides.length;
+    prevBtn.disabled = idx===0;
+    nextBtn.disabled = idx===mainSlides.length-1;
+    window.scrollTo(0,0);
+  }
+  function go(d){ idx = Math.max(0, Math.min(mainSlides.length-1, idx+d)); render(); }
+  prevBtn.addEventListener('click', function(){ go(-1); });
+  nextBtn.addEventListener('click', function(){ go(1); });
+  document.addEventListener('keydown', function(e){
+    if(e.key==='ArrowRight') go(1); else if(e.key==='ArrowLeft') go(-1);
+  });
+  document.querySelectorAll('[data-open]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      mainSlides.forEach(function(s){ s.classList.remove('active'); });
+      document.querySelectorAll('.nav-bar').forEach(function(n){ n.style.display='none'; });
+      var card = document.getElementById(btn.getAttribute('data-open'));
+      card.classList.add('showing');
+    });
+  });
+  document.querySelectorAll('[data-back]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      document.querySelectorAll('.hidden-card').forEach(function(c){ c.classList.remove('showing'); });
+      document.querySelectorAll('.nav-bar').forEach(function(n){ n.style.display='flex'; });
+      render();
+    });
+  });
+  render();
+</script>
+</body>
+</html>

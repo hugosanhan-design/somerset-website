@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 1, pp. 6–8 — Answers · Friday B2 · Somerset Vista</title>
+<!-- SOMERSET VISTA — Friday B2, Unit 1 pp.6-8 answer key (Reading + Vocabulary).
+     Cumulative reveal, one answer per press. Built 18 Sep 2026 for the 25 Sep class,
+     from the New Close-up B2 Split A Student's Book answer key.
+     Re-themed 18 Sep 2026 (v2): per Hugo, EVERY Friday B2 Vista now matches the
+     Level Ladder Results design — plain white background, Georgia/Arial, dark ink
+     + one green accent — not the dark data-deck skin used elsewhere (FCE I). -->
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{ --ink:#222222; --mut:#6b6b6b; --panel:#ffffff; --bgpage:#f4f6f1;
+  --green:#3F6E17; --brand:#6BAE2E; --err:#C03A2E; --line:#e2e2e2; }
+html,body{width:100%;height:100%;overflow:hidden;background:var(--bgpage);font-family:Arial,Helvetica,sans-serif;}
+#show{position:fixed;inset:0;}
+.slide{position:absolute;inset:0;display:none;flex-direction:column;}
+.slide.active{display:flex;}
+.bg{position:absolute;inset:0;background:var(--panel);border-top:9px solid var(--brand);}
+.wm{position:absolute;top:3vh;left:3.5vw;z-index:6;display:flex;align-items:baseline;gap:8px;}
+.wm .w{font-family:Georgia,serif;font-weight:700;font-size:clamp(18px,1.9vw,26px);color:var(--brand);}
+.wm .lc{font-size:clamp(8px,.8vw,11px);letter-spacing:3px;color:var(--green);font-weight:700;}
+.tag{position:absolute;top:3.2vh;right:4vw;z-index:6;font-size:clamp(10px,1vw,14px);letter-spacing:2px;text-transform:uppercase;font-weight:700;color:var(--mut);}
+.sc{position:relative;z-index:3;flex:1;display:flex;flex-direction:column;justify-content:center;padding:10.5vh 6vw 6vh;}
+.sc.centre{align-items:center;text-align:center;}
+.pill{display:block;color:var(--green);font-size:clamp(12px,1.15vw,16px);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;font-weight:800;}
+.pill.centre{text-align:center;}
+.t-super{font-family:Georgia,serif;font-size:clamp(40px,6.4vw,92px);color:var(--ink);font-weight:700;}
+.t-big{font-family:Georgia,serif;font-size:clamp(24px,3.4vw,50px);color:var(--ink);font-weight:700;}
+.rt{font-family:Georgia,serif;font-size:clamp(24px,3vw,42px);color:var(--ink);font-weight:700;margin-bottom:16px;line-height:1.08;}
+.lead{font-size:clamp(18px,1.9vw,28px);color:var(--mut);font-weight:600;line-height:1.45;max-width:1100px;}
+.rule{width:80px;height:3px;background:var(--brand);margin:18px auto;}
+.strip{position:absolute;bottom:0;left:0;right:0;height:5px;z-index:4;background:var(--brand);}
+#nav{position:fixed;bottom:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:center;gap:22px;padding:9px;background:rgba(255,255,255,.85);backdrop-filter:blur(6px);border-top:1px solid var(--line);}
+.nb{background:transparent;border:1.5px solid var(--green);color:var(--green);font-size:18px;cursor:pointer;width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.nb:hover{background:var(--green);color:#fff;}
+#count{color:var(--mut);font-size:13px;letter-spacing:2px;min-width:64px;text-align:center;}
+.hint{position:fixed;top:14px;right:1.6vw;z-index:100;color:rgba(0,0,0,.35);font-size:12px;letter-spacing:1px;}
+
+/* ---- list rows ---- */
+.list{width:100%;max-width:1560px;margin:0 auto;display:flex;flex-direction:column;justify-content:center;flex:1;gap:1vh;}
+.row{display:flex;align-items:baseline;gap:1.1vw;padding:.5vh 0;border-bottom:1px solid var(--line);}
+.row:last-child{border-bottom:none;}
+.num{flex:0 0 auto;width:1.6em;font-weight:800;color:var(--green);text-align:right;font-size:.85em;}
+.term{flex:0 0 auto;color:var(--ink);font-weight:800;}
+.list--mid .term{flex-basis:38%;}
+.arrow{color:var(--green);font-weight:800;flex:0 0 auto;visibility:hidden;}
+.row.on .arrow{visibility:visible;}
+.ans{color:var(--green);font-weight:700;font-family:Georgia,serif;}
+.badge{display:inline-flex;align-items:center;justify-content:center;min-width:1.6em;height:1.6em;border-radius:50%;border:1.5px solid var(--green);color:var(--green);font-weight:800;font-size:.8em;margin-right:.3em;}
+.badge.mark{border-color:var(--err);color:var(--err);border-radius:6px;min-width:1.4em;padding:0 .3em;}
+.gramnote{color:var(--mut);opacity:.9;font-style:italic;font-weight:700;font-size:.78em;margin-left:.6em;}
+.list--mid .row{font-size:clamp(22px,2.7vw,34px);font-weight:700;}
+.list--loose .row{font-size:clamp(26px,3.4vw,42px);font-weight:700;}
+
+/* ---- multiple-choice slides (Exam Task) ---- */
+.mcq{width:100%;max-width:1400px;margin:0 auto;}
+.mcq .qtext{font-family:Georgia,serif;font-size:clamp(28px,3.4vw,46px);color:var(--ink);font-weight:700;margin-bottom:3vh;line-height:1.25;}
+.opt{display:flex;align-items:baseline;gap:.9vw;padding:1.3vh 1.4vw;margin-bottom:1vh;border:1.5px solid var(--line);border-radius:10px;font-size:clamp(21px,2.4vw,32px);font-weight:700;color:var(--ink);}
+.opt .oletter{flex:0 0 auto;width:1.6em;height:1.6em;border-radius:50%;border:1.5px solid var(--mut);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--mut);}
+.opt.correct{border-color:var(--green);background:#eef5e6;color:var(--green);font-weight:800;}
+.opt.correct .oletter{border-color:var(--green);background:var(--green);color:#fff;}
+</style>
+</head>
+<body>
+<div id="show"></div>
+<div class="hint">&larr; &rarr; · click to reveal / advance</div>
+<div id="nav"><button class="nb" onclick="go(-1)">&#8249;</button><span id="count"></span><button class="nb" onclick="go(1)">&#8250;</button></div>
+<script>
+/* ============ SOURCE DATA — from the Student's Book answer key, Unit 1 ============ */
+const TASK1 = {pill:"TASK 1 &middot; READING", title:"Match the beginning to the ending", dense:"loose", items:[
+ {n:"1. If something is harmful,", a:"d. it can hurt you."},
+ {n:"2. If something is irritating,", a:"c. it annoys you."},
+ {n:"3. If something upsets you,", a:"f. it makes you sad or worried."},
+ {n:"4. If you take something for granted,", a:"e. you don't think about it &mdash; you believe it will always stay the same."},
+ {n:"5. If you're furious,", a:"a. you're extremely angry."},
+ {n:"6. If something drives you crazy,", a:"b. it's extremely annoying."},
+]};
+
+const TASK3 = {pill:"TASK 2 &middot; VOCABULARY", title:"From the noun to the adjective", dense:"loose", items:[
+ {n:"joy", a:"overjoyed"},
+ {n:"confidence", a:"confident"},
+ {n:"relief", a:"relieved"},
+ {n:"amazement", a:"amazed"},
+ {n:"despair", a:"desperate", note:"does not look like its noun"},
+ {n:"guilt", a:"guilty"},
+ {n:"embarrassment", a:"embarrassed", note:"double r, double s"},
+ {n:"anxiety", a:"anxious", note:"not &ldquo;nervous&rdquo;"},
+ {n:"frustration", a:"frustrated"},
+ {n:"sympathy", a:"sympathetic", note:"ends in -ic"},
+]};
+
+const TASK4 = {pill:"TASK 3 &middot; VOCABULARY", title:"Five expressions the exam likes", dense:"loose", items:[
+ {n:"to be in agony", letter:"b", a:"feeling a lot of pain"},
+ {n:"on the edge of your seat", letter:"e", a:"very excited"},
+ {n:"to get under someone's skin", letter:"a", a:"make someone upset or irritated"},
+ {n:"to be lost for words", letter:"c", a:"shocked and surprised"},
+ {n:"with regret", letter:"d", a:"feeling sadness. formal"},
+]};
+
+const TASK5 = {pill:"TASK 4 &middot; PERSONALITY", title:"Positive, negative, or both", dense:"mid", items:[
+ {n:"aggressive", mark:"&ndash;", a:"calm, gentle"},
+ {n:"arrogant", mark:"&ndash;", a:"modest, humble"},
+ {n:"bad-tempered", mark:"&ndash;", a:"good-tempered, cheerful"},
+ {n:"loyal", mark:"+", a:"disloyal"},
+ {n:"mature", mark:"+", a:"childish, immature"},
+ {n:"mean", mark:"&ndash;", a:"kind, generous"},
+ {n:"stubborn", mark:"&ndash;", a:"no single word: open to reason"},
+ {n:"sensitive", mark:"B", a:"can be + (understands feelings) or &ndash; (easily upset)"},
+ {n:"reliable", mark:"+", a:"unreliable"},
+ {n:"childish", mark:"&ndash;", a:"mature, grown-up"},
+]};
+
+const MC = {pill:"TASK 5 &middot; EXAM TASK", title:"Multiple choice with one text", items:[
+ {q:"In the first paragraph, the writer's purpose is to", opts:{A:"give examples that will be explained later.",B:"tell a story from his experience.",C:"give advice on how to deal with stressful situations.",D:"explain why we find certain things annoying."}, correct:"A"},
+ {q:"In the example at the bus stop, you would be late because", opts:{A:"the bus didn't come on time.",B:"you arrived after the other people.",C:"you had to answer your phone at a bad time.",D:"you were chatting with your friend when the bus arrived."}, correct:"C"},
+ {q:"One essential quality of annoying things is", opts:{A:"they are often dangerous.",B:"they continue without changing for a long time.",C:"you know they are going to happen.",D:"you don't know when they will end."}, correct:"D"},
+ {q:"The example of the family on the beach is used to show that", opts:{A:"different nationalities find different things annoying.",B:"people are annoyed by unimportant problems.",C:"Americans get annoyed more often than people from other cultures.",D:"people in Mediterranean countries are friendlier than others."}, correct:"A"},
+ {q:"In the context of phone calls, researchers believe", opts:{A:"we should always send a text message before phoning a friend.",B:"some people are annoyed by something that was normal in the past.",C:"it's becoming harder to understand what people are saying.",D:"people are less annoyed by other people's conversations."}, correct:"B"},
+ {q:"Studies of misophonia are important because", opts:{A:"they tell us how to deal with annoying situations.",B:"they remind us that everyday sounds can be annoying.",C:"researchers could find ways to stop us getting irritated.",D:"they tell us why we all find certain things annoying."}, correct:"C"},
+]};
+
+/* ============ generic renderers ============ */
+function rowHTML(item, i, revealed){
+  let right = '';
+  if(revealed){
+    if('letter' in item){
+      right = `<span class="arrow on">&rarr;</span><span class="badge">${item.letter}</span><span class="ans">${item.a}</span>`;
+    } else if('mark' in item){
+      right = `<span class="arrow on">&rarr;</span><span class="badge mark">${item.mark}</span><span class="ans">${item.a}</span>`;
+    } else if(item.note){
+      right = `<span class="arrow on">&rarr;</span><span class="ans">${item.a}</span><span class="gramnote">${item.note}</span>`;
+    } else {
+      right = `<span class="arrow on">&rarr;</span><span class="ans">${item.a}</span>`;
+    }
+  } else {
+    right = `<span class="arrow">&rarr;</span>`;
+  }
+  return `<div class="row${revealed?' on':''}"><span class="num">${i+1}</span><span class="term">${item.n}</span>${right}</div>`;
+}
+
+function buildOneList(S, pill, title, dense, items){
+  const denseClass = dense === 'mid' ? 'list--mid' : 'list--loose';
+  for(let revealed=0; revealed<=items.length; revealed++){
+    const rows = items.map((it,i)=>rowHTML(it, i, i<revealed)).join('');
+    S.push(`<div class="bg"></div>
+     <div class="wm"><span class="w">Somerset</span><span class="lc">LANGUAGE&nbsp;CENTRE</span></div>
+     <div class="tag">Friday B2 &middot; Unit 1, pp. 6&ndash;8</div>
+     <div class="sc"><div class="pill">${pill}</div>
+      <h2 class="rt">${title}</h2>
+      <div class="list ${denseClass}">${rows}</div>
+     </div><div class="strip"></div>`);
+  }
+}
+
+/* Splits long lists into chunks of at most MAXROWS so text can stay big
+   enough for a weak projector (fewer words, bigger — never shrink past
+   the size floors above). */
+const MAXROWS = 6;
+function buildListSlides(S, task){
+  const dense = task.dense === 'dense' ? 'mid' : task.dense;
+  if(task.items.length <= MAXROWS){
+    buildOneList(S, task.pill, task.title, dense, task.items);
+    return;
+  }
+  const chunks = [];
+  for(let i=0; i<task.items.length; i+=MAXROWS) chunks.push(task.items.slice(i, i+MAXROWS));
+  chunks.forEach((chunk, ci) => {
+    buildOneList(S, task.pill, `${task.title} (${ci+1}/${chunks.length})`, dense, chunk);
+  });
+}
+
+function buildMCSlides(S, task){
+  task.items.forEach((item, qi) => {
+    for(let revealed=0; revealed<=1; revealed++){
+      const opts = ['A','B','C','D'].map(letter => {
+        const on = revealed && letter===item.correct;
+        return `<div class="opt${on?' correct':''}"><span class="oletter">${letter}</span><span>${item.opts[letter]}${on?' &nbsp;&#10003;':''}</span></div>`;
+      }).join('');
+      S.push(`<div class="bg"></div>
+       <div class="wm"><span class="w">Somerset</span><span class="lc">LANGUAGE&nbsp;CENTRE</span></div>
+       <div class="tag">Friday B2 &middot; Unit 1, pp. 6&ndash;8</div>
+       <div class="sc"><div class="pill">${task.pill}</div>
+        <h2 class="rt">Question ${qi+1} of ${task.items.length}</h2>
+        <div class="mcq"><div class="qtext">${item.q}</div>${opts}</div>
+       </div><div class="strip"></div>`);
+    }
+  });
+}
+
+/* ============ assemble the deck, in class order ============ */
+const S = [];
+
+S.push(`<div class="bg"></div>
+ <div class="wm"><span class="w">Somerset</span><span class="lc">LANGUAGE&nbsp;CENTRE</span></div>
+ <div class="sc centre"><div class="pill centre">Unit 1, pages 6&ndash;8</div>
+ <h1 class="t-super">Answers, one at a time</h1>
+ <div class="rule"><span class="gem"></span><span class="gem"></span><span class="gem"></span></div>
+ <p class="lead" style="text-align:center">Press the right arrow. One answer appears each time.<br>Say the whole thing before I press it.</p></div><div class="strip"></div>`);
+
+buildListSlides(S, TASK1);   // Reading Ex.1 matching (7 slides)
+buildListSlides(S, TASK3);   // Vocab Ex.1&ndash;2, nouns &rarr; adjectives (11 slides)
+buildListSlides(S, TASK4);   // Vocab Ex.3, five idioms (6 slides)
+buildListSlides(S, TASK5);   // Vocab Ex.4, personality (11 slides)
+buildMCSlides(S, MC);        // Exam Task, 6 questions (12 slides)
+
+S.push(`<div class="bg"></div>
+ <div class="wm"><span class="w">Somerset</span><span class="lc">LANGUAGE&nbsp;CENTRE</span></div>
+ <div class="sc centre"><div class="pill centre">Next Friday</div>
+ <h2 class="t-super" style="font-size:clamp(34px,5.5vw,78px)">Page 9 &middot; Grammar</h2>
+ <p class="lead" style="text-align:center;margin-top:20px;max-width:1000px">Present simple vs. present continuous &mdash; and the verbs that never go in the -ing form. Think of one thing that always annoys you when it happens on the metro at Xàtiva, and be ready to say it with &ldquo;is always &hellip;-ing&rdquo;.</p>
+ <p class="t-big" style="color:var(--green);font-size:clamp(15px,1.5vw,20px);margin-top:30px">Somerset Language Centre &middot; Val&egrave;ncia</p></div><div class="strip"></div>`);
+
+/* ============ engine (Vista standard) ============ */
+const show=document.getElementById('show');
+show.innerHTML=S.map((h,i)=>`<div class="slide${i===0?' active':''}">${h}</div>`).join('');
+const els=[...document.querySelectorAll('.slide')];let i=0;
+function render(){els.forEach((s,k)=>s.classList.toggle('active',k===i));document.getElementById('count').textContent=(i+1)+' / '+els.length;}
+function go(d){i=(i+d+els.length)%els.length;render();}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')go(1);if(e.key==='ArrowLeft')go(-1);});
+show.addEventListener('click',e=>{if(!e.target.closest('#nav'))go(1);});
+render();
+</script>
+</body>
+</html>

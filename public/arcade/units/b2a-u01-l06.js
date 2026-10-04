@@ -45,7 +45,6 @@ window.SOMERSET_UNITS['b2a-u01-l06'] = {
   {"q": "Gap 5: '___ her experience in the car, she has conducted experiments...' What's the missing linking word?", "a": "Since", "type": "gap", "topic": "exam task"},
   {"q": "Gap 8: 'There is ___ a lot we can learn about how music affects our minds.' What's the missing word?", "a": "still", "type": "gap", "topic": "exam task"},
   {"q": "In an open cloze task, what TYPE of word is usually missing — a content word (noun/verb/adjective) or a grammatical word (linker, preposition, auxiliary)?", "a": "a grammatical word — open cloze never tests content vocabulary", "type": "say", "topic": "exam task"},
-  {"q": "Exam Tip: what should you do BEFORE trying to fill in any gap in a cloze text?", "a": "read the whole text quickly first, to understand the general meaning", "type": "say", "topic": "exam task"},
   {"q": "Exam Tip: how many words can you write in each gap of an open cloze task?", "a": "exactly one word", "type": "say", "topic": "exam task"}
  ]
 };

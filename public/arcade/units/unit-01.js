@@ -70,108 +70,220 @@ window.SOMERSET_UNITS['unit-01'] = {
   {
    "w": "family",
    "t": "familia"
+  },
+  {
+   "w": "bow tie",
+   "t": "pajarita"
+  },
+  {
+   "w": "earrings",
+   "t": "pendientes"
+  },
+  {
+   "w": "hair clip",
+   "t": "pinza de pelo"
+  },
+  {
+   "w": "smiling",
+   "t": "sonriendo"
+  },
+  {
+   "w": "frowning",
+   "t": "con el ceño fruncido"
+  },
+  {
+   "w": "indoors",
+   "t": "dentro"
+  },
+  {
+   "w": "outdoors",
+   "t": "fuera"
+  },
+  {
+   "w": "wearing",
+   "t": "llevando puesto"
   }
  ],
  "questions": [
   {
    "q": "My dad is ___ (tall) than my mum.",
    "a": "taller",
-   "type": "gap"
+   "type": "gap",
+   "topic": "unit 1"
   },
   {
    "q": "A mouse is ___ (small) than a cat.",
    "a": "smaller",
-   "type": "gap"
+   "type": "gap",
+   "topic": "unit 1"
   },
   {
    "q": "Grandma is ___ (old) than me.",
    "a": "older",
-   "type": "gap"
+   "type": "gap",
+   "topic": "unit 1"
   },
   {
    "q": "My dog is ___ (friendly) than my cat.",
    "a": "friendlier",
-   "type": "gap"
+   "type": "gap",
+   "topic": "unit 1"
   },
   {
    "q": "A plane is ___ (fast) than a bike.",
    "a": "faster",
-   "type": "gap"
+   "type": "gap",
+   "topic": "unit 1"
   },
   {
    "q": "My sister is ___ (young) than me.",
    "a": "younger",
-   "type": "gap"
+   "type": "gap",
+   "topic": "unit 1"
   },
   {
    "q": "An elephant is ___ (big) than a dog.",
    "a": "bigger",
-   "type": "gap"
+   "type": "gap",
+   "topic": "unit 1"
   },
   {
    "q": "A tortoise is ___ (slow) than a horse.",
    "a": "slower",
-   "type": "gap"
+   "type": "gap",
+   "topic": "unit 1"
   },
   {
    "q": "Say THREE words for hair.",
    "a": "curly · straight · wavy · blonde · long · short",
-   "type": "say"
+   "type": "say",
+   "topic": "unit 1"
   },
   {
    "q": "Describe your teacher. Two sentences!",
    "a": "He/She has got… He/She is…",
-   "type": "say"
+   "type": "say",
+   "topic": "unit 1"
   },
   {
    "q": "What are you doing on Saturday?",
    "a": "I'm + -ing",
-   "type": "say"
+   "type": "say",
+   "topic": "unit 1"
   },
   {
    "q": "What is your mum doing on Sunday?",
    "a": "She's + -ing",
-   "type": "say"
+   "type": "say",
+   "topic": "unit 1"
   },
   {
    "q": "Make it correct: 'My brother is more tall than me.'",
    "a": "My brother is TALLER than me.",
-   "type": "fix"
+   "type": "fix",
+   "topic": "unit 1"
   },
   {
    "q": "Make it correct: 'She is more clever that him.'",
    "a": "She is CLEVERER THAN him.",
-   "type": "fix"
+   "type": "fix",
+   "topic": "unit 1"
   },
   {
    "q": "Make it correct: 'I are playing football on Saturday.'",
    "a": "I AM playing football on Saturday.",
-   "type": "fix"
+   "type": "fix",
+   "topic": "unit 1"
   },
   {
    "q": "Make it correct: 'He have got curly hair.'",
    "a": "He HAS got curly hair.",
-   "type": "fix"
+   "type": "fix",
+   "topic": "unit 1"
   },
   {
    "q": "Spell CLEVERER.",
    "a": "C-L-E-V-E-R-E-R",
-   "type": "say"
+   "type": "say",
+   "topic": "unit 1"
   },
   {
    "q": "Spell FRIENDLIER.",
    "a": "F-R-I-E-N-D-L-I-E-R",
-   "type": "say"
+   "type": "say",
+   "topic": "unit 1"
   },
   {
    "q": "Who is older — you or your grandmother? Full sentence!",
    "a": "My grandmother is older than me.",
-   "type": "say"
+   "type": "say",
+   "topic": "unit 1"
   },
   {
    "q": "Name FIVE people in a family.",
    "a": "mother, father, sister, brother, grandmother, uncle, aunt, cousin",
-   "type": "say"
+   "type": "say",
+   "topic": "unit 1"
+  },
+  {
+   "q": "She is ___ (wear) a bow tie.",
+   "a": "wearing",
+   "type": "gap",
+   "topic": "unit 1"
+  },
+  {
+   "q": "He is ___ (smile) in the photo.",
+   "a": "smiling",
+   "type": "gap",
+   "topic": "unit 1"
+  },
+  {
+   "q": "What do you call a small tie shaped like a bow?",
+   "a": "bow tie",
+   "type": "word",
+   "topic": "unit 1"
+  },
+  {
+   "q": "What do you call jewellery you wear on your ears?",
+   "a": "earrings",
+   "type": "word",
+   "topic": "unit 1"
+  },
+  {
+   "q": "What holds your hair in place?",
+   "a": "hair clip",
+   "type": "word",
+   "topic": "unit 1"
+  },
+  {
+   "q": "Say the opposite of 'outdoors'.",
+   "a": "indoors",
+   "type": "say",
+   "topic": "unit 1"
+  },
+  {
+   "q": "Say the opposite of 'smiling'.",
+   "a": "frowning",
+   "type": "say",
+   "topic": "unit 1"
+  },
+  {
+   "q": "Make it correct: 'He wear glasses and a bow tie.'",
+   "a": "He IS WEARING glasses and a bow tie.",
+   "type": "fix",
+   "topic": "unit 1"
+  },
+  {
+   "q": "Is a photo in Turia Park indoors or outdoors?",
+   "a": "Outdoors.",
+   "type": "say",
+   "topic": "unit 1"
+  },
+  {
+   "q": "Describe a photo: is the person smiling or frowning? Say a full sentence.",
+   "a": "He/She is smiling. / He/She is frowning.",
+   "type": "say",
+   "topic": "unit 1"
   },
   {
    "q": "What's the English word for 'playa'?",
@@ -313,61 +425,61 @@ window.SOMERSET_UNITS['unit-01'] = {
   },
   {
    "q": "Pepe is cleaning the car.",
-   "a": "Now \u2014 there's no time word, so it's happening right now.",
+   "a": "Now — there's no time word, so it's happening right now.",
    "type": "say",
    "topic": "now or future"
   },
   {
    "q": "Pepe is cleaning the car tomorrow.",
-   "a": "Future \u2014 'tomorrow' tells us it's a plan, not right now.",
+   "a": "Future — 'tomorrow' tells us it's a plan, not right now.",
    "type": "say",
    "topic": "now or future"
   },
   {
    "q": "Marta is walking her dog.",
-   "a": "Now \u2014 no time word, so it's happening at this moment.",
+   "a": "Now — no time word, so it's happening at this moment.",
    "type": "say",
    "topic": "now or future"
   },
   {
    "q": "Marta is walking her dog on Saturday.",
-   "a": "Future \u2014 'on Saturday' makes it a plan.",
+   "a": "Future — 'on Saturday' makes it a plan.",
    "type": "say",
    "topic": "now or future"
   },
   {
    "q": "We're eating paella!",
-   "a": "Now \u2014 no time word, it's happening right now.",
+   "a": "Now — no time word, it's happening right now.",
    "type": "say",
    "topic": "now or future"
   },
   {
    "q": "We're eating paella next week.",
-   "a": "Future \u2014 'next week' shows it's a plan.",
+   "a": "Future — 'next week' shows it's a plan.",
    "type": "say",
    "topic": "now or future"
   },
   {
    "q": "My cousins are visiting this afternoon.",
-   "a": "Future \u2014 'this afternoon' is later today, so it's a plan.",
+   "a": "Future — 'this afternoon' is later today, so it's a plan.",
    "type": "say",
    "topic": "now or future"
   },
   {
    "q": "Grandma is baking a cake tonight.",
-   "a": "Future \u2014 'tonight' is later today, so it's a plan.",
+   "a": "Future — 'tonight' is later today, so it's a plan.",
    "type": "say",
    "topic": "now or future"
   },
   {
    "q": "Look! The children are playing in Turia Park.",
-   "a": "Now \u2014 'Look!' plus no time word means it's happening right now.",
+   "a": "Now — 'Look!' plus no time word means it's happening right now.",
    "type": "say",
    "topic": "now or future"
   },
   {
    "q": "I'm meeting my cousin at the beach later.",
-   "a": "Future \u2014 'later' shows it hasn't happened yet \u2014 it's the plan.",
+   "a": "Future — 'later' shows it hasn't happened yet — it's the plan.",
    "type": "say",
    "topic": "now or future"
   }

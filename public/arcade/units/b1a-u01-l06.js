@@ -20,6 +20,12 @@ window.SOMERSET_UNITS['b1a-u01-l06'] = {
   {"q": "Rewrite using a contraction: 'I am going to the market on Saturday.'", "a": "I'm going to the market on Saturday.", "type": "gap", "topic": "writing"},
   {"q": "Rewrite using a contraction: 'I will see you there.'", "a": "I'll see you there.", "type": "gap", "topic": "writing"},
   {"q": "About how many words should this task be?", "a": "about 100 words (roughly 90-110)", "type": "say", "topic": "writing"},
-  {"q": "What should you always do before handing in your writing?", "a": "check every bullet point in the task prompt has been answered, and check the word count", "type": "say", "topic": "writing"}
+  {"q": "What should you always do before handing in your writing?", "a": "check every bullet point in the task prompt has been answered, and check the word count", "type": "say", "topic": "writing"},
+  {"q": "Give an informal opening to replace 'Dear Mr Erik,'.", "a": "e.g. Hi Erik, / Dear Erik,", "type": "say", "topic": "writing"},
+  {"q": "Rewrite formally-worded 'I am writing to inform you that...' in an informal style.", "a": "e.g. Just to let you know...", "type": "say", "topic": "writing"},
+  {"q": "Give an informal linker a student could use instead of 'however' or 'in addition'.", "a": "e.g. but / also", "type": "say", "topic": "writing"},
+  {"q": "True or false: exclamation marks are a feature of informal writing style.", "a": "true", "type": "say", "topic": "writing"},
+  {"q": "Why does a reply with no question back to the sender lose marks?", "a": "the Exam Task expects a genuine two-way exchange (communicative achievement)", "type": "say", "topic": "writing"},
+  {"q": "Rewrite using a contraction: 'I do not think I can come.'", "a": "I don't think I can come.", "type": "gap", "topic": "writing"}
  ]
 };

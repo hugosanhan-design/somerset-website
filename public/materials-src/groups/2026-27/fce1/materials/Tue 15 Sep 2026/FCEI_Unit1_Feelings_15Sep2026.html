@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FCE I, Unit 1 Feelings, 15 Sep 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+<style>
+@page{size:A4;margin:0}
+:root{
+  --green:#6BAE2E; --green-deep:#2F6B1A;
+  --ice-deep:#3A8FA3;
+  --ink:#1B2419; --ink-soft:#4E5A4A; --rule:#DED8C8;
+  --serif:'Fraunces',Georgia,'DejaVu Serif',serif;
+  --sans:'Instrument Sans','Helvetica Neue',Arial,'DejaVu Sans',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);font-size:11.5pt;line-height:1.4;color:var(--ink);background:#dcd9d0}
+.pg{width:210mm;height:297mm;background:#fff;margin:0 auto 8px;position:relative;overflow:hidden;page-break-after:always;display:flex;flex-direction:column}
+.pg:last-child{page-break-after:auto}
+.in{padding:9mm 14mm 18mm;flex:1;display:flex;flex-direction:column}
+@media print{body{background:#fff}.pg{margin:0}}
+.logo{display:flex;align-items:flex-end;gap:9px;margin-bottom:4px}
+.logo .word{font-family:Arial,Helvetica,sans-serif;font-weight:800;font-size:24pt;letter-spacing:-1px;line-height:.9;color:var(--green)}
+.logo .lc{font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:6.5pt;letter-spacing:2px;line-height:1.18;padding-bottom:3px;color:#4d8120}
+.kick{font-size:8.5pt;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ice-deep)}
+.kick b{color:var(--green-deep)}
+h1.hl{font-family:var(--serif);font-weight:600;font-size:21pt;line-height:1.02;letter-spacing:-.01em;margin:3px 0 2px;color:var(--ink)}
+.deck{font-family:var(--serif);font-weight:400;font-size:11pt;line-height:1.25;color:var(--ink-soft);margin-bottom:5px}
+.rung{display:flex;align-items:baseline;gap:9px;margin:6px 0 5px;padding-bottom:2px;border-bottom:2px solid var(--green);page-break-inside:avoid}
+.rung .badge{font-family:var(--serif);font-weight:700;font-size:10pt;color:#fff;background:var(--green-deep);border-radius:999px;padding:2px 10px;white-space:nowrap}
+.rung .t{font-family:var(--serif);font-weight:600;font-size:13.5pt;color:var(--ink)}
+.rung .s{font-size:9pt;color:var(--ink-soft)}
+.rule{background:#F4F8EE;border:1.5px solid var(--green);border-radius:12px;padding:6px 13px;font-size:10.5pt;line-height:1.3;margin-bottom:6px}
+.rule b{color:var(--green-deep)}
+.help{border:1.5px solid var(--ice-deep);border-radius:12px;padding:7px 13px;margin-top:7px;font-size:10.5pt;line-height:1.35}
+.help .lab{display:block;font-size:7.5pt;letter-spacing:.14em;text-transform:uppercase;color:var(--ice-deep);font-weight:700;margin-bottom:3px}
+.bank{border:1.5px dashed var(--green);border-radius:12px;padding:7px 13px;margin-bottom:7px}
+.bank .lab{display:block;font-size:7.5pt;letter-spacing:.14em;text-transform:uppercase;color:var(--green-deep);font-weight:700;margin-bottom:4px}
+.chips{display:flex;flex-wrap:wrap;gap:5px}
+.chip{border:1.2px solid var(--rule);border-radius:999px;padding:2px 11px;font-size:11pt;font-weight:600;background:#fff}
+table{width:100%;border-collapse:collapse;font-size:11pt}
+th,td{border:1px solid var(--rule);padding:5px 8px;text-align:left;vertical-align:middle;line-height:1.3}
+th{font-family:var(--sans);background:#F4F8EE;font-size:7.8pt;text-transform:uppercase;letter-spacing:.06em;color:var(--green-deep);font-weight:700}
+td.n{font-family:var(--serif);font-weight:700;color:var(--green-deep);text-align:center;width:24px}
+td.blank{height:32px}
+td:empty{height:32px}
+.foot{position:absolute;left:14mm;right:14mm;bottom:8mm;display:flex;justify-content:space-between;align-items:baseline;font-size:7.5pt;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);border-top:1px solid var(--rule);padding-top:5px}
+.foot .pn{font-family:var(--serif);font-size:12pt;font-weight:700;letter-spacing:0;color:var(--green-deep)}
+.gap{display:inline-block;min-width:90px;border-bottom:1.3px solid var(--ink-soft);height:14px}
+.letter{font-size:11pt;line-height:2.15;margin-top:2px}
+.letter p{margin-bottom:7px}
+.card{border:1.5px solid var(--ink);border-radius:14px;padding:9px 14px;margin-bottom:8px}
+.card .lab{font-size:7.5pt;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--green-deep)}
+.card h3{font-family:var(--serif);font-size:13pt;font-weight:600;margin:1px 0 4px}
+.card ul{margin-left:16px;font-size:10.5pt;line-height:1.45}
+.cut{border-top:2px dashed var(--ink-soft);text-align:center;margin:3px 0 8px;font-size:7.5pt;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.cut span{background:#fff;padding:0 8px;position:relative;top:-7px}
+ol.sent{margin-left:18px;font-size:11pt;line-height:2.05}
+ol.sent li{padding-left:2px}
+.small{font-size:9.5pt;color:var(--ink-soft);line-height:1.35;margin-top:5px}
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="pg"><div class="in">
+  <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+  <div class="kick"><b>Somerset</b> &middot; FCE I &middot; Tuesday 15 September 2026 &middot; Unit 1, Jump for joy</div>
+  <h1 class="hl">Ten feelings, and the words for them</h1>
+  <div class="deck">You already know what these feelings are. Today you get the exact English noun for each one, the adjective that goes with it, and the grammar to say what you are doing right now instead of what you usually do.</div>
+
+  <div class="rung"><span class="badge">TASK 1</span><span class="t">Name the feeling</span><span class="s">in pairs, book closed</span></div>
+
+  <div class="rule"><b>Student A reads 1 to 5 out loud. Student B answers without looking at the page.</b> Then swap for 6 to 10. One word from the box for each situation, and every word is used once.</div>
+
+  <div class="bank"><span class="lab">Use each word once</span>
+    <div class="chips">
+      <span class="chip">sympathy</span><span class="chip">confidence</span><span class="chip">despair</span><span class="chip">relief</span><span class="chip">guilt</span><span class="chip">amazement</span><span class="chip">frustration</span><span class="chip">joy</span><span class="chip">anxiety</span><span class="chip">embarrassment</span>
+    </div>
+  </div>
+
+  <table>
+    <tr><th></th><th style="width:73%">The situation</th><th>The feeling</th></tr>
+    <tr><td class="n">1</td><td>You have been waiting twenty minutes for the bus. It comes, it is full, and it drives straight past you.</td><td class="blank"></td></tr>
+    <tr><td class="n">2</td><td>Your friend tells you her dog died on Sunday. You do not know what to say, but you feel it with her.</td><td></td></tr>
+    <tr><td class="n">3</td><td>You get the exam back. You were certain you had failed it. You passed.</td><td></td></tr>
+    <tr><td class="n">4</td><td>You walk into the wrong classroom and thirty people turn round to look at you.</td><td></td></tr>
+    <tr><td class="n">5</td><td>Your cousin sends you a video of the masclet&agrave;. Forty seconds of pure noise, and you cannot believe what you are watching.</td><td></td></tr>
+    <tr><td class="n">6</td><td>It is three in the morning and you are still awake, going through tomorrow's speaking exam in your head.</td><td></td></tr>
+    <tr><td class="n">7</td><td>You told your brother you had not touched his headphones. You had.</td><td></td></tr>
+    <tr><td class="n">8</td><td>You stand up to speak in front of the class and, for the first time this year, you know you can do it.</td><td></td></tr>
+    <tr><td class="n">9</td><td>Valencia score in the 93rd minute at Mestalla and the whole stand is on its feet.</td><td></td></tr>
+    <tr><td class="n">10</td><td>Third week of revision, nothing is going in, and you cannot see the point of carrying on.</td><td></td></tr>
+  </table>
+
+  <div class="help"><span class="lab">Say it properly</span>
+    Do not answer with one word in class. Answer with the sentence: <i>Number one is frustration, because he cannot do anything about it.</i> The exam never gives you a mark for a single word.</div>
+
+  <div class="foot"><span>Somerset Language Centre &middot; Valencia</span><span class="pn">1</span></div>
+</div></div>
+
+<!-- PAGE 2 -->
+<div class="pg"><div class="in">
+  <div class="kick"><b>Somerset</b> &middot; FCE I &middot; Unit 1, Jump for joy</div>
+
+  <div class="rung"><span class="badge">TASK 2</span><span class="t">One feeling, three words</span><span class="s">on your own, then compare</span></div>
+
+  <div class="rule"><b>The rule the exam tests.</b> An adjective ending in <b>-ed</b> says how the person feels. An adjective ending in <b>-ing</b> says what caused it. <i>I was bored</i> is about you. <i>The film was boring</i> is about the film. Get these the wrong way round and the sentence says something you did not mean.</div>
+
+  <table>
+    <tr><th style="width:8%"></th><th>The noun</th><th>How the person feels</th><th>What causes it</th></tr>
+    <tr><td class="n">1</td><td>amazement</td><td>amazed</td><td class="blank"></td></tr>
+    <tr><td class="n">2</td><td>frustration</td><td></td><td>frustrating</td></tr>
+    <tr><td class="n">3</td><td></td><td>embarrassed</td><td></td></tr>
+    <tr><td class="n">4</td><td>excitement</td><td></td><td></td></tr>
+    <tr><td class="n">5</td><td>worry</td><td></td><td>worrying</td></tr>
+    <tr><td class="n">6</td><td></td><td>annoyed</td><td>annoying</td></tr>
+    <tr><td class="n">7</td><td>disappointment</td><td></td><td></td></tr>
+    <tr><td class="n">8</td><td>confusion</td><td></td><td></td></tr>
+  </table>
+
+  <div class="rung" style="margin-top:9px"><span class="badge">TASK 2b</span><span class="t">Choose the right ending</span><span class="s">write the full word</span></div>
+
+  <div class="rule">Put the verb in brackets into the correct adjective form, <b>-ed</b> or <b>-ing</b>.</div>
+
+  <ol class="sent">
+    <li>I was completely <span class="gap"></span> (amaze) by the masclet&agrave;. I had never heard anything so loud.</li>
+    <li>Waiting for a bus that never comes is <span class="gap"></span> (frustrate).</li>
+    <li>She felt <span class="gap"></span> (embarrass) when she realised she had answered the wrong question.</li>
+    <li>The last episode of the series was really <span class="gap"></span> (disappoint).</li>
+    <li>He is <span class="gap"></span> (worry) about the speaking test on Thursday.</li>
+    <li>Two hours of grammar with no break is quite <span class="gap"></span> (tire).</li>
+  </ol>
+
+  <div class="help"><span class="lab">Careful</span>
+    Spanish lets you say <i>estoy aburrido</i> and <i>es aburrido</i> with the same word. English does not. Every time you say <i>I am boring</i> in class this year, I will ask you to say it again.</div>
+
+  <div class="foot"><span>Somerset Language Centre &middot; Valencia</span><span class="pn">2</span></div>
+</div></div>
+
+<!-- PAGE 3 -->
+<div class="pg"><div class="in">
+  <div class="kick"><b>Somerset</b> &middot; FCE I &middot; Unit 1, Jump for joy</div>
+
+  <div class="rung"><span class="badge">TASK 3</span><span class="t">The person you could live with</span><span class="s">on your own, then in pairs</span></div>
+
+  <div class="rule"><b>Mark each adjective + or -</b> according to whether you would be pleased or worried to hear it about somebody. Then write its opposite. Two of them have no single opposite, so write a short phrase instead.</div>
+
+  <table>
+    <tr><th style="width:8%"></th><th style="width:30%">Adjective</th><th style="width:12%">+ or -</th><th>Opposite</th></tr>
+    <tr><td class="n">1</td><td>reliable</td><td class="blank"></td><td></td></tr>
+    <tr><td class="n">2</td><td>bad-tempered</td><td></td><td></td></tr>
+    <tr><td class="n">3</td><td>loyal</td><td></td><td></td></tr>
+    <tr><td class="n">4</td><td>mean</td><td></td><td></td></tr>
+    <tr><td class="n">5</td><td>mature</td><td></td><td></td></tr>
+    <tr><td class="n">6</td><td>aggressive</td><td></td><td></td></tr>
+    <tr><td class="n">7</td><td>cheerful</td><td></td><td></td></tr>
+    <tr><td class="n">8</td><td>gentle</td><td></td><td></td></tr>
+    <tr><td class="n">9</td><td>stubborn</td><td></td><td></td></tr>
+    <tr><td class="n">10</td><td>sensitive</td><td></td><td></td></tr>
+  </table>
+
+  <div class="help"><span class="lab">The one that goes both ways</span>
+    <b>Sensitive</b> is not simply good or bad. It can mean that somebody understands other people's feelings, which is a compliment, or that they are easily upset, which is not. Write one sentence using it as a compliment, and one using it as a complaint.
+    <div style="border-bottom:1px solid var(--rule);height:24px;margin-top:6px"></div>
+    <div style="border-bottom:1px solid var(--rule);height:24px"></div>
+  </div>
+
+  <div class="rung" style="margin-top:9px"><span class="badge">TASK 3b</span><span class="t">Now agree</span><span class="s">in pairs, three minutes, out loud</span></div>
+
+  <div class="rule">You are sharing a flat in London for one month with somebody you have never met. Choose together <b>the three qualities you most want</b> in that person and <b>the one you could not live with</b>. You have to agree, so you will have to disagree first. Useful: <i>I see what you mean, but</i> &middot; <i>It depends what you mean by</i> &middot; <i>I would rather have somebody who</i> &middot; <i>That would drive me mad.</i></div>
+
+  <div class="foot"><span>Somerset Language Centre &middot; Valencia</span><span class="pn">3</span></div>
+</div></div>
+
+<!-- PAGE 4 -->
+<div class="pg"><div class="in">
+  <div class="kick"><b>Somerset</b> &middot; FCE I &middot; Unit 1, Jump for joy</div>
+
+  <div class="rung"><span class="badge">TASK 4</span><span class="t">What you do, and what you are doing</span><span class="s">part A, on your own</span></div>
+
+  <div class="rule"><b>Present simple</b> for facts, permanent situations, habits and timetables. <b>Present continuous</b> for what is happening now, for temporary situations, for changing situations, for arrangements you have already made, and with <i>always</i> for a habit that annoys you. Some verbs, such as <i>want</i>, <i>love</i>, <i>know</i> and <i>seem</i>, do not normally take the continuous at all.</div>
+
+  <div class="rule" style="background:#fff;border-style:dashed">Put each verb in brackets into the present simple or the present continuous. There are eleven.</div>
+
+  <div class="letter">
+    <p>Hi Aidan,</p>
+    <p>Thanks for the photos. Shrewsbury <span class="gap"></span> (look) tiny next to Valencia, but I <span class="gap"></span> (love) that river.</p>
+    <p>Things here are strange at the moment. Normally I <span class="gap"></span> (get) the metro to school at half past seven, but they <span class="gap"></span> (repair) the line all this month, so I <span class="gap"></span> (walk) instead. It <span class="gap"></span> (take) me forty minutes, which is no disaster, because the Turia gardens <span class="gap"></span> (be) on the way.</p>
+    <p>My sister <span class="gap"></span> (stay) with us until December while her flat is finished. She <span class="gap"></span> (always, leave) her wet towels on my bed.</p>
+    <p>Anyway, our train to Barcelona <span class="gap"></span> (leave) at 7.40 on Friday, so I will not be online that morning. Write back before then. I <span class="gap"></span> (want) to hear about the new school.</p>
+    <p>Mateo</p>
+  </div>
+
+  <div class="rung" style="margin-top:10px"><span class="badge">TASK 4</span><span class="t">The grid for part B</span><span class="s">fill this in while you ask</span></div>
+  <table>
+    <tr><th style="width:34%"></th><th>Nora</th><th>Diego</th></tr>
+    <tr><td>Lives</td><td class="blank"></td><td></td></tr>
+    <tr><td>Studies or works</td><td></td><td></td></tr>
+    <tr><td>Doing this month or term</td><td></td><td></td></tr>
+    <tr><td>Always doing it, and it is annoying</td><td></td><td></td></tr>
+    <tr><td>Already arranged</td><td></td><td></td></tr>
+  </table>
+
+  <div class="foot"><span>Somerset Language Centre &middot; Valencia</span><span class="pn">4</span></div>
+</div></div>
+
+<!-- PAGE 5 -->
+<div class="pg"><div class="in">
+  <div class="kick"><b>Somerset</b> &middot; FCE I &middot; Unit 1, Jump for joy</div>
+
+  <div class="rung"><span class="badge">TASK 4</span><span class="t">Two people, half the facts each</span><span class="s">part B, in pairs, speaking</span></div>
+
+  <div class="rule"><b>Fold this page along the line so that you can only see your own card.</b> Student A takes the top card, Student B the bottom one. You each know about one person. Ask questions until you can both fill in the grid on page 4. Every answer is either present simple or present continuous, so the question has to be too: <i>Where does she live?</i> is a different question from <i>Where is she living at the moment?</i></div>
+
+  <div class="card">
+    <span class="lab">Student A</span>
+    <h3>You know about Nora</h3>
+    <ul>
+      <li>She lives in Ruzafa, but this month she is staying at her grandmother's in Gandia, because the lift in her building is broken.</li>
+      <li>She studies architecture, and she works in a caf&eacute; on Saturdays.</li>
+      <li>She is learning French, because she is moving to Toulouse in January.</li>
+      <li>She is always losing her keys.</li>
+      <li>Her flight leaves at 6.15 on Sunday morning.</li>
+    </ul>
+    <p class="small"><b>Ask Student B about Diego:</b> where he lives &middot; what he does &middot; what he is doing this term &middot; what he does on Sundays &middot; the habit of his that annoys people &middot; his fixed plan for July.</p>
+  </div>
+
+  <div class="cut"><span>fold here</span></div>
+
+  <div class="card">
+    <span class="lab">Student B</span>
+    <h3>You know about Diego</h3>
+    <ul>
+      <li>He lives in Benimaclet and shares a flat with three other people.</li>
+      <li>He teaches swimming at the pool every morning, and this term he is doing a course in sports nutrition.</li>
+      <li>He spends most Sundays at his parents' house in Requena.</li>
+      <li>He is always telling the same three stories.</li>
+      <li>In July he is going to Shrewsbury to work at a summer camp.</li>
+    </ul>
+    <p class="small"><b>Ask Student A about Nora:</b> where she lives &middot; where she is living this month and why &middot; what she studies &middot; why she is learning French &middot; the habit of hers that annoys people &middot; what time her flight leaves.</p>
+  </div>
+
+  <div class="help" style="margin-top:7px"><span class="lab">Before Thursday</span>
+    Write five true sentences about yourself, three in the present simple and two in the present continuous, and one more that is false. On Thursday your partner has to find the false one. Make it hard.</div>
+
+  <div class="foot"><span>Somerset Language Centre &middot; Valencia</span><span class="pn">5</span></div>
+</div></div>
+
+</body>
+</html>

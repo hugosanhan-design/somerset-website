@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grammar: FCE I / Friday B2 Unit 4, p.45</title>
+<style>
+  :root{ --green:#6BAE2E; --green-dark:#4d8120; --ink:#1a1a1a; --bg:#ffffff; --amber:#E08A1E; }
+  *{box-sizing:border-box;}
+  body{ margin:0; font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background:var(--bg); color:var(--ink); }
+  header{ display:flex; justify-content:space-between; align-items:flex-end; padding:clamp(16px,2.2vh,32px) clamp(24px,3.5vw,64px); border-bottom:4px solid var(--green); flex-wrap:wrap; gap:16px; }
+  .logo{display:flex;align-items:flex-end;gap:clamp(8px,1vw,16px);}
+  .logo .word{font-family:Arial,Helvetica,sans-serif;font-weight:800;font-size:clamp(30pt,3.4vw,46pt);letter-spacing:-1.2px;line-height:.9;color:#6BAE2E;}
+  .logo .lc{font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:clamp(8pt,0.85vw,12pt);letter-spacing:2.5px;line-height:1.18;padding-bottom:4px;color:#4d8120;}
+  .title-block{text-align:right;}
+  .title-block h1{margin:0;font-size:clamp(20px,2.1vw,30px);font-weight:700;color:var(--ink);}
+  .title-block p{margin:4px 0 0;font-size:clamp(13px,1.1vw,17px);color:#555;letter-spacing:.5px;text-transform:uppercase;}
+  .nav-bar{ position:fixed; bottom:0; left:0; right:0; display:flex; align-items:center; justify-content:center; gap:20px; padding:16px 0 22px; background:linear-gradient(to top, rgba(255,255,255,0.96), rgba(255,255,255,0)); z-index:30; }
+  .nav-bar button{ background:var(--green); color:#fff; border:none; border-radius:999px; width:clamp(44px,4vw,64px); height:clamp(44px,4vw,64px); font-size:clamp(20px,2vw,28px); font-weight:700; cursor:pointer; }
+  .nav-bar button:disabled{opacity:.3; cursor:default;}
+  .nav-bar .count{font-size:clamp(14px,1.4vw,20px); color:#555; min-width:70px; text-align:center;}
+  main{max-width:1800px;margin:0 auto;padding:clamp(8px,1.5vh,20px) clamp(24px,4vw,72px) 96px;min-height:calc(100vh - 110px);display:flex;flex-direction:column;justify-content:center;}
+  .slide{display:none;}
+  .slide.active{display:block; animation:fade .15s ease;}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  .kicker{ font-size:clamp(14px,1.4vw,20px);font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--green); margin:clamp(10px,min(1.8vh,2.4vw),26px) 0 8px; }
+  h2{font-size:clamp(28px,min(3.8vw,6vh),48px);margin:0 0 clamp(10px,min(1.8vh,2.4vw),24px);color:var(--ink);line-height:1.25;}
+  h2 .accent{color:var(--green-dark);}
+  .item-list{list-style:none;margin:0 0 clamp(14px,2vh,22px);padding:0;max-width:1200px;}
+  .item{ background:#fff;border:2px solid #ddd;border-radius:14px; padding:clamp(12px,1.6vh,18px) clamp(18px,2.2vw,26px); margin-bottom:clamp(9px,1.2vh,14px); font-size:clamp(17px,1.9vw,24px);line-height:1.4; }
+  .item .num{color:#999;font-weight:800;margin-right:10px;}
+  .revealed .item .a-text-OFF{color:var(--green-dark);font-weight:700;}
+  .reveal-all{ background:var(--green);color:#fff;border:none;border-radius:999px; padding:10px 26px;font-size:clamp(14px,1.4vw,18px);font-weight:700;cursor:pointer; }
+  .reveal-all:hover{background:var(--green-dark);}
+  .whybox{ display:none;margin-top:clamp(14px,2vh,20px);max-width:1200px; background:#F4F8EE;border-left:5px solid var(--green-dark);border-radius:0 12px 12px 0; padding:clamp(14px,1.8vh,20px) clamp(18px,2.2vw,26px); font-size:clamp(16px,1.6vw,21px);line-height:1.45;color:#333; }
+  .revealed .whybox{display:block;}
+  .whybox b{color:var(--green-dark);}
+  .valencia-note{margin-top:clamp(16px,2.2vh,28px);font-size:clamp(15px,1.5vw,20px);color:#777;font-style:italic;}
+  footer{text-align:center;padding:20px;font-size:clamp(13px,1.1vw,16px);color:#888;border-top:2px solid #eee;}
+  @page{size:A4;margin:16mm 14mm}
+  @media print{
+    body{background:#fff} .nav-bar{display:none !important} main{max-width:none;padding:0}
+    .slide{display:block !important;page-break-after:always;padding-top:6px;} .slide:last-child{page-break-after:auto;}
+    h2{font-size:19pt} .kicker{font-size:12pt} .item{font-size:12.5pt;page-break-inside:avoid;break-inside:avoid;}
+    .whybox{display:block !important;font-size:12pt;} .reveal-all{display:none !important;}
+  }
+  @media(max-width:700px){ header{flex-direction:column;align-items:center;text-align:center;} .title-block{text-align:center;} h2{font-size:24px;} }
+/* per-item-reveal v1 */
+.item .a-text,.gap-answer{color:transparent !important;background:#EAF4DA;border-radius:6px;padding:0 .35em;min-width:3.2em;display:inline-block;cursor:pointer;user-select:none;}
+.item.shown .a-text,.gap-answer.shown{color:var(--green-dark) !important;background:none;font-weight:700;}
+.showpill{display:inline-block;margin-left:10px;border:2px solid var(--green);color:var(--green-dark);background:#fff;border-radius:999px;padding:1px 12px;font-size:.72em;font-weight:700;cursor:pointer;vertical-align:middle;}
+.item.shown .showpill{display:none;}
+@media print{.item .a-text,.gap-answer{color:var(--green-dark) !important;background:none;}.showpill{display:none !important;}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+  <div class="title-block">
+    <h1>Grammar</h1>
+    <p>Unit 4 · p.45 · future forms</p>
+  </div>
+</header>
+
+<main>
+
+  <div class="slide active">
+    <div class="kicker">Grammar</div>
+    <h2>Unit 4 · p.45 · future forms</h2>
+    <p class="valencia-note">Tap "Show answer" next to each question. Six exercises, in book order.</p>
+  </div>
+
+  <div class="slide">
+    <div class="kicker">Exercise 1&ndash;2 &middot; listen and underline</div>
+    <h2>Who said <span class="accent">what, and how?</span></h2>
+    <ul class="item-list">
+      <li class="item"><span class="num">a</span>Already made plans for tomorrow &rarr; <span class="a-text">Gabby</span></li>
+      <li class="item"><span class="num">b</span>Makes a decision &rarr; <span class="a-text">Isaac</span></li>
+      <li class="item"><span class="num">c</span>Makes a promise &rarr; <span class="a-text">Isaac</span></li>
+    </ul>
+    <button class="reveal-all">Show answers</button>
+    <div class="whybox"><b>Ex.2 forms to underline:</b> Shall we go &middot; is going to be &middot; It will be &middot; are all going to set off &middot; It should look &middot; I will join &middot; I will send &middot; I will not be.</div>
+  </div>
+  <div class="slide">
+    <div class="kicker">Exercise 3 &middot; complete the rules</div>
+    <h2>When to use <span class="accent">each future form</span></h2>
+    <ul class="item-list">
+      <li class="item"><span class="num">a</span>Sure predictions (opinion) &rarr; <span class="a-text">will</span>; predictions based on evidence &rarr; <span class="a-text">going to</span>.</li>
+      <li class="item"><span class="num">b</span>A decision made now &rarr; <span class="a-text">will</span>; a plan made earlier &rarr; <span class="a-text">going to</span>.</li>
+      <li class="item"><span class="num">c</span>Offers and promises &rarr; <span class="a-text">will</span>.</li>
+      <li class="item"><span class="num">d</span>Suggestions with I/we &rarr; <span class="a-text">shall</span>.</li>
+      <li class="item"><span class="num">e</span>A less certain prediction, instead of will &rarr; <span class="a-text">should</span>.</li>
+    </ul>
+    
+    
+  </div>
+  <div class="slide">
+    <div class="kicker">Exercise 4 &middot; match to the rule</div>
+    <h2>Continuous or <span class="accent">perfect?</span></h2>
+    <ul class="item-list">
+      <li class="item"><span class="num">1</span>We'll all be wearing yellow T-shirts &rarr; <span class="a-text">c, future continuous: in progress around a future time</span>.</li>
+      <li class="item"><span class="num">2</span>Let's go shopping after it finishes &rarr; <span class="a-text">d, no will/going to after before/after/when/until</span>.</li>
+      <li class="item"><span class="num">3</span>I'm sure it will have finished by midday &rarr; <span class="a-text">a, future perfect simple: completed before a future time</span>.</li>
+      <li class="item"><span class="num">4</span>I'll have been cycling all morning, so I'll be tired &rarr; <span class="a-text">b, future perfect continuous: over a period, with a future result</span>.</li>
+    </ul>
+    
+    
+  </div>
+  <div class="slide">
+    <div class="kicker">Exercise 5 &middot; choose the correct option</div>
+    <h2>Eight short <span class="accent">exchanges</span></h2>
+    <ul class="item-list">
+      <li class="item"><span class="num">1</span>What time <span class="a-text">shall</span> we arrive? — It's up to you.</li>
+      <li class="item"><span class="num">2</span>What time <span class="a-text">will</span> we arrive? — Hopefully around ten.</li>
+      <li class="item"><span class="num">3</span>I do not know how much you'll need, but £20 <span class="a-text">should</span> be enough.</li>
+      <li class="item"><span class="num">4</span>I take taxis all the time, so I'm sure £20 <span class="a-text">will</span> be enough.</li>
+      <li class="item"><span class="num">5</span>Do not phone at six. We'll <span class="a-text">be eating</span> dinner then.</li>
+      <li class="item"><span class="num">6</span>You can phone after seven. We'll <span class="a-text">have eaten</span> dinner by then.</li>
+      <li class="item"><span class="num">7</span>I'll have <span class="a-text">been studying</span> all day, so I'll be exhausted.</li>
+      <li class="item"><span class="num">8</span>I'll have <span class="a-text">finished</span> all my exams by then.</li>
+
+    </ul>
+    
+    
+  </div>
+  <div class="slide">
+    <div class="kicker">Exercise 6 &middot; rewrite with the word given</div>
+    <h2>Six <span class="accent">transformations</span></h2>
+    <ul class="item-list">
+      <li class="item"><span class="num">1</span>I'll message you <span class="a-text">when we finish shopping</span> — hopefully soon.</li>
+      <li class="item"><span class="num">2</span>By the time we get to the station, the train <span class="a-text">will have left</span>.</li>
+      <li class="item"><span class="num">3</span>You can't go <span class="a-text">until the light changes</span> to green.</li>
+      <li class="item"><span class="num">4</span>There are lots of maps, so <span class="a-text">you shouldn't get</span> lost.</li>
+      <li class="item"><span class="num">5</span><span class="a-text">I'll be waiting</span> for you outside the train station when you arrive.</li>
+      <li class="item"><span class="num">6</span>By the time they finish that skyscraper, they <span class="a-text">will have been working on it</span> for four years.</li>
+    </ul>
+    <button class="reveal-all">Show answers</button>
+    <div class="whybox"><b>Rule reminder:</b> never will/going to straight after before, after, when or until — use a present tense instead (when we finish, not when we will finish).</div>
+  </div>
+
+
+</main>
+
+<div class="nav-bar">
+  <button id="prevBtn" title="Previous">&#8592;</button>
+  <span class="count" id="count"></span>
+  <button id="nextBtn" title="Next">&#8594;</button>
+</div>
+
+<footer>Somerset Language Centre · Valencia · Unit 4, p.45</footer>
+
+<script>
+  var slides = document.querySelectorAll('.slide');
+  var idx = 0;
+  var prevBtn = document.getElementById('prevBtn');
+  var nextBtn = document.getElementById('nextBtn');
+  var count = document.getElementById('count');
+  function render(){
+    slides.forEach(function(s,i){ s.classList.toggle('active', i===idx); });
+    count.textContent = (idx+1) + ' / ' + slides.length;
+    prevBtn.disabled = idx===0;
+    nextBtn.disabled = idx===slides.length-1;
+    window.scrollTo(0,0);
+  }
+  function go(d){ idx = Math.max(0, Math.min(slides.length-1, idx+d)); render(); }
+  prevBtn.addEventListener('click', function(){ go(-1); });
+  nextBtn.addEventListener('click', function(){ go(1); });
+  document.addEventListener('keydown', function(e){
+    if(e.key==='ArrowRight') go(1);
+    else if(e.key==='ArrowLeft') go(-1);
+  });
+  document.querySelectorAll('.slide').forEach(function(slide){
+    var btn = slide.querySelector('.reveal-all');
+    if(!btn) return;
+    btn.addEventListener('click', function(){
+      var on = slide.classList.toggle('revealed');
+      btn.textContent = on ? 'Hide answers' : 'Show answers';
+    });
+  });
+  render();
+</script>
+<script>/* per-item-reveal v1 */
+document.querySelectorAll('.item').forEach(function(it){
+  if(!it.querySelector('.a-text')) return;
+  var b=document.createElement('button'); b.className='showpill'; b.type='button'; b.textContent='Show answer';
+  b.addEventListener('click',function(e){e.stopPropagation(); it.classList.add('shown');});
+  it.appendChild(b);
+  it.querySelectorAll('.a-text').forEach(function(a){a.addEventListener('click',function(e){e.stopPropagation(); it.classList.toggle('shown');});});
+});
+document.querySelectorAll('.gap-answer').forEach(function(g){g.title='Click to show / hide'; g.addEventListener('click',function(){g.classList.toggle('shown');});});
+document.querySelectorAll('.reveal-all').forEach(function(b){
+  var s=b.closest('.slide'); if(!s||!s.querySelector('.whybox')){b.style.display='none';return;}
+  var mc=!!s.querySelector('.mc-opt'); var L=mc?['Show answer','Hide answer']:['Why?','Hide why'];  /* MC slides reveal the right option (registry D07) */
+  var fresh=b.cloneNode(true); b.parentNode.replaceChild(fresh,b); fresh.textContent=L[0];
+  fresh.addEventListener('click',function(){var on=s.classList.toggle('revealed'); fresh.textContent=on?L[1]:L[0];});
+});
+</script>
+
+</body>
+</html>

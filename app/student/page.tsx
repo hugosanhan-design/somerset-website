@@ -7,10 +7,18 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import SomersetLogo from '@/components/SomersetLogo'
-import { COLORS, FONT, RADIUS, SHADOW, EASE } from '@/lib/theme'
 
 interface StudentLink { emoji: string; title: string; desc: string; href: string }
 interface StudentArea { displayName: string; links: StudentLink[] }
+
+type Tool = { emoji: string; title: string; desc: string; href: string; accent: string; accentLt: string; tag: string }
+const TOOLS: Tool[] = [
+  { emoji: '🖥️', title: 'Sit a mock exam', desc: 'Cambridge-style B2 First: Reading, Use of English, Writing and Listening, timed like the real thing.', href: '/cbt', accent: '#E1614C', accentLt: '#fdf0ed', tag: 'Exam' },
+  { emoji: '↩️', title: 'Continue an exam', desc: 'Started a mock and got cut off? Enter your resume code and carry on from where you left off, on any computer.', href: '/cbt', accent: '#2C4A6E', accentLt: '#eaeff6', tag: 'Exam' },
+  { emoji: '📋', title: 'Placement quiz', desc: 'A quick adaptive quiz to find your level. For new students.', href: '/intake', accent: '#3E8FB0', accentLt: '#e8f4f9', tag: 'Level' },
+  { emoji: '📝', title: 'Placement test', desc: 'The longer level test, A1 to C1. Your result goes straight to the centre.', href: '/placement/index.html', accent: '#E8A33D', accentLt: '#fef5e4', tag: 'Level' },
+  { emoji: '🎮', title: 'English games', desc: 'Grammar sprint, irregular verbs, vocabulary and more. Practise for fun.', href: '/games/index.html', accent: '#4d8520', accentLt: '#eaf4da', tag: 'Practice' },
+]
 
 export default function StudentCorner() {
   const [name, setName] = useState('')
@@ -57,166 +65,179 @@ export default function StudentCorner() {
   }
 
   return (
-    <div style={{
-      minHeight: '100vh',
-      fontFamily: FONT.sans,
-      backgroundImage: "url('/Somerset b-g.jpg')",
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      backgroundAttachment: 'fixed',
-    }}>
-      <div style={{ minHeight: '100vh', backgroundColor: 'rgba(23,40,27,0.55)' }}>
+    <div className="sc">
+      <style dangerouslySetInnerHTML={{ __html: CSS }} />
 
-        <header style={{ backgroundColor: 'rgba(30,66,39,0.88)', padding: '16px 28px', backdropFilter: 'blur(6px)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 14 }}>
-          <SomersetLogo variant="white" />
-          <Link href="/" style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.85)', fontWeight: 600, textDecoration: 'none' }}>← Home</Link>
-        </header>
+      <header className="sc-header">
+        <SomersetLogo variant="white" />
+        <span className="sc-unit">Student&apos;s Corner · Valencia</span>
+        <Link href="/" className="sc-home">← Home</Link>
+      </header>
 
-        <div style={{ maxWidth: 620, margin: '0 auto', padding: '48px 24px' }}>
+      <section className="sc-hero">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/Somerset%20b-g.jpg" alt="Somerset countryside at dusk" />
+        <div className="sc-hero-overlay">
+          <p className="sc-hero-label">Somerset Language Centre</p>
+          <h1 className="sc-hero-title">Student&apos;s Corner</h1>
+          <p className="sc-hero-sub">Your plan, your practice, your exams. Pick what your teacher has asked you to do.</p>
+        </div>
+      </section>
 
-          <h1 style={{ fontFamily: FONT.serif, fontWeight: 500, fontSize: 30, color: '#fff', marginBottom: 6, letterSpacing: '-0.01em' }}>Student&apos;s Corner</h1>
-          <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: 14.5, marginBottom: 28 }}>
-            Pick what your teacher has asked you to do.
-          </p>
+      <div className="sc-strip" />
 
-          {/* ── Your area (gated) ───────────────────────── */}
-          <div style={panel}>
+      <main className="sc-wrap">
+        <div className="sc-grid">
+
+          {/* ── Your area (gated) ── */}
+          <section className="sc-card sc-card--you">
             {!area ? (
               <>
-                <div style={panelTitle}>Who are you?</div>
-                <div style={panelDesc}>Enter your name and the code your teacher gave you to open your own plan and practice.</div>
-                <form onSubmit={handleEnter} style={{ display: 'flex', flexDirection: 'column', gap: 10, marginTop: 14 }}>
-                  <input style={input} placeholder="Your name" value={name} onChange={e => setName(e.target.value)} autoComplete="off" />
-                  <input style={input} placeholder="Access code" value={code} onChange={e => setCode(e.target.value)} autoComplete="off" />
-                  <button type="submit" disabled={loading} style={enterBtn}>{loading ? 'Checking…' : 'Enter'}</button>
-                  {err && <div style={errBox}>{err}</div>}
+                <div className="sc-head">
+                  <span className="sc-tag">Your area</span>
+                  <div>
+                    <h2 className="sc-title">Who are you?</h2>
+                    <p className="sc-aim">Enter your name and the code your teacher gave you to open your own plan and practice.</p>
+                  </div>
+                </div>
+                <form onSubmit={handleEnter} className="sc-form">
+                  <label className="sc-field">
+                    <span>Your name</span>
+                    <input value={name} onChange={e => setName(e.target.value)} autoComplete="off" placeholder="First name" />
+                  </label>
+                  <label className="sc-field">
+                    <span>Access code</span>
+                    <input value={code} onChange={e => setCode(e.target.value)} autoComplete="off" placeholder="From your teacher" />
+                  </label>
+                  <button type="submit" disabled={loading || !name.trim() || !code.trim()} className="sc-btn">{loading ? 'Checking…' : 'Open my area →'}</button>
+                  {err && <div className="sc-err">{err}</div>}
                 </form>
+                <p className="sc-note">No code yet? Ask your teacher in class. Everything below is open to everyone.</p>
               </>
             ) : (
               <>
-                <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 12 }}>
-                  <div style={panelTitle}>Hi {area.displayName} — here&apos;s your work</div>
-                  <button onClick={logout} style={notYou}>Not you?</button>
+                <div className="sc-head">
+                  <span className="sc-tag">Your area</span>
+                  <div>
+                    <h2 className="sc-title">Hi {area.displayName}</h2>
+                    <p className="sc-aim">Here&apos;s your work. <button onClick={logout} className="sc-link">Not you?</button></p>
+                  </div>
                 </div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginTop: 12 }}>
-                  {area.links.map(l => (
-                    <a key={l.href} href={l.href} style={card}>
-                      <span style={{ fontSize: 24 }}>{l.emoji}</span>
-                      <div>
-                        <div style={cardTitle}>{l.title}</div>
-                        <div style={cardDesc}>{l.desc}</div>
-                      </div>
-                      <span style={chev}>›</span>
+                <div className="sc-list">
+                  {area.links.map((l, i) => (
+                    <a key={l.href} href={l.href} className="sc-tool sc-tool--mine" style={{ animationDelay: `${i * 60}ms` }}>
+                      <span className="sc-emoji">{l.emoji}</span>
+                      <span className="sc-tool-body">
+                        <span className="sc-tool-title">{l.title}</span>
+                        <span className="sc-tool-desc">{l.desc}</span>
+                      </span>
+                      <span className="sc-chev">›</span>
                     </a>
                   ))}
                 </div>
               </>
             )}
-          </div>
+          </section>
 
-          <div style={sectionLabel}>For everyone</div>
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-
-            <Link href="/cbt" style={card}>
-              <span style={{ fontSize: 24 }}>🖥️</span>
-              <div>
-                <div style={cardTitle}>Sit a Mock Exam</div>
-                <div style={cardDesc}>Cambridge-style B2 First — Reading, Use of English, Writing and Listening.</div>
-              </div>
-              <span style={chev}>›</span>
-            </Link>
-
-            <Link href="/cbt" style={card}>
-              <span style={{ fontSize: 24 }}>↩️</span>
-              <div>
-                <div style={cardTitle}>Continue an exam</div>
-                <div style={cardDesc}>Started a mock and got cut off? Enter your resume code to carry on from where you left off — on any computer.</div>
-              </div>
-              <span style={chev}>›</span>
-            </Link>
-
-            <Link href="/intake" style={card}>
-              <span style={{ fontSize: 24 }}>📋</span>
-              <div>
-                <div style={cardTitle}>Placement Quiz</div>
-                <div style={cardDesc}>Quick adaptive quiz to find your level — for new students.</div>
-              </div>
-              <span style={chev}>›</span>
-            </Link>
-
-            <a href="/placement/index.html" style={card}>
-              <span style={{ fontSize: 24 }}>📝</span>
-              <div>
-                <div style={cardTitle}>Placement Test</div>
-                <div style={cardDesc}>Longer level test, A1–C1. Your result is sent to the centre.</div>
-              </div>
-              <span style={chev}>›</span>
-            </a>
-
-            <a href="/games/index.html" style={card}>
-              <span style={{ fontSize: 24 }}>🎮</span>
-              <div>
-                <div style={cardTitle}>English Games</div>
-                <div style={cardDesc}>Grammar sprint, irregular verbs, vocabulary and more — practise for fun.</div>
-              </div>
-              <span style={chev}>›</span>
-            </a>
-
-          </div>
+          {/* ── For everyone ── */}
+          <section className="sc-everyone">
+            <div className="sc-section-head">For everyone</div>
+            <div className="sc-tools">
+              {TOOLS.map((t, i) => (
+                <a key={t.title} href={t.href} className="sc-tool" style={{ '--accent': t.accent, '--accent-lt': t.accentLt, animationDelay: `${120 + i * 60}ms` } as React.CSSProperties}>
+                  <span className="sc-emoji">{t.emoji}</span>
+                  <span className="sc-tool-body">
+                    <span className="sc-kicker">{t.tag}</span>
+                    <span className="sc-tool-title">{t.title}</span>
+                    <span className="sc-tool-desc">{t.desc}</span>
+                  </span>
+                  <span className="sc-chev">›</span>
+                </a>
+              ))}
+            </div>
+          </section>
         </div>
-      </div>
+      </main>
+
+      <footer className="sc-foot">
+        <span>Somerset Language Centre · Valencia</span>
+        <span>Since 2013</span>
+      </footer>
     </div>
   )
 }
 
-// ── Styles ──────────────────────────────────────────
-const card: React.CSSProperties = {
-  display: 'flex',
-  alignItems: 'center',
-  gap: 16,
-  backgroundColor: 'rgba(245,241,230,0.9)',
-  border: `1px solid ${COLORS.line}`,
-  borderRadius: 16,
-  padding: '18px 20px',
-  cursor: 'pointer',
-  textDecoration: 'none',
-  color: 'inherit',
-  backdropFilter: 'blur(6px)',
-  boxShadow: SHADOW.inkSoft,
-  transition: `transform 0.18s ${EASE}`,
-}
-const cardTitle: React.CSSProperties = { fontFamily: FONT.serif, fontWeight: 500, fontSize: 16, color: COLORS.ink }
-const cardDesc: React.CSSProperties = { fontSize: 12.5, color: COLORS.muted, marginTop: 2, lineHeight: 1.45 }
-const chev: React.CSSProperties = { marginLeft: 'auto', fontSize: 22, color: '#c7cdbf' }
+const CSS = `
+.sc{--green:#6BAE2E;--green-dk:#4d8520;--green-lt:#eaf4da;--ink:#1A1A1A;--serif:Georgia,'Times New Roman',serif;--sans:system-ui,-apple-system,Arial,sans-serif;
+  font-family:var(--sans);color:var(--ink);background:#f9f8f5;min-height:100vh;line-height:1.6;font-size:16px}
+.sc *{box-sizing:border-box}
+.sc p,.sc h1,.sc h2{margin:0}
 
-const panel: React.CSSProperties = {
-  backgroundColor: 'rgba(245,241,230,0.94)',
-  border: `1px solid ${COLORS.line}`,
-  borderRadius: RADIUS.card,
-  padding: '20px 22px',
-  boxShadow: SHADOW.inkSoft,
-  backdropFilter: 'blur(6px)',
-  marginBottom: 8,
+.sc-header{position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:1rem;padding:.7rem 1.5rem;background:var(--ink);color:#fff;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+.sc-unit{flex:1;font-size:.72rem;opacity:.55;text-transform:uppercase;letter-spacing:1px}
+.sc-home{color:rgba(255,255,255,.75);font-size:.78rem;font-weight:600;text-decoration:none}
+.sc-home:hover{color:#fff}
+
+.sc-hero{position:relative;height:420px;overflow:hidden;background:var(--ink)}
+.sc-hero img{width:100%;height:100%;object-fit:cover;object-position:center 60%;opacity:.8;display:block;animation:scZoom 9s ease-out both}
+.sc-hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.78) 0%,rgba(0,0,0,.15) 60%,transparent);display:flex;flex-direction:column;justify-content:flex-end;padding:2.2rem 2.5rem}
+.sc-hero-label{font-size:.68rem;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:var(--green);margin-bottom:.3rem}
+.sc-hero-title{font-family:var(--serif);font-size:3.4rem;color:#fff;line-height:1.05;text-shadow:0 2px 12px rgba(0,0,0,.4)}
+.sc-hero-sub{color:rgba(255,255,255,.8);font-size:1.05rem;margin-top:.5rem;max-width:560px}
+@keyframes scZoom{from{transform:scale(1.06)}to{transform:scale(1)}}
+.sc-strip{height:3px;background:var(--green)}
+
+.sc-wrap{max-width:1100px;margin:0 auto;padding:2rem 1.5rem 4rem}
+.sc-grid{display:grid;grid-template-columns:2fr 3fr;gap:1.8rem;align-items:start}
+@media(max-width:800px){.sc-grid{grid-template-columns:1fr}}
+
+.sc-card{background:#fff;border:1px solid #e5e5e5;border-radius:14px;padding:1.5rem 1.6rem 1.6rem;box-shadow:0 4px 18px rgba(0,0,0,.05);animation:scIn .45s cubic-bezier(.22,1,.36,1) both}
+.sc-card--you{position:sticky;top:76px}
+@media(max-width:800px){.sc-card--you{position:static}}
+.sc-head{display:flex;align-items:flex-start;gap:.9rem;margin-bottom:1.2rem;padding-bottom:1rem;border-bottom:3px solid var(--green)}
+.sc-tag{flex-shrink:0;margin-top:.3rem;font-size:.64rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:.3rem .65rem;border-radius:4px;background:var(--green);color:#fff;white-space:nowrap}
+.sc-title{font-family:var(--serif);font-size:1.5rem;line-height:1.15}
+.sc-aim{font-size:.86rem;color:#666;margin-top:.25rem}
+.sc-link{font:inherit;font-size:.86rem;color:var(--green-dk);background:none;border:0;padding:0;cursor:pointer;text-decoration:underline}
+
+.sc-form{display:flex;flex-direction:column;gap:.8rem}
+.sc-field{display:flex;flex-direction:column;gap:.3rem}
+.sc-field span{font-size:.72rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#555}
+.sc-field input{font:inherit;font-size:1rem;padding:.7rem .9rem;border:1.5px solid #d6d6d6;border-radius:10px;background:#fffdf7;color:var(--ink);transition:border-color .15s,box-shadow .15s}
+.sc-field input:focus{outline:0;border-color:var(--green);box-shadow:0 0 0 3px var(--green-lt)}
+.sc-btn{margin-top:.3rem;display:inline-flex;align-items:center;justify-content:center;padding:.75rem 1.4rem;border-radius:99px;border:0;background:var(--green);color:#fff;font:700 .95rem var(--sans);cursor:pointer;box-shadow:0 8px 20px rgba(107,174,46,.28);transition:transform .18s cubic-bezier(.22,1,.36,1),box-shadow .18s,opacity .18s}
+.sc-btn:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 12px 24px rgba(107,174,46,.34)}
+.sc-btn:disabled{opacity:.4;cursor:default;box-shadow:none}
+.sc-err{font-size:.86rem;color:#b9412f;background:#fdf0ed;border:1px solid #f2b9ae;border-radius:8px;padding:.6rem .8rem}
+.sc-note{font-size:.8rem;color:#777;margin-top:1rem;font-style:italic}
+
+.sc-section-head{font-size:.72rem;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;color:var(--green-dk);margin:.4rem 0 .8rem}
+.sc-tools,.sc-list{display:grid;gap:.8rem}
+.sc-tools{grid-template-columns:1fr 1fr}
+@media(max-width:600px){.sc-tools{grid-template-columns:1fr}}
+.sc-tool{--accent:var(--green);--accent-lt:var(--green-lt);display:flex;align-items:flex-start;gap:.9rem;background:#fff;border:1px solid #e5e5e5;border-left:4px solid var(--accent);border-radius:12px;padding:1rem 1.1rem;text-decoration:none;color:inherit;box-shadow:0 2px 8px rgba(0,0,0,.04);transition:transform .2s cubic-bezier(.22,1,.36,1),box-shadow .2s;animation:scIn .45s cubic-bezier(.22,1,.36,1) both}
+.sc-tool:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.09)}
+.sc-tool:hover .sc-chev{color:var(--accent);transform:translateX(3px)}
+.sc-emoji{flex-shrink:0;width:44px;height:44px;border-radius:12px;background:var(--accent-lt);display:inline-flex;align-items:center;justify-content:center;font-size:1.35rem}
+.sc-tool-body{display:flex;flex-direction:column;gap:.1rem;flex:1;min-width:0}
+.sc-kicker{font-size:.62rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent)}
+.sc-tool-title{font-family:var(--serif);font-size:1.08rem;font-weight:700;line-height:1.25}
+.sc-tool-desc{font-size:.82rem;color:#666;line-height:1.45;margin-top:.15rem}
+.sc-chev{align-self:center;font-size:1.4rem;color:#c7c7c7;transition:color .2s,transform .2s}
+.sc-tool--mine{border-left-color:var(--green)}
+@keyframes scIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+.sc-foot{max-width:1100px;margin:0 auto;padding:1rem 1.5rem 2.5rem;display:flex;justify-content:space-between;font-size:.72rem;letter-spacing:1px;text-transform:uppercase;color:#999;border-top:1px solid #e5e3dd}
+
+@media(max-width:640px){
+  .sc-header{padding:.6rem 1rem}
+  .sc-unit{display:none}
+  .sc-hero{height:320px}
+  .sc-hero-overlay{padding:1.3rem 1.2rem}
+  .sc-hero-title{font-size:2.4rem}
+  .sc-hero-sub{font-size:.95rem}
+  .sc-wrap{padding:1.2rem 1rem 3rem}
+  .sc-card{padding:1.2rem 1.1rem 1.3rem}
+  .sc-foot{flex-direction:column;gap:.3rem}
 }
-const panelTitle: React.CSSProperties = { fontFamily: FONT.serif, fontWeight: 500, fontSize: 18, color: COLORS.ink }
-const panelDesc: React.CSSProperties = { fontSize: 13, color: COLORS.muted, marginTop: 4, lineHeight: 1.5 }
-const input: React.CSSProperties = {
-  fontFamily: FONT.sans, fontSize: 15, padding: '11px 13px',
-  border: `1.5px solid ${COLORS.line}`, borderRadius: 10, backgroundColor: '#fff', color: COLORS.ink,
-}
-const enterBtn: React.CSSProperties = {
-  fontFamily: FONT.sans, fontSize: 15, fontWeight: 700, color: '#fff',
-  backgroundColor: COLORS.green, border: 'none', borderRadius: 10, padding: '11px 16px', cursor: 'pointer',
-}
-const notYou: React.CSSProperties = {
-  fontSize: 12.5, color: COLORS.muted, background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'underline', padding: 0,
-}
-const errBox: React.CSSProperties = {
-  fontSize: 13, color: '#a33', backgroundColor: 'rgba(192,57,43,0.08)', border: '1px solid rgba(192,57,43,0.25)',
-  borderRadius: 8, padding: '9px 12px',
-}
-const sectionLabel: React.CSSProperties = {
-  fontSize: 12, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)',
-  fontWeight: 700, margin: '26px 4px 12px',
-}
+`

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Fix-It Sheet · Unit 3 Writing (generic fallback TEMPLATE)</title>
+<style>
+@page{margin:1.3cm 1.3cm 1.6cm;
+  @bottom-left{ content:"SOMERSET LANGUAGE CENTRE · VALENCIA";
+    font-family:Arial,Helvetica,sans-serif; font-size:12pt; letter-spacing:.11em; color:#8a8a7a;
+    white-space:nowrap; border-top:1px solid #dcdcd4; padding-top:7px; vertical-align:top; }
+  @bottom-center{ content:" "; width:100%; border-top:1px solid #dcdcd4; }
+  @bottom-right{ content:counter(page);
+    font-family:Arial,Helvetica,sans-serif; font-size:12.5pt; font-weight:bold; color:#1E4227;
+    white-space:nowrap; border-top:1px solid #dcdcd4; padding-top:4px; vertical-align:top; }
+}
+* { box-sizing: border-box; }
+body { font-family: Georgia, 'Times New Roman', serif; color:#222; font-size:12.5pt; line-height:1.5; margin:0; }
+.logo { display:flex; align-items:flex-end; gap:11px; }
+.logo .word { font-family:Arial,Helvetica,sans-serif; font-weight:800; font-size:30pt; letter-spacing:-1.2px; line-height:.9; color:#6BAE2E; }
+.logo .lc { font-family:Arial,Helvetica,sans-serif; font-weight:700; font-size:12pt; letter-spacing:2.5px; line-height:1.18; padding-bottom:4px; color:#4d8120; }
+.header-row { display:flex; justify-content:space-between; align-items:flex-end; border-bottom:3px solid #6BAE2E; padding-bottom:8px; margin-bottom:14px; }
+.header-meta { text-align:right; font-family:Arial,Helvetica,sans-serif; font-size:12pt; color:#444; }
+.header-meta .title { font-family:Georgia,serif; font-size:16pt; font-weight:bold; color:#1E4227; margin-bottom:2px; }
+.namebox{ font-family:Arial,sans-serif; font-size:12pt; color:#444; margin-bottom:12px; }
+.namebox .line{ display:inline-block; border-bottom:1.5px solid #999; min-width:220px; margin-left:6px; }
+.banner{ background:#FDF3E7; border-left:5px solid #E08A1E; padding:8px 12px; margin:0 0 16px; font-size:12pt; font-family:Arial,sans-serif; }
+.item{ border:1px solid #cfe3bc; border-radius:8px; padding:12px 16px; margin:0 0 16px; break-inside:avoid; page-break-inside:avoid; background:#fbfdf8; }
+.item .num{ font-family:Arial,sans-serif; font-weight:800; color:#1E4227; font-size:12pt; text-transform:uppercase; letter-spacing:.04em; margin-bottom:6px; }
+.wrote{ margin:6px 0; }
+.wrote .lab{ font-family:Arial,sans-serif; font-size:12pt; color:#888; }
+.wrote .line{ display:block; border-bottom:1.5px dotted #bbb; min-height:22px; margin-top:2px; }
+.rule{ background:#F4F8EE; border-left:4px solid #4d8120; padding:6px 10px; font-size:12pt; margin:8px 0; }
+h2.section { background:#EAF4DA; border-left:5px solid #6BAE2E; padding:6px 10px; font-size:13pt; color:#1E4227; margin:16px 0 8px; break-after:avoid; page-break-after:avoid; }
+</style>
+</head>
+<body>
+
+<div class="header-row">
+  <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+  <div class="header-meta">
+    <div class="title">Fix-It Sheet</div>
+    Unit 3 &middot; It's natural &middot; your environment email
+  </div>
+</div>
+
+<div class="namebox">Name:<span class="line">&nbsp;</span> &nbsp;&nbsp; Date:<span class="line" style="min-width:120px;">&nbsp;</span></div>
+
+<div class="banner"><strong>This is the generic fallback version.</strong> It is only used when there was no time to build individual sheets after marking. The real version of this sheet has ONLY this student's own errors (3&ndash;6 items), never a shared list. Build the personalised sheet from the marked script before falling back to this one.</div>
+
+<h2 class="section">Your writing, fixed</h2>
+<p style="font-family:Arial,sans-serif;font-size:12pt;color:#555;">For each item: read what you wrote, read the fix, then write a NEW sentence of your own using the same fix correctly.</p>
+
+<div class="item">
+  <div class="num">1. Informal register</div>
+  <div class="wrote"><span class="lab">What you wrote:</span><span class="line"></span></div>
+  <div class="wrote"><span class="lab">Fix it:</span><span class="line"></span></div>
+  <div class="rule">Rule: writing to a friend is always informal &mdash; contractions (I've, we're), a friendly greeting and sign-off, never "Dear Sir/Madam".</div>
+  <div class="wrote"><span class="lab">Your new sentence:</span><span class="line"></span></div>
+</div>
+
+<div class="item">
+  <div class="num">2. Paragraph structure</div>
+  <div class="wrote"><span class="lab">What you wrote:</span><span class="line"></span></div>
+  <div class="wrote"><span class="lab">Fix it:</span><span class="line"></span></div>
+  <div class="rule">Rule: four paragraphs &mdash; greeting, main news, more detail, closing. Not one block.</div>
+  <div class="wrote"><span class="lab">Your new sentence:</span><span class="line"></span></div>
+</div>
+
+<div class="item">
+  <div class="num">3. Present perfect</div>
+  <div class="wrote"><span class="lab">What you wrote:</span><span class="line"></span></div>
+  <div class="wrote"><span class="lab">Fix it:</span><span class="line"></span></div>
+  <div class="rule">Rule: an unfinished action, still true now, needs the present perfect (have/has + past participle), not the past simple.</div>
+  <div class="wrote"><span class="lab">Your new sentence:</span><span class="line"></span></div>
+</div>
+
+<div class="item">
+  <div class="num">4. Spelling</div>
+  <div class="wrote"><span class="lab">What you wrote:</span><span class="line"></span></div>
+  <div class="wrote"><span class="lab">Fix it:</span><span class="line"></span></div>
+  <div class="rule">Rule: British spelling (environment, colour, not enviroment/color) &mdash; check any environment word you're unsure of.</div>
+  <div class="wrote"><span class="lab">Your new sentence:</span><span class="line"></span></div>
+</div>
+
+<div class="item">
+  <div class="num">5. Word count</div>
+  <div class="wrote"><span class="lab">What you wrote:</span><span class="line"></span></div>
+  <div class="wrote"><span class="lab">Fix it:</span><span class="line"></span></div>
+  <div class="rule">Rule: this task asks for 100&ndash;130 words exactly. Count before you hand it in.</div>
+  <div class="wrote"><span class="lab">Your new sentence:</span><span class="line"></span></div>
+</div>
+
+</body>
+</html>

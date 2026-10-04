@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Somerset · Now or Later — Flyers I</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..900&family=Instrument+Sans:wght@400..700&display=swap" rel="stylesheet">
+<style>
+@page{size:A4;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#6BAE2E; --green-deep:#2F6B1A; --green-ink:#1E4227;
+  --ice:#3A8FA3; --ice-pale:#EAF6F8;
+  --paper:#FFFDF8; --ink:#1B2419; --ink-soft:#4E5A4A; --rule:#DED8C8;
+  --serif:'Fraunces','Playfair Display',Georgia,serif;
+  --sans:'Instrument Sans','Segoe UI',system-ui,sans-serif;
+}
+body{font-family:var(--sans);background:#dcd9d0;color:var(--ink);font-size:12pt;line-height:1.5}
+.pg{width:210mm;height:297mm;background:#fff;margin:0 auto 8px;position:relative;overflow:hidden;page-break-after:always;display:flex;flex-direction:column}
+.pg:last-child{page-break-after:auto}
+.in{padding:10mm 15mm 16mm;flex:1;display:block}
+@media print{body{background:#fff}.pg{margin:0}}
+
+.logo{display:flex;align-items:flex-end;gap:8px}
+.logo .word{font-family:Arial,Helvetica,sans-serif;font-weight:800;font-size:17pt;letter-spacing:-1px;line-height:.9;color:#6BAE2E}
+.logo .lc{font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:6pt;letter-spacing:2px;line-height:1.15;padding-bottom:2px;color:#4d8120}
+
+.topbar{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:2px}
+.kick{font-size:14pt;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ice)}
+.kick b{color:var(--green-deep)}
+h1.hl{font-family:var(--serif);font-weight:600;font-size:19pt;line-height:1.05;letter-spacing:-.02em;margin:2px 0 2px;color:var(--ink)}
+h2.sh{font-family:var(--serif);font-weight:600;font-size:12.5pt;margin:5px 0 2px;color:var(--green-deep)}
+.deck{font-family:var(--serif);font-weight:400;font-size:11.5pt;line-height:1.25;color:var(--ink-soft);margin-bottom:4px}
+p,li{font-size:12.5pt;line-height:1.4}
+
+.owner{background:#fff;border:1px solid var(--rule);border-radius:12px;padding:3px 14px;display:flex;gap:8mm;align-items:baseline;margin-bottom:3px;overflow:hidden}
+.owner span{font-size:9.5pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);white-space:nowrap}
+.owner .fld{flex:1;border-bottom:1.5px solid var(--ink-soft);height:16px}
+
+.instr{font-size:11.5pt;color:var(--ink-soft);margin-bottom:4px;line-height:1.25}
+
+.catbox{background:#F1F8E8;border:1.6pt solid var(--green);border-radius:10px;padding:3px 10px;margin-bottom:4px;overflow:hidden}
+.catbox .lab{display:block;font-size:9.5pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green-deep);margin-bottom:4px}
+.pillrow{display:flex;flex-wrap:wrap;gap:5px}
+.pill{background:#fff;border:1.4pt solid var(--ink-soft);border-radius:20px;padding:2px 10px;font-family:var(--serif);font-weight:600;font-size:11pt;color:var(--ink)}
+
+.blank{display:inline-block;min-width:75px;border-bottom:1.6px solid var(--ink-soft);height:14px;margin:0 3px}
+.blank.lg{min-width:150px}
+
+.stepgrid{display:flex;flex-direction:column;gap:2px;margin-bottom:2px;margin-top:1px}
+.step-item{background:#fff;border:1.5px solid var(--rule);border-radius:9px;padding:3px 10px 3px;page-break-inside:avoid;break-inside:avoid;font-size:11.5pt;line-height:1.35;overflow:hidden}
+.step-item .given{font-family:var(--serif);font-weight:600;font-size:11.5pt;color:var(--ink);display:block;margin-bottom:1px}
+.steplab{font-size:9pt;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ice);white-space:nowrap;margin-right:3px}
+.steplab.g{color:var(--green-deep)}
+
+.qbox{background:#fff;border:1.5px solid var(--rule);border-radius:9px;padding:5px 10px;margin-bottom:4px;page-break-inside:avoid;break-inside:avoid;font-size:12.5pt;line-height:1.5;overflow:hidden}
+.qbox .q{font-family:var(--serif);font-weight:600;display:block;margin-bottom:2px}
+.alab{font-size:9pt;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green-deep);margin-right:3px}
+
+.foot{position:absolute;left:15mm;right:15mm;bottom:8mm;display:flex;justify-content:space-between;align-items:baseline;
+  font-size:8.5pt;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);border-top:1px solid var(--rule);padding-top:5px}
+.foot .pn{font-family:var(--serif);font-size:12pt;font-weight:700;letter-spacing:0;color:var(--green-deep)}
+</style>
+</head>
+<body>
+
+<div class="pg"><div class="in">
+
+  <div class="topbar">
+    <div>
+      <div class="kick"><b>Somerset</b> · Flyers I · Now or Later</div>
+      <h1 class="hl">Now... or Later?</h1>
+    </div>
+    <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+  </div>
+  <div class="deck">Agents, a plan is a sentence with a time word. Without one, it just means right now!</div>
+
+  <div class="owner"><span>Agent name</span><div class="fld"></div><span>Partner</span><div class="fld"></div></div>
+
+  <h2 class="sh">① Change it, then make a plan</h2>
+  <div class="catbox">
+    <span class="lab">Time word box</span>
+    <div class="pillrow"><span class="pill">later</span><span class="pill">tomorrow</span><span class="pill">in five minutes</span><span class="pill">this afternoon</span><span class="pill">tonight</span><span class="pill">next Saturday</span></div>
+  </div>
+  <div class="instr">Change each sentence to present continuous. Then add one time word from the box above to make it a plan.</div>
+  <div class="stepgrid">
+    <div class="step-item">
+      <span class="given">Nico plays football.</span>
+      <span class="steplab">Continuous:</span>Nico<span class="blank"></span>football.<br>
+      <span class="steplab g">My plan:</span><span class="blank lg"></span>
+    </div>
+    <div class="step-item">
+      <span class="given">Lola eats churros.</span>
+      <span class="steplab">Continuous:</span>Lola<span class="blank"></span>churros.<br>
+      <span class="steplab g">My plan:</span><span class="blank lg"></span>
+    </div>
+    <div class="step-item">
+      <span class="given">We visit Grandpa.</span>
+      <span class="steplab">Continuous:</span>We<span class="blank"></span>Grandpa.<br>
+      <span class="steplab g">My plan:</span><span class="blank lg"></span>
+    </div>
+    <div class="step-item">
+      <span class="given">I do my homework.</span>
+      <span class="steplab">Continuous:</span>I<span class="blank"></span>my homework.<br>
+      <span class="steplab g">My plan:</span><span class="blank lg"></span>
+    </div>
+    <div class="step-item">
+      <span class="given">Mum cooks paella.</span>
+      <span class="steplab">Continuous:</span>Mum<span class="blank"></span>paella.<br>
+      <span class="steplab g">My plan:</span><span class="blank lg"></span>
+    </div>
+    <div class="step-item">
+      <span class="given">My sister watches TV.</span>
+      <span class="steplab">Continuous:</span>My sister<span class="blank"></span>TV.<br>
+      <span class="steplab g">My plan:</span><span class="blank lg"></span>
+    </div>
+    <div class="step-item">
+      <span class="given">Dad reads the newspaper.</span>
+      <span class="steplab">Continuous:</span>Dad<span class="blank"></span>the newspaper.<br>
+      <span class="steplab g">My plan:</span><span class="blank lg"></span>
+    </div>
+    <div class="step-item">
+      <span class="given">The dog sleeps on the sofa.</span>
+      <span class="steplab">Continuous:</span>The dog<span class="blank"></span>on the sofa.<br>
+      <span class="steplab g">My plan:</span><span class="blank lg"></span>
+    </div>
+  </div>
+
+  <div class="foot"><span>Somerset Language Centre · Valencia</span><span>Page 1 of 2</span><span class="pn">Now or Later</span></div>
+</div></div>
+
+<div class="pg"><div class="in">
+
+  <div class="topbar">
+    <div>
+      <div class="kick"><b>Somerset</b> · Flyers I · Now or Later</div>
+      <h1 class="hl">Now... or Later?</h1>
+    </div>
+    <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+  </div>
+
+  <h2 class="sh">② Ask your partner!</h2>
+  <div class="instr">Ask your partner these questions. Listen, then write what they say — use <b>am/is/are + -ing</b>.</div>
+  <div class="qbox"><span class="q">What are you doing after school today?</span><span class="alab">My partner says:</span><span class="blank lg"></span></div>
+  <div class="qbox"><span class="q">Are you doing your homework tonight?</span><span class="alab">My partner says:</span><span class="blank lg"></span></div>
+  <div class="qbox"><span class="q">What are you doing tomorrow?</span><span class="alab">My partner says:</span><span class="blank lg"></span></div>
+
+  <div class="foot"><span>Somerset Language Centre · Valencia</span><span>Page 2 of 2</span><span class="pn">Now or Later</span></div>
+</div></div>
+
+</body>
+</html>

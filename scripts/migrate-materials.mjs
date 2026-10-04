@@ -191,7 +191,8 @@ async function main() {
       const hasAudio = Array.isArray(c.audio) && c.audio.length > 0
       const playRef = c.lesson?.play || c.lesson?.plays || null
       const hasPlay = !!playRef
-      if (!hasShelfFiles && !hasUnitAudio && !hasAudio && !hasPlay) { stats.daysSkipped++; continue }
+      const hasSlides = !!(c.lesson?.slides || c.lesson?.deckWeb)
+      if (!hasShelfFiles && !hasUnitAudio && !hasAudio && !hasPlay && !hasSlides) { stats.daysSkipped++; continue }
 
       console.log(`${date} / ${c.classId}`)
 
@@ -205,6 +206,20 @@ async function main() {
             newShelves[shelfName].push(await uploadShelfItem(item, c.classId, date, portalDir, stats))
           }
         }
+      }
+
+      // Lesson-level slides (Flyers): the lesson's slide PDF (uploaded like any file), the interactive deck and the
+      // click-to-reveal answers page (both already live under public/flyers/, so they are plain web paths, not uploads).
+      // Without this the dashboard's "Slides" section stayed empty for Flyers (30 Sep 2026). Rebuilt on every run, deduped by stem.
+      if (hasSlides) {
+        const L = c.lesson
+        newShelves = newShelves || {}
+        const keep = (newShelves.slides || []).filter(it => !/^L\d+-/.test(it.stem || ''))
+        const extra = []
+        if (L.deckWeb) extra.push({ stem: `L${L.n}-deck`, role: 'slides', label: `Lesson ${L.n} slides · interactive`, files: { open: L.deckWeb } })
+        if (L.slides) extra.push(await uploadShelfItem({ stem: `L${L.n}-slides-pdf`, role: 'slides', label: `Lesson ${L.n} slides (PDF)`, files: { pdf: L.slides } }, c.classId, date, portalDir, stats))
+        if (L.correctTogetherWeb) extra.push({ stem: `L${L.n}-correct`, role: 'slides', label: `Lesson ${L.n} · correct together (answers)`, files: { open: L.correctTogetherWeb } })
+        newShelves.slides = extra.concat(keep)
       }
 
       const newUnitAudio = hasUnitAudio ? await uploadAudioTracks(c.unitAudio, c.classId, portalDir, stats) : undefined

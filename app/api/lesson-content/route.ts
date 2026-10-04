@@ -41,6 +41,7 @@ export async function GET(req: NextRequest) {
       arcade: JSON.parse((row.arcade_json as string) || 'null'),
       shelves: JSON.parse((row.shelves_json as string) || 'null'),
       unitAudio: JSON.parse((row.unit_audio_json as string) || '[]'),
+      bookletDigitalWeb: row.booklet_digital_web || null,
     },
   })
 }

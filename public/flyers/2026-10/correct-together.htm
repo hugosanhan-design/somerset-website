@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>October · Correct together — Vista</title>
+<style>
+
+@page{size:A4;margin:0}
+:root{
+  --green:#6BAE2E; --green-deep:#2F6B1A; --green-ink:#1E4227;
+  --ice:#BFE3EA; --ice-deep:#3A8FA3; --ice-pale:#EAF6F8;
+  --paper:#F7F3EA; --paper-2:#FFFDF8; --ink:#1B2419; --ink-soft:#4E5A4A; --rule:#DED8C8;
+  --amber:#B45309; --hot:#E2542C;
+  --serif:'Fraunces','Playfair Display',Georgia,serif;
+  --sans:'Instrument Sans','Segoe UI',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+svg{display:block;max-width:100%;height:auto}
+body{font-family:var(--sans);font-size:11.5pt;line-height:1.55;color:var(--ink);background:#dcd9d0}
+
+.pg{width:210mm;height:297mm;background:var(--paper);margin:0 auto 8px;position:relative;overflow:hidden;page-break-after:always;display:flex;flex-direction:column}
+.pg:last-child{page-break-after:auto}
+.in{padding:15mm 16mm 16mm;flex:1;display:flex;flex-direction:column}
+@media print{body{background:#fff}.pg{margin:0}}
+
+.ph{position:relative;overflow:hidden;background:linear-gradient(135deg,var(--ice) 0%,#dfeff2 60%,var(--ice-pale) 100%);display:block}
+.ph::after{content:attr(data-label);position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:12px;
+  font-family:var(--sans);font-size:8pt;font-weight:700;letter-spacing:.08em;color:var(--ice-deep);line-height:1.5}
+.ph img{position:relative;z-index:2;width:100%;height:100%;object-fit:cover;display:block}
+
+.foot{position:absolute;left:16mm;right:16mm;bottom:8mm;display:flex;justify-content:space-between;align-items:baseline;
+  font-size:8pt;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);border-top:1px solid var(--rule);padding-top:5px}
+.foot .pn{font-family:var(--serif);font-size:13pt;font-weight:700;letter-spacing:0;color:var(--green-deep)}
+.kick{font-size:8.5pt;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ice-deep)}
+.kick b{color:var(--green-deep)}
+h1.hl{font-family:var(--serif);font-weight:600;font-size:40pt;line-height:.97;letter-spacing:-.025em;margin:7px 0 9px}
+h1.hl.sm{font-size:32pt}
+.deck{font-family:var(--serif);font-weight:400;font-size:14pt;line-height:1.32;color:var(--ink-soft);margin-bottom:11px}
+
+/* ---------------- COVER ---------------- */
+.cover{padding:0}
+.cover-in{flex:1;display:flex;flex-direction:column;padding:13mm 15mm 12mm}
+.cover-photo-frame{position:relative;height:112mm;border-radius:20px;overflow:hidden;margin:8mm 0 9mm;flex-shrink:0}
+.cover-photo-frame .ph{width:100%;height:100%}
+.masthead{font-family:var(--serif);font-weight:900;font-size:40pt;line-height:.86;letter-spacing:-.03em;color:var(--green-deep)}
+.mast-row{display:flex;align-items:flex-end;justify-content:space-between;border-bottom:3px solid var(--green);padding-bottom:7px}
+.mast-sub{text-align:right;font-size:8pt;font-weight:700;letter-spacing:.2em;text-transform:uppercase;line-height:1.8;color:var(--ink-soft)}
+.coverlines{display:flex;flex-direction:column;gap:8px;max-width:135mm;margin-top:9px}
+.cl{display:flex;align-items:baseline;gap:9px}
+.cl .n{font-family:var(--serif);font-weight:700;font-size:14pt;color:var(--green-deep);line-height:1}
+.cl .t{font-family:var(--serif);font-size:13pt;line-height:1.15;color:var(--ink)}
+.cl .t em{font-style:normal;color:var(--ink-soft)}
+.cover-title{font-family:var(--serif);font-weight:600;font-size:34pt;line-height:.98;letter-spacing:-.03em;color:var(--ink);margin-bottom:5px}
+.cover-deck{font-family:var(--serif);font-size:13pt;line-height:1.28;color:var(--ink-soft);max-width:130mm;margin-bottom:2px}
+.flash{position:absolute;right:7mm;top:7mm;z-index:4;background:#fff;border:2px solid var(--hot);border-radius:50%;width:28mm;height:28mm;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;transform:rotate(-9deg);padding:6px}
+.flash .b{font-family:var(--serif);font-weight:700;font-size:13pt;line-height:1;color:var(--hot)}
+.flash .s{font-size:6.6pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-top:3px;line-height:1.3;color:var(--hot)}
+.cover-bottom{display:flex;justify-content:space-between;align-items:flex-end;border-top:1px solid var(--rule);padding-top:7px;
+  font-size:8pt;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft)}
+.owner{margin-top:auto;background:#fff;border:1px solid var(--rule);border-radius:14px;padding:9px 14px;display:flex;gap:9mm;align-items:baseline}
+.owner span{font-size:9pt;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);white-space:nowrap}
+.owner .fld{flex:1;border-bottom:1.5px solid var(--ink-soft);height:16px}
+
+/* ---------------- CONTENTS ---------------- */
+.contents{width:100%;border-collapse:collapse;table-layout:fixed}
+.contents td{border-top:1px solid var(--rule);padding:3.5px 0;vertical-align:middle}
+.contents tr:last-child td{border-bottom:1px solid var(--rule)}
+.c-pg{font-family:var(--serif);font-weight:700;font-size:16pt;color:var(--ice-deep);line-height:1;letter-spacing:-.03em}
+.c-t{font-family:var(--serif);font-size:11.8pt;line-height:1.1}
+.c-d{font-size:8.2pt;color:var(--ink-soft);margin-top:1px}
+.c-tag{font-size:7.5pt;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green-deep);text-align:right}
+
+/* ---------------- panels ---------------- */
+.claim{background:var(--green-ink);color:#F5F1E6;border-radius:20px;padding:20px 24px;position:relative;overflow:hidden;margin-bottom:11px}
+.claim .lab{font-size:8.5pt;letter-spacing:.16em;text-transform:uppercase;color:#9BE06A;font-weight:700}
+.claim p{font-family:var(--serif);font-size:15pt;line-height:1.3;margin-top:7px}
+.crack{background:var(--paper-2);border:1.5px solid var(--ice-deep);border-radius:16px;padding:16px 20px;font-family:var(--serif);font-size:14pt;line-height:1.38;margin-bottom:11px}
+.crack .lab{display:block;font-family:var(--sans);font-size:8.5pt;letter-spacing:.14em;text-transform:uppercase;color:var(--ice-deep);font-weight:700;margin-bottom:5px}
+.pull{font-family:var(--serif);font-size:17pt;line-height:1.3;color:var(--green-ink);margin:11px 0;padding-left:14px;border-left:4px solid var(--green)}
+.card{background:var(--paper-2);border:1px solid var(--rule);border-radius:18px;padding:13px 18px;margin-bottom:9px}
+.card.green{border:2px solid var(--green)}
+.card.ice{border:1.5px solid var(--ice-deep)}
+.card h3{font-family:var(--serif);font-weight:600;font-size:17pt;line-height:1.1;margin-bottom:3px}
+.card .lab{font-size:8.5pt;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ice-deep);margin-bottom:5px}
+.card .sub{font-size:10pt;color:var(--ink-soft);margin-bottom:9px}
+
+.body-txt{font-size:12.5pt;line-height:1.62}
+.body-txt p{margin-bottom:9px}
+.body-txt p:last-child{margin-bottom:0}
+.body-txt strong{color:var(--green-deep)}
+.dcap{font-family:var(--serif);font-weight:700;font-size:25pt;line-height:1;color:var(--green-ink)}
+
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{background:#fff;border:1.5px solid var(--rule);border-radius:999px;padding:4px 13px;font-size:10.5pt;font-weight:600}
+.tag.g{background:#EDF6E2;border-color:var(--green);color:var(--green-deep)}
+.tag.i{background:var(--ice-pale);border-color:var(--ice);color:var(--ice-deep)}
+.tag.h{background:#FCE9E3;border-color:#F0B9A8;color:var(--hot)}
+
+.q{display:flex;gap:10px;align-items:flex-start;margin-bottom:9px;font-size:12pt;line-height:1.5}
+.q:last-child{margin-bottom:0}
+.qn{font-family:var(--serif);font-weight:700;font-size:13pt;color:var(--green-deep);min-width:16px;line-height:1.25}
+.gap{display:inline-block;border-bottom:1.8px solid var(--ink-soft);min-width:78px;margin:0 4px}
+.gap.lg{min-width:120px}
+.wl{display:block;border-bottom:1px solid var(--rule);height:24px;margin:4px 0}
+.tf{display:inline-flex;gap:5px;margin-left:auto}
+.tf b{border:1.5px solid var(--rule);background:#fff;border-radius:999px;padding:3px 12px;font-size:9.5pt;font-weight:700;color:var(--ink-soft)}
+
+.bub{background:#fff;border:1.5px solid var(--rule);border-radius:16px;border-bottom-left-radius:4px;padding:8px 14px;font-family:var(--serif);font-size:12.5pt;color:var(--green-ink)}
+.bub.b{border-color:var(--ice-deep);border-bottom-left-radius:16px;border-bottom-right-radius:4px}
+.bubs{display:flex;gap:9px;flex-wrap:wrap}
+
+.stat{display:flex;gap:10px;margin:11px 0}
+.stat div{flex:1;background:var(--paper-2);border:1px solid var(--rule);border-radius:14px;padding:13px 15px}
+.stat b{display:block;font-family:var(--serif);font-size:27pt;font-weight:600;letter-spacing:-.03em;color:var(--green-deep);line-height:1}
+.stat span{font-size:9.5pt;color:var(--ink-soft)}
+
+.grid{display:flex;gap:10px}
+.grid>*{flex:1}
+.strip{display:flex;gap:8px;margin-bottom:11px}
+.strip .cell{flex:1;border-radius:14px;overflow:hidden;background:var(--paper-2);border:1px solid var(--rule)}
+.strip .cell .ph{height:36mm}
+.strip .cell .cap{padding:6px 9px;font-size:10pt}
+.strip .cell .lab{padding:6px;text-align:center;font-family:var(--serif);font-size:12pt;font-weight:600}
+
+/* audio badge — for pages where a Somerset-recorded track belongs once produced */
+.audio{display:inline-flex;align-items:center;gap:5px;background:var(--ice-pale);border:1px solid var(--ice-deep);border-radius:999px;padding:3px 12px;font-size:8.5pt;font-weight:700;color:var(--ice-deep);letter-spacing:.03em;margin-left:8px}
+
+/* calendar */
+.cal{width:100%;border-collapse:separate;border-spacing:3px;table-layout:fixed}
+.cal th{font-size:8pt;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);padding-bottom:3px}
+.cal td{height:7mm;border:1px solid var(--rule);border-radius:9px;vertical-align:top;padding:3px 5px;background:var(--paper-2)}
+.cal td.x{border:none;background:transparent}
+.cal .d{font-family:var(--serif);font-weight:700;font-size:11pt;line-height:1}
+.cal .t{font-size:5.8pt;font-weight:700;letter-spacing:.06em;margin-top:3px;color:var(--green-deep)}
+.cal td.cls{background:#EDF6E2;border-color:var(--green)}
+.cal td.one{background:var(--green-ink);border-color:var(--green-ink)}
+.cal td.one .d,.cal td.one .t{color:#fff}
+.cal td.test{background:var(--hot);border-color:var(--hot)}
+.cal td.test .d,.cal td.test .t{color:#fff}
+
+/* survey */
+.sv{width:100%;border-collapse:collapse;font-size:9.5pt}
+.sv th{background:var(--green-ink);color:#fff;font-size:8.5pt;font-weight:700;padding:6px 4px;letter-spacing:.06em}
+.sv td{border:1px solid var(--rule);height:7.6mm;background:#fff}
+
+/* lesson route markers */
+.lesson{position:absolute;top:0;right:0;background:var(--green-ink);color:#fff;
+  padding:6px 14px 7px;border-bottom-left-radius:16px;font-size:8.5pt;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;z-index:6}
+.lesson b{font-family:var(--serif);font-size:13pt;letter-spacing:0;margin-left:6px}
+.warm{background:var(--hot);color:#fff;border-radius:16px;padding:12px 18px;margin-bottom:11px;display:flex;gap:14px;align-items:flex-start}
+.warm .w-lab{font-size:8pt;font-weight:700;letter-spacing:.16em;text-transform:uppercase;opacity:.9;white-space:nowrap;padding-top:3px}
+.warm .w-body{flex:1}
+.warm h4{font-family:var(--serif);font-weight:600;font-size:16pt;line-height:1.1;margin-bottom:3px}
+.warm p{font-size:10.5pt;line-height:1.45;opacity:.95}
+
+/* route map */
+.route{width:100%;border-collapse:separate;border-spacing:3px;table-layout:fixed}
+.route td{background:var(--paper-2);border:1.5px solid var(--rule);border-radius:9px;padding:4px 2px;text-align:center;vertical-align:top}
+.route .rd{font-family:var(--serif);font-weight:700;font-size:11.5pt;color:var(--green-deep);line-height:1}
+.route .rl{font-size:6.8pt;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-top:3px;line-height:1.3}
+.route .rbox{width:13px;height:13px;border:2px solid var(--green);border-radius:4px;margin:4px auto 0}
+
+/* cut-out lab */
+.cut{border:2.5px dashed var(--ink-soft);border-radius:14px;padding:13px 15px;background:#fff}
+.cut .ct{font-family:var(--serif);font-weight:700;font-size:14pt;margin-bottom:6px}
+.cut .cr{display:flex;justify-content:space-between;font-size:11pt;padding:3px 0;border-bottom:1px dotted var(--rule)}
+.cut .cr:last-child{border-bottom:none}
+.cut .ask{background:#fff;border:1px solid var(--ice-deep);border-radius:9px;padding:7px 10px;margin-top:8px;font-size:10pt;font-style:italic;color:var(--ink-soft)}
+.scissors{text-align:center;font-size:9pt;color:var(--ink-soft);letter-spacing:.3em;margin:9px 0}
+
+/* revision / test-prep */
+.revq{background:var(--paper-2);border:1.5px solid var(--rule);border-radius:14px;padding:10px 14px;margin-bottom:7px}
+.revq .rn{font-family:var(--serif);font-weight:700;color:var(--green-deep);margin-right:6px}
+
+/* back */
+.back{background:var(--green-ink);color:#F5F1E6}
+.back .in{justify-content:space-between}
+.next{font-family:var(--serif);font-weight:600;font-size:34pt;line-height:1;color:#fff;letter-spacing:-.02em}
+.next em{font-style:normal;color:#9BE06A}
+
+
+/* ===== v2 additions (colour edition, 17 Sep 2026) ===== */
+.lesson .ldate{display:block;font-size:7.5pt;letter-spacing:.1em;opacity:.85;margin-top:1px}
+.warm.arcade{background:var(--green-ink)}
+.warm.arcade .w-lab{color:#9BE06A}
+
+/* v1 used these two classes without defining them */
+.diary{background:var(--paper-2);border:1px solid var(--rule);border-left:4px solid var(--green);border-radius:14px;padding:12px 16px;font-size:12pt;line-height:1.5}
+.diary .dt{font-family:var(--serif);font-weight:700;font-size:14pt;color:var(--green-ink);margin-bottom:6px}
+.lines{height:30mm;background:repeating-linear-gradient(transparent 0 8.4mm,var(--rule) 8.4mm 8.8mm)}
+
+/* multiple choice */
+.mc{display:flex;gap:10px;align-items:flex-start;padding:5px 0;border-bottom:1px dotted var(--rule)}
+.mc:last-child{border-bottom:none}
+.mcb{flex:1}
+.mcq{font-size:12.5pt;line-height:1.35;margin-bottom:4px}
+.opts{display:flex;gap:8px;flex-wrap:wrap}
+.opt{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1.5px solid var(--rule);border-radius:999px;padding:2px 12px 2px 3px;font-size:12pt}
+.opt i{font-style:normal;font-weight:700;width:20px;height:20px;border-radius:50%;background:var(--ice-pale);color:var(--ice-deep);display:inline-flex;align-items:center;justify-content:center;font-size:10.5pt}
+.quizhead{display:flex;gap:12px;align-items:flex-end;margin-bottom:10px}
+.quizhead>div:first-child{flex:1}
+.scorebox,.grow{background:#fff;border:2.5px solid var(--hot);border-radius:16px;padding:8px 14px;text-align:center;min-width:40mm}
+.scorebox span,.grow span{display:block;font-size:8.5pt;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--hot)}
+.scorebox b,.grow b{display:block;font-family:var(--serif);font-size:24pt;line-height:1.1;border-bottom:1.5px solid var(--ink-soft);margin:2px 0 4px}
+.scorebox em{font-size:9pt;color:var(--ink-soft)}
+.grow{display:flex;align-items:center;gap:8px}
+.grow b{border:none;border-bottom:1.5px solid var(--ink-soft);min-width:18mm;font-size:18pt;margin:0}
+.grow i{font-style:normal;font-size:18pt;color:var(--hot)}
+.steps{display:flex;gap:8px;margin-top:auto;margin-bottom:12mm}
+.step{flex:1;background:var(--green-ink);color:#fff;border-radius:14px;padding:9px 12px;font-size:11pt;line-height:1.3}
+.step b{display:block;font-family:var(--serif);font-size:18pt;color:#9BE06A;line-height:1}
+
+/* matching + ordering */
+.mrow{display:flex;align-items:center;gap:8px;min-height:9mm;border-bottom:1px dotted var(--rule);font-size:12pt}
+.mrow:last-child{border-bottom:none}
+.mw{flex:1;font-family:var(--serif);font-weight:600;font-size:13.5pt}
+.box{display:inline-block;width:9mm;height:8mm;border:2px solid var(--green);border-radius:6px;background:#fff;flex-shrink:0}
+.box.sm{width:5mm;height:5mm;border-width:1.5px;border-radius:3px}
+.ordr{display:flex;align-items:center;gap:10px;font-size:12.5pt;margin:6px 0}
+.pick{display:inline-block;border:1.5px solid var(--ice-deep);border-radius:999px;padding:0 9px;margin:0 2px;background:#fff}
+.tiles{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:2px}
+.tile{background:#FFF4DC;border:1.5px solid #E8A020;border-radius:7px;padding:1px 9px;font-size:12pt;font-weight:600}
+.aans{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13pt}
+.aan{white-space:nowrap}
+.gap.sm{min-width:40px}
+.sortbox{border:2px dashed var(--ice-deep);border-radius:12px;height:30mm;padding:6px 10px;font-size:11pt;color:var(--ice-deep);background:#fff}
+
+/* plays */
+.cast{display:flex;flex-wrap:wrap;gap:4px 14px;background:var(--ice-pale);border-radius:12px;padding:7px 12px;font-size:11.5pt;margin-bottom:9px}
+.cast div:first-child{width:100%;font-size:8.5pt;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ice-deep)}
+.script{background:#fff;border:1.5px solid var(--rule);border-left:5px solid var(--hot);border-radius:14px;padding:8px 16px}
+.line{display:flex;gap:12px;padding:5px 0;border-bottom:1px dotted var(--rule);font-size:13pt;line-height:1.4}
+.line:last-child{border-bottom:none}
+.who{width:36mm;flex-shrink:0;font-size:9pt;font-weight:700;letter-spacing:.1em;color:var(--hot);padding-top:4px}
+.say b{color:var(--green-deep)}
+.say u{text-decoration-color:var(--ice-deep);text-decoration-thickness:2px}
+.perform{font-family:var(--serif);font-weight:700;font-size:18pt;color:var(--hot);text-align:center;margin:8px 0}
+
+/* board game */
+.boardpg .in{padding:12mm 0 14mm}
+.boardpg.L .in{padding-left:14mm;padding-right:6mm}
+.boardpg.R .in{padding-left:6mm;padding-right:14mm}
+.bhead{height:22mm;display:flex;flex-direction:column;justify-content:flex-end}
+.bhead.r{align-items:flex-end}
+.btitle{font-family:var(--serif);font-weight:700;font-size:30pt;line-height:1;color:var(--green-ink);letter-spacing:-.02em}
+.btitle em{font-style:normal;color:var(--green)}
+.legend{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.lg{display:inline-block;border-radius:999px;padding:2px 10px;font-size:10pt;font-weight:700;color:#fff}
+.lg.led{background:#E8A020}.lg.waste{background:var(--hot)}.lg.water{background:var(--ice-deep)}
+.board{position:relative;height:241mm;margin-top:4mm}
+.board .cell{position:absolute;width:45mm;height:45mm}
+.sq{width:100%;height:100%;border-radius:12px;background:#EDF6E2;border:2px solid var(--green);padding:7px 8px 6px;position:relative;display:flex;flex-direction:column;justify-content:center;text-align:center}
+.sq .sn{position:absolute;top:4px;left:7px;font-family:var(--serif);font-weight:700;font-size:12pt;color:var(--green-deep)}
+.sqq{font-size:12pt;line-height:1.25;font-weight:600;color:var(--ink);margin-top:10px}
+.sq b{font-family:var(--serif);font-size:15pt;line-height:1.05}
+.sq em{font-style:normal;font-size:11pt;margin-top:4px;font-weight:600}
+.sq.led{background:#FFF1D1;border-color:#E8A020}.sq.led b{color:#9A5B00}
+.sq.waste{background:#FCE3DA;border-color:var(--hot)}.sq.waste b{color:var(--hot)}
+.sq.water{background:var(--ice-pale);border-color:var(--ice-deep)}.sq.water b{color:var(--ice-deep)}
+.sq.start,.sq.end{background:var(--green-ink);border-color:var(--green-ink);color:#fff}
+.sq.start .sn,.sq.end .sn{color:#9BE06A}
+.sq.start b,.sq.end b{font-size:19pt;color:#fff}
+.sq.end{background:var(--hot);border-color:var(--hot)}.sq.end .sn{color:#fff}
+.sq:nth-child(1){}
+.boardpg .foot{left:14mm;right:6mm}
+.boardpg.R .foot{left:6mm;right:14mm}
+
+/* cut-outs */
+.cutsec{margin-bottom:8mm}
+.cuthead{font-size:10pt;letter-spacing:.06em;color:var(--ink-soft);margin-bottom:5px}
+.cuthead b{font-family:var(--serif);font-size:14pt;letter-spacing:0;color:var(--ink);margin-right:4px}
+.cutrule{font-size:11.5pt;line-height:1.4;margin-bottom:6px}
+.ctiles{display:grid;grid-template-columns:repeat(5,1fr);border-top:2px dashed var(--ink-soft);border-left:2px dashed var(--ink-soft)}
+.ctile{height:19mm;display:flex;align-items:center;justify-content:center;text-align:center;border-right:2px dashed var(--ink-soft);border-bottom:2px dashed var(--ink-soft);font-family:var(--serif);font-weight:700;font-size:16pt;background:#FFF4DC;padding:3px}
+.ccards{display:grid;grid-template-columns:repeat(3,1fr);border-top:2px dashed var(--ink-soft);border-left:2px dashed var(--ink-soft)}
+.ccard{border-right:2px dashed var(--ink-soft);border-bottom:2px dashed var(--ink-soft);padding:10px 11px;background:#fff;min-height:66mm}
+.ccard .ct{font-family:var(--serif);font-weight:700;font-size:15pt;margin-bottom:6px}
+.ccard .cr{font-size:12pt;padding:4px 0;border-bottom:1px dotted var(--rule);line-height:1.3}
+.ccard .cr b{display:block;font-size:8.5pt;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+.blank .in{justify-content:center;align-items:center}
+.blankmsg{text-align:center;font-family:var(--serif);font-size:14pt;color:#BDB6A5;line-height:1.6}
+
+/* ===== THE SOMERSET PUZZLER ===== */
+.puzz{background:#FFFBEF}
+.puzz .in{padding:12mm 14mm 16mm}
+.pzmast{position:relative;background:#E8A020;border-radius:6px;padding:9mm 10mm 7mm;margin-bottom:6mm;overflow:hidden;
+  background-image:radial-gradient(rgba(255,255,255,.18) 1.2px,transparent 1.3px);background-size:6px 6px}
+.pzsmall{font-family:'Archivo Black',var(--sans);font-size:10pt;letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
+.pzname{font-family:'Archivo Black',var(--sans);font-size:40pt;line-height:.88;color:#fff;text-shadow:3px 3px 0 var(--ink);margin:3mm 0 4mm;letter-spacing:-.01em}
+.pzname span{color:var(--hot);font-size:54pt;text-shadow:3px 3px 0 var(--ink)}
+.pzburst{position:absolute;right:9mm;top:12mm;width:36mm;height:36mm;background:var(--hot);color:#fff;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-family:'Archivo Black',var(--sans);font-size:36pt;line-height:.9;transform:rotate(10deg);box-shadow:0 0 0 4px #fff,0 0 0 7px var(--ink)}
+.pzburst small{font-size:12pt}
+.pzbadge{position:absolute;right:52mm;top:6mm;background:#fff;color:var(--ink);font-family:'Archivo Black',var(--sans);font-size:13pt;line-height:1;padding:5px 9px;border:2px solid var(--ink);transform:rotate(-6deg);text-align:center}
+.pzbadge small{font-size:7.5pt}
+.pzlist{display:flex;flex-wrap:wrap;gap:5px}
+.pzlist span{background:var(--ink);color:#fff;font-size:10.5pt;font-weight:700;padding:2px 9px;border-radius:3px}
+.pzhow{margin-top:4mm;font-size:12pt;line-height:1.35;color:var(--ink);font-weight:600;max-width:150mm}
+.pzrun{font-family:'Archivo Black',var(--sans);font-size:11pt;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--ink);padding:4px 10px;margin:-2mm 0 5mm;display:inline-block;align-self:flex-start}
+.pzh{display:flex;align-items:center;gap:10px;border-top:4px solid var(--ink);border-bottom:1.5px solid var(--ink);padding:5px 0;margin-bottom:4mm}
+.pzh.bonus .pzn{background:var(--green)}
+.pzn{background:var(--hot);color:#fff;font-family:'Archivo Black',var(--sans);font-size:20pt;width:12mm;height:12mm;display:flex;align-items:center;justify-content:center;border-radius:4px;flex-shrink:0}
+.pzt{flex:1}
+.pzt b{display:block;font-family:'Archivo Black',var(--sans);font-size:17pt;font-weight:400;line-height:1.05;text-transform:uppercase}
+.pzt em{font-style:normal;font-size:10pt;color:var(--ink-soft);font-weight:600}
+.pzs{text-align:right;color:#E8A020;font-size:15pt;line-height:1}
+.pzs i{display:block;font-style:normal;font-size:9.5pt;color:var(--ink-soft);font-weight:700;margin-top:2px}
+.pzbox{margin-bottom:6mm}
+.pzlab{font-size:10pt;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--hot);margin-bottom:5px}
+.mc.pz{border-bottom:1px solid #EADFC6}
+.mc.pz .qn{color:var(--hot)}
+.mc.pz .opt i{background:#FFF1D1;color:#9A5B00}
+.ws{display:grid;grid-template-columns:repeat(11,9.2mm);border:2.5px solid var(--ink);background:#fff}
+.wsc{height:9.2mm;display:flex;align-items:center;justify-content:center;font-family:'Archivo Black',var(--sans);font-size:14pt;border-right:1px solid #EADFC6;border-bottom:1px solid #EADFC6}
+.wsws{display:grid;grid-template-columns:1fr 1fr;gap:6px 10px}
+.wsw{display:flex;align-items:center;gap:6px;font-size:13pt}
+.ckey{display:grid;grid-template-columns:repeat(13,1fr);gap:3px;margin-bottom:10px}
+.kk{background:#fff;border:1.5px solid var(--ink);text-align:center;font-size:10pt;line-height:1.2;padding:2px 0}
+.kk b{display:block;font-family:'Archivo Black',var(--sans);font-weight:400;font-size:12pt;color:var(--hot)}
+.cmsg{display:flex;flex-wrap:wrap;gap:6px 14px}
+.cw{display:inline-flex;gap:2px}
+.cc{display:inline-flex;flex-direction:column;align-items:center;width:8.6mm}
+.cc .cbox{width:8.6mm;height:9mm;border:1.5px solid var(--ink);background:#fff}
+.cc .cn{font-size:10pt;font-weight:700;color:var(--ink-soft)}
+.angs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px 12px}
+.ang{background:#fff;border:1.5px solid var(--ink);border-radius:6px;padding:6px 10px}
+.ang b{display:block;font-family:'Archivo Black',var(--sans);font-weight:400;font-size:15pt;letter-spacing:.12em;color:var(--hot)}
+.ang .gap{display:block;min-width:0;margin:10px 0 4px;height:0}
+.xw{display:grid;border:2.5px solid var(--ink);margin:0 auto;background:var(--ink)}
+.xc{aspect-ratio:1;background:#E8A020;background-image:radial-gradient(rgba(255,255,255,.25) 1px,transparent 1.2px);background-size:5px 5px;position:relative}
+.xc.live{background:#fff;border:.5px solid var(--ink)}
+.xc i{position:absolute;top:1px;left:2px;font-style:normal;font-size:8pt;font-weight:700}
+.clue{font-size:12pt;line-height:1.35;margin-bottom:5px}
+.clue b{color:var(--hot);margin-right:4px}
+.clue span{color:var(--ink-soft);font-size:10.5pt}
+.lgrid{border-collapse:collapse;width:100%;font-size:11.5pt}
+.lgrid th{font-weight:700;padding:4px 6px;text-align:left}
+.lgrid tr:first-child th{font-size:10pt;text-align:center}
+.lgrid td{border:2px solid var(--ink);height:11mm;background:#fff}
+.puzz .foot{left:14mm;right:14mm}
+
+/* colour edition: back cover legibility on dark green */
+.back .masthead{color:#9BE06A}
+.back .mast-sub,.back .cover-bottom,.back p{color:#C9D8C0 !important}
+.back .kick{color:#9BE06A !important}
+
+
+</style>
+<style>
+  /* ---- Vista shell: projector first ---- */
+  body { background:var(--green-ink); color:#fff; font-family:var(--sans); overflow-y:auto; }
+  .screen { display:none; min-height:100vh; padding:4vh 5vw 12vh; }
+  .screen.active { display:block; }
+  .kick { font-size:clamp(12px,1.2vw,18px); font-weight:700; letter-spacing:4px; text-transform:uppercase; color:#9BE06A; }
+  h1 { font-family:var(--serif); font-size:clamp(34px,4.6vw,70px); font-weight:700; line-height:1.04; margin:8px 0 10px; }
+  h2 { font-family:var(--serif); font-size:clamp(26px,3.4vw,52px); font-weight:700; line-height:1.05; margin:6px 0 24px; }
+  .lead { font-size:clamp(15px,1.6vw,23px); font-weight:600; opacity:.9; max-width:70ch; }
+  .navtiles { display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:14px; margin-top:34px; }
+  .navtile { text-align:left; font-family:var(--serif); font-size:clamp(15px,1.5vw,22px); font-weight:700; color:var(--green-ink);
+             background:#fff; border:none; border-radius:16px; padding:16px 18px; cursor:pointer; box-shadow:0 5px 0 rgba(0,0,0,.14); }
+  .navtile:hover { transform:translateY(-2px); }
+  .navtile small { display:block; font-family:var(--sans); font-size:11px; font-weight:800; letter-spacing:2px;
+                   text-transform:uppercase; color:var(--hot); margin-bottom:5px; }
+  .navtile.done { background:#EDF6E2; }
+  .stagehead { margin-bottom:18px; }
+  .holder { background:#fff; border-radius:22px; padding:clamp(16px,2.6vh,34px); zoom:1.55; color:var(--ink); }
+  .holder .card { margin-bottom:0; border:none; }
+  .bar { position:fixed; left:0; right:0; bottom:0; display:flex; gap:10px; padding:14px 5vw;
+         background:linear-gradient(transparent, rgba(30,66,39,.92) 40%); }
+  .btn { font-family:var(--sans); font-size:clamp(14px,1.4vw,20px); font-weight:800; background:var(--hot); color:#fff;
+         border:none; border-radius:999px; padding:12px 26px; cursor:pointer; }
+  .btn.ghost { background:transparent; border:2px solid rgba(255,255,255,.55); }
+  .btn:hover { filter:brightness(1.1); }
+  .logo { position:fixed; right:5vw; bottom:16px; display:flex; align-items:baseline; gap:10px; pointer-events:none; }
+  .logo .wm { font-family:var(--serif); font-weight:700; font-size:22px; color:#fff; }
+  .logo .lc { font-size:9px; font-weight:700; letter-spacing:3px; color:rgba(255,255,255,.75); }
+
+  /* ---- clickable lines inside the booklet card ---- */
+  .ex-line { cursor:pointer; border-radius:10px; transition:background .12s; }
+  .ex-line:hover { background:#F2F7EC; box-shadow:0 0 0 2px var(--green); }
+  .ex-line.done { background:#F7FBF3; box-shadow:none; }
+  .ans-fill { display:inline-block; background:#E3F2D3; color:var(--green-deep); font-weight:700; border-radius:6px; padding:0 9px; margin:0 3px; }
+  .ans-box { display:inline-flex!important; align-items:center; justify-content:center; background:var(--green)!important; color:#fff;
+             font-family:var(--serif); font-weight:700; }
+  .ans-pill { display:inline-block; background:#E3F2D3; color:var(--green-deep); font-weight:700; border-radius:8px; padding:1px 10px; margin-left:8px; }
+  .hit { background:#E3F2D3!important; border-color:var(--green)!important; color:var(--green-deep)!important; font-weight:700 }
+  .dim { opacity:.3 }
+
+  /* ---- the big answer, for the back of the room ---- */
+  #big { position:fixed; inset:0; z-index:99; display:none; flex-direction:column; align-items:center; justify-content:center;
+         text-align:center; padding:6vh 6vw; background:rgba(30,66,39,.97); cursor:pointer; }
+  #big.on { display:flex; }
+  #big .num { font-family:var(--sans); font-size:clamp(16px,2vw,28px); font-weight:800; letter-spacing:5px;
+              text-transform:uppercase; color:#9BE06A; }
+  #big .word { font-family:var(--serif); font-weight:700; color:#fff; line-height:1.02; margin:2vh 0;
+               font-size:clamp(48px,13vw,190px); }
+  #big .word.long { font-size:clamp(34px,7vw,104px); }
+  #big .ctx { font-size:clamp(15px,1.8vw,28px); font-weight:600; color:rgba(255,255,255,.8); max-width:60ch; }
+  #big .tap { position:absolute; bottom:5vh; font-size:13px; font-weight:800; letter-spacing:3px;
+              text-transform:uppercase; color:rgba(255,255,255,.5); }
+  @media print { .bar, #big, .logo { display:none } }
+</style>
+</head>
+<body>
+
+<section class="screen active" id="home">
+  <div class="kick">Flyers I · Nº2 · October 2026</div>
+  <h1>Correct together</h1>
+  <p class="lead">Pick the exercise. Click a line: the answer appears where the children wrote theirs, and big on the screen for the back of the room.</p>
+  <div class="navtiles">
+<button class="navtile" data-go="p3-what-do-i-know-answers"><small>Page 3</small>What do I know? — answers</button>
+<button class="navtile" data-go="p6-match-the-word"><small>Page 6</small>Match the word to its meaning</button>
+<button class="navtile" data-go="p5-true-or-false"><small>Page 5</small>True or false?</button>
+<button class="navtile" data-go="p6-put-the-jobs-in-order"><small>Page 6</small>Put the jobs in order</button>
+<button class="navtile" data-go="p6-odd-one-out"><small>Page 6</small>Odd one out</button>
+<button class="navtile" data-go="p6-fill-the-gaps"><small>Page 6</small>Fill the gaps</button>
+<button class="navtile" data-go="p7-write-it"><small>Page 7</small>Complete the sentences</button>
+<button class="navtile" data-go="p8-a-circle"><small>Page 8</small>A · Circle the right words</button>
+<button class="navtile" data-go="p8-b-put-the-words"><small>Page 8</small>B · Put the words in order</button>
+<button class="navtile" data-go="p8-c-find-the-mistake"><small>Page 8</small>C · Find the mistake</button>
+<button class="navtile" data-go="p11-match-the-two-halves"><small>Page 11</small>Match the two halves</button>
+<button class="navtile" data-go="p11-unjumble"><small>Page 11</small>Unjumble the vegetables</button>
+<button class="navtile" data-go="p12-a-read-and-write"><small>Page 12</small>What is it?</button>
+<button class="navtile" data-go="p12-b-a-or-an"><small>Page 12</small>a or an?</button>
+<button class="navtile" data-go="p12-c-sort-them"><small>Page 12</small>Under or above the ground?</button>
+<button class="navtile" data-go="p12-d-shopping-list"><small>Page 12</small>D · Your shopping list</button>
+<button class="navtile" data-go="p13-complete-the-dialogue"><small>Page 13</small>Complete the dialogue</button>
+<button class="navtile" data-go="p13-put-the-words-in-order"><small>Page 13</small>Put the words in order</button>
+<button class="navtile" data-go="p13-order-from-the-menu"><small>Page 13</small>Order from the menu</button>
+<button class="navtile" data-go="p14-complete-the-sentences"><small>Page 14</small>How often? — complete</button>
+<button class="navtile" data-go="p14-noras-week"><small>Page 14</small>Read the diary · Nora's week</button>
+<button class="navtile" data-go="p15-a-circle"><small>Page 15</small>A · Circle the right word</button>
+<button class="navtile" data-go="p15-b-find-the-mistake"><small>Page 15</small>B · Find the mistake</button>
+<button class="navtile" data-go="p15-c-about-you"><small>Page 15</small>C · About you (model answers)</button>
+<button class="navtile" data-go="p19-find-the-opinion-phrases"><small>Page 19</small>Find the opinion phrases</button>
+<button class="navtile" data-go="p21-rule-check"><small>Page 21</small>Rule check</button>
+<button class="navtile" data-go="p21-farm-check"><small>Page 20</small>Farm check — T or F</button>
+<button class="navtile" data-go="p22-warm-up-quiz"><small>Page 22</small>Get ready — warm-up quiz</button>
+<button class="navtile" data-go="p23-unit-2-test-answers"><small>Pages 23–24</small>Unit 2 test — answers</button>
+  </div>
+</section>
+
+<section class="screen stage" id="p3-what-do-i-know-answers"><div class="stagehead"><div class="kick">Page 3 · correct together</div><h2>What do I know? — answers</h2></div><div class="holder"><div class="card" style="padding:10px 16px 6px">
+<div class="mc "><span class="qn">1</span><div class="mcb"><div class="mcq">You put seeds in the ground. You ___ them.</div><div class="opts"><span class="opt"><i>a</i>pick</span><span class="opt"><i>b</i>plant</span><span class="opt"><i>c</i>weed</span></div></div></div>
+<div class="mc "><span class="qn">2</span><div class="mcb"><div class="mcq">The tomatoes are red and ready to eat. They are ___.</div><div class="opts"><span class="opt"><i>a</i>ripe</span><span class="opt"><i>b</i>seeds</span><span class="opt"><i>c</i>green</span></div></div></div>
+<div class="mc "><span class="qn">3</span><div class="mcb"><div class="mcq">It's long and green. You eat it in a salad.</div><div class="opts"><span class="opt"><i>a</i>a pumpkin</span><span class="opt"><i>b</i>an onion</span><span class="opt"><i>c</i>a cucumber</span></div></div></div>
+<div class="mc "><span class="qn">4</span><div class="mcb"><div class="mcq">It's big, round and orange.</div><div class="opts"><span class="opt"><i>a</i>a pumpkin</span><span class="opt"><i>b</i>a cabbage</span><span class="opt"><i>c</i>chillis</span></div></div></div>
+<div class="mc "><span class="qn">5</span><div class="mcb"><div class="mcq">It's Saturday. I ___ go to school.</div><div class="opts"><span class="opt"><i>a</i>don't have to</span><span class="opt"><i>b</i>have to</span><span class="opt"><i>c</i>has to</span></div></div></div>
+<div class="mc "><span class="qn">6</span><div class="mcb"><div class="mcq">My brother ___ walk the dog every morning.</div><div class="opts"><span class="opt"><i>a</i>have to</span><span class="opt"><i>b</i>don't have to</span><span class="opt"><i>c</i>has to</span></div></div></div>
+<div class="mc "><span class="qn">7</span><div class="mcb"><div class="mcq">I go to the market on Mondays and Thursdays. I go ___.</div><div class="opts"><span class="opt"><i>a</i>twice a week</span><span class="opt"><i>b</i>once a week</span><span class="opt"><i>c</i>every day</span></div></div></div>
+<div class="mc "><span class="qn">8</span><div class="mcb"><div class="mcq">Waiter: “What would you like?” You: “___ some vegetable soup, please.”</div><div class="opts"><span class="opt"><i>a</i>I like</span><span class="opt"><i>b</i>I'd like</span><span class="opt"><i>c</i>I have</span></div></div></div>
+  </div></div><div class="bar"><button class="btn" data-all>Show all</button><button class="btn ghost" data-reset>Start again</button><button class="btn ghost" data-home>&#9664; All exercises</button></div></section>
+<section class="screen stage" id="p6-match-the-word"><div class="stagehead"><div class="kick">Page 6 · correct together</div><h2>Match the word to its meaning</h2></div><div class="holder"><div class="card">
+    <span class="lab">Match the word to its meaning · write the letter in the box</span>
+    <div class="grid" style="gap:14px">
+      <div style="flex:.8"><div class="mrow"><span class="qn">1</span><span class="mw">dig</span><span class="box"></span></div>
+<div class="mrow"><span class="qn">2</span><span class="mw">plant</span><span class="box"></span></div>
+<div class="mrow"><span class="qn">3</span><span class="mw">water</span><span class="box"></span></div>
+<div class="mrow"><span class="qn">4</span><span class="mw">weed</span><span class="box"></span></div>
+<div class="mrow"><span class="qn">5</span><span class="mw">pick</span><span class="box"></span></div>
+<div class="mrow"><span class="qn">6</span><span class="mw">seeds</span><span class="box"></span></div>
+<div class="mrow"><span class="qn">7</span><span class="mw">ripe</span><span class="box"></span></div>
+<div class="mrow"><span class="qn">8</span><span class="mw">a market</span><span class="box"></span></div></div>
+      <div style="flex:1.2"><div class="mrow"><span class="qn">a</span><span>take fruit or vegetables off the plant</span></div>
+<div class="mrow"><span class="qn">b</span><span>ready to eat</span></div>
+<div class="mrow"><span class="qn">c</span><span>make a hole in the ground</span></div>
+<div class="mrow"><span class="qn">d</span><span>a place with stalls where you buy food</span></div>
+<div class="mrow"><span class="qn">e</span><span>give plants something to drink</span></div>
+<div class="mrow"><span class="qn">f</span><span>very small things: new plants grow from them</span></div>
+<div class="mrow"><span class="qn">g</span><span>put seeds in the ground</span></div>
+<div class="mrow"><span class="qn">h</span><span>take the bad plants out of the garden</span></div></div>
+    </div>
+  </div></div><div class="bar"><button class="btn" data-all>Show all</button><button class="btn ghost" data-reset>Start again</button><button class="btn ghost" data-home>&#9664; All exercises</button></div></section>
+<section class="screen stage" id="p5-true-or-false"><div class="stagehead"><div class="kick">Page 5 · correct together</div><h2>True or false?</h2></div><div class="holder"><div class="card green" style="padding:8px 16px;margin-top:8px;margin-bottom:0"><span class="lab">Read again · true or false? Write T or F</span><div class="q" style="margin-bottom:5px"><span class="qn">1</span><span>Some families in Valencia grow their own food. <span class="gap" style="min-width:12mm"></span></span></div><div class="q" style="margin-bottom:5px"><span class="qn">2</span><span>Everybody has space for a garden at home. <span class="gap" style="min-width:12mm"></span></span></div><div class="q" style="margin-bottom:5px"><span class="qn">3</span><span>In a community garden, families share the space. <span class="gap" style="min-width:12mm"></span></span></div><div class="q" style="margin-bottom:5px"><span class="qn">4</span><span>First you plant the seeds, then you dig. <span class="gap" style="min-width:12mm"></span></span></div><div class="q" style="margin-bottom:5px"><span class="qn">5</span><span>Ripe vegetables are ready to pick. <span class="gap" style="min-width:12mm"></span></span></div></div></div><div class="bar"><button class="btn" data-all>Show all</button><button class="btn ghost" data-reset>Start again</button><button class="btn ghost" data-home>&#9664; All exercises</button></div></section>
+<section class="screen stage" id="p6-put-the-jobs-in-order"><div class="stagehead"><div class="kick">Page 6 · correct together</div><h2>Put the jobs in order</h2></div><div class="holder"><div class="card green" style="margin-bottom:0">
+      <span class="lab">Put the jobs in order · 1 to 5</span>
+      <div class="ordr"><span class="box"></span>pick the vegetables</div>
+<div class="ordr"><span class="box"></span>plant the seeds</div>
+<div class="ordr"><span class="box"></span>dig the ground</div>
+<div class="ordr"><span class="box"></span>water the plants every day</div>
+<div class="ordr"><span class="box"></span>weed the garden</div>
+    </div></div><div class="bar"><button class="btn" data-all>Show all</button><button class="btn ghost" data-reset>Start again</button><button class="btn ghost" data-home>&#9664; All exercises</button></div></section>
+<section class="screen stage" id="p6-odd-one-out"><div class="stagehead"><div class="kick">Page 6 · correct together</div><h2>Odd one out</h2></div><div class="holder"><div class="card ice" style="margin-bottom:0">
+      <span class="lab">Odd one out · circle it and say why</span>
+      <div class="q"><span class="qn">1</span><span class="tags"><span class="tag">dig</span><span class="tag">plant</span><span class="tag">cucumber</span><span class="tag">water</span></span></div>
+<div class="q"><span class="qn">2</span><span class="tags"><span class="tag">onion</span><span class="tag">cabbage</span><span class="tag">seeds</span><span class="tag">pumpkin</span></span></div>
+<div class="q"><span class="qn">3</span><span class="tags"><span class="tag">market</span><span class="tag">garden</span><span class="tag">farm</span><span class="tag">ripe</span></span></div>
+      <div class="bubs" style="margin-top:6px"><div class="bub">“Cucumber is a vegetable. The others are verbs.”</div></div>
+    </div></div><div class="bar"><button class="btn" data-all>Show all</button><button class="btn ghost" data-reset>Start again</button><button class="btn ghost" data-home>&#9664; All exercises</button></div></section>
+<section class="screen stage" id="p6-fill-the-gaps"><div class="stagehead"><div class="kick">Page 6 · correct together</div><h2>Fill the gaps</h2></div><div class="holder"><div class="card ice" style="padding:8px 16px;margin-top:8px;margin-bottom:0"><span class="lab">Fill the gaps · use the words in the box</span><div class="tags" style="margin:2px 0 4px"><span class="tag h">dig</span><span class="tag h">plant</span><span class="tag h">water</span><span class="tag h">weed</span><span class="tag h">pick</span><span class="tag h">ripe</span></div><div style="display:grid;grid-template-columns:1fr 1fr;column-gap:14px"><div class="q" style="margin-bottom:5px"><span class="qn">1</span><span>We <span class="gap"></span> a hole.</span></div><div class="q" style="margin-bottom:5px"><span class="qn">2</span><span>Tomatoes are red and <span class="gap"></span>.</span></div><div class="q" style="margin-bottom:5px"><span class="qn">3</span><span>Please <span class="gap"></span> the plants.</span></div><div class="q" style="margin-bottom:5px"><span class="qn">4</span><span>I <span class="gap"></span> the beans.</span></div><div class="q" style="margin-bottom:5px"><span class="qn">5</span><span>Ana has to <span class="gap"></span> the garden.</span></div><div class="q" style="margin-bottom:5px"><span class="qn">6</span><span>We <span class="gap"></span> the seeds.</span></div></div></div></div><div class="bar"><button class="btn" data-all>Show all</button><button class="btn ghost" data-reset>Start again</button><button class="btn ghost" data-home>&#9664; All exercises</button></div></section>
+<section class="screen stage" id="p7-write-it"><div class="stagehead"><div class="kick">Page 7 · correct together</div><h2>Complete the sentences</h2></div><div class="holder"><div class="card" style="margin-bottom:0">
+    <span class="lab">Write it</span>
+    <h3 style="margin-bottom:9px">Complete the sentences</h3>
+    <div class="q"><span class="qn">1</span><span>The tomatoes are ripe. She <span class="gap"></span> pick them.</span></div>
+    <div class="q"><span class="qn">2</span><span>I <span class="gap"></span> water the green beans when it rains.</span></div>
+    <div class="q"><span class="qn">3</span><span>My father <span class="gap"></span> weed the garden so the vegetables can grow.</span></div>
+    <div class="q"><span class="qn">4</span><span>Farmers <span class="gap"></span> use a lot of water for their plants.</span></div>
+    <div class="q"><span class="qn">5</span><span>Luisa <span class="gap"></span> (not) weed the garden today — she did it yesterday.</span></div>
+    <div class="q"><span class="qn">6</span><span>My mum <span class="gap"></span> water the plants at home — that's my job!</span></div>
+  </div></div><div class="bar"><button class="btn" data-all>Show all</button><button class="btn ghost" data-reset>Start again</button><button class="btn ghost" data-home>&#9664; All exercises</button></div></section>
+<section class="screen stage" id="p8-a-circle"><div class="stagehead"><div class="kick">Page 8 · correct together</div><h2>A · Circle the right words</h2></div><div class="holder"><div class="card">
+    <span class="lab">A · Circle the right words</span>
+    <div class="q"><span class="qn">1</span><span>My sister <span class="pick">has to</span> / <span class="pick">have to</span> feed the cat.</span></div>
+<div class="q"><span class="qn">2</span><span>We <span class="pick">don't have to</span> / <span class="pick">doesn't have to</span> wear a uniform on Saturday.</span></div>
+<div class="q"><span class="qn">3</span><span> <span class="pick">Do</span> / <span class="pick">Does</span> you have to help at home?</span></div>
+<div class="q"><span class="qn">4</span><span>Farmers <span class="pick">has to</span> / <span class="pick">have to</span> get up early.</span></div>
+<div class="q"><span class="qn">5</span><span>Leo <span class="pick">don't have to</span> / <span class="pick">doesn't have to</span> cook dinner.</span></div>
+  </div></div><div class="bar"><button class="btn" data-all>Show all</button><button class="btn ghost" data-reset>Start again</button><button class="btn ghost" data-home>&#9664; All exercises</button></div></section>
+<section class="screen stage" id="p8-b-put-the-words"><div class="stagehead"><div class="kick">Page 8 · correct together</div><h2>B · Put the words in order</h2></div><div class="holder"><div class="card green">
+    <span class="lab">B · Put the words in order · write the sentence</span>
+    <div class="q"><span class="qn">1</span><span style="flex:1"><span class="tiles"><span class="tile">water</span><span class="tile">have</span><span class="tile">I</span><span class="tile">the plants</span><span class="tile">to</span></span><span class="wl"></span></span></div>
+<div class="q"><span class="qn">2</span><span style="flex:1"><span class="tiles"><span class="tile">weed</span><span class="tile">doesn't</span><span class="tile">today</span><span class="tile">she</span><span class="tile">have to</span></span><span class="wl"></span></span></div>
+<div class="q"><span class="qn">3</span><span style="flex:1"><span class="tiles"><span class="tile">dig</span><span class="tile">have to</span><span class="tile">do</span><span class="tile">you</span><span class="tile">?</span></span><span class="wl"></span></span></div>
+  </div></div><div class="bar"><button class="btn" data-all>Show all</button><button class="btn ghost" data-reset>Start again</button><button class="btn ghost" data-home>&#9664; All exercises</button></div></section>
+<section class="screen stage" id="p8-c-find-the-mistake"><div class="stagehead"><div class="kick">Page 8 · correct together</div><h2>C · Find the mistake</h2></div><div class="holder"><div class="card ice" style="margin-bottom:0">
+    <span class="lab">C · Find the mistake · write it correctly</span>
+    <div class="q"><span class="qn">1</span><span style="flex:1">He have to pick the tomatoes.<span class="wl"></span></span></div>
+<div class="q"><span class="qn">2</span><span style="flex:1">I don't has to go to school on Sunday.<span class="wl"></span></span></div>
+<div class="q"><span class="qn">3</span><span style="flex:1">We has to water the garden.<span class="wl"></span></span></div>
+<div class="q"><span class="qn">4</span><span style="flex:1">She doesn't have pick the beans.<span class="wl"></span></span></div>
+  </div></div><div class="bar"><button class="btn" data-all>Show all</button><button class="btn ghost" data-reset>Start again</button><button class="btn ghost" data-home>&#9664; All exercises</button></div></section>
+<section class="screen stage" id="p11-match-the-two-halves"><div class="stagehead"><div class="kick">Page 11 · correct together</div><h2>Match the two halves</h2></div><div class="holder"><div class="card">
+    <span class="lab">Match the two halves</span>
+    <div class="grid">
+      <div>
+        <div class="q"><span class="qn">1</span><span>The tomatoes are ripe,</span></div>
+        <div class="q"><span class="qn">2</span><span>My grandma grows lettuce and carrots</span></div>
+        <div class="q"><span class="qn">3</span><span>We don't have space at home,</span></div>
+        <div class="q"><span class="qn">4</span><span>Before you eat vegetables from the garden,</span></div>
+      </div>
+      <div>
+        <div class="q"><span class="qn">a</span><span>you have to wash them.</span></div>
+        <div class="q"><span class="qn">b</span><span>so we have to pick them.</span></div>
+        <div class="q"><span class="qn">c</span><span>so we share a community garden.</span></div>
+        <div class="q"><span class="qn">d</span><span>in her garden.</span></div>
+      </div>
+    </div>
+  </div></div><div class="bar"><button class="btn" data-all>Show all</button><button class="btn ghost" data-reset>Start again</button><button class="btn ghost" data-home>&#9664; All exercises</button></div></section>
+<section class="screen stage" id="p11-unjumble"><div class="stagehead"><div class="kick">Page 11 · correct together</div><h2>Unjumble the vegetables</h2></div><div class="holder"><div class="card" style="padding:8px 16px;margin-top:8px;margin-bottom:0"><span class="lab">Unjumble the vegetables</span><div style="display:grid;grid-template-columns:1fr 1fr;column-gap:14px"><div class="q" style="margin-bottom:5px"><span class="qn">1</span><span>bacgabe <span class="gap"></span></span></div><div class="q" style="margin-bottom:5px"><span class="qn">2</span><span>noion <span class="gap"></span></span></div><div class="q" style="margin-bottom:5px"><span class="qn">3</span><span>kupmpin <span class="gap"></span></span></div><div class="q" style="margin-bottom:5px"><span class="qn">4</span><span>guebernia <span class="gap"></span></span></div><div class="q" style="margin-bottom:5px"><span class="qn">5</span><span>lichlis <span class="gap"></span></span></div><div class="q" style="margin-bottom:5px"><span class="qn">6</span><span>gettoucre <span class="gap"></span></span></div></div></div></div><div class="bar"><button class="btn" data-all>Show all</button><button class="btn ghost" data-reset>Start again</button><button class="btn ghost" data-home>&#9664; All exercises</button></div></section>
+<section class="screen stage" id="p12-a-read-and-write"><div class="stagehead"><div class="kick">Page 12 · correct together</div><h2>What is it?</h2></div><div class="holder"><div class="card">
+    <span class="lab">A · Read and write the vegetable</span>
+    <div class="tags" style="margin-bottom:8px"><span class="tag g">cabbage</span><span class="tag g">chillis</span><span class="tag g">cucumber</span><span class="tag g">onion</span><span class="tag g">pumpkin</span><span class="tag g">aubergine</span></div>
+    <div class="q"><span class="qn">1</span><span style="flex:1">It's long and green. You can eat it in a salad.</span><span class="gap lg"></span></div>
+<div class="q"><span class="qn">2</span><span style="flex:1">It's big, round and orange.</span><span class="gap lg"></span></div>
+<div class="q"><span class="qn">3</span><span style="flex:1">It's purple and long. You cook it.</span><span class="gap lg"></span></div>
+<div class="q"><span class="qn">4</span><span style="flex:1">They're small, red and very hot!</span><span class="gap lg"></span></div>
+<div class="q"><span class="qn">5</span><span style="flex:1">It makes you cry when you cut it.</span><span class="gap lg"></span></div>
+<div class="q"><span class="qn">6</span><span style="flex:1">It's green and round, with lots of leaves.</span><span class="gap lg"></span></div>
+  </div></div><div class="bar"><button class="btn" data-all>Show all</button><button class="btn ghost" data-reset>Start again</button><button class="btn ghost" data-home>&#9664; All exercises</button></div></section>
+<section class="screen stage" id="p12-b-a-or-an"><div class="stagehead"><div class="kick">Page 12 · correct together</div><h2>a or an?</h2></div><div class="holder"><div class="card green">
+    <span class="lab">B · a or an?</span>
+    <div class="aans"><span class="aan"><span class="gap sm"></span> onion</span><span class="aan"><span class="gap sm"></span> cabbage</span><span class="aan"><span class="gap sm"></span> aubergine</span><span class="aan"><span class="gap sm"></span> pumpkin</span><span class="aan"><span class="gap sm"></span> courgette</span><span class="aan"><span class="gap sm"></span> apple</span><span class="aan"><span class="gap sm"></span> egg</span><span class="aan"><span class="gap sm"></span> carrot</span></div>
+    <p class="sub" style="margin:8px 0 0">Use <b>an</b> when the next word starts with a, e, i, o or u.</p>
+  </div></div><div class="bar"><button class="btn" data-all>Show all</button><button class="btn ghost" data-reset>Start again</button><button class="btn ghost" data-home>&#9664; All exercises</button></div></section>
+<section class="screen stage" id="p12-c-sort-them"><div class="stagehead"><div class="kick">Page 12 · correct together</div><h2>Under or above the ground?</h2></div><div class="holder"><div class="card ice" style="margin-bottom:0">
+    <span class="lab">C · Sort them · under the ground or above the ground?</span>
+    <div class="tags" style="margin-bottom:8px"><span class="tag">carrots</span><span class="tag">a pumpkin</span><span class="tag">onions</span><span class="tag">a courgette</span><span class="tag">potatoes</span><span class="tag">a cucumber</span></div>
+    <div class="grid">
+      <div class="sortbox"><b>Under the ground</b></div>
+      <div class="sortbox"><b>Above the ground</b></div>
+    </div>
+  </div></div><div class="bar"><button class="btn" data-all>Show all</button><button class="btn ghost" data-reset>Start again</button><button class="btn ghost" data-home>&#9664; All exercises</button></div></section>
+<section class="screen stage" id="p12-d-shopping-list"><div class="stagehead"><div class="kick">Page 12 · correct together</div><h2>D · Your shopping list</h2></div><div class="holder"><div class="card green" style="padding:8px 16px;margin-top:5px;margin-bottom:0"><span class="lab">D · Your shopping list · Mercado Central</span><p class="sub" style="margin:0 0 3px">You are making vegetable soup. Write what you would like to buy.</p><div class="q" style="margin-bottom:5px"><span class="qn">1</span><span>I'd like <span class="gap" style="min-width:40mm"></span> and <span class="gap" style="min-width:40mm"></span>, please.</span></div><div class="q" style="margin-bottom:5px"><span class="qn">2</span><span>I'd like <span class="gap" style="min-width:40mm"></span> and <span class="gap" style="min-width:40mm"></span>, please.</span></div></div></div><div class="bar"><button class="btn" data-all>Show all</button><button class="btn ghost" data-reset>Start again</button><button class="btn ghost" data-home>&#9664; All exercises</button></div></section>
+<section class="screen stage" id="p13-complete-the-dialogue"><div class="stagehead"><div class="kick">Page 13 · correct together</div><h2>Complete the dialogue</h2></div><div class="holder"><div class="card" style="padding:8px 16px;margin-bottom:7px">
+    <span class="lab">Complete the dialogue</span>
+    <div class="q"><span class="qn">A</span><span>Welcome to Mario's Café. What <span class="gap"></span> you like to order today?</span></div>
+    <div class="q"><span class="qn">B</span><span><span class="gap"></span> like some pumpkin soup and courgette bread, please.</span></div>
+    <div class="q"><span class="qn">C</span><span>I'd <span class="gap"></span> some chicken and rice, please.</span></div>
+  </div></div><div class="bar"><button class="btn" data-all>Show all</button><button class="btn ghost" data-reset>Start again</button><button class="btn ghost" data-home>&#9664; All exercises</button></div></section>
+<section class="screen stage" id="p13-put-the-words-in-order"><div class="stagehead"><div class="kick">Page 13 · correct together</div><h2>Put the words in order</h2></div><div class="holder"><div class="card green">
+    <span class="lab">B · Put the words in order · write the sentence</span>
+    <div class="q"><span class="qn">1</span><span style="flex:1"><span class="tiles"><span class="tile">water</span><span class="tile">have</span><span class="tile">I</span><span class="tile">the plants</span><span class="tile">to</span></span><span class="wl"></span></span></div>
+<div class="q"><span class="qn">2</span><span style="flex:1"><span class="tiles"><span class="tile">weed</span><span class="tile">doesn't</span><span class="tile">today</span><span class="tile">she</span><span class="tile">have to</span></span><span class="wl"></span></span></div>
+<div class="q"><span class="qn">3</span><span style="flex:1"><span class="tiles"><span class="tile">dig</span><span class="tile">have to</span><span class="tile">do</span><span class="tile">you</span><span class="tile">?</span></span><span class="wl"></span></span></div>
+  </div></div><div class="bar"><button class="btn" data-all>Show all</button><button class="btn ghost" data-reset>Start again</button><button class="btn ghost" data-home>&#9664; All exercises</button></div></section>
+<section class="screen stage" id="p13-order-from-the-menu"><div class="stagehead"><div class="kick">Page 13 · correct together</div><h2>Order from the menu</h2></div><div class="holder"><div class="card green" style="padding:7px 16px;margin-bottom:6px">
+    <span class="lab">Order from the menu · a café in Valencia</span>
+    <div class="tags" style="margin:4px 0 5px">
+      <span class="tag h">horchata · €2</span><span class="tag h">fartons · €3</span>
+      <span class="tag h">paella · €6</span><span class="tag h">vegetable soup · €4</span>
+      <span class="tag h">tomato salad · €3</span>
+    </div>
+    <div class="q"><span class="qn">1</span><span>You have €5. Order your lunch: I'd like <span class="gap"></span> and <span class="gap"></span>, please.</span></div>
+    <div class="q"><span class="qn">2</span><span>Your friend is thirsty. What would she like? She'd like <span class="gap"></span>.</span></div>
+  </div></div><div class="bar"><button class="btn" data-all>Show all</button><button class="btn ghost" data-reset>Start again</button><button class="btn ghost" data-home>&#9664; All exercises</button></div></section>
+<section class="screen stage" id="p14-complete-the-sentences"><div class="stagehead"><div class="kick">Page 14 · correct together</div><h2>How often? — complete</h2></div><div class="holder"><div class="card">
+    <span class="lab">Complete the sentences</span>
+    <div class="q"><span class="qn">1</span><span>How <span class="gap"></span> do you eat fruit? — Every day!</span></div>
+    <div class="q"><span class="qn">2</span><span>I water the garden <span class="gap"></span> a week. (2x)</span></div>
+    <div class="q"><span class="qn">3</span><span>We go to the market <span class="gap"></span> a month. (1x)</span></div>
+    <div class="q"><span class="qn">4</span><span>I take vegetables to my grandma <span class="gap"></span> a month. (2x)</span></div>
+    <div class="q"><span class="qn">5</span><span>I weed the garden <span class="gap"></span> a month. (1x)</span></div>
+  </div></div><div class="bar"><button class="btn" data-all>Show all</button><button class="btn ghost" data-reset>Start again</button><button class="btn ghost" data-home>&#9664; All exercises</button></div></section>
+<section class="screen stage" id="p14-noras-week"><div class="stagehead"><div class="kick">Page 14 · correct together</div><h2>Read the diary · Nora's week</h2></div><div class="holder"><div class="card green" style="padding:8px 16px;margin-top:8px;margin-bottom:0"><span class="lab">Read the diary · Nora's week</span><table style="width:100%;border-collapse:collapse;font-size:11pt;margin:4px 0 8px;border:1.5px solid var(--rule)"><tr style="background:var(--ink);color:#fff"><td style="padding:3px 8px;text-align:left">Nora, Ruzafa</td><td style="text-align:center;width:9%">Mon</td><td style="text-align:center;width:9%">Tue</td><td style="text-align:center;width:9%">Wed</td><td style="text-align:center;width:9%">Thu</td><td style="text-align:center;width:9%">Fri</td><td style="text-align:center;width:9%">Sat</td><td style="text-align:center;width:9%">Sun</td></tr><tr style="border-top:1px solid var(--rule)"><td style="padding:3px 8px;font-weight:600">water the plants</td><td style="text-align:center;border-left:1px solid var(--rule);color:var(--green-deep);font-weight:800">✓</td><td style="text-align:center;border-left:1px solid var(--rule);color:var(--green-deep);font-weight:800"></td><td style="text-align:center;border-left:1px solid var(--rule);color:var(--green-deep);font-weight:800"></td><td style="text-align:center;border-left:1px solid var(--rule);color:var(--green-deep);font-weight:800">✓</td><td style="text-align:center;border-left:1px solid var(--rule);color:var(--green-deep);font-weight:800"></td><td style="text-align:center;border-left:1px solid var(--rule);color:var(--green-deep);font-weight:800"></td><td style="text-align:center;border-left:1px solid var(--rule);color:var(--green-deep);font-weight:800"></td></tr><tr style="border-top:1px solid var(--rule)"><td style="padding:3px 8px;font-weight:600">go to the market</td><td style="text-align:center;border-left:1px solid var(--rule);color:var(--green-deep);font-weight:800"></td><td style="text-align:center;border-left:1px solid var(--rule);color:var(--green-deep);font-weight:800"></td><td style="text-align:center;border-left:1px solid var(--rule);color:var(--green-deep);font-weight:800"></td><td style="text-align:center;border-left:1px solid var(--rule);color:var(--green-deep);font-weight:800"></td><td style="text-align:center;border-left:1px solid var(--rule);color:var(--green-deep);font-weight:800"></td><td style="text-align:center;border-left:1px solid var(--rule);color:var(--green-deep);font-weight:800">✓</td><td style="text-align:center;border-left:1px solid var(--rule);color:var(--green-deep);font-weight:800"></td></tr><tr style="border-top:1px solid var(--rule)"><td style="padding:3px 8px;font-weight:600">eat vegetables</td><td style="text-align:center;border-left:1px solid var(--rule);color:var(--green-deep);font-weight:800">✓</td><td style="text-align:center;border-left:1px solid var(--rule);color:var(--green-deep);font-weight:800">✓</td><td style="text-align:center;border-left:1px solid var(--rule);color:var(--green-deep);font-weight:800">✓</td><td style="text-align:center;border-left:1px solid var(--rule);color:var(--green-deep);font-weight:800">✓</td><td style="text-align:center;border-left:1px solid var(--rule);color:var(--green-deep);font-weight:800">✓</td><td style="text-align:center;border-left:1px solid var(--rule);color:var(--green-deep);font-weight:800">✓</td><td style="text-align:center;border-left:1px solid var(--rule);color:var(--green-deep);font-weight:800">✓</td></tr></table><div class="q" style="margin-bottom:5px"><span class="qn">1</span><span>How often does Nora water the plants? She waters them <span class="gap"></span>.</span></div><div class="q" style="margin-bottom:5px"><span class="qn">2</span><span>How often does she go to the market? She goes <span class="gap"></span>.</span></div><div class="q" style="margin-bottom:5px"><span class="qn">3</span><span>How often does she eat vegetables? She eats them <span class="gap"></span>.</span></div><div class="q" style="margin-bottom:5px"><span class="qn">4</span><span>How often do <b>you</b> eat vegetables? I eat them <span class="gap"></span>.</span></div></div></div><div class="bar"><button class="btn" data-all>Show all</button><button class="btn ghost" data-reset>Start again</button><button class="btn ghost" data-home>&#9664; All exercises</button></div></section>
+<section class="screen stage" id="p15-a-circle"><div class="stagehead"><div class="kick">Page 15 · correct together</div><h2>A · Circle the right word</h2></div><div class="holder"><div class="card">
+    <span class="lab">A · Circle the right word</span>
+    <div class="q"><span class="qn">1</span><span> <span class="pick">Would</span> / <span class="pick">Do</span> you like some water?</span></div>
+<div class="q"><span class="qn">2</span><span>I'd <span class="pick">like</span> / <span class="pick">likes</span> a salad, please.</span></div>
+<div class="q"><span class="qn">3</span><span>What would you like? — <span class="pick">I like</span> / <span class="pick">I'd like</span> green beans, please.</span></div>
+<div class="q"><span class="qn">4</span><span>How <span class="pick">often</span> / <span class="pick">much</span> do you eat paella?</span></div>
+  </div></div><div class="bar"><button class="btn" data-all>Show all</button><button class="btn ghost" data-reset>Start again</button><button class="btn ghost" data-home>&#9664; All exercises</button></div></section>
+<section class="screen stage" id="p15-b-find-the-mistake"><div class="stagehead"><div class="kick">Page 15 · correct together</div><h2>B · Find the mistake</h2></div><div class="holder"><div class="card green">
+    <span class="lab">B · Find the mistake · write it correctly</span>
+    <div class="q"><span class="qn">1</span><span style="flex:1">I would to like a juice.<span class="wl"></span></span></div>
+<div class="q"><span class="qn">2</span><span style="flex:1">How much do you go to the market?<span class="wl"></span></span></div>
+<div class="q"><span class="qn">3</span><span style="flex:1">I go to the beach one a week.<span class="wl"></span></span></div>
+<div class="q"><span class="qn">4</span><span style="flex:1">She'd likes some soup.<span class="wl"></span></span></div>
+  </div></div><div class="bar"><button class="btn" data-all>Show all</button><button class="btn ghost" data-reset>Start again</button><button class="btn ghost" data-home>&#9664; All exercises</button></div></section>
+<section class="screen stage" id="p15-c-about-you"><div class="stagehead"><div class="kick">Page 15 · correct together</div><h2>C · About you (model answers)</h2></div><div class="holder"><div class="card ice" style="margin-bottom:0">
+    <span class="lab">C · About you · answer with every day, once a week…</span>
+    <div class="q"><span class="qn">1</span><span style="flex:1">How often do you brush your teeth?<span class="wl"></span></span></div>
+<div class="q"><span class="qn">2</span><span style="flex:1">How often do you go to the Mercado Central?<span class="wl"></span></span></div>
+<div class="q"><span class="qn">3</span><span style="flex:1">How often do you eat paella?<span class="wl"></span></span></div>
+  </div></div><div class="bar"><button class="btn" data-all>Show all</button><button class="btn ghost" data-reset>Start again</button><button class="btn ghost" data-home>&#9664; All exercises</button></div></section>
+<section class="screen stage" id="p19-find-the-opinion-phrases"><div class="stagehead"><div class="kick">Page 19 · correct together</div><h2>Find the opinion phrases</h2></div><div class="holder"><div class="card ice" style="margin-bottom:0"><span class="lab">Look at the model text · then say your own</span>
+<div class="revq"><span class="rn">1</span>“I think fresh food tastes better.” Which words show it is an opinion? <span class="gap lg"></span></div>
+<div class="revq"><span class="rn">2</span>“…tinned food is more convenient because it lasts longer.” Which words start the opinion? <span class="gap lg"></span></div>
+<div class="revq"><span class="rn">3</span>“…tinned food usually has extra salt or sugar, and … this is bad for you.” Which word shows what the writer thinks? <span class="gap lg"></span></div>
+<div class="revq"><span class="rn">4</span>“…because it lasts longer than fresh food.” Which word gives the reason? <span class="gap lg"></span></div>
+</div></div><div class="bar"><button class="btn" data-all>Show all</button><button class="btn ghost" data-reset>Start again</button><button class="btn ghost" data-home>&#9664; All exercises</button></div></section>
+<section class="screen stage" id="p21-rule-check"><div class="stagehead"><div class="kick">Page 21 · correct together</div><h2>Rule check</h2></div><div class="holder"><div class="card" style="flex:1.15;margin-bottom:0">
+      <span class="lab">Rule check · answer before you play</span>
+      <div class="q"><span class="qn">1</span><span style="flex:1">How many teams play?<span class="wl" style="height:18px"></span></span></div>
+<div class="q"><span class="qn">2</span><span style="flex:1">What does each team need?<span class="wl" style="height:18px"></span></span></div>
+<div class="q"><span class="qn">3</span><span style="flex:1">What happens on a damaged lettuce square?<span class="wl" style="height:18px"></span></span></div>
+<div class="q"><span class="qn">4</span><span style="flex:1">Do you have to roll the exact number to finish?<span class="wl" style="height:18px"></span></span></div>
+<div class="q"><span class="qn">5</span><span style="flex:1">What happens if your team speaks Spanish?<span class="wl" style="height:18px"></span></span></div>
+    </div></div><div class="bar"><button class="btn" data-all>Show all</button><button class="btn ghost" data-reset>Start again</button><button class="btn ghost" data-home>&#9664; All exercises</button></div></section>
+<section class="screen stage" id="p21-farm-check"><div class="stagehead"><div class="kick">Page 20 · correct together</div><h2>Farm check — T or F</h2></div><div class="holder"><div class="card ice" style="margin-bottom:0">
+      <span class="lab">Farm check · page 20 · T or F</span>
+      <div class="q"><span class="qn">1</span><span style="flex:1">The indoor farm is in Miyagi, Japan.</span><span class="tf"><b>T</b><b>F</b></span></div>
+<div class="q"><span class="qn">2</span><span style="flex:1">Farmers grow the lettuce outdoors, in fields.</span><span class="tf"><b>T</b><b>F</b></span></div>
+<div class="q"><span class="qn">3</span><span style="flex:1">Indoor farms use more water than outdoor farms.</span><span class="tf"><b>T</b><b>F</b></span></div>
+<div class="q"><span class="qn">4</span><span style="flex:1">The indoor farm throws away less lettuce than an outdoor farm.</span><span class="tf"><b>T</b><b>F</b></span></div>
+    </div></div><div class="bar"><button class="btn" data-all>Show all</button><button class="btn ghost" data-reset>Start again</button><button class="btn ghost" data-home>&#9664; All exercises</button></div></section>
+<section class="screen stage" id="p22-warm-up-quiz"><div class="stagehead"><div class="kick">Page 22 · correct together</div><h2>Get ready — warm-up quiz</h2></div><div class="holder"><div class="card ice" style="margin-bottom:0">
+      <span class="lab">Warm-up quiz · try these before the test</span>
+      <div class="revq"><span class="rn">1</span>Farmers <span class="gap"></span> water the plants every morning. (obligation)</div>
+      <div class="revq"><span class="rn">2</span>It's Sunday, so she <span class="gap"></span> go to school. (no obligation)</div>
+      <div class="revq"><span class="rn">3</span>I water the garden <span class="gap"></span> a week. (2x)</div>
+      <div class="revq"><span class="rn">4</span>A: What <span class="gap"></span> you like for lunch? B: I'd like some vegetable soup.</div>
+      <div class="revq"><span class="rn">5</span>Name three vegetables you can buy at the Mercado Central. <span class="gap lg"></span></div>
+      <div class="revq" style="margin-bottom:0"><span class="rn">6</span>Give your opinion: <span class="gap"></span>, fresh food tastes better than tinned food.</div>
+    </div></div><div class="bar"><button class="btn" data-all>Show all</button><button class="btn ghost" data-reset>Start again</button><button class="btn ghost" data-home>&#9664; All exercises</button></div></section>
+<section class="screen stage" id="p23-unit-2-test-answers"><div class="stagehead"><div class="kick">Pages 23–24 · correct together</div><h2>Unit 2 test — answers</h2></div><div class="holder"><div class="card ice" style="margin-bottom:0;padding:8px 14px">
+<span class="lab">Part 1 · Listening</span>
+<div class="revq"><span class="rn">1</span>Listening 1: Who has to tidy the room? <span class="gap"></span></div>
+<div class="revq"><span class="rn">2</span>Listening 2: What does the girl buy? <span class="gap"></span></div>
+<div class="revq"><span class="rn">3</span>Listening 3: How often do they water the plants? They pick the green beans <span class="gap"></span>.</div>
+<div class="revq"><span class="rn">4</span>Listening 4: What would the brother like? The girl would like an <span class="gap"></span> juice.</div>
+<div class="revq"><span class="rn">5</span>Listening 5: What do they do after they plant the seeds? They pick the <span class="gap"></span> in October.</div>
+<span class="lab">Part 2 · Have to</span>
+<div class="revq"><span class="rn">6</span>Farmers <span class="gap"></span> (have to) get up early.</div>
+<div class="revq"><span class="rn">7</span>It's Saturday, so Ana <span class="gap"></span> (not have to) go to school.</div>
+<div class="revq"><span class="rn">8</span>Leo <span class="gap"></span> (have to) water the plants every day.</div>
+<div class="revq"><span class="rn">9</span>We <span class="gap"></span> (not have to) dig today. The ground is soft.</div>
+<div class="revq"><span class="rn">10</span><span class="gap"></span> you (have to) weed the garden?</div>
+<span class="lab">Part 3 · Vegetables</span>
+<div class="revq"><span class="rn">11</span>It's big and orange. You can make soup with it. <span class="gap"></span></div>
+<div class="revq"><span class="rn">12</span>It's purple and long. <span class="gap"></span></div>
+<div class="revq"><span class="rn">13</span>It's green and it has lots of leaves. <span class="gap"></span></div>
+<div class="revq"><span class="rn">14</span>It grows under the ground. It makes you cry! <span class="gap"></span></div>
+<div class="revq"><span class="rn">15</span>They are small, red or green, and very hot. <span class="gap"></span></div>
+<span class="lab">Part 4 · Would like and how often</span>
+<div class="revq"><span class="rn">16</span>Waiter: <span class="gap"></span> you like some water, please?</div>
+<div class="revq"><span class="rn">17</span>I <span class="gap"></span> like two courgettes and an onion, please.</div>
+<div class="revq"><span class="rn">18</span>We go to the market once <span class="gap"></span> week.</div>
+<div class="revq"><span class="rn">19</span>She waters the plants <span class="gap"></span> a week. (2x)</div>
+<div class="revq"><span class="rn">20</span>My brother eats fish <span class="gap"></span> day. (7 days)</div>
+</div></div><div class="bar"><button class="btn" data-all>Show all</button><button class="btn ghost" data-reset>Start again</button><button class="btn ghost" data-home>&#9664; All exercises</button></div></section>
+
+<div id="big"><div class="num"></div><div class="word"></div><div class="ctx"></div><div class="tap">Click anywhere to carry on</div></div>
+<div class="logo"><span class="wm">Somerset</span><span class="lc">LANGUAGE&nbsp;CENTRE</span></div>
+
+<script>
+const EX = [{"slug": "p5-true-or-false", "page": 5, "title": "True or false?", "ans": ["T", "F", "T", "F", "T"], "mode": "gap", "hit": null, "sel": ".q"},{"slug": "p6-fill-the-gaps", "page": 6, "title": "Fill the gaps", "ans": ["dig", "ripe", "water", "pick", "weed", "plant"], "mode": "gap", "hit": null, "sel": ".q"},{"slug": "p11-unjumble", "page": 11, "title": "Unjumble the vegetables", "ans": ["cabbage", "onion", "pumpkin", "aubergine", "chillis", "courgette"], "mode": "gap", "hit": null, "sel": ".q"},{"slug": "p12-d-shopping-list", "page": 12, "title": "D · Your shopping list", "ans": ["e.g. I'd like courgettes and onions, please.", "e.g. I'd like a pumpkin and green beans, please."], "mode": "pill", "hit": null, "sel": ".q"},{"slug": "p13-put-the-words-in-order", "page": 13, "title": "Put the words in order", "ans": ["What would you like?", "I'd like a water, please.", "I'd like some paella, please."], "mode": "pill", "hit": null, "sel": ".q"},{"slug": "p13-order-from-the-menu", "page": 13, "title": "Order from the menu", "ans": ["e.g. horchata and fartons (€5) or horchata and a tomato salad (€5)", "horchata"], "mode": "pill", "hit": null, "sel": ".q"},{"slug": "p14-noras-week", "page": 14, "title": "Read the diary · Nora's week", "ans": ["twice a week", "once a week", "every day", "(your own answer)"], "mode": "gap", "hit": null, "sel": ".q"}, {"slug": "p3-what-do-i-know-answers", "page": 3, "title": "What do I know? — answers", "ans": ["b · plant", "a · ripe", "c · a cucumber", "a · a pumpkin", "a · don't have to", "c · has to", "a · twice a week", "b · I'd like"], "mode": "mc", "hit": ["b", "a", "c", "a", "a", "c", "a", "b"], "sel": ".mc"}, {"slug": "p6-match-the-word", "page": 6, "title": "Match the word to its meaning", "ans": ["c", "g", "e", "h", "a", "f", "b", "d"], "mode": "box", "hit": null, "sel": ".mrow"}, {"slug": "p6-put-the-jobs-in-order", "page": 6, "title": "Put the jobs in order", "ans": ["5", "2", "1", "3 (or 4)", "4 (or 3)"], "mode": "box", "hit": null, "sel": ".ordr"}, {"slug": "p6-odd-one-out", "page": 6, "title": "Odd one out", "ans": ["cucumber — the others are verbs", "seeds — the others are vegetables", "ripe — the others are places"], "mode": "tag", "hit": ["cucumber", "seeds", "ripe"], "sel": ".q"}, {"slug": "p7-write-it", "page": 7, "title": "Complete the sentences", "ans": ["has to", "don't have to", "has to", "have to", "doesn't have to", "doesn't have to"], "mode": "gap", "hit": null, "sel": ".q"}, {"slug": "p8-a-circle", "page": 8, "title": "A · Circle the right words", "ans": ["has to", "don't have to", "Do", "have to", "doesn't have to"], "mode": "pick", "hit": ["has to", "don't have to", "Do", "have to", "doesn't have to"], "sel": ".q"}, {"slug": "p8-b-put-the-words", "page": 8, "title": "B · Put the words in order", "ans": ["I have to water the plants.", "She doesn't have to weed today.", "Do you have to dig?"], "mode": "pill", "hit": null, "sel": ".q"}, {"slug": "p8-c-find-the-mistake", "page": 8, "title": "C · Find the mistake", "ans": ["He HAS to pick the tomatoes.", "I don't HAVE to go to school on Sunday.", "We HAVE to water the garden.", "She doesn't have TO pick the beans."], "mode": "pill", "hit": null, "sel": ".q"}, {"slug": "p11-match-the-two-halves", "page": 11, "title": "Match the two halves", "ans": ["b", "d", "c", "a"], "mode": "pill", "hit": null, "sel": ".q"}, {"slug": "p12-a-read-and-write", "page": 12, "title": "What is it?", "ans": ["a cucumber", "a pumpkin", "an aubergine", "chillis", "an onion", "a cabbage"], "mode": "gap", "hit": null, "sel": ".q"}, {"slug": "p12-b-a-or-an", "page": 12, "title": "a or an?", "ans": ["an", "a", "an", "a", "a", "an", "an", "a"], "mode": "gap", "hit": null, "sel": ".aan"}, {"slug": "p12-c-sort-them", "page": 12, "title": "Under or above the ground?", "ans": ["carrots · onions · potatoes", "a pumpkin · a courgette · a cucumber"], "mode": "sort", "hit": null, "sel": null}, {"slug": "p13-complete-the-dialogue", "page": 13, "title": "Complete the dialogue", "ans": ["would", "I'd", "like"], "mode": "gap", "hit": null, "sel": ".q"}, {"slug": "p14-complete-the-sentences", "page": 14, "title": "How often? — complete", "ans": ["often", "twice", "once", "twice", "once"], "mode": "gap", "hit": null, "sel": ".q"}, {"slug": "p15-a-circle", "page": 15, "title": "A · Circle the right word", "ans": ["Would", "like", "I'd like", "often"], "mode": "pick", "hit": ["Would", "like", "I'd like", "often"], "sel": ".q"}, {"slug": "p15-b-find-the-mistake", "page": 15, "title": "B · Find the mistake", "ans": ["I would like / I'd like a juice.", "How OFTEN do you go to the market?", "I go to the beach ONCE a week.", "She'd LIKE some soup."], "mode": "pill", "hit": null, "sel": ".q"}, {"slug": "p15-c-about-you", "page": 15, "title": "C · About you (model answers)", "ans": ["I brush my teeth twice a day.", "I go once a month.", "I eat paella every Sunday!"], "mode": "pill", "hit": null, "sel": ".q"}, {"slug":  "p19-find-the-opinion-phrases", "page": 19, "title": "Find the opinion phrases", "ans": ["I think", "In my opinion", "I believe", "because"], "mode": "gap", "hit": null, "sel": ".revq"}, {"slug": "p21-rule-check", "page": 21, "title": "Rule check", "ans": ["three", "a counter and a dice", "go back 2", "No, you don't.", "you miss a turn"], "mode": "pill", "hit": null, "sel": ".q"}, {"slug": "p21-farm-check", "page": 20, "title": "Farm check — T or F", "ans": ["T", "F — indoors, on shelves", "F — less water", "T"], "mode": "pill", "hit": null, "sel": ".q"}, {"slug": "p22-warm-up-quiz", "page": 22, "title": "Get ready — warm-up quiz", "ans": ["have to", "doesn't have to", "twice", "would", "e.g. onions, pumpkins, aubergines", "I think / In my opinion"], "mode": "gap", "hit": null, "sel": ".revq"}, {"slug":  "p23-unit-2-test-answers", "page": 23, "title": "Unit 2 test — answers", "ans": ["b · Nico's sister", "a · courgettes, an aubergine, a cabbage", "b · twice a week · every day", "b · a water · orange", "b · water them · pumpkins", "have to", "doesn't have to", "has to", "don't have to", "Do … have to", "pumpkin", "aubergine", "cabbage", "onion", "chillis", "Would", "would / 'd", "a", "twice", "every"], "mode": "gap", "hit": null, "sel": ".revq"}];
+const byId = Object.fromEntries(EX.map(e => [e.slug, e]));
+const big = document.getElementById('big');
+
+function showBig(n, ans, ctx){
+  big.querySelector('.num').textContent = 'Number ' + n;
+  const w = big.querySelector('.word');
+  w.textContent = ans; w.classList.toggle('long', ans.length > 22);
+  big.querySelector('.ctx').textContent = ctx || '';
+  big.classList.add('on');
+}
+big.addEventListener('click', () => big.classList.remove('on'));
+
+function reveal(row, ans, ex, i, quiet){
+  const hit = ex.hit ? ex.hit[i] : null;
+  if (!row.classList.contains('done')) {
+    row.classList.add('done');
+    const pill = t => { const s = document.createElement('span'); s.className = 'ans-pill'; s.textContent = t; return s; };
+    let placed = false;
+    if (ex.mode === 'gap') { const g = row.querySelector('.gap');
+      if (g) { const s = document.createElement('span'); s.className = 'ans-fill'; s.textContent = ans; g.replaceWith(s); placed = true; } }
+    if (!placed && ex.mode === 'box') { const b = row.querySelector('.box');
+      if (b) { b.classList.add('ans-box'); b.textContent = ans; placed = true; } }
+    if (!placed && ex.mode === 'mc') { const letter = (ans.trim()[0] || '').toLowerCase();
+      const opts = [...row.querySelectorAll('.opt')];
+      if (opts.length) { opts.forEach(o => { const l = (o.querySelector('i') || {}).textContent.replace(/[^a-zA-Z]/g,'').toLowerCase();
+        o.classList.add(l === letter ? 'hit' : 'dim'); }); placed = true; } }
+    if (!placed && ex.mode === 'pick') { const picks = [...row.querySelectorAll('.pick')];
+      if (picks.length) { picks.forEach(p => p.classList.add(p.textContent.trim().toLowerCase() === String(hit).toLowerCase() ? 'hit' : 'dim')); placed = true; } }
+    if (!placed && ex.mode === 'tag') { const tags = [...row.querySelectorAll('.tag')];
+      if (tags.length) { tags.forEach(t => t.classList.add(t.textContent.trim().toLowerCase() === String(hit).toLowerCase() ? 'hit' : 'dim'));
+        row.appendChild(pill(ans.split('—').slice(1).join('—').trim() || ans)); placed = true; } }
+    if (!placed) row.appendChild(pill(ans));
+  }
+  if (!quiet) {
+    const src = row.querySelector('.mcq') || row.querySelector('.txt') || row;
+    let ctx = src.cloneNode(true);
+    ctx.querySelectorAll('.qn,.rn,.opts,.tf').forEach(x => x.remove());
+    ctx = ctx.textContent.replace(/\s+/g, ' ').replace(/^\d+\s*/, '').trim();
+    showBig(i + 1, ex.mode === 'mc' ? ans.replace(/^[a-c]\s*·\s*/, '') : (hit || ans), ctx.slice(0, 120));
+  }
+}
+
+function wire(sec){
+  const ex = byId[sec.id];
+  const rows = [...(ex.mode === 'sort' ? sec.querySelectorAll('.sortbox') : sec.querySelectorAll(ex.sel || '.q'))].slice(0, ex.ans.length);
+  rows.forEach((r, i) => { r.classList.add('ex-line'); r.onclick = () => reveal(r, ex.ans[i], ex, i); });
+  sec.querySelector('[data-all]').onclick = () => rows.forEach((r, i) => reveal(r, ex.ans[i], ex, i, true));
+  sec.querySelector('[data-reset]').onclick = () => location.reload();
+}
+document.querySelectorAll('.stage').forEach(wire);
+
+function show(id){
+  document.querySelectorAll('.screen, .stage').forEach(s => s.classList.remove('active'));
+  (document.getElementById(id) || document.getElementById('home')).classList.add('active');
+  if (id !== 'home') { const t = document.querySelector('.navtile[data-go="' + id + '"]'); if (t) t.classList.add('done'); }
+  window.scrollTo(0, 0);
+  history.replaceState(null, '', '#' + id);
+}
+document.addEventListener('click', e => {
+  const go = e.target.closest('[data-go]'); if (go) return show(go.dataset.go);
+  if (e.target.closest('[data-home]')) show('home');
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { if (big.classList.contains('on')) big.classList.remove('on'); else show('home'); }
+});
+/* The portal opens this page as ?lesson=N&pages=3-6,8 : keep only the exercises on those booklet pages.
+   Tiles say "Page 6" or "Pages 23–24", so this works for any month built the same way. */
+(function(){
+  const q = new URLSearchParams(location.search), pg = q.get('pages'); if (!pg) return;
+  const want = new Set();
+  pg.split(',').forEach(part => { const m = part.trim().match(/^(\d+)(?:\s*[-–]\s*(\d+))?$/); if (!m) return;
+    for (let n = +m[1]; n <= +(m[2] || m[1]); n++) want.add(n); });
+  const tiles = [...document.querySelectorAll('.navtile')];
+  const pagesOf = t => { const s = (t.querySelector('small') || {}).textContent || ''; const m = s.match(/(\d+)(?:\s*[–-]\s*(\d+))?/); if (!m) return [];
+    const out = []; for (let n = +m[1]; n <= +(m[2] || m[1]); n++) out.push(n); return out; };
+  const keep = tiles.filter(t => pagesOf(t).some(n => want.has(n)));
+  const k = document.querySelector('#home .kick'), lead = document.querySelector('#home .lead');
+  const lesson = q.get('lesson');
+  if (keep.length) tiles.forEach(t => { if (keep.indexOf(t) < 0) t.remove(); });
+  else if (lead) lead.textContent = 'No click-to-reveal exercises for these pages, so every exercise is shown.';
+  if (k) k.textContent = 'Flyers I' + (lesson ? ' · Lesson ' + lesson : '') + ' · pages ' + pg.replace(/-/g, '–').replace(/,/g, ', ');
+})();
+if (location.hash) show(location.hash.slice(1));
+</script>
+</body>
+</html>

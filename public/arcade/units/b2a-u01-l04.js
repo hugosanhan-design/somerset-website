@@ -52,7 +52,6 @@ window.SOMERSET_UNITS['b2a-u01-l04'] = {
   {"q": "Which structure: '...I think it would be great to...'?", "a": "conditional / hypothetical (would)", "type": "say", "topic": "speaking"},
   {"q": "Why does the book want you to use a range of tenses in the Speaking exam, not just one?", "a": "it shows a wider range of grammar, which scores higher", "type": "say", "topic": "speaking"},
   {"q": "Say a full sentence about a holiday using 'which I visited a few years ago'.", "a": "student's own answer, full sentence required", "type": "say", "topic": "speaking"},
-  {"q": "Say a full sentence about something you're learning right now, present continuous.", "a": "student's own answer, full sentence required", "type": "say", "topic": "speaking"},
   {"q": "Exam Tip: what should you do if you don't understand the examiner's question?", "a": "ask them to repeat it", "type": "say", "topic": "speaking"},
   {"q": "Exam Tip: what's the one thing you should never do, even if you think you have nothing to say?", "a": "stay silent — always say something", "type": "say", "topic": "speaking"}
 

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Writing Error-Review TEMPLATE: PET I Unit 5</title>
+<style>
+  :root{ --green:#6BAE2E; --green-dark:#4d8120; --ink:#1a1a1a; --bg:#ffffff; --amber:#E08A1E; --red:#b00000; }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;background:var(--bg);color:var(--ink);}
+  header{display:flex;justify-content:space-between;align-items:flex-end;padding:clamp(16px,2.2vh,32px) clamp(24px,3.5vw,64px);border-bottom:4px solid var(--green);flex-wrap:wrap;gap:16px;}
+  .logo{display:flex;align-items:flex-end;gap:clamp(8px,1vw,16px);}
+  .logo .word{font-family:Arial,Helvetica,sans-serif;font-weight:800;font-size:clamp(30pt,3.4vw,46pt);letter-spacing:-1.2px;line-height:.9;color:#6BAE2E;}
+  .logo .lc{font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:clamp(8pt,0.85vw,12pt);letter-spacing:2.5px;line-height:1.18;padding-bottom:4px;color:#4d8120;}
+  .title-block{text-align:right;}
+  .title-block h1{margin:0;font-size:clamp(20px,2.1vw,30px);font-weight:700;color:var(--ink);}
+  .title-block p{margin:4px 0 0;font-size:clamp(13px,1.1vw,17px);color:#555;letter-spacing:.5px;text-transform:uppercase;}
+  .banner{background:#FDF3E7;border-bottom:3px solid var(--amber);color:#6b5729;text-align:center;padding:12px 20px;font-size:15px;font-weight:700;}
+  .nav-bar{position:fixed;bottom:0;left:0;right:0;display:flex;align-items:center;justify-content:center;gap:20px;padding:16px 0 22px;background:linear-gradient(to top, rgba(255,255,255,0.96), rgba(255,255,255,0));z-index:30;}
+  .nav-bar button{background:var(--green);color:#fff;border:none;border-radius:999px;width:clamp(44px,4vw,64px);height:clamp(44px,4vw,64px);font-size:clamp(20px,2vw,28px);font-weight:700;cursor:pointer;}
+  .nav-bar button:disabled{opacity:.3;cursor:default;}
+  .nav-bar .count{font-size:clamp(14px,1.4vw,20px);color:#555;min-width:70px;text-align:center;}
+  main{max-width:1800px;margin:0 auto;padding:clamp(8px,1.5vh,20px) clamp(24px,4vw,72px) 96px;min-height:calc(100vh - 170px);display:flex;flex-direction:column;justify-content:center;}
+  .slide{display:none;}
+  .slide.active{display:block;animation:fade .15s ease;}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  .kicker{font-size:clamp(14px,1.4vw,20px);font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--green);margin:clamp(10px,min(1.8vh,2.4vw),26px) 0 8px;}
+  h2{font-size:clamp(26px,min(3.6vw,5.6vh),44px);margin:0 0 clamp(10px,min(1.8vh,2.4vw),24px);color:var(--ink);line-height:1.25;}
+  h2 .accent{color:var(--green-dark);}
+  .errbox{background:#fff;border:2px solid #ddd;border-radius:14px;padding:clamp(14px,1.8vh,20px) clamp(18px,2.2vw,26px);margin-bottom:clamp(12px,1.6vh,18px);font-size:clamp(17px,1.8vw,22px);line-height:1.5;}
+  .wrong{color:var(--red);font-weight:800;text-decoration:none;}
+  .fix{color:var(--green-dark);font-weight:800;text-decoration:underline;}
+  .placeholder{color:#b5541b;font-style:italic;}
+  .practice{margin-top:14px;padding-top:12px;border-top:1px dashed #ccc;font-size:clamp(15px,1.5vw,19px);}
+  footer{text-align:center;padding:20px;font-size:clamp(13px,1.1vw,16px);color:#888;border-top:2px solid #eee;}
+  @page{size:A4;margin:16mm 14mm}
+  @media print{
+    body{background:#fff}
+    .nav-bar{display:none !important}
+    main{max-width:none;padding:0}
+    .slide{display:block !important;page-break-after:always;padding-top:6px;}
+    .slide:last-child{page-break-after:auto;}
+    h2{font-size:18pt}
+    .kicker{font-size:12pt}
+    .errbox{font-size:12.5pt;page-break-inside:avoid;break-inside:avoid;}
+  }
+  @media(max-width:700px){ header{flex-direction:column;align-items:center;text-align:center;} .title-block{text-align:center;} h2{font-size:22px;} }
+/* per-item-reveal v1 */
+.item .a-text,.gap-answer{color:transparent !important;background:#EAF4DA;border-radius:6px;padding:0 .35em;min-width:3.2em;display:inline-block;cursor:pointer;user-select:none;}
+.item.shown .a-text,.gap-answer.shown{color:var(--green-dark) !important;background:none;font-weight:700;}
+.showpill{display:inline-block;margin-left:10px;border:2px solid var(--green);color:var(--green-dark);background:#fff;border-radius:999px;padding:1px 12px;font-size:.72em;font-weight:700;cursor:pointer;vertical-align:middle;}
+.item.shown .showpill{display:none;}
+@media print{.item .a-text,.gap-answer{color:var(--green-dark) !important;background:none;}.showpill{display:none !important;}}
+</style>
+</head>
+<body>
+<div class="banner">TEMPLATE &mdash; DO NOT PRESENT UNFILLED. Fill every [PLACEHOLDER] with the group's real, anonymised errors from l05's marked emails before this class.</div>
+<header>
+  <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+  <div class="title-block"><h1>Writing Error-Review</h1><p>Unit 5 &middot; template, generic categories</p></div>
+</header>
+<main>
+
+<div class="slide active">
+  <div class="kicker">Unit 5 close &middot; writing error-review</div>
+  <h2>Where we live &middot; <span class="accent">fix the errors</span></h2>
+  <p>Six generic B1-level error categories likely to appear in the Unit 5 email (SB p.63). Replace every <span class="placeholder">[PLACEHOLDER]</span> with a real, anonymised sentence from this group's marked scripts before class. Delete any category nobody actually made, and add one if a real error doesn't fit these six.</p>
+</div>
+
+<div class="slide">
+  <div class="kicker">Category 1</div>
+  <h2><span class="accent">Will</span> vs <span class="accent">be going to</span></h2>
+  <div class="errbox">A student wrote: "<span class="placeholder">[PLACEHOLDER &mdash; e.g. "I will help you decorate on Saturday" used for a spontaneous offer where "going to" or present continuous fits better, or the reverse]</span>"<br>
+  Should be: <span class="fix">[PLACEHOLDER &mdash; corrected form]</span><br>
+  <span class="wrong">Why it's wrong:</span> <span class="placeholder">[PLACEHOLDER &mdash; one line explaining the rule, e.g. "going to" for something already decided, "will" for a decision made now]</span>
+  <div class="practice">Practice: <span class="placeholder">[PLACEHOLDER short gap-fill item using the same rule]</span></div>
+  </div>
+</div>
+
+<div class="slide">
+  <div class="kicker">Category 2</div>
+  <h2>Missing a <span class="accent">note</span></h2>
+  <div class="errbox">A student's email didn't respond to: "<span class="placeholder">[PLACEHOLDER &mdash; which of the four notes was skipped]</span>"<br>
+  Should include: <span class="fix">[PLACEHOLDER &mdash; one modelled sentence covering that note]</span><br>
+  <span class="wrong">Why it matters:</span> the Exam Task always says "using all the notes" &mdash; missing one loses content marks even if the English is perfect.
+  <div class="practice">Practice: students check their own l05 email against the four notes and mark which they covered.</div>
+  </div>
+</div>
+
+<div class="slide">
+  <div class="kicker">Category 3</div>
+  <h2>Register: too <span class="accent">formal</span> for a friend</h2>
+  <div class="errbox">A student wrote: "<span class="placeholder">[PLACEHOLDER &mdash; e.g. "Dear Lola, I am writing to inform you..."]</span>"<br>
+  Should be: <span class="fix">[PLACEHOLDER &mdash; e.g. "Hi Lola, Thanks for your email!"]</span><br>
+  <span class="wrong">Why it's wrong:</span> Lola is a friend &mdash; use informal greetings, contractions and friendly expressions, not formal letter language.
+  <div class="practice">Practice: rewrite one formal opening line as an informal one.</div>
+  </div>
+</div>
+
+<div class="slide">
+  <div class="kicker">Category 4</div>
+  <h2>Word <span class="accent">count</span></h2>
+  <div class="errbox">A student's email was <span class="placeholder">[PLACEHOLDER &mdash; e.g. "60 words" or "170 words"]</span>, well under/over the ~100-word target.<br>
+  <span class="wrong">Why it matters:</span> too short usually means a missed note; too long often means unnecessary repetition of Lola's own words.
+  <div class="practice">Practice: students count their own l05 email's words.</div>
+  </div>
+</div>
+
+<div class="slide">
+  <div class="kicker">Category 5</div>
+  <h2>Sign-off <span class="accent">missing or wrong</span></h2>
+  <div class="errbox">A student's email ended: "<span class="placeholder">[PLACEHOLDER]</span>", with no sign-off, or a mismatched one.<br>
+  Should be: <span class="fix">[PLACEHOLDER &mdash; e.g. "Write back soon! [Name]"]</span>
+  <div class="practice">Practice: list three informal sign-offs suitable for a friend's email.</div>
+  </div>
+</div>
+
+<div class="slide">
+  <div class="kicker">Category 6</div>
+  <h2>Housing vocabulary <span class="accent">spelling</span></h2>
+  <div class="errbox">A student misspelled: "<span class="placeholder">[PLACEHOLDER &mdash; e.g. "appartment", "nieghbour"]</span>"<br>
+  Should be: <span class="fix">[PLACEHOLDER &mdash; correct spelling]</span>
+  <div class="practice">Practice: dictate three Unit 5 housing words for students to spell.</div>
+  </div>
+</div>
+
+</main>
+<div class="nav-bar"><button id="prevBtn" title="Previous">&#8592;</button><span class="count" id="count"></span><button id="nextBtn" title="Next">&#8594;</button></div>
+<footer>Somerset Language Centre &middot; Valencia &middot; Unit 5 error-review TEMPLATE</footer>
+<script>
+  var slides = document.querySelectorAll('.slide');
+  var idx = 0;
+  var prevBtn = document.getElementById('prevBtn');
+  var nextBtn = document.getElementById('nextBtn');
+  var count = document.getElementById('count');
+  function render(){ slides.forEach(function(s,i){ s.classList.toggle('active', i===idx); }); count.textContent=(idx+1)+' / '+slides.length; prevBtn.disabled=idx===0; nextBtn.disabled=idx===slides.length-1; window.scrollTo(0,0); }
+  function go(d){ idx=Math.max(0,Math.min(slides.length-1,idx+d)); render(); }
+  prevBtn.addEventListener('click', function(){ go(-1); });
+  nextBtn.addEventListener('click', function(){ go(1); });
+  document.addEventListener('keydown', function(e){ if(e.key==='ArrowRight') go(1); else if(e.key==='ArrowLeft') go(-1); });
+  render();
+</script>
+<script>/* per-item-reveal v1 */
+document.querySelectorAll('.item').forEach(function(it){
+  if(!it.querySelector('.a-text')) return;
+  var b=document.createElement('button'); b.className='showpill'; b.type='button'; b.textContent='Show answer';
+  b.addEventListener('click',function(e){e.stopPropagation(); it.classList.add('shown');});
+  it.appendChild(b);
+  it.querySelectorAll('.a-text').forEach(function(a){a.addEventListener('click',function(e){e.stopPropagation(); it.classList.toggle('shown');});});
+});
+document.querySelectorAll('.gap-answer').forEach(function(g){g.title='Click to show / hide'; g.addEventListener('click',function(){g.classList.toggle('shown');});});
+document.querySelectorAll('.reveal-all').forEach(function(b){
+  var s=b.closest('.slide'); if(!s||!s.querySelector('.whybox')){b.style.display='none';return;}
+  var mc=!!s.querySelector('.mc-opt'); var L=mc?['Show answer','Hide answer']:['Why?','Hide why'];  /* MC slides reveal the right option (registry D07) */
+  var fresh=b.cloneNode(true); b.parentNode.replaceChild(fresh,b); fresh.textContent=L[0];
+  fresh.addEventListener('click',function(){var on=s.classList.toggle('revealed'); fresh.textContent=on?L[1]:L[0];});
+});
+</script>
+</body>
+</html>

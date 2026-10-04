@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 3 — It's natural — Review Play 1 — Review Plays</title>
+<style>
+  :root{
+    --green:#6BAE2E;
+    --green-dark:#4d8120;
+    --ink:#1a1a1a;
+    --bg:#ffffff;
+    --char-a:#0F7B6C;
+    --char-b:#6B3FA0;
+    --char-c:#C2540A;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+  }
+  header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    padding:24px 40px;
+    border-bottom:4px solid var(--green);
+    flex-wrap:wrap;
+    gap:16px;
+  }
+  .logo{display:flex;align-items:flex-end;gap:11px;}
+  .logo .word{font-family:Arial,Helvetica,sans-serif;font-weight:800;font-size:33pt;letter-spacing:-1.2px;line-height:.9;color:#6BAE2E;}
+  .logo .lc{font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:8.5pt;letter-spacing:2.5px;line-height:1.18;padding-bottom:4px;color:#4d8120;}
+  .title-block{text-align:right;}
+  .title-block h1{margin:0;font-size:24px;font-weight:700;color:var(--ink);}
+  .title-block p{margin:6px 0 0;font-size:15px;color:#555;letter-spacing:.5px;text-transform:uppercase;}
+
+  .toggle-row{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:16px;
+    padding:20px 20px 4px;
+  }
+  .toggle-btn{
+    font-size:19px;
+    font-weight:700;
+    padding:14px 26px;
+    border-radius:12px;
+    border:3px solid var(--green);
+    background:#fff;
+    color:var(--green-dark);
+    cursor:pointer;
+    transition:all .15s ease;
+    font-family:inherit;
+  }
+  .toggle-btn:hover{background:#EAF4DA;}
+  .toggle-btn.active{background:var(--green);color:#fff;}
+  .version-btn{font-size:22px;padding:16px 36px;}
+
+  .scene-setup{
+    max-width:900px;
+    margin:14px auto 0;
+    padding:0 24px;
+    text-align:center;
+    font-size:19px;
+    color:#444;
+    font-style:italic;
+  }
+
+  .focus-tags{
+    max-width:900px;
+    margin:10px auto 0;
+    padding:0 24px;
+    text-align:center;
+    font-size:14px;
+    color:#6BAE2E;
+    font-weight:700;
+    letter-spacing:.4px;
+    text-transform:uppercase;
+  }
+
+  main{max-width:960px;margin:0 auto;padding:20px 24px 90px;}
+  .script-panel{display:none;}
+  .script-panel.active{display:block;}
+  .version{display:none;}
+  .version.active{display:block;}
+
+  .line{
+    display:flex;
+    gap:24px;
+    align-items:baseline;
+    margin-bottom:30px;
+    padding-bottom:30px;
+    border-bottom:1px solid #eee;
+  }
+  .line:last-child{border-bottom:none;}
+  .char-name{
+    flex:0 0 180px;
+    font-size:22px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+  }
+  .char-a .char-name{color:var(--char-a);}
+  .char-b .char-name{color:var(--char-b);}
+  .char-c .char-name{color:var(--char-c);}
+  .line-text{
+    font-size:30px;
+    line-height:1.5;
+    flex:1;
+  }
+  .stage-direction{
+    font-size:20px;
+    color:#777;
+    font-style:italic;
+    text-align:center;
+    margin:24px 0;
+  }
+  .joint-line .char-name{color:#444;}
+
+  footer{
+    text-align:center;
+    padding:24px;
+    font-size:14px;
+    color:#888;
+    border-top:2px solid #eee;
+  }
+
+  @media (max-width:700px){
+    header{flex-direction:column;align-items:center;text-align:center;}
+    .title-block{text-align:center;}
+    .line{flex-direction:column;gap:6px;}
+    .char-name{flex-basis:auto;font-size:19px;}
+    .line-text{font-size:25px;}
+    .toggle-btn{font-size:16px;padding:11px 18px;}
+    .version-btn{font-size:18px;padding:12px 24px;}
+  }
+
+  @page{size:A4;margin:16mm 14mm}
+  @media print{
+    body{background:#fff}
+    .toggle-row{display:none !important}
+    main{max-width:none;padding:0}
+    .scene-setup{font-size:12pt}
+    .focus-tags{font-size:12pt}
+    .char-name{font-size:13pt}
+    .line-text{font-size:14pt;line-height:1.4}
+    .line{margin-bottom:12pt;padding-bottom:10pt;page-break-inside:avoid;break-inside:avoid}
+    .stage-direction{font-size:12pt;margin:10pt 0;page-break-inside:avoid;break-inside:avoid}
+    footer{font-size:9pt;padding:10pt 0 0}
+    .version{display:none !important}
+    .version.active{display:block !important}
+    .script-panel{display:none !important}
+    .script-panel.active{display:block !important}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+  <div class="title-block">
+    <h1>Unit 3 — It's natural</h1>
+    <p>Review Plays &middot; PET I</p>
+  </div>
+</header>
+
+<div class="toggle-row">
+  <button class="toggle-btn active" id="scriptBtnA" onclick="showScript('A')">Script A &middot; The Albufera Boat Trip</button>
+  <button class="toggle-btn" id="scriptBtnB" onclick="showScript('B')">Script B &middot; The Turia Gardens Run</button>
+  <button class="toggle-btn" id="scriptBtnC" onclick="showScript('C')">Script C &middot; The Serra Calderona Hike</button>
+</div>
+<div class="toggle-row">
+  <button class="toggle-btn version-btn active" id="verBtn2" onclick="showVersionCount(2)">2 Characters</button>
+  <button class="toggle-btn version-btn" id="verBtn3" onclick="showVersionCount(3)">3 Characters</button>
+  <button class="toggle-btn print-btn" onclick="window.print()">Print</button>
+</div>
+
+<main>
+
+  <div class="script-panel active" id="panel-A">
+    <p class="scene-setup">A small boat on the Albufera, the coastal lagoon just south of Valencia, at sunset.</p>
+    <p class="focus-tags">Geographical features &middot; present perfect simple &amp; continuous</p>
+
+    <div class="version active" id="ver-A-2">
+      <div class="line char-a"><div class="char-name">Guide</div><div class="line-text">Welcome aboard! Have you ever been on the Albufera before?</div></div>
+      <div class="line char-b"><div class="char-name">Marc</div><div class="line-text">No, never. I've heard it's not really an ocean, more like a lagoon between the coast and the rice fields.</div></div>
+      <div class="line char-a"><div class="char-name">Guide</div><div class="line-text">Exactly right. This whole area used to be a much bigger stretch of water, but people have been growing rice here for centuries, so it's got smaller.</div></div>
+      <div class="line char-b"><div class="char-name">Marc</div><div class="line-text">Has it changed a lot recently?</div></div>
+      <div class="line char-a"><div class="char-name">Guide</div><div class="line-text">Yes, actually. Scientists have been studying the water quality for years, and it's improved a lot since the 1990s.</div></div>
+      <div class="line char-b"><div class="char-name">Marc</div><div class="line-text">That's good news. I've never seen so many flamingos before, look at the coast over there!</div></div>
+      <div class="line char-a"><div class="char-name">Guide</div><div class="line-text">The flamingos have been coming back every winter since the water improved. Some visitors have even seen them from the cliff path on the north side.</div></div>
+      <div class="stage-direction">The boat drifts closer to a small island.</div>
+      <div class="line char-b"><div class="char-name">Marc</div><div class="line-text">Have you worked here long?</div></div>
+      <div class="line char-a"><div class="char-name">Guide</div><div class="line-text">I've been working on these boats for about eight years now. I've never got tired of this view.</div></div>
+      <div class="line char-b"><div class="char-name">Marc</div><div class="line-text">I completely understand why.</div></div>
+    </div>
+
+    <div class="version" id="ver-A-3">
+      <div class="line char-a"><div class="char-name">Guide</div><div class="line-text">Welcome aboard! Have you ever been on the Albufera before?</div></div>
+      <div class="line char-b"><div class="char-name">Marc</div><div class="line-text">No, never. I've heard it's not really an ocean, more like a lagoon between the coast and the rice fields.</div></div>
+      <div class="stage-direction">Ines, sitting at the front of the boat, turns around.</div>
+      <div class="line char-c"><div class="char-name">Ines</div><div class="line-text">I've been here once before, with my grandparents. They've lived near the coast their whole lives.</div></div>
+      <div class="line char-a"><div class="char-name">Guide</div><div class="line-text">Then you'll remember this area used to be a much bigger stretch of water. People have been growing rice here for centuries, so it's got smaller.</div></div>
+      <div class="line char-c"><div class="char-name">Ines</div><div class="line-text">Has it changed a lot since my grandparents were young?</div></div>
+      <div class="line char-a"><div class="char-name">Guide</div><div class="line-text">Yes, actually. Scientists have been studying the water quality for years, and it's improved a lot since the 1990s.</div></div>
+      <div class="line char-b"><div class="char-name">Marc</div><div class="line-text">That's good news. I've never seen so many flamingos before, look at the coast over there!</div></div>
+      <div class="line char-a"><div class="char-name">Guide</div><div class="line-text">The flamingos have been coming back every winter since the water improved. Some visitors have even seen them from the cliff path on the north side.</div></div>
+      <div class="line char-c"><div class="char-name">Ines</div><div class="line-text">I haven't seen a flamingo since I was small. This is amazing.</div></div>
+      <div class="line char-b"><div class="char-name">Marc</div><div class="line-text">Have you worked here long?</div></div>
+      <div class="line char-a"><div class="char-name">Guide</div><div class="line-text">I've been working on these boats for about eight years now. I've never got tired of this view.</div></div>
+      <div class="line joint-line"><div class="char-name">Marc &amp; Ines</div><div class="line-text">I completely understand why.</div></div>
+    </div>
+  </div>
+
+  <div class="script-panel" id="panel-B">
+    <p class="scene-setup">A morning run along the Turia gardens, the long park built where a river used to flow through Valencia.</p>
+    <p class="focus-tags">Geographical features &middot; present perfect simple &amp; continuous</p>
+
+    <div class="version active" id="ver-B-2">
+      <div class="line char-a"><div class="char-name">Cova</div><div class="line-text">I've been running here every morning this week. It's such a nice valley of green space through the whole city.</div></div>
+      <div class="line char-b"><div class="char-name">Dani</div><div class="line-text">I know! Have you ever seen a photo of what this looked like before it became a park?</div></div>
+      <div class="line char-a"><div class="char-name">Cova</div><div class="line-text">No, what was it like?</div></div>
+      <div class="line char-b"><div class="char-name">Dani</div><div class="line-text">It used to be a real river, like a stream that grew huge after storms. In 1957 it flooded badly, so the city has diverted it outside Valencia ever since.</div></div>
+      <div class="line char-a"><div class="char-name">Cova</div><div class="line-text">Wow, so this whole path has been a riverbed, not a natural valley?</div></div>
+      <div class="line char-b"><div class="char-name">Dani</div><div class="line-text">Exactly. The city has planted thousands of trees here since then, and it's become one of the biggest urban parks in Spain.</div></div>
+      <div class="line char-a"><div class="char-name">Cova</div><div class="line-text">Have you always lived so close to it?</div></div>
+      <div class="line char-b"><div class="char-name">Dani</div><div class="line-text">Yes, I've lived near here my whole life. I've never got tired of running through it.</div></div>
+      <div class="stage-direction">They slow down near a bridge.</div>
+      <div class="line char-a"><div class="char-name">Cova</div><div class="line-text">Let's stop here, I've been wanting to see the view from this bridge for ages.</div></div>
+    </div>
+
+    <div class="version" id="ver-B-3">
+      <div class="line char-a"><div class="char-name">Cova</div><div class="line-text">I've been running here every morning this week. It's such a nice valley of green space through the whole city.</div></div>
+      <div class="line char-b"><div class="char-name">Dani</div><div class="line-text">I know! Have you ever seen a photo of what this looked like before it became a park?</div></div>
+      <div class="stage-direction">Nuria catches up with them, out of breath.</div>
+      <div class="line char-c"><div class="char-name">Nuria</div><div class="line-text">Sorry I'm late! What are you two talking about?</div></div>
+      <div class="line char-b"><div class="char-name">Dani</div><div class="line-text">This whole path used to be a real river, like a stream that grew huge after storms. It flooded badly in 1957, so the city has diverted it outside Valencia ever since.</div></div>
+      <div class="line char-c"><div class="char-name">Nuria</div><div class="line-text">I've read about that! So this has never really been a natural valley, has it?</div></div>
+      <div class="line char-b"><div class="char-name">Dani</div><div class="line-text">No. The city has planted thousands of trees here since then, and it's become one of the biggest urban parks in Spain.</div></div>
+      <div class="line char-a"><div class="char-name">Cova</div><div class="line-text">Have either of you always lived so close to it?</div></div>
+      <div class="line char-b"><div class="char-name">Dani</div><div class="line-text">Yes, I've lived near here my whole life. I've never got tired of running through it.</div></div>
+      <div class="line char-c"><div class="char-name">Nuria</div><div class="line-text">I've only lived here for two years, but I already feel the same way.</div></div>
+      <div class="stage-direction">They slow down near a bridge.</div>
+      <div class="line char-a"><div class="char-name">Cova</div><div class="line-text">Let's stop here, I've been wanting to see the view from this bridge for ages.</div></div>
+    </div>
+  </div>
+
+  <div class="script-panel" id="panel-C">
+    <p class="scene-setup">Halfway up a trail in the Serra Calderona, the mountain range just outside Valencia, on a school nature trip.</p>
+    <p class="focus-tags">Geographical features &middot; present perfect simple &amp; continuous</p>
+
+    <div class="version active" id="ver-C-2">
+      <div class="line char-a"><div class="char-name">Teacher</div><div class="line-text">We've been walking for an hour. Has everyone found some water?</div></div>
+      <div class="line char-b"><div class="char-name">Bruno</div><div class="line-text">Yes, I found a small stream just behind those rocks. I've never seen the forest look so green.</div></div>
+      <div class="line char-a"><div class="char-name">Teacher</div><div class="line-text">It's been raining a lot this month, so the whole valley has turned green early this year.</div></div>
+      <div class="line char-b"><div class="char-name">Bruno</div><div class="line-text">Have you brought a class up here before?</div></div>
+      <div class="line char-a"><div class="char-name">Teacher</div><div class="line-text">I've been bringing students to the Serra Calderona for ten years now. I've always loved this particular path.</div></div>
+      <div class="line char-b"><div class="char-name">Bruno</div><div class="line-text">Has anything ever gone wrong?</div></div>
+      <div class="line char-a"><div class="char-name">Teacher</div><div class="line-text">Once, a student found a small cave and got a little too excited about exploring it! We've been more careful with the rules ever since.</div></div>
+      <div class="stage-direction">They reach a clifftop viewpoint.</div>
+      <div class="line char-b"><div class="char-name">Bruno</div><div class="line-text">Look at that cliff! You can almost see the coast from here.</div></div>
+      <div class="line char-a"><div class="char-name">Teacher</div><div class="line-text">You can, on a clear day. Some students have even said they've seen the sea from this exact spot.</div></div>
+    </div>
+
+    <div class="version" id="ver-C-3">
+      <div class="line char-a"><div class="char-name">Teacher</div><div class="line-text">We've been walking for an hour. Has everyone found some water?</div></div>
+      <div class="line char-b"><div class="char-name">Bruno</div><div class="line-text">Yes, I found a small stream just behind those rocks. I've never seen the forest look so green.</div></div>
+      <div class="stage-direction">Alba jogs over from a side path.</div>
+      <div class="line char-c"><div class="char-name">Alba</div><div class="line-text">I've been exploring that little valley over there, it's beautiful.</div></div>
+      <div class="line char-a"><div class="char-name">Teacher</div><div class="line-text">It's been raining a lot this month, so the whole area has turned green early this year.</div></div>
+      <div class="line char-c"><div class="char-name">Alba</div><div class="line-text">Have you brought a class up here before, Miss?</div></div>
+      <div class="line char-a"><div class="char-name">Teacher</div><div class="line-text">I've been bringing students to the Serra Calderona for ten years now. I've always loved this particular path.</div></div>
+      <div class="line char-b"><div class="char-name">Bruno</div><div class="line-text">Has anything ever gone wrong?</div></div>
+      <div class="line char-a"><div class="char-name">Teacher</div><div class="line-text">Once, a student found a small cave and got a little too excited about exploring it! We've been more careful with the rules ever since.</div></div>
+      <div class="stage-direction">They reach a clifftop viewpoint.</div>
+      <div class="line char-b"><div class="char-name">Bruno</div><div class="line-text">Look at that cliff! You can almost see the coast from here.</div></div>
+      <div class="line char-c"><div class="char-name">Alba</div><div class="line-text">I think I can! Has anyone ever seen the sea from this exact spot?</div></div>
+      <div class="line char-a"><div class="char-name">Teacher</div><div class="line-text">On a clear day, some students have said they have.</div></div>
+    </div>
+  </div>
+
+</main>
+
+<footer>Somerset Language Centre &middot; Valencia &middot; PET I Review Plays &middot; Play 1: geographical features &amp; present perfect</footer>
+
+<script>
+let currentScript = 'A';
+let currentVersion = 2;
+const SCRIPT_IDS = ['A','B','C'];
+
+function showScript(s){ currentScript = s; render(); }
+function showVersionCount(v){ currentVersion = v; render(); }
+
+function render(){
+  SCRIPT_IDS.forEach(function(s){
+    document.getElementById('panel-' + s).classList.toggle('active', s === currentScript);
+    document.getElementById('scriptBtn' + s).classList.toggle('active', s === currentScript);
+  });
+  [2,3].forEach(function(v){
+    document.getElementById('verBtn' + v).classList.toggle('active', v === currentVersion);
+  });
+  SCRIPT_IDS.forEach(function(s){
+    [2,3].forEach(function(v){
+      const el = document.getElementById('ver-' + s + '-' + v);
+      if (el) el.classList.toggle('active', v === currentVersion);
+    });
+  });
+}
+render();
+</script>
+</body>
+</html>

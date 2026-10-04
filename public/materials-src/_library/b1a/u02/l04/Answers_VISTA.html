@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vocabulary &amp; Grammar: PET I Unit 2, p.24-25</title>
+<style>
+  :root{ --green:#6BAE2E; --green-dark:#4d8120; --ink:#1a1a1a; --bg:#ffffff; }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;background:var(--bg);color:var(--ink);}
+  header{display:flex;justify-content:space-between;align-items:flex-end;padding:clamp(16px,2.2vh,32px) clamp(24px,3.5vw,64px);border-bottom:4px solid var(--green);flex-wrap:wrap;gap:16px;}
+  .logo{display:flex;align-items:flex-end;gap:clamp(8px,1vw,16px);}
+  .logo .word{font-family:Arial,Helvetica,sans-serif;font-weight:800;font-size:clamp(30pt,3.4vw,46pt);letter-spacing:-1.2px;line-height:.9;color:#6BAE2E;}
+  .logo .lc{font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:clamp(8pt,0.85vw,12pt);letter-spacing:2.5px;line-height:1.18;padding-bottom:4px;color:#4d8120;}
+  .title-block{text-align:right;}
+  .title-block h1{margin:0;font-size:clamp(20px,2.1vw,30px);font-weight:700;color:var(--ink);}
+  .title-block p{margin:4px 0 0;font-size:clamp(13px,1.1vw,17px);color:#555;letter-spacing:.5px;text-transform:uppercase;}
+  .nav-bar{position:fixed;bottom:0;left:0;right:0;display:flex;align-items:center;justify-content:center;gap:20px;padding:16px 0 22px;background:linear-gradient(to top, rgba(255,255,255,0.96), rgba(255,255,255,0));z-index:30;}
+  .nav-bar button{background:var(--green);color:#fff;border:none;border-radius:999px;width:clamp(44px,4vw,64px);height:clamp(44px,4vw,64px);font-size:clamp(20px,2vw,28px);font-weight:700;cursor:pointer;}
+  .nav-bar button:disabled{opacity:.3;cursor:default;}
+  .nav-bar .count{font-size:clamp(14px,1.4vw,20px);color:#555;min-width:70px;text-align:center;}
+  main{max-width:1800px;margin:0 auto;padding:clamp(8px,1.5vh,20px) clamp(24px,4vw,72px) 96px;min-height:calc(100vh - 110px);display:flex;flex-direction:column;justify-content:center;}
+  .slide{display:none;} .slide.active{display:block;animation:fade .15s ease;}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  .kicker{font-size:clamp(14px,1.4vw,20px);font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--green);margin:clamp(10px,min(1.8vh,2.4vw),26px) 0 8px;}
+  h2{font-size:clamp(28px,min(3.8vw,6vh),48px);margin:0 0 clamp(10px,min(1.8vh,2.4vw),24px);color:var(--ink);line-height:1.25;}
+  h2 .accent{color:var(--green-dark);}
+  .item-list{list-style:none;margin:0 0 clamp(14px,2vh,22px);padding:0;max-width:1200px;}
+  .item{background:#fff;border:2px solid #ddd;border-radius:14px;padding:clamp(12px,1.6vh,18px) clamp(18px,2.2vw,26px);margin-bottom:clamp(9px,1.2vh,14px);font-size:clamp(17px,1.9vw,24px);line-height:1.4;}
+  .item .num{color:#999;font-weight:800;margin-right:10px;}
+  .revealed .item .a-text-OFF{color:var(--green-dark);font-weight:700;}
+  .reveal-all{background:var(--green);color:#fff;border:none;border-radius:999px;padding:10px 26px;font-size:clamp(14px,1.4vw,18px);font-weight:700;cursor:pointer;}
+  .reveal-all:hover{background:var(--green-dark);}
+  .whybox{display:none;margin-top:clamp(14px,2vh,20px);max-width:1200px;background:#F4F8EE;border-left:5px solid var(--green-dark);border-radius:0 12px 12px 0;padding:clamp(14px,1.8vh,20px) clamp(18px,2.2vw,26px);font-size:clamp(16px,1.6vw,21px);line-height:1.45;color:#333;}
+  .revealed .whybox{display:block;} .whybox b{color:var(--green-dark);}
+  .audio-tag{display:inline-block;background:#EAF4DA;color:var(--green-dark);border-radius:8px;padding:4px 12px;font-size:clamp(13px,1.3vw,16px);font-weight:700;margin-bottom:10px;}
+  .valencia-note{margin-top:clamp(16px,2.2vh,28px);font-size:clamp(15px,1.5vw,20px);color:#777;font-style:italic;}
+  footer{text-align:center;padding:20px;font-size:clamp(13px,1.1vw,16px);color:#888;border-top:2px solid #eee;}
+  @page{size:A4;margin:16mm 14mm}
+  @media print{
+    body{background:#fff} .nav-bar{display:none !important} main{max-width:none;padding:0}
+    .slide{display:block !important;page-break-after:always;padding-top:6px;} .slide:last-child{page-break-after:auto;}
+    h2{font-size:19pt} .kicker{font-size:12pt}
+    .item{font-size:12.5pt;page-break-inside:avoid;break-inside:avoid;}
+    .whybox{display:block !important;font-size:12pt;} .reveal-all{display:none !important;}
+  }
+  @media(max-width:700px){ header{flex-direction:column;align-items:center;text-align:center;} .title-block{text-align:center;} h2{font-size:24px;} }
+/* per-item-reveal v1 */
+.item .a-text,.gap-answer{color:transparent !important;background:#EAF4DA;border-radius:6px;padding:0 .35em;min-width:3.2em;display:inline-block;cursor:pointer;user-select:none;}
+.item.shown .a-text,.gap-answer.shown{color:var(--green-dark) !important;background:none;font-weight:700;}
+.showpill{display:inline-block;margin-left:10px;border:2px solid var(--green);color:var(--green-dark);background:#fff;border-radius:999px;padding:1px 12px;font-size:.72em;font-weight:700;cursor:pointer;vertical-align:middle;}
+.item.shown .showpill{display:none;}
+@media print{.item .a-text,.gap-answer{color:var(--green-dark) !important;background:none;}.showpill{display:none !important;}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+  <div class="title-block"><h1>Vocabulary &amp; Grammar</h1><p>Unit 2 &middot; p.24-25 &middot; tableware &amp; used to / would</p></div>
+</header>
+<main>
+
+<div class="slide active">
+  <div class="kicker">Unit 2 &middot; pages 24-25</div>
+  <h2>Tableware, <span class="accent">used to &amp; would</span></h2>
+  <p class="valencia-note">Tap "Show answers" on each slide. Six exercises, in book order.</p>
+</div>
+
+<div class="slide">
+  <div class="kicker">Vocabulary Ex.2 &middot; choose the option</div>
+  <h2>Bottle, jug, jar or <span class="accent">bowl?</span></h2>
+  <ul class="item-list">
+    <li class="item"><span class="num">1</span>A <span class="a-text">bottle</span> of water for the gym.</li>
+    <li class="item"><span class="num">2</span>Have you got a better <span class="a-text">fork</span>?</li>
+    <li class="item"><span class="num">3</span>Six <span class="a-text">jars</span> of homemade jam.</li>
+    <li class="item"><span class="num">4</span>The knives and <span class="a-text">forks</span> are on the table.</li>
+    <li class="item"><span class="num">5</span>Two <span class="a-text">cups, saucers</span> and a small <span class="a-text">jug</span> of milk.</li>
+    <li class="item"><span class="num">6</span>A <span class="a-text">box</span> of chocolates.</li>
+    <li class="item"><span class="num">7</span>All the <span class="a-text">plates</span> are dirty!</li>
+    <li class="item"><span class="num">8</span>Water in the dog's <span class="a-text">bowl</span>.</li>
+    <li class="item"><span class="num">9</span>A <span class="a-text">spoon</span> for yoghurt.</li>
+  </ul>
+  <button class="reveal-all">Show answers</button>
+  <div class="whybox">Container words pair with specific liquids/solids: a jug pours, a jar has a lid for jam/honey, a bottle is sealed for drinks.</div>
+</div>
+
+<div class="slide">
+  <div class="kicker">Vocabulary Ex.3 &middot; the odd one out</div>
+  <h2>Which word doesn't <span class="accent">fit?</span></h2>
+  <ul class="item-list">
+    <li class="item"><span class="num">1</span>a slice of pizza / <span class="a-text">pasta</span> / bread</li>
+    <li class="item"><span class="num">2</span>a glass of <span class="a-text">bread</span> / juice / milk</li>
+    <li class="item"><span class="num">3</span>a bunch of bananas / grapes / <span class="a-text">strawberries</span></li>
+    <li class="item"><span class="num">4</span>a packet of <span class="a-text">milk</span> / biscuits / crisps</li>
+    <li class="item"><span class="num">5</span>a piece of cake / cheese / <span class="a-text">rice</span></li>
+    <li class="item"><span class="num">6</span>a tin of tuna / beans / <span class="a-text">pizza</span></li>
+  </ul>
+  <button class="reveal-all">Show answers</button>
+  <div class="whybox">The green word is the one that can't take that quantity/container &mdash; pasta isn't sliced, bread isn't a "glass of", strawberries don't come in a "bunch" (grapes and bananas do).</div>
+</div>
+
+<div class="slide">
+  <div class="kicker">Vocabulary Ex.4 &middot; listening, Track 2.6</div>
+  <h2>Complete the <span class="accent">breakfast chat</span></h2>
+  <div class="audio-tag">&#127911; Track 2.6</div>
+  <ul class="item-list">
+    <li class="item"><span class="num">1</span>A couple of <span class="a-text">slices</span> of pizza</li>
+    <li class="item"><span class="num">2</span>in the takeaway <span class="a-text">box</span></li>
+    <li class="item"><span class="num">3</span>a big <span class="a-text">bunch</span> of bananas</li>
+    <li class="item"><span class="num">4</span>in the <span class="a-text">bowl</span> on the table</li>
+    <li class="item"><span class="num">5</span>two <span class="a-text">bottles</span> of milk</li>
+    <li class="item"><span class="num">6</span>this <span class="a-text">jar</span> of honey</li>
+    <li class="item"><span class="num">7</span>here's a <span class="a-text">knife</span></li>
+    <li class="item"><span class="num">8</span>I'll wash the <span class="a-text">glasses</span></li>
+  </ul>
+  <button class="reveal-all">Show answers</button>
+  <div class="whybox">Same eight container/quantity words, now in a natural dialogue about making a banana smoothie.</div>
+</div>
+
+<div class="slide">
+  <div class="kicker">Grammar Ex.1 &middot; complete the rule</div>
+  <h2>Used to <span class="accent">or would?</span></h2>
+  <ul class="item-list">
+    <li class="item"><span class="num">a</span>We can use <span class="a-text">used to</span> to describe states OR repeated actions in the past.</li>
+    <li class="item"><span class="num">b</span>We can use <span class="a-text">would</span> to describe repeated actions in the past, but NOT states.</li>
+  </ul>
+  <button class="reveal-all">Show answers</button>
+  <div class="whybox"><b>The test:</b> can you picture it happening more than once as an event? "Would" works. Is it a fact/state ("used to own", "used to be")? Only "used to" works.</div>
+</div>
+
+<div class="slide">
+  <div class="kicker">Grammar Ex.2 &middot; can it be would?</div>
+  <h2>Tick the ones that <span class="accent">work with would</span></h2>
+  <ul class="item-list">
+    <li class="item"><span class="num">1</span>My dad used to prepare breakfast every Sunday &rarr; <span class="a-text">yes, would</span></li>
+    <li class="item"><span class="num">2</span>Sara used to eat a lot of rice in Japan &rarr; <span class="a-text">yes, would</span></li>
+    <li class="item"><span class="num">3</span>Did you use to like cabbage? &rarr; <span class="a-text">no (question form)</span></li>
+    <li class="item"><span class="num">4</span>I didn't use to own a microwave &rarr; <span class="a-text">no (a state)</span></li>
+    <li class="item"><span class="num">5</span>We used to have barbecues every weekend &rarr; <span class="a-text">yes, would</span></li>
+    <li class="item"><span class="num">6</span>These chocolates used to cost much less &rarr; <span class="a-text">no (a state/price)</span></li>
+    <li class="item"><span class="num">7</span>Did Klaus use to be a chef? &rarr; <span class="a-text">no ("be" is a state)</span></li>
+    <li class="item"><span class="num">8</span>My sister used to throw her food on the floor &rarr; <span class="a-text">yes, would</span></li>
+  </ul>
+  <button class="reveal-all">Show answers</button>
+  <div class="whybox">Items 1, 2, 5, 8 tick: they're all repeated actions. The rest are states, questions or facts &mdash; would can't replace used to there.</div>
+</div>
+
+<div class="slide">
+  <div class="kicker">Grammar Ex.3 &middot; be/get used to</div>
+  <h2>Already familiar, or <span class="accent">becoming familiar?</span></h2>
+  <ul class="item-list">
+    <li class="item"><span class="num">1</span>"I'm used to the late nights" (worked there 6 years) &rarr; <span class="a-text">a, already usual/familiar</span></li>
+    <li class="item"><span class="num">2</span>"I'm getting used to the late nights" (started 2 weeks ago) &rarr; <span class="a-text">b, becoming familiar</span></li>
+  </ul>
+  <button class="reveal-all">Show answers</button>
+  <div class="whybox"><b>be used to</b> = already familiar (a state). <b>get used to</b> = in the process of becoming familiar (a change). Both take -ing or a noun, never a bare infinitive.</div>
+</div>
+
+<div class="slide">
+  <div class="kicker">Grammar Ex.4 &middot; choose a, b or c</div>
+  <h2>Mix of all <span class="accent">three forms</span></h2>
+  <ul class="item-list">
+    <li class="item"><span class="num">1</span>I <span class="a-text">am used to (a)</span> eating fruit and yoghurt.</li>
+    <li class="item"><span class="num">2</span>My cookery teacher <span class="a-text">used to (c)</span> be a chef.</li>
+    <li class="item"><span class="num">3</span><span class="a-text">Were you used to (c)</span> preparing food at home?</li>
+    <li class="item"><span class="num">4</span>Eloise <span class="a-text">couldn't get used to (b)</span> the spicy food.</li>
+    <li class="item"><span class="num">5</span>Sonia and Masha <span class="a-text">are getting used to (a)</span> the lunches.</li>
+    <li class="item"><span class="num">6</span><span class="a-text">Is Haru getting used to (c)</span> his new eating plan?</li>
+    <li class="item"><span class="num">7</span>I <span class="a-text">used to (c)</span> eat a lot of meat before becoming vegetarian.</li>
+    <li class="item"><span class="num">8</span><span class="a-text">Did you get used to (a)</span> helping prepare dinner?</li>
+  </ul>
+  <button class="reveal-all">Show answers</button>
+  <div class="whybox">Read the whole sentence for a time clue: "for years" = already familiar; "loved it, but" (a past habit that stopped) = used to; "started... two weeks ago" = getting used to.</div>
+</div>
+
+</main>
+<div class="nav-bar"><button id="prevBtn" title="Previous">&#8592;</button><span class="count" id="count"></span><button id="nextBtn" title="Next">&#8594;</button></div>
+<footer>Somerset Language Centre &middot; Valencia &middot; Unit 2, p.24-25</footer>
+<script>
+  var slides = document.querySelectorAll('.slide');
+  var idx = 0;
+  var prevBtn = document.getElementById('prevBtn');
+  var nextBtn = document.getElementById('nextBtn');
+  var count = document.getElementById('count');
+  function render(){ slides.forEach(function(s,i){ s.classList.toggle('active', i===idx); }); count.textContent=(idx+1)+' / '+slides.length; prevBtn.disabled=idx===0; nextBtn.disabled=idx===slides.length-1; window.scrollTo(0,0); }
+  function go(d){ idx=Math.max(0,Math.min(slides.length-1,idx+d)); render(); }
+  prevBtn.addEventListener('click', function(){ go(-1); });
+  nextBtn.addEventListener('click', function(){ go(1); });
+  document.addEventListener('keydown', function(e){ if(e.key==='ArrowRight') go(1); else if(e.key==='ArrowLeft') go(-1); });
+  document.querySelectorAll('.slide').forEach(function(slide){
+    var btn = slide.querySelector('.reveal-all');
+    if(!btn) return;
+    btn.addEventListener('click', function(){ var on = slide.classList.toggle('revealed'); btn.textContent = on ? 'Hide answers' : 'Show answers'; });
+  });
+  render();
+</script>
+<script>/* per-item-reveal v1 */
+document.querySelectorAll('.item').forEach(function(it){
+  if(!it.querySelector('.a-text')) return;
+  var b=document.createElement('button'); b.className='showpill'; b.type='button'; b.textContent='Show answer';
+  b.addEventListener('click',function(e){e.stopPropagation(); it.classList.add('shown');});
+  it.appendChild(b);
+  it.querySelectorAll('.a-text').forEach(function(a){a.addEventListener('click',function(e){e.stopPropagation(); it.classList.toggle('shown');});});
+});
+document.querySelectorAll('.gap-answer').forEach(function(g){g.title='Click to show / hide'; g.addEventListener('click',function(){g.classList.toggle('shown');});});
+document.querySelectorAll('.reveal-all').forEach(function(b){
+  var s=b.closest('.slide'); if(!s||!s.querySelector('.whybox')){b.style.display='none';return;}
+  var mc=!!s.querySelector('.mc-opt'); var L=mc?['Show answer','Hide answer']:['Why?','Hide why'];  /* MC slides reveal the right option (registry D07) */
+  var fresh=b.cloneNode(true); b.parentNode.replaceChild(fresh,b); fresh.textContent=L[0];
+  fresh.addEventListener('click',function(){var on=s.classList.toggle('revealed'); fresh.textContent=on?L[1]:L[0];});
+});
+</script>
+</body>
+</html>

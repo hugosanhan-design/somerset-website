@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 2 — Delicious! — Review Play 1 — Review Plays</title>
+<style>
+  :root{
+    --green:#6BAE2E;
+    --green-dark:#4d8120;
+    --ink:#1a1a1a;
+    --bg:#ffffff;
+    --char-a:#0F7B6C;
+    --char-b:#6B3FA0;
+    --char-c:#C2540A;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+  }
+  header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    padding:24px 40px;
+    border-bottom:4px solid var(--green);
+    flex-wrap:wrap;
+    gap:16px;
+  }
+  .logo{display:flex;align-items:flex-end;gap:11px;}
+  .logo .word{font-family:Arial,Helvetica,sans-serif;font-weight:800;font-size:33pt;letter-spacing:-1.2px;line-height:.9;color:#6BAE2E;}
+  .logo .lc{font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:8.5pt;letter-spacing:2.5px;line-height:1.18;padding-bottom:4px;color:#4d8120;}
+  .title-block{text-align:right;}
+  .title-block h1{margin:0;font-size:24px;font-weight:700;color:var(--ink);}
+  .title-block p{margin:6px 0 0;font-size:15px;color:#555;letter-spacing:.5px;text-transform:uppercase;}
+
+  .toggle-row{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:16px;
+    padding:20px 20px 4px;
+  }
+  .toggle-btn{
+    font-size:19px;
+    font-weight:700;
+    padding:14px 26px;
+    border-radius:12px;
+    border:3px solid var(--green);
+    background:#fff;
+    color:var(--green-dark);
+    cursor:pointer;
+    transition:all .15s ease;
+    font-family:inherit;
+  }
+  .toggle-btn:hover{background:#EAF4DA;}
+  .toggle-btn.active{background:var(--green);color:#fff;}
+  .version-btn{font-size:22px;padding:16px 36px;}
+
+  .scene-setup{
+    max-width:900px;
+    margin:14px auto 0;
+    padding:0 24px;
+    text-align:center;
+    font-size:19px;
+    color:#444;
+    font-style:italic;
+  }
+
+  .focus-tags{
+    max-width:900px;
+    margin:10px auto 0;
+    padding:0 24px;
+    text-align:center;
+    font-size:14px;
+    color:#6BAE2E;
+    font-weight:700;
+    letter-spacing:.4px;
+    text-transform:uppercase;
+  }
+
+  main{max-width:960px;margin:0 auto;padding:20px 24px 90px;}
+  .script-panel{display:none;}
+  .script-panel.active{display:block;}
+  .version{display:none;}
+  .version.active{display:block;}
+
+  .line{
+    display:flex;
+    gap:24px;
+    align-items:baseline;
+    margin-bottom:30px;
+    padding-bottom:30px;
+    border-bottom:1px solid #eee;
+  }
+  .line:last-child{border-bottom:none;}
+  .char-name{
+    flex:0 0 180px;
+    font-size:22px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+  }
+  .char-a .char-name{color:var(--char-a);}
+  .char-b .char-name{color:var(--char-b);}
+  .char-c .char-name{color:var(--char-c);}
+  .line-text{
+    font-size:30px;
+    line-height:1.5;
+    flex:1;
+  }
+  .stage-direction{
+    font-size:20px;
+    color:#777;
+    font-style:italic;
+    text-align:center;
+    margin:24px 0;
+  }
+  .joint-line .char-name{color:#444;}
+
+  footer{
+    text-align:center;
+    padding:24px;
+    font-size:14px;
+    color:#888;
+    border-top:2px solid #eee;
+  }
+
+  @media (max-width:700px){
+    header{flex-direction:column;align-items:center;text-align:center;}
+    .title-block{text-align:center;}
+    .line{flex-direction:column;gap:6px;}
+    .char-name{flex-basis:auto;font-size:19px;}
+    .line-text{font-size:25px;}
+    .toggle-btn{font-size:16px;padding:11px 18px;}
+    .version-btn{font-size:18px;padding:12px 24px;}
+  }
+
+  @page{size:A4;margin:16mm 14mm}
+  @media print{
+    body{background:#fff}
+    .toggle-row{display:none !important}
+    main{max-width:none;padding:0}
+    .scene-setup{font-size:12pt}
+    .focus-tags{font-size:12pt}
+    .char-name{font-size:13pt}
+    .line-text{font-size:14pt;line-height:1.4}
+    .line{margin-bottom:12pt;padding-bottom:10pt;page-break-inside:avoid;break-inside:avoid}
+    .stage-direction{font-size:12pt;margin:10pt 0;page-break-inside:avoid;break-inside:avoid}
+    footer{font-size:9pt;padding:10pt 0 0}
+    .version{display:none !important}
+    .version.active{display:block !important}
+    .script-panel{display:none !important}
+    .script-panel.active{display:block !important}
+  }
+
+  /* names panel (playnames.py) */
+  .nm-bar{display:flex;justify-content:center;padding:8px 20px 0;}
+  .nm-toggle{font-size:13px;font-weight:600;color:#6a6a6a;background:none;border:none;cursor:pointer;text-decoration:underline;font-family:inherit;padding:4px;}
+  .nm-toggle:hover{color:#2F6B1A;}
+  .nm-panel{display:none;max-width:760px;margin:6px auto 0;padding:14px 20px;background:#FAFAF8;border:1.5px dashed #ccc;border-radius:10px;gap:12px;flex-wrap:wrap;justify-content:center;align-items:flex-end;}
+  .nm-panel.open{display:flex;}
+  .nm-field{display:flex;flex-direction:column;gap:4px;font-size:12px;color:#666;}
+  .nm-field input{font-size:14px;padding:6px 10px;border:1.5px solid #ccc;border-radius:6px;font-family:inherit;width:150px;}
+  .nm-reset{font-size:12px;color:#999;background:none;border:1px solid #ccc;border-radius:6px;padding:6px 10px;cursor:pointer;font-family:inherit;}
+  .nm-reset:hover{color:#2F6B1A;border-color:#6BAE2E;}
+  .nm-title{flex-basis:100%;font-size:14px;font-weight:700;color:#2F6B1A;text-align:center;margin:0 0 2px;}
+  .nm-note{flex-basis:100%;font-size:12px;color:#999;text-align:center;margin:2px 0 0;}
+  @media print{.nm-bar,.nm-panel{display:none !important;}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+  <div class="title-block">
+    <h1>Unit 2 — Delicious!</h1>
+    <p>Review Plays &middot; PET I</p>
+  </div>
+</header>
+<div class="nm-bar"><button class="nm-toggle" type="button" onclick="nmToggle()">Class names (show / hide)</button></div>
+<div class="nm-panel open" id="nmPanel">
+  <p class="nm-title">1. Choose how many students are acting (buttons above). 2. Type their names.</p>
+  <div id="nmFields" style="display:contents"></div>
+  <button class="nm-reset" type="button" onclick="nmReset()">Clear names</button>
+  <p class="nm-note">Each name appears everywhere in the play. Until you type one, the part shows as Student A, B or C. Not saved: names clear when you reload.</p>
+</div>
+
+
+<div class="toggle-row">
+  <button class="toggle-btn active" id="scriptBtnA" onclick="showScript('A')">Script A &middot; The Paella Contest</button>
+  <button class="toggle-btn" id="scriptBtnB" onclick="showScript('B')">Script B &middot; The Market Mishap</button>
+  <button class="toggle-btn" id="scriptBtnC" onclick="showScript('C')">Script C &middot; The Horchata Call</button>
+</div>
+<div class="toggle-row">
+  <button class="toggle-btn version-btn active" id="verBtn2" onclick="showVersionCount(2)">2 students</button>
+  <button class="toggle-btn version-btn" id="verBtn3" onclick="showVersionCount(3)">3 students</button>
+  <button class="toggle-btn print-btn" onclick="window.print()">Print</button>
+</div>
+
+<main>
+
+  <div class="script-panel active" id="panel-A">
+    <p class="scene-setup">The annual paella contest in Sueca, in the Ribera del Júcar, during the judging.</p>
+    <p class="focus-tags">Taste adjectives &middot; cooking verbs &middot; past simple &amp; past continuous</p>
+
+    <div class="version active" id="ver-A-2">
+      <div class="line char-a"><div class="char-name">Judge</div><div class="line-text">Good morning! So, tell me, what were you doing when I arrived?</div></div>
+      <div class="line char-b"><div class="char-name"><span class="nm" data-base="Student B">Student B</span></div><div class="line-text">I was stirring the rice when you walked in, sorry! I started cooking two hours ago.</div></div>
+      <div class="line char-a"><div class="char-name">Judge</div><div class="line-text">No problem. What ingredients did you use today?</div></div>
+      <div class="line char-b"><div class="char-name"><span class="nm" data-base="Student B">Student B</span></div><div class="line-text">I used chicken, rabbit, green beans and saffron, the traditional way.</div></div>
+      <div class="line char-a"><div class="char-name">Judge</div><div class="line-text">And how did you cook the rice, exactly?</div></div>
+      <div class="line char-b"><div class="char-name"><span class="nm" data-base="Student B">Student B</span></div><div class="line-text">I fried the meat first, then I boiled everything together for about twenty minutes.</div></div>
+      <div class="line char-a"><div class="char-name">Judge</div><div class="line-text">Was anything difficult while you were cooking?</div></div>
+      <div class="line char-b"><div class="char-name"><span class="nm" data-base="Student B">Student B</span></div><div class="line-text">Actually yes, while I was adding the saffron, the wind blew some ash from the fire into the pan! I had to start that part again.</div></div>
+      <div class="stage-direction">The judge tastes a spoonful from the pan.</div>
+      <div class="line char-a"><div class="char-name">Judge</div><div class="line-text">Mmm, this is delicious, not too salty at all.</div></div>
+      <div class="line char-b"><div class="char-name"><span class="nm" data-base="Student B">Student B</span></div><div class="line-text">Thank you! I was worried it would be too spicy, I added a little pepper by accident.</div></div>
+      <div class="line char-a"><div class="char-name">Judge</div><div class="line-text">No, it's perfect, nice and sweet from the tomato. Did you cook anything else today?</div></div>
+      <div class="line char-b"><div class="char-name"><span class="nm" data-base="Student B">Student B</span></div><div class="line-text">Yes, while the rice was cooking, I grilled some vegetables for the judges to try as well.</div></div>
+      <div class="line char-a"><div class="char-name">Judge</div><div class="line-text">Wonderful, very generous. While I was walking around earlier, I tasted twelve paellas, and yours is one of the best.</div></div>
+      <div class="line char-b"><div class="char-name"><span class="nm" data-base="Student B">Student B</span></div><div class="line-text">Really? Thank you so much, that means a lot.</div></div>
+    </div>
+
+    <div class="version" id="ver-A-3">
+      <div class="line char-a"><div class="char-name">Judge</div><div class="line-text">Good morning! So, tell me, what were you doing when I arrived?</div></div>
+      <div class="line char-b"><div class="char-name"><span class="nm" data-base="Student B">Student B</span></div><div class="line-text">I was stirring the rice when you walked in, sorry! I started cooking two hours ago.</div></div>
+      <div class="stage-direction"><span class="nm" data-base="Student C">Student C</span>, cooking at the next fire, leans over with a spare spoon.</div>
+      <div class="line char-c"><div class="char-name"><span class="nm" data-base="Student C">Student C</span></div><div class="line-text">Sorry to interrupt, Judge, but you should try mine too when you're ready!</div></div>
+      <div class="line char-a"><div class="char-name">Judge</div><div class="line-text">Of course, <span class="nm" data-base="Student C">Student C</span>, I'll come to you next. <span class="nm" data-base="Student B">Student B</span>, what ingredients did you use today?</div></div>
+      <div class="line char-b"><div class="char-name"><span class="nm" data-base="Student B">Student B</span></div><div class="line-text">I used chicken, rabbit, green beans and saffron, the traditional way.</div></div>
+      <div class="line char-c"><div class="char-name"><span class="nm" data-base="Student C">Student C</span></div><div class="line-text">I used exactly the same, actually, but I fried the meat for longer than <span class="nm" data-base="Student B">Student B</span> did.</div></div>
+      <div class="line char-a"><div class="char-name">Judge</div><div class="line-text">Interesting. Was anything difficult while you were cooking, either of you?</div></div>
+      <div class="line char-b"><div class="char-name"><span class="nm" data-base="Student B">Student B</span></div><div class="line-text">While I was adding the saffron, the wind blew some ash from the fire into my pan! I had to start that part again.</div></div>
+      <div class="line char-c"><div class="char-name"><span class="nm" data-base="Student C">Student C</span></div><div class="line-text">That happened to me last year! This year I was more careful, luckily.</div></div>
+      <div class="stage-direction">The judge tastes both pans.</div>
+      <div class="line char-a"><div class="char-name">Judge</div><div class="line-text"><span class="nm" data-base="Student B">Student B</span>'s is delicious, not too salty. <span class="nm" data-base="Student C">Student C</span>, yours is nice and sweet from the tomato, but a little spicy for me.</div></div>
+      <div class="line char-c"><div class="char-name"><span class="nm" data-base="Student C">Student C</span></div><div class="line-text">I added extra pepper by accident, sorry!</div></div>
+      <div class="line char-b"><div class="char-name"><span class="nm" data-base="Student B">Student B</span></div><div class="line-text">While the rice was cooking, I grilled some vegetables too, would you like to try them?</div></div>
+      <div class="line char-a"><div class="char-name">Judge</div><div class="line-text">Wonderful, very generous, both of you. While I was walking around earlier, I tasted twelve paellas, and you're both in my top three.</div></div>
+      <div class="line joint-line"><div class="char-name"><span class="nm" data-base="Student B">Student B</span> &amp; <span class="nm" data-base="Student C">Student C</span></div><div class="line-text">Thank you so much, that means a lot!</div></div>
+    </div>
+  </div>
+  <div class="script-panel" id="panel-B">
+    <p class="scene-setup">A fruit stall at the Mercado Central de Valencia, the morning after a cooking disaster.</p>
+    <p class="focus-tags">Taste adjectives &middot; cooking verbs &middot; past simple &amp; past continuous</p>
+
+    <div class="version active" id="ver-B-2">
+      <div class="line char-a"><div class="char-name"><span class="nm" data-base="Student A">Student A</span></div><div class="line-text">You won't believe what happened yesterday! I was baking a cake for my mum's birthday when the oven stopped working.</div></div>
+      <div class="line char-b"><div class="char-name"><span class="nm" data-base="Student B">Student B</span></div><div class="line-text">Oh no, what did you do?</div></div>
+      <div class="line char-a"><div class="char-name"><span class="nm" data-base="Student A">Student A</span></div><div class="line-text">I called my neighbour, and while I was waiting for her, I roasted some vegetables in her oven instead, just to save the evening.</div></div>
+      <div class="line char-b"><div class="char-name"><span class="nm" data-base="Student B">Student B</span></div><div class="line-text">Good thinking! Did the cake taste OK in the end?</div></div>
+      <div class="line char-a"><div class="char-name"><span class="nm" data-base="Student A">Student A</span></div><div class="line-text">Actually, it was a bit sour, I think I used the wrong lemon. My mum said it was fine, but I could taste it clearly.</div></div>
+      <div class="line char-b"><div class="char-name"><span class="nm" data-base="Student B">Student B</span></div><div class="line-text">Ha! Well, at least the vegetables were good. Were you barbecuing outside too?</div></div>
+      <div class="line char-a"><div class="char-name"><span class="nm" data-base="Student A">Student A</span></div><div class="line-text">No, we didn't barbecue, it was raining all evening. What were you doing yesterday?</div></div>
+      <div class="line char-b"><div class="char-name"><span class="nm" data-base="Student B">Student B</span></div><div class="line-text">I was grilling fish at my grandparents' house when you called me, actually, that's why I didn't answer.</div></div>
+      <div class="line char-a"><div class="char-name"><span class="nm" data-base="Student A">Student A</span></div><div class="line-text">Oh, I wondered why! Was it good?</div></div>
+      <div class="line char-b"><div class="char-name"><span class="nm" data-base="Student B">Student B</span></div><div class="line-text">Really good, not salty at all, just perfect. Come on, let's buy some lemons here, the ones at this stall look fresh.</div></div>
+      <div class="line char-a"><div class="char-name"><span class="nm" data-base="Student A">Student A</span></div><div class="line-text">Good idea, mine tasted bitter, I definitely bought bad ones last time.</div></div>
+    </div>
+
+    <div class="version" id="ver-B-3">
+      <div class="line char-a"><div class="char-name"><span class="nm" data-base="Student A">Student A</span></div><div class="line-text">You won't believe what happened yesterday! I was baking a cake for my mum's birthday when the oven stopped working.</div></div>
+      <div class="line char-b"><div class="char-name"><span class="nm" data-base="Student B">Student B</span></div><div class="line-text">Oh no, what did you do?</div></div>
+      <div class="stage-direction"><span class="nm" data-base="Student C">Student C</span> arrives at the stall, carrying two shopping bags.</div>
+      <div class="line char-c"><div class="char-name"><span class="nm" data-base="Student C">Student C</span></div><div class="line-text">Hola! Sorry I'm late, I was queuing at the fish stall. What happened?</div></div>
+      <div class="line char-a"><div class="char-name"><span class="nm" data-base="Student A">Student A</span></div><div class="line-text">My oven broke while I was baking a cake! I called my neighbour, and while I waited, I roasted some vegetables in her oven instead.</div></div>
+      <div class="line char-c"><div class="char-name"><span class="nm" data-base="Student C">Student C</span></div><div class="line-text">Clever! Did the cake taste OK in the end?</div></div>
+      <div class="line char-a"><div class="char-name"><span class="nm" data-base="Student A">Student A</span></div><div class="line-text">It was a bit sour, I think I used the wrong lemon. My mum said it was fine, but I could taste it clearly.</div></div>
+      <div class="line char-b"><div class="char-name"><span class="nm" data-base="Student B">Student B</span></div><div class="line-text">At least the vegetables were good. Were you barbecuing outside too, <span class="nm" data-base="Student C">Student C</span>?</div></div>
+      <div class="line char-c"><div class="char-name"><span class="nm" data-base="Student C">Student C</span></div><div class="line-text">No, it was raining. Actually, while it was raining, I was grilling fish inside for my family.</div></div>
+      <div class="line char-a"><div class="char-name"><span class="nm" data-base="Student A">Student A</span></div><div class="line-text">Was it good?</div></div>
+      <div class="line char-c"><div class="char-name"><span class="nm" data-base="Student C">Student C</span></div><div class="line-text">Really good, not salty at all. Come on, let's buy some lemons here, mine tasted bitter last time.</div></div>
+      <div class="line char-b"><div class="char-name"><span class="nm" data-base="Student B">Student B</span></div><div class="line-text">Good idea, these ones look fresh.</div></div>
+    </div>
+  </div>
+  <div class="script-panel" id="panel-C">
+    <p class="scene-setup">A video call the evening after an horchata-making workshop in Alboraia.</p>
+    <p class="focus-tags">Taste adjectives &middot; cooking verbs &middot; past simple &amp; past continuous</p>
+
+    <div class="version active" id="ver-C-2">
+      <div class="line char-a"><div class="char-name"><span class="nm" data-base="Student A">Student A</span></div><div class="line-text">Hi <span class="nm" data-base="Student B">Student B</span>! How was the horchata workshop in Alboraia today?</div></div>
+      <div class="line char-b"><div class="char-name"><span class="nm" data-base="Student B">Student B</span></div><div class="line-text">Amazing! While I was making the horchata, the teacher explained the whole history of Alboraia's chufa fields.</div></div>
+      <div class="line char-a"><div class="char-name"><span class="nm" data-base="Student A">Student A</span></div><div class="line-text">That's so interesting. What did you actually do?</div></div>
+      <div class="line char-b"><div class="char-name"><span class="nm" data-base="Student B">Student B</span></div><div class="line-text">We boiled the water first, then we mixed it with the chufa. I also tried baking some fartons to go with it.</div></div>
+      <div class="line char-a"><div class="char-name"><span class="nm" data-base="Student A">Student A</span></div><div class="line-text">Fartons! Did they taste sweet?</div></div>
+      <div class="line char-b"><div class="char-name"><span class="nm" data-base="Student B">Student B</span></div><div class="line-text">Very sweet, perfect with the horchata. Someone dropped a tray of them while we were cleaning up, it was chaos for a minute.</div></div>
+      <div class="line char-a"><div class="char-name"><span class="nm" data-base="Student A">Student A</span></div><div class="line-text">Ha! What were you doing when that happened?</div></div>
+      <div class="line char-b"><div class="char-name"><span class="nm" data-base="Student B">Student B</span></div><div class="line-text">I was washing some glasses when I heard the noise, I turned around and there was sugar everywhere.</div></div>
+      <div class="line char-a"><div class="char-name"><span class="nm" data-base="Student A">Student A</span></div><div class="line-text">Was the horchata good in the end?</div></div>
+      <div class="line char-b"><div class="char-name"><span class="nm" data-base="Student B">Student B</span></div><div class="line-text">Delicious, not too sweet, not sour at all, just right. You should come next time.</div></div>
+    </div>
+
+    <div class="version" id="ver-C-3">
+      <div class="line char-a"><div class="char-name"><span class="nm" data-base="Student A">Student A</span></div><div class="line-text">Hi <span class="nm" data-base="Student B">Student B</span>! How was the horchata workshop in Alboraia today?</div></div>
+      <div class="line char-b"><div class="char-name"><span class="nm" data-base="Student B">Student B</span></div><div class="line-text">Amazing! While I was making the horchata, the teacher explained the whole history of Alboraia's chufa fields.</div></div>
+      <div class="stage-direction"><span class="nm" data-base="Student C">Student C</span> waves from behind <span class="nm" data-base="Student B">Student B</span> and sits down too.</div>
+      <div class="line char-c"><div class="char-name"><span class="nm" data-base="Student C">Student C</span></div><div class="line-text">Hi <span class="nm" data-base="Student A">Student A</span>! I was there too, it was such a fun morning.</div></div>
+      <div class="line char-a"><div class="char-name"><span class="nm" data-base="Student A">Student A</span></div><div class="line-text">Hi <span class="nm" data-base="Student C">Student C</span>! What did you two actually do?</div></div>
+      <div class="line char-c"><div class="char-name"><span class="nm" data-base="Student C">Student C</span></div><div class="line-text">We boiled the water first, then we mixed it with the chufa. <span class="nm" data-base="Student B">Student B</span> also tried baking some fartons to go with it.</div></div>
+      <div class="line char-a"><div class="char-name"><span class="nm" data-base="Student A">Student A</span></div><div class="line-text">Fartons! Did they taste sweet?</div></div>
+      <div class="line char-b"><div class="char-name"><span class="nm" data-base="Student B">Student B</span></div><div class="line-text">Very sweet, perfect with the horchata. Someone dropped a tray of them while we were cleaning up, it was chaos for a minute.</div></div>
+      <div class="line char-c"><div class="char-name"><span class="nm" data-base="Student C">Student C</span></div><div class="line-text">That was me, actually! I was washing some glasses when I dropped the tray, sugar went everywhere.</div></div>
+      <div class="line char-a"><div class="char-name"><span class="nm" data-base="Student A">Student A</span></div><div class="line-text">Ha! Was the horchata good in the end?</div></div>
+      <div class="line char-b"><div class="char-name"><span class="nm" data-base="Student B">Student B</span></div><div class="line-text">Delicious, not too sweet, not sour at all, just right.</div></div>
+      <div class="line char-c"><div class="char-name"><span class="nm" data-base="Student C">Student C</span></div><div class="line-text">You should come next time, <span class="nm" data-base="Student A">Student A</span>, honestly.</div></div>
+    </div>
+  </div>
+
+</main>
+
+<footer>Somerset Language Centre &middot; Valencia &middot; PET I Review Plays · Play 1: taste &amp; past tenses</footer>
+
+<script>
+let currentScript = 'A';
+let currentVersion = 2;
+const SCRIPT_IDS = ['A','B','C'];
+
+function showScript(s){ currentScript = s; render(); }
+function showVersionCount(v){ currentVersion = v; render(); }
+
+function render(){
+  SCRIPT_IDS.forEach(function(s){
+    document.getElementById('panel-' + s).classList.toggle('active', s === currentScript);
+    document.getElementById('scriptBtn' + s).classList.toggle('active', s === currentScript);
+  });
+  [2,3].forEach(function(v){
+    document.getElementById('verBtn' + v).classList.toggle('active', v === currentVersion);
+  });
+  SCRIPT_IDS.forEach(function(s){
+    [2,3].forEach(function(v){
+      const el = document.getElementById('ver-' + s + '-' + v);
+      if (el) el.classList.toggle('active', v === currentVersion);
+    });
+  });
+}
+render();
+</script>
+
+<script>
+/* names panel (playnames.py) */
+(function(){
+  var ov = {};
+  function spans(){ return Array.prototype.slice.call(document.querySelectorAll('.nm[data-base]')); }
+  function apply(){
+    spans().forEach(function(el){ var b = el.getAttribute('data-base'); el.textContent = (ov[b] && ov[b].trim()) || b; });
+  }
+  function visibleBases(){
+    var seen = [], out = [];
+    spans().forEach(function(el){
+      if (el.offsetParent === null) return;
+      var b = el.getAttribute('data-base');
+      if (seen.indexOf(b) < 0){ seen.push(b); out.push(b); }
+    });
+    return out;
+  }
+  function build(){
+    var box = document.getElementById('nmFields'); if(!box) return;
+    box.innerHTML = '';
+    visibleBases().forEach(function(b){
+      var d = document.createElement('div'); d.className = 'nm-field';
+      var l = document.createElement('label'); l.textContent = b;
+      var i = document.createElement('input'); i.type = 'text'; i.placeholder = 'type a name'; i.value = ov[b] || '';
+      i.oninput = function(){ ov[b] = i.value; apply(); };
+      d.appendChild(l); d.appendChild(i); box.appendChild(d);
+    });
+  }
+  window.nmToggle = function(){ var p = document.getElementById('nmPanel'); p.classList.toggle('open'); if (p.classList.contains('open')) build(); };
+  window.nmReset = function(){ ov = {}; build(); apply(); };
+  document.addEventListener('click', function(e){
+    if (e.target && e.target.classList && e.target.classList.contains('toggle-btn')) setTimeout(build, 50);
+  });
+  build(); apply();
+})();
+</script>
+</body>
+</html>

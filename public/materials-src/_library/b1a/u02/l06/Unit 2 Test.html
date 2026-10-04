@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PET I · Unit 2 Test</title>
+<style>
+@page{margin:1.1cm 1.1cm 1.45cm;
+  @bottom-left{ content:"SOMERSET LANGUAGE CENTRE · VALENCIA";
+    font-family:Arial,Helvetica,sans-serif; font-size:8pt; letter-spacing:.11em; color:#8a8a7a;
+    white-space:nowrap; border-top:1px solid #dcdcd4; padding-top:7px; vertical-align:top; }
+  @bottom-center{ content:" "; width:100%; border-top:1px solid #dcdcd4; }
+  @bottom-right{ content:counter(page);
+    font-family:Arial,Helvetica,sans-serif; font-size:12.5pt; font-weight:bold; color:#1E4227;
+    white-space:nowrap; border-top:1px solid #dcdcd4; padding-top:4px; vertical-align:top; }
+}
+* { box-sizing: border-box; }
+body { font-family: Georgia, 'Times New Roman', serif; color:#222; font-size:12.5pt; line-height:1.45; margin:0; }
+.logo { display:flex; align-items:flex-end; gap:11px; }
+.logo .word { font-family:Arial,Helvetica,sans-serif; font-weight:800; font-size:33pt;
+              letter-spacing:-1.2px; line-height:.9; color:#6BAE2E; }
+.logo .lc   { font-family:Arial,Helvetica,sans-serif; font-weight:700; font-size:8.5pt;
+              letter-spacing:2.5px; line-height:1.18; padding-bottom:4px; color:#4d8120; }
+.header-row { display:flex; justify-content:space-between; align-items:flex-end; border-bottom:3px solid #6BAE2E; padding-bottom:8px; margin-bottom:14px; }
+.header-meta { text-align:right; font-family:Arial,Helvetica,sans-serif; font-size:10.5pt; color:#444; }
+.header-meta .title { font-family:Georgia,serif; font-size:16pt; font-weight:bold; color:#1E4227; margin-bottom:2px; }
+h1 { font-size:17pt; color:#1E4227; margin:0 0 4px; }
+h2.section { background:#EAF4DA; border-left:5px solid #6BAE2E; padding:6px 10px; font-size:13.5pt; color:#1E4227; margin:18px 0 8px; break-after:avoid; page-break-after:avoid; }
+.box { border:1px solid #cfe3bc; border-radius:6px; padding:10px 13px; margin:8px 0 14px; break-inside:avoid; page-break-inside:avoid; background:#fbfdf8; }
+table { border-collapse:collapse; width:100%; }
+tr { break-inside:avoid; page-break-inside:avoid; }
+td, th { border:1px solid #cfe3bc; padding:5px 8px; font-size:12pt; vertical-align:top; }
+th { background:#EAF4DA; text-align:left; color:#1E4227; }
+.valencia { color:#B5541B; font-weight:bold; }
+.small { font-size:11.5pt; color:#555; }
+.reading { font-size:14pt; line-height:1.55; }
+ul, ol { margin:4px 0; padding-left:22px; }
+.pagebreak { break-before:page; page-break-before:always; }
+.exblock { break-inside:avoid; page-break-inside:avoid; margin-bottom:16px; }
+.reading.exblock { break-inside:auto; page-break-inside:auto; }
+.reading.exblock p { break-inside:avoid; page-break-inside:avoid; }
+.examtask { border:2px solid #6BAE2E; border-radius:6px; padding:10px 14px; margin:10px 0; background:#fff; }
+.examtask .tasklabel { display:inline-block; background:#6BAE2E; color:#fff; font-family:Arial,sans-serif; font-weight:bold; font-size:10pt; padding:2px 10px; border-radius:4px; margin-bottom:6px; }
+.blank { display:inline-block; border-bottom:2px solid #1E4227; min-width:60px; text-align:center; font-weight:bold; }
+.score { float:right; font-family:Arial,sans-serif; font-size:10.5pt; color:#1E4227; font-weight:bold; }
+.tf-row { display:block; margin:5px 0; padding-bottom:4px; border-bottom:1px dotted #cfe3bc; }
+.wordbank { background:#EAF4DA; border-radius:6px; padding:8px 12px; font-family:Arial,sans-serif; font-size:11.5pt; margin:8px 0; text-align:center; }
+.oddgrid { display:grid; grid-template-columns: 26px repeat(4,1fr); gap:6px 10px; font-size:12pt; align-items:baseline; }
+.oddgrid .n { font-weight:bold; color:#1E4227; }
+.notebox { background:#FFF7E6; border:1px solid #E8C77A; border-radius:6px; padding:8px 12px; font-size:11pt; color:#6b5729; margin:8px 0 16px; }
+.namebox { font-family:Arial,sans-serif; font-size:11pt; color:#444; }
+</style>
+</head>
+<body>
+
+<div class="header-row">
+  <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+  <div class="header-meta">
+    <div class="title">Unit 2 Test</div>
+    Delicious!<br>
+    PET I &middot; New Close-up B1, Split A<br>
+    40 minutes &middot; 43 marks
+  </div>
+</div>
+
+<div class="box namebox">Name: ______________________________ &nbsp;&nbsp;&nbsp; Date: ____________</div>
+
+<div class="notebox">Adapted from the official New Close-up B1 Unit 2 Assessment (National Geographic Learning / Cengage, permission granted to photocopy for classroom use), trimmed to 40 minutes for PET I's 25 Nov session. The writing task from the full 80-mark original is not included here &mdash; Unit 2's writing (SB p.26-27, the restaurant article) was written in class earlier this unit and marked separately.</div>
+
+<h2 class="section">Reading <span class="score">/ 5</span></h2>
+<div class="exblock reading">
+<p>Read the text about cookery courses.</p>
+<p><b>A Cook dinner with Nonna.</b> Have you ever wanted to cook like Grandma? This is a three-day course for experienced cooks who want to learn real Italian cooking in the heart of Rome. Two local grandmothers, Nonna Bruna and Nonna Antonella, will show you how to cook a full Italian meal. From starters to your own pasta, delicious Roman meat dishes and homemade desserts, the grandmothers have all the answers.</p>
+<p><b>B Lebanese cooking class with a local family.</b> This is a great experience especially if you want to try great food and learn the local way of life. You will stay and eat with Tania and her family in Beirut for two weeks. She'll show you how to make dishes like hummus, soups, beans and rice, baked chicken with potatoes as well as traditional snacks.</p>
+<p><b>C Silom Thai Cooking School in Bangkok.</b> If you love hot, salty and sour flavours, join us in the exciting capital of Thailand, Bangkok. You'll learn to make tasty Thai dishes with meat and fish or just vegetables if you're vegetarian. We will teach you to prepare fried rice dishes and our famous Thai green curry.</p>
+<p><b>D Baking and pastry classes on a Swedish farm.</b> Sweden is famous for its cakes and here, in a small Swedish village, you can learn how to bake them. This course is great for people with young children. They can play or help on the farm while you learn to make a sweet tiger cake for them for afternoon tea.</p>
+<p><b>E Traditional cooking course in Buenos Aires.</b> Juan and Marina will show you how to cook beef and lamb the traditional Argentinian way. Here we like to keep things simple, so no spices or sauces. But we'll teach you how to grill the right way and how to make a real wood fire.</p>
+<p><b>F Language and lunch in Montpellier.</b> Come to our school to learn two things at the same time &ndash; modern French cooking and how to speak French. Your chef will show you how to prepare delicious new dishes and you will cook and eat them with the other students. The course is suitable for sociable people with some experience of cooking.</p>
+<p><b>G Katerina's Kouzina.</b> You love tasty Greek food. You want to learn how to make it yourself, but you've never cooked before. No problem. Stay on the Greek island of Poros for two weeks and Katerina will teach you how to bake, roast and grill in the traditional way. She will also show you how to make modern, creative Greek dishes using local meat and freshly caught fish.</p>
+<p><b>H Abbey Home Farm, England: Natural Kitchen cookery course.</b> The course is perfect for vegetarians. We start by showing you how to make healthy green smoothies. Our top chef then teaches you how to make homemade bread, delicious salty snacks and an amazing bitter lemon cake. She will show you that natural dishes and ingredients are good for you and your family.</p>
+</div>
+
+<div class="pagebreak"></div>
+
+<div class="examtask exblock">
+<span class="tasklabel">EXAM TASK</span>
+<p><b>Matching people to courses.</b> The five people below want to do a cooking course in another country. Decide which course (A&ndash;H, above) would be the most suitable for each person. Write one letter for each.</p>
+<table>
+<tr><th style="width:26px;">1</th><td>Lucia hates processed foods. She doesn't eat meat or fish, but she loves baking. She'd like to go on a course in Europe. <span class="blank">&nbsp;</span></td></tr>
+<tr><th>2</th><td>Mickey eats everything, but he especially enjoys spicy foods. He doesn't like the countryside or anywhere that is too quiet. <span class="blank">&nbsp;</span></td></tr>
+<tr><th>3</th><td>Laura is a good cook. She wants to try new ways of cooking and make some new friends while she learns. <span class="blank">&nbsp;</span></td></tr>
+<tr><th>4</th><td>Jonah loves the beach and he's looking for a nice long holiday somewhere near the sea. He can't cook, but he wants to learn! <span class="blank">&nbsp;</span></td></tr>
+<tr><th>5</th><td>Miranda loves all desserts and anything sweet. She would like to get out of the city and see the countryside. <span class="blank">&nbsp;</span></td></tr>
+</table>
+</div>
+
+<h2 class="section">Vocabulary <span class="score">/ 16</span></h2>
+<div class="exblock">
+<p><b>1</b> Circle the odd one out. <span class="score">/ 8</span></p>
+<div class="oddgrid">
+<div class="n">1</div><div>bottle</div><div>mug</div><div>bunch</div><div>glass</div>
+<div class="n">2</div><div>bitter</div><div>spicy</div><div>sweet</div><div>sparkling</div>
+<div class="n">3</div><div>knife</div><div>piece</div><div>fork</div><div>spoon</div>
+<div class="n">4</div><div>packet</div><div>box</div><div>jug</div><div>tin</div>
+<div class="n">5</div><div>bowl</div><div>plate</div><div>slice</div><div>saucer</div>
+<div class="n">6</div><div>bake</div><div>barbeque</div><div>roast</div><div>grill</div>
+<div class="n">7</div><div>traditional</div><div>processed</div><div>salty</div><div>serve</div>
+<div class="n">8</div><div>bunch</div><div>cup</div><div>slice</div><div>piece</div>
+</div>
+</div>
+
+<div class="exblock">
+<p><b>2</b> Choose the correct option to complete the sentences. <span class="score">/ 8</span></p>
+<ol>
+<li>The cat looked hungry, so I opened a <em>jug / tin</em> of tuna.</li>
+<li>We don't have enough <em>jars / mugs</em> for everybody to have a coffee.</li>
+<li>I love the <em>sour / spicy</em> taste of lemons and limes.</li>
+<li>We usually <em>grill / fry</em> our fish because we don't like to have a lot of oil.</li>
+<li>Please could you <em>bake / boil</em> some water for a pot of tea?</li>
+<li>We're going to <em>barbeque / roast</em> some burgers on the beach later.</li>
+<li>They serve a lot of <em>traditional / processed</em> food in fast-food restaurants.</li>
+<li>It's a special occasion, so we're going to eat <em>out / away</em> at a nice restaurant.</li>
+</ol>
+</div>
+
+<div class="pagebreak"></div>
+
+<h2 class="section">Grammar <span class="score">/ 16</span></h2>
+<div class="exblock">
+<p><b>1</b> Complete the sentences with the past simple or past continuous form of the verbs. <span class="score">/ 8</span></p>
+<ol>
+<li>While Mum <span class="blank">&nbsp;</span> (get) ready to go out, Dad <span class="blank">&nbsp;</span> (cook) dinner.</li>
+<li>Last summer, we <span class="blank">&nbsp;</span> (go) to the Albufera and <span class="blank">&nbsp;</span> (see) the flamingos.</li>
+<li>Unfortunately, I <span class="blank">&nbsp;</span> (not pass) my driving test last week.</li>
+<li>They <span class="blank">&nbsp;</span> (eat) breakfast when I <span class="blank">&nbsp;</span> (leave) for school.</li>
+<li>We were watching TV when we <span class="blank">&nbsp;</span> (hear) the dog barking.</li>
+</ol>
+</div>
+
+<div class="exblock">
+<p><b>2</b> Choose the correct option to complete the sentences. <span class="score">/ 8</span></p>
+<ol>
+<li>I would always <em>walk / walking</em> to school along the Turia gardens when I was young.</li>
+<li>I used to <em>hate / hating</em> spinach, but now I love it.</li>
+<li>I'm getting used to <em>eat / eating</em> late at night.</li>
+<li>Didn't you use to <em>play / playing</em> with trains when you were younger?</li>
+<li>I'm used to <em>wake / waking</em> up early.</li>
+<li>Did you use to <em>have / having</em> long hair?</li>
+<li>If the weather was good, we would <em>play / playing</em> outside.</li>
+<li>She would <em>go / going</em> swimming every day in the summer.</li>
+</ol>
+</div>
+
+<h2 class="section">Listening <span class="score">/ 6</span></h2>
+<div class="examtask exblock">
+<span class="tasklabel">EXAM TASK</span>
+<p><b>Track:</b> <code>Unit 2 Test Listening.mp3</code>. Play once, then again for checking. You will hear a presenter talking about food in the city of Santiago.</p>
+<p style="text-align:center;font-weight:bold;margin:10px 0 4px;">THE FOOD OF SANTIAGO, CHILE</p>
+<div class="tf-row">Chile has great ingredients because it is close to the mountains and <span class="blank">&nbsp;</span>.</div>
+<div class="tf-row">At the Central Market, there are a lot of <span class="blank">&nbsp;</span> where you can eat fresh meat and fish.</div>
+<div class="tf-row">The large indoor market, La Vega, is open <span class="blank">&nbsp;</span> days a week.</div>
+<div class="tf-row">The Bellavista area of the city is not very busy in the <span class="blank">&nbsp;</span>.</div>
+<div class="tf-row">All of the food is made with <span class="blank">&nbsp;</span> ingredients at the Peumay&eacute;n restaurant.</div>
+<div class="tf-row">You can try dishes that a <span class="blank">&nbsp;</span> wrote about at the El Mes&oacute;n Nerudiano restaurant.</div>
+</div>
+
+<p style="text-align:right;font-weight:bold;color:#1E4227;">Total: _____ / 43</p>
+
+</body>
+</html>

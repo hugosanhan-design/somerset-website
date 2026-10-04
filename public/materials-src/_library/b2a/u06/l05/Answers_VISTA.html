@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grammar 2: FCE I / Friday B2 Unit 6, p.72</title>
+<style>
+  :root{ --green:#6BAE2E; --green-dark:#4d8120; --ink:#1a1a1a; --bg:#ffffff; --amber:#E08A1E; }
+  *{box-sizing:border-box;}
+  body{ margin:0; font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background:var(--bg); color:var(--ink); }
+  header{ display:flex; justify-content:space-between; align-items:flex-end; padding:clamp(16px,2.2vh,32px) clamp(24px,3.5vw,64px); border-bottom:4px solid var(--green); flex-wrap:wrap; gap:16px; }
+  .logo{display:flex;align-items:flex-end;gap:clamp(8px,1vw,16px);}
+  .logo .word{font-family:Arial,Helvetica,sans-serif;font-weight:800;font-size:clamp(30pt,3.4vw,46pt);letter-spacing:-1.2px;line-height:.9;color:#6BAE2E;}
+  .logo .lc{font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:clamp(8pt,0.85vw,12pt);letter-spacing:2.5px;line-height:1.18;padding-bottom:4px;color:#4d8120;}
+  .title-block{text-align:right;}
+  .title-block h1{margin:0;font-size:clamp(20px,2.1vw,30px);font-weight:700;color:var(--ink);}
+  .title-block p{margin:4px 0 0;font-size:clamp(13px,1.1vw,17px);color:#555;letter-spacing:.5px;text-transform:uppercase;}
+  .nav-bar{ position:fixed; bottom:0; left:0; right:0; display:flex; align-items:center; justify-content:center; gap:20px; padding:16px 0 22px; background:linear-gradient(to top, rgba(255,255,255,0.96), rgba(255,255,255,0)); z-index:30; }
+  .nav-bar button{ background:var(--green); color:#fff; border:none; border-radius:999px; width:clamp(44px,4vw,64px); height:clamp(44px,4vw,64px); font-size:clamp(20px,2vw,28px); font-weight:700; cursor:pointer; }
+  .nav-bar button:disabled{opacity:.3; cursor:default;}
+  .nav-bar .count{font-size:clamp(14px,1.4vw,20px); color:#555; min-width:70px; text-align:center;}
+  main{max-width:1800px;margin:0 auto;padding:clamp(8px,1.5vh,20px) clamp(24px,4vw,72px) 96px;min-height:calc(100vh - 110px);display:flex;flex-direction:column;justify-content:center;}
+  .slide{display:none;}
+  .slide.active{display:block; animation:fade .15s ease;}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  .kicker{ font-size:clamp(14px,1.4vw,20px);font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--green); margin:clamp(10px,min(1.8vh,2.4vw),26px) 0 8px; }
+  h2{font-size:clamp(28px,min(3.8vw,6vh),48px);margin:0 0 clamp(10px,min(1.8vh,2.4vw),24px);color:var(--ink);line-height:1.25;}
+  h2 .accent{color:var(--green-dark);}
+  .item-list{list-style:none;margin:0 0 clamp(14px,2vh,22px);padding:0;max-width:1200px;}
+  .item{ background:#fff;border:2px solid #ddd;border-radius:14px; padding:clamp(12px,1.6vh,18px) clamp(18px,2.2vw,26px); margin-bottom:clamp(9px,1.2vh,14px); font-size:clamp(17px,1.9vw,24px);line-height:1.4; }
+  .item .num{color:#999;font-weight:800;margin-right:10px;}
+  .reveal-all{ background:var(--green);color:#fff;border:none;border-radius:999px; padding:10px 26px;font-size:clamp(14px,1.4vw,18px);font-weight:700;cursor:pointer; }
+  .reveal-all:hover{background:var(--green-dark);}
+  .whybox{ display:none;margin-top:clamp(14px,2vh,20px);max-width:1200px; background:#F4F8EE;border-left:5px solid var(--green-dark);border-radius:0 12px 12px 0; padding:clamp(14px,1.8vh,20px) clamp(18px,2.2vw,26px); font-size:clamp(16px,1.6vw,21px);line-height:1.45;color:#333; }
+  .revealed .whybox{display:block;}
+  .whybox b{color:var(--green-dark);}
+  .valencia-note{margin-top:clamp(16px,2.2vh,28px);font-size:clamp(15px,1.5vw,20px);color:#777;font-style:italic;}
+  footer{text-align:center;padding:20px;font-size:clamp(13px,1.1vw,16px);color:#888;border-top:2px solid #eee;}
+  @page{size:A4;margin:16mm 14mm}
+  @media print{
+    body{background:#fff} .nav-bar{display:none !important} main{max-width:none;padding:0}
+    .slide{display:block !important;page-break-after:always;padding-top:6px;} .slide:last-child{page-break-after:auto;}
+    h2{font-size:19pt} .kicker{font-size:12pt} .item{font-size:12.5pt;page-break-inside:avoid;break-inside:avoid;}
+    .whybox{display:block !important;font-size:12pt;} .reveal-all{display:none !important;}
+  }
+  @media(max-width:700px){ header{flex-direction:column;align-items:center;text-align:center;} .title-block{text-align:center;} h2{font-size:24px;} }
+/* per-item-reveal v1 */
+.item .a-text,.gap-answer{color:transparent !important;background:#EAF4DA;border-radius:6px;padding:0 .35em;min-width:3.2em;display:inline-block;cursor:pointer;user-select:none;}
+.item.shown .a-text,.gap-answer.shown{color:var(--green-dark) !important;background:none;font-weight:700;}
+.showpill{display:inline-block;margin-left:10px;border:2px solid var(--green);color:var(--green-dark);background:#fff;border-radius:999px;padding:1px 12px;font-size:.72em;font-weight:700;cursor:pointer;vertical-align:middle;}
+.item.shown .showpill{display:none;}
+@media print{.item .a-text,.gap-answer{color:var(--green-dark) !important;background:none;}.showpill{display:none !important;}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+  <div class="title-block">
+    <h1>Grammar 2</h1>
+    <p>Unit 6 &middot; p.72 &middot; question tags, indirect &amp; negative questions</p>
+  </div>
+</header>
+
+<main>
+
+  <div class="slide active">
+    <div class="kicker">Grammar 2</div>
+    <h2>Unit 6 &middot; p.72</h2>
+    <p class="valencia-note">Tap "Show answer" next to each question.</p>
+  </div>
+
+  <div class="slide">
+    <div class="kicker">Exercise 1 &middot; match to the correct tag</div>
+    <h2>Question <span class="accent">tags</span></h2>
+    <ul class="item-list">
+      <li class="item"><span class="num">1</span>That's a great idea, &rarr; <span class="a-text">isn't it?</span></li>
+      <li class="item"><span class="num">2</span>They don't need to pay, &rarr; <span class="a-text">do they?</span></li>
+      <li class="item"><span class="num">3</span>There's never been any problem, &rarr; <span class="a-text">has there?</span></li>
+      <li class="item"><span class="num">4</span>I'm talking too much, &rarr; <span class="a-text">aren't I?</span></li>
+      <li class="item"><span class="num">5</span>Let's go home, &rarr; <span class="a-text">shall we?</span></li>
+    </ul>
+    <div class="whybox"><b>Full key:</b> 1c 2e 3a 4b 5d. Rule (Ex.2): you can add a question tag to the END of a sentence to invite another person to speak.</div>
+  </div>
+
+  <div class="slide">
+    <div class="kicker">Exercise 3 &middot; complete with question tags</div>
+    <h2>Practise the <span class="accent">tags</span></h2>
+    <ul class="item-list">
+      <li class="item"><span class="num">1</span>This is the best event so far, <span class="a-text">isn't it</span>?</li>
+      <li class="item"><span class="num">2</span>I'm a terrible tennis player, <span class="a-text">aren't I</span>?</li>
+      <li class="item"><span class="num">3</span>There were loads of people at the gym, <span class="a-text">weren't there</span>?</li>
+      <li class="item"><span class="num">4</span>Don't be late for the kick-off, <span class="a-text">will you</span>?</li>
+      <li class="item"><span class="num">5</span>The athletes had already arrived, <span class="a-text">hadn't they</span>?</li>
+    </ul>
+  </div>
+
+  <div class="slide">
+    <div class="kicker">Exercise 4 &middot; rewrite as normal questions</div>
+    <h2>Indirect <span class="accent">&rarr; direct</span></h2>
+    <ul class="item-list">
+      <li class="item"><span class="num">1</span>I'd like to know when the party starts. &rarr; <span class="a-text">When does the party start?</span></li>
+      <li class="item"><span class="num">2</span>I'd like to know when the film starts. &rarr; <span class="a-text">When does the film start?</span></li>
+      <li class="item"><span class="num">3</span>I wonder how much a new printer costs. &rarr; <span class="a-text">How much does a new printer cost?</span></li>
+      <li class="item"><span class="num">4</span>Do you remember whether I locked the car? &rarr; <span class="a-text">Did I lock the car?</span></li>
+      <li class="item"><span class="num">5</span>I'm not sure if we've met before. &rarr; <span class="a-text">Have we met before?</span></li>
+    </ul>
+    <div class="whybox"><b>Why we use indirect questions (Ex.5):</b> to be more polite. Rule (Ex.6): a) same word order as a STATEMENT; b) if/whether goes at the BEGINNING of the indirect question.</div>
+  </div>
+
+  <div class="slide">
+    <div class="kicker">Exercise 7 &middot; complete with negative question words</div>
+    <h2>Negative <span class="accent">questions</span></h2>
+    <ul class="item-list">
+      <li class="item"><span class="num">1</span>Why <span class="a-text">weren't</span> you at practice yesterday?</li>
+      <li class="item"><span class="num">2</span><span class="a-text">Didn't</span> you go hiking last week?</li>
+      <li class="item"><span class="num">3</span>Wow! <span class="a-text">Isn't</span> that runner fast?</li>
+      <li class="item"><span class="num">4</span><span class="a-text">Hasn't</span> the weather been nice lately?</li>
+      <li class="item"><span class="num">5</span><span class="a-text">Can't</span> you swim?</li>
+    </ul>
+    <div class="whybox"><b>Rule (Ex.8):</b> we use negative questions to show criticism, surprise, sympathy or doubt, or when we expect our listener to AGREE with us.</div>
+  </div>
+
+  <div class="slide">
+    <div class="kicker">Exercise 9 &middot; Track 6.8 &middot; match speaker to function</div>
+    <h2>What is each <span class="accent">speaker doing</span>?</h2>
+    <ul class="item-list">
+      <li class="item"><span class="num">Speaker 1</span>(Why weren't you at practice?) &rarr; <span class="a-text">d — showing criticism</span></li>
+      <li class="item"><span class="num">Speaker 2</span>(Didn't you go hiking?) &rarr; <span class="a-text">a — expressing doubt or confusion</span></li>
+      <li class="item"><span class="num">Speaker 3</span>(Wow! Isn't that runner fast?) &rarr; <span class="a-text">c — showing surprise</span></li>
+      <li class="item"><span class="num">Speaker 4</span>(Hasn't the weather been nice?) &rarr; <span class="a-text">e — inviting the listener to agree</span></li>
+      <li class="item"><span class="num">Speaker 5</span>(Can't you swim?) &rarr; <span class="a-text">b — expressing sympathy</span></li>
+    </ul>
+    <div class="whybox"><b>Full key:</b> 1d 2a 3c 4e 5b.</div>
+  </div>
+
+  <div class="slide">
+    <div class="kicker">Exercise 10 &middot; escape room dialogue</div>
+    <h2>Choose the <span class="accent">correct option</span></h2>
+    <ul class="item-list">
+      <li class="item"><span class="num">1</span><span class="a-text">we're</span> supposed to get out of this room?</li>
+      <li class="item"><span class="num">2</span><span class="a-text">Weren't</span> you listening when they explained the rules?</li>
+      <li class="item"><span class="num">3</span>how should we work out <span class="a-text">what the code is</span>?</li>
+      <li class="item"><span class="num">4</span><span class="a-text">Haven't</span> you heard of an escape room before?</li>
+      <li class="item"><span class="num">5</span>do you think <span class="a-text">there might</span> be a clue in this drawer?</li>
+      <li class="item"><span class="num">6</span>check whether <span class="a-text">there's</span> something inside?</li>
+      <li class="item"><span class="num">7</span>Why <span class="a-text">can't I</span> open it?</li>
+      <li class="item"><span class="num">8</span>isn't it <span class="a-text">there</span>?</li>
+      <li class="item"><span class="num">9</span>let's look for the key, <span class="a-text">shall</span> we?</li>
+    </ul>
+    <p class="valencia-note">Valencia has several real escape rooms around Ruzafa and the old town — has anyone in the group tried one?</p>
+  </div>
+
+</main>
+
+<div class="nav-bar">
+  <button id="prevBtn">&larr;</button>
+  <span class="count" id="count">1 / 7</span>
+  <button id="nextBtn">&rarr;</button>
+</div>
+
+<footer>Somerset Language Centre &middot; Valencia &middot; Unit 6, p.72</footer>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+let idx = 0;
+function show(i){ slides.forEach((s,n)=>s.classList.toggle('active', n===i)); document.getElementById('count').textContent = (i+1)+' / '+slides.length; document.getElementById('prevBtn').disabled = i===0; document.getElementById('nextBtn').disabled = i===slides.length-1; }
+document.getElementById('prevBtn').addEventListener('click', ()=>{ if(idx>0){idx--; show(idx);} });
+document.getElementById('nextBtn').addEventListener('click', ()=>{ if(idx<slides.length-1){idx++; show(idx);} });
+document.addEventListener('keydown', (e)=>{ if(e.key==='ArrowRight' && idx<slides.length-1){idx++; show(idx);} if(e.key==='ArrowLeft' && idx>0){idx--; show(idx);} });
+show(0);
+/* per-item-reveal v1 */
+document.querySelectorAll('.item').forEach(function(it){
+  var spans = it.querySelectorAll('.a-text, .gap-answer');
+  if(!spans.length) return;
+  var pill = document.createElement('span');
+  pill.className = 'showpill';
+  pill.textContent = 'Show answer';
+  it.appendChild(pill);
+  function reveal(){ it.classList.add('shown'); }
+  function hide(){ it.classList.remove('shown'); }
+  pill.addEventListener('click', function(e){ e.stopPropagation(); reveal(); });
+  spans.forEach(function(sp){ sp.addEventListener('click', function(e){ e.stopPropagation(); if(it.classList.contains('shown')) hide(); else reveal(); }); });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Level Ladder · Ona's results</title>
+<style>
+  :root { --green:#6BAE2E; --ink:#1c1c1c; --red:#b00000; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html,body { height:100%; }
+  body { font-family:Arial,'Liberation Sans',sans-serif; background:#fff; color:var(--ink);
+         overflow:hidden; cursor:pointer; }
+  .slide { position:absolute; inset:0; display:none; flex-direction:column;
+           justify-content:center; align-items:flex-start; padding:70px 110px; background:#fff; }
+  .slide.active { display:flex; }
+  .slide.green { background:var(--green); color:#fff; }
+  .logo { display:flex; align-items:baseline; gap:16px; }
+  .logo .w  { font-weight:800; font-size:44px; letter-spacing:-1.5px; color:var(--green); }
+  .logo .lc { font-weight:700; font-size:15px; letter-spacing:4.5px; color:#666; }
+  .green .logo .w  { color:#fff; }
+  .green .logo .lc { color:rgba(255,255,255,.85); }
+  .logo.corner { position:absolute; top:38px; left:110px; }
+  .logo.corner .w { font-size:34px; }
+  .logo.corner .lc { font-size:12px; }
+  .rung-tag { position:absolute; top:38px; right:110px; font-size:22px; font-weight:800;
+              letter-spacing:2px; color:#fff; background:var(--green); padding:10px 22px;
+              border-radius:30px; }
+  h1 { font-size:76px; font-weight:800; letter-spacing:-2px; line-height:1.08; }
+  h2 { font-size:54px; font-weight:800; letter-spacing:-1px; color:var(--green); margin-bottom:26px; }
+  .green h2 { color:#fff; }
+  .sub  { font-size:38px; font-weight:700; margin-top:24px; }
+  .sub2 { font-size:28px; font-weight:600; margin-top:12px; opacity:.9; }
+  .kicker { font-size:26px; font-weight:800; text-transform:uppercase; letter-spacing:3px;
+            color:var(--green); margin-bottom:22px; }
+  .green .kicker { color:#fff; }
+  .big-score { font-size:150px; font-weight:800; letter-spacing:-4px; line-height:1; }
+  .big-pct { font-size:44px; font-weight:800; color:#eafce0; margin-top:6px; }
+  .stack { width:100%; max-width:1600px; margin-top:10px; }
+  .stack .row { display:flex; align-items:center; gap:22px; margin:12px 0; width:100%; }
+  .stack .label { font-size:24px; font-weight:800; color:#555; width:170px; flex-shrink:0; }
+  .stack .bar-bg { flex:1; background:#eee; border-radius:12px; height:38px; position:relative; }
+  .stack .bar-fill { position:absolute; left:0; top:0; bottom:0; background:var(--green); border-radius:12px; }
+  .stack .pct { font-size:22px; font-weight:800; color:#333; width:68px; text-align:right; flex-shrink:0; }
+  .month-tag { display:inline-block; font-size:16px; font-weight:800; text-transform:uppercase;
+               letter-spacing:1.5px; color:#fff; background:var(--green); border-radius:20px;
+               padding:5px 14px; margin-bottom:8px; }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:8px; width:100%; max-width:1650px; }
+  .card { border:4px solid var(--green); border-radius:20px; padding:20px 24px; }
+  .card .b { font-size:23px; font-weight:700; line-height:1.4; }
+  .card .b .bad { color:var(--red); text-decoration:line-through; }
+  .card .b .ok { color:var(--green); }
+  .listrow { font-size:23px; font-weight:700; line-height:1.5; margin:8px 0; max-width:1650px; }
+  .listrow .rlab { color:#888; font-weight:800; font-size:16px; text-transform:uppercase; margin-right:8px; }
+  .listrow .bad { color:var(--red); text-decoration:line-through; }
+  .listrow .ok { color:var(--green); }
+  #counter { position:fixed; right:34px; bottom:26px; font-size:22px; font-weight:800;
+             color:#666; background:rgba(255,255,255,.85); padding:6px 16px; border-radius:10px; z-index:9; pointer-events:none; }
+  .hint { position:fixed; left:34px; bottom:26px; font-size:18px; font-weight:600; color:#999; z-index:9; }
+</style>
+</head>
+<body>
+<section class="slide green active">
+  <h1>The Level&nbsp;Ladder</h1>
+  <p class="sub">Ona's results</p>
+  <p class="sub2">Flyers I &middot; Somerset Language Centre</p>
+  <div class="logo"><span class="w">Somerset</span><span class="lc">LANGUAGE&nbsp;CENTRE</span></div>
+</section><section class="slide">
+  <div class="logo corner"><span class="w">Somerset</span><span class="lc">LANGUAGE&nbsp;CENTRE</span></div>
+  <h2>Where you stand</h2>
+  <div style="display:flex;align-items:baseline;gap:24px;margin-bottom:18px">
+    <span class="big-score" style="color:var(--green)">15/30</span>
+    <span style="font-size:34px;font-weight:800;color:#555">50%</span>
+  </div>
+  <div class="stack"><div class="row"><span class="label">RUNG 1</span><div class="bar-bg"><div class="bar-fill" style="width:60%;background:var(--red)"></div></div><span class="pct">3/5</span></div><div class="row"><span class="label">RUNG 2</span><div class="bar-bg"><div class="bar-fill" style="width:80%"></div></div><span class="pct">4/5</span></div><div class="row"><span class="label">RUNG 3</span><div class="bar-bg"><div class="bar-fill" style="width:40%;background:var(--red)"></div></div><span class="pct">2/5</span></div><div class="row"><span class="label">RUNG 4</span><div class="bar-bg"><div class="bar-fill" style="width:40%;background:var(--red)"></div></div><span class="pct">2/5</span></div><div class="row"><span class="label">RUNG 5</span><div class="bar-bg"><div class="bar-fill" style="width:40%;background:var(--red)"></div></div><span class="pct">2/5</span></div><div class="row"><span class="label">RUNG 6</span><div class="bar-bg"><div class="bar-fill" style="width:40%;background:var(--red)"></div></div><span class="pct">2/5</span></div></div>
+</section><section class="slide green">
+  <div class="logo"><span class="w">Somerset</span><span class="lc">LANGUAGE&nbsp;CENTRE</span></div>
+  <h2 style="color:#fff">Already solid</h2>
+  <ul style="list-style:none">
+    <li class="sub" style="margin-top:14px">&#10003; Rung 2</li>
+  </ul>
+</section><section class="slide">
+  <div class="logo corner"><span class="w">Somerset</span><span class="lc">LANGUAGE&nbsp;CENTRE</span></div>
+  <h2>Coming up in class</h2>
+  <p style="font-size:24px;font-weight:700;color:#555;margin-bottom:6px;max-width:1500px">These aren't taught yet &mdash; you'll meet them properly this year, in the month shown.</p>
+  <div class="grid2"><div class="card">
+      <div class="month-tag">September</div>
+      <div class="b">An elephant is ____ than a mouse.<br>&rarr; <span class="ok">bigger</span></div>
+    </div><div class="card">
+      <div class="month-tag">December</div>
+      <div class="b">Yesterday ____ very hot in Valencia.<br>&rarr; <span class="ok">was</span></div>
+    </div><div class="card">
+      <div class="month-tag">December</div>
+      <div class="b">Last year we ____ to Albacete to visit our family.<br>&rarr; <span class="ok">went</span></div>
+    </div><div class="card">
+      <div class="month-tag">April</div>
+      <div class="b">Tomorrow we ____ going to visit the City of Arts and Sciences.<br>&rarr; <span class="ok">are</span></div>
+    </div></div>
+</section><section class="slide">
+  <div class="logo corner"><span class="w">Somerset</span><span class="lc">LANGUAGE&nbsp;CENTRE</span></div>
+  <h2>Coming up in class</h2>
+  <p style="font-size:24px;font-weight:700;color:#555;margin-bottom:6px;max-width:1500px">These aren't taught yet &mdash; you'll meet them properly this year, in the month shown.</p>
+  <div class="grid2"><div class="card">
+      <div class="month-tag">February</div>
+      <div class="b">____ you ever been to Peñíscola?<br>&rarr; <span class="ok">Have</span></div>
+    </div><div class="card">
+      <div class="month-tag">December</div>
+      <div class="b">You look tired. You ____ go to bed early tonight.<br>&rarr; <span class="ok">should</span></div>
+    </div><div class="card">
+      <div class="month-tag">February</div>
+      <div class="b">She has ____ homework than me tonight.<br>&rarr; <span class="ok">less</span></div>
+    </div></div>
+</section><section class="slide">
+  <div class="logo corner"><span class="w">Somerset</span><span class="lc">LANGUAGE&nbsp;CENTRE</span></div>
+  <h2>Let's practise together</h2>
+  <p style="font-size:24px;font-weight:700;color:#555;margin-bottom:10px">These are things we've already covered &mdash; a quick review this week will fix them.</p>
+  <div class="listrow"><span class="rlab">R1</span>“____ is my dog.” (it&#x27;s right next to you) &rarr; <span class="ok">This</span></div><div class="listrow"><span class="rlab">R1</span>What&#x27;s the plural of “child”? &rarr; <span class="ok">children</span></div><div class="listrow"><span class="rlab">R2</span>I ____ two brothers and one sister. &rarr; <span class="ok">have got</span></div><div class="listrow"><span class="rlab">R3</span>Do you ____ football on Saturdays? &rarr; <span class="ok">play</span></div><div class="listrow"><span class="rlab">R3</span>She&#x27;s very ____. &rarr; <span class="ok">kind</span></div><div class="listrow"><span class="rlab">R3</span>He doesn&#x27;t ____ vegetables. &rarr; <span class="ok">like</span></div><div class="listrow"><span class="rlab">R4</span>Look! The children ____ in the park right now. &rarr; <span class="ok">are playing</span></div><div class="listrow"><span class="rlab">R4</span>What are you doing this afternoon? — I ____ my homework. &rarr; <span class="ok">am doing</span></div>
+</section><section class="slide green">
+  <h1 style="font-size:64px">Ona: 15/30 (50%)</h1>
+  <p class="sub">Every mistake today is a lesson for tomorrow.<br>Next time we climb, we climb higher.</p>
+  
+  <div class="logo"><span class="w">Somerset</span><span class="lc">LANGUAGE&nbsp;CENTRE</span></div>
+</section>
+<div id="counter">1 / 7</div>
+<div class="hint">&larr; &rarr; or click to advance</div>
+<script>
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var i = 0;
+  function show(n) {
+    if (n < 0 || n >= slides.length) return;
+    slides[i].classList.remove('active');
+    i = n;
+    slides[i].classList.add('active');
+    document.getElementById('counter').textContent = (i + 1) + ' / ' + slides.length;
+  }
+  function next() { show(i + 1); }
+  function prev() { show(i - 1); }
+  document.addEventListener('click', function (e) { next(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ' ||
+        e.key === 'PageDown' || e.key === 'Enter') { e.preventDefault(); next(); }
+    else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'PageUp') { e.preventDefault(); prev(); }
+    else if (e.key === 'Home') { show(0); }
+    else if (e.key === 'End') { show(slides.length - 1); }
+  });
+</script>
+</body>
+</html>

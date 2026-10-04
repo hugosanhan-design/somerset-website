@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FCE I, Unit 1 pp. 8-9, 17 Sep 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+<style>
+@page{size:A4;margin:0}
+:root{
+  --green:#6BAE2E; --green-deep:#2F6B1A;
+  --ice-deep:#3A8FA3;
+  --ink:#1B2419; --ink-soft:#4E5A4A; --rule:#DED8C8;
+  --serif:'Fraunces',Georgia,'DejaVu Serif',serif;
+  --sans:'Instrument Sans','Helvetica Neue',Arial,'DejaVu Sans',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);font-size:11.5pt;line-height:1.4;color:var(--ink);background:#dcd9d0}
+.pg{width:210mm;height:297mm;background:#fff;margin:0 auto 8px;position:relative;overflow:hidden;page-break-after:always;display:flex;flex-direction:column}
+.pg:last-child{page-break-after:auto}
+.in{padding:9mm 14mm 18mm;flex:1;display:flex;flex-direction:column}
+@media print{body{background:#fff}.pg{margin:0}}
+.logo{display:flex;align-items:flex-end;gap:9px;margin-bottom:4px}
+.logo .word{font-family:Arial,Helvetica,sans-serif;font-weight:800;font-size:24pt;letter-spacing:-1px;line-height:.9;color:var(--green)}
+.logo .lc{font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:6.5pt;letter-spacing:2px;line-height:1.18;padding-bottom:3px;color:#4d8120}
+.kick{font-size:8.5pt;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ice-deep)}
+.kick b{color:var(--green-deep)}
+h1.hl{font-family:var(--serif);font-weight:600;font-size:21pt;line-height:1.02;letter-spacing:-.01em;margin:3px 0 2px;color:var(--ink)}
+.deck{font-family:var(--serif);font-weight:400;font-size:11pt;line-height:1.25;color:var(--ink-soft);margin-bottom:5px}
+.rung{display:flex;align-items:baseline;gap:9px;margin:6px 0 5px;padding-bottom:2px;border-bottom:2px solid var(--green);page-break-inside:avoid}
+.rung .badge{font-family:var(--serif);font-weight:700;font-size:10pt;color:#fff;background:var(--green-deep);border-radius:999px;padding:2px 10px;white-space:nowrap}
+.rung .t{font-family:var(--serif);font-weight:600;font-size:13.5pt;color:var(--ink)}
+.rung .s{font-size:9pt;color:var(--ink-soft)}
+.rule{background:#F4F8EE;border:1.5px solid var(--green);border-radius:12px;padding:6px 13px;font-size:10.5pt;line-height:1.3;margin-bottom:6px}
+.rule b{color:var(--green-deep)}
+.help{border:1.5px solid var(--ice-deep);border-radius:12px;padding:7px 13px;margin-top:7px;font-size:10.5pt;line-height:1.35}
+.help .lab{display:block;font-size:7.5pt;letter-spacing:.14em;text-transform:uppercase;color:var(--ice-deep);font-weight:700;margin-bottom:3px}
+.bank{border:1.5px dashed var(--green);border-radius:12px;padding:7px 13px;margin-bottom:7px}
+.bank .lab{display:block;font-size:7.5pt;letter-spacing:.14em;text-transform:uppercase;color:var(--green-deep);font-weight:700;margin-bottom:4px}
+.chips{display:flex;flex-wrap:wrap;gap:5px}
+.chip{border:1.2px solid var(--rule);border-radius:999px;padding:2px 11px;font-size:11pt;font-weight:600;background:#fff}
+table{width:100%;border-collapse:collapse;font-size:11pt}
+th,td{border:1px solid var(--rule);padding:5px 8px;text-align:left;vertical-align:middle;line-height:1.3}
+th{font-family:var(--sans);background:#F4F8EE;font-size:7.8pt;text-transform:uppercase;letter-spacing:.06em;color:var(--green-deep);font-weight:700}
+td.n{font-family:var(--serif);font-weight:700;color:var(--green-deep);text-align:center;width:24px}
+td.blank{height:30px}
+.foot{position:absolute;left:14mm;right:14mm;bottom:8mm;display:flex;justify-content:space-between;align-items:baseline;font-size:7.5pt;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);border-top:1px solid var(--rule);padding-top:5px}
+.foot .pn{font-family:var(--serif);font-size:12pt;font-weight:700;letter-spacing:0;color:var(--green-deep)}
+.gap{display:inline-block;min-width:90px;border-bottom:1.3px solid var(--ink-soft);height:14px}
+.letter{font-size:11pt;line-height:2.15;margin-top:2px}
+.letter p{margin-bottom:7px}
+.card{border:1.5px solid var(--ink);border-radius:14px;padding:9px 14px;margin-bottom:8px}
+.card .lab{font-size:7.5pt;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--green-deep)}
+.card h3{font-family:var(--serif);font-size:13pt;font-weight:600;margin:1px 0 4px}
+.card ul{margin-left:16px;font-size:10.5pt;line-height:1.45}
+.cut{border-top:2px dashed var(--ink-soft);text-align:center;margin:3px 0 8px;font-size:7.5pt;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.cut span{background:#fff;padding:0 8px;position:relative;top:-7px}
+ol.sent{margin-left:18px;font-size:11pt;line-height:2.05}
+ol.sent li{padding-left:2px}
+.small{font-size:9.5pt;color:var(--ink-soft);line-height:1.35;margin-top:5px}
+.src{font-size:8.5pt;color:var(--ink-soft);font-style:italic;margin:-2px 0 6px}
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="pg"><div class="in">
+  <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+  <div class="kick"><b>Somerset</b> &middot; FCE I &middot; Thursday 17 September 2026 &middot; Unit 1, pages 8 and 9</div>
+  <h1 class="hl">The ten feelings, the ten people</h1>
+  <div class="deck">Everything on these five pages comes from pages 8 and 9 of the book. Same ten nouns, same ten adjectives, same five expressions, same ten personality words, same two tenses. Different sentences, so you cannot answer from memory.</div>
+
+  <div class="rung"><span class="badge">TASK 1</span><span class="t">From the noun to the adjective</span><span class="s">on your own, four minutes</span></div>
+  <div class="src">Student's Book page 8, exercises 1 and 2.</div>
+
+  <div class="rule"><b>Three of these are traps.</b> One is spelled with a double letter twice. One does not look like its noun at all. One ends in -ic. Find them before I tell you.</div>
+
+  <table>
+    <tr><th style="width:8%"></th><th style="width:34%">The noun</th><th>The adjective</th></tr>
+    <tr><td class="n">1</td><td>joy</td><td>overjoyed</td></tr>
+    <tr><td class="n">2</td><td>confidence</td><td class="blank"></td></tr>
+    <tr><td class="n">3</td><td>relief</td><td></td></tr>
+    <tr><td class="n">4</td><td>amazement</td><td></td></tr>
+    <tr><td class="n">5</td><td>despair</td><td></td></tr>
+    <tr><td class="n">6</td><td>guilt</td><td></td></tr>
+    <tr><td class="n">7</td><td>embarrassment</td><td></td></tr>
+    <tr><td class="n">8</td><td>anxiety</td><td></td></tr>
+    <tr><td class="n">9</td><td>frustration</td><td></td></tr>
+    <tr><td class="n">10</td><td>sympathy</td><td></td></tr>
+  </table>
+
+  <div class="help"><span class="lab">Then, in pairs</span>
+    Take five each. Say a true sentence about yourself or somebody you know using your five adjectives, not the nouns. <i>I was overjoyed when</i> is worth more in the exam than <i>I felt joy</i>.</div>
+
+  <div class="bank" style="margin-top:7px"><span class="lab">Fast finishers only, not in the book</span>
+    Three of these ten have a partner ending in <b>-ing</b> that describes the cause, not the person: <i>amazed</i> goes with <i>amazing</i>, <i>frustrated</i> with <i>frustrating</i>, <i>embarrassed</i> with <i>embarrassing</i>. The other seven have no such partner. Write one sentence with each of the three -ing forms.</div>
+
+  <div class="foot"><span>Somerset Language Centre &middot; Valencia</span><span class="pn">1</span></div>
+</div></div>
+
+<!-- PAGE 2 -->
+<div class="pg"><div class="in">
+  <div class="kick"><b>Somerset</b> &middot; FCE I &middot; Unit 1, pages 8 and 9</div>
+
+  <div class="rung"><span class="badge">TASK 2</span><span class="t">Five expressions the exam likes</span><span class="s">on your own, then in pairs</span></div>
+  <div class="src">Student's Book page 8, exercise 3, and the Vocabulary reference on page 95.</div>
+
+  <div class="rule"><b>These five are worth more than any single adjective on page 1.</b> An examiner hears <i>I was very surprised</i> from everybody. <i>I was lost for words</i> is the sentence that moves you up a band. Match each expression to its meaning.</div>
+
+  <table>
+    <tr><th style="width:8%"></th><th style="width:38%">The expression</th><th style="width:14%">Letter</th><th>Meaning</th></tr>
+    <tr><td class="n">1</td><td>to be <b>in agony</b></td><td class="blank"></td><td><b>a</b>&nbsp; to make someone upset or irritated</td></tr>
+    <tr><td class="n">2</td><td>to be <b>on the edge of your seat</b></td><td></td><td><b>b</b>&nbsp; feeling a lot of pain</td></tr>
+    <tr><td class="n">3</td><td>to <b>get under someone's skin</b></td><td></td><td><b>c</b>&nbsp; shocked and surprised</td></tr>
+    <tr><td class="n">4</td><td>to be <b>lost for words</b></td><td></td><td><b>d</b>&nbsp; feeling sadness</td></tr>
+    <tr><td class="n">5</td><td><b>with regret</b></td><td></td><td><b>e</b>&nbsp; very excited</td></tr>
+  </table>
+
+  <div class="rung" style="margin-top:9px"><span class="badge">TASK 2b</span><span class="t">Now use them</span><span class="s">write, then read them out</span></div>
+
+  <div class="rule">Finish each sentence so that it is true, or so that it could be. Every one must be about Valencia, your own life, or something you have actually watched or read.</div>
+
+  <ol class="sent">
+    <li>The last ten minutes of <span class="gap"></span> had us on the edge of our seats because <span class="gap"></span>.</li>
+    <li>I was completely lost for words when <span class="gap"></span>.</li>
+    <li>The one thing that really gets under my skin is <span class="gap"></span>.</li>
+    <li>It is with regret that <span class="gap"></span>.</li>
+    <li>I was in agony after <span class="gap"></span>.</li>
+  </ol>
+
+  <div class="help"><span class="lab">Register</span>
+    <b>With regret</b> is formal. It belongs in an email turning somebody down, not in a conversation with a friend. The other four are neutral and you can use them anywhere. Knowing which is which is half of FCE Writing Part 2.</div>
+
+  <div class="foot"><span>Somerset Language Centre &middot; Valencia</span><span class="pn">2</span></div>
+</div></div>
+
+<!-- PAGE 3 -->
+<div class="pg"><div class="in">
+  <div class="kick"><b>Somerset</b> &middot; FCE I &middot; Unit 1, pages 8 and 9</div>
+
+  <div class="rung"><span class="badge">TASK 3</span><span class="t">Ten people you might have to live with</span><span class="s">on your own, five minutes</span></div>
+  <div class="src">Student's Book page 8, exercise 4. These are the book's ten, no others.</div>
+
+  <div class="rule"><b>Mark each one + , - or B.</b> B is for the one that can be a compliment or a complaint depending on who is saying it. There is exactly one. Then write the opposite, and if there is no single word for it, write a short phrase.</div>
+
+  <table>
+    <tr><th style="width:8%"></th><th style="width:26%">Adjective</th><th style="width:14%">+ , - or B</th><th>Opposite</th></tr>
+    <tr><td class="n">1</td><td>aggressive</td><td class="blank"></td><td></td></tr>
+    <tr><td class="n">2</td><td>arrogant</td><td></td><td></td></tr>
+    <tr><td class="n">3</td><td>bad-tempered</td><td></td><td></td></tr>
+    <tr><td class="n">4</td><td>loyal</td><td></td><td></td></tr>
+    <tr><td class="n">5</td><td>mature</td><td></td><td></td></tr>
+    <tr><td class="n">6</td><td>mean</td><td></td><td></td></tr>
+    <tr><td class="n">7</td><td>stubborn</td><td></td><td></td></tr>
+    <tr><td class="n">8</td><td>sensitive</td><td></td><td></td></tr>
+    <tr><td class="n">9</td><td>reliable</td><td></td><td></td></tr>
+    <tr><td class="n">10</td><td>childish</td><td></td><td></td></tr>
+  </table>
+
+  <div class="help"><span class="lab">The one that goes both ways</span>
+    Write one sentence where it is a compliment, and one where it is a complaint. The book gives you the clue on page 8: Vincent is easily hurt, <i>but</i> he is good at recognising other people's feelings.
+    <div style="border-bottom:1px solid var(--rule);height:23px;margin-top:6px"></div>
+    <div style="border-bottom:1px solid var(--rule);height:23px"></div>
+  </div>
+
+  <div class="rung" style="margin-top:8px"><span class="badge">TASK 3b</span><span class="t">Now agree</span><span class="s">in pairs, three minutes, out loud</span></div>
+
+  <div class="rule">You are sharing a flat in London for one month with somebody you have never met. From the ten above, choose together <b>the two you most want</b> and <b>the two you could not live with</b>. You have to agree, so you will have to disagree first. Useful: <i>I see what you mean, but</i> &middot; <i>It depends what you mean by</i> &middot; <i>I would rather have somebody who</i> &middot; <i>That would drive me mad.</i></div>
+
+  <div class="foot"><span>Somerset Language Centre &middot; Valencia</span><span class="pn">3</span></div>
+</div></div>
+
+<!-- PAGE 4 -->
+<div class="pg"><div class="in">
+  <div class="kick"><b>Somerset</b> &middot; FCE I &middot; Unit 1, pages 8 and 9</div>
+
+  <div class="rung"><span class="badge">TASK 4</span><span class="t">What you do, and what you are doing</span><span class="s">part A, on your own</span></div>
+  <div class="src">Student's Book page 9. The eleven uses the book lists are all here, in order of appearance.</div>
+
+  <div class="rule"><b>Present simple</b> for scientific facts and general truths, permanent situations, habits and repeated actions, timetabled and scheduled events, and narratives. <b>Present continuous</b> for what is happening at the moment, temporary situations, fixed arrangements for the future, annoying habits with <i>always</i> or <i>forever</i>, changing situations (often with a comparative), and describing a picture. <b>Stative verbs</b> such as <i>hate</i>, <i>want</i>, <i>know</i> and <i>seem</i> are not normally used in the continuous at all.</div>
+
+  <div class="rule" style="background:#fff;border-style:dashed">Put each verb in brackets into the present simple or the present continuous. There are thirteen.</div>
+
+  <div class="letter" style="line-height:2.05">
+    <p>Hi Aidan,</p>
+    <p>Thanks for the photos. Shrewsbury <span class="gap"></span> (look) tiny next to Valencia, but I <span class="gap"></span> (love) that river. In the second photo you <span class="gap"></span> (stand) outside a school, so I suppose that is the new one.</p>
+    <p>Normally I <span class="gap"></span> (get) the metro at half past seven, but they <span class="gap"></span> (repair) the line all this month, so I <span class="gap"></span> (walk) instead. It <span class="gap"></span> (take) forty minutes and my English <span class="gap"></span> (get) better and better, because I listen to podcasts the whole way.</p>
+    <p>My sister <span class="gap"></span> (stay) with us until December. She <span class="gap"></span> (always, leave) her wet towels on my bed.</p>
+    <p>Our train to Barcelona <span class="gap"></span> (leave) at 7.40 on Friday and we <span class="gap"></span> (meet) my cousin there at lunchtime, so I will not be online that morning. I <span class="gap"></span> (want) to hear about the new school before then.</p>
+    <p>Mateo</p>
+  </div>
+
+  <div class="rung" style="margin-top:7px"><span class="badge">TASK 4</span><span class="t">The grid for part B</span><span class="s">fill this in while you ask</span></div>
+  <table>
+    <tr><th style="width:34%"></th><th>Nora</th><th>Diego</th></tr>
+    <tr><td>Lives</td><td class="blank"></td><td></td></tr>
+    <tr><td>Studies or works</td><td></td><td></td></tr>
+    <tr><td>Doing this month or term</td><td></td><td></td></tr>
+    <tr><td>Always doing it, and it is annoying</td><td></td><td></td></tr>
+    <tr><td>Already arranged</td><td></td><td></td></tr>
+  </table>
+
+  <div class="foot"><span>Somerset Language Centre &middot; Valencia</span><span class="pn">4</span></div>
+</div></div>
+
+<!-- PAGE 5 -->
+<div class="pg"><div class="in">
+  <div class="kick"><b>Somerset</b> &middot; FCE I &middot; Unit 1, pages 8 and 9</div>
+
+  <div class="rung"><span class="badge">TASK 4</span><span class="t">Two people, half the facts each</span><span class="s">part B, in pairs, speaking</span></div>
+
+  <div class="rule"><b>Fold this page along the line so that you can only see your own card.</b> Student A takes the top card, Student B the bottom one. Ask questions until you can both fill in the grid on page 4. Every answer is either present simple or present continuous, so the question has to be too: <i>Where does she live?</i> is a different question from <i>Where is she living at the moment?</i></div>
+
+  <div class="card">
+    <span class="lab">Student A</span>
+    <h3>You know about Nora</h3>
+    <ul>
+      <li>She lives in Ruzafa, but this month she is staying at her grandmother's in Gandia, because the lift in her building is broken.</li>
+      <li>She studies architecture, and she works in a caf&eacute; on Saturdays.</li>
+      <li>She is learning French, because she is moving to Toulouse in January.</li>
+      <li>She is always losing her keys.</li>
+      <li>Her flight leaves at 6.15 on Sunday morning.</li>
+    </ul>
+    <p class="small"><b>Ask Student B about Diego:</b> where he lives &middot; what he does &middot; what he is doing this term &middot; what he does on Sundays &middot; the habit of his that annoys people &middot; his fixed plan for July.</p>
+  </div>
+
+  <div class="cut"><span>fold here</span></div>
+
+  <div class="card">
+    <span class="lab">Student B</span>
+    <h3>You know about Diego</h3>
+    <ul>
+      <li>He lives in Benimaclet and shares a flat with three other people.</li>
+      <li>He teaches swimming at the pool every morning, and this term he is doing a course in sports nutrition.</li>
+      <li>He spends most Sundays at his parents' house in Requena.</li>
+      <li>He is always telling the same three stories.</li>
+      <li>In July he is going to Shrewsbury to work at a summer camp.</li>
+    </ul>
+    <p class="small"><b>Ask Student A about Nora:</b> where she lives &middot; where she is living this month and why &middot; what she studies &middot; why she is learning French &middot; the habit of hers that annoys people &middot; what time her flight leaves.</p>
+  </div>
+
+  <div class="help" style="margin-top:6px"><span class="lab">Before Monday</span>
+    Book page 9, exercise 5, the four gapped conversations. Then write five true sentences about yourself, three present simple and two present continuous, and one more that is false. Your partner has to find the false one.</div>
+
+  <div class="foot"><span>Somerset Language Centre &middot; Valencia</span><span class="pn">5</span></div>
+</div></div>
+
+</body>
+</html>

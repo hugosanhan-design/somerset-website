@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Somerset — Friday 1 · 18 September 2026 · Lead-in &amp; Reading</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════════════════════
+   PRINT / SCREEN WRAPPER
+   A3 worksheet · 794 × 1123 px · Somerset Editorial Magazine
+   Friday Teenagers · September 2026 · F1
+═══════════════════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { background: #2A2A2A; }
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px 80px;
+  min-height: 100vh;
+}
+
+@media print {
+  html { background: white; }
+  body { padding: 0; display: block; }
+  .page { box-shadow: none; }
+}
+
+/* ── Page canvas ── */
+.page {
+  width: 794px;
+  min-height: 1123px;
+  background: #FEFEFE;
+  position: relative;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+  flex-shrink: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   DESIGN TOKENS
+═══════════════════════════════════════════════════════════ */
+:root {
+  --green:      #6BAE2E;
+  --green-dark: #3D7010;
+  --green-lt:   #EAF4DA;
+  --skin:       #C75D26;   /* terracotta — Reading, Lead-in */
+  --skin-tint:  #FBF1E2;
+  --skin-mid:   #E8C890;
+  --skin-deep:  #6B2E10;
+  --fce:        #1F4F8B;   /* deep blue — Listening / FCE */
+  --fce-lt:     #E5EDF7;
+  --violet:     #7A4A8E;   /* Grammar */
+  --grey:       #6A6A6A;
+  --ink:        #1A1A1A;
+  --rule:       2px solid #1A1A1A;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   V4 LOGO  — Somerset (green 700 + stroke) · Language/Centre stacked
+═══════════════════════════════════════════════════════════ */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  line-height: 1;
+  text-decoration: none;
+}
+.logo-somerset {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  letter-spacing: 2px;
+  color: var(--green);
+  display: block;
+  line-height: 1;
+}
+.logo-lc {
+  display: flex;
+  flex-direction: column;
+}
+.logo-lc span {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 7.5px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  line-height: 1.8;
+  color: var(--ink);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PAGE HEADER
+═══════════════════════════════════════════════════════════ */
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 52px 16px;
+  border-bottom: var(--rule);
+  margin-bottom: 36px;
+}
+.ph-right {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.ph-item {
+  font-size: 10.5px;
+  color: var(--grey);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.ph-item strong {
+  color: var(--ink);
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CONTENT AREA
+═══════════════════════════════════════════════════════════ */
+.content {
+  padding: 0 52px 160px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   FRIDAY TITLE BLOCK
+═══════════════════════════════════════════════════════════ */
+.friday-block {
+  margin-bottom: 40px;
+}
+.friday-eyebrow {
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--skin);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.friday-title {
+  font-size: 62px;
+  font-weight: 700;
+  line-height: 1.0;
+  color: var(--ink);
+  letter-spacing: -1.5px;
+  margin-bottom: 0;
+}
+.friday-rule-row {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin: 12px 0;
+}
+.friday-rule-accent { width: 64px; height: 3px; background: var(--skin); }
+.friday-rule-rest   { flex: 1; height: 1px; background: #DDD; }
+.friday-grammar {
+  font-size: 13px;
+  color: var(--grey);
+  letter-spacing: 0.2px;
+  margin-bottom: 10px;
+}
+.load-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--green-dark);
+  border: 1.5px solid var(--green);
+  border-radius: 2px;
+  padding: 4px 11px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SECTIONS — left colour rule
+═══════════════════════════════════════════════════════════ */
+.section {
+  margin-bottom: 30px;
+  padding-left: 18px;
+  position: relative;
+}
+.section::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  border-radius: 2px;
+  background: var(--skin);
+}
+.section.rd::before { background: var(--skin); }
+.section.li::before { background: var(--skin-deep); }  /* Lead-in = dark terracotta */
+.section.sp::before { background: var(--green); }
+.section.ls::before { background: var(--fce); }
+.section.gr::before { background: var(--violet); }
+.section.ex::before { background: var(--skin-deep); }
+
+/* Section type label */
+.sh-type {
+  font-size: 9.5px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--skin);
+  margin-bottom: 4px;
+}
+.section.rd .sh-type { color: var(--skin); }
+.section.li .sh-type { color: var(--skin-deep); }
+.section.sp .sh-type { color: var(--green); }
+.section.ls .sh-type { color: var(--fce); }
+.section.gr .sh-type { color: var(--violet); }
+.section.ex .sh-type { color: var(--skin-deep); }
+
+/* Section heading row */
+.sh-row {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+.sh-num   { font-size: 13px; font-weight: 400; color: var(--grey); flex-shrink: 0; }
+.sh-title { font-size: 17px; font-weight: 600; color: var(--ink); flex: 1; line-height: 1.2; min-width: 0; }
+.fce-tag  {
+  font-size: 10px; background: var(--fce-lt); color: var(--fce);
+  font-weight: 700; padding: 2px 8px; border-radius: 2px; letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+.sh-time  { font-size: 11px; color: var(--grey); font-weight: 500; white-space: nowrap; }
+
+/* Instruction line */
+.instruct {
+  font-size: 13px;
+  color: var(--grey);
+  font-style: italic;
+  margin-bottom: 12px;
+  line-height: 1.65;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   LEAD-IN — MOOD GRID
+═══════════════════════════════════════════════════════════ */
+.mood-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.mood-cell {
+  border: 1px solid #E0D5C5;
+  border-radius: 6px;
+  padding: 11px 6px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--ink);
+  font-weight: 500;
+}
+.mood-face { font-size: 20px; display: block; margin-bottom: 4px; }
+
+/* Follow-up prompt */
+.follow-up {
+  font-size: 12px;
+  color: var(--grey);
+  font-style: italic;
+  margin-top: 8px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   READING SECTION
+═══════════════════════════════════════════════════════════ */
+/* Year progress bar */
+.yp {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 11px;
+  color: var(--grey);
+  margin-bottom: 14px;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+.yp-track { flex: 1; height: 1px; background: #DDD; position: relative; }
+.yp-fill  { position: absolute; left: 0; top: 0; height: 100%; width: 3%; background: var(--skin); }
+.yp-dot   {
+  position: absolute; left: 3%; top: 50%;
+  transform: translate(-50%,-50%);
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--skin); border: 1.5px solid #FEFEFE;
+  box-shadow: 0 0 0 1px var(--skin);
+}
+
+/* Image placeholder */
+.img-ph {
+  background: linear-gradient(135deg, var(--skin-tint) 0%, var(--skin-mid) 100%);
+  border-radius: 6px;
+  aspect-ratio: 16 / 6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--skin-deep);
+  font-size: 12px;
+  font-style: italic;
+  letter-spacing: 0.4px;
+  margin-bottom: 16px;
+  border: 1px solid #D8C0A0;
+  font-weight: 400;
+}
+
+/* Reading text */
+.reading-text {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--ink);
+}
+.reading-text p { margin-bottom: 12px; }
+.reading-text em { font-style: italic; color: #444; }
+
+/* Pull-quote */
+.pullquote {
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.42;
+  color: var(--skin-deep);
+  text-align: center;
+  padding: 22px 48px;
+  margin: 20px -18px;
+  position: relative;
+}
+.pullquote::before {
+  content: '\201C';
+  font-size: 80px;
+  line-height: 0.5;
+  color: var(--skin-mid);
+  position: absolute;
+  top: 26px;
+  left: 14px;
+  font-family: 'Montserrat', serif;
+  font-style: normal;
+  font-weight: 900;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   COMPREHENSION QUESTIONS
+═══════════════════════════════════════════════════════════ */
+.questions ol {
+  list-style: none;
+  counter-reset: qnum;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.questions li {
+  counter-increment: qnum;
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  gap: 8px;
+  align-items: start;
+  font-size: 13.5px;
+  color: var(--ink);
+  line-height: 1.5;
+}
+.questions li::before {
+  content: counter(qnum);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--skin);
+  background: var(--skin-tint);
+  border: 1px solid var(--skin-mid);
+  border-radius: 50%;
+  width: 20px; height: 20px;
+  display: flex; align-items: center; justify-content: center;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+.answer-line {
+  margin-top: 5px;
+  height: 1px;
+  background: #DDD;
+  border-radius: 1px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   VOCABULARY SPOTLIGHT
+═══════════════════════════════════════════════════════════ */
+.vocab-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 10px;
+}
+.vocab-card {
+  border: 1px solid #E8E0D0;
+  border-radius: 5px;
+  padding: 10px 12px;
+}
+.vocab-word {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 2px;
+}
+.vocab-pos {
+  font-size: 10px;
+  color: var(--skin);
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.vocab-def {
+  font-size: 11.5px;
+  color: var(--grey);
+  line-height: 1.45;
+}
+.vocab-write {
+  margin-top: 6px;
+  height: 1px;
+  background: #E0D0C0;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   TIMELINE STRIP  (fixed at bottom)
+═══════════════════════════════════════════════════════════ */
+.tl-strip {
+  position: absolute;
+  bottom: 48px;
+  left: 52px;
+  right: 52px;
+  display: flex;
+  align-items: flex-start;
+  border-top: 1px solid #E0D8CC;
+  padding-top: 10px;
+}
+.tl-stops {
+  display: flex;
+  flex: 1;
+  align-items: flex-start;
+}
+.tl-stop {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+.tl-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: #DDD; border: 1.5px solid #CCC;
+}
+.tl-stop.now .tl-dot { background: var(--skin); border-color: var(--skin); }
+.tl-stop.pre .tl-dot { background: var(--green); border-color: var(--green); }
+.tl-stop .si   { width: 11px; height: 11px; color: #AAA; }
+.tl-stop.now .si { color: var(--skin); }
+.tl-stop.pre .si { color: var(--green); }
+.tl-stop .pt   { font-size: 8.5px; color: #AAA; font-weight: 500; }
+.tl-stop.now .pt { color: var(--skin); font-weight: 700; }
+.tl-meta {
+  font-size: 11px; color: var(--grey); font-weight: 600;
+  padding-left: 16px; white-space: nowrap; padding-top: 2px;
+}
+.tl-countdown { color: var(--skin); font-size: 15px; font-style: italic; display: block; }
+
+/* ═══════════════════════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════════════════════ */
+.page-footer {
+  position: absolute;
+  bottom: 20px;
+  left: 52px;
+  right: 52px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: #B0B0B0;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.page-footer .season { color: var(--skin); font-weight: 700; }
+</style>
+
+<!-- SVG icon symbols -->
+<svg style="display:none" aria-hidden="true">
+  <defs>
+    <symbol id="ico-sunrise" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+      <circle cx="9" cy="11" r="4"/>
+      <line x1="9" y1="2" x2="9" y2="4"/>
+      <line x1="14.2" y1="4.8" x2="12.8" y2="6.2"/>
+      <line x1="3.8" y1="4.8" x2="5.2" y2="6.2"/>
+      <line x1="2" y1="11" x2="4" y2="11"/>
+      <line x1="14" y1="11" x2="16" y2="11"/>
+      <line x1="2" y1="15" x2="16" y2="15"/>
+    </symbol>
+    <symbol id="ico-book" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 14V4"/>
+      <path d="M3 4h6v10H3a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/>
+      <path d="M9 4h6a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H9"/>
+    </symbol>
+    <symbol id="ico-headphones" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+      <path d="M3 11V9a6 6 0 0 1 12 0v2"/>
+      <rect x="2" y="10" width="3" height="5" rx="1"/>
+      <rect x="13" y="10" width="3" height="5" rx="1"/>
+    </symbol>
+    <symbol id="ico-speak" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 3h12a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7l-4 3V4a1 1 0 0 1 1-1z"/>
+    </symbol>
+    <symbol id="ico-grammar" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+      <line x1="3" y1="5" x2="15" y2="5"/>
+      <line x1="3" y1="9" x2="13" y2="9"/>
+      <line x1="3" y1="13" x2="15" y2="13"/>
+      <line x1="10" y1="11" x2="14" y2="11"/>
+    </symbol>
+    <symbol id="ico-break" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+      <path d="M3 7h9v5.5A2.5 2.5 0 0 1 9.5 15h-4A2.5 2.5 0 0 1 3 12.5V7z"/>
+      <path d="M12 8.5h1a2 2 0 0 1 0 4h-1"/>
+      <path d="M6 4.5c0-1.5 2-1.5 2-3"/>
+    </symbol>
+    <symbol id="ico-photo" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="6" width="14" height="10" rx="2"/>
+      <circle cx="9" cy="11" r="3"/>
+      <path d="M6.5 6L8 4h2l1.5 2"/>
+    </symbol>
+    <symbol id="ico-play" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+      <circle cx="6.5" cy="8" r="4"/>
+      <path d="M4.5 10q2 1.5 4 0"/>
+      <circle cx="12" cy="10" r="4"/>
+      <path d="M10 13q2-1.5 4 0"/>
+    </symbol>
+    <symbol id="ico-exit" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="3" width="12" height="12" rx="2"/>
+      <polyline points="6.5,9 8.5,11 12,7"/>
+    </symbol>
+    <symbol id="ico-crossword" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5">
+      <rect x="2" y="2" width="14" height="14" rx="1"/>
+      <line x1="8.5" y1="2" x2="8.5" y2="16"/>
+      <line x1="2" y1="8.5" x2="16" y2="8.5"/>
+      <rect x="2" y="2" width="6.5" height="6.5" fill="currentColor" opacity="0.15"/>
+      <rect x="9.5" y="9.5" width="6.5" height="6.5" fill="currentColor" opacity="0.15"/>
+    </symbol>
+    <symbol id="ico-false" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5">
+      <circle cx="7" cy="9" r="5"/>
+      <circle cx="11" cy="9" r="5"/>
+    </symbol>
+  </defs>
+</svg>
+
+</head>
+<body>
+<div class="page">
+
+  <!-- ── PAGE HEADER ── -->
+  <header class="page-header">
+    <div class="logo">
+      <span class="logo-somerset">Somerset</span>
+      <div class="logo-lc">
+        <span>Language</span>
+        <span>Centre</span>
+      </div>
+    </div>
+    <div class="ph-right">
+      <div class="ph-item">September 2026</div>
+      <div class="ph-item"><strong>Friday 1</strong> · 18 September</div>
+      <div class="ph-item">Unit 1 · Lead-in &amp; Reading</div>
+    </div>
+  </header>
+
+  <main class="content">
+
+    <!-- ── FRIDAY TITLE BLOCK ── -->
+    <div class="friday-block">
+      <div class="friday-eyebrow">Year opener · how do you feel about being you?</div>
+      <div class="friday-title">Jump for joy.</div>
+      <div class="friday-rule-row">
+        <div class="friday-rule-accent"></div>
+        <div class="friday-rule-rest"></div>
+      </div>
+      <div class="friday-grammar">Emotions vocabulary &middot; present simple vs continuous &middot; Aitana's emotional range</div>
+      <span class="load-tag">Standard Friday</span>
+    </div>
+
+    <!-- ── SECTION 1: LEAD-IN ── -->
+    <div class="section li">
+      <div class="sh-type">Lead-in</div>
+      <div class="sh-row">
+        <span class="sh-num">01</span>
+        <span class="sh-title">Mood map</span>
+        <span class="sh-time">8 min &nbsp;·&nbsp; pairs</span>
+      </div>
+      <p class="instruct">Pick the cell that best describes your week so far. Tell your partner why you feel that way. Then swap and ask them.</p>
+      <div class="mood-grid">
+        <div class="mood-cell"><span class="mood-face">🥱</span>exhausted</div>
+        <div class="mood-cell"><span class="mood-face">😄</span>thrilled</div>
+        <div class="mood-cell"><span class="mood-face">😬</span>anxious</div>
+        <div class="mood-cell"><span class="mood-face">😌</span>content</div>
+        <div class="mood-cell"><span class="mood-face">😤</span>frustrated</div>
+        <div class="mood-cell"><span class="mood-face">🤔</span>curious</div>
+        <div class="mood-cell"><span class="mood-face">😵</span>overwhelmed</div>
+        <div class="mood-cell"><span class="mood-face">🔥</span>motivated</div>
+        <div class="mood-cell"><span class="mood-face">😎</span>chilled</div>
+        <div class="mood-cell"><span class="mood-face">🥲</span>nostalgic</div>
+        <div class="mood-cell"><span class="mood-face">✨</span>hopeful</div>
+        <div class="mood-cell"><span class="mood-face">🪫</span>drained</div>
+      </div>
+      <p class="follow-up">Which three words would <em>Aitana</em> choose? Keep your guess for later.</p>
+    </div>
+
+    <!-- ── SECTION 2: READING ── -->
+    <div class="section rd">
+      <div class="sh-type">Reading</div>
+      <div class="sh-row">
+        <span class="sh-num">02</span>
+        <span class="sh-title">"Aitana, in four feelings"</span>
+        <span class="fce-tag">FCE Reading · Part 5</span>
+        <span class="sh-time">20 min &nbsp;·&nbsp; solo then pairs</span>
+      </div>
+      <p class="instruct">Read the text once for gist. On your second read, underline every word that describes how someone feels.</p>
+
+      <div class="img-ph">Watercolour illustration — Aitana on stage at Roig Arena, Valencia, autumn light</div>
+
+      <div class="yp">
+        <span>F1 of 34</span>
+        <div class="yp-track">
+          <div class="yp-fill"></div>
+          <div class="yp-dot"></div>
+        </div>
+        <span>Unit 1 of 6</span>
+      </div>
+
+      <div class="reading-text">
+        <p>Aitana Ocaña is one of Spain's biggest pop stars, but she insists she is also <em>"the most ordinary person in the world."</em> She grew up in Sant Climent de Llobregat, near Barcelona, and still goes back there when she needs to think. She is currently touring with <em>Cuarto Azul</em>, her fourth album, which came out in May 2025 and won Best Recording Package at the Latin Grammys.</p>
+
+        <p>What makes the album interesting isn't the music — it's the <em>range</em> of feelings on it. One song is restless and a little anxious. The next is calm, almost shy. A third is thrilled, full of energy. In an interview with a Madrid newspaper, she said she wrote most of the album in a single autumn month, working late into the night while her city went to sleep.</p>
+      </div>
+
+      <div class="pullquote">"I usually write at night because I think more clearly then. But honestly? Tonight I just want to sleep."</div>
+
+      <div class="reading-text">
+        <p>For her fans in Valencia, the question is simple: which Aitana is performing when she comes to Roig Arena next spring? The <em>anxious</em> one who worries about every note, or the <em>thrilled</em> one who forgets the audience is there?</p>
+      </div>
+
+      <!-- Comprehension questions -->
+      <div class="questions" style="margin-top:14px;">
+        <ol>
+          <li>
+            Where does Aitana go when she needs to think?
+            <div class="answer-line"></div>
+          </li>
+          <li>
+            Name two emotions the article uses to describe different songs on the album.
+            <div class="answer-line"></div>
+          </li>
+          <li>
+            In your own words, what does she mean by <em>"the most ordinary person in the world"</em>?
+            <div class="answer-line"></div>
+            <div class="answer-line" style="margin-top:6px"></div>
+          </li>
+          <li>
+            Compare your mood-map prediction (Section 1) with a partner. Did you agree on which three words describe her?
+            <div class="answer-line"></div>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- ── VOCABULARY SPOTLIGHT ── -->
+    <div class="section rd" style="margin-bottom:0">
+      <div class="sh-type">Vocabulary</div>
+      <div class="sh-row">
+        <span class="sh-num">02b</span>
+        <span class="sh-title">Six emotions from the text — write your own example sentence</span>
+      </div>
+      <div class="vocab-grid">
+        <div class="vocab-card">
+          <div class="vocab-word">restless</div>
+          <div class="vocab-pos">adj</div>
+          <div class="vocab-def">unable to stay still; feeling that you need to do something</div>
+          <div class="vocab-write"></div>
+        </div>
+        <div class="vocab-card">
+          <div class="vocab-word">anxious</div>
+          <div class="vocab-pos">adj</div>
+          <div class="vocab-def">worried and nervous, especially about something that may happen</div>
+          <div class="vocab-write"></div>
+        </div>
+        <div class="vocab-card">
+          <div class="vocab-word">thrilled</div>
+          <div class="vocab-pos">adj</div>
+          <div class="vocab-def">extremely pleased and excited</div>
+          <div class="vocab-write"></div>
+        </div>
+        <div class="vocab-card">
+          <div class="vocab-word">nostalgic</div>
+          <div class="vocab-pos">adj</div>
+          <div class="vocab-def">feeling happy and slightly sad when thinking about the past</div>
+          <div class="vocab-write"></div>
+        </div>
+        <div class="vocab-card">
+          <div class="vocab-word">drained</div>
+          <div class="vocab-pos">adj</div>
+          <div class="vocab-def">very tired, with no energy or emotion left</div>
+          <div class="vocab-write"></div>
+        </div>
+        <div class="vocab-card">
+          <div class="vocab-word">content</div>
+          <div class="vocab-pos">adj</div>
+          <div class="vocab-def">happy and satisfied with your situation</div>
+          <div class="vocab-write"></div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ── TIMELINE STRIP ── -->
+  <div class="tl-strip">
+    <div class="tl-stops">
+      <div class="tl-stop now">
+        <svg class="si" aria-hidden="true"><use href="#ico-sunrise"/></svg>
+        <div class="tl-dot"></div>
+        <span class="pt">8′</span>
+      </div>
+      <div class="tl-stop now">
+        <svg class="si" aria-hidden="true"><use href="#ico-book"/></svg>
+        <div class="tl-dot"></div>
+        <span class="pt">20′</span>
+      </div>
+      <div class="tl-stop">
+        <svg class="si" aria-hidden="true"><use href="#ico-grammar"/></svg>
+        <div class="tl-dot"></div>
+        <span class="pt">10′</span>
+      </div>
+      <div class="tl-stop">
+        <svg class="si" aria-hidden="true"><use href="#ico-speak"/></svg>
+        <div class="tl-dot"></div>
+        <span class="pt">10′</span>
+      </div>
+      <div class="tl-stop">
+        <svg class="si" aria-hidden="true"><use href="#ico-break"/></svg>
+        <div class="tl-dot"></div>
+        <span class="pt">5′</span>
+      </div>
+      <div class="tl-stop">
+        <svg class="si" aria-hidden="true"><use href="#ico-headphones"/></svg>
+        <div class="tl-dot"></div>
+        <span class="pt">15′</span>
+      </div>
+      <div class="tl-stop">
+        <svg class="si" aria-hidden="true"><use href="#ico-photo"/></svg>
+        <div class="tl-dot"></div>
+        <span class="pt">8′</span>
+      </div>
+      <div class="tl-stop">
+        <svg class="si" aria-hidden="true"><use href="#ico-play"/></svg>
+        <div class="tl-dot"></div>
+        <span class="pt">8′</span>
+      </div>
+      <div class="tl-stop">
+        <svg class="si" aria-hidden="true"><use href="#ico-speak"/></svg>
+        <div class="tl-dot"></div>
+        <span class="pt">10′</span>
+      </div>
+      <div class="tl-stop">
+        <svg class="si" aria-hidden="true"><use href="#ico-crossword"/></svg>
+        <div class="tl-dot"></div>
+        <span class="pt">10′</span>
+      </div>
+      <div class="tl-stop">
+        <svg class="si" aria-hidden="true"><use href="#ico-false"/></svg>
+        <div class="tl-dot"></div>
+        <span class="pt">8′</span>
+      </div>
+      <div class="tl-stop">
+        <svg class="si" aria-hidden="true"><use href="#ico-exit"/></svg>
+        <div class="tl-dot"></div>
+        <span class="pt">3′</span>
+      </div>
+    </div>
+    <div class="tl-meta">Left <span class="tl-countdown">120m</span></div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <footer class="page-footer">
+    <span class="season">September · Tardor</span>
+    <span>Friday Teenagers · F1 · 18 September 2026 · Page 3</span>
+  </footer>
+
+</div><!-- /page -->
+</body>
+</html>

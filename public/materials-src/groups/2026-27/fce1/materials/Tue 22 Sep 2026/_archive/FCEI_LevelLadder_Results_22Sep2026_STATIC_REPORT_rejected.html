@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Level Ladder — Results · FCE I</title>
+<!-- SOMERSET · FCE I · Level Ladder results, click-through slides.
+     Built to match PETI_LevelLadder_Results_16Sep2026.pptx exactly (house format
+     for adolescent groups) — NOT Somerset Vista, which is for adults only.
+     Test given Thu 17 Sep 2026 (file dated 22 Sep because built ahead of time). -->
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --green:#6BAE2E; --green-dark:#3B6B1F; --green-deep:#1E4227;
+  --amber:#E8A23C; --amber-bg:#FCF1E0; --ink:#1a1a1a; --sub:#6b6b6b;
+  --panel:#EAF4DA; --border:#bfe0a0; --cream:#FBF8F0;
+}
+html,body{width:100%;height:100%;overflow:hidden;background:#e9e9e2;font-family:Arial,Helvetica,sans-serif;color:var(--ink);}
+#show{position:fixed;inset:0;}
+.slide{position:absolute;inset:0;display:none;flex-direction:column;background:#fff;}
+.slide.active{display:flex;}
+
+/* ---- title-slide layout ---- */
+.slide.title{border-left:10px solid var(--green);}
+.title .inner{padding:6vh 6vw;max-width:900px;}
+.title .logo{display:flex;align-items:flex-end;gap:9px;margin-bottom:6px;}
+.title .logo .w{font-family:Georgia,serif;font-weight:800;font-size:clamp(26px,3vw,38px);color:var(--green);}
+.title .logo .lc{font-size:clamp(8px,.8vw,11px);letter-spacing:2.5px;line-height:1.15;color:#333;font-weight:700;padding-bottom:4px;}
+.title .rule{height:3px;width:220px;background:var(--green);margin-bottom:22px;}
+.title .kick{color:var(--green);font-weight:800;font-size:clamp(11px,1.1vw,14px);letter-spacing:1.5px;margin-bottom:10px;}
+.title h1{font-family:Georgia,serif;font-weight:700;font-size:clamp(30px,4.4vw,58px);color:var(--ink);line-height:1.1;margin-bottom:18px;}
+.title .sub{font-family:Georgia,serif;font-style:italic;color:#888;font-size:clamp(15px,1.7vw,22px);line-height:1.4;margin-bottom:26px;}
+.remember{background:var(--panel);border-radius:6px;padding:16px 20px;font-size:clamp(13px,1.35vw,17px);line-height:1.5;max-width:640px;}
+.remember b{color:var(--green-dark);}
+
+/* ---- interior-slide layout ---- */
+.head{background:var(--green);display:flex;align-items:center;justify-content:space-between;padding:0 4vw;height:11vh;min-height:64px;box-shadow:0 4px 0 rgba(0,0,0,.06);}
+.head h1{font-family:Georgia,serif;font-weight:700;color:#fff;font-size:clamp(18px,2.4vw,30px);}
+.head .logo{display:flex;align-items:flex-end;gap:9px;}
+.head .logo .w{font-family:Georgia,serif;font-weight:800;font-size:clamp(20px,2.4vw,30px);color:#fff;}
+.head .logo .lc{font-size:clamp(7px,.7vw,9.5px);letter-spacing:2px;line-height:1.15;color:#eafbe0;font-weight:700;padding-bottom:3px;}
+.kicker{display:inline-block;background:var(--green-dark);color:#fff;font-weight:800;font-size:clamp(9px,.9vw,12px);letter-spacing:1.2px;padding:6px 16px;margin:1.6vh 0 0 4vw;}
+.body{flex:1;overflow:auto;padding:3vh 4vw 6vh;}
+
+/* stat cards (slide 2) */
+.stat3{display:grid;grid-template-columns:repeat(3,1fr);gap:2vw;margin-top:4vh;max-width:1100px;}
+.stat-card{border:2px solid var(--green);border-radius:14px;padding:4vh 1.5vw;text-align:center;box-shadow:0 3px 0 rgba(107,174,46,.25);}
+.stat-card .big{font-family:Georgia,serif;font-weight:800;color:var(--green);font-size:clamp(40px,5.5vw,70px);}
+.stat-card .lab{font-weight:800;font-size:clamp(13px,1.5vw,19px);margin:4px 0 8px;}
+.stat-card .desc{color:var(--sub);font-size:clamp(12px,1.2vw,15px);line-height:1.4;}
+
+/* unit-by-unit bar overview (slide 3) */
+.ov-lead{color:var(--sub);font-size:clamp(13px,1.3vw,16px);margin-bottom:2.4vh;}
+.ov-row{display:grid;grid-template-columns:70px 210px 1fr 60px 130px;align-items:center;gap:16px;padding:1vh 0;}
+.ov-row .u{font-weight:800;color:var(--green);font-family:Georgia,serif;font-size:clamp(13px,1.3vw,16px);}
+.ov-row .t{font-size:clamp(13px,1.3vw,16px);}
+.bartrack{background:var(--panel);border-radius:4px;height:20px;position:relative;overflow:hidden;}
+.barfill{background:var(--green);height:100%;}
+.ov-row .pct{font-weight:800;font-family:Georgia,serif;font-size:clamp(13px,1.3vw,16px);text-align:right;}
+.datepill{display:inline-block;border:1.5px solid var(--green);color:var(--green-dark);border-radius:14px;padding:3px 12px;font-size:clamp(10px,1vw,12px);font-weight:800;text-align:center;}
+.datepill.now{background:var(--green);color:#fff;border-color:var(--green);}
+
+/* unit detail slide */
+.udet{display:grid;grid-template-columns:280px 1fr;gap:3vw;align-items:start;}
+.uside{background:var(--panel);border-radius:8px;padding:3vh 1.6vw;}
+.uside .k{color:var(--green-dark);font-weight:800;font-size:clamp(10px,1vw,12px);letter-spacing:1px;margin:1.6vh 0 2px;}
+.uside .k:first-child{margin-top:0;}
+.uside .v{font-family:Georgia,serif;font-size:clamp(15px,1.6vw,20px);color:var(--ink);}
+.uside .score{font-family:Georgia,serif;font-weight:800;color:var(--green);font-size:clamp(30px,3.6vw,44px);}
+.qlist{display:flex;flex-direction:column;gap:.6vh;}
+.qlead{display:flex;justify-content:space-between;font-style:italic;color:var(--sub);font-size:clamp(11px,1.1vw,13px);margin-bottom:.6vh;}
+.qrow{border:1.5px solid #e2e2e2;border-radius:8px;padding:.9vh 1.2vw;display:flex;justify-content:space-between;align-items:center;gap:14px;}
+.qrow.hl{border-color:var(--amber);background:var(--amber-bg);}
+.qrow .qt{flex:1;}
+.qrow .qn{font-weight:800;color:var(--ink);}
+.qrow .ans{color:var(--green);font-weight:800;}
+.qrow .grm{display:block;color:var(--sub);font-style:italic;font-size:clamp(10.5px,1.05vw,13px);}
+.dots{display:flex;align-items:center;gap:6px;min-width:150px;justify-content:flex-end;}
+.dot{width:15px;height:15px;border-radius:50%;background:var(--green);}
+.dot.off{background:#fff;border:2px solid var(--border);}
+.dotcount{font-size:clamp(10.5px,1.05vw,13px);color:var(--sub);min-width:36px;}
+.qrow.hl .dotcount{color:var(--amber);font-weight:800;}
+.notyet{color:var(--amber);font-weight:800;font-size:clamp(10px,1vw,12px);min-width:52px;text-align:right;}
+
+/* big findings */
+.finbox{border:2px solid var(--amber);border-radius:14px;padding:2.6vh 2.4vw;max-width:820px;margin-bottom:2.4vh;}
+.finbox .flab{color:var(--amber);font-weight:800;font-size:clamp(11px,1.1vw,13px);letter-spacing:1px;}
+.finbox .fq{font-family:Georgia,serif;font-size:clamp(20px,2.4vw,30px);margin:8px 0 12px;line-height:1.3;}
+.finbox .fq b{color:var(--green);}
+.finrow{display:flex;justify-content:space-between;align-items:center;}
+.finrow .dots{justify-content:flex-start;}
+.finrow .fwhere{color:var(--green-dark);font-weight:800;font-size:clamp(12px,1.2vw,15px);}
+
+/* roadmap */
+.map6{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-top:2vh;}
+.map-card{border:2px solid var(--border);border-radius:8px;padding:2vh 1vw;}
+.map-card.now{background:var(--green);border-color:var(--green);color:#fff;}
+.map-card .un{font-weight:800;font-size:clamp(11px,1.1vw,13px);letter-spacing:.5px;margin-bottom:6px;}
+.map-card.now .un{color:#fff;}
+.map-card:not(.now) .un{color:var(--green-dark);}
+.map-card .ut{font-family:Georgia,serif;font-weight:700;font-size:clamp(13px,1.35vw,17px);margin-bottom:10px;line-height:1.25;}
+.map-card .ug{font-size:clamp(10.5px,1.05vw,13px);margin-bottom:14px;color:inherit;opacity:.9;}
+.map-card .um{font-family:Georgia,serif;font-weight:700;font-size:clamp(11px,1.15vw,14px);}
+.herelab{color:var(--amber);font-weight:800;font-size:clamp(10px,1vw,12px);letter-spacing:1px;margin-bottom:6px;}
+.mapnote{font-family:Georgia,serif;font-style:italic;color:var(--sub);text-align:center;margin-top:3vh;font-size:clamp(13px,1.3vw,16px);}
+
+/* individual cards */
+.icards{display:grid;grid-template-columns:repeat(3,1fr);gap:2vw;margin-top:2vh;}
+.icard{border:2px solid var(--green);border-radius:14px;padding:2.6vh 1.6vw;cursor:pointer;transition:box-shadow .15s;}
+.icard:hover{box-shadow:0 3px 0 rgba(107,174,46,.3);}
+.icard .label{font-family:Georgia,serif;font-weight:800;font-size:clamp(16px,1.8vw,22px);margin-bottom:6px;}
+.icard .name{display:none;color:var(--green-dark);}
+.icard.revealed .anon{display:none;}
+.icard.revealed .name{display:block;}
+.icard .tot{font-family:Georgia,serif;font-weight:800;color:var(--green);font-size:clamp(26px,3vw,36px);margin-bottom:10px;}
+.ibar-row{display:flex;align-items:center;gap:8px;margin-bottom:4px;}
+.ibar-row .iu{width:22px;font-size:11px;color:var(--sub);font-weight:800;}
+.ibar-track{flex:1;background:var(--panel);border-radius:3px;height:11px;}
+.ibar-fill{background:var(--green);height:100%;border-radius:3px;}
+.ibar-row .in{width:14px;font-size:10.5px;color:var(--sub);text-align:right;}
+.instr{color:var(--sub);font-size:clamp(12px,1.25vw,15px);margin-bottom:.4vh;}
+
+/* closing */
+.steps{display:flex;flex-direction:column;gap:3vh;max-width:800px;margin-top:2vh;}
+.step{display:flex;gap:20px;align-items:flex-start;}
+.stepnum{width:44px;height:44px;border-radius:50%;background:var(--green);color:#fff;font-family:Georgia,serif;font-weight:800;font-size:19px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;}
+.step h3{font-family:Georgia,serif;font-size:clamp(16px,1.9vw,23px);color:var(--ink);margin-bottom:3px;}
+.step p{color:var(--sub);font-size:clamp(13px,1.35vw,17px);line-height:1.4;}
+
+.foot{position:fixed;bottom:44px;left:0;right:0;text-align:center;color:#999;font-size:11px;letter-spacing:.3px;z-index:5;}
+#nav{position:fixed;bottom:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:center;gap:20px;padding:8px;background:rgba(255,255,255,.92);border-top:1px solid #e4e4e4;}
+.nb{background:#fff;border:1.5px solid var(--green);color:var(--green-dark);font-size:16px;cursor:pointer;width:34px;height:34px;border-radius:50%;font-weight:800;}
+.nb:hover{background:var(--green);color:#fff;}
+#count{color:var(--sub);font-size:11.5px;letter-spacing:1.5px;min-width:56px;text-align:center;font-weight:700;}
+.hint{position:fixed;top:12px;right:1.4vw;z-index:100;color:#aaa;font-size:10.5px;letter-spacing:.4px;}
+</style>
+</head>
+<body>
+<div class="hint">&larr; &rarr; &middot; click to advance</div>
+<div id="show"></div>
+<div id="nav"><button class="nb" onclick="go(-1)">&#8249;</button><span id="count"></span><button class="nb" onclick="go(1)">&#8250;</button></div>
+
+<script>
+const FOOT = 'FCE I &middot; The Level Ladder, 17 Sep 2026 &middot; Somerset Language Centre, Valencia';
+const SLIDES = [];
+function slide(html, opts){ SLIDES.push({html, title: (opts&&opts.title)||false}); }
+
+/* 1 — TITLE */
+slide(`
+<div class="inner">
+  <div class="logo"><span class="w">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+  <div class="rule"></div>
+  <div class="kick">FCE I &middot; TUESDAY &amp; THURSDAY &middot; B2 FIRST</div>
+  <h1>The Level Ladder: your results</h1>
+  <div class="sub">What you already know, what you don't know yet, and when we will learn it</div>
+  <div class="remember"><b>Remember:</b> this was not an exam. It covers the whole year, so most of it is material we have not taught yet. Every mistake here is just a map of where we are going.</div>
+</div>`, {title:true});
+
+/* 2 — HOW IT WORKED */
+slide(`
+<div class="head"><h1>How the Level Ladder worked</h1><div class="logo"><span class="w">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div></div>
+<div class="body">
+<div class="stat3">
+  <div class="stat-card"><div class="big">36</div><div class="lab">questions</div><div class="desc">Six in each part.</div></div>
+  <div class="stat-card"><div class="big">6</div><div class="lab">parts</div><div class="desc">One part for each unit we will study this year.</div></div>
+  <div class="stat-card"><div class="big">1</div><div class="lab">unit so far</div><div class="desc">We're partway through Unit 1. Units 2 to 6 are still to come.</div></div>
+</div>
+</div>`);
+
+/* 3 — CLASS OVERVIEW */
+slide(`
+<div class="head"><h1>How the class did, unit by unit</h1><div class="logo"><span class="w">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div></div>
+<div class="kicker">THE WHOLE CLASS</div>
+<div class="body">
+<div class="ov-lead">Correct answers from all three of you together (18 per unit). Unit 1 is where we are now.</div>
+${[
+ ['1','Jump for joy',15,'NOW',true],
+ ['2','Global culture?',10,'Oct to Dec',false],
+ ['3','Role models',12,'Jan to Feb',false],
+ ['4','City living',10,'Feb to Mar',false],
+ ['5','Emerging technologies',12,'Apr to May',false],
+ ['6','Take it easy',11,'May to Jun',false],
+].map(([n,t,sc,pill,now])=>`
+<div class="ov-row">
+  <div class="u">Unit ${n}</div>
+  <div class="t">${t}</div>
+  <div class="bartrack"><div class="barfill" style="width:${Math.round(sc/18*100)}%"></div></div>
+  <div class="pct">${Math.round(sc/18*100)}%</div>
+  <div class="datepill${now?' now':''}">${pill}</div>
+</div>`).join('')}
+</div>`);
+
+/* unit detail generator */
+function unitSlide(n, title, learnIt, grammar, score, qs){
+  const rows = qs.map(([qn,text,ans,grm,c,hl])=>`
+  <div class="qrow${hl?' hl':''}">
+    <div class="qt"><span class="qn">${qn}</span>&nbsp; ${text.replace('___', `<b class="ans">${ans}</b>`)}<span class="grm">${grm}</span></div>
+    <div class="dots">${Array.from({length:3},(_,i)=>`<span class="dot${i<c?'':' off'}"></span>`).join('')}<span class="dotcount">${c} of 3</span></div>
+    ${hl?'<div class="notyet">not yet</div>':'<div class="notyet"></div>'}
+  </div>`).join('');
+  slide(`
+<div class="head"><h1>Unit ${n}: ${title}</h1><div class="logo"><span class="w">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div></div>
+<div class="kicker">PART ${n} OF THE LADDER</div>
+<div class="body">
+<div class="udet">
+  <div class="uside">
+    <div class="k">WE LEARN IT</div><div class="v">${learnIt}</div>
+    <div class="k">GRAMMAR</div><div class="v" style="font-size:15px;">${grammar}</div>
+    <div class="k">CLASS SCORE</div><div class="score">${score} / 18</div>
+  </div>
+  <div class="qlist">
+    <div class="qlead"><span>The correct answer is in bold.</span><span>got it right</span></div>
+    ${rows}
+  </div>
+</div>
+</div>`);
+}
+
+unitSlide(1,'Jump for joy','Sep to Oct','present simple and continuous, emotions, personality','15',[
+ ['1','Nuria ___ about her results at the moment, though she is normally calm.','is worrying','present continuous, temporary',0,true],
+ ['2','Try the horchata in Alboraya. It ___ nothing like the supermarket version.','tastes','stative verb',3,false],
+ ['3','Actually, I ___ you have a point.','think','opinion, stative',3,false],
+ ['4','Flats in Ruzafa ___ more expensive every single year.','are getting','changing situation',3,false],
+ ['5','Teresa went bright red when she forgot her lines on stage. She felt ___.','embarrassed','-ed vs -ing',3,false],
+ ['6','Claudia never changes her mind, however good your argument is. She is very ___.','stubborn','personality adjectives',3,false],
+]);
+
+unitSlide(2,'Global culture?','Oct to Dec','past simple/continuous, used to / would, traditions','10',[
+ ['7','While the parade ___ through the Plaza del Ayuntamiento, it started to rain.','was passing','past continuous, interrupted',3,false],
+ ['8','When I was small, we ___ spend every March at my grandmother\'s house for Fallas.','would','repeated past action',0,true],
+ ['9','She ___ hate the mascletà, but now she never misses one.','used to','used to, stative verb',3,false],
+ ['10','I ___ the noise now, so I sleep straight through it.','am used to','be used to + noun',1,true],
+ ['11','The ninots are burnt on the final night. It is a ___ that goes back centuries.','ritual','traditions',2,false],
+ ['12','Thousands of people line the streets to watch the ___ go past.','parade','festivals',1,true],
+]);
+
+unitSlide(3,'Role models','Jan to Feb','past perfect simple and continuous, success, fame','12',[
+ ['13','By the time we got to Mestalla, the match ___.','had already started','past perfect',2,false],
+ ['14','She ___ for over five hours when she finally crossed the finish line.','had been running','past perfect continuous',2,false],
+ ['15','I didn\'t recognise Beatriz at first because she ___ her hair.','had cut','past perfect simple, result',2,false],
+ ['16','Before he won his first medal, he ___ three finals.','had lost','past perfect before a past point',0,true],
+ ['17','Her ___ to keep training after the injury is what impressed the selectors.','determination','success nouns',3,false],
+ ['18','One good teacher can ___ a whole generation of students.','inspire','influence verbs',3,false],
+]);
+
+unitSlide(4,'City living','Feb to Mar','future forms, cities','10',[
+ ['19','This time next year Lucía ___ in Berlin.','will be living','future continuous',2,false],
+ ['20','The new metro line ___ long before 2030.','will have been finished','future perfect passive',1,true],
+ ['21','Careful, you ___ that box!','are going to drop','going to, present evidence',3,false],
+ ['22','The train to Madrid ___ every hour, on the hour.','leaves','timetable present',2,false],
+ ['23','They live on the ___ of the city, about twenty minutes out by bus.','outskirts','cities',1,true],
+ ['24','El Carmen is a ___ district, full of bars and people at all hours.','bustling','describing districts',1,true],
+]);
+
+unitSlide(5,'Emerging technologies','Apr to May','modals: permission, obligation, ability, probability, technology','12',[
+ ['25','You ___ take photos inside the gallery. There are signs on every wall.','mustn\'t','prohibition',3,false],
+ ['26','She isn\'t answering. She ___ still be on the metro.','might','probability',3,false],
+ ['27','You ___ have told me the film started at eight. I missed the beginning.','should','perfect modal, criticism',1,true],
+ ['28','That ___ be Irene at the door. She is in Alicante today.','can\'t','deduction, impossibility',2,false],
+ ['29','Make a ___ of your files before you update the phone.','backup','compound noun',1,true],
+ ['30','The email arrived with three ___.','attachments','technology',2,false],
+]);
+
+unitSlide(6,'Take it easy','May to Jun','-ing form and infinitives, sport','11',[
+ ['31','I can\'t stand ___ in queues.','waiting','verb + -ing',3,false],
+ ['32','She stopped ___ her shoelace and lost ten seconds.','to tie','stop + infinitive of purpose',1,true],
+ ['33','We are thinking of ___ up padel this autumn.','taking','preposition + -ing',2,false],
+ ['34','He managed ___ the ball past the keeper.','to get','verb + infinitive',3,false],
+ ['35','The Valencia marathon ___ is famously flat, which is why records fall on it.','course','sports venues',1,true],
+ ['36','After thirty ___ of the pool she could barely lift her arms.','laps','sports nouns',1,true],
+]);
+
+/* 10 — BIG THREE */
+slide(`
+<div class="head"><h1>Nobody got these right&hellip; yet</h1><div class="logo"><span class="w">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div></div>
+<div class="kicker">THE BIG THREE</div>
+<div class="body">
+${[
+ ['1','PRESENT CONTINUOUS, TEMPORARY','Nuria <b>is worrying</b> about her results at the moment.','Unit 1, Sep to Oct'],
+ ['8','WOULD, REPEATED PAST ACTION','When I was small, we <b>would</b> spend every March at my grandmother\'s.','Unit 2, Oct to Dec'],
+ ['16','PAST PERFECT BEFORE A PAST POINT','Before he won his first medal, he <b>had lost</b> three finals.','Unit 3, Jan to Feb'],
+].map(([n,lab,q,where])=>`
+<div class="finbox">
+  <span class="flab">QUESTION ${n} &middot; ${lab}</span>
+  <div class="fq">${q}</div>
+  <div class="finrow">
+    <div class="dots">${Array.from({length:3},()=>`<span class="dot off"></span>`).join('')}<span class="dotcount" style="margin-left:8px;">0 of 3</span></div>
+    <div class="fwhere">We learn it in ${where}</div>
+  </div>
+</div>`).join('')}
+</div>`);
+
+/* 11 — ROADMAP */
+slide(`
+<div class="head"><h1>Our year, unit by unit</h1><div class="logo"><span class="w">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div></div>
+<div class="kicker">THE MAP</div>
+<div class="body">
+<div class="herelab" style="margin-left:2px;">YOU ARE HERE</div>
+<div class="map6">
+${[
+ ['1','Jump for joy','present simple and continuous','Sep to Oct',true],
+ ['2','Global culture?','past tenses, used to / would','Oct to Dec',false],
+ ['3','Role models','past perfect simple &amp; continuous','Jan to Feb',false],
+ ['4','City living','future forms','Feb to Mar',false],
+ ['5','Emerging technologies','modals','Apr to May',false],
+ ['6','Take it easy','-ing form and infinitives','May to Jun',false],
+].map(([n,t,g,m,now])=>`
+<div class="map-card${now?' now':''}">
+  <div class="un">UNIT ${n}</div>
+  <div class="ut">${t}</div>
+  <div class="ug">${g}</div>
+  <div class="um">${m}</div>
+</div>`).join('')}
+</div>
+<div class="mapnote">Months are approximate, matching the Friday B2 group's calendar. Next June we do the Level Ladder again and compare.</div>
+</div>`);
+
+/* 12 — INDIVIDUAL CARDS (anonymised, click to reveal) */
+slide(`
+<div class="head"><h1>How each of you did</h1><div class="logo"><span class="w">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div></div>
+<div class="kicker">CLICK A CARD TO SEE WHO IT IS</div>
+<div class="body">
+<div class="instr">Letters are random, not a ranking. Click a card to open it.</div>
+<div class="icards">
+${[
+ ['A','Víctor',24,[5,3,4,3,5,4]],
+ ['B','Isabella',19,[5,3,3,2,2,4]],
+ ['C','Martina',27,[5,4,5,5,5,3]],
+].map(([letter,name,total,units])=>`
+<div class="icard" onclick="this.classList.toggle('revealed')">
+  <div class="label"><span class="anon">Student ${letter}</span><span class="name">${name}</span></div>
+  <div class="tot">${total}/36</div>
+  ${units.map((u,i)=>`
+  <div class="ibar-row"><span class="iu">U${i+1}</span><div class="ibar-track"><div class="ibar-fill" style="width:${Math.round(u/6*100)}%"></div></div><span class="in">${u}</span></div>`).join('')}
+</div>`).join('')}
+</div>
+</div>`);
+
+/* 13 — CLOSING */
+slide(`
+<div class="head"><h1>So what happens now?</h1><div class="logo"><span class="w">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div></div>
+<div class="kicker">TODAY</div>
+<div class="body">
+<div class="steps">
+  <div class="step"><div class="stepnum">1</div><div><h3>Today, still Unit 1</h3><p>Question 8's pattern (would for a repeated past habit) hasn't landed at all yet — that's exactly what we practise next.</p></div></div>
+  <div class="step"><div class="stepnum">2</div><div><h3>Every unit</h3><p>When we reach a new unit, look back at its six questions. You'll see them get easier.</p></div></div>
+  <div class="step"><div class="stepnum">3</div><div><h3>June</h3><p>We climb the ladder again and see how much higher you get.</p></div></div>
+</div>
+</div>`);
+
+let i = 0;
+const show = document.getElementById('show');
+function render(){
+  show.innerHTML = SLIDES.map((s,idx)=>{
+    const cls = 'slide'+(idx===i?' active':'')+(s.title?' title':'');
+    const foot = s.title ? '' : `<div class="foot">${FOOT}</div>`;
+    return `<div class="${cls}">${s.html}${foot}</div>`;
+  }).join('');
+  document.getElementById('count').textContent = (i+1)+' / '+SLIDES.length;
+}
+function go(d){ i = Math.max(0, Math.min(SLIDES.length-1, i+d)); render(); }
+document.addEventListener('keydown', e=>{ if(e.key==='ArrowRight') go(1); if(e.key==='ArrowLeft') go(-1); });
+show.addEventListener('click', e=>{ if(e.target.closest('#nav')||e.target.closest('.icard')) return; go(1); });
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SOMERSET Nº1 · Lesson 6 · Now or Future?</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..900&family=Instrument+Sans:wght@400..700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#6BAE2E; --green-deep:#2F6B1A; --green-ink:#1E4227; --dark:#12200F;
+  --ice:#BFE3EA; --ice-deep:#3A8FA3; --sand:#E7E4D8; --hot:#E2542C;
+  --serif:'Fraunces',Georgia,serif; --sans:'Instrument Sans',system-ui,sans-serif;
+}
+html,body{width:100%;height:100%;overflow:hidden;background:#000;font-family:var(--sans)}
+#show{position:fixed;inset:0}
+.slide{position:absolute;inset:0;display:flex;flex-direction:column;opacity:0;transition:opacity .45s ease;pointer-events:none;overflow:hidden}
+.slide.active{opacity:1;pointer-events:auto}
+.bg{position:absolute;inset:0;background-size:cover;background-position:center;transform:scale(1.03)}
+.ov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,24,12,.86) 0%,rgba(12,24,12,.52) 42%,rgba(12,24,12,.88) 100%)}
+.sc{position:relative;z-index:3;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    padding:6vh 7vw;text-align:center;gap:clamp(14px,2.4vh,30px);color:#fff}
+
+.kick{font-size:clamp(14px,1.5vw,22px);letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:#9BE06A;
+      text-shadow:0 2px 10px rgba(0,0,0,.6)}
+.t-super{font-family:var(--serif);font-weight:600;font-size:clamp(52px,8.4vw,124px);line-height:1;letter-spacing:-.02em;
+      text-shadow:0 4px 20px rgba(0,0,0,.6)}
+.t-big{font-family:var(--serif);font-weight:600;font-size:clamp(40px,5.6vw,84px);line-height:1.06;letter-spacing:-.02em;
+      text-shadow:0 3px 16px rgba(0,0,0,.6)}
+.t-med{font-size:clamp(24px,2.9vw,44px);line-height:1.35;font-weight:600;text-shadow:0 2px 12px rgba(0,0,0,.6)}
+.c-sand{color:var(--sand)}
+em{font-style:normal;color:#9BE06A;font-weight:700}
+
+.blist{list-style:none;text-align:left;max-width:1100px}
+.blist li{display:flex;gap:16px;align-items:flex-start;font-size:clamp(24px,2.9vw,44px);line-height:1.35;font-weight:600;
+      margin-bottom:clamp(10px,1.8vh,22px);text-shadow:0 2px 12px rgba(0,0,0,.6)}
+.blist li::before{content:'';width:.42em;height:.42em;background:var(--green);border-radius:50%;margin-top:.52em;flex-shrink:0}
+
+.chips{display:flex;flex-wrap:wrap;gap:clamp(8px,1vw,16px);justify-content:center;max-width:1200px}
+.chip{border:2px solid rgba(255,255,255,.5);border-radius:999px;padding:.32em .95em;font-size:clamp(22px,2.5vw,38px);
+      font-weight:600;background:rgba(0,0,0,.24);text-shadow:0 2px 10px rgba(0,0,0,.5)}
+
+.gcard{background:rgba(255,253,248,.97);border-left:9px solid var(--green);border-radius:10px;
+      padding:clamp(20px,3vw,44px) clamp(24px,4vw,56px);max-width:1100px;width:100%;text-align:left;color:#12200F;
+      box-shadow:0 22px 60px rgba(0,0,0,.35)}
+.ruleline{font-family:var(--serif);font-size:clamp(28px,3.4vw,52px);line-height:1.45;color:#12200F}
+.ruleline em{color:var(--green-deep)}
+.note{margin-top:.7em;padding-top:.6em;border-top:2px dashed var(--green);font-size:clamp(18px,1.9vw,28px);color:#4E5A4A;font-weight:600}
+.note b{color:var(--green-deep)}
+
+.rev{margin-top:1vh}
+.revbtn{font-family:var(--sans);font-size:clamp(18px,1.9vw,28px);font-weight:700;letter-spacing:.05em;
+      background:var(--green);color:#fff;border:0;border-radius:999px;padding:.55em 1.6em;cursor:pointer}
+.revbtn.sm{padding:.28em .9em;font-size:clamp(16px,1.6vw,24px)}
+.rev.on .revbtn{display:none}
+.revtxt{display:none;background:rgba(255,253,248,.96);color:#12200F;border-radius:16px;padding:.7em 1.1em;text-shadow:none;max-width:1000px}
+.revtxt b{color:var(--green-deep)}
+.rev.on .revtxt{display:block}
+
+.steps{display:flex;flex-direction:column;gap:clamp(7px,1.1vh,14px);width:100%;max-width:1150px}
+.step{display:flex;flex-direction:column;gap:6px;background:rgba(0,0,0,.40);
+      border-radius:14px;padding:clamp(10px,1.2vw,18px) clamp(14px,1.8vw,24px)}
+.step .row{display:flex;gap:14px;align-items:center;justify-content:space-between}
+.step .q{text-align:left;font-size:clamp(20px,2.2vw,34px)}
+.step .a{display:none;text-align:left;color:#9BE06A;font-weight:700;font-size:clamp(20px,2.2vw,34px)}
+.step.on .a{display:block}
+.step.on .revbtn{display:none}
+
+.chip-lesson{position:absolute;top:0;right:0;z-index:5;background:var(--green-ink);color:#fff;
+      padding:.5em 1.1em .6em;border-bottom-left-radius:18px;font-size:clamp(13px,1.3vw,19px);
+      font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.tbtn{margin-top:1.5vh;font-family:var(--sans);font-size:clamp(17px,1.7vw,26px);font-weight:700;background:var(--hot);
+      color:#fff;border:0;border-radius:999px;padding:.5em 1.5em;cursor:pointer}
+
+#bar{position:fixed;left:0;right:0;bottom:0;height:8px;z-index:20;background:rgba(255,255,255,.16)}
+#barfill{height:100%;width:0;background:var(--green);transition:width .35s}
+#count{position:fixed;left:18px;bottom:20px;z-index:20;color:rgba(255,255,255,.75);font-size:15px;font-weight:700;letter-spacing:.1em}
+#help{position:fixed;right:18px;bottom:20px;z-index:20;color:rgba(255,255,255,.55);font-size:13px;letter-spacing:.06em}
+#timer{position:fixed;inset:0;z-index:40;display:none;align-items:center;justify-content:center;background:rgba(8,16,8,.93)}
+#timer.on{display:flex}
+#tnum{font-family:var(--serif);font-size:clamp(120px,26vw,420px);color:#9BE06A;font-weight:700;line-height:1}
+#tnum.low{color:var(--hot)}
+
+.ov-bright{position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,24,12,.22) 0%,rgba(12,24,12,.04) 45%,rgba(12,24,12,.30) 100%)}
+.rev.on .revtxt{cursor:pointer}
+.step.on .a{cursor:pointer}
+</style>
+</head>
+<body>
+<div id="show">
+
+<section class="slide k-title" data-lesson="6"><div class="bg" style="background-image:url('../../../../../_assets/images/unit1/09-saturday.jpg')"></div><div class="ov"></div><div class="sc"><div class="kick">Lesson 6 · Wed 23 Sep · Grammar 2, expanded</div><h1 class="t-super">Now or<br>Future?</h1><p class="t-med c-sand">The same words. Two different times.</p></div><div class="chip-lesson">Lesson 6</div></section>
+
+<section class="slide k-rule" data-lesson="6"><div class="bg" style="background-image:url('../../../../../_assets/images/unit1/12-classroom.jpg')"></div><div class="ov"></div><div class="sc"><div class="kick">Remember this one?</div><h1 class="t-big">Right now</h1><div class="gcard"><div class="ruleline">Pepe <em>is cleaning</em> the car.</div><div class="note">No time word. It's happening <b>right now</b> — look, he's doing it!</div></div></div><div class="chip-lesson">Lesson 6</div></section>
+
+<section class="slide k-rule" data-lesson="6"><div class="bg" style="background-image:url('../../../../../_assets/images/unit1/09-saturday.jpg')"></div><div class="ov"></div><div class="sc"><div class="kick">Add one small word…</div><h1 class="t-big">A plan for later</h1><div class="gcard"><div class="ruleline">Pepe <em>is cleaning</em> the car <em>tomorrow</em>.</div><div class="note">Same grammar — <b>am/is/are + verb-ing</b>. But "tomorrow" tells us it hasn't happened yet. It's a <b>plan</b>.</div></div></div><div class="chip-lesson">Lesson 6</div></section>
+
+<section class="slide k-rule" data-lesson="6"><div class="bg" style="background-image:url('../../../../../_assets/images/unit1/03-reunion.jpg')"></div><div class="ov-bright"></div><div class="sc"><div class="kick">From the book</div><h1 class="t-big">What are you doing<br>on Saturday?</h1><div class="gcard"><div class="ruleline">I'<em>m going</em> to my family reunion.</div><div class="note">"On Saturday" is the clue — a plan already made, not happening now.</div></div></div><div class="chip-lesson">Lesson 6</div></section>
+
+<section class="slide k-rule" data-lesson="6"><div class="bg" style="background-image:url('../../../../../_assets/images/unit1/03-reunion.jpg')"></div><div class="ov"></div><div class="sc"><div class="kick">From the book</div><h1 class="t-big">What are they doing<br>at 7.00?</h1><div class="gcard"><div class="ruleline">They'<em>re having</em> dinner with their neighbours.</div><div class="note">Same pattern, different time word — their <b>plan</b> for tonight.</div></div></div><div class="chip-lesson">Lesson 6</div></section>
+
+<section class="slide k-words" data-lesson="6"><div class="bg" style="background-image:url('../../../../../_assets/images/unit1/16-malvarrosa.jpg')"></div><div class="ov"></div><div class="sc"><div class="kick">Spot the clue</div><h1 class="t-big">Future time words</h1><div class="chips"><span class="chip">tomorrow</span><span class="chip">on Saturday</span><span class="chip">next week</span><span class="chip">this afternoon</span><span class="chip">tonight</span><span class="chip">later</span></div></div><div class="chip-lesson">Lesson 6</div></section>
+
+<section class="slide k-elim" data-lesson="6"><div class="bg" style="background-image:url('../../../../../_assets/images/unit1/13-turia.jpg')"></div><div class="ov"></div><div class="sc"><div class="kick">All together · now or future?</div><h1 class="t-big">Click to reveal</h1><div class="steps">
+<div class="step"><div class="row"><div class="q t-med">Look! The dog is running in the park.</div><button class="revbtn sm" onclick="this.closest('.step').classList.toggle('on')">?</button></div><div class="a t-med" onclick="this.closest('.step').classList.remove('on')">NOW — "Look!" and no time word.</div></div>
+<div class="step"><div class="row"><div class="q t-med">My cousin is visiting next week.</div><button class="revbtn sm" onclick="this.closest('.step').classList.toggle('on')">?</button></div><div class="a t-med" onclick="this.closest('.step').classList.remove('on')">FUTURE — "next week" is the clue.</div></div>
+<div class="step"><div class="row"><div class="q t-med">We're eating paella!</div><button class="revbtn sm" onclick="this.closest('.step').classList.toggle('on')">?</button></div><div class="a t-med" onclick="this.closest('.step').classList.remove('on')">NOW — no time word, it's happening this second.</div></div>
+<div class="step"><div class="row"><div class="q t-med">Grandma is baking a cake tonight.</div><button class="revbtn sm" onclick="this.closest('.step').classList.toggle('on')">?</button></div><div class="a t-med" onclick="this.closest('.step').classList.remove('on')">FUTURE — "tonight" is later today.</div></div>
+</div></div><div class="chip-lesson">Lesson 6</div></section>
+
+<section class="slide k-title" data-lesson="6"><div class="bg" style="background-image:url('../../../../../_assets/images/unit1/13-turia.jpg')"></div><div class="ov"></div><div class="sc"><div class="kick">Now it's your turn</div><h1 class="t-super">The play!</h1><p class="t-med c-sand">Trios, roles out. A plan for tomorrow — in Turia Park.</p></div><div class="chip-lesson">Lesson 6</div></section>
+
+<section class="slide k-game" data-lesson="6"><div class="bg" style="background-image:url('../../../../../_assets/images/unit1/16-malvarrosa.jpg')"></div><div class="ov"></div><div class="sc"><div class="kick">Somerset Arcade</div><h1 class="t-big">Now or Future?</h1><ul class="blist"><li>Read the sentence out loud.</li><li>Say <em>"Now"</em> or <em>"Future"</em>.</li><li>If it's Future — say the clue word!</li></ul></div><div class="chip-lesson">Lesson 6</div></section>
+
+</div>
+<div id="timer" onclick="stopTimer()"><div id="tnum">0:00</div></div>
+<div id="bar"><div id="barfill"></div></div>
+<div id="count"></div>
+<div id="help">← → move · R reveal · F fullscreen · Esc timer off</div>
+<script>
+const S=[...document.querySelectorAll('.slide')];let i=0;
+function show(n){S[i].classList.remove('active');i=Math.max(0,Math.min(S.length-1,n));S[i].classList.add('active');
+  document.getElementById('barfill').style.width=((i+1)/S.length*100)+'%';
+  document.getElementById('count').textContent=(i+1)+' / '+S.length;}
+function next(){show(i+1)}function prev(){show(i-1)}
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();next()}
+  else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();prev()}
+  else if(e.key==='r'||e.key==='R'){S[i].querySelectorAll('.rev,.step').forEach(el=>el.classList.add('on'))}
+  else if(e.key==='f'||e.key==='F'){if(!document.fullscreenElement)document.documentElement.requestFullscreen();else document.exitFullscreen()}
+  else if(e.key==='Escape'){stopTimer()}
+  else if(e.key==='Home'){show(0)}else if(e.key==='End'){show(S.length-1)}
+});
+document.getElementById('show').addEventListener('click',e=>{
+  if(e.target.closest('button'))return;
+  (e.clientX>window.innerWidth*0.35)?next():prev();
+});
+let tI=null;
+function startTimer(sec){const box=document.getElementById('timer'),num=document.getElementById('tnum');
+  box.classList.add('on');let t=sec;
+  const draw=()=>{num.textContent=Math.floor(t/60)+':'+String(t%60).padStart(2,'0');num.classList.toggle('low',t<=10)};
+  draw();clearInterval(tI);tI=setInterval(()=>{t--;draw();if(t<=0){clearInterval(tI);num.textContent="TIME!"}},1000);}
+function stopTimer(){clearInterval(tI);document.getElementById('timer').classList.remove('on')}
+show(0);
+</script>
+</body>
+</html>

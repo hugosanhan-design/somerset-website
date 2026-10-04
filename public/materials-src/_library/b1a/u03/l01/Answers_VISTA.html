@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Opener &amp; Reading: PET I Unit 3, p.29-31</title>
+<style>
+  :root{ --green:#6BAE2E; --green-dark:#4d8120; --ink:#1a1a1a; --bg:#ffffff; --amber:#E08A1E; }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;background:var(--bg);color:var(--ink);}
+  header{display:flex;justify-content:space-between;align-items:flex-end;padding:clamp(16px,2.2vh,32px) clamp(24px,3.5vw,64px);border-bottom:4px solid var(--green);flex-wrap:wrap;gap:16px;}
+  .logo{display:flex;align-items:flex-end;gap:clamp(8px,1vw,16px);}
+  .logo .word{font-family:Arial,Helvetica,sans-serif;font-weight:800;font-size:clamp(30pt,3.4vw,46pt);letter-spacing:-1.2px;line-height:.9;color:#6BAE2E;}
+  .logo .lc{font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:clamp(8pt,0.85vw,12pt);letter-spacing:2.5px;line-height:1.18;padding-bottom:4px;color:#4d8120;}
+  .title-block{text-align:right;}
+  .title-block h1{margin:0;font-size:clamp(20px,2.1vw,30px);font-weight:700;color:var(--ink);}
+  .title-block p{margin:4px 0 0;font-size:clamp(13px,1.1vw,17px);color:#555;letter-spacing:.5px;text-transform:uppercase;}
+  .nav-bar{position:fixed;bottom:0;left:0;right:0;display:flex;align-items:center;justify-content:center;gap:20px;padding:16px 0 22px;background:linear-gradient(to top, rgba(255,255,255,0.96), rgba(255,255,255,0));z-index:30;}
+  .nav-bar button{background:var(--green);color:#fff;border:none;border-radius:999px;width:clamp(44px,4vw,64px);height:clamp(44px,4vw,64px);font-size:clamp(20px,2vw,28px);font-weight:700;cursor:pointer;}
+  .nav-bar button:disabled{opacity:.3;cursor:default;}
+  .nav-bar .count{font-size:clamp(14px,1.4vw,20px);color:#555;min-width:70px;text-align:center;}
+  main{max-width:1800px;margin:0 auto;padding:clamp(8px,1.5vh,20px) clamp(24px,4vw,72px) 96px;min-height:calc(100vh - 110px);display:flex;flex-direction:column;justify-content:center;}
+  .slide{display:none;}
+  .slide.active{display:block;animation:fade .15s ease;}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  .kicker{font-size:clamp(14px,1.4vw,20px);font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--green);margin:clamp(10px,min(1.8vh,2.4vw),26px) 0 8px;}
+  h2{font-size:clamp(28px,min(3.8vw,6vh),48px);margin:0 0 clamp(10px,min(1.8vh,2.4vw),24px);color:var(--ink);line-height:1.25;}
+  h2 .accent{color:var(--green-dark);}
+  .item-list{list-style:none;margin:0 0 clamp(14px,2vh,22px);padding:0;max-width:1200px;}
+  .item{background:#fff;border:2px solid #ddd;border-radius:14px;padding:clamp(12px,1.6vh,18px) clamp(18px,2.2vw,26px);margin-bottom:clamp(9px,1.2vh,14px);font-size:clamp(17px,1.9vw,24px);line-height:1.4;}
+  .item .num{color:#999;font-weight:800;margin-right:10px;}
+  .reveal-all{background:var(--green);color:#fff;border:none;border-radius:999px;padding:10px 26px;font-size:clamp(14px,1.4vw,18px);font-weight:700;cursor:pointer;}
+  .reveal-all:hover{background:var(--green-dark);}
+  .whybox{display:none;margin-top:clamp(14px,2vh,20px);max-width:1200px;background:#F4F8EE;border-left:5px solid var(--green-dark);border-radius:0 12px 12px 0;padding:clamp(14px,1.8vh,20px) clamp(18px,2.2vw,26px);font-size:clamp(16px,1.6vw,21px);line-height:1.45;color:#333;}
+  .revealed .whybox{display:block;}
+  .whybox b{color:var(--green-dark);}
+  .valencia-note{margin-top:clamp(16px,2.2vh,28px);font-size:clamp(15px,1.5vw,20px);color:#777;font-style:italic;}
+  footer{text-align:center;padding:20px;font-size:clamp(13px,1.1vw,16px);color:#888;border-top:2px solid #eee;}
+  @page{size:A4;margin:16mm 14mm}
+  @media print{
+    body{background:#fff}
+    .nav-bar{display:none !important}
+    main{max-width:none;padding:0}
+    .slide{display:block !important;page-break-after:always;padding-top:6px;}
+    .slide:last-child{page-break-after:auto;}
+    h2{font-size:19pt}
+    .kicker{font-size:12pt}
+    .item{font-size:12.5pt;page-break-inside:avoid;break-inside:avoid;}
+    .whybox{display:block !important;font-size:12pt;}
+    .reveal-all{display:none !important;}
+  }
+  @media(max-width:700px){ header{flex-direction:column;align-items:center;text-align:center;} .title-block{text-align:center;} h2{font-size:24px;} }
+/* per-item-reveal v1 */
+.item .a-text,.gap-answer{color:transparent !important;background:#EAF4DA;border-radius:6px;padding:0 .35em;min-width:3.2em;display:inline-block;cursor:pointer;user-select:none;}
+.item.shown .a-text,.gap-answer.shown{color:var(--green-dark) !important;background:none;font-weight:700;}
+.showpill{display:inline-block;margin-left:10px;border:2px solid var(--green);color:var(--green-dark);background:#fff;border-radius:999px;padding:1px 12px;font-size:.72em;font-weight:700;cursor:pointer;vertical-align:middle;}
+.item.shown .showpill{display:none;}
+@media print{.item .a-text,.gap-answer{color:var(--green-dark) !important;background:none;}.showpill{display:none !important;}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+  <div class="title-block"><h1>Opener &amp; Reading</h1><p>Unit 3 &middot; p.29-31 &middot; the northern lights &amp; coral reefs</p></div>
+</header>
+<main>
+
+<div class="slide active">
+  <div class="kicker">Unit 3 &middot; pages 29-31</div>
+  <h2>It's natural <span class="accent">opener &amp; reading</span></h2>
+  <p class="valencia-note">Tap "Show answer" next to each question. Two exercises: the opener discussion, then the coral reef reading.</p>
+</div>
+
+<div class="slide">
+  <div class="kicker">Opener p.29 &middot; the northern lights</div>
+  <h2>What's <span class="accent">happening</span> in the photo?</h2>
+  <ul class="item-list">
+    <li class="item"><span class="num">1</span>What do you think is happening in this photo? &rarr; <span class="a-text">student's own answer &mdash; people are standing outside in the snow, looking up at the aurora borealis</span></li>
+    <li class="item"><span class="num">2</span>Why do these colourful lights appear? &rarr; <span class="a-text">the sun blows solar winds towards the Earth, and that causes these colourful lights</span></li>
+    <li class="item"><span class="num">3</span>Which countries can you see the northern lights from? &rarr; <span class="a-text">Sweden, Norway, Finland, Denmark (especially Greenland), Canada, Russia, the US and Iceland</span></li>
+  </ul>
+  <button class="reveal-all">Show answers</button>
+  <div class="whybox"><b>Why:</b> the lights are caused by electrically charged particles from the sun colliding with gases like nitrogen and oxygen in the Earth's atmosphere.</div>
+</div>
+
+<div class="slide">
+  <div class="kicker">Reading Ex.4 &middot; comprehension</div>
+  <h2>Emma Camp and the <span class="accent">coral reefs</span></h2>
+  <ul class="item-list">
+    <li class="item"><span class="num">1</span>Where did Emma learn about marine biology? &rarr; <span class="a-text">she learned about marine biology in the UK</span></li>
+    <li class="item"><span class="num">2</span>How do coral reefs form? &rarr; <span class="a-text">polyps have skeletons made of limestone that join together to make coral reefs</span></li>
+    <li class="item"><span class="num">3</span>What happens to a reef when the water gets too warm? &rarr; <span class="a-text">the algae leave the corals and the corals die</span></li>
+    <li class="item"><span class="num">4</span>Why do coral reefs matter so much? &rarr; <span class="a-text">because coral reefs are home to 25% of all marine species, provide food for millions of people and protect the coast from storms</span></li>
+  </ul>
+  <button class="reveal-all">Show answers</button>
+  <div class="whybox"><b>Where to find it:</b> line 5 (Q1), line 9 (Q2), line 21 (Q3), lines 17-19 (Q4) of the original article.</div>
+</div>
+
+<div class="slide">
+  <div class="kicker">Reading Ex.5 &middot; when did it start?</div>
+  <h2>When did Emma become <span class="accent">interested</span> in the sea?</h2>
+  <ul class="item-list">
+    <li class="item"><span class="num">1</span><span class="a-text">when she was six years old</span></li>
+    <li class="item"><span class="num">2</span><span class="a-text">she was amazed to see a whole new world</span></li>
+    <li class="item"><span class="num">3</span><span class="a-text">she knew then that she wanted to learn more about sea life</span></li>
+  </ul>
+  <button class="reveal-all">Show answers</button>
+  <div class="whybox">A first encounter with the sea as a child is often the origin story behind a real scientific career &mdash; a useful model for the "when did you first..." speaking questions later this year.</div>
+</div>
+
+<div class="slide">
+  <div class="kicker">Exam Task &middot; multiple choice with one text &middot; practice options, not the book's wording</div>
+  <h2>Five questions, <span class="accent">one text</span></h2>
+  <ul class="item-list">
+    <li class="item"><span class="num">1</span><span class="a-text">C</span> why Emma decided to become a marine biologist</li>
+    <li class="item"><span class="num">2</span><span class="a-text">B</span> how coral reefs form and why they matter</li>
+    <li class="item"><span class="num">3</span><span class="a-text">C</span> what happens to a reef when the sea gets too warm</li>
+    <li class="item"><span class="num">4</span><span class="a-text">B</span> what Emma hopes to study next</li>
+    <li class="item"><span class="num">5</span><span class="a-text">B</span> the best summary of the whole article</li>
+  </ul>
+  <button class="reveal-all">Show answers</button>
+  <div class="whybox"><b>Note &mdash; practice options, not the book's wording:</b> the Teacher's Book confirms this Exam Task is five multiple-choice questions on the SAME Emma Camp/coral-reef text as Ex.4-5 above (not a separate passage), with answers 1C 2B 3C 4B 5B &mdash; but it does not reproduce the exact question wording or the four options per item. The five topic lines above are a Somerset reconstruction built to carry that confirmed letter sequence and stay on-topic with the real text; treat the wording as a teaching approximation only. Needs the real SB p.31 to get the exact options. <b>Strategy:</b> skim the whole text first for the general topic, then read again slowly, question by question, checking the exact paragraph each question points to.</div>
+</div>
+
+</main>
+<div class="nav-bar"><button id="prevBtn" title="Previous">&#8592;</button><span class="count" id="count"></span><button id="nextBtn" title="Next">&#8594;</button></div>
+<footer>Somerset Language Centre &middot; Valencia &middot; Unit 3, p.29-31</footer>
+<script>
+  var slides = document.querySelectorAll('.slide');
+  var idx = 0;
+  var prevBtn = document.getElementById('prevBtn');
+  var nextBtn = document.getElementById('nextBtn');
+  var count = document.getElementById('count');
+  function render(){ slides.forEach(function(s,i){ s.classList.toggle('active', i===idx); }); count.textContent=(idx+1)+' / '+slides.length; prevBtn.disabled=idx===0; nextBtn.disabled=idx===slides.length-1; window.scrollTo(0,0); }
+  function go(d){ idx=Math.max(0,Math.min(slides.length-1,idx+d)); render(); }
+  prevBtn.addEventListener('click', function(){ go(-1); });
+  nextBtn.addEventListener('click', function(){ go(1); });
+  document.addEventListener('keydown', function(e){ if(e.key==='ArrowRight') go(1); else if(e.key==='ArrowLeft') go(-1); });
+  document.querySelectorAll('.slide').forEach(function(slide){
+    var btn = slide.querySelector('.reveal-all');
+    if(!btn) return;
+    btn.addEventListener('click', function(){ var on = slide.classList.toggle('revealed'); btn.textContent = on ? 'Hide answers' : 'Show answers'; });
+  });
+  render();
+</script>
+<script>/* per-item-reveal v1 */
+document.querySelectorAll('.item').forEach(function(it){
+  if(!it.querySelector('.a-text')) return;
+  var b=document.createElement('button'); b.className='showpill'; b.type='button'; b.textContent='Show answer';
+  b.addEventListener('click',function(e){e.stopPropagation(); it.classList.add('shown');});
+  it.appendChild(b);
+  it.querySelectorAll('.a-text').forEach(function(a){a.addEventListener('click',function(e){e.stopPropagation(); it.classList.toggle('shown');});});
+});
+document.querySelectorAll('.gap-answer').forEach(function(g){g.title='Click to show / hide'; g.addEventListener('click',function(){g.classList.toggle('shown');});});
+document.querySelectorAll('.reveal-all').forEach(function(b){
+  var s=b.closest('.slide'); if(!s||!s.querySelector('.whybox')){b.style.display='none';return;}
+  var mc=!!s.querySelector('.mc-opt'); var L=mc?['Show answer','Hide answer']:['Why?','Hide why'];  /* MC slides reveal the right option (registry D07) */
+  var fresh=b.cloneNode(true); b.parentNode.replaceChild(fresh,b); fresh.textContent=L[0];
+  fresh.addEventListener('click',function(){var on=s.classList.toggle('revealed'); fresh.textContent=on?L[1]:L[0];});
+});
+</script>
+</body>
+</html>

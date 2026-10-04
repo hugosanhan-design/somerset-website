@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 1 — Jump for joy — Trio Play — Friday B2</title>
+<style>
+  :root{
+    --green:#6BAE2E;
+    --green-dark:#4d8120;
+    --ink:#1a1a1a;
+    --bg:#ffffff;
+    --char-a:#0F7B6C;
+    --char-b:#6B3FA0;
+    --char-c:#C2540A;
+    --char-d:#1D6FB8;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+  }
+  header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    padding:24px 40px;
+    border-bottom:4px solid var(--green);
+    flex-wrap:wrap;
+    gap:16px;
+  }
+  .logo{display:flex;align-items:flex-end;gap:11px;}
+  .logo .word{font-family:Arial,Helvetica,sans-serif;font-weight:800;font-size:33pt;letter-spacing:-1.2px;line-height:.9;color:#6BAE2E;}
+  .logo .lc{font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:8.5pt;letter-spacing:2.5px;line-height:1.18;padding-bottom:4px;color:#4d8120;}
+  .title-block{text-align:right;}
+  .title-block h1{margin:0;font-size:24px;font-weight:700;color:var(--ink);}
+  .title-block p{margin:6px 0 0;font-size:15px;color:#555;letter-spacing:.5px;text-transform:uppercase;}
+
+  .toggle-bar{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    padding:22px 20px 6px;
+  }
+  .toggle-btn{
+    font-size:20px;
+    font-weight:700;
+    padding:14px 32px;
+    border-radius:12px;
+    border:3px solid var(--green);
+    background:#fff;
+    color:var(--green-dark);
+    cursor:pointer;
+    transition:all .15s ease;
+    font-family:inherit;
+  }
+  .toggle-btn:hover{background:#EAF4DA;}
+  .toggle-btn.active{background:var(--green);color:#fff;}
+
+  .cast-bar{
+    display:flex;
+    justify-content:center;
+    gap:28px;
+    padding:16px 20px 6px;
+    flex-wrap:wrap;
+  }
+  .cast-pill{
+    font-size:15px;
+    font-weight:700;
+    padding:8px 18px;
+    border-radius:30px;
+    border:2px solid;
+    background:#fff;
+  }
+  .cast-pill.char-a{color:var(--char-a);border-color:var(--char-a);}
+  .cast-pill.char-b{color:var(--char-b);border-color:var(--char-b);}
+  .cast-pill.char-c{color:var(--char-c);border-color:var(--char-c);}
+  .cast-pill.char-d{color:var(--char-d);border-color:var(--char-d);border-style:dashed;}
+  .cast-pill[hidden]{display:none;}
+
+  .guest-bar{
+    display:flex;
+    justify-content:center;
+    padding:8px 20px 0;
+  }
+  .guest-toggle{
+    font-size:13px;
+    font-weight:600;
+    color:#888;
+    background:none;
+    border:none;
+    cursor:pointer;
+    text-decoration:underline;
+    font-family:inherit;
+    padding:4px;
+  }
+  .guest-toggle:hover{color:var(--green-dark);}
+  .guest-panel{
+    display:flex;
+    max-width:700px;
+    margin:6px auto 0;
+    padding:16px 20px;
+    background:#FAFAF8;
+    border:1.5px dashed #ccc;
+    border-radius:10px;
+    gap:12px;
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+  .guest-steps{flex-basis:100%;font-size:15px;color:#333;text-align:center;margin:0 0 4px;}
+  .guest-field[hidden]{display:none;}
+  .guest-field{display:flex;flex-direction:column;gap:4px;font-size:12px;color:#555;}
+  .guest-field input{
+    font-size:14px;
+    padding:6px 10px;
+    border:1.5px solid #ccc;
+    border-radius:6px;
+    font-family:inherit;
+    width:150px;
+  }
+  .guest-field.extra input{
+    font-size:14px;
+    padding:6px 10px;
+    border:1.5px solid var(--char-d);
+    border-radius:6px;
+    font-family:inherit;
+    width:150px;
+    background:#fff;
+  }
+  .guest-reset{
+    align-self:flex-end;
+    font-size:12px;
+    color:#999;
+    background:none;
+    border:1px solid #ccc;
+    border-radius:6px;
+    padding:6px 10px;
+    cursor:pointer;
+    font-family:inherit;
+  }
+  .guest-reset:hover{color:var(--green-dark);border-color:var(--green);}
+  .guest-note{
+    flex-basis:100%;
+    font-size:12px;
+    color:#999;
+    text-align:center;
+    margin-top:2px;
+  }
+  @media print{
+    .toggle-bar, .guest-panel{display:none !important;}
+  }
+
+  .scene-setup{
+    max-width:900px;
+    margin:14px auto 0;
+    padding:0 24px;
+    text-align:center;
+    font-size:19px;
+    color:#444;
+    font-style:italic;
+  }
+
+  .focus-tags{
+    max-width:900px;
+    margin:10px auto 0;
+    padding:0 24px;
+    text-align:center;
+    font-size:14px;
+    color:#6BAE2E;
+    font-weight:700;
+    letter-spacing:.4px;
+    text-transform:uppercase;
+  }
+
+  main{max-width:960px;margin:0 auto;padding:30px 24px 40px;}
+
+  .line{
+    display:flex;
+    gap:24px;
+    align-items:baseline;
+    margin-bottom:30px;
+    padding-bottom:30px;
+    border-bottom:1px solid #eee;
+  }
+  .line:last-child{border-bottom:none;}
+  .char-name{
+    flex:0 0 180px;
+    font-size:22px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+  }
+  .char-a .char-name{color:var(--char-a);}
+  .char-b .char-name{color:var(--char-b);}
+  .char-c .char-name{color:var(--char-c);}
+  .char-d .char-name{color:var(--char-d);}
+  .guest-line[hidden]{display:none;}
+  .line-text{
+    font-size:30px;
+    line-height:1.5;
+    flex:1;
+  }
+  .stage-direction{
+    font-size:20px;
+    color:#777;
+    font-style:italic;
+    text-align:center;
+    margin:24px 0;
+  }
+  .joint-line .char-name{color:#444;}
+
+  .cast-note{
+    max-width:900px;
+    margin:10px auto 40px;
+    padding:16px 22px;
+    border:1.5px dashed #cfcfcf;
+    border-radius:10px;
+    font-size:14px;
+    color:#666;
+    line-height:1.6;
+  }
+  .cast-note b{color:var(--ink);}
+
+  footer{
+    text-align:center;
+    padding:24px;
+    font-size:14px;
+    color:#888;
+    border-top:2px solid #eee;
+  }
+
+  @media (max-width:700px){
+    header{flex-direction:column;align-items:center;text-align:center;}
+    .title-block{text-align:center;}
+    .line{flex-direction:column;gap:6px;}
+    .char-name{flex-basis:auto;font-size:19px;}
+    .line-text{font-size:25px;}
+    .toggle-btn{font-size:17px;padding:11px 22px;}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+  <div class="title-block">
+    <h1>Unit 1 — Jump for joy</h1>
+    <p>Trio Play &middot; Friday B2</p>
+  </div>
+</header>
+
+<div class="toggle-bar">
+  <button class="toggle-btn active" id="btn1" onclick="showCount(3)">3 students</button>
+  <button class="toggle-btn" id="btn2" onclick="showCount(4)">4 students</button>
+</div>
+<div class="cast-bar">
+  <span class="cast-pill char-a" data-role="A"></span>
+  <span class="cast-pill char-b" data-role="B"></span>
+  <span class="cast-pill char-c" data-role="C"></span>
+  <span class="cast-pill char-d" id="guestPill" data-role="D" hidden></span>
+</div>
+<div class="guest-panel open" id="guestPanel">
+  <p class="guest-steps"><b>1.</b> Choose how many students are acting (3 or 4 above). <b>2.</b> Type their names.</p>
+  <div class="guest-field">
+    <label for="ovA">Student A</label>
+    <input type="text" id="ovA" placeholder="Student A" oninput="applyOverrides()">
+  </div>
+  <div class="guest-field">
+    <label for="ovB">Student B</label>
+    <input type="text" id="ovB" placeholder="Student B" oninput="applyOverrides()">
+  </div>
+  <div class="guest-field">
+    <label for="ovC">Student C</label>
+    <input type="text" id="ovC" placeholder="Student C" oninput="applyOverrides()">
+  </div>
+  <div class="guest-field extra" id="fieldD" hidden>
+    <label for="ovD">Student D (has lines)</label>
+    <input type="text" id="ovD" placeholder="Student D" oninput="applyOverrides()">
+  </div>
+  <button class="guest-reset" onclick="resetOverrides()">Clear names</button>
+  <p class="guest-note">Leave a box empty and it shows Student A, B, C or D. Names are not saved: they clear when you reload or reprint.</p>
+</div>
+<p class="scene-setup">A bus stop on Avenida del Cid. The number 99 to Malvarrosa was due eighteen minutes ago.</p>
+<p class="focus-tags">Emotions &amp; personality adjectives &middot; annoying things &middot; two exam idioms</p>
+
+<main>
+  <div class="line char-a"><div class="char-name" data-role="A"></div><div class="line-text">Eighteen minutes. This bus drives me crazy. Every single Friday it's the same.</div></div>
+  <div class="line char-b"><div class="char-name" data-role="B"></div><div class="line-text">You always say that, and then it comes two minutes later. You're so impatient.</div></div>
+  <div class="line char-a"><div class="char-name" data-role="A"></div><div class="line-text">I'm not impatient, I'm just tired of it getting on my nerves every week. We're going to miss the good part of the afternoon at the beach.</div></div>
+  <div class="line char-c"><div class="char-name" data-role="C"></div><div class="line-text">Relax, both of you. I'm in agony just listening to this argument, and my leg hurts more than my ears.</div></div>
+  <div class="line char-b"><div class="char-name" data-role="B"></div><div class="line-text">What happened to your leg?</div></div>
+  <div class="line char-c"><div class="char-name" data-role="C"></div><div class="line-text">Football. Someone pushed into me instead of the ball. I feel guilty for losing my temper with him, actually.</div></div>
+  <div class="line char-a"><div class="char-name" data-role="A"></div><div class="line-text" data-template="You? Lost your temper? You're the most mature person in the group, {C}. That's hard to believe."></div></div>
+  <div class="line char-c"><div class="char-name" data-role="C"></div><div class="line-text">I know, it surprised me too. But he kept pushing into the queue for the ball, over and over, and something in me just snapped.</div></div>
+  <div class="line char-b"><div class="char-name" data-role="B"></div><div class="line-text">Honestly, that guy would put anyone in a bad mood. He's the definition of a pet peeve.</div></div>
+  <div class="stage-direction guest-line" hidden data-template="{D} arrives, slightly out of breath, and joins the queue."></div>
+  <div class="line char-d guest-line" hidden><div class="char-name" data-role="D"></div><div class="line-text">Sorry I'm late! Is this the queue for the 99? I've had the most stressful morning.</div></div>
+  <div class="line char-a guest-line" hidden><div class="char-name" data-role="A"></div><div class="line-text" data-template="Welcome to the club, {D}. We've been stuck here for eighteen minutes and it's honestly getting on my nerves."></div></div>
+  <div class="line char-d guest-line" hidden><div class="char-name" data-role="D"></div><div class="line-text">At least I'm not the only one running behind, then. Misery loves company, I suppose.</div></div>
+  <div class="line char-c guest-line" hidden><div class="char-name" data-role="C"></div><div class="line-text" data-template="Take a seat, {D} — or don't, because there isn't one. {B} here is about to lose their temper with the whole bus company."></div></div>
+  <div class="stage-direction" data-template="{A} checks their phone again."></div>
+  <div class="line char-a"><div class="char-name" data-role="A"></div><div class="line-text">Nothing. No bus, no message, nothing. This is exactly why I take nothing for granted with public transport.</div></div>
+  <div class="line char-c"><div class="char-name" data-role="C"></div><div class="line-text">You're being dramatic now. You always get anxious when we're running late.</div></div>
+  <div class="line char-a"><div class="char-name" data-role="A"></div><div class="line-text">I do get anxious, yes, but this time it's a fair reaction. My cousin from Alicante is already waiting for us there.</div></div>
+  <div class="line char-b"><div class="char-name" data-role="B"></div><div class="line-text">Is she the one who's always so stubborn about being on time?</div></div>
+  <div class="line char-a"><div class="char-name" data-role="A"></div><div class="line-text">Exactly. If we're one minute late, she gets moody about it for the whole afternoon.</div></div>
+  <div class="line char-c"><div class="char-name" data-role="C"></div><div class="line-text">Then you two are perfect for each other, because you're both impossible to argue with once you've decided something.</div></div>
+  <div class="line char-a"><div class="char-name" data-role="A"></div><div class="line-text">Rude. But maybe true.</div></div>
+  <div class="stage-direction">A bus finally turns the corner.</div>
+  <div class="line char-b"><div class="char-name" data-role="B"></div><div class="line-text">There it is! Look at that, I'm actually relieved. I was starting to lose hope.</div></div>
+  <div class="line char-c"><div class="char-name" data-role="C"></div><div class="line-text">Twenty-one minutes late and you're relieved. That tells you everything about this bus line.</div></div>
+  <div class="line char-a"><div class="char-name" data-role="A"></div><div class="line-text">I'm not relieved, I'm furious. But fine, let's put up with it and go.</div></div>
+  <div class="line char-b"><div class="char-name" data-role="B"></div><div class="line-text" data-template="Wait, are you two coming or not? You're both so sensitive about this bus, it's honestly a bit funny."></div></div>
+  <div class="line char-c"><div class="char-name" data-role="C"></div><div class="line-text" data-template="We're coming, {B}. We're coming."></div></div>
+  <div class="line char-d guest-line" hidden><div class="char-name" data-role="D"></div><div class="line-text">Finally! I was starting to think I'd be late for nothing.</div></div>
+  <div class="line joint-line"><div class="char-name" id="joinLineName"></div><div class="line-text">Malvarrosa, here we are.</div></div>
+</main>
+
+<div class="cast-note">
+  <b>Teacher's note (not for students).</b> One scene, played by three students (Student A, B and C) or four (an extra Student D with a short exchange written in). Choose "3 students" or "4 students" at the top, then type the actors' names in the panel: they appear in the cast bar, the speaker labels and inside the lines. Swap roles for a second read-through so everyone tries a different part. Student D is useful when a group runs uneven or someone wants to double up. The panel is hidden when printing.
+</div>
+
+<footer>Somerset Language Centre &middot; Val&egrave;ncia &middot; Friday B2 &middot; Trio Play</footer>
+
+<script>
+let count = 3;
+let overrides = { A: "", B: "", C: "", D: "" };
+
+function applyTemplate(str, names){
+  return str.replace(/\{A\}/g, names.A).replace(/\{B\}/g, names.B)
+            .replace(/\{C\}/g, names.C).replace(/\{D\}/g, names.D || "");
+}
+
+function currentNames(){
+  return {
+    A: overrides.A.trim() || "Student A",
+    B: overrides.B.trim() || "Student B",
+    C: overrides.C.trim() || "Student C",
+    D: count === 4 ? (overrides.D.trim() || "Student D") : ""
+  };
+}
+
+function render(){
+  const names = currentNames();
+  document.querySelectorAll('[data-role="A"], [data-role="B"], [data-role="C"], [data-role="D"]').forEach(el => {
+    if (el.tagName === 'INPUT') return;
+    el.textContent = names[el.dataset.role];
+  });
+  document.querySelectorAll('[data-template]').forEach(el => {
+    el.textContent = applyTemplate(el.dataset.template, names);
+  });
+
+  const hasGuest = count === 4;
+  document.getElementById('guestPill').hidden = !hasGuest;
+  document.getElementById('fieldD').hidden = !hasGuest;
+  document.querySelectorAll('.guest-line').forEach(el => { el.hidden = !hasGuest; });
+  document.getElementById('joinLineName').textContent = hasGuest
+    ? `${names.A}, ${names.C} & ${names.D}`
+    : `${names.A} & ${names.C}`;
+}
+
+function showCount(n){
+  count = n;
+  document.getElementById('btn1').classList.toggle('active', n===3);
+  document.getElementById('btn2').classList.toggle('active', n===4);
+  render();
+}
+
+function applyOverrides(){
+  ['A','B','C','D'].forEach(r => { overrides[r] = document.getElementById('ov'+r).value; });
+  render();
+}
+
+function resetOverrides(){
+  ['A','B','C','D'].forEach(r => { document.getElementById('ov'+r).value = ""; });
+  applyOverrides();
+}
+
+showCount(3);
+</script>
+</body>
+</html>

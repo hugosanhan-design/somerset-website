@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Somerset · Describing People — Flyers I</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..900&family=Instrument+Sans:wght@400..700&display=swap" rel="stylesheet">
+<style>
+@page{size:A4;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#6BAE2E; --green-deep:#2F6B1A; --green-ink:#1E4227;
+  --ice:#3A8FA3; --ice-pale:#EAF6F8;
+  --paper:#FFFDF8; --ink:#1B2419; --ink-soft:#4E5A4A; --rule:#DED8C8;
+  --serif:'Fraunces','Playfair Display',Georgia,serif;
+  --sans:'Instrument Sans','Segoe UI',system-ui,sans-serif;
+}
+body{font-family:var(--sans);background:#dcd9d0;color:var(--ink);font-size:12pt;line-height:1.5}
+.pg{width:210mm;height:297mm;background:#fff;margin:0 auto 8px;position:relative;overflow:hidden;page-break-after:always;display:flex;flex-direction:column}
+.pg:last-child{page-break-after:auto}
+.in{padding:10mm 15mm 16mm;flex:1;display:flex;flex-direction:column}
+@media print{body{background:#fff}.pg{margin:0}}
+
+.logo{display:flex;align-items:flex-end;gap:8px}
+.logo .word{font-family:Arial,Helvetica,sans-serif;font-weight:800;font-size:17pt;letter-spacing:-1px;line-height:.9;color:#6BAE2E}
+.logo .lc{font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:6pt;letter-spacing:2px;line-height:1.15;padding-bottom:2px;color:#4d8120}
+
+.topbar{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px}
+.kick{font-size:14pt;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ice)}
+.kick b{color:var(--green-deep)}
+h1.hl{font-family:var(--serif);font-weight:600;font-size:26pt;line-height:1.05;letter-spacing:-.02em;margin:4px 0 4px;color:var(--ink)}
+h2.sh{font-family:var(--serif);font-weight:600;font-size:15pt;margin:8px 0 5px;color:var(--green-deep)}
+.deck{font-family:var(--serif);font-weight:400;font-size:13pt;line-height:1.3;color:var(--ink-soft);margin-bottom:7px}
+p,li{font-size:12.5pt;line-height:1.5}
+
+.owner{background:#fff;border:1px solid var(--rule);border-radius:12px;padding:5px 14px;display:flex;gap:8mm;align-items:baseline;margin-bottom:8px}
+.owner span{font-size:9.5pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);white-space:nowrap}
+.owner .fld{flex:1;border-bottom:1.5px solid var(--ink-soft);height:16px}
+
+.catgrid{display:flex;gap:5mm;margin-bottom:6px}
+.catbox{flex:1;background:var(--ice-pale);border:1.6pt solid var(--ice);border-radius:10px;padding:6px 10px}
+.catbox.g{background:#F1F8E8;border-color:var(--green)}
+.catbox .lab{display:block;font-size:9.5pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ice-deep,var(--ice));margin-bottom:5px}
+.catbox.g .lab{color:var(--green-deep)}
+.pillrow{display:flex;flex-wrap:wrap;gap:5px}
+.pill{background:#fff;border:1.4pt solid var(--ink-soft);border-radius:20px;padding:3px 10px;font-family:var(--serif);font-weight:600;font-size:11.5pt;color:var(--ink)}
+
+.crack{background:#fff;border:1.5px solid var(--ice);border-radius:12px;padding:9px 14px;font-size:12.5pt;line-height:1.4;margin-bottom:8px}
+.crack .lab{display:block;font-family:var(--sans);font-size:9.5pt;letter-spacing:.14em;text-transform:uppercase;color:var(--ice);font-weight:700;margin-bottom:6px}
+.crack.g{border-color:var(--green)}
+.crack.g .lab{color:var(--green-deep)}
+.blank{display:inline-block;min-width:80px;border-bottom:1.6px solid var(--ink-soft);height:14px;margin:0 3px}
+.blank.sm{min-width:50px}
+
+.drawbox{border:1.6pt dashed var(--ink-soft);border-radius:10px;flex:1;min-height:20mm;display:flex;align-items:flex-end;justify-content:center;padding-bottom:4px}
+.drawbox span{font-size:9pt;color:var(--ink-soft);font-style:italic}
+.drawrow{display:flex;gap:5mm;margin-top:4px}
+.drawcell{flex:1;display:flex;flex-direction:column}
+.drawcell .cap{font-size:9.5pt;font-weight:700;text-align:center;margin-top:3px;color:var(--ink-soft)}
+
+.foot{position:absolute;left:15mm;right:15mm;bottom:8mm;display:flex;justify-content:space-between;align-items:baseline;
+  font-size:8.5pt;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);border-top:1px solid var(--rule);padding-top:5px}
+.foot .pn{font-family:var(--serif);font-size:12pt;font-weight:700;letter-spacing:0;color:var(--green-deep)}
+</style>
+</head>
+<body>
+
+<div class="pg"><div class="in">
+
+  <div class="topbar">
+    <div>
+      <div class="kick"><b>Somerset</b> · Flyers I · Describing People</div>
+      <h1 class="hl">What Do They Look Like?</h1>
+    </div>
+    <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+  </div>
+  <div class="deck">Agents, before today's mission you need the right words! Learn them here, then use them in the Play and in the Somerset Arcade.</div>
+
+  <div class="owner"><span>Agent name</span><div class="fld"></div><span>Partner</span><div class="fld"></div></div>
+
+  <h2 class="sh">① Your word bank</h2>
+  <div class="catgrid">
+    <div class="catbox">
+      <span class="lab">Hair — how long?</span>
+      <div class="pillrow"><span class="pill">long</span><span class="pill">short</span></div>
+    </div>
+    <div class="catbox">
+      <span class="lab">Hair — what type?</span>
+      <div class="pillrow"><span class="pill">straight</span><span class="pill">wavy</span><span class="pill">curly</span></div>
+    </div>
+    <div class="catbox">
+      <span class="lab">Hair — what colour?</span>
+      <div class="pillrow"><span class="pill">black</span><span class="pill">brown</span><span class="pill">blonde</span><span class="pill">grey</span></div>
+    </div>
+  </div>
+  <div class="catgrid">
+    <div class="catbox g">
+      <span class="lab">Height</span>
+      <div class="pillrow"><span class="pill">tall</span><span class="pill">short</span></div>
+    </div>
+    <div class="catbox g">
+      <span class="lab">Glasses</span>
+      <div class="pillrow"><span class="pill">wears glasses</span><span class="pill">no glasses</span></div>
+    </div>
+  </div>
+
+  <h2 class="sh">② Describe your partner</h2>
+  <div class="crack g"><span class="lab">Mission</span>
+    Look at your partner. Write four true sentences about them — use words from your word bank above.<br><br>
+    My partner has <span class="blank"></span> hair. It is <span class="blank"></span> and <span class="blank"></span>.<br>
+    My partner is <span class="blank"></span>.<br>
+    My partner <span class="blank"></span> glasses.
+  </div>
+
+  <h2 class="sh">③ Now compare!</h2>
+  <div class="crack"><span class="lab">Just like at the Mercado Central in today's play</span>
+    Choose two classmates. Write true comparative sentences — the same kind you will hear in the Somerset Arcade.<br><br>
+    <span class="blank sm"></span> is taller than <span class="blank sm"></span>.<br>
+    <span class="blank sm"></span> has curlier hair than <span class="blank sm"></span>.<br>
+    <span class="blank sm"></span> has longer hair than <span class="blank sm"></span>.
+  </div>
+
+  <h2 class="sh">④ Draw and label</h2>
+  <div class="drawrow">
+    <div class="drawcell"><div class="drawbox"><span>draw here</span></div><div class="cap">Me</div></div>
+    <div class="drawcell"><div class="drawbox"><span>draw here</span></div><div class="cap">My partner</div></div>
+  </div>
+
+  <div class="foot"><span>Somerset Language Centre · Valencia</span><span class="pn">Describing People</span></div>
+</div></div>
+
+</body>
+</html>

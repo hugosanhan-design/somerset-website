@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 1 — Present perfect &amp; Use your English — Play — Friday B2</title>
+<style>
+  :root{
+    --green:#6BAE2E;
+    --green-dark:#4d8120;
+    --ink:#1a1a1a;
+    --bg:#ffffff;
+    --char-a:#0F7B6C;
+    --char-b:#6B3FA0;
+    --char-c:#C2540A;
+    --char-d:#1D6FB8;
+    --char-g:#B0306A;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+  }
+  header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    padding:24px 40px;
+    border-bottom:4px solid var(--green);
+    flex-wrap:wrap;
+    gap:16px;
+  }
+  .logo{display:flex;align-items:flex-end;gap:11px;}
+  .logo .word{font-family:Arial,Helvetica,sans-serif;font-weight:800;font-size:33pt;letter-spacing:-1.2px;line-height:.9;color:#6BAE2E;}
+  .logo .lc{font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:8.5pt;letter-spacing:2.5px;line-height:1.18;padding-bottom:4px;color:#4d8120;}
+  .title-block{text-align:right;}
+  .title-block h1{margin:0;font-size:24px;font-weight:700;color:var(--ink);}
+  .title-block p{margin:6px 0 0;font-size:15px;color:#555;letter-spacing:.5px;text-transform:uppercase;}
+
+  .toggle-bar{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    padding:22px 20px 6px;
+    flex-wrap:wrap;
+  }
+  .toggle-btn{
+    font-size:18px;
+    font-weight:700;
+    padding:14px 28px;
+    border-radius:12px;
+    border:3px solid var(--green);
+    background:#fff;
+    color:var(--green-dark);
+    cursor:pointer;
+    transition:all .15s ease;
+    font-family:inherit;
+  }
+  .toggle-btn:hover{background:#EAF4DA;}
+  .toggle-btn.active{background:var(--green);color:#fff;}
+
+  .cast-bar{
+    display:flex;
+    justify-content:center;
+    gap:24px;
+    padding:16px 20px 6px;
+    flex-wrap:wrap;
+  }
+  .cast-pill{
+    font-size:15px;
+    font-weight:700;
+    padding:8px 18px;
+    border-radius:30px;
+    border:2px solid;
+    background:#fff;
+  }
+  .cast-pill.char-a{color:var(--char-a);border-color:var(--char-a);}
+  .cast-pill.char-b{color:var(--char-b);border-color:var(--char-b);}
+  .cast-pill.char-c{color:var(--char-c);border-color:var(--char-c);}
+  .cast-pill.char-d{color:var(--char-d);border-color:var(--char-d);}
+
+  .scene-setup{
+    max-width:900px;
+    margin:14px auto 0;
+    padding:0 24px;
+    text-align:center;
+    font-size:19px;
+    color:#444;
+    font-style:italic;
+  }
+  .focus-tags{
+    max-width:900px;
+    margin:10px auto 0;
+    padding:0 24px;
+    text-align:center;
+    font-size:14px;
+    color:#6BAE2E;
+    font-weight:700;
+    letter-spacing:.4px;
+    text-transform:uppercase;
+  }
+
+  main{max-width:960px;margin:0 auto;padding:30px 24px 40px;}
+  .cast-version{display:none;}
+  .cast-version.active{display:block;}
+
+  .line{
+    display:flex;
+    gap:24px;
+    align-items:baseline;
+    margin-bottom:26px;
+    padding-bottom:26px;
+    border-bottom:1px solid #eee;
+  }
+  .line:last-child{border-bottom:none;}
+  .char-name{
+    flex:0 0 130px;
+    font-size:20px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+  }
+  .char-a .char-name{color:var(--char-a);}
+  .char-b .char-name{color:var(--char-b);}
+  .char-c .char-name{color:var(--char-c);}
+  .char-d .char-name{color:var(--char-d);}
+  .line-text{
+    font-size:26px;
+    line-height:1.5;
+    flex:1;
+  }
+  .line-text b{color:var(--green-dark);font-weight:800;}
+  .stage-direction{
+    font-size:18px;
+    color:#777;
+    font-style:italic;
+    text-align:center;
+    margin:22px 0;
+  }
+
+  .char-g .char-name{color:var(--char-g);}
+  .cast-pill.char-g{color:var(--char-g);border-color:var(--char-g);border-style:dashed;}
+  .cast-pill[hidden],.guest-line[hidden]{display:none !important;}
+  .guest-pill small{font-weight:400;font-size:12px;color:#888;}
+  .guest-bar{display:flex;justify-content:center;padding:8px 20px 0;}
+  .guest-toggle{font-size:13px;font-weight:600;color:#888;background:none;border:none;cursor:pointer;text-decoration:underline;font-family:inherit;padding:4px;}
+  .guest-toggle:hover{color:var(--green-dark);}
+  .guest-panel{display:flex;max-width:760px;margin:6px auto 0;padding:16px 20px;background:#FAFAF8;border:1.5px dashed #ccc;border-radius:10px;gap:12px;flex-wrap:wrap;justify-content:center;}
+  .guest-steps{flex-basis:100%;font-size:15px;color:#333;text-align:center;margin:0 0 4px;}
+  .guest-field{display:flex;flex-direction:column;gap:4px;font-size:12px;color:#555;}
+  .guest-field input{font-size:14px;padding:6px 10px;border:1.5px solid #ccc;border-radius:6px;font-family:inherit;width:140px;}
+  .guest-field.extra input{border-color:var(--char-g);}
+  .guest-reset{align-self:flex-end;font-size:12px;color:#999;background:none;border:1px solid #ccc;border-radius:6px;padding:6px 10px;cursor:pointer;font-family:inherit;}
+  .guest-reset:hover{color:var(--green-dark);border-color:var(--green);}
+  .guest-note{flex-basis:100%;font-size:12px;color:#999;text-align:center;margin:2px 0 0;}
+  .cast-note{
+    max-width:900px;
+    margin:10px auto 40px;
+    padding:16px 22px;
+    border:1.5px dashed #cfcfcf;
+    border-radius:10px;
+    font-size:14px;
+    color:#666;
+    line-height:1.6;
+  }
+  .cast-note b{color:var(--ink);}
+
+  footer{
+    text-align:center;
+    padding:24px;
+    font-size:14px;
+    color:#888;
+    border-top:2px solid #eee;
+  }
+
+  @media print{
+    .toggle-bar,.guest-panel{display:none !important;}
+  }
+
+  @media (max-width:700px){
+    header{flex-direction:column;align-items:center;text-align:center;}
+    .title-block{text-align:center;}
+    .line{flex-direction:column;gap:6px;}
+    .char-name{flex-basis:auto;font-size:17px;}
+    .line-text{font-size:22px;}
+    .toggle-btn{font-size:15px;padding:11px 18px;}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+  <div class="title-block">
+    <h1>Unit 1 — Present perfect &amp; Use your English</h1>
+    <p>Play &middot; Friday B2</p>
+  </div>
+</header>
+
+<div class="toggle-bar">
+  <button class="toggle-btn active" id="btnTrio" onclick="showVersion('trio')">3 students</button>
+  <button class="toggle-btn" id="btnQuartet" onclick="showVersion('quartet')">4 students</button>
+</div>
+
+<div class="guest-panel open" id="guestPanel">
+  <p class="guest-steps"><b>1.</b> Choose how many students are acting (3 or 4 above). <b>2.</b> Type their names.</p>
+  <div id="roleFields" style="display:contents"></div>
+  <div class="guest-field extra"><label for="ovGuest">Extra student or guest (optional, has lines)</label><input type="text" id="ovGuest" oninput="applyOverrides()" placeholder="type a name"></div>
+  <button class="guest-reset" onclick="resetOverrides()">Clear names</button>
+  <p class="guest-note">Leave a box empty and it shows Student A, B, C or D. Names are not saved: they clear when you reload or reprint.</p>
+</div>
+
+<!-- ================= TRIO VERSION ================= -->
+<div class="cast-version active" id="version-trio">
+  <div class="cast-bar">
+    <span class="cast-pill char-a"><span class="nm" data-role="A">Student A</span></span>
+    <span class="cast-pill char-b"><span class="nm" data-role="B">Student B</span></span>
+    <span class="cast-pill char-c"><span class="nm" data-role="C">Student C</span></span>
+    <span class="cast-pill char-g guest-pill" hidden><span class="nm" data-role="G"></span> <small>(guest)</small></span>
+  </div>
+  <p class="scene-setup">A caf&eacute; terrace in Ruzafa, three weeks after summer camp ended.</p>
+  <p class="focus-tags">Present perfect simple &amp; continuous &middot; phrasal verbs &middot; prepositions (p.13)</p>
+  <main>
+    <div class="line char-a"><div class="char-name"><span class="nm" data-role="A">Student A</span></div><div class="line-text">I've <b>missed</b> you both so much! I <b>haven't seen</b> you since the summer camp.</div></div>
+    <div class="line char-b"><div class="char-name"><span class="nm" data-role="B">Student B</span></div><div class="line-text">I know! I've <b>been thinking</b> about you all week actually &mdash; I've only just <b>got back</b> from my aunt's in Alicante.</div></div>
+    <div class="line char-c"><div class="char-name"><span class="nm" data-role="C">Student C</span></div><div class="line-text">Wait, have you two <b>fallen out</b> or something? You've been weird with each other since June.</div></div>
+    <div class="line char-a"><div class="char-name"><span class="nm" data-role="A">Student A</span></div><div class="line-text">No! Actually we've <b>hit it off</b> more than ever this summer &mdash; we've <b>been messaging</b> every day.</div></div>
+    <div class="line char-b"><div class="char-name"><span class="nm" data-role="B">Student B</span></div><div class="line-text">True. Although their little brother has <b>stood me up</b> for a video call three times this week, so I've kind of <b>gone off</b> him.</div></div>
+    <div class="stage-direction"><span class="nm" data-role="C">Student C</span> laughs and picks up the menu.</div>
+    <div class="line char-c"><div class="char-name"><span class="nm" data-role="C">Student C</span></div><div class="line-text">Classic. Anyway &mdash; has anyone read anything interesting these holidays? I've just finished a book about music and the brain. Apparently when you <b>concentrate on</b> a new song, your brain is constantly predicting what's coming, and getting it right can <b>cheer</b> you <b>up</b> instantly.</div></div>
+    <div class="line char-a"><div class="char-name"><span class="nm" data-role="A">Student A</span></div><div class="line-text">That's amazing &mdash; I've <b>never</b> really thought about it before. Sharing stuff like that really <b>leads to</b> stronger friendships, don't you think?</div></div>
+    <div class="line char-b"><div class="char-name"><span class="nm" data-role="B">Student B</span></div><div class="line-text">Definitely. I nearly <b>burst into</b> tears at a concert this summer for no reason &mdash; maybe that's why!</div></div>
+    <div class="line char-c"><div class="char-name"><span class="nm" data-role="C">Student C</span></div><div class="line-text">Right, I haven't eaten since breakfast and it's <b>getting</b> me <b>down</b>. Shall we order?</div></div>
+    <div class="stage-direction guest-line" hidden><span class="nm" data-role="G"></span> stops at the table, a little shyly, with a tote bag over their shoulder.</div>
+    <div class="line char-g guest-line" hidden><div class="char-name"><span class="nm" data-role="G"></span></div><div class="line-text">Hi, sorry to interrupt &mdash; is this seat free? I've <b>only just</b> moved to Valencia and I <b>haven't found</b> a proper caf&eacute; <b>yet</b>.</div></div>
+    <div class="line char-a guest-line" hidden><div class="char-name"><span class="nm" data-role="A">Student A</span></div><div class="line-text">Of course, sit down! I'm <span class="nm" data-role="A">Student A</span>, this is <span class="nm" data-role="B">Student B</span> and that's <span class="nm" data-role="C">Student C</span>. Have you <b>been living</b> here long?</div></div>
+    <div class="line char-g guest-line" hidden><div class="char-name"><span class="nm" data-role="G"></span></div><div class="line-text">Only two weeks. I've <b>never</b> seen so many people <b>chilling out</b> on a terrace in October! Honestly, the move <b>got</b> me <b>down</b> at first, but this is <b>cheering</b> me <b>up</b> already.</div></div>
+    <div class="line char-b guest-line" hidden><div class="char-name"><span class="nm" data-role="B">Student B</span></div><div class="line-text">Then stay with us. We <b>hit it off</b> with this place the very first week &mdash; you'll love it.</div></div>
+    <div class="line char-c guest-line" hidden><div class="char-name"><span class="nm" data-role="C">Student C</span></div><div class="line-text">And we promise not to <b>stand</b> you <b>up</b>, <span class="nm" data-role="G"></span>!</div></div>
+    <div class="line char-a"><div class="char-name"><span class="nm" data-role="A">Student A</span></div><div class="line-text">Let's <b>chill out</b> here a bit first. We haven't had a proper catch-up in ages.</div></div>
+  </main>
+</div>
+
+<!-- ================= GROUP OF 4 VERSION ================= -->
+<div class="cast-version" id="version-quartet">
+  <div class="cast-bar">
+    <span class="cast-pill char-a"><span class="nm" data-role="A">Student A</span></span>
+    <span class="cast-pill char-b"><span class="nm" data-role="B">Student B</span></span>
+    <span class="cast-pill char-c"><span class="nm" data-role="C">Student C</span></span>
+    <span class="cast-pill char-d"><span class="nm" data-role="D">Student D</span></span>
+    <span class="cast-pill char-g guest-pill" hidden><span class="nm" data-role="G"></span> <small>(guest)</small></span>
+  </div>
+  <p class="scene-setup">Cycling along the Turia gardens on a Sunday afternoon.</p>
+  <p class="focus-tags">Present perfect simple &amp; continuous &middot; phrasal verbs &middot; prepositions (p.13)</p>
+  <main>
+    <div class="line char-a"><div class="char-name"><span class="nm" data-role="A">Student A</span></div><div class="line-text">I can't believe it's <b>been</b> three weeks since school finished &mdash; I've <b>missed</b> the Turia gardens so much.</div></div>
+    <div class="line char-b"><div class="char-name"><span class="nm" data-role="B">Student B</span></div><div class="line-text">Me too! <span class="nm" data-role="D">Student D</span>, have you <b>ever cycled</b> here before? It's basically the whole city on one bike path.</div></div>
+    <div class="line char-d"><div class="char-name"><span class="nm" data-role="D">Student D</span></div><div class="line-text"><b>Never</b> &mdash; I only moved here in September, remember? But I've <b>already fallen</b> in love with it. Everyone's been so welcoming, we <b>hit it off</b> straight away.</div></div>
+    <div class="line char-c"><div class="char-name"><span class="nm" data-role="C">Student C</span></div><div class="line-text">Aw, we're glad you joined! Although <span class="nm" data-role="A">Student A</span>'s <b>been getting</b> me <b>down</b> all summer complaining about that phone.</div></div>
+    <div class="line char-a"><div class="char-name"><span class="nm" data-role="A">Student A</span></div><div class="line-text">Because it broke and I <b>still haven't fixed</b> it! I've <b>been relying</b> on <span class="nm" data-role="B">Student B</span> for everything.</div></div>
+    <div class="line char-b"><div class="char-name"><span class="nm" data-role="B">Student B</span></div><div class="line-text">True, and honestly it's starting to <b>get</b> me <b>down</b> too, ha. Anyway, has anyone read that article about music and the brain?</div></div>
+    <div class="line char-d"><div class="char-name"><span class="nm" data-role="D">Student D</span></div><div class="line-text">Yes! It said your brain <b>concentrates on</b> predicting the next note, and when it's right, it gives you a little reward &mdash; that's why a good song can <b>cheer</b> you <b>up</b> instantly.</div></div>
+    <div class="line char-c"><div class="char-name"><span class="nm" data-role="C">Student C</span></div><div class="line-text">That explains why I nearly <b>burst into</b> tears at the fireworks concert in July &mdash; the music just got to me.</div></div>
+    <div class="stage-direction guest-line" hidden><span class="nm" data-role="G"></span> pulls up next to the group on a hired bike, a paper map in their hand.</div>
+    <div class="line char-g guest-line" hidden><div class="char-name"><span class="nm" data-role="G"></span></div><div class="line-text">Excuse me &mdash; is this the way to the Ciudad de las Artes? I've <b>only just</b> arrived and I've <b>been going</b> round in circles for an hour.</div></div>
+    <div class="line char-a guest-line" hidden><div class="char-name"><span class="nm" data-role="A">Student A</span></div><div class="line-text">You're on the right path! We're going that way ourselves &mdash; I've <b>cycled</b> here a hundred times.</div></div>
+    <div class="line char-g guest-line" hidden><div class="char-name"><span class="nm" data-role="G"></span></div><div class="line-text">Thank goodness. I've <b>never</b> been to Valencia before, and getting lost has <b>been getting</b> me <b>down</b> all morning.</div></div>
+    <div class="line char-b guest-line" hidden><div class="char-name"><span class="nm" data-role="B">Student B</span></div><div class="line-text"><b>Cheer up</b>! Come with us. <span class="nm" data-role="D">Student D</span> only joined us in September and we <b>hit it off</b> with <span class="nm" data-role="D">Student D</span> in five minutes.</div></div>
+    <div class="line char-c guest-line" hidden><div class="char-name"><span class="nm" data-role="C">Student C</span></div><div class="line-text">Just don't <b>stand</b> us <b>up</b> at the end, <span class="nm" data-role="G"></span> &mdash; and don't ask <span class="nm" data-role="A">Student A</span> to fix your phone!</div></div>
+    <div class="stage-direction"><span class="nm" data-role="A">Student A</span> checks their watch.</div>
+    <div class="line char-a"><div class="char-name"><span class="nm" data-role="A">Student A</span></div><div class="line-text">Sharing stuff like that really <b>leads to</b> stronger friendships, I think. Right, shall we get going before it gets dark?</div></div>
+    <div class="line char-b"><div class="char-name"><span class="nm" data-role="B">Student B</span></div><div class="line-text">Wait &mdash; don't <b>stand</b> us <b>up</b> like last time! You said that in June and then you never showed up.</div></div>
+    <div class="line char-a"><div class="char-name"><span class="nm" data-role="A">Student A</span></div><div class="line-text">I promise! I <b>haven't stood</b> anyone <b>up</b> since&hellip; well, since June.</div></div>
+  </main>
+</div>
+
+<div class="cast-note">
+  <b>Teacher's note (not for students).</b> Two full, different scripts, not the same scene with the names swapped: choose "3 students" for the trio script and "4 students" for the group-of-four script, so two groups can each run their own play in the same class rather than repeating one script. Type the actors' names in the panel at the top and they appear throughout (cast bar, speaker labels and joint lines). Both versions drill present perfect simple/continuous with the SB p.12 adverbs (already, still, yet, just, ever, never, before) and all seven p.13 phrasal verbs (go off, cheer up, chill out, hit it off, fall out, get down, stand up) plus four of the p.13 prepositions (lead to, concentrate on, responsible for &rarr; implied via "relying on", burst into). The open-cloze passage on music and the brain's reward response is referenced in both scenes as a natural bridge into the Exam Task, paraphrased rather than quoted. In the group-of-four script, Student D speaks as an established member of the group, not a guest; the optional extra box adds a newcomer with their own lines.
+</div>
+
+<footer>Somerset Language Centre &middot; Val&egrave;ncia &middot; Friday B2 &middot; Unit 1</footer>
+
+<script>
+const BASE={trio:{A:"Student A",B:"Student B",C:"Student C"},quartet:{A:"Student A",B:"Student B",C:"Student C",D:"Student D"}};
+let active='trio', ov={}, guest='';
+function render(){
+  ['trio','quartet'].forEach(v=>{
+    document.querySelectorAll('#version-'+v+' .nm').forEach(el=>{
+      const r=el.dataset.role;
+      el.textContent = r==='G' ? guest.trim() : ((ov[r]||'').trim() || BASE[v][r]);
+    });
+  });
+  const has=!!guest.trim();
+  document.querySelectorAll('.guest-line,.guest-pill').forEach(el=>{el.hidden=!has;});
+}
+function buildFields(){
+  const box=document.getElementById('roleFields'); box.innerHTML='';
+  Object.keys(BASE[active]).forEach(r=>{
+    const d=document.createElement('div'); d.className='guest-field';
+    d.innerHTML='<label>Student '+r+'</label>';
+    const i=document.createElement('input'); i.type='text'; i.placeholder='Student '+r; i.value=ov[r]||'';
+    i.oninput=()=>{ov[r]=i.value;render();}; d.appendChild(i); box.appendChild(d);
+  });
+}
+function applyOverrides(){guest=document.getElementById('ovGuest').value;render();}
+function resetOverrides(){ov={};guest='';document.getElementById('ovGuest').value='';buildFields();render();}
+function showVersion(v){
+  active=v;
+  document.getElementById('version-trio').classList.toggle('active', v==='trio');
+  document.getElementById('version-quartet').classList.toggle('active', v==='quartet');
+  document.getElementById('btnTrio').classList.toggle('active', v==='trio');
+  document.getElementById('btnQuartet').classList.toggle('active', v==='quartet');
+  buildFields();render();
+}
+buildFields();render();
+</script>
+</body>
+</html>

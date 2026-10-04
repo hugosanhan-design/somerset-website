@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grammar: FCE I / Friday B2 Unit 1, p.12</title>
+<style>
+  :root{
+    --green:#6BAE2E;
+    --green-dark:#4d8120;
+    --ink:#1a1a1a;
+    --bg:#ffffff;
+    --amber:#E08A1E;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+  }
+  header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    padding:clamp(16px,2.2vh,32px) clamp(24px,3.5vw,64px);
+    border-bottom:4px solid var(--green);
+    flex-wrap:wrap;
+    gap:16px;
+  }
+  .logo{display:flex;align-items:flex-end;gap:clamp(8px,1vw,16px);}
+  .logo .word{font-family:Arial,Helvetica,sans-serif;font-weight:800;font-size:clamp(30pt,3.4vw,46pt);letter-spacing:-1.2px;line-height:.9;color:#6BAE2E;}
+  .logo .lc{font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:clamp(8pt,0.85vw,12pt);letter-spacing:2.5px;line-height:1.18;padding-bottom:4px;color:#4d8120;}
+  .title-block{text-align:right;}
+  .title-block h1{margin:0;font-size:clamp(20px,2.1vw,30px);font-weight:700;color:var(--ink);}
+  .title-block p{margin:4px 0 0;font-size:clamp(13px,1.1vw,17px);color:#555;letter-spacing:.5px;text-transform:uppercase;}
+
+  .nav-bar{
+    position:fixed; bottom:0; left:0; right:0;
+    display:flex; align-items:center; justify-content:center; gap:20px;
+    padding:16px 0 22px;
+    background:linear-gradient(to top, rgba(255,255,255,0.96), rgba(255,255,255,0));
+    z-index:30;
+  }
+  .nav-bar button{
+    background:var(--green);
+    color:#fff;
+    border:none;
+    border-radius:999px;
+    width:clamp(44px,4vw,64px); height:clamp(44px,4vw,64px);
+    font-size:clamp(20px,2vw,28px);
+    font-weight:700;
+    cursor:pointer;
+  }
+  .nav-bar button:disabled{opacity:.3; cursor:default;}
+  .nav-bar .count{font-size:clamp(14px,1.4vw,20px); color:#555; min-width:70px; text-align:center;}
+
+  main{max-width:1800px;margin:0 auto;padding:clamp(8px,1.5vh,20px) clamp(24px,4vw,72px) 96px;min-height:calc(100vh - 110px);display:flex;flex-direction:column;justify-content:center;}
+  .slide{display:none;}
+  .slide.active{display:block; animation:fade .15s ease;}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+
+  .kicker{
+    font-size:clamp(14px,1.4vw,20px);font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--green);
+    margin:clamp(10px,min(1.8vh,2.4vw),26px) 0 8px;
+  }
+  h2{font-size:clamp(28px,min(3.8vw,6vh),48px);margin:0 0 clamp(10px,min(1.8vh,2.4vw),24px);color:var(--ink);line-height:1.25;}
+  h2 .accent{color:var(--green-dark);}
+
+  .item-list{list-style:none;margin:0 0 clamp(14px,2vh,22px);padding:0;max-width:1200px;}
+  .item{
+    background:#fff;border:2px solid #ddd;border-radius:14px;
+    padding:clamp(12px,1.6vh,18px) clamp(18px,2.2vw,26px);
+    margin-bottom:clamp(9px,1.2vh,14px);
+    font-size:clamp(17px,1.9vw,24px);line-height:1.4;
+  }
+  .item .num{color:#999;font-weight:800;margin-right:10px;}
+  .item.pair{border-color:#ddd;}
+  .revealed .item .a-text-OFF{color:var(--green-dark);font-weight:700;}
+
+  .reveal-all{
+    background:var(--green);color:#fff;border:none;border-radius:999px;
+    padding:10px 26px;font-size:clamp(14px,1.4vw,18px);font-weight:700;cursor:pointer;
+  }
+  .reveal-all:hover{background:var(--green-dark);}
+
+  .whybox{
+    display:none;margin-top:clamp(14px,2vh,20px);max-width:1200px;
+    background:#F4F8EE;border-left:5px solid var(--green-dark);border-radius:0 12px 12px 0;
+    padding:clamp(14px,1.8vh,20px) clamp(18px,2.2vw,26px);
+    font-size:clamp(16px,1.6vw,21px);line-height:1.45;color:#333;
+  }
+  .revealed .whybox{display:block;}
+  .whybox b{color:var(--green-dark);}
+
+  .valencia-note{margin-top:clamp(16px,2.2vh,28px);font-size:clamp(15px,1.5vw,20px);color:#777;font-style:italic;}
+
+  .audio-tag{display:inline-block;background:#EAF4DA;color:var(--green-dark);border-radius:8px;padding:4px 12px;font-size:clamp(13px,1.3vw,16px);font-weight:700;margin-bottom:10px;}
+
+  footer{text-align:center;padding:20px;font-size:clamp(13px,1.1vw,16px);color:#888;border-top:2px solid #eee;}
+
+  @page{size:A4;margin:16mm 14mm}
+  @media print{
+    body{background:#fff}
+    .nav-bar{display:none !important}
+    main{max-width:none;padding:0}
+    .slide{display:block !important;page-break-after:always;padding-top:6px;}
+    .slide:last-child{page-break-after:auto;}
+    h2{font-size:19pt}
+    .kicker{font-size:12pt}
+    .item{font-size:12.5pt;page-break-inside:avoid;break-inside:avoid;}
+    .whybox{display:block !important;font-size:12pt;}
+    .reveal-all{display:none !important;}
+  }
+  @media(max-width:700px){
+    header{flex-direction:column;align-items:center;text-align:center;}
+    .title-block{text-align:center;}
+    h2{font-size:24px;}
+  }
+/* per-item-reveal v1 */
+.item .a-text,.gap-answer{color:transparent !important;background:#EAF4DA;border-radius:6px;padding:0 .35em;min-width:3.2em;display:inline-block;cursor:pointer;user-select:none;}
+.item.shown .a-text,.gap-answer.shown{color:var(--green-dark) !important;background:none;font-weight:700;}
+.showpill{display:inline-block;margin-left:10px;border:2px solid var(--green);color:var(--green-dark);background:#fff;border-radius:999px;padding:1px 12px;font-size:.72em;font-weight:700;cursor:pointer;vertical-align:middle;}
+.item.shown .showpill{display:none;}
+@media print{.item .a-text,.gap-answer{color:var(--green-dark) !important;background:none;}.showpill{display:none !important;}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+  <div class="title-block">
+    <h1>Grammar</h1>
+    <p>Unit 1 &middot; p.12 &middot; present perfect simple &amp; continuous</p>
+  </div>
+</header>
+
+<main>
+
+  <div class="slide active">
+    <div class="kicker">Unit 1 &middot; page 12</div>
+    <h2>Present perfect: <span class="accent">simple &amp; continuous</span></h2>
+    <p class="valencia-note">Tap "Show answer" next to each question. Six exercises, in book order.</p>
+  </div>
+
+  <!-- Exercise 1 -->
+  <div class="slide">
+    <div class="kicker">Exercise 1 &middot; matching the contrast</div>
+    <h2>Which sentence <span class="accent">answers which question?</span></h2>
+    <ul class="item-list">
+      <li class="item"><span class="num">a</span>Focuses on the result of a finished action &rarr; <span class="a-text">sentence 1</span> (<em>he's failed his exam</em>)</li>
+      <li class="item"><span class="num">b</span>Mentions the result of a process that might still continue &rarr; <span class="a-text">sentence 2</span> (<em>he's been chopping onions</em>)</li>
+      <li class="item"><span class="num">c</span>Stative verb, started in the past, still continues &rarr; <span class="a-text">sentence 3</span> (<em>I've had this computer for three years</em>)</li>
+      <li class="item"><span class="num">d</span>Action started in the past, still continues &rarr; <span class="a-text">sentence 4</span> (<em>she's been studying for three years</em>)</li>
+      <li class="item"><span class="num">e</span>Focuses on "how many" &rarr; <span class="a-text">sentence 5</span> (<em>I've read a lot of books</em>)</li>
+      <li class="item"><span class="num">f</span>Focuses on "how long" &rarr; <span class="a-text">sentence 6</span> (<em>I've been researching for over a year</em>)</li>
+    </ul>
+    <button class="reveal-all">Show answers</button>
+    <div class="whybox"><b>Why:</b> simple = result / a finished count; continuous = a process, possibly still going, or how long it's taken. The REMEMBER box's <em>gone</em> vs <em>been</em> works the same way &mdash; <em>gone</em> is a result you're not back from, <em>been</em> is an experience.</div>
+  </div>
+
+  <!-- Exercise 2 -->
+  <div class="slide">
+    <div class="kicker">Exercise 2 &middot; choose the correct option</div>
+    <h2>Simple or <span class="accent">continuous?</span></h2>
+    <ul class="item-list">
+      <li class="item"><span class="num">1</span>Have you ever <span class="a-text">eaten</span> sushi?</li>
+      <li class="item"><span class="num">2</span>It's <span class="a-text">been raining</span> all day!</li>
+      <li class="item"><span class="num">3</span>I haven't <span class="a-text">seen</span> Julia for ages.</li>
+      <li class="item"><span class="num">4</span>I've <span class="a-text">been waiting</span> for you since 10 o'clock!</li>
+      <li class="item"><span class="num">5</span>Sorry, I haven't <span class="a-text">finished</span> my work.</li>
+      <li class="item"><span class="num">6</span>This is the first time I've <span class="a-text">visited</span> Rome.</li>
+    </ul>
+    <button class="reveal-all">Show answers</button>
+    <div class="whybox"><b>Pattern:</b> a one-off, completed action or a superlative/"first time" claim &rarr; simple. An ongoing, still-continuing activity &rarr; continuous.</div>
+  </div>
+
+  <!-- Exercise 3 -->
+  <div class="slide">
+    <div class="kicker">Exercise 3 &middot; complete the questions</div>
+    <h2>Build the <span class="accent">question</span></h2>
+    <ul class="item-list">
+      <li class="item"><span class="num">1</span><span class="a-text">Have you finished</span> your work yet?</li>
+      <li class="item"><span class="num">2</span>Where <span class="a-text">has Kim gone</span>? I <span class="a-text">'ve been looking</span> for her all afternoon.</li>
+      <li class="item"><span class="num">3</span>How long <span class="a-text">have they been studying</span> English?</li>
+      <li class="item"><span class="num">4</span>Sorry I'm late. <span class="a-text">Have you been waiting</span> long?</li>
+      <li class="item"><span class="num">5</span><span class="a-text">Has Luiza started</span> her new job yet?</li>
+    </ul>
+    <button class="reveal-all">Show answers</button>
+    <div class="whybox"><b>Note item 2:</b> <em>has gone</em> (result, simple) but <em>'ve been looking</em> (the searching is the ongoing process) &mdash; both forms can appear in the same exchange because they're doing different jobs.</div>
+  </div>
+
+  <!-- Exercise 4 -->
+  <div class="slide">
+    <div class="kicker">Exercise 4 &middot; same or different?</div>
+    <h2>What's the <span class="accent">real difference?</span></h2>
+    <ul class="item-list">
+      <li class="item"><span class="num">1</span><span class="a-text">Same</span> &mdash; but <em>already</em> is stronger ("I don't need to see it again")</li>
+      <li class="item"><span class="num">2</span><span class="a-text">Different</span> &mdash; <em>a lot</em> = a large amount; <em>more and more</em> = an increasing amount</li>
+      <li class="item"><span class="num">3</span><span class="a-text">Same</span></li>
+      <li class="item"><span class="num">4</span><span class="a-text">Same</span> &mdash; but <em>still</em> is stronger ("it annoys me it hasn't happened")</li>
+      <li class="item"><span class="num">5</span><span class="a-text">Different</span> &mdash; (a) she's read one of the author's books; (b) she's read almost all of them</li>
+      <li class="item"><span class="num">6</span><span class="a-text">Same</span> &mdash; but (a) feels very recent; (b), past simple, feels less connected to now</li>
+    </ul>
+    <button class="reveal-all">Show answers</button>
+    <div class="whybox"><b>This is the exam-relevant part of the page:</b> B2 First transformations often hinge on exactly this kind of nuance, not just simple/continuous form.</div>
+  </div>
+
+  <!-- Exercise 5 -->
+  <div class="slide">
+    <div class="kicker">Exercise 5 &middot; adverb position</div>
+    <h2>Where does the <span class="accent">adverb go?</span></h2>
+    <ul class="item-list">
+      <li class="item"><span class="num">1</span>Rachel's <span class="a-text">just</span> gone out, but she'll be back soon.</li>
+      <li class="item"><span class="num">2</span>Don't worry if you haven't bought tickets <span class="a-text">yet</span>.</li>
+      <li class="item"><span class="num">3</span>I <span class="a-text">still</span> haven't bought the concert tickets.</li>
+      <li class="item"><span class="num">4</span>I've been getting <span class="a-text">more and more</span> anxious lately.</li>
+      <li class="item"><span class="num">5</span>I've <span class="a-text">never</span> been so embarrassed <span class="a-text">before</span> in my life.</li>
+      <li class="item"><span class="num">6</span>That was the best film I've <span class="a-text">ever</span> seen.</li>
+    </ul>
+    <button class="reveal-all">Show answers</button>
+    <div class="whybox"><b>Rule of thumb:</b> <em>already, just, still, ever, never</em> go before the main verb (after the auxiliary/be); <em>before, lately, recently, yet</em> go at the end.</div>
+  </div>
+
+  <!-- Exercise 6 -->
+  <div class="slide">
+    <div class="kicker">Exercise 6 &middot; listening, Track 1.6</div>
+    <h2>Complete the <span class="accent">conversation</span></h2>
+    <div class="audio-tag">&#127911; Track 1.6</div>
+    <ul class="item-list">
+      <li class="item"><span class="num">1</span>I haven't been running <span class="a-text">for</span> ages.</li>
+      <li class="item"><span class="num">2</span>I've told you that <span class="a-text">before</span>.</li>
+      <li class="item"><span class="num">3</span>I can't believe you <span class="a-text">still</span> haven't bought any!</li>
+      <li class="item"><span class="num">4</span>They haven't arrived <span class="a-text">yet</span>.</li>
+      <li class="item"><span class="num">5</span>I've <span class="a-text">never</span> played squash before.</li>
+      <li class="item"><span class="num">6</span>Have you <span class="a-text">ever</span> played tennis?</li>
+      <li class="item"><span class="num">7</span>I've <span class="a-text">already</span> beaten people.</li>
+      <li class="item"><span class="num">8</span>I've <span class="a-text">just</span> remembered.</li>
+    </ul>
+    <button class="reveal-all">Show answers</button>
+    <div class="whybox">Same eight adverbs from Exercises 4 and 5, now in a natural dialogue. If a student is unsure, replay just that part of the track.</div>
+  </div>
+
+</main>
+
+<div class="nav-bar">
+  <button id="prevBtn" title="Previous">&#8592;</button>
+  <span class="count" id="count"></span>
+  <button id="nextBtn" title="Next">&#8594;</button>
+</div>
+
+<footer>Somerset Language Centre &middot; Valencia &middot; Unit 1, p.12</footer>
+
+<script>
+  var slides = document.querySelectorAll('.slide');
+  var idx = 0;
+  var prevBtn = document.getElementById('prevBtn');
+  var nextBtn = document.getElementById('nextBtn');
+  var count = document.getElementById('count');
+  function render(){
+    slides.forEach(function(s,i){ s.classList.toggle('active', i===idx); });
+    count.textContent = (idx+1) + ' / ' + slides.length;
+    prevBtn.disabled = idx===0;
+    nextBtn.disabled = idx===slides.length-1;
+    window.scrollTo(0,0);
+  }
+  function go(d){ idx = Math.max(0, Math.min(slides.length-1, idx+d)); render(); }
+  prevBtn.addEventListener('click', function(){ go(-1); });
+  nextBtn.addEventListener('click', function(){ go(1); });
+  document.addEventListener('keydown', function(e){
+    if(e.key==='ArrowRight') go(1);
+    else if(e.key==='ArrowLeft') go(-1);
+  });
+
+  document.querySelectorAll('.slide').forEach(function(slide){
+    var btn = slide.querySelector('.reveal-all');
+    if(!btn) return;
+    btn.addEventListener('click', function(){
+      var on = slide.classList.toggle('revealed');
+      btn.textContent = on ? 'Hide answers' : 'Show answers';
+    });
+  });
+
+  render();
+</script>
+<script>/* per-item-reveal v1 */
+document.querySelectorAll('.item').forEach(function(it){
+  if(!it.querySelector('.a-text')) return;
+  var b=document.createElement('button'); b.className='showpill'; b.type='button'; b.textContent='Show answer';
+  b.addEventListener('click',function(e){e.stopPropagation(); it.classList.add('shown');});
+  it.appendChild(b);
+  it.querySelectorAll('.a-text').forEach(function(a){a.addEventListener('click',function(e){e.stopPropagation(); it.classList.toggle('shown');});});
+});
+document.querySelectorAll('.gap-answer').forEach(function(g){g.title='Click to show / hide'; g.addEventListener('click',function(){g.classList.toggle('shown');});});
+document.querySelectorAll('.reveal-all').forEach(function(b){
+  var s=b.closest('.slide'); if(!s||!s.querySelector('.whybox')){b.style.display='none';return;}
+  var mc=!!s.querySelector('.mc-opt'); var L=mc?['Show answer','Hide answer']:['Why?','Hide why'];  /* MC slides reveal the right option (registry D07) */
+  var fresh=b.cloneNode(true); b.parentNode.replaceChild(fresh,b); fresh.textContent=L[0];
+  fresh.addEventListener('click',function(){var on=s.classList.toggle('revealed'); fresh.textContent=on?L[1]:L[0];});
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Saturday at the huerto · The Play</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..900&family=Instrument+Sans:wght@400..700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#6BAE2E; --green-deep:#2F6B1A; --green-ink:#1E4227;
+  --ice:#BFE3EA; --ice-deep:#3A8FA3; --ice-pale:#EAF6F8;
+  --paper:#F7F3EA; --paper-2:#FFFDF8; --ink:#1B2419; --ink-soft:#4E5A4A; --rule:#DED8C8;
+  --hot:#E2542C;
+  --serif:'Fraunces','Playfair Display',Georgia,serif;
+  --sans:'Instrument Sans','Segoe UI',system-ui,sans-serif;
+}
+body{font-family:var(--sans);font-size:16px;line-height:1.55;color:var(--ink);background:#dcd9d0;padding:20px}
+.wrap{width:100%;max-width:800px;background:var(--paper);margin:0 auto;border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.25)}
+.header{background:var(--green-ink);padding:18px 26px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:var(--serif);font-weight:900;color:#fff;font-size:18pt;letter-spacing:-.02em}
+.brand span{color:#9BE06A}
+.hsub{color:#C9E9A9;font-size:12pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.in{padding:26px 30px 34px}
+.kick{font-size:12pt;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ice-deep)}
+.kick b{color:var(--green-deep)}
+h1.hl{font-family:var(--serif);font-weight:600;font-size:34pt;line-height:1;letter-spacing:-.02em;margin:8px 0 14px}
+
+.toggle-bar{display:flex;gap:12px;margin-bottom:18px;flex-wrap:wrap}
+.toggle-btn{
+  font-family:var(--sans);font-size:13pt;font-weight:700;
+  padding:10px 22px;border-radius:999px;border:2px solid var(--green);
+  background:#fff;color:var(--green-deep);cursor:pointer;transition:all .15s ease;
+}
+.toggle-btn:hover{background:var(--ice-pale)}
+.toggle-btn.active{background:var(--green);border-color:var(--green);color:#fff}
+.toggle-btn.print-btn{border-color:var(--ink-soft);color:var(--ink-soft)}
+.toggle-btn.print-btn:hover{background:#eee}
+
+.ph{position:relative;overflow:hidden;border-radius:18px;height:52mm;margin-bottom:16px;background:linear-gradient(135deg,var(--ice) 0%,#dfeff2 60%,var(--ice-pale) 100%)}
+.ph img{width:100%;height:100%;object-fit:cover;display:block}
+.card{background:var(--paper-2);border:1px solid var(--rule);border-radius:18px;padding:18px 22px;margin-bottom:16px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.tag{background:#fff;border:1.5px solid var(--rule);border-radius:999px;padding:5px 15px;font-size:13pt;font-weight:700}
+.tag.g{background:#EDF6E2;border-color:var(--green);color:var(--green-deep)}
+.tag.i{background:var(--ice-pale);border-color:var(--ice);color:var(--ice-deep)}
+.tag.h{background:#FCE9E3;border-color:#F0B9A8;color:var(--hot)}
+.stage{font-family:var(--serif);font-style:italic;color:var(--ink-soft);font-size:13pt;margin-bottom:14px;padding-bottom:14px;border-bottom:1.5px solid var(--rule)}
+.script .row{display:grid;grid-template-columns:32mm 1fr;gap:12px;padding:8px 0;font-size:14pt;line-height:1.5}
+.script .who{font-family:var(--serif);font-weight:700;font-size:14pt}
+.w1{color:var(--green-deep)}.w2{color:var(--ice-deep)}.w3{color:var(--hot)}
+.cue{font-style:italic;color:var(--ink-soft);font-size:12.5pt}
+.perform{background:var(--green-ink);color:#fff;border-radius:999px;text-align:center;padding:16px;font-family:var(--serif);font-weight:700;font-size:20pt;letter-spacing:.02em;margin-top:6px}
+.sub{margin-top:12px;font-size:13pt;color:var(--ink-soft);text-align:center}
+.note{background:#EDF6E2;border:1.5px solid var(--green);border-radius:14px;padding:12px 16px;font-size:13pt;color:var(--green-ink);margin-bottom:16px}
+.note b{color:var(--green-deep)}
+.footbar{display:flex;justify-content:space-between;align-items:center;padding:14px 30px;background:var(--paper-2);border-top:1px solid var(--rule);font-size:12pt;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+
+.vswitch{display:none}
+.vswitch.active{display:block}
+
+@media print{
+  body{background:#fff;padding:0}
+  .wrap{box-shadow:none;border-radius:0;max-width:100%}
+  .toggle-bar{display:none !important}
+  .ph{display:none}
+  .vswitch{display:none !important}
+  .vswitch.active{display:block !important}
+  @page{size:A4;margin:9mm}
+  .header{padding:8px 16px}
+  .in{padding:10px 18px}
+  h1.hl{font-size:26pt;margin:4px 0 8px}
+  .note{margin-bottom:8px;padding:8px 12px;font-size:12pt}
+  .card{margin-bottom:8px;padding:10px 16px;break-inside:avoid;page-break-inside:avoid}
+  .script .row{padding:4px 0;font-size:13pt;line-height:1.35}
+  .stage{margin-bottom:8px;padding-bottom:8px}
+  .perform{padding:8px;font-size:17pt}
+  .sub{margin-top:6px !important}
+  .note{display:none}
+  .footbar{padding:6px 16px}
+  .script .row{padding:2px 0}
+  .stage{margin-bottom:6px;padding-bottom:6px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="header">
+    <div class="brand">Somerset <span>·</span> Language Centre</div>
+    <div class="hsub">Valencia</div>
+  </div>
+  <div class="in">
+    <div class="kick"><b>The play</b> · Lesson 2 · Wed 7 Oct · Pairs or trios · 5 minutes</div>
+    <h1 class="hl">Saturday at the huerto</h1>
+
+    <div class="toggle-bar">
+      <button class="toggle-btn" id="btn2" onclick="showVersion(2)">2 Characters</button>
+      <button class="toggle-btn active" id="btn3" onclick="showVersion(3)">3 Characters</button>
+      <button class="toggle-btn print-btn" onclick="window.print()">Print</button>
+    </div>
+
+    <div class="note">Grammar for this play: <b>have to / don't have to</b> and the question <b>Do we have to…?</b> Words to listen for: ripe, water, weed, dig, pick.</div>
+
+    <div class="card">
+      <div class="vswitch" data-v="2" id="version2">
+        <div class="tags"><span class="tag g">Grandma Amparo</span><span class="tag i">Leo</span></div>
+        <div class="stage">A community garden in Benimaclet, Valencia. Saturday morning. Grandma and Leo have a busy day.</div>
+        <div class="script">
+          <div class="row"><span class="who w1">Grandma Amparo</span><span>Good morning, Leo! The tomatoes are <u>ripe</u>. We <b>have to</b> pick them today.</span></div>
+          <div class="row"><span class="who w2">Leo</span><span><b>Do</b> we <b>have to</b> dig too, Grandma?</span></div>
+          <div class="row"><span class="who w1">Grandma Amparo</span><span>No, you <b>don't have to</b> dig. But you <b>have to</b> <u>water</u> the beans.</span></div>
+          <div class="row"><span class="who w2">Leo</span><span>And you, Grandma? <b>Do</b> you <b>have to</b> <u>weed</u>?</span></div>
+          <div class="row"><span class="who w1">Grandma Amparo</span><span>Yes, I <b>do</b>! I <b>have to</b> weed. There are lots of weeds here!</span></div>
+          <div class="row"><span class="who w2">Leo</span><span>Grandma, <b>do</b> we <b>have to</b> go to the market after this?</span></div>
+          <div class="row"><span class="who w1">Grandma Amparo</span><span>Yes! We <b>have to</b> sell the tomatoes at the market in Benimaclet.</span></div>
+          <div class="row"><span class="who w2">Leo</span><span>Great! I <b>don't have to</b> go to school today. It's Saturday!</span></div>
+          <div class="row"><span class="who w1">Grandma Amparo</span><span>And I <b>don't have to</b> cook lunch. We can eat at the market!</span></div>
+          <div class="row"><span class="who w2">Leo</span><span>And I <b>don't have to</b> tidy my room today!</span></div>
+        </div>
+      </div>
+
+      <div class="vswitch active" data-v="3" id="version3">
+        <div class="tags"><span class="tag g">Grandma Amparo</span><span class="tag i">Leo</span><span class="tag h">Nora</span></div>
+        <div class="stage">A community garden in Benimaclet, Valencia. Three people, one busy morning.</div>
+        <div class="script">
+          <div class="row"><span class="who w1">Grandma Amparo</span><span>Good morning! The tomatoes are <u>ripe</u>. We <b>have to</b> pick them today.</span></div>
+          <div class="row"><span class="who w2">Leo</span><span><b>Do</b> we <b>have to</b> dig too, Grandma?</span></div>
+          <div class="row"><span class="who w1">Grandma Amparo</span><span>No, you <b>don't have to</b> dig. But you <b>have to</b> <u>water</u> the beans.</span></div>
+          <div class="row"><span class="who w3">Nora</span><span>And I <b>have to</b> <u>weed</u>. There are lots of weeds here!</span></div>
+          <div class="row"><span class="who w2">Leo</span><span>Grandma, <b>do</b> we <b>have to</b> go to the market after this?</span></div>
+          <div class="row"><span class="who w1">Grandma Amparo</span><span>Yes! We <b>have to</b> sell the tomatoes at the market in Benimaclet.</span></div>
+          <div class="row"><span class="who w3">Nora</span><span>Great! I <b>don't have to</b> go to school today. It's Saturday!</span></div>
+          <div class="row"><span class="who w2">Leo</span><span>And I <b>don't have to</b> tidy my room today!</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="perform">★ Now perform it!</div>
+    <p class="vswitch" data-v="2" id="sub2" style="margin-top:12px;font-size:13pt;color:var(--ink-soft);text-align:center">Two roles for a pair. Swap roles and do it twice.</p>
+    <p class="vswitch active" data-v="3" id="sub3" style="margin-top:12px;font-size:13pt;color:var(--ink-soft);text-align:center">Three roles for a trio. Swap roles and do it twice.</p>
+
+    <div class="card" style="margin-top:14px;margin-bottom:0;break-inside:avoid;page-break-inside:avoid">
+      <div class="kick" style="margin-bottom:6px">Change it · then perform it again</div>
+      <div class="vswitch" data-v="2" id="chg2"><p style="font-size:13pt;margin:4px 0">1 &nbsp;Change the vegetable: tomatoes → ______________</p><p style="font-size:13pt;margin:4px 0">2 &nbsp;Change one job: <i>water the beans</i> → ______________</p></div>
+      <div class="vswitch active" data-v="3" id="chg3"><p style="font-size:13pt;margin:4px 0">1 &nbsp;Change the vegetable: tomatoes → ______________</p><p style="font-size:13pt;margin:4px 0">2 &nbsp;Change one job: <i>water the beans</i> → ______________</p></div>
+    </div>
+  </div>
+  <div class="footbar"><span>Somerset Language Centre · Flyers I</span><span>Unit 2 · Lesson 2 · booklet p.9</span></div>
+</div>
+
+<script>
+function showVersion(n){
+  document.querySelectorAll('.vswitch').forEach(function(el){
+    el.classList.toggle('active', Number(el.dataset.v) === n);
+  });
+  document.getElementById('btn2').classList.toggle('active', n === 2);
+  document.getElementById('btn3').classList.toggle('active', n === 3);
+}
+</script>
+</body>
+</html>

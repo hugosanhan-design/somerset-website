@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PET I · El Mercat de los Trabajos</title>
+<style>
+@import url('common.css');
+@page{ size: A4 landscape; margin:1.1cm 1.1cm 1.45cm;
+  @bottom-left{ content:"SOMERSET LANGUAGE CENTRE · VALENCIA";
+    font-family:Arial,Helvetica,sans-serif; font-size:8pt; letter-spacing:.11em; color:#8a8a7a;
+    white-space:nowrap; border-top:1px solid #dcdcd4; padding-top:7px; vertical-align:top; }
+  @bottom-center{ content:" "; width:100%; border-top:1px solid #dcdcd4; }
+  @bottom-right{ content:counter(page);
+    font-family:Arial,Helvetica,sans-serif; font-size:12.5pt; font-weight:bold; color:#1E4227;
+    white-space:nowrap; border-top:1px solid #dcdcd4; padding-top:4px; vertical-align:top; }
+}
+.board { display:grid; grid-template-columns:repeat(8,1fr); gap:4px; margin:8px 0; }
+.sq { border:2px solid #6BAE2E; border-radius:5px; min-height:78px; font-family:Arial,sans-serif; font-size:8.7pt; padding:4px; position:relative; background:#fbfdf8; }
+.sq .n { position:absolute; top:2px; left:4px; font-weight:bold; color:#1E4227; font-size:8.5pt; }
+.sq .pts { position:absolute; top:2px; right:4px; font-weight:bold; font-size:8.5pt; color:#B5541B; }
+.sq.stall { background:#EAF4DA; }
+.sq.double { background:#fff4d6; border-color:#E8A020; }
+.sq.double .pts { color:#a86e10; }
+.sq.lose { background:#fbe3de; border-color:#c0392b; }
+.sq.lose .pts { color:#c0392b; }
+.sq.steal { background:#e6ddf6; border-color:#7a4fb5; }
+.sq.steal .pts { color:#7a4fb5; }
+.sq.bonus { background:#dff2e6; border-color:#1E4227; }
+.sq.bonus .pts { color:#1E4227; }
+.sq.swap { background:#fde8f0; border-color:#c2447a; }
+.sq.swap .pts { color:#c2447a; }
+.sq.start { background:#1E4227; color:#fff; }
+.sq.finish { background:#6BAE2E; color:#fff; }
+.sq .txt { margin-top:15px; line-height:1.15; }
+.key { display:flex; flex-wrap:wrap; gap:10px 18px; font-family:Arial,sans-serif; font-size:9.5pt; margin:6px 0 2px; }
+.key span.sw { display:inline-block; width:13px; height:13px; border-radius:3px; margin-right:4px; vertical-align:-2px; border:1.5px solid #999; }
+.scoreboard { display:grid; grid-template-columns:repeat(5,1fr); gap:6px; margin-top:6px; }
+.scoreboard .cell { border:1px solid #cfe3bc; border-radius:5px; padding:8px; font-family:Arial,sans-serif; font-size:10.5pt; min-height:46px; }
+.scoreboard .cell .lbl { font-size:8.5pt; color:#777; text-transform:uppercase; letter-spacing:.06em; }
+.cards { display:grid; grid-template-columns:repeat(4,1fr); gap:7px; }
+.card { border:2px dashed #999; border-radius:8px; padding:7px 9px; font-family:Arial,sans-serif; font-size:9.7pt; min-height:88px; break-inside:avoid; page-break-inside:avoid; }
+.card .kind { font-weight:bold; font-size:8.5pt; letter-spacing:.08em; text-transform:uppercase; }
+.card.job { border-color:#6BAE2E; } .card.job .kind{ color:#4d8120; }
+.card.grammar { border-color:#B5541B; } .card.grammar .kind{ color:#B5541B; }
+.card.personality { border-color:#1E4227; } .card.personality .kind{ color:#1E4227; }
+</style>
+</head>
+<body>
+
+<div class="header-row">
+  <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+  <div class="header-meta">
+    <div class="title">El Mercat de los Trabajos</div>
+    A Unit 1 board game &middot; PET I &middot; 16 September 2026
+  </div>
+</div>
+
+<div class="box">
+<strong>How to play.</strong> Groups of 2&ndash;3, each group is one team. Everyone starts at square 1, the Cabanyal fish stalls, with 0 points. Roll a die and move that many squares. Land on a card square: draw the top card from the matching pile and answer it, correct answer earns the points shown. Land on a coloured squares: follow the instruction, no card needed. Wrong answers earn nothing, the group corrects together, no teacher marking mid-game. The game ends the moment a team reaches square 32, the Central Market clock tower, which is worth a bonus. <strong>The winner is whichever team has the most points at that moment</strong>, not necessarily the team that arrived first, so a well-timed STEAL or DOUBLE near the end can still flip the game.
+</div>
+
+<div class="key">
+<span><span class="sw" style="background:#EAF4DA;border-color:#6BAE2E;"></span>Card square, +10 on a correct answer</span>
+<span><span class="sw" style="background:#fff4d6;border-color:#E8A020;"></span>Double points, next card is worth double</span>
+<span><span class="sw" style="background:#fbe3de;border-color:#c0392b;"></span>Lose points, no card</span>
+<span><span class="sw" style="background:#e6ddf6;border-color:#7a4fb5;"></span>Steal points from the current leader</span>
+<span><span class="sw" style="background:#dff2e6;border-color:#1E4227;"></span>Bonus points, free, no card</span>
+<span><span class="sw" style="background:#fde8f0;border-color:#c2447a;"></span>Swap total points with any team</span>
+</div>
+
+<h2 class="section">The board</h2>
+<div class="board">
+<div class="sq start"><span class="n">1</span><div class="txt">START<br>Cabanyal fish stalls</div></div>
+<div class="sq stall"><span class="n">2</span><span class="pts">+10</span><div class="txt">Draw a JOB card</div></div>
+<div class="sq stall"><span class="n">3</span><span class="pts">+10</span><div class="txt">Draw a GRAMMAR card</div></div>
+<div class="sq stall"><span class="n">4</span><span class="pts">+10</span><div class="txt">Draw a PERSONALITY card</div></div>
+<div class="sq double"><span class="n">5</span><span class="pts">&times;2</span><div class="txt">DOUBLE POINTS<br>next card only</div></div>
+<div class="sq stall"><span class="n">6</span><span class="pts">+10</span><div class="txt">Draw a JOB card</div></div>
+<div class="sq lose"><span class="n">7</span><span class="pts">&minus;10</span><div class="txt">Fallas crowd blocks the aisle</div></div>
+<div class="sq stall"><span class="n">8</span><span class="pts">+10</span><div class="txt">Draw a GRAMMAR card</div></div>
+<div class="sq stall"><span class="n">9</span><span class="pts">+10</span><div class="txt">Draw a PERSONALITY card</div></div>
+<div class="sq bonus"><span class="n">10</span><span class="pts">+15</span><div class="txt">A friendly cook gives you a free taste</div></div>
+<div class="sq stall"><span class="n">11</span><span class="pts">+10</span><div class="txt">Draw a JOB card</div></div>
+<div class="sq steal"><span class="n">12</span><span class="pts">&minus;10/+10</span><div class="txt">STEAL 10 points from the leader</div></div>
+<div class="sq stall"><span class="n">13</span><span class="pts">+10</span><div class="txt">Draw a GRAMMAR card</div></div>
+<div class="sq stall"><span class="n">14</span><span class="pts">+10</span><div class="txt">Draw a PERSONALITY card</div></div>
+<div class="sq lose"><span class="n">15</span><span class="pts">&minus;10</span><div class="txt">Wrong turn near Ruzafa</div></div>
+<div class="sq stall"><span class="n">16</span><span class="pts">+10</span><div class="txt">Draw a JOB card</div></div>
+<div class="sq double"><span class="n">17</span><span class="pts">&times;2</span><div class="txt">DOUBLE POINTS<br>next card only</div></div>
+<div class="sq stall"><span class="n">18</span><span class="pts">+10</span><div class="txt">Draw a GRAMMAR card</div></div>
+<div class="sq stall"><span class="n">19</span><span class="pts">+10</span><div class="txt">Draw a PERSONALITY card</div></div>
+<div class="sq bonus"><span class="n">20</span><span class="pts">+15</span><div class="txt">A firefighter waves you through, well done</div></div>
+<div class="sq stall"><span class="n">21</span><span class="pts">+10</span><div class="txt">Draw a JOB card</div></div>
+<div class="sq steal"><span class="n">22</span><span class="pts">&minus;10/+10</span><div class="txt">STEAL 10 points from the leader</div></div>
+<div class="sq stall"><span class="n">23</span><span class="pts">+10</span><div class="txt">Draw a GRAMMAR card</div></div>
+<div class="sq stall"><span class="n">24</span><span class="pts">+10</span><div class="txt">Draw a PERSONALITY card</div></div>
+<div class="sq lose"><span class="n">25</span><span class="pts">&minus;10</span><div class="txt">You drop your shopping bag</div></div>
+<div class="sq stall"><span class="n">26</span><span class="pts">+10</span><div class="txt">Draw a JOB card</div></div>
+<div class="sq double"><span class="n">27</span><span class="pts">&times;2</span><div class="txt">DOUBLE POINTS<br>next card only</div></div>
+<div class="sq stall"><span class="n">28</span><span class="pts">+10</span><div class="txt">Draw a GRAMMAR card</div></div>
+<div class="sq stall"><span class="n">29</span><span class="pts">+10</span><div class="txt">Draw a PERSONALITY card</div></div>
+<div class="sq swap"><span class="n">30</span><span class="pts">&#8646;</span><div class="txt">SWAP total points with any team, risky!</div></div>
+<div class="sq bonus"><span class="n">31</span><span class="pts">+15</span><div class="txt">Last stretch, almost at the clock tower</div></div>
+<div class="sq finish"><span class="n">32</span><span class="pts">+20</span><div class="txt">FINISH<br>Central Market clock tower</div></div>
+</div>
+
+<h2 class="section">Scoreboard</h2>
+<div class="scoreboard">
+<div class="cell"><div class="lbl">Team A</div></div>
+<div class="cell"><div class="lbl">Team B</div></div>
+<div class="cell"><div class="lbl">Team C</div></div>
+<div class="cell"><div class="lbl">Team D</div></div>
+<div class="cell"><div class="lbl">Team E</div></div>
+</div>
+
+<h2 class="section">Job cards</h2>
+<div class="cards">
+<div class="card job"><span class="kind">Job</span><p>Mime the job. Your group says the word. No speaking while you mime: <strong>astronaut</strong>.</p></div>
+<div class="card job"><span class="kind">Job</span><p>Say one sentence about what this person does: <strong>firefighter</strong>.</p></div>
+<div class="card job"><span class="kind">Job</span><p>Say one sentence about what this person does: <strong>librarian</strong>.</p></div>
+<div class="card job"><span class="kind">Job</span><p>Mime the job. Your group says the word: <strong>cook</strong>.</p></div>
+<div class="card job"><span class="kind">Job</span><p>Say one sentence about what this person does: <strong>architect</strong>.</p></div>
+<div class="card job"><span class="kind">Job</span><p>Name a job that exists in or near the Mercado Central.</p></div>
+<div class="card job"><span class="kind">Job</span><p>Mime the job. Your group says the word: <strong>hairdresser</strong>.</p></div>
+<div class="card job"><span class="kind">Job</span><p>Say one sentence about what this person does: <strong>lawyer</strong>.</p></div>
+<div class="card job"><span class="kind">Job</span><p>Mime the job. Your group says the word: <strong>soldier</strong>.</p></div>
+<div class="card job"><span class="kind">Job</span><p>Say one sentence about what this person does: <strong>camera operator</strong>.</p></div>
+</div>
+
+<h2 class="section">Grammar cards</h2>
+<div class="cards">
+<div class="card grammar"><span class="kind">Grammar</span><p>Complete out loud: &ldquo;Every morning I ___ (get up) at ___.&rdquo; Present simple.</p></div>
+<div class="card grammar"><span class="kind">Grammar</span><p>Complete out loud: &ldquo;Right now, I ___ (sit) in this classroom.&rdquo; Present continuous.</p></div>
+<div class="card grammar"><span class="kind">Grammar</span><p>Fix the mistake: &ldquo;I'm knowing your name.&rdquo;</p></div>
+<div class="card grammar"><span class="kind">Grammar</span><p>Fix the mistake: &ldquo;She's having three brothers.&rdquo;</p></div>
+<div class="card grammar"><span class="kind">Grammar</span><p>Make a true sentence about your family with the present simple.</p></div>
+<div class="card grammar"><span class="kind">Grammar</span><p>Make a true sentence about right now with the present continuous.</p></div>
+<div class="card grammar"><span class="kind">Grammar</span><p>Say one stative verb (no -ing verb) and use it in a sentence about yourself.</p></div>
+<div class="card grammar"><span class="kind">Grammar</span><p>Complete out loud: &ldquo;This week my teacher ___ (teach) Unit ___.&rdquo;</p></div>
+<div class="card grammar"><span class="kind">Grammar</span><p>Fix the mistake: &ldquo;This soup is tasting amazing.&rdquo;</p></div>
+<div class="card grammar"><span class="kind">Grammar</span><p>Complete out loud: &ldquo;At the moment, the Mercado Central ___ (be) very busy.&rdquo; Present continuous or simple?</p></div>
+</div>
+
+<h2 class="section">Personality cards</h2>
+<div class="cards">
+<div class="card personality"><span class="kind">Personality</span><p>Which job needs someone <strong>calm</strong>? Say why.</p></div>
+<div class="card personality"><span class="kind">Personality</span><p>Which job needs someone <strong>confident</strong>? Say why.</p></div>
+<div class="card personality"><span class="kind">Personality</span><p>Describe yourself with one personality adjective from today.</p></div>
+<div class="card personality"><span class="kind">Personality</span><p>Describe a classmate with one personality adjective, kindly!</p></div>
+<div class="card personality"><span class="kind">Personality</span><p>Which job needs someone <strong>patient</strong>? Say why.</p></div>
+<div class="card personality"><span class="kind">Personality</span><p>Give the opposite of <strong>lazy</strong>.</p></div>
+<div class="card personality"><span class="kind">Personality</span><p>Give the opposite of <strong>miserable</strong>.</p></div>
+<div class="card personality"><span class="kind">Personality</span><p>Which job needs someone <strong>reliable</strong>? Say why.</p></div>
+<div class="card personality"><span class="kind">Personality</span><p>Give the opposite of <strong>dishonest</strong>.</p></div>
+<div class="card personality"><span class="kind">Personality</span><p>Which job needs someone <strong>sociable</strong>? Say why.</p></div>
+</div>
+
+</body>
+</html>

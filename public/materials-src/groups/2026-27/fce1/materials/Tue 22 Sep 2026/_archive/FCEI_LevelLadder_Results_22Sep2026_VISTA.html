@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Level Ladder — Results · FCE I · Somerset Vista</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<!-- SOMERSET VISTA — FCE I, Level Ladder results briefing. Teacher copy, screen only.
+     Test given Thu 17 Sep 2026 (not Tue 22 as the sheet's own printed date implies —
+     built in advance, handed out early). Graded from the three scanned papers
+     Hugo supplied 22 Sep 2026. Source key: FCEI_LevelLadder_22Sep2026_TEACHER.html -->
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{ --ink:#161b24; --ink2:#0e131b; --panel:#1e2531; --green:#6BAE2E; --greenL:#A6D46A;
+  --err:#F0563F; --sand:#EAD9AC; --sun:#E8A93C; }
+html,body{width:100%;background:var(--ink2);font-family:'Lato',sans-serif;color:var(--sand);}
+body{padding:0 0 8vh;}
+.wm{position:fixed;top:2.2vh;left:3.5vw;z-index:6;display:flex;align-items:baseline;gap:8px;}
+.wm .w{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(16px,1.7vw,24px);color:#fff;}
+.wm .lc{font-size:clamp(7px,.7vw,10px);letter-spacing:3px;color:var(--greenL);font-weight:900;}
+.tag{position:fixed;top:2.4vh;right:4vw;z-index:6;font-size:clamp(9px,.9vw,13px);letter-spacing:2px;text-transform:uppercase;font-weight:900;color:var(--sand);}
+main{max-width:980px;margin:0 auto;padding:12vh 6vw 4vh;}
+section{margin-bottom:7vh;}
+.pill{display:inline-block;border:1.5px solid var(--sun);color:var(--sun);font-size:clamp(10px,1vw,14px);letter-spacing:3px;text-transform:uppercase;padding:4px 16px;margin-bottom:14px;font-weight:900;}
+h1{font-family:'Playfair Display',serif;font-size:clamp(32px,5vw,58px);color:#fff;font-weight:900;line-height:1.05;margin-bottom:10px;}
+h2{font-family:'Playfair Display',serif;font-size:clamp(20px,2.6vw,32px);color:#fff;font-weight:900;margin-bottom:14px;}
+h3{font-family:'Playfair Display',serif;font-size:clamp(16px,1.9vw,22px);color:var(--greenL);font-weight:900;margin-bottom:8px;}
+p{font-size:clamp(14px,1.35vw,18px);line-height:1.55;margin-bottom:10px;max-width:760px;}
+.lead{font-size:clamp(16px,1.7vw,22px);color:var(--sand);font-weight:600;line-height:1.5;max-width:820px;}
+.rule{display:flex;align-items:center;gap:12px;width:100%;max-width:480px;margin:18px 0;}
+.rule::before,.rule::after{content:'';flex:1;height:1px;background:var(--sun);opacity:.5;}
+.rule .gem{width:7px;height:7px;background:var(--sun);transform:rotate(45deg);}
+.callout{border-left:3px solid var(--err);background:rgba(240,86,63,.08);padding:14px 20px;margin:14px 0;max-width:760px;}
+.callout p{margin-bottom:0;color:#fff;}
+.callout .lab{color:var(--err);font-weight:900;font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;display:block;}
+
+table{width:100%;border-collapse:collapse;margin:10px 0 6px;}
+th,td{padding:8px 10px;text-align:center;font-size:clamp(13px,1.3vw,17px);border-bottom:1px solid rgba(255,255,255,.09);}
+th{font-family:'Playfair Display',serif;color:#fff;font-weight:900;font-size:clamp(11px,1.1vw,14px);text-transform:uppercase;letter-spacing:1px;}
+td:first-child,th:first-child{text-align:left;color:var(--sand);font-weight:700;}
+td.n{font-family:'Playfair Display',serif;font-weight:900;color:var(--greenL);}
+tr.total td{border-top:2px solid var(--sun);border-bottom:none;padding-top:12px;font-weight:900;}
+tr.total td.n{color:#fff;font-size:1.15em;}
+td.tick{color:var(--greenL);font-weight:900;font-size:1.2em;}
+td.cross{color:var(--err);font-weight:900;font-size:1.2em;}
+
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin-top:16px;}
+.card{background:var(--panel);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:20px 22px;}
+.card h4{font-family:'Playfair Display',serif;color:#fff;font-size:clamp(17px,1.8vw,22px);font-weight:900;margin-bottom:4px;}
+.card .score{font-family:'Playfair Display',serif;color:var(--greenL);font-size:clamp(26px,3vw,36px);font-weight:900;margin:6px 0;}
+.card .band{color:var(--sun);font-weight:800;font-size:13px;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;}
+.card p{font-size:14px;margin-bottom:6px;}
+.badge{display:inline-block;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:900;letter-spacing:.5px;margin-right:6px;margin-bottom:6px;}
+.badge.ok{background:rgba(166,212,106,.15);color:var(--greenL);border:1px solid var(--greenL);}
+.badge.no{background:rgba(240,86,63,.12);color:var(--err);border:1px solid var(--err);}
+
+.qbox{background:var(--panel);border-radius:10px;padding:18px 22px;margin-top:10px;}
+.qbox .q{color:#fff;font-weight:800;font-size:15px;margin-bottom:4px;}
+.qbox .a{font-size:14px;margin-bottom:14px;}
+.qbox .a:last-child{margin-bottom:0;}
+.strip{margin-top:6vh;height:7px;background:repeating-linear-gradient(90deg,var(--green) 0 22px,var(--sand) 22px 44px,var(--err) 44px 66px,var(--sun) 66px 88px);}
+</style>
+</head>
+<body>
+<div class="wm"><span class="w">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+<div class="tag">FCE I · Teacher copy</div>
+
+<main>
+
+<section>
+<span class="pill">The Level Ladder — results</span>
+<h1>Where the three of you actually stand</h1>
+<p class="lead">Given Thursday 17 September, corrected — the sheet's printed date says Tuesday 22 Sep because it was built ahead of time and handed out early. Graded from the scanned papers, 22 Sep 2026. Not an exam, doesn't go on any report: it exists to tell you where to spend the year's time.</p>
+</section>
+
+<section>
+<h2>The grid</h2>
+<table>
+<tr><th>Unit</th><th>Martina</th><th>Víctor</th><th>Isabella</th><th>Group /18</th></tr>
+<tr><td>1 · Jump for joy (Q1–6)</td><td class="n">5</td><td class="n">5</td><td class="n">5</td><td class="n">15</td></tr>
+<tr><td>2 · Global culture? (Q7–12)</td><td class="n">4</td><td class="n">3</td><td class="n">3</td><td class="n">10</td></tr>
+<tr><td>3 · Role models (Q13–18)</td><td class="n">5</td><td class="n">4</td><td class="n">3</td><td class="n">12</td></tr>
+<tr><td>4 · City living (Q19–24)</td><td class="n">5</td><td class="n">3</td><td class="n">2</td><td class="n">10</td></tr>
+<tr><td>5 · Emerging tech (Q25–30)</td><td class="n">5</td><td class="n">5</td><td class="n">2</td><td class="n">12</td></tr>
+<tr><td>6 · Take it easy (Q31–36)</td><td class="n">3</td><td class="n">4</td><td class="n">4</td><td class="n">11</td></tr>
+<tr class="total"><td>TOTAL / 36</td><td class="n">27</td><td class="n">24</td><td class="n">19</td><td class="n">70/108</td></tr>
+<tr><td>Without Part 1 / 30</td><td class="n">22</td><td class="n">19</td><td class="n">14</td><td class="n">55/90</td></tr>
+<tr><td>Wrote the extra message?</td><td class="tick">✓</td><td class="tick">✓</td><td class="tick">✓</td><td>—</td></tr>
+</table>
+<div class="rule"><span class="gem"></span></div>
+<table>
+<tr><th>Discriminator</th><th>Martina</th><th>Víctor</th><th>Isabella</th></tr>
+<tr><td>9 &amp; 10 · used to / be used to</td><td class="tick">✓</td><td class="cross">✗</td><td class="cross">✗</td></tr>
+<tr><td>14 &amp; 15 · past perfect simple / continuous</td><td class="tick">✓</td><td class="cross">✗</td><td class="cross">✗</td></tr>
+<tr><td>27 · perfect modal</td><td class="tick">✓</td><td class="cross">✗</td><td class="cross">✗</td></tr>
+<tr><td>32 · stop + infinitive</td><td class="tick">✓</td><td class="cross">✗</td><td class="cross">✗</td></tr>
+</table>
+</section>
+
+<section>
+<h2>Reading it</h2>
+<div class="grid3">
+<div class="card">
+<h4>Martina</h4>
+<div class="score">27/36</div>
+<div class="band">Solid B2 entry</div>
+<p>All four discriminators correct — the one genuine B2 read in the room. 22/30 without Part 1.</p>
+<span class="badge ok">4/4 discriminators</span>
+</div>
+<div class="card">
+<h4>Víctor</h4>
+<div class="score">24/36</div>
+<div class="band">Reads B2 — isn't</div>
+<p>Total sits in the same band as Martina's, but he missed all four discriminators. That's the book's own definition of a B1 student with good exam instincts, not a B2 one.</p>
+<span class="badge no">0/4 discriminators</span>
+</div>
+<div class="card">
+<h4>Isabella</h4>
+<div class="score">19/36</div>
+<div class="band">Strong B1 → B2</div>
+<p>Furthest behind on the raw score too — trailing both others in every unit except Unit 6, where she's tied top. Also 0/4 on discriminators. Normal for this point in the year, but the gap is real, not just newness.</p>
+<span class="badge no">0/4 discriminators</span>
+</div>
+</div>
+</section>
+
+<section>
+<h2>The three questions the sheet asks</h2>
+<div class="qbox">
+<p class="q">Which unit scored lowest across the group?</p>
+<p class="a">Units 2 and 4 tie, 10/18 each. Unit 2 is the more urgent one — it's next on the course plan (from 27 Oct).</p>
+<p class="q">Where does Isabella sit against the other two?</p>
+<p class="a">Behind both, in every unit but 6. Not a small gap: 19 vs. 24 vs. 27 overall, and 14 vs. 19 vs. 22 once Part 1 (the unit already half-taught) is stripped out.</p>
+<p class="q">Is the group still one level?</p>
+<p class="a">Not quite, by this sheet. Martina alone shows the discriminator control that separates real B2 from a B2-sounding B1. Víctor and Isabella both read as strong B1 with good instincts — Víctor's raw score just hides it better.</p>
+<p class="q">Who is furthest behind, and what's the first thing to fix?</p>
+<p class="a">Isabella. Weakest points are Unit 4 (future forms, 2/6) and Unit 5 (modals, 2/6) — but she's behind broadly, not on one isolated point, so budget consolidation time rather than a single contrast drill.</p>
+</div>
+</section>
+
+<section>
+<h2>One finding worth a second look</h2>
+<div class="callout">
+<span class="lab">All three, same wrong answer</span>
+<p><strong>Item 8</strong> — "When I was small, we ___ spend every March at my grandmother's house for Fallas." Key: <em>would</em> (repeated past action). All three of them wrote <em>are used to</em> instead, with no exceptions. That's not three separate mistakes — it's one shared gap: <em>would</em> for a repeated past habit hasn't landed at all yet, even though <em>used to</em> and <em>be used to</em> (items 9 and 10) are more mixed. Worth opening Unit 2 with this contrast specifically, not assuming it'll fall out of general teaching.</p>
+</div>
+<div class="callout" style="border-left-color:var(--sun);background:rgba(232,169,60,.08);">
+<span class="lab" style="color:var(--sun);">Also worth flagging</span>
+<p><strong>Item 1</strong> — "Nuria ___ about her results at the moment, though she is normally calm." Key: <em>is worrying</em> (stative verb pushed into the continuous for a temporary state). All three chose <em>worries</em> or <em>has worried</em> instead — a 3/3 miss on a single item, in the one unit that's supposedly already half-taught. Either it's a genuinely advanced exception nobody's covered explicitly yet, or worth a second look at whether the item is landing as intended.</p>
+</div>
+</section>
+
+<section>
+<h2>The extra message — not marked, read for range only</h2>
+<div class="grid3">
+<div class="card">
+<h4>Martina</h4>
+<p>Present perfect + past simple, "because" as a connector, appropriate register. Confirms the brief's note: her spoken English is ahead of her written accuracy — a few slips ("the writting", subject–verb agreement) but real range.</p>
+</div>
+<div class="card">
+<h4>Víctor</h4>
+<p>Mostly present tense even when narrating the past ("I travel to England"), no connector beyond "and", competent but thin. Matches the discriminator picture — solid vocabulary, grammar range not there yet.</p>
+</div>
+<div class="card">
+<h4>Isabella</h4>
+<p>Past simple, "but"/"or", one attempted future ("by June I want have the B2"). Notably names her own weak points unprompted — past perfect, continuous — which is a useful thing to reward directly.</p>
+</div>
+</div>
+</section>
+
+<div class="strip"></div>
+</main>
+</body>
+</html>

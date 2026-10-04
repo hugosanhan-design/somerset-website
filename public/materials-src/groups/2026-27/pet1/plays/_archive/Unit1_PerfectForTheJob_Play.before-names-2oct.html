@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 1 — Perfect for the job — Review Plays</title>
+<style>
+  :root{
+    --green:#6BAE2E;
+    --green-dark:#4d8120;
+    --ink:#1a1a1a;
+    --bg:#ffffff;
+    --char-a:#0F7B6C;
+    --char-b:#6B3FA0;
+    --char-c:#C2540A;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+  }
+  header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    padding:24px 40px;
+    border-bottom:4px solid var(--green);
+    flex-wrap:wrap;
+    gap:16px;
+  }
+  .logo{display:flex;align-items:flex-end;gap:11px;}
+  .logo .word{font-family:Arial,Helvetica,sans-serif;font-weight:800;font-size:33pt;letter-spacing:-1.2px;line-height:.9;color:#6BAE2E;}
+  .logo .lc{font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:8.5pt;letter-spacing:2.5px;line-height:1.18;padding-bottom:4px;color:#4d8120;}
+  .title-block{text-align:right;}
+  .title-block h1{margin:0;font-size:24px;font-weight:700;color:var(--ink);}
+  .title-block p{margin:6px 0 0;font-size:15px;color:#555;letter-spacing:.5px;text-transform:uppercase;}
+
+  .toggle-row{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:16px;
+    padding:20px 20px 4px;
+  }
+  .toggle-btn{
+    font-size:19px;
+    font-weight:700;
+    padding:14px 26px;
+    border-radius:12px;
+    border:3px solid var(--green);
+    background:#fff;
+    color:var(--green-dark);
+    cursor:pointer;
+    transition:all .15s ease;
+    font-family:inherit;
+  }
+  .toggle-btn:hover{background:#EAF4DA;}
+  .toggle-btn.active{background:var(--green);color:#fff;}
+  .version-btn{font-size:22px;padding:16px 36px;}
+
+  .scene-setup{
+    max-width:900px;
+    margin:14px auto 0;
+    padding:0 24px;
+    text-align:center;
+    font-size:19px;
+    color:#444;
+    font-style:italic;
+  }
+
+  .focus-tags{
+    max-width:900px;
+    margin:10px auto 0;
+    padding:0 24px;
+    text-align:center;
+    font-size:14px;
+    color:#6BAE2E;
+    font-weight:700;
+    letter-spacing:.4px;
+    text-transform:uppercase;
+  }
+
+  main{max-width:960px;margin:0 auto;padding:20px 24px 90px;}
+  .script-panel{display:none;}
+  .script-panel.active{display:block;}
+  .version{display:none;}
+  .version.active{display:block;}
+
+  .line{
+    display:flex;
+    gap:24px;
+    align-items:baseline;
+    margin-bottom:30px;
+    padding-bottom:30px;
+    border-bottom:1px solid #eee;
+  }
+  .line:last-child{border-bottom:none;}
+  .char-name{
+    flex:0 0 180px;
+    font-size:22px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+  }
+  .char-a .char-name{color:var(--char-a);}
+  .char-b .char-name{color:var(--char-b);}
+  .char-c .char-name{color:var(--char-c);}
+  .line-text{
+    font-size:30px;
+    line-height:1.5;
+    flex:1;
+  }
+  .stage-direction{
+    font-size:20px;
+    color:#777;
+    font-style:italic;
+    text-align:center;
+    margin:24px 0;
+  }
+  .joint-line .char-name{color:#444;}
+
+  footer{
+    text-align:center;
+    padding:24px;
+    font-size:14px;
+    color:#888;
+    border-top:2px solid #eee;
+  }
+
+  @media (max-width:700px){
+    header{flex-direction:column;align-items:center;text-align:center;}
+    .title-block{text-align:center;}
+    .line{flex-direction:column;gap:6px;}
+    .char-name{flex-basis:auto;font-size:19px;}
+    .line-text{font-size:25px;}
+    .toggle-btn{font-size:16px;padding:11px 18px;}
+    .version-btn{font-size:18px;padding:12px 24px;}
+  }
+
+  @page{size:A4;margin:16mm 14mm}
+  @media print{
+    body{background:#fff}
+    .toggle-row{display:none !important}
+    main{max-width:none;padding:0}
+    .scene-setup{font-size:12pt}
+    .focus-tags{font-size:12pt}
+    .char-name{font-size:13pt}
+    .line-text{font-size:14pt;line-height:1.4}
+    .line{margin-bottom:12pt;padding-bottom:10pt;page-break-inside:avoid;break-inside:avoid}
+    .stage-direction{font-size:12pt;margin:10pt 0;page-break-inside:avoid;break-inside:avoid}
+    footer{font-size:9pt;padding:10pt 0 0}
+    .version{display:none !important}
+    .version.active{display:block !important}
+    .script-panel{display:none !important}
+    .script-panel.active{display:block !important}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+  <div class="title-block">
+    <h1>Unit 1 — Perfect for the job</h1>
+    <p>Review Plays &middot; PET I</p>
+  </div>
+</header>
+
+<div class="toggle-row">
+  <button class="toggle-btn active" id="scriptBtnA" onclick="showScript('A')">Script A &middot; The Interview</button>
+  <button class="toggle-btn" id="scriptBtnB" onclick="showScript('B')">Script B &middot; The Job Fair</button>
+  <button class="toggle-btn" id="scriptBtnC" onclick="showScript('C')">Script C &middot; The Video Call</button>
+</div>
+<div class="toggle-row">
+  <button class="toggle-btn version-btn active" id="verBtn2" onclick="showVersionCount(2)">2 Characters</button>
+  <button class="toggle-btn version-btn" id="verBtn3" onclick="showVersionCount(3)">3 Characters</button>
+  <button class="toggle-btn print-btn" onclick="window.print()">Print</button>
+</div>
+
+<main>
+
+  <div class="script-panel active" id="panel-A">
+    <p class="scene-setup">A small office at the Ciudad de las Artes y las Ciencias, during job interviews for an English-speaking guide.</p>
+    <p class="focus-tags">Present simple &amp; present continuous &middot; stative verbs &middot; personality adjectives</p>
+
+    <div class="version active" id="ver-A-2">
+      <div class="line char-a"><div class="char-name">Interviewer</div><div class="line-text">Good afternoon, Aitana. Please, sit down. So, what do you do at the moment?</div></div>
+      <div class="line char-b"><div class="char-name">Aitana</div><div class="line-text">At the moment I'm training as a science guide here at the Ciutat, but I usually work as a primary school teacher in Ruzafa.</div></div>
+      <div class="line char-a"><div class="char-name">Interviewer</div><div class="line-text">Interesting. Are you a confident person?</div></div>
+      <div class="line char-b"><div class="char-name">Aitana</div><div class="line-text">Very. I'm not usually nervous, but I have to admit, right now I'm feeling a little nervous.</div></div>
+      <div class="line char-a"><div class="char-name">Interviewer</div><div class="line-text">That's understandable. What kind of person are you, generally?</div></div>
+      <div class="line char-b"><div class="char-name">Aitana</div><div class="line-text">I'm sociable and hard-working. My students say I'm patient too, even on a long day.</div></div>
+      <div class="line char-a"><div class="char-name">Interviewer</div><div class="line-text">Good qualities for a guide. Do you know much about the museum?</div></div>
+      <div class="line char-b"><div class="char-name">Aitana</div><div class="line-text">I do. I love science, and I read about the exhibits every evening. I think the Hemisferic is the most interesting building here.</div></div>
+      <div class="line char-a"><div class="char-name">Interviewer</div><div class="line-text">I agree, it's beautiful. What's that you're holding?</div></div>
+      <div class="line char-b"><div class="char-name">Aitana</div><div class="line-text">Oh, this is my notebook. I'm writing some notes for my speech right now, but I usually keep it for lesson planning.</div></div>
+      <div class="line char-a"><div class="char-name">Interviewer</div><div class="line-text">Very organised. One more question, are you a careful person?</div></div>
+      <div class="line char-b"><div class="char-name">Aitana</div><div class="line-text">Extremely. I'm always careful with the children in my class, and I never lose things. Actually, I have three years of experience working with groups.</div></div>
+      <div class="line char-a"><div class="char-name">Interviewer</div><div class="line-text">Last question. Are your colleagues able to rely on you?</div></div>
+      <div class="line char-b"><div class="char-name">Aitana</div><div class="line-text">Definitely, I'm very reliable. I'm never late, and I'm always calm under pressure. I believe honesty matters most in this job, so I'm always honest with visitors, even when I don't know an answer.</div></div>
+      <div class="line char-a"><div class="char-name">Interviewer</div><div class="line-text">Wonderful. And are you usually a cheerful person?</div></div>
+      <div class="line char-b"><div class="char-name">Aitana</div><div class="line-text">Always. I love making people smile, especially the children.</div></div>
+      <div class="line char-a"><div class="char-name">Interviewer</div><div class="line-text">That's exactly what we're looking for. Thank you, Aitana. We're deciding by Friday.</div></div>
+      <div class="line char-b"><div class="char-name">Aitana</div><div class="line-text">Thank you. I really hope I get it, this job sounds perfect for me.</div></div>
+    </div>
+
+    <div class="version" id="ver-A-3">
+      <div class="line char-a"><div class="char-name">Interviewer</div><div class="line-text">Good afternoon, Aitana. Please, sit down. So, what do you do at the moment?</div></div>
+      <div class="line char-b"><div class="char-name">Aitana</div><div class="line-text">At the moment I'm training as a science guide here at the Ciutat, but I usually work as a primary school teacher in Ruzafa.</div></div>
+      <div class="stage-direction">Marina arrives quietly and sits down to wait for her own interview.</div>
+      <div class="line char-c"><div class="char-name">Marina</div><div class="line-text">Sorry, am I too early? I can wait outside if you'd prefer.</div></div>
+      <div class="line char-a"><div class="char-name">Interviewer</div><div class="line-text">Not at all, Marina, stay there, we're nearly finished. Aitana, are you a confident person?</div></div>
+      <div class="line char-b"><div class="char-name">Aitana</div><div class="line-text">Very. I'm not usually nervous, but right now, with someone else listening too, I'm feeling a little nervous.</div></div>
+      <div class="line char-c"><div class="char-name">Marina</div><div class="line-text">Don't worry, I always get nervous before interviews as well, it's completely normal.</div></div>
+      <div class="line char-a"><div class="char-name">Interviewer</div><div class="line-text">What kind of person are you, generally, Aitana?</div></div>
+      <div class="line char-b"><div class="char-name">Aitana</div><div class="line-text">I'm sociable and hard-working. My students say I'm patient too, even on a difficult day.</div></div>
+      <div class="line char-c"><div class="char-name">Marina</div><div class="line-text">I'm exactly the same, sociable and hard-working. I think we'd both do well here.</div></div>
+      <div class="line char-a"><div class="char-name">Interviewer</div><div class="line-text">Do you know much about the museum, Aitana?</div></div>
+      <div class="line char-b"><div class="char-name">Aitana</div><div class="line-text">I do. I love science, and I read about the exhibits every evening. I think the Hemisferic is the most interesting building here.</div></div>
+      <div class="line char-c"><div class="char-name">Marina</div><div class="line-text">I know it well too, I visit every weekend, I'm always learning something new there.</div></div>
+      <div class="line char-a"><div class="char-name">Interviewer</div><div class="line-text">One more question, Aitana. Are you a careful person?</div></div>
+      <div class="line char-b"><div class="char-name">Aitana</div><div class="line-text">Extremely. I'm always careful with the children in my class, and I never lose things. I have three years of experience working with groups.</div></div>
+      <div class="line char-a"><div class="char-name">Interviewer</div><div class="line-text">Wonderful. Thank you, Aitana. Marina, are you ready?</div></div>
+      <div class="line char-c"><div class="char-name">Marina</div><div class="line-text">I am. I'm a little nervous, but I'm also really excited.</div></div>
+      <div class="line char-b"><div class="char-name">Aitana</div><div class="line-text">Good luck, Marina. You're reliable and honest, everyone says that about you. You'll be great.</div></div>
+      <div class="line char-c"><div class="char-name">Marina</div><div class="line-text">Thank you, that's kind. I hope I'm as calm as you were in there.</div></div>
+      <div class="stage-direction">The interviewer looks at her watch and smiles at them both.</div>
+      <div class="line char-a"><div class="char-name">Interviewer</div><div class="line-text">Thank you both. We're deciding by Friday. Good luck!</div></div>
+      <div class="line joint-line"><div class="char-name">Aitana &amp; Marina</div><div class="line-text">Thank you!</div></div>
+    </div>
+  </div>
+
+  <div class="script-panel" id="panel-B">
+    <p class="scene-setup">Saturday morning at the Mercado de Ruzafa, where a small job fair has set up stalls for summer work.</p>
+    <p class="focus-tags">Present simple &amp; present continuous &middot; stative verbs &middot; personality adjectives</p>
+
+    <div class="version active" id="ver-B-2">
+      <div class="line char-a"><div class="char-name">Nico</div><div class="line-text">Look, there's a stall for a dog-walking job in the Turia Gardens. Are you interested?</div></div>
+      <div class="line char-b"><div class="char-name">Paula</div><div class="line-text">Not really, I'm not very sociable with dogs, I prefer people. What are you looking at?</div></div>
+      <div class="line char-a"><div class="char-name">Nico</div><div class="line-text">This one, a café job here in Ruzafa. I usually work Saturdays at my dad's shop, but I want something different this summer.</div></div>
+      <div class="line char-b"><div class="char-name">Paula</div><div class="line-text">Are you a hard-working person? Cafés get really busy.</div></div>
+      <div class="line char-a"><div class="char-name">Nico</div><div class="line-text">Definitely. I'm never lazy, and I'm quite calm even when it's chaotic.</div></div>
+      <div class="line char-b"><div class="char-name">Paula</div><div class="line-text">I'm applying for that one, tour guide at the Central Market. I love talking to tourists, and I know loads of facts about Valencia.</div></div>
+      <div class="line char-a"><div class="char-name">Nico</div><div class="line-text">That suits you, you're confident and sociable. Are you nervous about the interview though?</div></div>
+      <div class="line char-b"><div class="char-name">Paula</div><div class="line-text">A little. I'm not usually nervous, but right now, with so many people here, I'm feeling a bit overwhelmed.</div></div>
+      <div class="line char-a"><div class="char-name">Nico</div><div class="line-text">You'll be fine. You're one of the most reliable people I know, you never let anyone down.</div></div>
+      <div class="line char-b"><div class="char-name">Paula</div><div class="line-text">Thanks. Come on, let's ask about your café job before the stall closes.</div></div>
+    </div>
+
+    <div class="version" id="ver-B-3">
+      <div class="line char-a"><div class="char-name">Nico</div><div class="line-text">Look, there's a stall for a dog-walking job in the Turia Gardens. Are you interested, Paula?</div></div>
+      <div class="line char-b"><div class="char-name">Paula</div><div class="line-text">Not really, I'm not very sociable with dogs, I prefer people.</div></div>
+      <div class="stage-direction">Diego arrives, holding a flyer, and joins them.</div>
+      <div class="line char-c"><div class="char-name">Diego</div><div class="line-text">Hey, have you two applied for anything yet? This place is busy today.</div></div>
+      <div class="line char-a"><div class="char-name">Nico</div><div class="line-text">Not yet. I usually work Saturdays at my dad's shop, but I want something different this summer, maybe this café job in Ruzafa.</div></div>
+      <div class="line char-c"><div class="char-name">Diego</div><div class="line-text">Are you a hard-working person, Nico? Cafés get chaotic.</div></div>
+      <div class="line char-a"><div class="char-name">Nico</div><div class="line-text">Definitely. I'm never lazy, and I'm quite calm even under pressure.</div></div>
+      <div class="line char-b"><div class="char-name">Paula</div><div class="line-text">I'm applying for the tour guide job at the Central Market. I love talking to tourists, and I know loads about Valencia.</div></div>
+      <div class="line char-c"><div class="char-name">Diego</div><div class="line-text">That suits you, you're confident and sociable. I'm applying there too, actually.</div></div>
+      <div class="line char-b"><div class="char-name">Paula</div><div class="line-text">Are you nervous about it?</div></div>
+      <div class="line char-c"><div class="char-name">Diego</div><div class="line-text">A little. I'm not usually nervous, but with this many people around, I'm feeling a bit overwhelmed right now.</div></div>
+      <div class="line char-a"><div class="char-name">Nico</div><div class="line-text">You're both reliable, you'll be fine. Come on, let's ask about my café job before the stall closes.</div></div>
+      <div class="line joint-line"><div class="char-name">Paula &amp; Diego</div><div class="line-text">Good luck!</div></div>
+    </div>
+  </div>
+
+  <div class="script-panel" id="panel-C">
+    <p class="scene-setup">A video call for a summer lifeguard job at Malvarrosa beach.</p>
+    <p class="focus-tags">Present simple &amp; present continuous &middot; stative verbs &middot; personality adjectives</p>
+
+    <div class="version active" id="ver-C-2">
+      <div class="line char-a"><div class="char-name">Manager</div><div class="line-text">Hi Elena, thanks for joining the call. So, what are you doing this summer?</div></div>
+      <div class="line char-b"><div class="char-name">Elena</div><div class="line-text">At the moment I'm finishing my exams, but I usually spend the summer at the beach anyway, so this job feels perfect.</div></div>
+      <div class="line char-a"><div class="char-name">Manager</div><div class="line-text">Good. Are you a responsible person? You'd be watching the beach at Malvarrosa.</div></div>
+      <div class="line char-b"><div class="char-name">Elena</div><div class="line-text">Very. I'm always careful, and I never lose concentration when I'm working.</div></div>
+      <div class="line char-a"><div class="char-name">Manager</div><div class="line-text">And are you confident in the water?</div></div>
+      <div class="line char-b"><div class="char-name">Elena</div><div class="line-text">Extremely. I've been swimming there since I was small, I know that beach really well.</div></div>
+      <div class="line char-a"><div class="char-name">Manager</div><div class="line-text">One last thing, are you usually a calm person under pressure?</div></div>
+      <div class="line char-b"><div class="char-name">Elena</div><div class="line-text">Yes, I'm naturally calm. I don't panic easily, even in an emergency.</div></div>
+      <div class="line char-a"><div class="char-name">Manager</div><div class="line-text">Perfect, that's exactly what we need. Are you free to start next week?</div></div>
+      <div class="line char-b"><div class="char-name">Elena</div><div class="line-text">I am. I'm really excited, this sounds like the perfect summer job.</div></div>
+    </div>
+
+    <div class="version" id="ver-C-3">
+      <div class="line char-a"><div class="char-name">Manager</div><div class="line-text">Hi Elena, thanks for joining the call. So, what are you doing this summer?</div></div>
+      <div class="line char-b"><div class="char-name">Elena</div><div class="line-text">At the moment I'm finishing my exams, but I usually spend the summer at the beach anyway, so this job feels perfect.</div></div>
+      <div class="stage-direction">Elena's younger brother Marc walks into the room by mistake.</div>
+      <div class="line char-c"><div class="char-name">Marc</div><div class="line-text">Elena, have you seen my, oh, sorry, are you in a meeting?</div></div>
+      <div class="line char-b"><div class="char-name">Elena</div><div class="line-text">Marc, I'm doing my interview right now! Can you wait outside?</div></div>
+      <div class="line char-c"><div class="char-name">Marc</div><div class="line-text">Sorry! She's really reliable, by the way, she never forgets anything.</div></div>
+      <div class="line char-a"><div class="char-name">Manager</div><div class="line-text">Ha, good to know. Elena, are you a responsible person? You'd be watching the beach at Malvarrosa.</div></div>
+      <div class="line char-b"><div class="char-name">Elena</div><div class="line-text">Very. I'm always careful, and I never lose concentration when I'm working.</div></div>
+      <div class="line char-a"><div class="char-name">Manager</div><div class="line-text">And are you confident in the water?</div></div>
+      <div class="line char-b"><div class="char-name">Elena</div><div class="line-text">Extremely. I've been swimming there since I was small, I know that beach really well.</div></div>
+      <div class="line char-a"><div class="char-name">Manager</div><div class="line-text">One last thing, are you usually a calm person under pressure?</div></div>
+      <div class="line char-b"><div class="char-name">Elena</div><div class="line-text">Yes, I'm naturally calm. I don't panic easily, even in an emergency.</div></div>
+      <div class="line char-c"><div class="char-name">Marc</div><div class="line-text">She's honest too, she always tells our mum the truth, even when it's bad news!</div></div>
+      <div class="line char-b"><div class="char-name">Elena</div><div class="line-text">Marc!</div></div>
+      <div class="line char-a"><div class="char-name">Manager</div><div class="line-text">That's exactly what we need. Elena, are you free to start next week?</div></div>
+      <div class="line char-b"><div class="char-name">Elena</div><div class="line-text">I am. I'm really excited, this sounds like the perfect summer job.</div></div>
+    </div>
+  </div>
+
+</main>
+
+<footer>Somerset Language Centre &middot; Valencia &middot; PET I Review Plays</footer>
+
+<script>
+let currentScript = 'A';
+let currentVersion = 2;
+
+function showScript(s){ currentScript = s; render(); }
+function showVersionCount(v){ currentVersion = v; render(); }
+
+function render(){
+  ['A','B','C'].forEach(function(s){
+    document.getElementById('panel-' + s).classList.toggle('active', s === currentScript);
+    document.getElementById('scriptBtn' + s).classList.toggle('active', s === currentScript);
+  });
+  [2,3].forEach(function(v){
+    document.getElementById('verBtn' + v).classList.toggle('active', v === currentVersion);
+  });
+  ['A','B','C'].forEach(function(s){
+    [2,3].forEach(function(v){
+      const el = document.getElementById('ver-' + s + '-' + v);
+      if (el) el.classList.toggle('active', v === currentVersion);
+    });
+  });
+}
+render();
+</script>
+</body>
+</html>

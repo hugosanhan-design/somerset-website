@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Somerset · Find Your Match — Warm-Up Mission</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..900&family=Instrument+Sans:wght@400..700&display=swap" rel="stylesheet">
+<style>
+@page{size:A4;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#6BAE2E; --green-deep:#2F6B1A; --green-ink:#1E4227;
+  --ice:#3A8FA3; --ice-pale:#EAF6F8;
+  --paper:#FFFDF8; --ink:#1B2419; --ink-soft:#4E5A4A; --rule:#DED8C8;
+  --serif:'Fraunces','Playfair Display',Georgia,serif;
+  --sans:'Instrument Sans','Segoe UI',system-ui,sans-serif;
+}
+body{font-family:var(--sans);background:#dcd9d0;color:var(--ink);font-size:12pt;line-height:1.5}
+.pg{width:210mm;height:297mm;background:#fff;margin:0 auto 8px;position:relative;overflow:hidden;page-break-after:always;display:flex;flex-direction:column}
+.pg:last-child{page-break-after:auto}
+.in{padding:10mm 15mm 16mm;flex:1;display:flex;flex-direction:column}
+@media print{body{background:#fff}.pg{margin:0}}
+
+.kick{font-size:9pt;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ice)}
+.kick b{color:var(--green-deep)}
+h1.hl{font-family:var(--serif);font-weight:600;font-size:25pt;line-height:1.05;letter-spacing:-.02em;margin:5px 0 4px;color:var(--ink)}
+h2.sh{font-family:var(--serif);font-weight:600;font-size:15pt;margin:10px 0 5px;color:var(--green-deep)}
+.deck{font-family:var(--serif);font-weight:400;font-size:13pt;line-height:1.34;color:var(--ink-soft);margin-bottom:8px}
+p{font-size:12pt;line-height:1.45;margin-bottom:6px}
+
+.crack{background:#fff;border:1.5px solid var(--ice);border-radius:14px;padding:10px 15px;font-size:12pt;line-height:1.4;margin-bottom:10px}
+.crack .lab{display:block;font-family:var(--sans);font-size:9pt;letter-spacing:.14em;text-transform:uppercase;color:var(--ice);font-weight:700;margin-bottom:4px}
+.crack.g{border-color:var(--green)}
+.crack.g .lab{color:var(--green-deep)}
+
+.say{list-style:none;margin:6px 0}
+.say li{font-family:var(--serif);font-size:13pt;font-style:italic;color:var(--green-deep);margin-bottom:5px;padding-left:22px;position:relative}
+.say li::before{content:"\201C";position:absolute;left:0;font-size:16pt;top:-3px}
+
+.foot{position:absolute;left:15mm;right:15mm;bottom:8mm;display:flex;justify-content:space-between;align-items:baseline;
+  font-size:8pt;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);border-top:1px solid var(--rule);padding-top:5px}
+.foot .pn{font-family:var(--serif);font-size:12pt;font-weight:700;letter-spacing:0;color:var(--green-deep)}
+
+/* mission sheet */
+.owner{background:#fff;border:1px solid var(--rule);border-radius:12px;padding:6px 12px;display:flex;gap:8mm;align-items:baseline;margin-bottom:10px}
+.owner span{font-size:9pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);white-space:nowrap}
+.owner .fld{flex:1;border-bottom:1.5px solid var(--ink-soft);height:14px}
+table.mission{width:100%;border-collapse:collapse;table-layout:fixed;font-size:12pt;margin-top:4px}
+table.mission th{background:var(--ice-pale);border:1px solid var(--rule);padding:3px 6px;text-align:left;font-family:var(--sans);font-size:8.5pt;text-transform:uppercase;letter-spacing:.05em;color:var(--ice)}
+table.mission td{border:1px solid var(--rule);padding:2.5px 6px;vertical-align:top}
+table.mission td.num{font-family:var(--serif);font-weight:700;color:var(--green-deep);text-align:center;width:5mm}
+table.mission td.clue{width:56%;font-family:var(--serif);font-style:italic;color:var(--green-deep);line-height:1.22}
+table.mission th:nth-child(3),table.mission td:nth-child(3){width:14%}
+table.mission th:nth-child(4),table.mission td:nth-child(4){width:16%}
+table.mission th:nth-child(5),table.mission td:nth-child(5){width:11%}
+table.mission td.blank{height:12px}
+
+/* character cards */
+.cardsheet{display:flex;flex-wrap:wrap;align-content:flex-start;gap:5mm}
+.pcard{width:calc(50% - 2.5mm);border:1.6pt solid var(--green-ink);border-radius:6mm;overflow:hidden;display:flex;flex-direction:column;background:var(--paper);margin-bottom:5mm}
+.pchead{background:var(--green-ink);color:#fff;padding:3mm 4mm;display:flex;align-items:center;gap:3mm}
+.pcnum{background:var(--green);border-radius:50%;width:8mm;height:8mm;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:11pt;flex-shrink:0}
+.pcicon{width:9mm;height:9mm;flex-shrink:0}
+.pctitles{flex:1;min-width:0}
+.pcname{display:block;font-family:var(--serif);font-weight:700;font-size:12.5pt;line-height:1.05}
+.pcrole{display:block;font-size:8pt;letter-spacing:.08em;text-transform:uppercase;color:#9BE06A;font-weight:700;margin-top:1.5px}
+.pcbody{padding:3mm 4mm;display:flex;flex-direction:column}
+.pcnote{font-family:var(--serif);font-style:italic;font-size:9.5pt;color:var(--ink-soft);line-height:1.3;margin-bottom:3mm;padding-bottom:2.5mm;border-bottom:1px dashed var(--rule)}
+table.stats{border-collapse:collapse;table-layout:fixed;width:100%}
+table.stats td{border-bottom:.6pt solid var(--rule);padding:1.8mm 0;font-size:9.5pt}
+table.stats td.sl{width:32%;font-weight:600;color:var(--ink-soft);padding-right:2mm}
+table.stats td.sv{width:18%;text-align:right;font-family:var(--serif);font-weight:700;font-size:11pt;color:var(--green-deep);padding-right:4mm}
+.pcfoot{background:var(--ice-pale);border-top:.8pt solid var(--ice);font-size:8pt;font-weight:600;color:#12333c;padding:2mm 4mm;line-height:1.3}
+</style>
+</head>
+<body>
+
+<!-- ============ PAGE 1 — TEACHER INSTRUCTIONS ============ -->
+<div class="pg"><div class="in">
+  <div class="kick"><b>Somerset</b> · Flyers I · Warm-Up Mission</div>
+  <h1 class="hl">Find Your Match!</h1>
+  <div class="deck">A mingling, comparative-adjective warm-up — famous athletes and historical figures, one secret character per student.</div>
+
+  <div class="crack g"><span class="lab">How to run it</span>Give each of the 11 students one Character Card (cut from the sheets that follow) and one Mission Sheet. <b>Nobody shows their card.</b> Students walk around the room asking each other questions to find a classmate whose character matches each of the 15 clues. When they find a match, they write down: the classmate's name, their character's name, and the number or fact that proves it. A different classmate can confirm more than one clue.</div>
+
+  <div class="crack"><span class="lab">Language to model first</span>
+    <ul class="say">
+      <li>Is your character taller than mine?</li>
+      <li>How many pets does your character have?</li>
+      <li>My character is Rafael Nadal.</li>
+      <li>Yes, he is! / No, she isn't.</li>
+    </ul>
+  </div>
+
+  <div class="crack"><span class="lab">Valencia / Spain connection</span>Two cards are built in: <b>Rafael Nadal</b> trains not far from here, on the Spanish coast, and <b>Christopher Columbus</b> sailed for <b>Isabel la Católica</b>, Queen of Spain — also in the deck. Worth pointing out to the class once the mingling settles.</div>
+
+  <div class="crack"><span class="lab">Honest note for you, not the class</span>Heights for the athletes are roughly accurate. Everything else — pets, houses, cars, hair length, "bravery" — is invented for the game, the same way the Unit 1 Top Trumps deck uses made-up stats. No need to mention this to the students; it just keeps the numbers fun and comparable.</div>
+
+  <div class="foot"><span>Somerset Language Centre · Valencia</span><span class="pn">Teacher</span></div>
+</div></div>
+
+<!-- ============ PAGE 2 — MISSION SHEET ============ -->
+<div class="pg"><div class="in">
+  <div class="kick"><b>Somerset</b> · Flyers I · Warm-Up Mission</div>
+  <h1 class="hl" style="font-size:21pt">Find Your Match! — Mission Sheet</h1>
+  <div class="deck">Walk around. Ask a question. When you find a match, write it down!</div>
+  <div class="owner"><span>Name</span><span class="fld"></span><span>My character</span><span class="fld"></span></div>
+
+  <table class="mission">
+    <tr><th>#</th><th>Ask this question</th><th>Classmate's name</th><th>Their character</th><th>Proof</th></tr>
+    <tr><td class="num">1</td><td class="clue">"Is yours taller than mine?"</td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+    <tr><td class="num">2</td><td class="clue">"Is yours shorter than mine?"</td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+    <tr><td class="num">3</td><td class="clue">"Is yours older than mine?"</td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+    <tr><td class="num">4</td><td class="clue">"Is yours younger than mine?"</td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+    <tr><td class="num">5</td><td class="clue">"Does yours have more pets than mine?"</td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+    <tr><td class="num">6</td><td class="clue">"Does yours have fewer pets than mine?"</td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+    <tr><td class="num">7</td><td class="clue">"Does yours have more houses than mine?"</td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+    <tr><td class="num">8</td><td class="clue">"Does yours have more cars than mine?"</td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+    <tr><td class="num">9</td><td class="clue">"Does yours have more siblings than mine?"</td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+    <tr><td class="num">10</td><td class="clue">"Did yours win more trophies than mine?"</td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+    <tr><td class="num">11</td><td class="clue">"Does yours speak more languages than mine?"</td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+    <tr><td class="num">12</td><td class="clue">"Has yours visited more countries than mine?"</td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+    <tr><td class="num">13</td><td class="clue">"Has yours got bigger feet than mine?"</td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+    <tr><td class="num">14</td><td class="clue">"Has yours got bigger eyes than mine?"</td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+    <tr><td class="num">15</td><td class="clue">"Is yours braver than mine?"</td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+  </table>
+
+  <div class="foot"><span>Somerset Language Centre · Valencia</span><span class="pn">Mission</span></div>
+</div></div>
+
+<!-- ============ PAGE 3 — CARDS 1-4 ============ -->
+<div class="pg"><div class="in">
+  <div class="kick"><b>Somerset</b> · Character Cards · cut apart, one per student</div>
+  <div class="cardsheet">
+
+    <div class="pcard">
+      <div class="pchead"><span class="pcnum">1</span>
+        <svg class="pcicon" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="5" r="2"/><path d="M13 22l2-6 3 2 2 5M5 22l3-9 4-2-1-4-4 1-2 4"/><path d="M11 9l3 2 3-2"/></svg>
+        <span class="pctitles"><span class="pcname">Usain Bolt</span><span class="pcrole">Athlete · Sprinter · Jamaica</span></span>
+      </div>
+      <div class="pcbody">
+        <div class="pcnote">The fastest runner in the world. Loves to dance after every race.</div>
+        <table class="stats"><tr><td class="sl">Height (cm)</td><td class="sv">195</td><td class="sl">Languages</td><td class="sv">2</td></tr><tr><td class="sl">Age</td><td class="sv">28</td><td class="sl">Countries</td><td class="sv">40</td></tr><tr><td class="sl">Pets</td><td class="sv">2</td><td class="sl">Shoe size</td><td class="sv">46</td></tr><tr><td class="sl">Houses</td><td class="sv">3</td><td class="sl">Eyes</td><td class="sv">6</td></tr><tr><td class="sl">Cars</td><td class="sv">5</td><td class="sl">Bravery</td><td class="sv">9</td></tr><tr><td class="sl">Siblings</td><td class="sv">1</td><td class="sl"></td><td class="sv"></td></tr><tr><td class="sl">Trophies</td><td class="sv">12</td><td class="sl"></td><td class="sv"></td></tr></table>
+      </div>
+      <div class="pcfoot">Character 1 of 11 · keep it secret!</div>
+    </div>
+
+    <div class="pcard">
+      <div class="pchead"><span class="pcnum">2</span>
+        <svg class="pcicon" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="6" r="3"/><path d="M6 21l3-9h6l3 9"/><path d="M9 12l-4 3M15 12l4 3"/></svg>
+        <span class="pctitles"><span class="pcname">Rafael Nadal</span><span class="pcrole">Athlete · Tennis · Spain</span></span>
+      </div>
+      <div class="pcbody">
+        <div class="pcnote">A tennis champion from Mallorca — not far from Valencia! Never gives up on a point.</div>
+        <table class="stats"><tr><td class="sl">Height (cm)</td><td class="sv">185</td><td class="sl">Languages</td><td class="sv">3</td></tr><tr><td class="sl">Age</td><td class="sv">30</td><td class="sl">Countries</td><td class="sv">55</td></tr><tr><td class="sl">Pets</td><td class="sv">4</td><td class="sl">Shoe size</td><td class="sv">45</td></tr><tr><td class="sl">Houses</td><td class="sv">5</td><td class="sl">Eyes</td><td class="sv">7</td></tr><tr><td class="sl">Cars</td><td class="sv">8</td><td class="sl">Bravery</td><td class="sv">10</td></tr><tr><td class="sl">Siblings</td><td class="sv">1</td><td class="sl"></td><td class="sv"></td></tr><tr><td class="sl">Trophies</td><td class="sv">22</td><td class="sl"></td><td class="sv"></td></tr></table>
+      </div>
+      <div class="pcfoot">Character 2 of 11 · keep it secret!</div>
+    </div>
+
+    <div class="pcard">
+      <div class="pchead"><span class="pcnum">3</span>
+        <svg class="pcicon" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.5 5 5.5.8-4 3.9.9 5.5L12 14.7 7.1 17.2l.9-5.5-4-3.9 5.5-.8z"/></svg>
+        <span class="pctitles"><span class="pcname">Simone Biles</span><span class="pcrole">Athlete · Gymnastics · USA</span></span>
+      </div>
+      <div class="pcbody">
+        <div class="pcnote">One of the greatest gymnasts ever. Small, powerful, and incredibly brave.</div>
+        <table class="stats"><tr><td class="sl">Height (cm)</td><td class="sv">142</td><td class="sl">Languages</td><td class="sv">1</td></tr><tr><td class="sl">Age</td><td class="sv">21</td><td class="sl">Countries</td><td class="sv">20</td></tr><tr><td class="sl">Pets</td><td class="sv">3</td><td class="sl">Shoe size</td><td class="sv">34</td></tr><tr><td class="sl">Houses</td><td class="sv">2</td><td class="sl">Eyes</td><td class="sv">8</td></tr><tr><td class="sl">Cars</td><td class="sv">2</td><td class="sl">Bravery</td><td class="sv">10</td></tr><tr><td class="sl">Siblings</td><td class="sv">1</td><td class="sl"></td><td class="sv"></td></tr><tr><td class="sl">Trophies</td><td class="sv">30</td><td class="sl"></td><td class="sv"></td></tr></table>
+      </div>
+      <div class="pcfoot">Character 3 of 11 · keep it secret!</div>
+    </div>
+
+    <div class="pcard">
+      <div class="pchead"><span class="pcnum">4</span>
+        <svg class="pcicon" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7l4 3-1.5 5h-5L8 10z"/></svg>
+        <span class="pctitles"><span class="pcname">Lionel Messi</span><span class="pcrole">Athlete · Football · Argentina</span></span>
+      </div>
+      <div class="pcbody">
+        <div class="pcnote">One of the best footballers of all time. Played many years in Spain.</div>
+        <table class="stats"><tr><td class="sl">Height (cm)</td><td class="sv">170</td><td class="sl">Languages</td><td class="sv">2</td></tr><tr><td class="sl">Age</td><td class="sv">29</td><td class="sl">Countries</td><td class="sv">30</td></tr><tr><td class="sl">Pets</td><td class="sv">1</td><td class="sl">Shoe size</td><td class="sv">39</td></tr><tr><td class="sl">Houses</td><td class="sv">6</td><td class="sl">Eyes</td><td class="sv">6</td></tr><tr><td class="sl">Cars</td><td class="sv">10</td><td class="sl">Bravery</td><td class="sv">8</td></tr><tr><td class="sl">Siblings</td><td class="sv">3</td><td class="sl"></td><td class="sv"></td></tr><tr><td class="sl">Trophies</td><td class="sv">44</td><td class="sl"></td><td class="sv"></td></tr></table>
+      </div>
+      <div class="pcfoot">Character 4 of 11 · keep it secret!</div>
+    </div>
+
+  </div>
+  <div class="foot"><span>Somerset Language Centre · Valencia</span><span class="pn">Cards</span></div>
+</div></div>
+
+<!-- ============ PAGE 4 — CARDS 5-8 ============ -->
+<div class="pg"><div class="in">
+  <div class="kick"><b>Somerset</b> · Character Cards · cut apart, one per student</div>
+  <div class="cardsheet">
+
+    <div class="pcard">
+      <div class="pchead"><span class="pcnum">5</span>
+        <svg class="pcicon" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="6" r="3"/><path d="M6 21l3-9h6l3 9"/><path d="M9 12l-4 3M15 12l4 3"/></svg>
+        <span class="pctitles"><span class="pcname">Serena Williams</span><span class="pcrole">Athlete · Tennis · USA</span></span>
+      </div>
+      <div class="pcbody">
+        <div class="pcnote">A tennis champion known for her powerful serve and her fierce focus.</div>
+        <table class="stats"><tr><td class="sl">Height (cm)</td><td class="sv">175</td><td class="sl">Languages</td><td class="sv">2</td></tr><tr><td class="sl">Age</td><td class="sv">33</td><td class="sl">Countries</td><td class="sv">45</td></tr><tr><td class="sl">Pets</td><td class="sv">5</td><td class="sl">Shoe size</td><td class="sv">40</td></tr><tr><td class="sl">Houses</td><td class="sv">4</td><td class="sl">Eyes</td><td class="sv">9</td></tr><tr><td class="sl">Cars</td><td class="sv">6</td><td class="sl">Bravery</td><td class="sv">9</td></tr><tr><td class="sl">Siblings</td><td class="sv">1</td><td class="sl"></td><td class="sv"></td></tr><tr><td class="sl">Trophies</td><td class="sv">23</td><td class="sl"></td><td class="sv"></td></tr></table>
+      </div>
+      <div class="pcfoot">Character 5 of 11 · keep it secret!</div>
+    </div>
+
+    <div class="pcard">
+      <div class="pchead"><span class="pcnum">6</span>
+        <svg class="pcicon" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8l3 3 5-6 5 6 3-3-2 10H6z"/><path d="M6 20h12"/></svg>
+        <span class="pctitles"><span class="pcname">Cleopatra</span><span class="pcrole">Historical · Queen of Egypt</span></span>
+      </div>
+      <div class="pcbody">
+        <div class="pcnote">A powerful queen of ancient Egypt, famous for her intelligence.</div>
+        <table class="stats"><tr><td class="sl">Height (cm)</td><td class="sv">160</td><td class="sl">Languages</td><td class="sv">5</td></tr><tr><td class="sl">Age</td><td class="sv">25</td><td class="sl">Countries</td><td class="sv">5</td></tr><tr><td class="sl">Pets</td><td class="sv">6</td><td class="sl">Shoe size</td><td class="sv">37</td></tr><tr><td class="sl">Houses</td><td class="sv">8</td><td class="sl">Eyes</td><td class="sv">10</td></tr><tr><td class="sl">Cars</td><td class="sv">0</td><td class="sl">Bravery</td><td class="sv">10</td></tr><tr><td class="sl">Siblings</td><td class="sv">3</td><td class="sl"></td><td class="sv"></td></tr><tr><td class="sl">Trophies</td><td class="sv">0</td><td class="sl"></td><td class="sv"></td></tr></table>
+      </div>
+      <div class="pcfoot">Character 6 of 11 · keep it secret! · no cars — cars didn't exist yet!</div>
+    </div>
+
+    <div class="pcard">
+      <div class="pchead"><span class="pcnum">7</span>
+        <svg class="pcicon" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20l5-14 4 4-4 14z"/><circle cx="18" cy="6" r="2.5"/></svg>
+        <span class="pctitles"><span class="pcname">Leonardo da Vinci</span><span class="pcrole">Historical · Artist &amp; Inventor · Italy</span></span>
+      </div>
+      <div class="pcbody">
+        <div class="pcnote">A painter, inventor and scientist all at once. Painted the Mona Lisa.</div>
+        <table class="stats"><tr><td class="sl">Height (cm)</td><td class="sv">175</td><td class="sl">Languages</td><td class="sv">4</td></tr><tr><td class="sl">Age</td><td class="sv">40</td><td class="sl">Countries</td><td class="sv">8</td></tr><tr><td class="sl">Pets</td><td class="sv">2</td><td class="sl">Shoe size</td><td class="sv">38</td></tr><tr><td class="sl">Houses</td><td class="sv">4</td><td class="sl">Eyes</td><td class="sv">7</td></tr><tr><td class="sl">Cars</td><td class="sv">0</td><td class="sl">Bravery</td><td class="sv">6</td></tr><tr><td class="sl">Siblings</td><td class="sv">2</td><td class="sl"></td><td class="sv"></td></tr><tr><td class="sl">Trophies</td><td class="sv">0</td><td class="sl"></td><td class="sv"></td></tr></table>
+      </div>
+      <div class="pcfoot">Character 7 of 11 · keep it secret! · no cars — cars didn't exist yet!</div>
+    </div>
+
+    <div class="pcard">
+      <div class="pchead"><span class="pcnum">8</span>
+        <svg class="pcicon" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15h13l4-4-2-1-15 1z"/><path d="M6 15v4M10 15l-1 4M14 15l-1 4"/><path d="M9 10V4l6 3-6 3"/></svg>
+        <span class="pctitles"><span class="pcname">Christopher Columbus</span><span class="pcrole">Historical · Explorer</span></span>
+      </div>
+      <div class="pcbody">
+        <div class="pcnote">Sailed across the Atlantic Ocean with ships paid for by the Queen of Spain.</div>
+        <table class="stats"><tr><td class="sl">Height (cm)</td><td class="sv">170</td><td class="sl">Languages</td><td class="sv">3</td></tr><tr><td class="sl">Age</td><td class="sv">35</td><td class="sl">Countries</td><td class="sv">12</td></tr><tr><td class="sl">Pets</td><td class="sv">1</td><td class="sl">Shoe size</td><td class="sv">40</td></tr><tr><td class="sl">Houses</td><td class="sv">2</td><td class="sl">Eyes</td><td class="sv">5</td></tr><tr><td class="sl">Cars</td><td class="sv">0</td><td class="sl">Bravery</td><td class="sv">10</td></tr><tr><td class="sl">Siblings</td><td class="sv">5</td><td class="sl"></td><td class="sv"></td></tr><tr><td class="sl">Trophies</td><td class="sv">3</td><td class="sl"></td><td class="sv"></td></tr></table>
+      </div>
+      <div class="pcfoot">Character 8 of 11 · keep it secret! · sailed for Isabel la Católica (card 10)</div>
+    </div>
+
+  </div>
+  <div class="foot"><span>Somerset Language Centre · Valencia</span><span class="pn">Cards</span></div>
+</div></div>
+
+<!-- ============ PAGE 5 — CARDS 9-11 ============ -->
+<div class="pg"><div class="in">
+  <div class="kick"><b>Somerset</b> · Character Cards · cut apart, one per student</div>
+  <div class="cardsheet">
+
+    <div class="pcard">
+      <div class="pchead"><span class="pcnum">9</span>
+        <svg class="pcicon" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v5l-5 9a3 3 0 0 0 3 4h8a3 3 0 0 0 3-4l-5-9V3"/></svg>
+        <span class="pctitles"><span class="pcname">Marie Curie</span><span class="pcrole">Historical · Scientist · Poland/France</span></span>
+      </div>
+      <div class="pcbody">
+        <div class="pcnote">A scientist who discovered new elements and won two Nobel Prizes.</div>
+        <table class="stats"><tr><td class="sl">Height (cm)</td><td class="sv">155</td><td class="sl">Languages</td><td class="sv">3</td></tr><tr><td class="sl">Age</td><td class="sv">45</td><td class="sl">Countries</td><td class="sv">6</td></tr><tr><td class="sl">Pets</td><td class="sv">0</td><td class="sl">Shoe size</td><td class="sv">36</td></tr><tr><td class="sl">Houses</td><td class="sv">3</td><td class="sl">Eyes</td><td class="sv">8</td></tr><tr><td class="sl">Cars</td><td class="sv">1</td><td class="sl">Bravery</td><td class="sv">9</td></tr><tr><td class="sl">Siblings</td><td class="sv">2</td><td class="sl"></td><td class="sv"></td></tr><tr><td class="sl">Trophies</td><td class="sv">2</td><td class="sl"></td><td class="sv"></td></tr></table>
+      </div>
+      <div class="pcfoot">Character 9 of 11 · keep it secret!</div>
+    </div>
+
+    <div class="pcard">
+      <div class="pchead"><span class="pcnum">10</span>
+        <svg class="pcicon" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8l3 3 5-6 5 6 3-3-2 10H6z"/><path d="M6 20h12"/></svg>
+        <span class="pctitles"><span class="pcname">Isabel la Católica</span><span class="pcrole">Historical · Queen of Spain</span></span>
+      </div>
+      <div class="pcbody">
+        <div class="pcnote">Queen of Spain who paid for Columbus's voyage across the ocean.</div>
+        <table class="stats"><tr><td class="sl">Height (cm)</td><td class="sv">160</td><td class="sl">Languages</td><td class="sv">3</td></tr><tr><td class="sl">Age</td><td class="sv">38</td><td class="sl">Countries</td><td class="sv">3</td></tr><tr><td class="sl">Pets</td><td class="sv">4</td><td class="sl">Shoe size</td><td class="sv">35</td></tr><tr><td class="sl">Houses</td><td class="sv">10</td><td class="sl">Eyes</td><td class="sv">8</td></tr><tr><td class="sl">Cars</td><td class="sv">0</td><td class="sl">Bravery</td><td class="sv">9</td></tr><tr><td class="sl">Siblings</td><td class="sv">4</td><td class="sl"></td><td class="sv"></td></tr><tr><td class="sl">Trophies</td><td class="sv">1</td><td class="sl"></td><td class="sv"></td></tr></table>
+      </div>
+      <div class="pcfoot">Character 10 of 11 · keep it secret! · sent Columbus (card 8) sailing</div>
+    </div>
+
+    <div class="pcard">
+      <div class="pchead"><span class="pcnum">11</span>
+        <svg class="pcicon" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 13l8-2 5-9 2 1-3 8 6-1 2 2-7 3-3 7-2-1 1-6z"/></svg>
+        <span class="pctitles"><span class="pcname">Amelia Earhart</span><span class="pcrole">Historical · Aviator · USA</span></span>
+      </div>
+      <div class="pcbody">
+        <div class="pcnote">The first woman to fly an aeroplane alone across the Atlantic Ocean.</div>
+        <table class="stats"><tr><td class="sl">Height (cm)</td><td class="sv">172</td><td class="sl">Languages</td><td class="sv">2</td></tr><tr><td class="sl">Age</td><td class="sv">34</td><td class="sl">Countries</td><td class="sv">25</td></tr><tr><td class="sl">Pets</td><td class="sv">3</td><td class="sl">Shoe size</td><td class="sv">39</td></tr><tr><td class="sl">Houses</td><td class="sv">3</td><td class="sl">Eyes</td><td class="sv">7</td></tr><tr><td class="sl">Cars</td><td class="sv">1</td><td class="sl">Bravery</td><td class="sv">10</td></tr><tr><td class="sl">Siblings</td><td class="sv">1</td><td class="sl"></td><td class="sv"></td></tr><tr><td class="sl">Trophies</td><td class="sv">5</td><td class="sl"></td><td class="sv"></td></tr></table>
+      </div>
+      <div class="pcfoot">Character 11 of 11 · keep it secret!</div>
+    </div>
+
+  </div>
+  <div class="foot"><span>Somerset Language Centre · Valencia</span><span class="pn">Cards</span></div>
+</div></div>
+
+</body>
+</html>

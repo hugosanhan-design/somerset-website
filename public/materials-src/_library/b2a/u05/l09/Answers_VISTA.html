@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Writing Error-Review: FCE I / Friday B2 Unit 5 (TEMPLATE)</title>
+<!-- TEMPLATE DECK. Every [PLACEHOLDER] must be replaced with a real, anonymised example
+     from the class's own l07 scripts before use. Do not present this deck to students with
+     placeholders still showing. See Lesson Plan.html in this folder for the prep steps. -->
+<style>
+  :root{ --green:#6BAE2E; --green-dark:#4d8120; --ink:#1a1a1a; --bg:#ffffff; --amber:#E08A1E; --red:#C0392B; }
+  *{box-sizing:border-box;}
+  body{ margin:0; font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background:var(--bg); color:var(--ink); }
+  header{ display:flex; justify-content:space-between; align-items:flex-end; padding:clamp(16px,2.2vh,32px) clamp(24px,3.5vw,64px); border-bottom:4px solid var(--green); flex-wrap:wrap; gap:16px; }
+  .logo{display:flex;align-items:flex-end;gap:clamp(8px,1vw,16px);}
+  .logo .word{font-family:Arial,Helvetica,sans-serif;font-weight:800;font-size:clamp(30pt,3.4vw,46pt);letter-spacing:-1.2px;line-height:.9;color:#6BAE2E;}
+  .logo .lc{font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:clamp(8pt,0.85vw,12pt);letter-spacing:2.5px;line-height:1.18;padding-bottom:4px;color:#4d8120;}
+  .title-block{text-align:right;}
+  .title-block h1{margin:0;font-size:clamp(20px,2.1vw,30px);font-weight:700;color:var(--ink);}
+  .title-block p{margin:4px 0 0;font-size:clamp(13px,1.1vw,17px);color:#555;letter-spacing:.5px;text-transform:uppercase;}
+  .template-banner{ background:#FDF3E7;border-bottom:3px solid var(--amber);color:#8a5a12; text-align:center;padding:8px 12px;font-size:clamp(12px,1.2vw,15px);font-weight:700; }
+  .nav-bar{ position:fixed; bottom:0; left:0; right:0; display:flex; align-items:center; justify-content:center; gap:20px; padding:16px 0 22px; background:linear-gradient(to top, rgba(255,255,255,0.96), rgba(255,255,255,0)); z-index:30; }
+  .nav-bar button{ background:var(--green); color:#fff; border:none; border-radius:999px; width:clamp(44px,4vw,64px); height:clamp(44px,4vw,64px); font-size:clamp(20px,2vw,28px); font-weight:700; cursor:pointer; }
+  .nav-bar button:disabled{opacity:.3; cursor:default;}
+  .nav-bar .count{font-size:clamp(14px,1.4vw,20px); color:#555; min-width:70px; text-align:center;}
+  main{max-width:1800px;margin:0 auto;padding:clamp(8px,1.5vh,20px) clamp(24px,4vw,72px) 96px;min-height:calc(100vh - 160px);display:flex;flex-direction:column;justify-content:center;}
+  .slide{display:none;}
+  .slide.active{display:block; animation:fade .15s ease;}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  .kicker{ font-size:clamp(14px,1.4vw,20px);font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--green); margin:clamp(10px,min(1.8vh,2.4vw),26px) 0 8px; }
+  h2{font-size:clamp(26px,min(3.6vw,5.6vh),44px);margin:0 0 clamp(10px,min(1.8vh,2.4vw),24px);color:var(--ink);line-height:1.25;}
+  h2 .accent{color:var(--green-dark);}
+  .wrote-box{ max-width:1250px;background:#FDECEA;border:2px solid #f0b8b0;border-radius:14px; padding:clamp(14px,1.8vh,22px) clamp(18px,2.2vw,28px); font-size:clamp(17px,1.8vw,23px);line-height:1.5;margin-bottom:14px; }
+  .wrote-box .label{display:block;font-size:.6em;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--red);margin-bottom:6px;}
+  .better-box{ max-width:1250px;background:#E8F5E0;border:2px solid #b9dd9e;border-radius:14px; padding:clamp(14px,1.8vh,22px) clamp(18px,2.2vw,28px); font-size:clamp(17px,1.8vw,23px);line-height:1.5;margin-bottom:14px; }
+  .better-box .label{display:block;font-size:.6em;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--green-dark);margin-bottom:6px;}
+  .whybox{ max-width:1250px; background:#F4F8EE;border-left:5px solid var(--green-dark);border-radius:0 12px 12px 0; padding:clamp(14px,1.8vh,20px) clamp(18px,2.2vw,26px); font-size:clamp(16px,1.6vw,21px);line-height:1.45;color:#333; }
+  .whybox b{color:var(--green-dark);}
+  .rulebox{ max-width:1250px;margin-top:14px; background:#FBF6E9;border:2px dashed #d9c574;border-radius:12px; padding:clamp(10px,1.4vh,16px) clamp(16px,2vw,22px); font-size:clamp(15px,1.5vw,19px);color:#7a5f10;font-weight:700; }
+  .placeholder{color:#b9861f;font-style:italic;}
+  .valencia-note{margin-top:clamp(16px,2.2vh,28px);font-size:clamp(15px,1.5vw,20px);color:#777;font-style:italic;}
+  footer{text-align:center;padding:20px;font-size:clamp(13px,1.1vw,16px);color:#888;border-top:2px solid #eee;}
+  @page{size:A4;margin:16mm 14mm}
+  @media print{
+    body{background:#fff} .nav-bar{display:none !important} .template-banner{display:none !important} main{max-width:none;padding:0}
+    .slide{display:block !important;page-break-after:always;padding-top:6px;} .slide:last-child{page-break-after:auto;}
+    h2{font-size:18pt} .kicker{font-size:12pt}
+    .wrote-box, .better-box, .whybox, .rulebox{font-size:12pt;page-break-inside:avoid;break-inside:avoid;}
+  }
+  @media(max-width:700px){ header{flex-direction:column;align-items:center;text-align:center;} .title-block{text-align:center;} h2{font-size:22px;} }
+/* per-item-reveal v1 */
+.item .a-text,.gap-answer{color:transparent !important;background:#EAF4DA;border-radius:6px;padding:0 .35em;min-width:3.2em;display:inline-block;cursor:pointer;user-select:none;}
+.item.shown .a-text,.gap-answer.shown{color:var(--green-dark) !important;background:none;font-weight:700;}
+.showpill{display:inline-block;margin-left:10px;border:2px solid var(--green);color:var(--green-dark);background:#fff;border-radius:999px;padding:1px 12px;font-size:.72em;font-weight:700;cursor:pointer;vertical-align:middle;}
+.item.shown .showpill{display:none;}
+@media print{.item .a-text,.gap-answer{color:var(--green-dark) !important;background:none;}.showpill{display:none !important;}}
+</style>
+</head>
+<body>
+<div class="template-banner">TEMPLATE &mdash; replace every [PLACEHOLDER] with a real, anonymised example from this class's own writing before presenting.</div>
+<header>
+  <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+  <div class="title-block">
+    <h1>Writing Error-Review</h1>
+    <p>Unit 5 &middot; essay &middot; corrective slides</p>
+  </div>
+</header>
+
+<main>
+
+  <div class="slide active">
+    <div class="kicker">Unit 5 &middot; writing error-review</div>
+    <h2>Fixing our <span class="accent">Unit 5 essay</span></h2>
+    <p class="valencia-note">No names, no ranking &mdash; these are the mistakes that came up more than once. Fixing them now is worth marks in the real exam.</p>
+  </div>
+
+  <!-- Category 1: Register -->
+  <div class="slide">
+    <div class="kicker">Category 1 &middot; Register &amp; topic sentences</div>
+    <h2>An essay needs a clear <span class="accent">topic sentence</span></h2>
+    <div class="wrote-box"><span class="label">You wrote</span><span class="placeholder">[insert the real, anonymised sentence &mdash; e.g. a paragraph with no clear topic sentence, or an opener with no engagement]</span></div>
+    <div class="better-box"><span class="label">Better version</span><span class="placeholder">[insert the rewrite with a clear topic sentence stating the paragraph's argument]</span></div>
+    <div class="whybox"><b>Why:</b> [explain the specific problem &mdash; missing topic sentence, or a rephrase of the task that repeats its exact wording].</div>
+    <div class="rulebox">Rule to keep: begin each main paragraph with a topic sentence that states the argument it will develop (p.62 Exam Tip).</div>
+  </div>
+
+  <!-- Category 2: modals of permission/obligation/ability -->
+  <div class="slide">
+    <div class="kicker">Category 2 &middot; Modals of permission, obligation, ability</div>
+    <h2>Can, could, mustn't <span class="accent">and the rest</span></h2>
+    <div class="wrote-box"><span class="label">You wrote</span><span class="placeholder">[insert the real sentence &mdash; e.g. confusing capable of / able to / managed to, or mustn't / be not allowed to]</span></div>
+    <div class="better-box"><span class="label">Better version</span><span class="placeholder">[insert the corrected sentence]</span></div>
+    <div class="whybox"><b>Why:</b> [explain using the p.57 rule that applies &mdash; managed to/succeeded in for a past achievement, never could; mustn't for a rule you're creating, be not allowed to for someone else's rule].</div>
+    <div class="rulebox">Rule to keep: for a single past achievement use managed to / succeeded in / was able to &mdash; never could on its own.</div>
+  </div>
+
+  <!-- Category 3: perfect modals -->
+  <div class="slide">
+    <div class="kicker">Category 3 &middot; Perfect modals</div>
+    <h2>Should have, must have <span class="accent">and the rest</span></h2>
+    <div class="wrote-box"><span class="label">You wrote</span><span class="placeholder">[insert the real error &mdash; e.g. "should has done" or have + past simple instead of past participle]</span></div>
+    <div class="better-box"><span class="label">Better version</span><span class="placeholder">[insert the corrected sentence, e.g. "should have done"]</span></div>
+    <div class="whybox"><b>Why:</b> [explain &mdash; perfect modals always use have + past participle, never have + past simple, and the base modal never changes for person].</div>
+    <div class="rulebox">Rule to keep: perfect modals are modal + have + past participle, always (should have finished, not should has finished or should have finish).</div>
+  </div>
+
+  <!-- Category 4: task coverage -->
+  <div class="slide">
+    <div class="kicker">Category 4 &middot; Not covering both task parts</div>
+    <h2>Content and <span class="accent">organisation</span></h2>
+    <div class="wrote-box"><span class="label">The task asked for</span><span>an essay giving your opinion on limiting mobile phone use to an hour a day, with supporting reasons</span></div>
+    <div class="better-box"><span class="label">What was missing</span><span class="placeholder">[which part got skipped or barely mentioned, and what a full paragraph on it would include]</span></div>
+    <div class="whybox"><b>Why it matters:</b> Content is one of four B2 First Writing marking criteria &mdash; an essay with no clear opinion, or with unsupported claims, loses marks even if the English is accurate.</div>
+    <div class="rulebox">Rule to keep: plan two main paragraphs, each with a topic sentence, a supporting reason and an example (p.62 Learning Focus).</div>
+  </div>
+
+  <!-- Category 5: Word count -->
+  <div class="slide">
+    <div class="kicker">Category 5 &middot; Word count</div>
+    <h2>Too short or <span class="accent">too long</span></h2>
+    <div class="wrote-box"><span class="label">Class range this time</span><span class="placeholder">[insert the actual word-count range seen]</span></div>
+    <div class="better-box"><span class="label">Target</span><span>140&ndash;190 words</span></div>
+    <div class="whybox"><b>Why:</b> under 140 words usually means an under-developed paragraph; over 190 risks losing organisation and running out of checking time.</div>
+    <div class="rulebox">Rule to keep: aim for an introduction, two main paragraphs (about 40&ndash;50 words each) and a conclusion.</div>
+  </div>
+
+  <!-- Category 6: spelling and linking words -->
+  <div class="slide">
+    <div class="kicker">Category 6 &middot; Spelling and linking words</div>
+    <h2>Small errors, <span class="accent">real marks</span></h2>
+    <div class="wrote-box"><span class="label">You wrote</span><span class="placeholder">[insert the real spelling/linker error, e.g. a wrong or missing linking word from p.63's Useful Language box]</span></div>
+    <div class="better-box"><span class="label">Correct form</span><span class="placeholder">[insert the correct spelling or linker]</span></div>
+    <div class="whybox"><b>Why:</b> [British spelling reminder or linker-choice reminder if relevant].</div>
+    <div class="rulebox">Rule to keep: always leave 2&ndash;3 minutes at the end to check spelling and linking words, per the Reflection Checklist on p.63.</div>
+  </div>
+
+  <!-- Closing: priorities -->
+
+  <div class="slide">
+    <div class="kicker">Closing</div>
+    <h2>Your <span class="accent">two priorities</span></h2>
+    <div class="whybox"><span class="placeholder">[Fill in with the two most useful, personalised priorities for this class to focus on before the Unit 5 test and the next writing task &mdash; not a generic "keep practising."]</span></div>
+  </div>
+
+</main>
+
+<div class="nav-bar">
+  <button id="prevBtn" title="Previous">&#8592;</button>
+  <span class="count" id="count"></span>
+  <button id="nextBtn" title="Next">&#8594;</button>
+</div>
+
+<footer>Somerset Language Centre &middot; Valencia &middot; Unit 5 &middot; Writing Error-Review (template)</footer>
+
+<script>
+  var slides = document.querySelectorAll('.slide');
+  var idx = 0;
+  var prevBtn = document.getElementById('prevBtn');
+  var nextBtn = document.getElementById('nextBtn');
+  var count = document.getElementById('count');
+  function render(){
+    slides.forEach(function(s,i){ s.classList.toggle('active', i===idx); });
+    count.textContent = (idx+1) + ' / ' + slides.length;
+    prevBtn.disabled = idx===0;
+    nextBtn.disabled = idx===slides.length-1;
+    window.scrollTo(0,0);
+  }
+  function go(d){ idx = Math.max(0, Math.min(slides.length-1, idx+d)); render(); }
+  prevBtn.addEventListener('click', function(){ go(-1); });
+  nextBtn.addEventListener('click', function(){ go(1); });
+  document.addEventListener('keydown', function(e){
+    if(e.key==='ArrowRight') go(1);
+    else if(e.key==='ArrowLeft') go(-1);
+  });
+  render();
+</script>
+
+<script>/* per-item-reveal v1 */
+document.querySelectorAll('.item').forEach(function(it){
+  if(!it.querySelector('.a-text')) return;
+  var b=document.createElement('button'); b.className='showpill'; b.type='button'; b.textContent='Show answer';
+  b.addEventListener('click',function(e){e.stopPropagation(); it.classList.add('shown');});
+  it.appendChild(b);
+  it.querySelectorAll('.a-text').forEach(function(a){a.addEventListener('click',function(e){e.stopPropagation(); it.classList.toggle('shown');});});
+});
+document.querySelectorAll('.gap-answer').forEach(function(g){g.title='Click to show / hide'; g.addEventListener('click',function(){g.classList.toggle('shown');});});
+document.querySelectorAll('.reveal-all').forEach(function(b){
+  var s=b.closest('.slide'); if(!s||!s.querySelector('.whybox')){b.style.display='none';return;}
+  var mc=!!s.querySelector('.mc-opt'); var L=mc?['Show answer','Hide answer']:['Why?','Hide why'];  /* MC slides reveal the right option (registry D07) */
+  var fresh=b.cloneNode(true); b.parentNode.replaceChild(fresh,b); fresh.textContent=L[0];
+  fresh.addEventListener('click',function(){var on=s.classList.toggle('revealed'); fresh.textContent=on?L[1]:L[0];});
+});
+</script>
+</body>
+</html>

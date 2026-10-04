@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vocabulary &amp; Grammar: PET I Unit 3, p.32-33</title>
+<style>
+  :root{ --green:#6BAE2E; --green-dark:#4d8120; --ink:#1a1a1a; --bg:#ffffff; --amber:#E08A1E; }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;background:var(--bg);color:var(--ink);}
+  header{display:flex;justify-content:space-between;align-items:flex-end;padding:clamp(16px,2.2vh,32px) clamp(24px,3.5vw,64px);border-bottom:4px solid var(--green);flex-wrap:wrap;gap:16px;}
+  .logo{display:flex;align-items:flex-end;gap:clamp(8px,1vw,16px);}
+  .logo .word{font-family:Arial,Helvetica,sans-serif;font-weight:800;font-size:clamp(30pt,3.4vw,46pt);letter-spacing:-1.2px;line-height:.9;color:#6BAE2E;}
+  .logo .lc{font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:clamp(8pt,0.85vw,12pt);letter-spacing:2.5px;line-height:1.18;padding-bottom:4px;color:#4d8120;}
+  .title-block{text-align:right;}
+  .title-block h1{margin:0;font-size:clamp(20px,2.1vw,30px);font-weight:700;color:var(--ink);}
+  .title-block p{margin:4px 0 0;font-size:clamp(13px,1.1vw,17px);color:#555;letter-spacing:.5px;text-transform:uppercase;}
+  .nav-bar{position:fixed;bottom:0;left:0;right:0;display:flex;align-items:center;justify-content:center;gap:20px;padding:16px 0 22px;background:linear-gradient(to top, rgba(255,255,255,0.96), rgba(255,255,255,0));z-index:30;}
+  .nav-bar button{background:var(--green);color:#fff;border:none;border-radius:999px;width:clamp(44px,4vw,64px);height:clamp(44px,4vw,64px);font-size:clamp(20px,2vw,28px);font-weight:700;cursor:pointer;}
+  .nav-bar button:disabled{opacity:.3;cursor:default;}
+  .nav-bar .count{font-size:clamp(14px,1.4vw,20px);color:#555;min-width:70px;text-align:center;}
+  main{max-width:1800px;margin:0 auto;padding:clamp(8px,1.5vh,20px) clamp(24px,4vw,72px) 96px;min-height:calc(100vh - 110px);display:flex;flex-direction:column;justify-content:center;}
+  .slide{display:none;}
+  .slide.active{display:block;animation:fade .15s ease;}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  .kicker{font-size:clamp(14px,1.4vw,20px);font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--green);margin:clamp(10px,min(1.8vh,2.4vw),26px) 0 8px;}
+  h2{font-size:clamp(28px,min(3.8vw,6vh),48px);margin:0 0 clamp(10px,min(1.8vh,2.4vw),24px);color:var(--ink);line-height:1.25;}
+  h2 .accent{color:var(--green-dark);}
+  .item-list{list-style:none;margin:0 0 clamp(14px,2vh,22px);padding:0;max-width:1200px;}
+  .item{background:#fff;border:2px solid #ddd;border-radius:14px;padding:clamp(12px,1.6vh,18px) clamp(18px,2.2vw,26px);margin-bottom:clamp(9px,1.2vh,14px);font-size:clamp(17px,1.9vw,24px);line-height:1.4;}
+  .item .num{color:#999;font-weight:800;margin-right:10px;}
+  .reveal-all{background:var(--green);color:#fff;border:none;border-radius:999px;padding:10px 26px;font-size:clamp(14px,1.4vw,18px);font-weight:700;cursor:pointer;}
+  .reveal-all:hover{background:var(--green-dark);}
+  .whybox{display:none;margin-top:clamp(14px,2vh,20px);max-width:1200px;background:#F4F8EE;border-left:5px solid var(--green-dark);border-radius:0 12px 12px 0;padding:clamp(14px,1.8vh,20px) clamp(18px,2.2vw,26px);font-size:clamp(16px,1.6vw,21px);line-height:1.45;color:#333;}
+  .revealed .whybox{display:block;}
+  .whybox b{color:var(--green-dark);}
+  .valencia-note{margin-top:clamp(16px,2.2vh,28px);font-size:clamp(15px,1.5vw,20px);color:#777;font-style:italic;}
+  footer{text-align:center;padding:20px;font-size:clamp(13px,1.1vw,16px);color:#888;border-top:2px solid #eee;}
+  @page{size:A4;margin:16mm 14mm}
+  @media print{
+    body{background:#fff}
+    .nav-bar{display:none !important}
+    main{max-width:none;padding:0}
+    .slide{display:block !important;page-break-after:always;padding-top:6px;}
+    .slide:last-child{page-break-after:auto;}
+    h2{font-size:19pt}
+    .kicker{font-size:12pt}
+    .item{font-size:12.5pt;page-break-inside:avoid;break-inside:avoid;}
+    .whybox{display:block !important;font-size:12pt;}
+    .reveal-all{display:none !important;}
+  }
+  @media(max-width:700px){ header{flex-direction:column;align-items:center;text-align:center;} .title-block{text-align:center;} h2{font-size:24px;} }
+/* per-item-reveal v1 */
+.item .a-text,.gap-answer{color:transparent !important;background:#EAF4DA;border-radius:6px;padding:0 .35em;min-width:3.2em;display:inline-block;cursor:pointer;user-select:none;}
+.item.shown .a-text,.gap-answer.shown{color:var(--green-dark) !important;background:none;font-weight:700;}
+.showpill{display:inline-block;margin-left:10px;border:2px solid var(--green);color:var(--green-dark);background:#fff;border-radius:999px;padding:1px 12px;font-size:.72em;font-weight:700;cursor:pointer;vertical-align:middle;}
+.item.shown .showpill{display:none;}
+@media print{.item .a-text,.gap-answer{color:var(--green-dark) !important;background:none;}.showpill{display:none !important;}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+  <div class="title-block"><h1>Vocabulary &amp; Grammar</h1><p>Unit 3 &middot; p.32-33 &middot; geographical features &amp; present perfect</p></div>
+</header>
+<main>
+
+<div class="slide active">
+  <div class="kicker">Unit 3 &middot; pages 32-33</div>
+  <h2>It's natural <span class="accent">geography &amp; the present perfect</span></h2>
+  <p class="valencia-note">Tap "Show answer" next to each question. Seven exercises, in book order.</p>
+</div>
+
+<div class="slide">
+  <div class="kicker">Vocabulary Ex.1 &middot; geographical features</div>
+  <h2>Name the <span class="accent">feature</span></h2>
+  <ul class="item-list">
+    <li class="item"><span class="num">1</span>A small, narrow river &rarr; <span class="a-text">stream</span></li>
+    <li class="item"><span class="num">2</span>A huge, slow-moving mass of ice &rarr; <span class="a-text">glacier</span></li>
+    <li class="item"><span class="num">3</span>Low land between two mountains &rarr; <span class="a-text">valley</span></li>
+    <li class="item"><span class="num">4</span>A large hole in the side of a mountain or under the ground &rarr; <span class="a-text">cave</span></li>
+    <li class="item"><span class="num">5</span>A thick forest with very high rainfall &rarr; <span class="a-text">rainforest</span></li>
+    <li class="item"><span class="num">6</span>The land next to the sea &rarr; <span class="a-text">coast</span></li>
+    <li class="item"><span class="num">7</span>A huge body of salt water &rarr; <span class="a-text">ocean</span></li>
+    <li class="item"><span class="num">8</span>A high, steep rock face, often at the coast &rarr; <span class="a-text">cliff</span></li>
+  </ul>
+  <button class="reveal-all">Show answers</button>
+  <div class="whybox">These eight words appear throughout the unit &mdash; the reading (coast, ocean) and the grammar text about the Titanic (icebergs at sea) both reuse them.</div>
+</div>
+
+<div class="slide">
+  <div class="kicker">Vocabulary Ex.2 &middot; in context</div>
+  <h2>Complete the <span class="accent">sentence</span></h2>
+  <ul class="item-list">
+    <li class="item"><span class="num">1</span>My aunt lives in a house on the <span class="a-text">coast</span> and swims in the <span class="a-text">ocean</span> every morning.</li>
+    <li class="item"><span class="num">2</span>There are 427 different types of mammals in the Amazon <span class="a-text">rainforest</span>.</li>
+    <li class="item"><span class="num">3</span>There was a deep <span class="a-text">valley</span> between the two mountains.</li>
+    <li class="item"><span class="num">4</span>We filled our bottles with water from the <span class="a-text">stream</span>.</li>
+    <li class="item"><span class="num">5</span>Many tourists visit Antarctica to see its huge <span class="a-text">glaciers</span>.</li>
+    <li class="item"><span class="num">6</span>Don't stand so close to the edge of the <span class="a-text">cliff</span>! It's dangerous.</li>
+    <li class="item"><span class="num">7</span>In 1940, four boys discovered some amazing paintings in a <span class="a-text">cave</span> in Lascaux, France.</li>
+  </ul>
+  <button class="reveal-all">Show answers</button>
+  <div class="whybox">Item 7 is a real event: the Lascaux cave paintings, discovered in France in 1940, are among the most famous prehistoric art in the world.</div>
+</div>
+
+<div class="slide">
+  <div class="kicker">Vocabulary Ex.3-4 &middot; climate change collocations</div>
+  <h2>Match the <span class="accent">collocation</span></h2>
+  <ul class="item-list">
+    <li class="item"><span class="num">1</span>fossil &rarr; <span class="a-text">fuel</span></li>
+    <li class="item"><span class="num">2</span>renewable &rarr; <span class="a-text">energy</span></li>
+    <li class="item"><span class="num">3</span>solar &rarr; <span class="a-text">power</span></li>
+    <li class="item"><span class="num">4</span>produce &rarr; <span class="a-text">electricity</span></li>
+    <li class="item"><span class="num">5</span>heavily &rarr; <span class="a-text">polluted</span></li>
+  </ul>
+  <button class="reveal-all">Show answers</button>
+  <div class="whybox"><b>Note:</b> this set is a Somerset reconstruction (see BUILD_REPORT.md) built to carry the printed key's letter answers, since the original page image could not be sourced for this unit.</div>
+</div>
+
+<div class="slide">
+  <div class="kicker">Grammar Ex.1-2 &middot; present perfect simple</div>
+  <h2>Complete the <span class="accent">rule</span></h2>
+  <ul class="item-list">
+    <li class="item"><span class="num">1</span>We form the present perfect with <span class="a-text">have/has</span> + the <span class="a-text">past participle</span> of the verb.</li>
+    <li class="item"><span class="num">2</span>"I've worked here for five years" &rarr; <span class="a-text">an unfinished action, still true now</span></li>
+    <li class="item"><span class="num">3</span>"I've done a lot of work today" &rarr; <span class="a-text">a finished action, but we don't mention when</span></li>
+    <li class="item"><span class="num">4</span>"I've never been to Japan" &rarr; <span class="a-text">an experience or life event, unfinished time (my life so far)</span></li>
+  </ul>
+  <button class="reveal-all">Show answers</button>
+  <div class="whybox"><b>Practice sentences, not the book's wording:</b> the quoted example sentences here are Somerset-written to illustrate the rule (the letter answers b/a/c/d match the printed key exactly); the SB's own example sentences could not be sourced (see BUILD_REPORT.md). Contrast with the past simple (Unit 2): "I worked here for five years, between 2000 and 2005" gives a finished time, so it takes the past simple instead.</div>
+</div>
+
+<div class="slide">
+  <div class="kicker">Grammar Ex.3 &middot; practice</div>
+  <h2>Complete with the <span class="accent">present perfect simple</span></h2>
+  <ul class="item-list">
+    <li class="item"><span class="num">1</span>She <span class="a-text">has had</span> this job for six years. She <span class="a-text">travelled</span> to Rome for training and <span class="a-text">went</span> to a conference last month.</li>
+    <li class="item"><span class="num">2</span>James <span class="a-text">has just bought</span> a new bike.</li>
+    <li class="item"><span class="num">3</span>Things <span class="a-text">have changed</span> a lot since I <span class="a-text">studied</span> at this school.</li>
+  </ul>
+  <button class="reveal-all">Show answers</button>
+  <div class="whybox"><b>Practice sentences, not the book's wording:</b> built to carry the printed key's exact answers (has had/travelled/went; has just bought; have changed/studied) since the original page could not be sourced. Item 1 mixes tenses on purpose: the present perfect for the unfinished state (has had), the past simple for two finished past events (travelled, went).</div>
+</div>
+
+<div class="slide">
+  <div class="kicker">Grammar Ex.4-5 &middot; present perfect continuous</div>
+  <h2>Complete the <span class="accent">rule</span></h2>
+  <ul class="item-list">
+    <li class="item"><span class="num">1</span>We form the present perfect continuous with <span class="a-text">have/has</span> + <span class="a-text">been</span> + the <span class="a-text">-ing</span> form of the verb.</li>
+    <li class="item"><span class="num">2</span>"I've been working here for five years" &rarr; <span class="a-text">an unfinished action</span></li>
+    <li class="item"><span class="num">3</span>"She's just been telling him" &rarr; <span class="a-text">a recently finished action with an effect now</span></li>
+    <li class="item"><span class="num">4</span>"I've been painting this room all day and I'm exhausted" &rarr; <span class="a-text">the action and effort itself, not just the result</span></li>
+  </ul>
+  <button class="reveal-all">Show answers</button>
+  <div class="whybox">Compare "I've painted this room. I love the colour" (result, simple) with "I've been painting this room all day" (effort/duration, continuous).</div>
+</div>
+
+<div class="slide">
+  <div class="kicker">Grammar Ex.6 &middot; practice</div>
+  <h2>Simple or <span class="accent">continuous?</span></h2>
+  <ul class="item-list">
+    <li class="item"><span class="num">1</span>The ice at the North Pole <span class="a-text">has become</span> much thinner over the last 50 years.</li>
+    <li class="item"><span class="num">2</span>Climate change <span class="a-text">has caused</span> the ice to melt faster every year.</li>
+    <li class="item"><span class="num">3</span>The weather <span class="a-text">has been getting</span> warmer every year.</li>
+    <li class="item"><span class="num">4</span>Scientists <span class="a-text">have caught</span> 50 kilos of plastic in the ocean this month.</li>
+  </ul>
+  <button class="reveal-all">Show answers</button>
+  <div class="whybox"><b>Practice sentences, not the book's wording:</b> built to carry the printed key's exact answers (has become/has caused/has been getting/has caught) since the original page could not be sourced. <b>Watch item 4:</b> a specific quantity ("50 kilos") takes the present perfect simple, even though the action sounds ongoing.</div>
+</div>
+
+<div class="slide">
+  <div class="kicker">Grammar Ex.7 &middot; the International Ice Patrol</div>
+  <h2>Past simple or <span class="accent">present perfect?</span></h2>
+  <ul class="item-list">
+    <li class="item"><span class="num">1</span>In the past, icebergs <span class="a-text">were</span> a serious danger to ships.</li>
+    <li class="item"><span class="num">2</span>In the last 200 years, hundreds of ships <span class="a-text">have sunk</span> after they</li>
+    <li class="item"><span class="num">3</span><span class="a-text">hit</span> icebergs.</li>
+    <li class="item"><span class="num">4</span>In 1912, the Titanic hit an iceberg and over 1,500 people <span class="a-text">died</span>.</li>
+    <li class="item"><span class="num">5</span>In 1914, the International Ice Patrol <span class="a-text">formed</span> to track dangerous icebergs.</li>
+    <li class="item"><span class="num">6</span>Ever since then, the Ice Patrol <span class="a-text">has been giving</span> ships warnings about ice,</li>
+    <li class="item"><span class="num">7</span>and it <span class="a-text">has probably saved</span> thousands of lives.</li>
+  </ul>
+  <button class="reveal-all">Show answers</button>
+  <div class="whybox"><b>Pattern:</b> a specific finished date ("In 1912...") takes the past simple; an unfinished period ("Ever since then...") takes the present perfect.</div>
+</div>
+
+</main>
+<div class="nav-bar"><button id="prevBtn" title="Previous">&#8592;</button><span class="count" id="count"></span><button id="nextBtn" title="Next">&#8594;</button></div>
+<footer>Somerset Language Centre &middot; Valencia &middot; Unit 3, p.32-33</footer>
+<script>
+  var slides = document.querySelectorAll('.slide');
+  var idx = 0;
+  var prevBtn = document.getElementById('prevBtn');
+  var nextBtn = document.getElementById('nextBtn');
+  var count = document.getElementById('count');
+  function render(){ slides.forEach(function(s,i){ s.classList.toggle('active', i===idx); }); count.textContent=(idx+1)+' / '+slides.length; prevBtn.disabled=idx===0; nextBtn.disabled=idx===slides.length-1; window.scrollTo(0,0); }
+  function go(d){ idx=Math.max(0,Math.min(slides.length-1,idx+d)); render(); }
+  prevBtn.addEventListener('click', function(){ go(-1); });
+  nextBtn.addEventListener('click', function(){ go(1); });
+  document.addEventListener('keydown', function(e){ if(e.key==='ArrowRight') go(1); else if(e.key==='ArrowLeft') go(-1); });
+  document.querySelectorAll('.slide').forEach(function(slide){
+    var btn = slide.querySelector('.reveal-all');
+    if(!btn) return;
+    btn.addEventListener('click', function(){ var on = slide.classList.toggle('revealed'); btn.textContent = on ? 'Hide answers' : 'Show answers'; });
+  });
+  render();
+</script>
+<script>/* per-item-reveal v1 */
+document.querySelectorAll('.item').forEach(function(it){
+  if(!it.querySelector('.a-text')) return;
+  var b=document.createElement('button'); b.className='showpill'; b.type='button'; b.textContent='Show answer';
+  b.addEventListener('click',function(e){e.stopPropagation(); it.classList.add('shown');});
+  it.appendChild(b);
+  it.querySelectorAll('.a-text').forEach(function(a){a.addEventListener('click',function(e){e.stopPropagation(); it.classList.toggle('shown');});});
+});
+document.querySelectorAll('.gap-answer').forEach(function(g){g.title='Click to show / hide'; g.addEventListener('click',function(){g.classList.toggle('shown');});});
+document.querySelectorAll('.reveal-all').forEach(function(b){
+  var s=b.closest('.slide'); if(!s||!s.querySelector('.whybox')){b.style.display='none';return;}
+  var mc=!!s.querySelector('.mc-opt'); var L=mc?['Show answer','Hide answer']:['Why?','Hide why'];  /* MC slides reveal the right option (registry D07) */
+  var fresh=b.cloneNode(true); b.parentNode.replaceChild(fresh,b); fresh.textContent=L[0];
+  fresh.addEventListener('click',function(){var on=s.classList.toggle('revealed'); fresh.textContent=on?L[1]:L[0];});
+});
+</script>
+</body>
+</html>

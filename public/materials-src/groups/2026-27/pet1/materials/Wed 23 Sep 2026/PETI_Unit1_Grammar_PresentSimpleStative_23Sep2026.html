@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Present Simple, Present Continuous and Stative Verbs: PET I</title>
+<style>
+  :root{
+    --green:#6BAE2E;
+    --green-dark:#4d8120;
+    --ink:#1a1a1a;
+    --bg:#ffffff;
+    --amber:#E08A1E;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+  }
+  header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    padding:clamp(16px,2.2vh,32px) clamp(24px,3.5vw,64px);
+    border-bottom:4px solid var(--green);
+    flex-wrap:wrap;
+    gap:16px;
+  }
+  .logo{display:flex;align-items:flex-end;gap:clamp(8px,1vw,16px);}
+  .logo .word{font-family:Arial,Helvetica,sans-serif;font-weight:800;font-size:clamp(30pt,3.4vw,46pt);letter-spacing:-1.2px;line-height:.9;color:#6BAE2E;}
+  .logo .lc{font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:clamp(8pt,0.85vw,12pt);letter-spacing:2.5px;line-height:1.18;padding-bottom:4px;color:#4d8120;}
+  .title-block{text-align:right;}
+  .title-block h1{margin:0;font-size:clamp(20px,2.1vw,30px);font-weight:700;color:var(--ink);}
+  .title-block p{margin:4px 0 0;font-size:clamp(13px,1.1vw,17px);color:#555;letter-spacing:.5px;text-transform:uppercase;}
+
+  .nav-bar{
+    position:fixed; bottom:0; left:0; right:0;
+    display:flex; align-items:center; justify-content:center; gap:20px;
+    padding:16px 0 22px;
+    background:linear-gradient(to top, rgba(255,255,255,0.96), rgba(255,255,255,0));
+    z-index:30;
+  }
+  .nav-bar button{
+    background:var(--green);
+    color:#fff;
+    border:none;
+    border-radius:999px;
+    width:clamp(44px,4vw,64px); height:clamp(44px,4vw,64px);
+    font-size:clamp(20px,2vw,28px);
+    font-weight:700;
+    cursor:pointer;
+  }
+  .nav-bar button:disabled{opacity:.3; cursor:default;}
+  .nav-bar .count{font-size:clamp(14px,1.4vw,20px); color:#555; min-width:70px; text-align:center;}
+
+  main{max-width:1800px;margin:0 auto;padding:clamp(8px,1.5vh,20px) clamp(24px,4vw,72px) 96px;min-height:calc(100vh - 110px);display:flex;flex-direction:column;justify-content:center;}
+  .slide{display:none;}
+  .slide.active{display:block; animation:fade .15s ease;}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+
+  .kicker{
+    font-size:clamp(14px,1.4vw,20px);font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--green);
+    margin:clamp(10px,min(1.8vh,2.4vw),26px) 0 8px;
+  }
+  h2{font-size:clamp(34px,min(4.6vw,7.2vh),60px);margin:0 0 clamp(10px,min(1.8vh,2.4vw),24px);color:var(--ink);}
+  h2 .accent{color:var(--green-dark);}
+
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,2.5vw,40px);margin-top:10px;}
+  @media(max-width:760px){.two-col{grid-template-columns:1fr;}}
+
+  .card{
+    background:#fff;
+    border:2px solid var(--green);
+    border-radius:16px;
+    padding:clamp(20px,2.4vw,36px);
+  }
+  .card h3{margin:0 0 clamp(10px,1.4vh,18px);font-size:clamp(19px,2vw,28px);color:var(--green-dark);}
+  .card table{width:100%;border-collapse:collapse;font-size:clamp(16px,1.6vw,22px);}
+  .card table td{padding:clamp(7px,1vh,14px) 4px;border-bottom:1px solid #eee;vertical-align:top;}
+  .card table tr:last-child td{border-bottom:none;}
+  .card .lab{color:#777;font-weight:700;font-size:clamp(13px,1.1vw,16px);text-transform:uppercase;white-space:nowrap;padding-right:10px;}
+
+  .use-list{
+    list-style:none;margin:clamp(8px,min(1.6vh,2vw),20px) 0 0;padding:0;
+    font-size:clamp(18px,min(3.4vh,1.9vw),28px);line-height:1.38;
+    column-count:2;column-gap:clamp(28px,4vw,64px);
+  }
+  .use-list li{margin-bottom:clamp(10px,min(1.9vh,1.5vw),22px);padding-left:34px;position:relative;break-inside:avoid;-webkit-column-break-inside:avoid;}
+  .use-list li::before{content:"";position:absolute;left:0;top:10px;width:11px;height:11px;border-radius:50%;background:var(--green);}
+  .use-list .eg{display:block;color:#555;font-style:italic;margin-top:2px;font-size:.85em;}
+  @media(max-width:760px){.use-list{column-count:1;}}
+
+  .signal-row{display:flex;gap:24px;margin-top:clamp(10px,min(1.6vh,2vw),22px);flex-wrap:wrap;}
+  .signal-box{flex:1;min-width:260px;background:#EAF4DA;border-radius:14px;padding:clamp(14px,min(1.8vh,2vw),24px);}
+  .signal-box h3{margin:0 0 clamp(8px,1.2vh,14px);font-size:clamp(16px,1.6vw,22px);color:var(--green-dark);}
+  .signal-box .tags{display:flex;flex-wrap:wrap;gap:10px;}
+  .tag{background:#fff;border:1.5px solid var(--green);border-radius:999px;padding:clamp(5px,0.8vh,10px) clamp(14px,1.4vw,22px);font-size:clamp(13px,1.4vw,19px);font-weight:700;color:var(--green-dark);}
+
+  .cat-row{display:flex;gap:20px;margin-top:clamp(10px,min(1.6vh,2vw),22px);flex-wrap:wrap;}
+  .cat-box{flex:1;min-width:210px;background:#F4F8EE;border:1.5px solid var(--green);border-radius:14px;padding:clamp(12px,1.6vh,20px);}
+  .cat-box h3{margin:0 0 8px;font-size:clamp(14px,1.4vw,18px);color:var(--green-dark);text-transform:uppercase;letter-spacing:.3px;}
+  .cat-box p{margin:0;font-size:clamp(15px,1.5vw,20px);line-height:1.4;}
+
+  .contrast-line{
+    display:flex;gap:20px;align-items:baseline;
+    padding:14px 0;border-bottom:1px solid #eee;font-size:clamp(17px,1.7vw,22px);line-height:1.4;
+  }
+  .contrast-line:last-child{border-bottom:none;}
+  .contrast-line .badge{
+    flex:0 0 auto;font-size:11px;font-weight:800;letter-spacing:.3px;text-transform:uppercase;
+    color:#fff;background:var(--green-dark);border-radius:999px;padding:4px 10px;
+  }
+  .contrast-line.cont .badge{background:var(--amber);}
+  .contrast-line .note{color:#777;font-style:italic;font-size:.8em;}
+
+  .valencia-note{
+    margin-top:clamp(16px,2.2vh,28px);font-size:clamp(15px,1.5vw,20px);color:#777;font-style:italic;
+  }
+
+  .answer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:16px;}
+  .answer-chip{background:#F4F8EE;border:1.5px solid var(--green);border-radius:10px;padding:10px 14px;font-size:clamp(14px,1.4vw,18px);}
+  .answer-chip .n{color:var(--green-dark);font-weight:800;margin-right:6px;}
+
+  .hint-bar{font-size:clamp(13px,1.3vw,17px);color:#888;font-style:italic;margin:2px 0 clamp(10px,1.6vh,18px);}
+  .ex-list{list-style:none;margin:0;padding:0;}
+  .ex-item{
+    cursor:pointer;user-select:none;
+    background:#fff;border:2px solid #ddd;border-radius:14px;
+    padding:clamp(12px,1.6vh,18px) clamp(16px,2vw,26px);
+    margin-bottom:clamp(8px,1.2vh,14px);
+    font-size:clamp(16px,1.7vw,23px);line-height:1.4;
+    display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;
+    transition:border-color .15s, background .15s;
+  }
+  .ex-item:hover{border-color:var(--green);}
+  .ex-item.revealed{border-color:var(--green);background:#F4F8EE;}
+  .ex-item .n{flex:0 0 auto;font-weight:800;color:var(--green-dark);min-width:22px;}
+  .ex-item .txt{flex:1 1 320px;}
+  .ex-item .answer{
+    flex:0 0 auto;display:none;font-weight:800;color:#fff;background:var(--green-dark);
+    border-radius:999px;padding:3px 14px;font-size:.8em;white-space:nowrap;
+  }
+  .ex-item.revealed .answer{display:inline-block;}
+  .ex-item .tap{flex:0 0 auto;font-size:.75em;color:#aaa;font-style:italic;}
+  .ex-item.revealed .tap{display:none;}
+
+  .use-key{display:flex;flex-wrap:wrap;gap:10px 22px;margin:clamp(10px,1.6vh,18px) 0 clamp(14px,2vh,22px);font-size:clamp(14px,1.4vw,18px);color:#555;}
+  .use-key b{color:var(--green-dark);}
+
+  .verb-target{text-decoration:none;font-weight:400;}
+  .ex-item.revealed .verb-target{text-decoration:underline;text-decoration-color:var(--green-dark);text-decoration-thickness:3px;font-weight:800;color:var(--green-dark);}
+
+  .opt{padding:1px 4px;border-radius:5px;}
+  .ex-item.revealed .opt.right{background:#DFF0CB;color:var(--green-dark);font-weight:800;}
+  .ex-item.revealed .opt.wrong{color:#bbb;text-decoration:line-through;}
+
+  .gapfill{font-size:clamp(18px,1.9vw,26px);line-height:1.75;background:#fff;border:2px solid var(--green);border-radius:16px;padding:clamp(18px,2.4vw,32px);}
+  .blank{cursor:pointer;display:inline-block;border-bottom:2px dashed #bbb;padding:0 4px;color:#bbb;font-weight:700;}
+  .blank.revealed{border-bottom:2px solid var(--green-dark);color:var(--green-dark);}
+  .reveal-all{
+    margin-top:clamp(14px,2vh,22px);background:var(--green);color:#fff;border:none;border-radius:999px;
+    padding:10px 26px;font-size:clamp(14px,1.4vw,18px);font-weight:700;cursor:pointer;
+  }
+  .reveal-all:hover{background:var(--green-dark);}
+
+  footer{
+    text-align:center;
+    padding:20px;
+    font-size:clamp(13px,1.1vw,16px);
+    color:#888;
+    border-top:2px solid #eee;
+  }
+
+  @page{size:A4;margin:16mm 14mm}
+  @media print{
+    body{background:#fff}
+    .nav-bar{display:none !important}
+    main{max-width:none;padding:0}
+    .slide{display:block !important;page-break-after:always;padding-top:6px;}
+    .slide:last-child{page-break-after:auto;}
+    h2{font-size:22pt}
+    .kicker{font-size:11pt}
+    .card table{font-size:12pt}
+    .use-list{font-size:13pt;column-count:1;}
+    .contrast-line{font-size:13pt;page-break-inside:avoid;break-inside:avoid}
+    .cat-row{display:grid !important;grid-template-columns:1fr 1fr !important;gap:10px !important;}
+    .cat-box{min-width:0 !important;font-size:11pt;}
+    .ex-item{font-size:12.5pt;border-color:var(--green) !important;background:#F4F8EE !important;page-break-inside:avoid;break-inside:avoid;}
+    .ex-item .answer{display:inline-block !important;}
+    .ex-item .tap{display:none !important;}
+    .verb-target{text-decoration:underline !important;font-weight:800 !important;color:var(--green-dark) !important;}
+    .opt.right{background:#DFF0CB !important;color:var(--green-dark) !important;font-weight:800 !important;}
+    .opt.wrong{color:#999 !important;text-decoration:line-through !important;}
+    .ex-list{column-count:1 !important;}
+    .gapfill{font-size:13pt;}
+    .blank{border-bottom:2px solid var(--green-dark) !important;color:var(--green-dark) !important;}
+    .blank::after{content:" [" attr(data-a) "]";font-weight:800;}
+    .reveal-all{display:none !important;}
+  }
+
+  @media(max-width:700px){
+    header{flex-direction:column;align-items:center;text-align:center;}
+    .title-block{text-align:center;}
+    h2{font-size:26px;}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+  <div class="title-block">
+    <h1>Present Simple, Present Continuous and Stative Verbs</h1>
+    <p>Grammar &middot; PET I &middot; Unit 1</p>
+  </div>
+</header>
+
+<main>
+
+  <!-- SLIDE 1: the core contrast, forms -->
+  <div class="slide active">
+    <div class="kicker">The basic idea</div>
+    <h2>Habit or <span class="accent">right now</span>?</h2>
+    <div class="two-col">
+      <div class="card">
+        <h3>Present simple</h3>
+        <table>
+          <tr><td class="lab">+</td><td>I <b>work</b>.<br>She <b>works</b>.</td></tr>
+          <tr><td class="lab">&minus;</td><td>I <b>don't work</b>.<br>She <b>doesn't work</b>.</td></tr>
+          <tr><td class="lab">?</td><td><b>Do</b> you work?<br><b>Does</b> she work?</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <h3>Present continuous</h3>
+        <table>
+          <tr><td class="lab">+</td><td>I <b>am working</b>.<br>She <b>is working</b>.</td></tr>
+          <tr><td class="lab">&minus;</td><td>I <b>am not working</b>.<br>She <b>isn't working</b>.</td></tr>
+          <tr><td class="lab">?</td><td><b>Am</b> I working?<br><b>Is</b> she working?</td></tr>
+        </table>
+      </div>
+    </div>
+    <p class="valencia-note">Cristina <b>works</b> at the Mercado de Ruzafa every Saturday (her normal job). This week she<b>'s covering</b> a stall at the Central Market for a friend who's ill (just this week).</p>
+  </div>
+
+  <!-- SLIDE 2: present simple use -->
+  <div class="slide">
+    <div class="kicker">When we use it</div>
+    <h2>Present <span class="accent">simple</span></h2>
+    <ul class="use-list">
+      <li>Facts and general truths<span class="eg">"Wood comes from trees."</span></li>
+      <li>Permanent situations<span class="eg">"Pat works for the council."</span></li>
+      <li>Habits and repeated actions<span class="eg">"I swim every day."</span></li>
+      <li>Future events based on schedules<span class="eg">"Our train leaves at 2 p.m."</span></li>
+      <li>Narratives, stories, sports commentaries, plots<span class="eg">"The Happy Prince smiles."</span></li>
+    </ul>
+    <div class="signal-row">
+      <div class="signal-box">
+        <h3>Frequency</h3>
+        <div class="tags">
+          <span class="tag">always</span><span class="tag">usually</span><span class="tag">often</span>
+          <span class="tag">sometimes</span><span class="tag">rarely</span><span class="tag">hardly ever</span>
+          <span class="tag">seldom</span><span class="tag">never</span>
+        </div>
+      </div>
+      <div class="signal-box">
+        <h3>Time expressions</h3>
+        <div class="tags">
+          <span class="tag">every day / week</span><span class="tag">once a week</span>
+          <span class="tag">at the weekend</span><span class="tag">on Sundays</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3: present continuous use -->
+  <div class="slide">
+    <div class="kicker">When we use it</div>
+    <h2>Present <span class="accent">continuous</span></h2>
+    <ul class="use-list">
+      <li>Actions in progress right now<span class="eg">"I'm having dinner now."</span></li>
+      <li>Temporary or changing situations<span class="eg">"I'm studying to be a vet. Tim is growing up fast."</span></li>
+      <li>Annoying habits<span class="eg">"He's always complaining!"</span></li>
+      <li>Fixed arrangements for the future<span class="eg">"We're moving next week."</span></li>
+      <li>Describing what's happening in a picture<span class="eg">"Jim and I are walking around in Rome."</span></li>
+    </ul>
+    <div class="signal-row">
+      <div class="signal-box">
+        <h3>Right now</h3>
+        <div class="tags">
+          <span class="tag">now</span><span class="tag">right now</span><span class="tag">at the moment</span>
+          <span class="tag">this week / month</span>
+        </div>
+      </div>
+      <div class="signal-box">
+        <h3>Annoying habits</h3>
+        <div class="tags">
+          <span class="tag">always</span><span class="tag">continually</span><span class="tag">constantly</span><span class="tag">forever</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 4: Exercise 1 -->
+  <div class="slide">
+    <div class="kicker">Page 9 &middot; Exercise 1</div>
+    <h2>Match the uses <span class="accent">of present simple</span></h2>
+    <div class="use-key">
+      <span><b>a</b> habits and repeated actions</span>
+      <span><b>b</b> permanent situations</span>
+      <span><b>c</b> scientific facts</span>
+      <span><b>d</b> future actions based on timetables and schedules</span>
+    </div>
+    <div class="hint-bar">Tap a sentence to reveal its use.</div>
+    <ul class="ex-list">
+      <li class="ex-item"><span class="n">1</span><span class="txt">Water <b>boils</b> at 100&deg;C.</span><span class="answer">c</span><span class="tap">tap</span></li>
+      <li class="ex-item"><span class="n">2</span><span class="txt">His sister <b>works</b> at the sports centre.</span><span class="answer">b</span><span class="tap">tap</span></li>
+      <li class="ex-item"><span class="n">3</span><span class="txt">The library <b>opens</b> at ten o'clock tomorrow.</span><span class="answer">d</span><span class="tap">tap</span></li>
+      <li class="ex-item"><span class="n">4</span><span class="txt">I always <b>do</b> my homework on Saturday mornings.</span><span class="answer">a</span><span class="tap">tap</span></li>
+    </ul>
+  </div>
+
+  <!-- SLIDE 5: Exercise 2 -->
+  <div class="slide">
+    <div class="kicker">Page 9 &middot; Exercise 2</div>
+    <h2>Match the uses <span class="accent">of present continuous</span></h2>
+    <div class="use-key">
+      <span><b>a</b> actions happening now</span>
+      <span><b>b</b> temporary situations</span>
+      <span><b>c</b> future plans</span>
+      <span><b>d</b> annoying habits</span>
+      <span><b>e</b> changing / developing situations</span>
+    </div>
+    <div class="hint-bar">Tap a sentence to reveal its use.</div>
+    <ul class="ex-list">
+      <li class="ex-item"><span class="n">1</span><span class="txt">She<b>'s always borrowing</b> my clothes!</span><span class="answer">d</span><span class="tap">tap</span></li>
+      <li class="ex-item"><span class="n">2</span><span class="txt">What <b>are</b> you <b>doing</b> at the weekend?</span><span class="answer">c</span><span class="tap">tap</span></li>
+      <li class="ex-item"><span class="n">3</span><span class="txt">My brother<b>'s studying</b> to be an architect.</span><span class="answer">b</span><span class="tap">tap</span></li>
+      <li class="ex-item"><span class="n">4</span><span class="txt">I can't speak to you now, I<b>'m having</b> dinner.</span><span class="answer">a</span><span class="tap">tap</span></li>
+      <li class="ex-item"><span class="n">5</span><span class="txt">Families <b>are becoming</b> smaller and smaller these days.</span><span class="answer">e</span><span class="tap">tap</span></li>
+    </ul>
+  </div>
+
+  <!-- SLIDE 6: stative verbs -->
+  <div class="slide">
+    <div class="kicker">Common mistake</div>
+    <h2>Some verbs <span class="accent">don't go continuous</span></h2>
+    <div class="cat-row">
+      <div class="cat-box"><h3>Emotions</h3><p>hate, like, love, need, prefer, want</p></div>
+      <div class="cat-box"><h3>Senses</h3><p>feel, hear, see, smell, sound, taste</p></div>
+      <div class="cat-box"><h3>Mind</h3><p>believe, forget, know, remember, think, understand</p></div>
+      <div class="cat-box"><h3>Possession</h3><p>belong, have, own</p></div>
+    </div>
+    <div style="margin-top:20px;">
+      <div class="contrast-line"><span class="badge">stative</span> Jim <b>is</b> very silly. <span class="note">(usual behaviour)</span></div>
+      <div class="contrast-line cont"><span class="badge">action</span> Amy <b>is</b> just <b>being</b> silly. <span class="note">(not her normal behaviour)</span></div>
+      <div class="contrast-line"><span class="badge">stative</span> I <b>have</b> a great bike. <span class="note">(own)</span></div>
+      <div class="contrast-line cont"><span class="badge">action</span> He<b>'s having</b> dinner. <span class="note">(eat)</span></div>
+      <div class="contrast-line"><span class="badge">stative</span> I <b>think</b> this is great. <span class="note">(opinion)</span></div>
+      <div class="contrast-line cont"><span class="badge">action</span> I<b>'m thinking</b> about him. <span class="note">(have on your mind)</span></div>
+      <div class="contrast-line"><span class="badge">stative</span> This lasagna <b>smells</b> great. <span class="note">(has a smell)</span></div>
+      <div class="contrast-line cont"><span class="badge">action</span> The cat<b>'s smelling</b> the food. <span class="note">(sniffing it)</span></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 7: Exercise 3 -->
+  <div class="slide">
+    <div class="kicker">Page 9 &middot; Exercise 3</div>
+    <h2>Underline the verb, <span class="accent">choose the rule</span></h2>
+    <div class="hint-bar">Tap each sentence to underline its stative verb.</div>
+    <ul class="ex-list">
+      <li class="ex-item"><span class="n">1</span><span class="txt">Federico <span class="verb-target">loves</span> his new school.</span><span class="tap">tap</span></li>
+      <li class="ex-item"><span class="n">2</span><span class="txt">We <span class="verb-target">understand</span> the problem now.</span><span class="tap">tap</span></li>
+      <li class="ex-item"><span class="n">3</span><span class="txt">This food <span class="verb-target">tastes</span> delicious.</span><span class="tap">tap</span></li>
+      <li class="ex-item"><span class="n">4</span><span class="txt">Who <span class="verb-target">owns</span> the big house opposite the park?</span><span class="tap">tap</span></li>
+    </ul>
+    <div class="card" style="margin-top:14px;">
+      <p style="margin:0;font-size:clamp(16px,1.6vw,21px);">Some verbs, e.g. <i>like, hate, be, belong</i> and <i>know</i>, are stative verbs. They describe states, not actions. We don't use these verbs in <b class="accent">continuous</b> forms.</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 8: Exercise 4 -->
+  <div class="slide">
+    <div class="kicker">Page 9 &middot; Exercise 4</div>
+    <h2><i>Think</i>: stative <span class="accent">or action?</span></h2>
+    <div class="use-key">
+      <span><b>a</b> to describe the act of thinking</span>
+      <span><b>b</b> to give an opinion</span>
+    </div>
+    <div class="hint-bar">Tap a sentence to reveal its meaning.</div>
+    <ul class="ex-list">
+      <li class="ex-item"><span class="n">1</span><span class="txt">She <b>thinks</b> that firefighters are very brave.</span><span class="answer">b</span><span class="tap">tap</span></li>
+      <li class="ex-item"><span class="n">2</span><span class="txt">She<b>'s thinking</b> of joining the fire service.</span><span class="answer">a</span><span class="tap">tap</span></li>
+    </ul>
+    <p class="valencia-note">Bonus slide, not on your original list, quick to add since it finishes the stative-verbs page.</p>
+  </div>
+
+  <!-- SLIDE 9: Exercise 5 -->
+  <div class="slide">
+    <div class="kicker">Page 9 &middot; Exercise 5</div>
+    <h2>Choose the <span class="accent">correct option</span></h2>
+    <div class="hint-bar">Tap a sentence to reveal the correct option.</div>
+    <ul class="ex-list" style="column-count:1;">
+      <li class="ex-item"><span class="n">1</span><span class="txt">Be quiet! Why <span class="opt wrong">are you be</span> / <span class="opt right">are you being</span> so noisy today?</span><span class="tap">tap</span></li>
+      <li class="ex-item"><span class="n">2</span><span class="txt">Where does she work? <span class="opt wrong">I'm not remembering</span> / <span class="opt right">I don't remember</span> what her job is.</span><span class="tap">tap</span></li>
+      <li class="ex-item"><span class="n">3</span><span class="txt">Tatiana <span class="opt wrong">works</span> / <span class="opt right">is working</span> at her uncle's office this week.</span><span class="tap">tap</span></li>
+      <li class="ex-item"><span class="n">4</span><span class="txt">Karl isn't feeling well. <span class="opt right">He's seeing</span> / <span class="opt wrong">He sees</span> the doctor later today.</span><span class="tap">tap</span></li>
+      <li class="ex-item"><span class="n">5</span><span class="txt">Bella <span class="opt wrong">is looking like</span> / <span class="opt right">looks like</span> her aunt.</span><span class="tap">tap</span></li>
+      <li class="ex-item"><span class="n">6</span><span class="txt">Sometimes <span class="opt right">I take</span> / <span class="opt wrong">I'm taking</span> the bus to school.</span><span class="tap">tap</span></li>
+      <li class="ex-item"><span class="n">7</span><span class="txt">Li Na <span class="opt right">visits</span> / <span class="opt wrong">is visiting</span> her grandparents every weekend.</span><span class="tap">tap</span></li>
+      <li class="ex-item"><span class="n">8</span><span class="txt">Why <span class="opt right">do you think</span> / <span class="opt wrong">are you thinking</span> the children are jealous of each other?</span><span class="tap">tap</span></li>
+    </ul>
+  </div>
+
+  <!-- SLIDE 10: Exercise 6 -->
+  <div class="slide">
+    <div class="kicker">Page 9 &middot; Exercise 6</div>
+    <h2>Complete the <span class="accent">text</span></h2>
+    <div class="hint-bar">Career focus text, present simple or continuous. Tap a gap, or reveal them all.</div>
+    <div class="gapfill">
+      At the moment I <span class="blank" data-a="'m studying">(study)</span> to be an architect at university. The course <span class="blank" data-a="is">(be)</span> five years long and I <span class="blank" data-a="finish / 'm finishing">(finish)</span> in June next year. I <span class="blank" data-a="love">(love)</span> my course, although we <span class="blank" data-a="have">(have)</span> a lot of work! We <span class="blank" data-a="go">(go)</span> to lectures every day and as well as that, right now I <span class="blank" data-a="'m working">(work)</span> on a special project with some other students. We <span class="blank" data-a="'re designing">(design)</span> a new building for the university eco club. I <span class="blank" data-a="'m sharing">(share)</span> a house with two other students at the moment. I <span class="blank" data-a="like">(like)</span> them, but they <span class="blank" data-a="are always leaving">(always / leave)</span> their dirty plates in the kitchen, it's really annoying!
+    </div>
+    <button class="reveal-all" id="revealAllBlanks">Reveal all answers</button>
+  </div>
+
+</main>
+
+<div class="nav-bar">
+  <button id="prevBtn" title="Previous">&#8592;</button>
+  <span class="count" id="count"></span>
+  <button id="nextBtn" title="Next">&#8594;</button>
+</div>
+
+<footer>Somerset Language Centre &middot; Valencia &middot; PET I &middot; Unit 1 grammar</footer>
+
+<script>
+  var slides = document.querySelectorAll('.slide');
+  var idx = 0;
+  var prevBtn = document.getElementById('prevBtn');
+  var nextBtn = document.getElementById('nextBtn');
+  var count = document.getElementById('count');
+  function render(){
+    slides.forEach(function(s,i){ s.classList.toggle('active', i===idx); });
+    count.textContent = (idx+1) + ' / ' + slides.length;
+    prevBtn.disabled = idx===0;
+    nextBtn.disabled = idx===slides.length-1;
+    window.scrollTo(0,0);
+  }
+  function go(d){ idx = Math.max(0, Math.min(slides.length-1, idx+d)); render(); }
+  prevBtn.addEventListener('click', function(){ go(-1); });
+  nextBtn.addEventListener('click', function(){ go(1); });
+  document.addEventListener('keydown', function(e){
+    if(e.key==='ArrowRight') go(1);
+    else if(e.key==='ArrowLeft') go(-1);
+  });
+
+  // Reveal-on-tap for exercise items (works for answer badges, underlined verbs, and correct/wrong options)
+  document.querySelectorAll('.ex-item').forEach(function(item){
+    item.addEventListener('click', function(){
+      item.classList.toggle('revealed');
+    });
+  });
+
+  // Exercise 6 gap-fill: tap one blank to reveal it, or use the button to reveal all
+  document.querySelectorAll('.blank').forEach(function(b){
+    b.addEventListener('click', function(e){
+      e.stopPropagation();
+      b.classList.toggle('revealed');
+      b.textContent = b.classList.contains('revealed') ? b.getAttribute('data-a') : b.getAttribute('data-orig');
+    });
+    b.setAttribute('data-orig', b.textContent);
+  });
+  var revealAllBtn = document.getElementById('revealAllBlanks');
+  if (revealAllBtn) {
+    revealAllBtn.addEventListener('click', function(){
+      var blanks = document.querySelectorAll('.blank');
+      var allRevealed = Array.prototype.every.call(blanks, function(b){ return b.classList.contains('revealed'); });
+      blanks.forEach(function(b){
+        if (allRevealed) {
+          b.classList.remove('revealed');
+          b.textContent = b.getAttribute('data-orig');
+        } else {
+          b.classList.add('revealed');
+          b.textContent = b.getAttribute('data-a');
+        }
+      });
+      revealAllBtn.textContent = allRevealed ? 'Reveal all answers' : 'Hide all answers';
+    });
+  }
+
+  render();
+</script>
+</body>
+</html>

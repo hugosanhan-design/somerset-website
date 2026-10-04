@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Listening &amp; Speaking: PET I Unit 5, p.58-59</title>
+<style>
+  :root{ --green:#6BAE2E; --green-dark:#4d8120; --ink:#1a1a1a; --bg:#ffffff; --amber:#E08A1E; }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;background:var(--bg);color:var(--ink);}
+  header{display:flex;justify-content:space-between;align-items:flex-end;padding:clamp(16px,2.2vh,32px) clamp(24px,3.5vw,64px);border-bottom:4px solid var(--green);flex-wrap:wrap;gap:16px;}
+  .logo{display:flex;align-items:flex-end;gap:clamp(8px,1vw,16px);}
+  .logo .word{font-family:Arial,Helvetica,sans-serif;font-weight:800;font-size:clamp(30pt,3.4vw,46pt);letter-spacing:-1.2px;line-height:.9;color:#6BAE2E;}
+  .logo .lc{font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:clamp(8pt,0.85vw,12pt);letter-spacing:2.5px;line-height:1.18;padding-bottom:4px;color:#4d8120;}
+  .title-block{text-align:right;}
+  .title-block h1{margin:0;font-size:clamp(20px,2.1vw,30px);font-weight:700;color:var(--ink);}
+  .title-block p{margin:4px 0 0;font-size:clamp(13px,1.1vw,17px);color:#555;letter-spacing:.5px;text-transform:uppercase;}
+  .nav-bar{position:fixed;bottom:0;left:0;right:0;display:flex;align-items:center;justify-content:center;gap:20px;padding:16px 0 22px;background:linear-gradient(to top, rgba(255,255,255,0.96), rgba(255,255,255,0));z-index:30;}
+  .nav-bar button{background:var(--green);color:#fff;border:none;border-radius:999px;width:clamp(44px,4vw,64px);height:clamp(44px,4vw,64px);font-size:clamp(20px,2vw,28px);font-weight:700;cursor:pointer;}
+  .nav-bar button:disabled{opacity:.3;cursor:default;}
+  .nav-bar .count{font-size:clamp(14px,1.4vw,20px);color:#555;min-width:70px;text-align:center;}
+  main{max-width:1800px;margin:0 auto;padding:clamp(8px,1.5vh,20px) clamp(24px,4vw,72px) 96px;min-height:calc(100vh - 110px);display:flex;flex-direction:column;justify-content:center;}
+  .slide{display:none;}
+  .slide.active{display:block;animation:fade .15s ease;}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  .kicker{font-size:clamp(14px,1.4vw,20px);font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--green);margin:clamp(10px,min(1.8vh,2.4vw),26px) 0 8px;}
+  h2{font-size:clamp(28px,min(3.8vw,6vh),48px);margin:0 0 clamp(10px,min(1.8vh,2.4vw),24px);color:var(--ink);line-height:1.25;}
+  h2 .accent{color:var(--green-dark);}
+  .item-list{list-style:none;margin:0 0 clamp(14px,2vh,22px);padding:0;max-width:1200px;}
+  .item{background:#fff;border:2px solid #ddd;border-radius:14px;padding:clamp(12px,1.6vh,18px) clamp(18px,2.2vw,26px);margin-bottom:clamp(9px,1.2vh,14px);font-size:clamp(17px,1.9vw,24px);line-height:1.4;}
+  .item .num{color:#999;font-weight:800;margin-right:10px;}
+  .reveal-all{background:var(--green);color:#fff;border:none;border-radius:999px;padding:10px 26px;font-size:clamp(14px,1.4vw,18px);font-weight:700;cursor:pointer;}
+  .reveal-all:hover{background:var(--green-dark);}
+  .whybox{display:none;margin-top:clamp(14px,2vh,20px);max-width:1200px;background:#F4F8EE;border-left:5px solid var(--green-dark);border-radius:0 12px 12px 0;padding:clamp(14px,1.8vh,20px) clamp(18px,2.2vw,26px);font-size:clamp(16px,1.6vw,21px);line-height:1.45;color:#333;}
+  .revealed .whybox{display:block;}
+  .whybox b{color:var(--green-dark);}
+  .valencia-note{margin-top:clamp(16px,2.2vh,28px);font-size:clamp(15px,1.5vw,20px);color:#777;font-style:italic;}
+  footer{text-align:center;padding:20px;font-size:clamp(13px,1.1vw,16px);color:#888;border-top:2px solid #eee;}
+  @page{size:A4;margin:16mm 14mm}
+  @media print{
+    body{background:#fff}
+    .nav-bar{display:none !important}
+    main{max-width:none;padding:0}
+    .slide{display:block !important;page-break-after:always;padding-top:6px;}
+    .slide:last-child{page-break-after:auto;}
+    h2{font-size:19pt}
+    .kicker{font-size:12pt}
+    .item{font-size:12.5pt;page-break-inside:avoid;break-inside:avoid;}
+    .whybox{display:block !important;font-size:12pt;}
+    .reveal-all{display:none !important;}
+  }
+  @media(max-width:700px){ header{flex-direction:column;align-items:center;text-align:center;} .title-block{text-align:center;} h2{font-size:24px;} }
+.item .a-text,.gap-answer{color:transparent !important;background:#EAF4DA;border-radius:6px;padding:0 .35em;min-width:3.2em;display:inline-block;cursor:pointer;user-select:none;}
+.item.shown .a-text,.gap-answer.shown{color:var(--green-dark) !important;background:none;font-weight:700;}
+.showpill{display:inline-block;margin-left:10px;border:2px solid var(--green);color:var(--green-dark);background:#fff;border-radius:999px;padding:1px 12px;font-size:.72em;font-weight:700;cursor:pointer;vertical-align:middle;}
+.item.shown .showpill{display:none;}
+@media print{.item .a-text,.gap-answer{color:var(--green-dark) !important;background:none;}.showpill{display:none !important;}}
+/* per-item-reveal v1 */
+.item .a-text,.gap-answer{color:transparent !important;background:#EAF4DA;border-radius:6px;padding:0 .35em;min-width:3.2em;display:inline-block;cursor:pointer;user-select:none;}
+.item.shown .a-text,.gap-answer.shown{color:var(--green-dark) !important;background:none;font-weight:700;}
+.showpill{display:inline-block;margin-left:10px;border:2px solid var(--green);color:var(--green-dark);background:#fff;border-radius:999px;padding:1px 12px;font-size:.72em;font-weight:700;cursor:pointer;vertical-align:middle;}
+.item.shown .showpill{display:none;}
+@media print{.item .a-text,.gap-answer{color:var(--green-dark) !important;background:none;}.showpill{display:none !important;}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+  <div class="title-block"><h1>Listening &amp; Speaking</h1><p>Unit 5 &middot; p.58-59 &middot; the Tiny House Movement</p></div>
+</header>
+<main>
+
+<div class="slide active">
+  <div class="kicker">Unit 5 &middot; pages 58-59</div>
+  <h2>Where we live &middot; <span class="accent">listening &amp; speaking</span></h2>
+  <p class="valencia-note">Tap "Show answers" on each slide. Three exercises, in book order.</p>
+</div>
+
+<div class="slide">
+  <div class="kicker">Listening Ex.3 &middot; match answers to questions, Track 5.3</div>
+  <h2>Living on a <span class="accent">houseboat</span></h2>
+  <ul class="item-list">
+    <li class="item"><span class="num">1</span>What is the biggest problem about living on a boat? &rarr; <span class="a-text">d, probably the maintenance &mdash; we have to repair things all the time</span></li>
+    <li class="item"><span class="num">2</span>When did you first move onto a boat? &rarr; <span class="a-text">a, around September time, three years ago</span></li>
+    <li class="item"><span class="num">3</span>Do you miss living in a house on dry land? &rarr; <span class="a-text">e, sometimes &mdash; I'd love a bit more space</span></li>
+    <li class="item"><span class="num">4</span>Do you think you'll always live on a boat? &rarr; <span class="a-text">b, it's difficult to say &mdash; it depends on my job</span></li>
+    <li class="item"><span class="num">5</span>Would you recommend living on a boat? &rarr; <span class="a-text">c, yes &mdash; it's not always perfect, but most of the time I love it</span></li>
+  </ul>
+  <button class="reveal-all">Show answers</button>
+</div>
+
+<div class="slide">
+  <div class="kicker">Listening Ex.5 &middot; which questions ask about opinion?</div>
+  <h2>Fact or <span class="accent">opinion?</span></h2>
+  <ul class="item-list">
+    <li class="item"><span class="num">Answer</span><span class="a-text">Questions 1, 4 and 6 ask about the speaker's opinion.</span></li>
+  </ul>
+  <button class="reveal-all">Show answers</button>
+  <div class="whybox"><b>Strategy (Exam Tip):</b> words like think, believe, feel, prefer and according to signal an opinion question. Check whether the opinion is current or past, and whose opinion it is (Rebecca's, or "many people's").</div>
+</div>
+
+<div class="slide">
+  <div class="kicker">Exam Task &middot; multiple choice, one conversation, Track 5.5</div>
+  <h2>Rebecca and the <span class="accent">Tiny House Movement</span></h2>
+  <ul class="item-list">
+    <li class="item"><span class="num">1</span>Rebecca believes that &rarr; <span class="a-text">B, many people think possessions make us happy</span></li>
+    <li class="item"><span class="num">2</span>Where does Rebecca sleep? &rarr; <span class="a-text">B, above the kitchen (in a sleeping loft)</span></li>
+    <li class="item"><span class="num">3</span>Rebecca says that it's difficult for her &rarr; <span class="a-text">C, to have enough space for her possessions</span></li>
+    <li class="item"><span class="num">4</span>The best thing about living in a tiny house, according to Rebecca &rarr; <span class="a-text">B, she has more free time than most people</span></li>
+    <li class="item"><span class="num">5</span>At the moment, Rebecca &rarr; <span class="a-text">B, doesn't spend a lot of money on electricity</span></li>
+    <li class="item"><span class="num">6</span>What does Rebecca think about meeting her friends? &rarr; <span class="a-text">A, she likes going to different places with them</span></li>
+  </ul>
+  <button class="reveal-all">Show answers</button>
+  <div class="whybox"><b>Why:</b> Rebecca says her house doesn't have a second floor, but "there's a platform on top of my kitchen cupboards, and that's where my bed is" (Q2, B); on electricity, "next year I'm going to put in solar panels... so that I can go off-grid", meaning she's not fully off-grid yet but already pays very little (Q5, B).</div>
+</div>
+
+<div class="slide">
+  <div class="kicker">Speaking Ex.2 &middot; advantage or disadvantage?</div>
+  <h2>Choosing a <span class="accent">neighbourhood</span></h2>
+  <p style="font-size:12pt;color:#555;margin:0 0 10px;">Suggested answers (key) &mdash; students may reasonably disagree; accept a justified A/D.</p>
+  <ul class="item-list">
+    <li class="item"><span class="num">1</span>close to friends &rarr; <span class="a-text">A</span></li>
+    <li class="item"><span class="num">2</span>a modern kitchen &rarr; <span class="a-text">A</span></li>
+    <li class="item"><span class="num">3</span>close to a large park &rarr; <span class="a-text">A</span></li>
+    <li class="item"><span class="num">4</span>near busy roads &rarr; <span class="a-text">D</span></li>
+    <li class="item"><span class="num">5</span>good WiFi and mobile phone signal &rarr; <span class="a-text">A</span></li>
+    <li class="item"><span class="num">6</span>a garden &rarr; <span class="a-text">A</span></li>
+    <li class="item"><span class="num">7</span>good public transport &rarr; <span class="a-text">A</span></li>
+    <li class="item"><span class="num">8</span>shops nearby &rarr; <span class="a-text">A</span></li>
+    <li class="item"><span class="num">9</span>lots of pollution &rarr; <span class="a-text">D</span></li>
+    <li class="item"><span class="num">10</span>a big bedroom &rarr; <span class="a-text">A</span></li>
+  </ul>
+  <button class="reveal-all">Show answers</button>
+</div>
+
+</main>
+<div class="nav-bar"><button id="prevBtn" title="Previous">&#8592;</button><span class="count" id="count"></span><button id="nextBtn" title="Next">&#8594;</button></div>
+<footer>Somerset Language Centre &middot; Valencia &middot; Unit 5, p.58-59</footer>
+<script>
+  var slides = document.querySelectorAll('.slide');
+  var idx = 0;
+  var prevBtn = document.getElementById('prevBtn');
+  var nextBtn = document.getElementById('nextBtn');
+  var count = document.getElementById('count');
+  function render(){ slides.forEach(function(s,i){ s.classList.toggle('active', i===idx); }); count.textContent=(idx+1)+' / '+slides.length; prevBtn.disabled=idx===0; nextBtn.disabled=idx===slides.length-1; window.scrollTo(0,0); }
+  function go(d){ idx=Math.max(0,Math.min(slides.length-1,idx+d)); render(); }
+  prevBtn.addEventListener('click', function(){ go(-1); });
+  nextBtn.addEventListener('click', function(){ go(1); });
+  document.addEventListener('keydown', function(e){ if(e.key==='ArrowRight') go(1); else if(e.key==='ArrowLeft') go(-1); });
+  document.querySelectorAll('.slide').forEach(function(slide){
+    var btn = slide.querySelector('.reveal-all');
+    if(!btn) return;
+    btn.addEventListener('click', function(){ var on = slide.classList.toggle('revealed'); btn.textContent = on ? 'Hide answers' : 'Show answers'; });
+  });
+  render();
+</script>
+<script>
+document.querySelectorAll('.item').forEach(function(it){
+  if(!it.querySelector('.a-text')) return;
+  var b=document.createElement('button'); b.className='showpill'; b.type='button'; b.textContent='Show answer';
+  b.addEventListener('click',function(e){e.stopPropagation(); it.classList.add('shown');});
+  it.appendChild(b);
+  it.querySelectorAll('.a-text').forEach(function(a){a.addEventListener('click',function(e){e.stopPropagation(); it.classList.toggle('shown');});});
+});
+document.querySelectorAll('.gap-answer').forEach(function(g){g.title='Click to show / hide'; g.addEventListener('click',function(){g.classList.toggle('shown');});});
+document.querySelectorAll('.reveal-all').forEach(function(b){
+  var s=b.closest('.slide'); if(!s||!s.querySelector('.whybox')){b.style.display='none';return;}
+  var mc=!!s.querySelector('.mc-opt'); var L=mc?['Show answer','Hide answer']:['Why?','Hide why'];  /* MC slides reveal the right option (registry D07) */
+  var fresh=b.cloneNode(true); b.parentNode.replaceChild(fresh,b); fresh.textContent=L[0];
+  fresh.addEventListener('click',function(){var on=s.classList.toggle('revealed'); fresh.textContent=on?L[1]:L[0];});
+});
+</script>
+</body>
+</html>

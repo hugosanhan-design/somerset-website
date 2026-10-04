@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Level Ladder: your results · Friday B2 · Somerset Vista</title>
+<!-- SOMERSET VISTA — Friday B2, Level Ladder results (11 Sep 2026 diagnostic).
+     Rebuilt 18 Sep 2026 from FridayB2_LevelLadder_Results_18Sep2026.pptx (19 slides)
+     so it lives in the same click-through format as the other Fridays materials.
+     Redesigned 18 Sep 2026 (v2): per Hugo, this deck keeps the ORIGINAL POWERPOINT'S
+     look — plain white background, Georgia/Arial, dark ink + one green accent —
+     rather than the dark "data-deck" Vista skin used for FCE I and the answer-key
+     Vistas. This is a Friday-B2-specific, results-deck exception; do not carry this
+     light theme into other Vistas without checking with Hugo first.
+     This deck presents results rather than revealing answers, so navigation is
+     slide-by-slide (arrow keys / click) rather than cumulative-reveal. -->
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{ --ink:#222222; --mut:#6b6b6b; --panel:#ffffff; --bgpage:#f4f6f1;
+  --green:#3F6E17; --brand:#6BAE2E; --err:#C03A2E; --line:#e2e2e2; }
+html,body{width:100%;height:100%;overflow:hidden;background:var(--bgpage);font-family:Arial,Helvetica,sans-serif;}
+#show{position:fixed;inset:0;}
+.slide{position:absolute;inset:0;display:none;flex-direction:column;}
+.slide.active{display:flex;}
+.bg{position:absolute;inset:0;background:var(--panel);border-top:9px solid var(--brand);}
+.wm{position:absolute;top:3vh;left:3.5vw;z-index:6;display:flex;align-items:baseline;gap:8px;}
+.wm .w{font-family:Georgia,serif;font-weight:700;font-size:clamp(18px,1.9vw,26px);color:var(--brand);}
+.wm .lc{font-size:clamp(8px,.8vw,11px);letter-spacing:3px;color:var(--green);font-weight:700;}
+.tag{position:absolute;top:3.2vh;right:4vw;z-index:6;font-size:clamp(9px,.95vw,13px);letter-spacing:1.6px;text-transform:uppercase;font-weight:700;color:var(--mut);text-align:right;max-width:44vw;}
+.sc{position:relative;z-index:3;flex:1;display:flex;flex-direction:column;justify-content:center;padding:11vh 6vw 6vh;overflow:hidden;}
+.sc.centre{align-items:center;text-align:center;}
+.pill{display:block;color:var(--green);font-size:clamp(12px,1.15vw,16px);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;font-weight:800;}
+.pill.centre{text-align:center;}
+.t-super{font-family:Georgia,serif;font-size:clamp(38px,6vw,84px);color:var(--ink);font-weight:700;}
+.t-big{font-family:Georgia,serif;font-size:clamp(24px,3.4vw,50px);color:var(--ink);font-weight:700;}
+.rt{font-family:Georgia,serif;font-size:clamp(22px,2.8vw,38px);color:var(--ink);font-weight:700;margin-bottom:8px;line-height:1.1;}
+.rsub{color:var(--mut);font-size:clamp(13px,1.3vw,18px);margin-bottom:18px;max-width:1000px;line-height:1.4;}
+.lead{font-size:clamp(18px,1.9vw,28px);color:var(--mut);font-weight:600;line-height:1.45;max-width:1100px;}
+.rule{width:80px;height:3px;background:var(--brand);margin:18px auto;}
+.strip{position:absolute;bottom:0;left:0;right:0;height:5px;z-index:4;background:var(--brand);}
+#nav{position:fixed;bottom:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:center;gap:22px;padding:9px;background:rgba(255,255,255,.85);backdrop-filter:blur(6px);border-top:1px solid var(--line);}
+.nb{background:transparent;border:1.5px solid var(--green);color:var(--green);font-size:18px;cursor:pointer;width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.nb:hover{background:var(--green);color:#fff;}
+#count{color:var(--mut);font-size:13px;letter-spacing:2px;min-width:64px;text-align:center;}
+.hint{position:fixed;top:14px;right:1.6vw;z-index:100;color:rgba(0,0,0,.35);font-size:12px;letter-spacing:1px;}
+
+/* ---- stat cards (slide 2) ---- */
+.statrow{display:flex;gap:3vw;justify-content:center;flex-wrap:wrap;margin-top:1vh;}
+.statcard{text-align:center;max-width:320px;}
+.statcard .num{font-family:Georgia,serif;font-size:clamp(60px,9vw,130px);font-weight:700;color:var(--green);line-height:1;}
+.statcard .lbl{color:var(--ink);font-size:clamp(16px,1.6vw,20px);letter-spacing:2px;text-transform:uppercase;font-weight:800;margin:8px 0 10px;}
+.statcard .d{color:var(--mut);font-size:clamp(17px,1.6vw,22px);font-weight:600;}
+
+/* ---- unit % overview (slide 3) ---- */
+.ulist{width:100%;max-width:1500px;margin:0 auto;display:flex;flex-direction:column;gap:1.3vh;}
+.urow{display:flex;align-items:center;gap:1.4vw;padding:.7vh 0;border-bottom:1px solid var(--line);}
+.urow .uname{flex:1;color:var(--ink);font-weight:700;font-size:clamp(20px,2.1vw,28px);}
+.urow .bar{flex:0 0 34%;height:14px;border-radius:8px;background:#eceee7;overflow:hidden;position:relative;}
+.urow .bar i{position:absolute;inset:0 auto 0 0;background:var(--brand);border-radius:8px;}
+.urow .pct{flex:0 0 4.5em;text-align:right;font-family:Georgia,serif;font-weight:700;color:var(--green);font-size:clamp(20px,2.2vw,28px);}
+.urow .when{flex:0 0 9em;text-align:right;color:var(--mut);font-size:clamp(13px,1.3vw,17px);letter-spacing:1px;text-transform:uppercase;font-weight:700;}
+
+/* ---- unit detail slide (slides 4-15, 3 questions per slide) ---- */
+.udhead{display:flex;gap:3vw;margin-bottom:2.5vh;flex-wrap:wrap;}
+.udbox{flex:1 1 160px;}
+.udbox .k{color:var(--mut);font-size:clamp(13px,1.1vw,15px);letter-spacing:1.6px;text-transform:uppercase;font-weight:800;margin-bottom:5px;}
+.udbox .v{color:var(--ink);font-size:clamp(17px,1.8vw,23px);font-weight:700;}
+.udbox.score .v{font-family:Georgia,serif;font-size:clamp(28px,3.2vw,42px);color:var(--green);}
+.qlist{width:100%;max-width:1560px;margin:0 auto;display:flex;flex-direction:column;gap:1.4vh;flex:1;overflow:hidden;justify-content:center;}
+.qrow{display:flex;flex-direction:column;gap:.3vh;padding:.6vh 0 1vh;border-bottom:1px solid var(--line);}
+.qrow .qmain{display:flex;align-items:baseline;gap:1vw;}
+.qrow .qn{flex:0 0 1.5em;color:var(--green);font-weight:800;text-align:right;font-size:clamp(20px,2.1vw,27px);}
+.qrow .qt{flex:1;color:var(--ink);font-weight:700;font-size:clamp(20px,2.1vw,27px);line-height:1.3;}
+.qrow .qscore{flex:0 0 4.5em;text-align:right;font-weight:800;color:var(--green);font-size:clamp(20px,2.1vw,27px);}
+.qrow.notyet .qscore{color:var(--err);}
+.qrow .qsub{padding-left:2.5em;display:flex;gap:1.2em;align-items:baseline;}
+.qrow .qtag{color:var(--mut);font-style:italic;font-weight:600;font-size:clamp(14px,1.4vw,18px);}
+.qrow .qflag{color:var(--err);font-weight:800;font-size:clamp(13px,1.3vw,16px);text-transform:uppercase;letter-spacing:1px;}
+
+/* ---- big-two spotlight (slide 16) ---- */
+.spot2{display:flex;gap:3vw;justify-content:center;flex-wrap:wrap;}
+.spotcard{max-width:560px;border:1.5px solid var(--err);border-radius:10px;padding:24px 28px;background:#fdf3f1;}
+.spotcard .qn{color:var(--err);font-weight:800;letter-spacing:1.5px;font-size:clamp(15px,1.5vw,18px);text-transform:uppercase;margin-bottom:10px;}
+.spotcard p{color:var(--ink);font-size:clamp(20px,2.1vw,27px);font-weight:700;line-height:1.4;margin-bottom:12px;}
+.spotcard .sc{color:var(--mut);font-size:clamp(16px,1.6vw,20px);font-weight:600;}
+
+/* ---- roadmap (slide 17) ---- */
+.roadmap{display:flex;gap:1.2vw;justify-content:center;flex-wrap:wrap;max-width:1650px;margin:0 auto;}
+.rmcard{flex:1 1 240px;max-width:280px;border:1.5px solid var(--line);border-radius:10px;padding:18px 16px;position:relative;background:var(--panel);}
+.rmcard.here{border-color:var(--green);background:#eef5e6;}
+.rmcard .un{color:var(--mut);font-size:clamp(13px,1.3vw,16px);letter-spacing:1.5px;font-weight:800;}
+.rmcard h3{font-family:Georgia,serif;color:var(--ink);font-size:clamp(18px,1.9vw,23px);margin:5px 0 8px;}
+.rmcard .g{color:var(--mut);font-size:clamp(13.5px,1.35vw,17px);line-height:1.4;font-weight:600;}
+.rmcard .when{margin-top:10px;color:var(--green);font-weight:800;font-size:clamp(13px,1.3vw,16px);text-transform:uppercase;letter-spacing:1px;}
+.rmcard .here-badge{position:absolute;top:-12px;right:10px;background:var(--green);color:#fff;font-size:11px;font-weight:800;padding:4px 10px;border-radius:10px;letter-spacing:1px;}
+
+/* ---- anonymised table (slide 18) ---- */
+.stbl{width:100%;max-width:1560px;margin:0 auto;border-collapse:collapse;}
+.stbl th,.stbl td{padding:1vh .9vw;text-align:center;font-size:clamp(19px,2vw,26px);}
+.stbl th{color:var(--mut);text-transform:uppercase;letter-spacing:1px;font-weight:800;font-size:clamp(14px,1.4vw,18px);border-bottom:1.5px solid var(--line);}
+.stbl td{color:var(--ink);font-weight:700;border-bottom:1px solid var(--line);}
+.stbl td.name{color:var(--ink);font-weight:800;text-align:left;font-family:Georgia,serif;}
+.stbl td.tot{color:var(--green);font-weight:800;}
+
+/* ---- steps (slide 19) ---- */
+.steps{display:flex;gap:2.4vw;justify-content:center;flex-wrap:wrap;max-width:1550px;margin:0 auto;}
+.stepcard{flex:1 1 280px;max-width:400px;}
+.stepcard .n{font-family:Georgia,serif;font-size:clamp(40px,4.6vw,60px);color:var(--green);font-weight:700;}
+.stepcard h3{color:var(--ink);font-size:clamp(20px,2.1vw,26px);margin:6px 0 10px;}
+.stepcard p{color:var(--mut);font-size:clamp(17px,1.7vw,21px);line-height:1.45;font-weight:600;}
+
+/* ---- personal slide (20-25) — stacked so nothing is squeezed ---- */
+.pwrap{display:flex;flex-direction:column;gap:2.6vh;max-width:1650px;margin:0 auto;width:100%;}
+.ptop{display:flex;align-items:baseline;gap:2.4vw;flex-wrap:wrap;}
+.ptop .pname{font-family:Georgia,serif;font-size:clamp(44px,5.2vw,68px);color:var(--ink);font-weight:700;}
+.ptop .pscore{font-family:Georgia,serif;font-size:clamp(30px,3.4vw,44px);color:var(--green);font-weight:700;}
+.ptop .pstrong{color:var(--ink);font-size:clamp(17px,1.7vw,22px);font-weight:700;}
+.ptop .pstrong-lbl{color:var(--mut);font-size:12px;letter-spacing:1.5px;text-transform:uppercase;font-weight:800;display:block;margin-bottom:3px;}
+.pgrid{display:flex;gap:1vw;flex-wrap:wrap;}
+.pgu{flex:1 1 140px;border:1.5px solid var(--line);border-radius:10px;padding:10px 6px;text-align:center;background:var(--panel);}
+.pgu .un{color:var(--mut);font-size:clamp(12px,1.2vw,15px);text-transform:uppercase;letter-spacing:1px;font-weight:800;display:block;margin-bottom:4px;}
+.pgu .uv{color:var(--green);font-weight:700;font-family:Georgia,serif;font-size:clamp(24px,2.6vw,34px);}
+.pright .tlbl{color:var(--mut);font-size:13px;letter-spacing:1.5px;text-transform:uppercase;font-weight:800;margin-bottom:10px;}
+.trow{border-bottom:1px solid var(--line);padding:1vh 0;}
+.trow .tq{color:var(--ink);font-size:clamp(19px,2vw,25px);font-weight:700;line-height:1.35;}
+.trow .twhen{color:var(--green);font-size:13px;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-top:4px;}
+</style>
+</head>
+<body>
+<div id="show"></div>
+<div class="hint">&larr; &rarr; · click to advance</div>
+<div id="nav"><button class="nb" onclick="go(-1)">&#8249;</button><span id="count"></span><button class="nb" onclick="go(1)">&#8250;</button></div>
+<script>
+const TAG = "Friday B2 &middot; The Level Ladder, 11 Sep 2026";
+
+const UNITS = [
+ {n:1, title:"Jump for joy", grammar:"present simple/continuous + stative verbs", when:"now", pct:75, score:"27 / 36",
+  qs:[
+   {n:1, t:"Nuria is worrying about her results at the moment, though she is normally calm.", tag:"present continuous: temporary", score:"3 of 6"},
+   {n:2, t:"Try the horchata in Alboraya. It tastes nothing like the supermarket version.", tag:"stative verb, not continuous", score:"5 of 6"},
+   {n:3, t:"Actually, I think you have a point.", tag:"think as opinion, stative", score:"5 of 6"},
+   {n:4, t:"Flats in Ruzafa are getting more expensive every single year.", tag:"continuous: changing situation", score:"4 of 6"},
+   {n:5, t:"Teresa went bright red when she forgot her lines on stage. She felt embarrassed.", tag:"emotions, -ed not -ing", score:"5 of 6"},
+   {n:6, t:"Claudia never changes her mind, however good your argument is. She is very stubborn.", tag:"personality adjectives", score:"5 of 6"},
+  ]},
+ {n:2, title:"Global culture?", grammar:"past simple/continuous; used to / would; be/get used to", when:"Nov to Dec", pct:47, score:"17 / 36",
+  qs:[
+   {n:7, t:"While the parade was passing through the Plaza del Ayuntamiento, it started to rain.", tag:"past continuous: interrupted", score:"4 of 6"},
+   {n:8, t:"When I was small, we would spend every March at my grandmother's house for Fallas.", tag:"would: repeated past action", score:"2 of 6"},
+   {n:9, t:"She used to hate the mascletà, but now she never misses one.", tag:"used to with a stative verb", score:"4 of 6"},
+   {n:10, t:"I am used to the noise now, so I sleep straight through it.", tag:"be used to + noun", score:"3 of 6"},
+   {n:11, t:"The ninots are burnt on the final night. It is a ritual that goes back centuries.", tag:"traditions", score:"1 of 6", notyet:true},
+   {n:12, t:"Thousands of people line the streets to watch the parade go past.", tag:"festivals", score:"3 of 6"},
+  ]},
+ {n:3, title:"Role models", grammar:"past perfect simple & continuous", when:"Jan to Feb", pct:53, score:"19 / 36",
+  qs:[
+   {n:13, t:"By the time we got to Mestalla, the match had already started.", tag:"past perfect: earlier past", score:"3 of 6"},
+   {n:14, t:"She had been running for over five hours when she finally crossed the finish line.", tag:"past perfect continuous: duration", score:"2 of 6"},
+   {n:15, t:"I didn't recognise Beatriz at first because she had cut her hair.", tag:"past perfect simple: result", score:"2 of 6"},
+   {n:16, t:"Before he won his first medal, he had lost three finals.", tag:"past perfect before a past point", score:"2 of 6"},
+   {n:17, t:"Her determination to keep training after the injury is what impressed the selectors.", tag:"success nouns", score:"5 of 6"},
+   {n:18, t:"One good teacher can inspire a whole generation of students.", tag:"fame and influence verbs", score:"5 of 6"},
+  ]},
+ {n:4, title:"City living", grammar:"future forms (will, going to, present continuous for future)", when:"Feb to Mar", pct:58, score:"21 / 36",
+  qs:[
+   {n:19, t:"This time next year Lucía will be living in Berlin.", tag:"future continuous", score:"4 of 6"},
+   {n:20, t:"The new metro line will have been finished long before 2030.", tag:"future perfect passive", score:"1 of 6", notyet:true},
+   {n:21, t:"Careful, you are going to drop that box!", tag:"going to: present evidence", score:"2 of 6"},
+   {n:22, t:"The train to Madrid leaves every hour, on the hour.", tag:"present simple: timetable", score:"6 of 6"},
+   {n:23, t:"They live on the outskirts of the city, about twenty minutes out by bus.", tag:"cities", score:"3 of 6"},
+   {n:24, t:"El Carmen is a bustling district, full of bars and people at all hours.", tag:"describing districts", score:"5 of 6"},
+  ]},
+ {n:5, title:"Emerging technologies", grammar:"modals (permission, obligation, ability, probability)", when:"Apr to May", pct:67, score:"24 / 36",
+  qs:[
+   {n:25, t:"You mustn't take photos inside the gallery. There are signs on every wall.", tag:"prohibition", score:"6 of 6"},
+   {n:26, t:"She isn't answering. She might still be on the metro.", tag:"modals of probability", score:"5 of 6"},
+   {n:27, t:"You should have told me the film started at eight. I missed the beginning.", tag:"perfect modal: criticism", score:"4 of 6"},
+   {n:28, t:"That can't be Irene at the door. She is in Alicante today.", tag:"deduction: impossibility", score:"5 of 6"},
+   {n:29, t:"Make a backup of your files before you update the phone.", tag:"compound noun", score:"2 of 6"},
+   {n:30, t:"The email arrived with three attachments.", tag:"technology", score:"2 of 6"},
+  ]},
+ {n:6, title:"Take it easy", grammar:"-ing form and infinitives", when:"May to Jun", pct:58, score:"21 / 36",
+  qs:[
+   {n:31, t:"I can't stand waiting in queues.", tag:"verb + -ing", score:"5 of 6"},
+   {n:32, t:"She stopped to tie her shoelace and lost ten seconds.", tag:"stop + infinitive of purpose", score:"5 of 6"},
+   {n:33, t:"We are thinking of taking up padel this autumn.", tag:"preposition + -ing", score:"1 of 6", notyet:true},
+   {n:34, t:"He managed to get the ball past the keeper.", tag:"verb + infinitive", score:"4 of 6"},
+   {n:35, t:"The Valencia marathon course is famously flat, which is why records fall on it.", tag:"sports venues", score:"3 of 6"},
+   {n:36, t:"After thirty laps of the pool she could barely lift her arms.", tag:"sports nouns", score:"3 of 6"},
+  ]},
+];
+
+const STUDENTS = [
+ {name:"Lucía", total:"18/36", strongUnit:"Unit 1: Jump for joy", byUnit:[4,3,3,3,2,3],
+  targets:[{n:1, unit:"Unit 1, now"},{n:4, unit:"Unit 1, now"},{n:9, unit:"Unit 2, Nov to Dec"}]},
+ {name:"Marta", total:"20/36", strongUnit:"Unit 4: City living", byUnit:[3,3,3,4,4,3],
+  targets:[{n:1, unit:"Unit 1, now"},{n:2, unit:"Unit 1, now"},{n:3, unit:"Unit 1, now"}]},
+ {name:"Ainhoa", total:"24/36", strongUnit:"Unit 1: Jump for joy", byUnit:[5,4,4,4,4,3],
+  targets:[{n:6, unit:"Unit 1, now"},{n:8, unit:"Unit 2, Nov to Dec"},{n:11, unit:"Unit 2, Nov to Dec"}]},
+ {name:"Sonia", total:"21/36", strongUnit:"Unit 1: Jump for joy", byUnit:[6,3,4,3,3,2],
+  targets:[{n:8, unit:"Unit 2, Nov to Dec"},{n:10, unit:"Unit 2, Nov to Dec"},{n:11, unit:"Unit 2, Nov to Dec"}]},
+ {name:"Elena", total:"21/36", strongUnit:"Unit 5: Emerging technologies", byUnit:[4,2,3,3,5,4],
+  targets:[{n:1, unit:"Unit 1, now"},{n:4, unit:"Unit 1, now"},{n:7, unit:"Unit 2, Nov to Dec"}]},
+ {name:"Valeria", total:"25/36", strongUnit:"Unit 5: Emerging technologies", byUnit:[5,2,2,4,6,6],
+  targets:[{n:5, unit:"Unit 1, now"},{n:7, unit:"Unit 2, Nov to Dec"},{n:8, unit:"Unit 2, Nov to Dec"}]},
+];
+
+// question text lookup, by number, for the personal-target slides
+const QLOOKUP = {};
+UNITS.forEach(u => u.qs.forEach(q => QLOOKUP[q.n] = q.t));
+
+const S = [];
+
+/* Slide 1 — title */
+S.push(`<div class="bg"></div>
+ <div class="wm"><span class="w">Somerset</span><span class="lc">LANGUAGE&nbsp;CENTRE</span></div>
+ <div class="tag">Friday B2 &middot; 15:45 &middot; New Close-up B2</div>
+ <div class="sc centre"><div class="pill centre">Results</div>
+ <h1 class="t-super">The Level Ladder: your results</h1>
+ <div class="rule"><span class="gem"></span><span class="gem"></span><span class="gem"></span></div>
+ <p class="lead" style="text-align:center;max-width:900px">What you already know, what you don't know yet, and when we will learn it. This was not an exam &mdash; it covered the whole year, so most of it we have not taught yet. Getting a question wrong today just tells me where to spend our time.</p></div><div class="strip"></div>`);
+
+/* Slide 2 — how it worked */
+S.push(`<div class="bg"></div>
+ <div class="wm"><span class="w">Somerset</span><span class="lc">LANGUAGE&nbsp;CENTRE</span></div>
+ <div class="tag">${TAG}</div>
+ <div class="sc centre"><div class="pill centre">How the Level Ladder worked</div>
+ <div class="statrow">
+   <div class="statcard"><div class="num">36</div><div class="lbl">Questions</div><div class="d">Six in each part.</div></div>
+   <div class="statcard"><div class="num">6</div><div class="lbl">Parts</div><div class="d">One part for each unit we will study this year.</div></div>
+   <div class="statcard"><div class="num">1</div><div class="lbl">Unit so far</div><div class="d">We started Unit 1 today. Units 2 to 6 are still to come.</div></div>
+ </div></div><div class="strip"></div>`);
+
+/* Slide 3 — class results by unit */
+(function(){
+  const rows = UNITS.map(u => `<div class="urow"><span class="uname">Unit ${u.n} &middot; ${u.title}</span><span class="bar"><i style="width:${u.pct}%"></i></span><span class="pct">${u.pct}%</span><span class="when">${u.n===1?'NOW':u.when}</span></div>`).join('');
+  S.push(`<div class="bg"></div>
+   <div class="wm"><span class="w">Somerset</span><span class="lc">LANGUAGE&nbsp;CENTRE</span></div>
+   <div class="tag">${TAG}</div>
+   <div class="sc"><div class="pill">The whole class</div>
+   <h2 class="rt">How the class did, unit by unit</h2>
+   <p class="rsub">Correct answers from all six of you together (36 per unit). Unit 1 is where we are now.</p>
+   <div class="ulist">${rows}</div></div><div class="strip"></div>`);
+})();
+
+/* Slides 4-15 — unit detail, 3 questions per slide (fewer words, bigger —
+   never shrink text past the projector-legibility floors) */
+const QUESTIONS_PER_SLIDE = 3;
+UNITS.forEach((u) => {
+  const chunks = [];
+  for(let i=0; i<u.qs.length; i+=QUESTIONS_PER_SLIDE) chunks.push(u.qs.slice(i, i+QUESTIONS_PER_SLIDE));
+  chunks.forEach((chunk, ci) => {
+    const rows = chunk.map(q => `<div class="qrow${q.notyet?' notyet':''}">
+       <div class="qmain"><span class="qn">${q.n}</span><span class="qt">${q.t}</span><span class="qscore">${q.score}</span></div>
+       <div class="qsub"><span class="qtag">${q.tag}</span>${q.notyet?'<span class="qflag">not yet</span>':''}</div>
+      </div>`).join('');
+    S.push(`<div class="bg"></div>
+     <div class="wm"><span class="w">Somerset</span><span class="lc">LANGUAGE&nbsp;CENTRE</span></div>
+     <div class="tag">${TAG}</div>
+     <div class="sc"><div class="pill">Part ${u.n} of the ladder (${ci+1}/${chunks.length})</div>
+     <h2 class="rt">Unit ${u.n}: ${u.title}</h2>
+     <div class="udhead">
+       <div class="udbox"><div class="k">We learn it</div><div class="v">${u.n===1?'Now, today':u.when}</div></div>
+       <div class="udbox"><div class="k">Grammar</div><div class="v">${u.grammar}</div></div>
+       <div class="udbox score"><div class="k">Class score</div><div class="v">${u.score}</div></div>
+     </div>
+     <div class="qlist">${rows}</div></div><div class="strip"></div>`);
+  });
+});
+
+/* Slide 10 — the big two */
+S.push(`<div class="bg"></div>
+ <div class="wm"><span class="w">Somerset</span><span class="lc">LANGUAGE&nbsp;CENTRE</span></div>
+ <div class="tag">${TAG}</div>
+ <div class="sc centre"><div class="pill centre">Almost nobody has this... yet</div>
+ <h2 class="rt" style="text-align:center">The big two</h2>
+ <div class="spot2">
+   <div class="spotcard"><div class="qn">Question 11 &middot; Traditions</div><p>The ninots are burnt on the final night. It is a ritual that goes back centuries.</p><div class="sc">1 of 6 &middot; we learn it in Unit 2, Nov to Dec</div></div>
+   <div class="spotcard"><div class="qn">Question 20 &middot; Future perfect passive</div><p>The new metro line will have been finished long before 2030.</p><div class="sc">1 of 6 &middot; we learn it in Unit 4, Feb to Mar</div></div>
+ </div></div><div class="strip"></div>`);
+
+/* Slide 11 — roadmap */
+(function(){
+  const cards = UNITS.map(u => `<div class="rmcard${u.n===1?' here':''}">${u.n===1?'<span class="here-badge">YOU ARE HERE</span>':''}<div class="un">Unit ${u.n}</div><h3>${u.title}</h3><div class="g">${u.grammar}</div><div class="when">${u.n===1?'now':u.when}</div></div>`).join('');
+  S.push(`<div class="bg"></div>
+   <div class="wm"><span class="w">Somerset</span><span class="lc">LANGUAGE&nbsp;CENTRE</span></div>
+   <div class="tag">${TAG}</div>
+   <div class="sc"><div class="pill">The map</div>
+   <h2 class="rt">Our year, unit by unit</h2>
+   <div class="roadmap">${cards}</div>
+   <p class="rsub" style="margin-top:16px;text-align:center;margin-left:auto;margin-right:auto">Months are approximate. In June we do the Level Ladder again and compare.</p></div><div class="strip"></div>`);
+})();
+
+/* Slide 12 — anonymised per-student table (kept anonymous by design) */
+(function(){
+  const LETTER_DATA = [
+    {l:"A", tot:"25/36", u:[5,2,2,4,6,6]},
+    {l:"B", tot:"18/36", u:[4,3,3,3,2,3]},
+    {l:"C", tot:"21/36", u:[6,3,4,3,3,2]},
+    {l:"D", tot:"20/36", u:[3,3,3,4,4,3]},
+    {l:"E", tot:"21/36", u:[4,2,3,3,5,4]},
+    {l:"F", tot:"24/36", u:[5,4,4,4,4,3]},
+  ];
+  const rows = LETTER_DATA.map(s => `<tr><td class="name">Student ${s.l}</td><td class="tot">${s.tot}</td>${s.u.map(v=>`<td>${v}</td>`).join('')}</tr>`).join('');
+  S.push(`<div class="bg"></div>
+   <div class="wm"><span class="w">Somerset</span><span class="lc">LANGUAGE&nbsp;CENTRE</span></div>
+   <div class="tag">${TAG}</div>
+   <div class="sc"><div class="pill">Letters are random, not a ranking</div>
+   <h2 class="rt">How each of you did</h2>
+   <table class="stbl"><tr><th style="text-align:left">&nbsp;</th><th>Total</th><th>U1</th><th>U2</th><th>U3</th><th>U4</th><th>U5</th><th>U6</th></tr>${rows}</table></div><div class="strip"></div>`);
+})();
+
+/* Slide 13 — so what happens now */
+S.push(`<div class="bg"></div>
+ <div class="wm"><span class="w">Somerset</span><span class="lc">LANGUAGE&nbsp;CENTRE</span></div>
+ <div class="tag">${TAG}</div>
+ <div class="sc centre"><div class="pill centre">Today</div>
+ <h2 class="rt" style="text-align:center">So what happens now?</h2>
+ <div class="steps">
+   <div class="stepcard"><div class="n">1</div><h3>Today, Unit 1</h3><p>Present tenses and stative verbs. Question 1: only 3 of 6 got it. That is exactly what the next six Fridays are for.</p></div>
+   <div class="stepcard"><div class="n">2</div><h3>Every unit</h3><p>When we reach a new unit, look back at its six questions. You will see them get easier.</p></div>
+   <div class="stepcard"><div class="n">3</div><h3>June</h3><p>We climb the ladder again and see how much higher you get.</p></div>
+ </div></div><div class="strip"></div>`);
+
+/* Slides 14-19 — personal results, one per student */
+STUDENTS.forEach(s => {
+  const grid = s.byUnit.map((v,i)=>`<div class="pgu"><span class="un">Unit ${i+1}</span><span class="uv">${v}/6</span></div>`).join('');
+  const targets = s.targets.map(t=>`<div class="trow"><div class="tq">${t.n} &middot; ${QLOOKUP[t.n]}</div><div class="twhen">${t.unit}</div></div>`).join('');
+  S.push(`<div class="bg"></div>
+   <div class="wm"><span class="w">Somerset</span><span class="lc">LANGUAGE&nbsp;CENTRE</span></div>
+   <div class="tag">${TAG}</div>
+   <div class="sc"><div class="pill">Personal results</div>
+   <div class="pwrap">
+     <div class="ptop">
+       <div><span class="pstrong-lbl">This is</span><span class="pname">${s.name}</span></div>
+       <div><span class="pstrong-lbl">Score</span><span class="pscore">${s.total}</span></div>
+       <div><span class="pstrong-lbl">Strongest part</span><span class="pstrong">${s.strongUnit}</span></div>
+     </div>
+     <div class="pgrid">${grid}</div>
+     <div class="pright"><div class="tlbl">Your next three targets</div>${targets}</div>
+   </div></div><div class="strip"></div>`);
+});
+
+/* ============ engine (Vista standard) ============ */
+const show=document.getElementById('show');
+show.innerHTML=S.map((h,i)=>`<div class="slide${i===0?' active':''}">${h}</div>`).join('');
+const els=[...document.querySelectorAll('.slide')];let i=0;
+function render(){els.forEach((s,k)=>s.classList.toggle('active',k===i));document.getElementById('count').textContent=(i+1)+' / '+els.length;}
+function go(d){i=(i+d+els.length)%els.length;render();}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')go(1);if(e.key==='ArrowLeft')go(-1);});
+show.addEventListener('click',e=>{if(!e.target.closest('#nav'))go(1);});
+render();
+</script>
+</body>
+</html>
