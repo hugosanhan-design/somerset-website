@@ -405,8 +405,9 @@ export default function Home() {
         .hero-actions { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; opacity: 0; animation: rise-in 1.1s cubic-bezier(0.22,1,0.36,1) 2.45s forwards; }
         @keyframes rise-in { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
         :root { --scene-h: 22.5vh; }
-        .scene { position: fixed; bottom: 0; left: 0; width: 100%; height: var(--scene-h); pointer-events: none; z-index: 90; -webkit-mask-image: linear-gradient(to top, #000 82%, rgba(0,0,0,0.2) 100%); mask-image: linear-gradient(to top, #000 82%, rgba(0,0,0,0.2) 100%); filter: saturate(var(--sc-sat, 0.88)) brightness(var(--sc-bri, 0.98)); transition: filter 1.8s ease; }
-        body.wx-cloudy { --sc-sat: 0.8; --sc-bri: 0.93; }
+        .scene { position: fixed; bottom: 0; left: 0; width: 100%; height: var(--scene-h); pointer-events: none; z-index: 90; -webkit-mask-image: linear-gradient(to top, #000 82%, rgba(0,0,0,0.2) 100%); mask-image: linear-gradient(to top, #000 82%, rgba(0,0,0,0.2) 100%); filter: saturate(var(--sc-sat, 1)) brightness(var(--sc-bri, 0.98)); transition: filter 1.8s ease; }
+        @media (min-width: 900px) { .sl-shell .scene { left: var(--sl-w, 0px); width: calc(100% - var(--sl-w, 0px)); } }
+        body.wx-cloudy { --sc-sat: 0.94; --sc-bri: 0.93; }
         body.wx-fog { --sc-sat: 0.8; --sc-bri: 0.97; }
         body.wx-rain { --sc-sat: 0.74; --sc-bri: 0.88; }
         body.wx-snow { --sc-sat: 0.8; --sc-bri: 1.03; }
@@ -449,13 +450,13 @@ export default function Home() {
         .scene .prop, .scene .apple-tree, .scene .sheep-walk, .scene .crow, .scene .castle, .scene .falling-apple { position: absolute; pointer-events: none; }
         .prop { transform-origin: bottom center; }
         .prop.hay { width: 52px; bottom: 18%; }
-        .prop.graze { width: 46px; bottom: 19%; }
+        .prop.graze { width: 54px; bottom: 19%; }
         .prop.small { transform: scale(0.72); }
         .prop.heather { width: 42px; bottom: 13%; }
         .prop.cottage { width: 64px; bottom: 14%; }
         .prop.pony { width: 66px; bottom: 18%; }
         .apple-tree { width: 94px; bottom: 16%; left: 75%; transform-origin: bottom center; animation: tree-shake 9s ease-in-out infinite; }
-        .castle { width: 162px; bottom: 0; left: 1%; }
+        .castle { width: 230px; bottom: 0; left: 1%; }
         .falling-apple { width: 14px; left: 0; top: 0; z-index: 3; opacity: 0; will-change: transform, top; }
         .cloud { position: absolute; z-index: 1; pointer-events: none; will-change: transform; }
         .scene .clickable { pointer-events: auto; cursor: pointer; transition: filter 0.15s; }
@@ -467,7 +468,7 @@ export default function Home() {
         .info-pop .info-eyebrow { display: inline-flex; align-items: center; gap: 6px; font-size: 0.62rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green-dk); margin-bottom: 8px; }
         .info-pop .info-title { font-family: var(--serif); font-size: 1.25rem; font-weight: 500; color: var(--ink); margin-bottom: 7px; padding-right: 18px; letter-spacing: -0.01em; }
         .info-pop .info-body { font-size: 0.9rem; line-height: 1.62; color: var(--muted); }
-        .sheep-walk { width: 56px; bottom: 18%; left: 4%; transition: left 0.08s linear; animation: sheep-bob 0.62s ease-in-out infinite; }
+        .sheep-walk { width: 64px; bottom: 18%; left: 4%; transition: left 0.08s linear; animation: sheep-bob 0.62s ease-in-out infinite; }
         @keyframes sheep-bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
         .crow { width: 46px; bottom: 50%; left: 0; animation: crow-fly 9s ease-in-out infinite; }
         .crow-wings { transform-origin: 21px 13px; animation: crow-flap 0.34s ease-in-out infinite; }
@@ -813,36 +814,8 @@ export default function Home() {
             </svg>
           </div>
 
-          <svg className="castle clickable" data-info="castle" viewBox="0 0 172 185" xmlns="http://www.w3.org/2000/svg" aria-label="Dunster Castle">
-            <path d="M-6,185 Q86,104 178,185 Z" fill="#7AA45F" />
-            <path d="M-6,185 Q86,150 178,185 Z" fill="#557E45" />
-            <g fill="#4F7A42"><circle cx="30" cy="102" r="16" /><circle cx="46" cy="90" r="13" /><circle cx="128" cy="88" r="17" /><circle cx="146" cy="102" r="14" /><circle cx="112" cy="78" r="13" /></g>
-            <polygon points="42,118 42,68 47,68 47,62 52,62 52,68 57,68 57,62 62,62 62,68 66,68 66,118" fill="#C5AA9F" />
-            <rect x="60" y="70" width="6" height="48" fill="#AE8F85" />
-            <polygon points="64,118 64,76 110,76 110,118" fill="#C5AA9F" />
-            <rect x="104" y="78" width="6" height="40" fill="#AE8F85" />
-            <polygon points="78,76 78,50 96,50 96,76" fill="#CBB1A7" />
-            <polygon points="75,50 87,37 99,50" fill="#695D54" />
-            <line x1="87" y1="37" x2="87" y2="31" stroke="#695D54" strokeWidth="1.5" />
-            <rect x="78" y="44" width="3" height="7" fill="#CBB1A7" /><rect x="93" y="44" width="3" height="7" fill="#CBB1A7" />
-            <polygon points="106,118 106,66 111,66 111,60 116,60 116,66 121,66 121,60 126,60 126,66 130,66 130,118" fill="#C2A79D" />
-            <rect x="124" y="68" width="6" height="50" fill="#A98A80" />
-            <g fill="#54453E">
-              <rect x="48" y="76" width="4" height="7" /><rect x="48" y="90" width="4" height="7" /><rect x="48" y="104" width="4" height="7" />
-              <rect x="71" y="84" width="4" height="7" /><rect x="81" y="84" width="4" height="7" /><rect x="91" y="84" width="4" height="7" /><rect x="100" y="84" width="4" height="7" />
-              <rect x="71" y="98" width="4" height="7" /><rect x="81" y="98" width="4" height="7" /><rect x="91" y="98" width="4" height="7" /><rect x="100" y="98" width="4" height="7" />
-              <rect x="84" y="60" width="5" height="8" />
-              <rect x="115" y="74" width="4" height="7" /><rect x="115" y="88" width="4" height="7" /><rect x="115" y="102" width="4" height="7" />
-            </g>
-            <rect className="win-glow l1" x="48" y="90" width="4" height="7" fill="#F6D98C" />
-            <rect className="win-glow l2" x="100" y="98" width="4" height="7" fill="#F6D98C" />
-            <rect className="win-glow l3" x="115" y="88" width="4" height="7" fill="#F6D98C" />
-            <g className="castle-person">
-              <rect x="84" y="60" width="5" height="8" fill="#F4D58A" />
-              <g className="fig" fill="#3a2f28"><circle cx="86.5" cy="63.2" r="1.5" /><rect x="84.7" y="64.6" width="3.6" height="3.4" /></g>
-            </g>
-            <g fill="#5E8A4E"><circle cx="30" cy="132" r="16" /><circle cx="48" cy="138" r="13" /><circle cx="124" cy="134" r="16" /><circle cx="140" cy="140" r="12" /></g>
-            <g fill="#4F7A42"><circle cx="18" cy="140" r="12" /><circle cx="150" cy="142" r="11" /><circle cx="64" cy="142" r="11" /><circle cx="98" cy="143" r="11" /></g>
+          <svg className="castle clickable" data-info="castle" viewBox="0 0 1666 944" xmlns="http://www.w3.org/2000/svg" aria-label="Dunster Castle colourful watercolour sketch">
+            <image href="/scene/castle-colour-sketch-v4.webp" width="1666" height="944" />
           </svg>
 
           <svg className="prop cottage clickable" data-info="cottage" style={{ left: '30%' }} viewBox="0 0 72 60" xmlns="http://www.w3.org/2000/svg">
@@ -888,19 +861,11 @@ export default function Home() {
             <ellipse cx="30" cy="30" rx="6" ry="5" fill="none" stroke="#9C7C36" strokeWidth="1.2" opacity="0.7" />
           </svg>
 
-          <svg className="prop graze clickable" data-info="sheep" style={{ left: '48%' }} viewBox="0 0 54 44" xmlns="http://www.w3.org/2000/svg">
-            <rect x="18" y="28" width="2.4" height="11" fill="#33302a" /><rect x="32" y="28" width="2.4" height="11" fill="#33302a" />
-            <ellipse cx="28" cy="22" rx="16" ry="12" fill="#EFE9DA" />
-            <circle cx="16" cy="16" r="6" fill="#EFE9DA" /><circle cx="27" cy="12" r="7" fill="#EFE9DA" /><circle cx="39" cy="16" r="6" fill="#EFE9DA" />
-            <ellipse cx="12" cy="28" rx="4.5" ry="6.5" fill="#3a342b" transform="rotate(-15 12 28)" />
-            <ellipse cx="15" cy="23" rx="2.4" ry="1.4" fill="#3a342b" />
+          <svg className="prop graze clickable" data-info="sheep" style={{ left: '48%' }} viewBox="0 0 1538 1023" aria-label="Grazing sheep colourful watercolour sketch" xmlns="http://www.w3.org/2000/svg">
+            <image href="/scene/sheep-graze-colour-sketch-v4.webp" width="1538" height="1023" />
           </svg>
-          <svg className="prop graze small clickable" data-info="sheep" style={{ left: '57%' }} viewBox="0 0 54 44" xmlns="http://www.w3.org/2000/svg">
-            <rect x="18" y="28" width="2.4" height="11" fill="#33302a" /><rect x="32" y="28" width="2.4" height="11" fill="#33302a" />
-            <ellipse cx="28" cy="22" rx="16" ry="12" fill="#EFE9DA" />
-            <circle cx="16" cy="16" r="6" fill="#EFE9DA" /><circle cx="27" cy="12" r="7" fill="#EFE9DA" /><circle cx="39" cy="16" r="6" fill="#EFE9DA" />
-            <ellipse cx="12" cy="28" rx="4.5" ry="6.5" fill="#3a342b" transform="rotate(-15 12 28)" />
-            <ellipse cx="15" cy="23" rx="2.4" ry="1.4" fill="#3a342b" />
+          <svg className="prop graze small clickable" data-info="sheep" style={{ left: '57%' }} viewBox="0 0 1538 1023" aria-label="Grazing sheep colourful watercolour sketch" xmlns="http://www.w3.org/2000/svg">
+            <image href="/scene/sheep-graze-colour-sketch-v4.webp" width="1538" height="1023" />
           </svg>
 
           <svg className="prop pony clickable" data-info="pony" style={{ left: '43%' }} viewBox="0 0 70 54" xmlns="http://www.w3.org/2000/svg">
@@ -953,17 +918,8 @@ export default function Home() {
             <path d="M8.5,3 C11,1 13,3.5 10.5,5 C9.2,5.8 8.4,4.2 8.5,3 Z" fill="#5E8A4E" />
           </svg>
 
-          <svg className="sheep-walk clickable" id="sheepWalk" data-info="sheep" viewBox="0 0 60 46" xmlns="http://www.w3.org/2000/svg">
-            <rect x="17" y="30" width="2.6" height="12" rx="1.2" fill="#33302a" />
-            <rect x="25" y="30" width="2.6" height="12" rx="1.2" fill="#33302a" />
-            <rect x="37" y="30" width="2.6" height="12" rx="1.2" fill="#33302a" />
-            <circle cx="12" cy="21" r="4" fill="#F2ECDD" />
-            <ellipse cx="29" cy="22" rx="17" ry="12.5" fill="#F2ECDD" />
-            <circle cx="17" cy="16" r="6.5" fill="#F2ECDD" /><circle cx="28" cy="12" r="7.5" fill="#F2ECDD" /><circle cx="40" cy="15" r="6.5" fill="#F2ECDD" />
-            <ellipse cx="48" cy="20" rx="6" ry="7" fill="#3a342b" />
-            <ellipse cx="44.5" cy="14" rx="3" ry="1.9" fill="#3a342b" transform="rotate(-28 44.5 14)" />
-            <ellipse cx="53.2" cy="22.5" rx="2.7" ry="2" fill="#2c2823" />
-            <circle cx="49" cy="18.5" r="1.3" fill="#F2ECDD" />
+          <svg className="sheep-walk clickable" id="sheepWalk" data-info="sheep" viewBox="0 0 1536 1024" xmlns="http://www.w3.org/2000/svg" aria-label="Walking sheep colourful watercolour sketch">
+            <image href="/scene/sheep-walk-colour-sketch-v4.webp" width="1536" height="1024" />
           </svg>
 
           <svg className="crow clickable" id="crow" data-info="crow" viewBox="0 0 48 24" xmlns="http://www.w3.org/2000/svg">
