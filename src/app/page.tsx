@@ -166,7 +166,7 @@ export default function Home() {
         sheep.classList.remove('walking')
         sheep.querySelectorAll<SVGElement>('.sheep-leg').forEach(leg => { leg.style.transform = 'rotate(0deg)' })
         if (!sheep.classList.contains('eating')) sheep.classList.add('grazing')
-      }, 900)
+      }, 2000)
     }
     const update = () => {
       const scrollY = window.scrollY
@@ -384,16 +384,12 @@ export default function Home() {
         const wind = windMotion(windSpeed, current.wind_direction_10m, gustSpeed)
         if (scene) {
           scene.classList.toggle('windy', wind.active)
-          scene.style.setProperty('--wind-opacity', String(Math.min(0.74, Math.max(0.26, wind.strength * 0.9))))
-          scene.style.setProperty('--wind-sign', wind.eastward < 0 ? '-1' : '1')
           scene.style.setProperty('--wind-drift', `${wind.drift}px`)
           scene.style.setProperty('--snow-drift', `${wind.drift * 0.45}px`)
           scene.style.setProperty('--wind-lean', `${wind.eastward * wind.strength * 15}deg`)
           scene.style.setProperty('--wind-lean-back', `${wind.eastward * wind.strength * -5}deg`)
           scene.style.setProperty('--smoke-drift', `${-9 + wind.drift * 0.32}px`)
           scene.style.setProperty('--crow-wind-offset', `${wind.drift * 0.18}px`)
-          scene.style.setProperty('--wind-speed', `${Math.max(2.3, 6 - wind.strength * 3)}s`)
-          scene.style.setProperty('--leaf-speed', `${Math.max(5, 11 - wind.strength * 5)}s`)
           scene.style.setProperty('--wing-duration', `${Math.max(0.22, 0.34 - wind.strength * 0.08)}s`)
           scene.style.setProperty('--flag-sign', wind.eastward < -0.15 ? '-1' : '1')
           scene.style.setProperty('--flag-bend', `${Math.max(4, wind.strength * 21)}deg`)
@@ -943,21 +939,21 @@ export default function Home() {
         @keyframes pencil-sheep-bob { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(-2px)} }
         .sheep-figure { position: absolute; inset: 0; transform-origin: center center; transition: transform .22s ease; }
         .sheep-walk.reverse .sheep-figure { transform: scaleX(-1); }
-        .sheep-legs { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; transition: opacity .28s ease; }
+        .sheep-legs { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; transition: opacity 1.1s ease-in-out; }
         .sheep-leg { transition: transform .13s ease-out; }
         .sheep-leg path { fill: none; stroke: #302d29; stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; }
         .sheep-leg.rear path { stroke: #51473d; stroke-width: 3; }
-        .sheep-body { position: absolute; z-index: 1; left: 0; top: 0; width: 100%; height: 74%; object-fit: contain; pointer-events: none; transform-origin: 43% 76%; transition: opacity .28s ease, transform .4s ease; }
-        .sheep-graze-form { position: absolute; z-index: 2; inset: 0; opacity: 0; pointer-events: none; transition: opacity .36s ease; }
-        .sheep-graze-pose { position: absolute; left: 0; bottom: 0; width: 100%; height: auto; animation: sheep-nibble 3.2s ease-in-out infinite; }
+        .sheep-body { position: absolute; z-index: 1; left: 0; top: 0; width: 100%; height: 74%; object-fit: contain; pointer-events: none; transform-origin: 43% 76%; transition: opacity 1.1s ease-in-out, transform 1.25s ease-in-out; }
+        .sheep-graze-form { position: absolute; z-index: 2; inset: 0; opacity: 0; pointer-events: none; transition: opacity 1.1s ease-in-out; }
+        .sheep-graze-pose { position: absolute; left: 0; top: 0; width: 100%; height: auto; transform-origin: top center; transform: translateY(-4px) scaleY(1.13); transition: transform 1.25s ease-in-out; }
         .sheep-chew { position: absolute; right: 4%; bottom: 6%; width: 8px; height: 3px; border-bottom: 1px solid #3e332a; border-radius: 50%; opacity: 0; transform-origin: left center; animation: sheep-jaw .52s ease-in-out infinite alternate; }
         .sheep-graze-grass { position: absolute; right: 1%; bottom: 1px; width: 12px; height: 8px; border-left: 1px solid #687a3e; border-right: 1px solid #79864d; border-radius: 50% 50% 0 0; transform: rotate(-12deg); }
         .sheep-graze-grass::after { content: ''; position: absolute; left: 5px; bottom: 0; width: 1px; height: 7px; background: #71824a; transform: rotate(25deg); transform-origin: bottom; }
         .sheep-walk.grazing .sheep-body, .sheep-walk.grazing .sheep-legs { opacity: 0; }
-        .sheep-walk.grazing .sheep-body { transform: translateY(3px) rotate(9deg); }
+        .sheep-walk.grazing .sheep-body { transform: translateY(3px) rotate(14deg); }
         .sheep-walk.grazing .sheep-graze-form { opacity: 1; }
+        .sheep-walk.grazing .sheep-graze-pose { transform: translateY(3px) scaleY(1.25); }
         .sheep-walk.grazing .sheep-chew { opacity: .9; }
-        @keyframes sheep-nibble { 0%,12%,79%,100% { transform: translateY(-2px); } 24%,67% { transform: translateY(0); } 43%,52% { transform: translateY(1px); } }
         @keyframes sheep-jaw { from { transform: translateY(0) rotate(-3deg); } to { transform: translateY(1.5px) rotate(7deg); } }
         .crow { z-index: 16; width: clamp(37px, 3.6vw, 52px); display: block; filter: drop-shadow(0 1px 1px rgba(23,20,16,.25)); }
         .tree-impact { position: absolute; z-index: 17; left: 96%; top: 33%; width: 24px; height: 24px; opacity: 0; pointer-events: none; animation: tree-impact 16s linear infinite; }
@@ -975,16 +971,6 @@ export default function Home() {
         @keyframes rain-fall { to { transform: translate(var(--wind-drift, 0px), calc(var(--scene-h) + 60px)); } }
         @keyframes snow-fall { to { transform: translate(var(--snow-drift, 0px), calc(var(--scene-h) + 50px)); } }
         .flake { background: #fbfaf2; border: 1px solid #a6b6bf; }
-        .wind-strokes { position: absolute; inset: 0; z-index: 13; pointer-events: none; transform: scaleX(var(--wind-sign, 1)); opacity: 0; transition: opacity 1.3s ease; }
-        .scene.windy .wind-strokes { opacity: var(--wind-opacity, .35); }
-        .wind-strokes span { position: absolute; left: -14%; display: block; width: clamp(38px, 8vw, 110px); height: 14px; border-top: 1px solid rgba(73,83,72,.67); border-radius: 50%; box-shadow: 0 -2px 0 -1px rgba(75,84,73,.28); animation: pencil-wind var(--wind-speed, 4s) linear infinite; }
-        .wind-strokes span:nth-child(1) { top: 30%; animation-delay: -2.8s; }
-        .wind-strokes span:nth-child(2) { top: 45%; animation-delay: -1.1s; width: 60px; }
-        .wind-strokes span:nth-child(3) { top: 60%; animation-delay: -3.9s; width: 76px; }
-        .wind-strokes span:nth-child(4) { top: 73%; animation-delay: -.4s; width: 48px; }
-        .wind-strokes span:nth-child(5) { top: 24%; animation-delay: -4.8s; width: 58px; }
-        body.night .wind-strokes span { border-color: rgba(222,224,216,.65); box-shadow: 0 -2px 0 -1px rgba(222,224,216,.26); }
-        @keyframes pencil-wind { to { translate: 125vw 0; } }
         .wind-grass { position: absolute; inset: auto 0 0; height: 19%; z-index: 13; pointer-events: none; opacity: 0; transition: opacity 1.3s ease; }
         .scene.windy .wind-grass { opacity: .8; }
         .wind-grass span { position: absolute; bottom: 1%; width: 9px; height: 26px; border-left: 1px solid rgba(88,104,59,.72); border-radius: 62% 0 0 0; transform-origin: bottom; animation: pencil-grass 2.1s ease-in-out infinite alternate; }
@@ -992,14 +978,25 @@ export default function Home() {
         .wind-grass span:nth-child(3n) { height: 31px; animation-delay: -1.5s; }
         body.season-autumn .wind-grass span, body.season-winter .wind-grass span { border-color: rgba(118,93,61,.7); }
         @keyframes pencil-grass { from { transform: rotate(var(--wind-lean-back, 0deg)) scaleY(.92); } to { transform: rotate(var(--wind-lean, 0deg)) scaleY(1.06); } }
-        .wind-leaves { position: absolute; inset: 0; z-index: 13; pointer-events: none; display: none; opacity: var(--wind-opacity, .4); transform: scaleX(var(--wind-sign, 1)); }
-        body.season-autumn .scene.windy .wind-leaves { display: block; }
-        .wind-leaves span { position: absolute; left: -5%; width: 7px; height: 4px; border: 1px solid #9b6b3a; border-radius: 70% 10% 70% 10%; background: #bb8345; opacity: .7; animation: pencil-leaf var(--leaf-speed, 8s) linear infinite; }
-        .wind-leaves span:nth-child(1) { top: 68%; animation-delay: -1s; }
-        .wind-leaves span:nth-child(2) { top: 81%; animation-delay: -4s; }
-        .wind-leaves span:nth-child(3) { top: 59%; animation-delay: -6s; }
-        .wind-leaves span:nth-child(4) { top: 74%; animation-delay: -8s; }
-        @keyframes pencil-leaf { to { translate: 110vw 18px; rotate: 540deg; } }
+        .wind-leaves { position: absolute; inset: 0; z-index: 13; pointer-events: none; display: none; }
+        body.season-spring .wind-leaves, body.season-summer .wind-leaves, body.season-autumn .wind-leaves { display: block; }
+        .wind-leaves span { position: absolute; left: 95%; top: 32%; width: 8px; height: 5px; border: 1px solid #8a6237; border-radius: 75% 5% 70% 12%; background: #b77b3d; opacity: 0; transform-origin: center; animation: tree-leaf-fall 17s ease-in-out infinite; --fall-x: -36px; --fall-y: calc(var(--scene-h) * .56); }
+        .wind-leaves span:nth-child(1) { top: 29%; animation-delay: -1s; --fall-x: -52px; --fall-y: calc(var(--scene-h) * .63); }
+        .wind-leaves span:nth-child(2) { left: 97%; top: 38%; animation-delay: -5s; --fall-x: -28px; --fall-y: calc(var(--scene-h) * .54); }
+        .wind-leaves span:nth-child(3) { left: 93%; top: 43%; animation-delay: -9s; --fall-x: -64px; --fall-y: calc(var(--scene-h) * .50); }
+        .wind-leaves span:nth-child(4) { left: 98%; top: 34%; animation-delay: -13s; --fall-x: -40px; --fall-y: calc(var(--scene-h) * .59); }
+        body.season-spring .wind-leaves span { background: #8fba72; border-color: #6d8d5c; }
+        body.season-summer .wind-leaves span { background: #779c57; border-color: #5d784c; }
+        body.season-autumn .wind-leaves span:nth-child(2n) { background: #c49a4b; }
+        .scene.windy .wind-leaves span { animation-duration: 13s; }
+        @keyframes tree-leaf-fall {
+          0%,5% { opacity: 0; transform: translate(0,0) rotate(0deg); }
+          7% { opacity: .85; }
+          27% { transform: translate(calc(var(--fall-x) * .3 + var(--wind-drift, 0px) * .18), calc(var(--fall-y) * .26)) rotate(115deg); }
+          49% { transform: translate(calc(var(--fall-x) * .68 + var(--wind-drift, 0px) * .42), calc(var(--fall-y) * .7)) rotate(245deg); opacity: .8; }
+          63% { transform: translate(calc(var(--fall-x) + var(--wind-drift, 0px) * .6), var(--fall-y)) rotate(390deg); opacity: .7; }
+          68%,100% { transform: translate(calc(var(--fall-x) + var(--wind-drift, 0px) * .6), var(--fall-y)) rotate(400deg); opacity: 0; }
+        }
         .wx-badge { z-index: 20; right: 78px; bottom: 9px; color: #26392f; background: rgba(255,251,239,.88); box-shadow: 0 1px 8px rgba(31,38,31,.14); font-size: .67rem; letter-spacing: .01em; }
         .fireflies { z-index: 13; }
         @media (max-width: 600px) {
@@ -1026,8 +1023,8 @@ export default function Home() {
           .wx-badge { display: block; font-size: .55rem; max-width: calc(100% - 90px); overflow: hidden; text-overflow: ellipsis; right: 76px; bottom: 7px; }
         }
         @media (prefers-reduced-motion: reduce) {
-          .sheep-walk, .sheep-walk.walking, .sheep-body, .sheep-figure, .sheep-graze-pose, .sheep-chew, .crow, .crow-wings, .flag-cloth, .chimney-smoke span, .window-light, .weather-shade, .landscape, .solar-glow, .pencil-sun, .night-veil, .mist, .ff, .drop, .flake, .wind-strokes span, .wind-grass span, .wind-leaves span { animation: none !important; transition: none !important; }
-          .wind-strokes, .wind-grass, .wind-leaves { display: none !important; }
+          .sheep-walk, .sheep-walk.walking, .sheep-body, .sheep-figure, .sheep-graze-pose, .sheep-chew, .crow, .crow-wings, .flag-cloth, .chimney-smoke span, .window-light, .weather-shade, .landscape, .solar-glow, .pencil-sun, .night-veil, .mist, .ff, .drop, .flake, .wind-grass span, .wind-leaves span { animation: none !important; transition: none !important; }
+          .wind-grass, .wind-leaves { display: none !important; }
           body.night .window-light { opacity: .82; }
           .drop, .flake { display: none; }
           .crow { left: 0; opacity: 1; transform: translate(calc(var(--crow-crash-x, 90vw) + 45px),calc(var(--crow-crash-y, 0px) - 25px)) rotate(-6deg); }
@@ -1110,7 +1107,6 @@ export default function Home() {
           </svg>
           <div className="mist m1" aria-hidden="true" />
           <div className="mist m2" aria-hidden="true" />
-          <div className="wind-strokes" aria-hidden="true"><span /><span /><span /><span /><span /></div>
           <div className="wind-grass" aria-hidden="true">
             {[4, 9, 17, 22, 31, 39, 47, 55, 63, 72, 81, 89, 96].map(x => <span key={x} style={{ left: `${x}%` }} />)}
           </div>
