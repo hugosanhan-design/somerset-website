@@ -943,13 +943,22 @@ export default function Home() {
         @keyframes pencil-sheep-bob { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(-2px)} }
         .sheep-figure { position: absolute; inset: 0; transform-origin: center center; transition: transform .22s ease; }
         .sheep-walk.reverse .sheep-figure { transform: scaleX(-1); }
-        .sheep-legs { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+        .sheep-legs { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; transition: opacity .28s ease; }
         .sheep-leg { transition: transform .13s ease-out; }
         .sheep-leg path { fill: none; stroke: #302d29; stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; }
         .sheep-leg.rear path { stroke: #51473d; stroke-width: 3; }
-        .sheep-body { position: absolute; z-index: 1; left: 0; top: 0; width: 100%; height: 74%; object-fit: contain; pointer-events: none; transform-origin: 43% 76%; }
-        .sheep-walk.grazing .sheep-body { animation: sheep-graze 3.4s ease-in-out infinite; }
-        @keyframes sheep-graze { 0%,8%,92%,100% { transform: rotate(0deg); } 24%,68% { transform: translateY(3px) rotate(12deg); } 46% { transform: translateY(5px) rotate(15deg); } 76% { transform: translateY(2px) rotate(7deg); } }
+        .sheep-body { position: absolute; z-index: 1; left: 0; top: 0; width: 100%; height: 74%; object-fit: contain; pointer-events: none; transform-origin: 43% 76%; transition: opacity .28s ease, transform .4s ease; }
+        .sheep-graze-form { position: absolute; z-index: 2; inset: 0; opacity: 0; pointer-events: none; transition: opacity .36s ease; }
+        .sheep-graze-pose { position: absolute; left: 0; bottom: 0; width: 100%; height: auto; animation: sheep-nibble 3.2s ease-in-out infinite; }
+        .sheep-chew { position: absolute; right: 4%; bottom: 6%; width: 8px; height: 3px; border-bottom: 1px solid #3e332a; border-radius: 50%; opacity: 0; transform-origin: left center; animation: sheep-jaw .52s ease-in-out infinite alternate; }
+        .sheep-graze-grass { position: absolute; right: 1%; bottom: 1px; width: 12px; height: 8px; border-left: 1px solid #687a3e; border-right: 1px solid #79864d; border-radius: 50% 50% 0 0; transform: rotate(-12deg); }
+        .sheep-graze-grass::after { content: ''; position: absolute; left: 5px; bottom: 0; width: 1px; height: 7px; background: #71824a; transform: rotate(25deg); transform-origin: bottom; }
+        .sheep-walk.grazing .sheep-body, .sheep-walk.grazing .sheep-legs { opacity: 0; }
+        .sheep-walk.grazing .sheep-body { transform: translateY(3px) rotate(9deg); }
+        .sheep-walk.grazing .sheep-graze-form { opacity: 1; }
+        .sheep-walk.grazing .sheep-chew { opacity: .9; }
+        @keyframes sheep-nibble { 0%,12%,79%,100% { transform: translateY(-2px); } 24%,67% { transform: translateY(0); } 43%,52% { transform: translateY(1px); } }
+        @keyframes sheep-jaw { from { transform: translateY(0) rotate(-3deg); } to { transform: translateY(1.5px) rotate(7deg); } }
         .crow { z-index: 16; width: clamp(37px, 3.6vw, 52px); display: block; filter: drop-shadow(0 1px 1px rgba(23,20,16,.25)); }
         .tree-impact { position: absolute; z-index: 17; left: 96%; top: 33%; width: 24px; height: 24px; opacity: 0; pointer-events: none; animation: tree-impact 16s linear infinite; }
         .tree-impact::before, .tree-impact::after { content: ''; position: absolute; inset: 6px; border-top: 2px solid #493c2d; border-left: 1px solid #493c2d; transform: rotate(25deg); }
@@ -1017,7 +1026,7 @@ export default function Home() {
           .wx-badge { display: block; font-size: .55rem; max-width: calc(100% - 90px); overflow: hidden; text-overflow: ellipsis; right: 76px; bottom: 7px; }
         }
         @media (prefers-reduced-motion: reduce) {
-          .sheep-walk, .sheep-walk.walking, .sheep-body, .sheep-figure, .crow, .crow-wings, .flag-cloth, .chimney-smoke span, .window-light, .weather-shade, .landscape, .solar-glow, .pencil-sun, .night-veil, .mist, .ff, .drop, .flake, .wind-strokes span, .wind-grass span, .wind-leaves span { animation: none !important; transition: none !important; }
+          .sheep-walk, .sheep-walk.walking, .sheep-body, .sheep-figure, .sheep-graze-pose, .sheep-chew, .crow, .crow-wings, .flag-cloth, .chimney-smoke span, .window-light, .weather-shade, .landscape, .solar-glow, .pencil-sun, .night-veil, .mist, .ff, .drop, .flake, .wind-strokes span, .wind-grass span, .wind-leaves span { animation: none !important; transition: none !important; }
           .wind-strokes, .wind-grass, .wind-leaves { display: none !important; }
           body.night .window-light { opacity: .82; }
           .drop, .flake { display: none; }
@@ -1144,6 +1153,10 @@ export default function Home() {
                 <g className="sheep-leg" style={{ transformOrigin: '77px 45px' }}><path d="M77 45 Q78 61 76 81" /></g>
               </svg>
               <Image className="sheep-body" src="/scene/pencil/sheep-body.webp" alt="" width={1536} height={1024} unoptimized />
+              <div className="sheep-graze-form">
+                <Image className="sheep-graze-pose" src="/scene/pencil/sheep-grazing.webp" alt="" width={1536} height={1024} unoptimized />
+                <span className="sheep-chew" /><span className="sheep-graze-grass" />
+              </div>
             </div>
           </div>
 
