@@ -255,7 +255,7 @@ export default function Home() {
         const c = crow.getBoundingClientRect()
         const target = getComputedStyle(impact)
         const baseTop = s.bottom - s.height * .5 - c.height
-        crow.style.setProperty('--crow-crash-x', `${parseFloat(target.left) - c.width * .96}px`)
+        crow.style.setProperty('--crow-crash-x', `${parseFloat(target.left) - c.width * .82}px`)
         crow.style.setProperty('--crow-crash-y', `${s.top + parseFloat(target.top) - baseTop - c.height * .45}px`)
       }
       aimCrow()
