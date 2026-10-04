@@ -23,13 +23,16 @@ export function windMotion(speed: number, direction: number, gusts = speed) {
   const safeSpeed = Math.max(0, Number.isFinite(speed) ? speed : 0)
   const safeGusts = Math.max(safeSpeed, Number.isFinite(gusts) ? gusts : safeSpeed)
   const strength = Math.min(1, Math.max(safeSpeed, safeGusts * 0.7) / 45)
+  const hasDirection = Number.isFinite(direction)
+  const from = hasDirection ? ((direction % 360) + 360) % 360 : 0
   // Meteorological direction names where the air comes FROM; west wind travels right.
-  const eastward = -Math.sin((Number.isFinite(direction) ? direction : 0) * Math.PI / 180)
+  const eastward = -Math.sin(from * Math.PI / 180)
   return {
-    active: safeSpeed >= 12 || safeGusts >= 22,
+    active: safeSpeed >= 7 || safeGusts >= 16,
     strength,
     eastward,
     drift: Math.round(eastward * strength * 110),
+    from: hasDirection ? ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'][Math.round(from / 45) % 8] : null,
   }
 }
 

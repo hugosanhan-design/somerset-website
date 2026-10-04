@@ -267,7 +267,7 @@ export default function Home() {
       sheep.addEventListener('animationend', onEatEnd)
       cleanups.push(() => sheep.removeEventListener('animationend', onEatEnd))
       const FALL_MS = 950
-      let state = 'hanging', fallStart = 0, hangX = 0, hangY = 0, floorY = 0
+      let state = 'hanging', fallStart = 0, hangX = 0, hangY = 0, floorY = 0, prevPhase = 0, started = false
       const geom = () => {
         const s = scene.getBoundingClientRect(), t = tree.getBoundingClientRect(), w = sheep.getBoundingClientRect()
         hangX = (t.left - s.left) + t.width * 0.52
@@ -285,15 +285,18 @@ export default function Home() {
       const crowPhase = () => {
         const a = crow.getAnimations && crow.getAnimations()[0]
         if (!a) return 0
-        const dur = Number((a.effect?.getTiming?.().duration as number) || 9000)
-        return Math.min(Number(a.currentTime || 0) / dur, 1)
+        const dur = Number((a.effect?.getTiming?.().duration as number) || 16000)
+        return (Number(a.currentTime || 0) % dur) / dur
       }
       const loop = (ts: number) => {
         const phase = crowPhase()
-        if (phase >= .63) crow.classList.add('stuck')
+        if (!started) { prevPhase = phase; started = true }
+        if (phase < prevPhase) { state = 'hanging'; geom(); place(hangX, hangY, 0); apple.style.opacity = '1' }
+        prevPhase = phase
+        crow.classList.toggle('stuck', phase >= .33 && phase < .46)
         if (state === 'hanging') {
           place(hangX, hangY, 0)
-          if (phase >= .61) { state = 'falling'; fallStart = ts }
+          if (phase >= .29 && phase < .6) { state = 'falling'; fallStart = ts }
         } else if (state === 'falling') {
           const t = Math.min((ts - fallStart) / FALL_MS, 1)
           place(hangX, hangY + (floorY - hangY) * t * t, 52 * t * t)
@@ -365,7 +368,7 @@ export default function Home() {
         const wind = windMotion(windSpeed, current.wind_direction_10m, gustSpeed)
         if (scene) {
           scene.classList.toggle('windy', wind.active)
-          scene.style.setProperty('--wind-opacity', String(Math.min(0.72, wind.strength * Math.min(1, Math.abs(wind.eastward) * 1.4))))
+          scene.style.setProperty('--wind-opacity', String(Math.min(0.74, Math.max(0.26, wind.strength * 0.9))))
           scene.style.setProperty('--wind-sign', wind.eastward < 0 ? '-1' : '1')
           scene.style.setProperty('--wind-drift', `${wind.drift}px`)
           scene.style.setProperty('--snow-drift', `${wind.drift * 0.45}px`)
@@ -376,6 +379,9 @@ export default function Home() {
           scene.style.setProperty('--wind-speed', `${Math.max(2.3, 6 - wind.strength * 3)}s`)
           scene.style.setProperty('--leaf-speed', `${Math.max(5, 11 - wind.strength * 5)}s`)
           scene.style.setProperty('--wing-duration', `${Math.max(0.22, 0.34 - wind.strength * 0.08)}s`)
+          scene.style.setProperty('--flag-sign', wind.eastward < -0.15 ? '-1' : '1')
+          scene.style.setProperty('--flag-bend', `${Math.max(4, wind.strength * 21)}deg`)
+          scene.style.setProperty('--flag-duration', `${Math.max(0.36, 1.35 - wind.strength * 0.9)}s`)
         }
         Array.from(document.body.classList).forEach(cl => { if (cl.startsWith('wx-')) document.body.classList.remove(cl) })
         document.body.classList.add('wx-' + weather)
@@ -404,7 +410,8 @@ export default function Home() {
           }
           scene.appendChild(wrap)
         }
-        weatherSummary = `Dunster, Somerset · ${Math.round(current.temperature_2m)}° · ${label}${wind.active ? ` · wind ${Math.round(windSpeed)} km/h${gustSpeed >= windSpeed + 8 ? ` (gusts ${Math.round(gustSpeed)})` : ''}` : ''}`
+        const windLabel = windSpeed < 2 ? 'calm' : `wind ${Math.round(windSpeed)} km/h${wind.from ? ` from ${wind.from}` : ''}${gustSpeed >= windSpeed + 8 ? ` (gusts ${Math.round(gustSpeed)})` : ''}`
+        weatherSummary = `Dunster, Somerset · ${Math.round(current.temperature_2m)}° · ${label} · ${windLabel}`
         if (badge) badge.textContent = `${weatherSummary}${current.is_day === 0 ? ' · night' : ''}`
         applySolar()
       } catch {
@@ -565,18 +572,25 @@ export default function Home() {
         .info-pop .info-body { font-size: 0.9rem; line-height: 1.62; color: var(--muted); }
         .sheep-walk { width: 56px; bottom: 18%; left: 4%; transition: left 0.08s linear; animation: sheep-bob 0.62s ease-in-out infinite; }
         @keyframes sheep-bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
-        .crow { width: 46px; bottom: 50%; left: 0; animation: crow-fly 7.5s ease-in-out both; }
+        .crow { width: 46px; bottom: 50%; left: 0; animation: crow-fly 16s ease-in-out infinite; }
         .crow-wings { transform-origin: 21px 13px; animation: crow-flap 0.34s ease-in-out infinite; }
-        .crow.stuck .crow-wings { animation: none; transform: scaleY(.65) rotate(-11deg); }
+        .crow.stuck .crow-wings { animation: crow-struggle .18s ease-in-out infinite alternate; }
         @keyframes crow-flap { 0%,100% { transform: scaleY(1); } 50% { transform: scaleY(0.34) translateY(-2px); } }
+        @keyframes crow-struggle { from { transform: scaleY(.55) rotate(-14deg); } to { transform: scaleY(.9) rotate(12deg); } }
         @keyframes crow-fly {
           0% { transform: translate(-55px,-18px) rotate(-5deg); opacity: 0; }
-          8% { opacity: 1; }
-          32% { transform: translate(calc(var(--crow-crash-x, 90vw) * .42),-24px) rotate(-3deg); }
-          52% { transform: translate(calc(var(--crow-crash-x, 90vw) * .78),calc(var(--crow-crash-y, 0px) - 18px)) rotate(4deg); }
-          61% { transform: translate(var(--crow-crash-x, 90vw),var(--crow-crash-y, 0px)) rotate(15deg); }
-          65% { transform: translate(calc(var(--crow-crash-x, 90vw) - 9px),calc(var(--crow-crash-y, 0px) + 3px)) rotate(-20deg); }
-          70%,100% { transform: translate(var(--crow-crash-x, 90vw),var(--crow-crash-y, 0px)) rotate(12deg); opacity: 1; }
+          4% { opacity: 1; }
+          16% { transform: translate(calc(var(--crow-crash-x, 90vw) * .42),-24px) rotate(-3deg); }
+          25% { transform: translate(calc(var(--crow-crash-x, 90vw) * .78),calc(var(--crow-crash-y, 0px) - 18px)) rotate(4deg); }
+          29% { transform: translate(var(--crow-crash-x, 90vw),var(--crow-crash-y, 0px)) rotate(15deg); }
+          31% { transform: translate(calc(var(--crow-crash-x, 90vw) - 9px),calc(var(--crow-crash-y, 0px) + 3px)) rotate(-20deg); }
+          34% { transform: translate(var(--crow-crash-x, 90vw),var(--crow-crash-y, 0px)) rotate(12deg); }
+          37% { transform: translate(calc(var(--crow-crash-x, 90vw) - 4px),calc(var(--crow-crash-y, 0px) + 2px)) rotate(-10deg); }
+          40% { transform: translate(calc(var(--crow-crash-x, 90vw) + 2px),var(--crow-crash-y, 0px)) rotate(13deg); }
+          43% { transform: translate(calc(var(--crow-crash-x, 90vw) - 3px),calc(var(--crow-crash-y, 0px) + 1px)) rotate(-7deg); }
+          46% { transform: translate(calc(var(--crow-crash-x, 90vw) - 8px),calc(var(--crow-crash-y, 0px) - 4px)) rotate(-10deg); }
+          53% { transform: translate(calc(var(--crow-crash-x, 90vw) + 45px),calc(var(--crow-crash-y, 0px) - 25px)) rotate(-6deg); opacity: 1; }
+          64%,100% { transform: translate(calc(var(--crow-crash-x, 90vw) + 170px),calc(var(--crow-crash-y, 0px) - 50px)) rotate(-5deg); opacity: 0; }
         }
         @keyframes tree-shake { 0%,58% { transform: rotate(0deg); } 61% { transform: rotate(1.6deg); } 64% { transform: rotate(-1.4deg); } 67% { transform: rotate(0.7deg); } 70%,100% { transform: rotate(0deg); } }
         .falling-apple.eaten { opacity: 0 !important; }
@@ -917,11 +931,15 @@ export default function Home() {
         .sheep-leg.rear path { stroke: #51473d; stroke-width: 3; }
         .sheep-body { position: absolute; z-index: 1; left: 0; top: 0; width: 100%; height: 74%; object-fit: contain; pointer-events: none; }
         .crow { z-index: 16; width: clamp(37px, 3.6vw, 52px); display: block; filter: drop-shadow(0 1px 1px rgba(23,20,16,.25)); }
-        .tree-impact { position: absolute; z-index: 17; left: 96%; top: 33%; width: 24px; height: 24px; opacity: 0; pointer-events: none; animation: tree-impact 7.5s linear both; }
+        .tree-impact { position: absolute; z-index: 17; left: 96%; top: 33%; width: 24px; height: 24px; opacity: 0; pointer-events: none; animation: tree-impact 16s linear infinite; }
         .tree-impact::before, .tree-impact::after { content: ''; position: absolute; inset: 6px; border-top: 2px solid #493c2d; border-left: 1px solid #493c2d; transform: rotate(25deg); }
         .tree-impact::after { transform: rotate(120deg); }
-        @keyframes tree-impact { 0%,59%,68%,100% { opacity: 0; transform: scale(.3) rotate(0deg); } 61%,64% { opacity: .85; transform: scale(1) rotate(30deg); } }
+        @keyframes tree-impact { 0%,27%,33%,100% { opacity: 0; transform: scale(.3) rotate(0deg); } 29%,31% { opacity: .85; transform: scale(1) rotate(30deg); } }
         .crow-wings { animation-duration: var(--wing-duration, .34s); }
+        .castle-flag { position: absolute; z-index: 12; left: 5.9%; top: 13.5%; width: clamp(20px, 2vw, 27px); height: auto; overflow: visible; pointer-events: none; filter: brightness(var(--landscape-brightness, 1)) drop-shadow(0 1px 1px rgba(45,34,26,.35)); }
+        .flag-direction { transform-box: view-box; transform-origin: 7px 9px; transform: scaleX(var(--flag-sign, 1)); }
+        .flag-cloth { transform-box: view-box; transform-origin: 7px 9px; animation: flag-flutter var(--flag-duration, 1.25s) ease-in-out infinite alternate; }
+        @keyframes flag-flutter { from { transform: rotate(calc(var(--flag-bend, 4deg) * -.45)) scaleX(.86); } to { transform: rotate(var(--flag-bend, 4deg)) scaleX(1.08); } }
         .falling-apple { z-index: 15; }
         .precip { z-index: 14; }
         .drop { width: 1px; background: linear-gradient(to bottom, transparent, rgba(76,100,120,.68)); box-shadow: 1px 0 rgba(244,242,230,.3); rotate: var(--wind-lean, 0deg); }
@@ -975,15 +993,16 @@ export default function Home() {
           .sheep-walk { width: 45px; height: 45px; }
           .pony { width: 32px; }
           .crow { display: block; }
+          .castle-flag { left: 9.4%; top: 13%; width: 18px; }
           .wx-badge { display: block; font-size: .55rem; max-width: calc(100% - 90px); overflow: hidden; text-overflow: ellipsis; right: 76px; bottom: 7px; }
         }
         @media (prefers-reduced-motion: reduce) {
-          .sheep-walk, .sheep-walk.walking, .crow, .crow-wings, .chimney-smoke span, .window-light, .weather-shade, .landscape, .solar-glow, .pencil-sun, .night-veil, .mist, .ff, .drop, .flake, .wind-strokes span, .wind-grass span, .wind-leaves span { animation: none !important; transition: none !important; }
+          .sheep-walk, .sheep-walk.walking, .crow, .crow-wings, .flag-cloth, .chimney-smoke span, .window-light, .weather-shade, .landscape, .solar-glow, .pencil-sun, .night-veil, .mist, .ff, .drop, .flake, .wind-strokes span, .wind-grass span, .wind-leaves span { animation: none !important; transition: none !important; }
           .wind-strokes, .wind-grass, .wind-leaves { display: none !important; }
           body.night .window-light { opacity: .82; }
           .drop, .flake { display: none; }
-          .crow { left: 0; opacity: 1; transform: translate(var(--crow-crash-x, 90vw),var(--crow-crash-y, 0px)) rotate(12deg); }
-          .crow-wings { transform: scaleY(.65) rotate(-11deg); }
+          .crow { left: 0; opacity: 1; transform: translate(calc(var(--crow-crash-x, 90vw) + 45px),calc(var(--crow-crash-y, 0px) - 25px)) rotate(-6deg); }
+          .crow-wings { transform: scaleY(1); }
         }
 
         /* Muted, confident action colour for the newer site. */
@@ -1074,6 +1093,13 @@ export default function Home() {
           <button type="button" className="scene-hotspot apple-tree clickable" data-info="apple" aria-label="Discover the apple tree" />
           <Image className="pony" src="/scene/pencil/pony-distant.webp" alt="" width={1457} height={1005} unoptimized />
           <span className="tree-impact" aria-hidden="true" />
+          <svg className="castle-flag" viewBox="0 0 32 30" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M7 3.5V29" fill="none" stroke="#5e4c39" strokeWidth="1.3" strokeLinecap="round" />
+            <g className="flag-direction"><g className="flag-cloth">
+              <path d="M7 6.5 Q14 4 23 7 L27 9.5 L22 13 Q15 9.5 7 11.5 Z" fill="#a66342" stroke="#5e4334" strokeWidth=".85" strokeLinejoin="round" />
+              <path d="M9 8 Q16 6.3 24 9 M10 10 Q16 8.5 22 11" fill="none" stroke="#d39a65" strokeWidth=".7" opacity=".8" />
+            </g></g>
+          </svg>
 
           <div className="castle-lights" aria-hidden="true">
             <span className="window-light l1" /><span className="window-light l2" /><span className="window-light l3" /><span className="window-light l4" /><span className="window-light l5" />
