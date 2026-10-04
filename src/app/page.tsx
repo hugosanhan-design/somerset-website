@@ -158,17 +158,22 @@ export default function Home() {
     let sheepWalkTimer = 0
     let sheepRestTimer = 0
     let sheepLowerTimer = 0
+    const sheepStages = ['lowering-quarter', 'lowering-half', 'lowering-three-quarter', 'grazing']
     let lastSheepX = -1
     let lastScrollY = window.scrollY
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     const beginLowering = () => {
       if (!sheep || reduceMotion) return
-      if (sheep.classList.contains('eating') || sheep.classList.contains('walking') || sheep.classList.contains('lowering') || sheep.classList.contains('grazing')) return
-      sheep.classList.add('lowering')
-      sheepLowerTimer = window.setTimeout(() => {
-        sheep.classList.remove('lowering')
-        if (!sheep.classList.contains('walking') && !sheep.classList.contains('eating')) sheep.classList.add('grazing')
-      }, 680)
+      if (sheep.classList.contains('eating') || sheep.classList.contains('walking') || sheepStages.some(stage => sheep.classList.contains(stage))) return
+      let step = 0
+      const advance = () => {
+        if (sheep.classList.contains('walking') || sheep.classList.contains('eating')) return
+        sheep.classList.remove(...sheepStages)
+        sheep.classList.add(sheepStages[step])
+        step += 1
+        if (step < sheepStages.length) sheepLowerTimer = window.setTimeout(advance, 360)
+      }
+      advance()
     }
     const settleSheep = () => {
       if (!sheep || reduceMotion) return
@@ -188,7 +193,7 @@ export default function Home() {
         sheep.style.bottom = `${meadowGround(x) * scene.clientHeight}px`
         if (lastSheepX >= 0 && Math.abs(scrollY - lastScrollY) > 0.5 && !reduceMotion) {
           sheep.classList.toggle('reverse', scrollY < lastScrollY)
-          sheep.classList.remove('lowering', 'grazing')
+          sheep.classList.remove(...sheepStages)
           sheep.classList.add('walking')
           settleSheep()
         }
@@ -328,7 +333,7 @@ export default function Home() {
           if (hangX > sxL + w.width * 0.15 && hangX < sxR - w.width * 0.10) {
             state = 'eaten'; apple.style.opacity = '0'
             window.clearTimeout(sheepRestTimer); window.clearTimeout(sheepLowerTimer)
-            sheep.classList.remove('lowering', 'grazing', 'eating'); void (sheep as HTMLElement).offsetWidth; sheep.classList.add('eating')
+            sheep.classList.remove(...sheepStages, 'eating'); void (sheep as HTMLElement).offsetWidth; sheep.classList.add('eating')
           }
         }
         rafId = requestAnimationFrame(loop)
@@ -953,20 +958,27 @@ export default function Home() {
         .sheep-walk.walking .sheep-leg:nth-child(2), .sheep-walk.walking .sheep-leg:nth-child(3) { animation-delay: -.34s; }
         @keyframes sheep-stride { 0%,100% { transform: rotate(-15deg); } 25% { transform: rotate(5deg); } 50% { transform: rotate(19deg); } 75% { transform: rotate(4deg); } }
         .sheep-body { position: absolute; z-index: 1; left: 0; top: 0; width: 100%; height: 74%; object-fit: contain; pointer-events: none; transform-origin: 43% 76%; transition: opacity .2s ease-in-out, transform .5s ease-in-out; }
-        .sheep-lowering-form, .sheep-graze-form { position: absolute; inset: 0; opacity: 0; pointer-events: none; transition: opacity .2s ease-in-out; }
-        .sheep-lowering-form { z-index: 2; }
-        .sheep-graze-form { z-index: 3; }
-        .sheep-lowering-pose, .sheep-graze-pose { position: absolute; left: 0; top: 0; width: 100%; height: auto; transform-origin: top center; transform: translateY(3px) scaleY(1.25); }
+        .sheep-transition-form { position: absolute; inset: 0; opacity: 0; pointer-events: none; transition: opacity .16s ease-in-out; }
+        .sheep-quarter-form { z-index: 2; }
+        .sheep-lowering-form { z-index: 3; }
+        .sheep-three-quarter-form { z-index: 4; }
+        .sheep-graze-form { z-index: 5; }
+        .sheep-transition-pose { position: absolute; left: 0; top: 0; width: 100%; height: auto; transform-origin: top center; transform: translateY(3px) scaleY(1.25); }
         .sheep-chew { position: absolute; right: 4%; bottom: 6%; width: 8px; height: 3px; border-bottom: 1px solid #3e332a; border-radius: 50%; opacity: 0; transform-origin: left center; animation: sheep-jaw .52s ease-in-out infinite alternate; }
         .sheep-graze-grass { position: absolute; right: 1%; bottom: 1px; width: 12px; height: 8px; border-left: 1px solid #687a3e; border-right: 1px solid #79864d; border-radius: 50% 50% 0 0; transform: rotate(-12deg); }
         .sheep-graze-grass::after { content: ''; position: absolute; left: 5px; bottom: 0; width: 1px; height: 7px; background: #71824a; transform: rotate(25deg); transform-origin: bottom; }
-        .sheep-walk.lowering .sheep-body, .sheep-walk.lowering .sheep-legs, .sheep-walk.grazing .sheep-body, .sheep-walk.grazing .sheep-legs { opacity: 0; }
-        .sheep-walk.lowering .sheep-body { transform: translateY(1px) rotate(7deg); }
+        .sheep-walk:is(.lowering-quarter, .lowering-half, .lowering-three-quarter, .grazing) .sheep-body,
+        .sheep-walk:is(.lowering-quarter, .lowering-half, .lowering-three-quarter, .grazing) .sheep-legs { opacity: 0; }
+        .sheep-walk.lowering-quarter .sheep-body { transform: rotate(4deg); }
+        .sheep-walk.lowering-half .sheep-body { transform: translateY(1px) rotate(7deg); }
+        .sheep-walk.lowering-three-quarter .sheep-body { transform: translateY(2px) rotate(11deg); }
         .sheep-walk.grazing .sheep-body { transform: translateY(3px) rotate(14deg); }
-        .sheep-walk.lowering .sheep-lowering-form { opacity: 1; }
+        .sheep-walk.lowering-quarter .sheep-quarter-form { opacity: 1; }
+        .sheep-walk.lowering-half .sheep-lowering-form { opacity: 1; }
+        .sheep-walk.lowering-three-quarter .sheep-three-quarter-form { opacity: 1; }
         .sheep-walk.grazing .sheep-graze-form { opacity: 1; }
         .sheep-walk.grazing .sheep-chew { opacity: .9; }
-        .sheep-walk.walking .sheep-body, .sheep-walk.walking .sheep-legs, .sheep-walk.walking .sheep-lowering-form, .sheep-walk.walking .sheep-graze-form { transition-duration: .25s; }
+        .sheep-walk.walking .sheep-body, .sheep-walk.walking .sheep-legs, .sheep-walk.walking .sheep-transition-form { transition-duration: .25s; }
         @keyframes sheep-jaw { from { transform: translateY(0) rotate(-3deg); } to { transform: translateY(1.5px) rotate(7deg); } }
         .crow { z-index: 16; width: clamp(37px, 3.6vw, 52px); display: block; filter: drop-shadow(0 1px 1px rgba(23,20,16,.25)); }
         .tree-impact { position: absolute; z-index: 17; left: 96%; top: 33%; width: 24px; height: 24px; opacity: 0; pointer-events: none; animation: tree-impact 16s linear infinite; }
@@ -1036,7 +1048,7 @@ export default function Home() {
           .wx-badge { display: block; font-size: .55rem; max-width: calc(100% - 90px); overflow: hidden; text-overflow: ellipsis; right: 76px; bottom: 7px; }
         }
         @media (prefers-reduced-motion: reduce) {
-          .sheep-walk, .sheep-walk.walking, .sheep-leg, .sheep-body, .sheep-figure, .sheep-lowering-form, .sheep-graze-form, .sheep-chew, .crow, .crow-wings, .flag-cloth, .chimney-smoke span, .window-light, .weather-shade, .landscape, .solar-glow, .pencil-sun, .night-veil, .mist, .ff, .drop, .flake, .wind-grass span, .wind-leaves span { animation: none !important; transition: none !important; }
+          .sheep-walk, .sheep-walk.walking, .sheep-leg, .sheep-body, .sheep-figure, .sheep-transition-form, .sheep-chew, .crow, .crow-wings, .flag-cloth, .chimney-smoke span, .window-light, .weather-shade, .landscape, .solar-glow, .pencil-sun, .night-veil, .mist, .ff, .drop, .flake, .wind-grass span, .wind-leaves span { animation: none !important; transition: none !important; }
           .wind-grass, .wind-leaves { display: none !important; }
           body.night .window-light { opacity: .82; }
           .drop, .flake { display: none; }
@@ -1162,11 +1174,17 @@ export default function Home() {
                 <g className="sheep-leg" style={{ transformOrigin: '77px 45px' }}><path d="M77 45 Q78 58 75 66 L76 80 L82 81" /></g>
               </svg>
               <Image className="sheep-body" src="/scene/pencil/sheep-body.webp" alt="" width={1536} height={1024} unoptimized />
-              <div className="sheep-lowering-form">
-                <Image className="sheep-lowering-pose" src="/scene/pencil/sheep-lowering.webp" alt="" width={1536} height={1024} unoptimized />
+              <div className="sheep-transition-form sheep-quarter-form">
+                <Image className="sheep-transition-pose" src="/scene/pencil/sheep-lowering-quarter.webp" alt="" width={1536} height={1024} unoptimized />
               </div>
-              <div className="sheep-graze-form">
-                <Image className="sheep-graze-pose" src="/scene/pencil/sheep-grazing.webp" alt="" width={1536} height={1024} unoptimized />
+              <div className="sheep-transition-form sheep-lowering-form">
+                <Image className="sheep-transition-pose" src="/scene/pencil/sheep-lowering.webp" alt="" width={1536} height={1024} unoptimized />
+              </div>
+              <div className="sheep-transition-form sheep-three-quarter-form">
+                <Image className="sheep-transition-pose" src="/scene/pencil/sheep-lowering-three-quarter.webp" alt="" width={1536} height={1024} unoptimized />
+              </div>
+              <div className="sheep-transition-form sheep-graze-form">
+                <Image className="sheep-transition-pose" src="/scene/pencil/sheep-grazing.webp" alt="" width={1536} height={1024} unoptimized />
                 <span className="sheep-chew" /><span className="sheep-graze-grass" />
               </div>
             </div>
