@@ -517,6 +517,7 @@
 .word-practice-actions{display:flex;gap:.6rem;margin-bottom:.6rem;justify-content:center;flex-wrap:wrap}
 .studio-mic--sm{padding:.45rem .9rem;font-size:.85rem;min-width:0}
 .word-practice-loading{font-size:.85rem;color:#aaa;margin:.2rem 0;text-align:center}
+.word-practice-err{font-size:.85rem;color:#b9412f;margin:.2rem 0;text-align:center}
 .word-practice-explain{font-size:.88rem;line-height:1.55;color:#444;border-top:1px solid #f0eeea;padding-top:.7rem;margin-top:.4rem}
 .word-practice-explain p{margin:0 0 .45rem}
 .word-practice-explain p:last-child{margin-bottom:0}
