@@ -46,25 +46,41 @@ function HeardWords({ transcript, segs, onPractise }: { transcript: string; segs
   )
 }
 
-function WordPracticePanel({ word, score, phase, wordErr, explain, explainLoading, onSay, onHear, onClose }: {
-  word: string; score: number | null; phase: 'idle' | 'listening' | 'done'; wordErr: string
+function WordPracticePanel({ word, score, phase, wordTry, wordPhoneme, wordErr, explain, explainLoading, onSay, onHear, onClose }: {
+  word: string; score: number | null; phase: 'idle' | 'listening' | 'done'
+  wordTry: number; wordPhoneme: { phoneme: string; score: number } | null; wordErr: string
   explain: PronExplain | null; explainLoading: boolean
   onSay: () => void; onHear: (w: string) => void; onClose: () => void
 }) {
-  const sc = score === null ? 'word-display--idle' : score >= 80 ? 'word-display--good' : score >= 55 ? 'word-display--amber' : 'word-display--bad'
-  const msg = score === null ? null : score >= 80
-    ? { emoji: '😊', text: 'Perfect! You\'ve got this one.' }
-    : score >= 55
-    ? { emoji: '🙂', text: 'Nearly there — try once more.' }
-    : { emoji: '💪', text: 'Keep going — you\'ll get it.' }
+  const animCls = phase === 'listening'
+    ? 'word-display--listening'
+    : score === null ? 'word-display--idle'
+    : score >= 80 ? 'word-display--good'
+    : score >= 55 ? 'word-display--amber'
+    : 'word-display--bad'
+  const msgTier = score === null ? null : score >= 80 ? 'good' : score >= 55 ? 'amber' : 'bad'
+  const msgText = score === null ? null
+    : score >= 80 ? '😊 Perfect! You\'ve got this one.'
+    : score >= 55 ? '🙂 Nearly there — try once more.'
+    : '💪 Keep going — you\'ll get it.'
   return (
     <div className="word-practice-panel">
       <button type="button" className="word-practice-close" onClick={onClose} aria-label="Close">✕</button>
       <div className="word-display-wrap">
-        <span className={`word-display ${sc}`}>{word}</span>
+        {/* wordTry as key forces the animation to restart on every new attempt */}
+        <span key={`${word}-${wordTry}`} className={`word-display ${animCls}`}>{word}</span>
         {explain?.ipa && <span className="word-practice-ipa">{explain.ipa}</span>}
       </div>
-      {msg && <p className={`word-msg word-msg--${score! >= 80 ? 'good' : score! >= 55 ? 'amber' : 'bad'}`}>{msg.emoji} {msg.text}</p>}
+      {msgText && (
+        <div className={`word-msg word-msg--${msgTier}`}>
+          <p>{msgText}</p>
+          {wordPhoneme && (
+            <p className="word-phoneme-note">
+              The /{wordPhoneme.phoneme}/ sound scored {Math.round(wordPhoneme.score)}% — focus on that.
+            </p>
+          )}
+        </div>
+      )}
       <div className="word-practice-actions">
         <button type="button" className="help-btn" onClick={() => onHear(word)}>🔊 Hear it</button>
         <button type="button" className={`studio-mic studio-mic--sm${phase === 'listening' ? ' studio-mic--active' : ''}`} onClick={onSay} disabled={phase === 'listening'}>
@@ -133,6 +149,8 @@ export default function SpeakingStudio({ questions, student, onSpoken, onFixes, 
   const [practiceWord, setPracticeWord] = useState<string | null>(null)
   const [wordPhase, setWordPhase] = useState<'idle' | 'listening' | 'done'>('idle')
   const [wordScore, setWordScore] = useState<number | null>(null)
+  const [wordPhoneme, setWordPhoneme] = useState<{ phoneme: string; score: number } | null>(null)
+  const [wordTry, setWordTry] = useState(0)
   const [wordErr, setWordErr] = useState('')
   const [wordExplain, setWordExplain] = useState<PronExplain | null>(null)
   const [wordExplainLoading, setWordExplainLoading] = useState(false)
@@ -265,6 +283,8 @@ export default function SpeakingStudio({ questions, student, onSpoken, onFixes, 
     setPracticeWord(word)
     setWordPhase('idle')
     setWordScore(null)
+    setWordPhoneme(null)
+    setWordTry(0)
     setWordErr('')
     setWordExplain(null)
     setWordExplainLoading(true)
@@ -280,8 +300,10 @@ export default function SpeakingStudio({ questions, student, onSpoken, onFixes, 
 
   async function sayWord() {
     if (!practiceWord || !student) return
+    setWordTry(n => n + 1)
     setWordPhase('listening')
     setWordScore(null)
+    setWordPhoneme(null)
     setWordErr('')
     try {
       const r = await fetch('/api/courses/speech-token', {
@@ -293,10 +315,12 @@ export default function SpeakingStudio({ questions, student, onSpoken, onFixes, 
       const sdk = await import('microsoft-cognitiveservices-speech-sdk')
       const cfg = sdk.SpeechConfig.fromAuthorizationToken(d.token, d.region)
       cfg.speechRecognitionLanguage = 'en-GB'
+      // Phoneme granularity: scores each individual sound, not just the word overall.
+      // This catches a Spanish /t/ where English needs /θ/, merged vowels, etc.
       const pa = new sdk.PronunciationAssessmentConfig(
         practiceWord,
         sdk.PronunciationAssessmentGradingSystem.HundredMark,
-        sdk.PronunciationAssessmentGranularity.Word,
+        sdk.PronunciationAssessmentGranularity.Phoneme,
         true,
       )
       const recognizer = new sdk.SpeechRecognizer(cfg, sdk.AudioConfig.fromDefaultMicrophoneInput())
@@ -304,26 +328,31 @@ export default function SpeakingStudio({ questions, student, onSpoken, onFixes, 
       recognizer.recognizeOnceAsync(result => {
         recognizer.close()
         let score: number | null = null
+        let worstPhoneme: { phoneme: string; score: number } | null = null
         try {
           const raw = result.properties.getProperty(sdk.PropertyId.SpeechServiceResponse_JsonResult)
           if (raw) {
             const json = JSON.parse(raw)
-            // Overall PronScore from the first NBest entry — most reliable signal
             const pron = json.NBest?.[0]?.PronunciationAssessment
             const wordPron = json.NBest?.[0]?.Words?.[0]?.PronunciationAssessment
             const v = pron?.AccuracyScore ?? wordPron?.AccuracyScore ?? pron?.PronScore
             if (typeof v === 'number') score = v
+            // Find the phoneme with the lowest accuracy score
+            const phonemes: Array<{ Phoneme: string; PronunciationAssessment: { AccuracyScore: number } }> =
+              json.NBest?.[0]?.Words?.[0]?.Phonemes ?? []
+            const scored = phonemes
+              .map(p => ({ phoneme: p.Phoneme, score: p.PronunciationAssessment?.AccuracyScore }))
+              .filter(p => typeof p.score === 'number') as { phoneme: string; score: number }[]
+            scored.sort((a, b) => a.score - b.score)
+            if (scored.length > 0 && scored[0].score < 70) worstPhoneme = scored[0]
           }
-        } catch { /* ignore parse error, score stays null */ }
-        if (score === null && result.reason !== undefined) {
-          // Recognised speech but couldn't extract score — show "didn't catch that"
-          setWordErr('We didn\'t quite catch that. Speak closer to the microphone and try again.')
-          setWordPhase('idle')
-        } else if (score === null) {
-          setWordErr('We didn\'t catch anything. Speak up and try again.')
+        } catch { /* ignore parse errors */ }
+        if (score === null) {
+          setWordErr('We didn\'t catch that. Speak up and try again.')
           setWordPhase('idle')
         } else {
           setWordScore(score)
+          setWordPhoneme(worstPhoneme)
           setWordPhase('done')
         }
       }, (errMsg: string) => {
@@ -387,6 +416,8 @@ export default function SpeakingStudio({ questions, student, onSpoken, onFixes, 
               word={practiceWord}
               score={wordScore}
               phase={wordPhase}
+              wordTry={wordTry}
+              wordPhoneme={wordPhoneme}
               wordErr={wordErr}
               explain={wordExplain}
               explainLoading={wordExplainLoading}
