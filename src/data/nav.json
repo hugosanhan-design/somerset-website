@@ -96,7 +96,7 @@
       "place": "masthead"
     },
     {
-      "href": "https://somersetlc.vercel.app/student",
+      "href": "/student",
       "label": "Student area →",
       "short": "Students",
       "icon": "key",
@@ -105,7 +105,7 @@
       "place": "masthead"
     },
     {
-      "href": "https://somersetlc.vercel.app/student",
+      "href": "/student",
       "label": "Student area",
       "icon": "key",
       "style": "ghost",
