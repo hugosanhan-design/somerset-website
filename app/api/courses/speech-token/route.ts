@@ -11,7 +11,7 @@ export const runtime = 'nodejs'
 // Azure has no hard spending cap, so this route is the cap: each token = one recording
 // session (the client stops at 90 s). Limits per student per day and for the whole app
 // per month; both can be changed with env vars without a code change.
-const PER_STUDENT_PER_DAY = Number(process.env.SPEECH_SESSIONS_PER_STUDENT_DAY) || 20
+const PER_STUDENT_PER_DAY = Number(process.env.SPEECH_SESSIONS_PER_STUDENT_DAY) || 50
 const PER_MONTH = Number(process.env.SPEECH_SESSIONS_PER_MONTH) || 1500
 
 function studentKey(name: string) {
