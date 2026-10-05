@@ -48,6 +48,44 @@ function toPcm16(input: Float32Array, rate: number): Int16Array {
   return out
 }
 
+const norm = (t: string) => t.toLowerCase().replace(/[^a-z']+/g, ' ').trim()
+
+// A short stretch of the student's own sentence around the word. Said on its own, a short
+// word gives the recogniser nothing to go on ("went" heard as "wind"); in a phrase, native
+// voices were recognised 42/42 times and Spanish-accented ones still caught 9/12 (2026-10-06).
+function phraseAround(word: string, text: string): string {
+  const target = norm(word)
+  const sentences = text.match(/[^.!?]+[.!?]*/g) ?? [text]
+  for (const sentence of sentences) {
+    const words = sentence.trim().split(/\s+/)
+    const k = words.findIndex(w => norm(w) === target)
+    if (k < 0) continue
+    const chunk = words.length <= 9 ? words : words.slice(Math.max(0, k - 3), k + 4)
+    return chunk.join(' ').replace(/[.!?,;:]+$/, '')
+  }
+  return word
+}
+
+// Which recognised word lines up with the target word? (Word-level edit-distance alignment.)
+function alignedWord(expected: string[], heard: string[], t: number): string | null {
+  const n = expected.length, m = heard.length
+  const d = Array.from({ length: n + 1 }, (_, i) => Array.from({ length: m + 1 }, (_, j) => (i === 0 ? j : j === 0 ? i : 0)))
+  for (let i = 1; i <= n; i++)
+    for (let j = 1; j <= m; j++)
+      d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + (expected[i - 1] === heard[j - 1] ? 0 : 1))
+  let i = n, j = m
+  while (i > 0) {
+    if (j > 0 && d[i][j] === d[i - 1][j - 1] + (expected[i - 1] === heard[j - 1] ? 0 : 1)) {
+      if (i - 1 === t) return heard[j - 1]
+      i--; j--
+    } else if (d[i][j] === d[i - 1][j] + 1) {
+      if (i - 1 === t) return null
+      i--
+    } else j--
+  }
+  return null
+}
+
 // The exact audio Azure scored, as a playable WAV, so the student can hear themselves.
 function wavUrl(chunks: Int16Array[]): string {
   const n = chunks.reduce((a, c) => a + c.length, 0)
@@ -166,13 +204,16 @@ function B1Text({ text, onWord }: { text: string; onWord: (w: string) => void })
   )
 }
 
-function WordCoach({ word, result, heard, before, phase, hint, err, explain, volume, streak, clip, debug, tries, onSay, onHear, onClose, onFinish }: {
-  word: string; result: WordResult | null; heard: string; before: string; phase: WordPhase; hint: WordHint
+function WordCoach({ word, phrase, result, heard, before, phase, hint, err, explain, volume, streak, clip, debug, tries, onSay, onHear, onClose, onFinish }: {
+  word: string; phrase: string; result: WordResult | null; heard: string; before: string; phase: WordPhase; hint: WordHint
   err: string; explain: PronExplain | null; volume: number; streak: number; clip: string; debug: string; tries: number
   onSay: () => void; onHear: () => void; onClose: () => void; onFinish: () => void
 }) {
   const tier = phase === 'listening' ? 'listening' : result ?? 'idle'
   const locked = streak >= STREAK_GOAL
+  const parts = phrase.split(/\s+/)
+  const at = parts.findIndex(w => norm(w) === norm(word))
+  const multi = parts.length > 1 && at >= 0
   // While listening the word grows with the student's voice; the colour then eases to the result.
   const style = phase === 'listening' && volume > 0
     ? { transform: `scale(${1 + volume * 0.45})`, animation: 'none' }
@@ -180,11 +221,11 @@ function WordCoach({ word, result, heard, before, phase, hint, err, explain, vol
   const message =
     phase === 'starting' ? 'One moment…'
     : phase === 'listening' ? (hint === 'go' ? 'Go on, say it now 🎤' : hint === 'checking' ? 'Checking…' : 'Say it now 🎤')
-    : result === null ? (before ? `In your answer we heard “${before}”. Say “${word}”.` : explain?.how ? '' : 'Tap “Say it” and say the word.')
+    : result === null ? (before ? `In your answer we heard “${before}”. Say the phrase.` : multi ? 'Say the whole phrase.' : 'Tap “Say it” and say the word.')
     : result === 'good' ? (locked ? '🔒 Locked in! Tap another word.' : `✓ We heard “${word}”. ${streak}/${STREAK_GOAL}, say it again`)
     : hint === 'yourturn' ? '🎙️ Your turn. Copy it.'
-    : result === 'amber' ? `Nearly. It sounded a bit like “${heard}”. Listen…`
-    : heard ? `We heard “${heard}”. Listen…` : 'We couldn’t make it out. Listen…'
+    : result === 'amber' ? `Nearly. “${word}” sounded a bit like “${heard}”. Listen…`
+    : heard ? `We heard “${heard}”, not “${word}”. Listen…` : `We didn’t catch “${word}”. Listen…`
 
   return (
     <div className="wc">
@@ -192,8 +233,10 @@ function WordCoach({ word, result, heard, before, phase, hint, err, explain, vol
       <div className="wc-streak" aria-label={`${streak} of ${STREAK_GOAL}`}>
         {Array.from({ length: STREAK_GOAL }, (_, i) => <span key={i} className={i < streak ? 'on' : ''} />)}
       </div>
-      <div className="wc-word-wrap">
-        <span key={tier === 'listening' ? 'l' : `r-${tries}`} className={`wc-word wc-word--${tier}`} style={style}>{word}</span>
+      <div className={`wc-word-wrap${multi ? ' wc-word-wrap--phrase' : ''}`}>
+        {multi && parts.slice(0, at).length > 0 && <span className="wc-ctx">{parts.slice(0, at).join(' ')}</span>}
+        <span key={tier === 'listening' ? 'l' : `r-${tries}`} className={`wc-word wc-word--${tier}`} style={style}>{multi ? parts[at] : word}</span>
+        {multi && parts.slice(at + 1).length > 0 && <span className="wc-ctx">{parts.slice(at + 1).join(' ')}</span>}
       </div>
       {explain?.ipa && <div className="wc-ipa">{explain.ipa}</div>}
       <p className={`wc-msg wc-msg--${tier}`}>
@@ -268,6 +311,7 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
   const [drillChecked, setDrillChecked] = useState(false)
   const [clip, setClip] = useState('')
   const [practiceWord, setPracticeWord] = useState<string | null>(null)
+  const [practicePhrase, setPracticePhrase] = useState('')
   const [wordPhase, setWordPhase] = useState<WordPhase>('idle')
   const [wordResult, setWordResult] = useState<WordResult | null>(null)
   const [wordHeard, setWordHeard] = useState('')
@@ -435,7 +479,14 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
     } catch { onEnd?.() }
   }
 
-  async function openWordPractice(word: string, heardBefore?: string) {
+  function correctedText() {
+    const f = fb?.fixes ?? [], so = fb?.sounds ?? []
+    return piecesFor(transcript, f, so).map(pc => pc.kind === 'text' ? pc.text : pc.kind === 'fix' ? f[pc.idx].fix : so[pc.idx].meant).join('')
+  }
+
+  async function openWordPractice(word: string, heardBefore?: string, source: 'said' | 'b1' = 'said') {
+    const context = source === 'b1' ? (fb?.b1Version ?? '').replace(/\[\[|\]\]/g, '') : correctedText()
+    setPracticePhrase(phraseAround(word, context))
     endWordRun()
     setPracticeWord(word); setWordPhase('idle'); setWordResult(null); setWordHeard(''); setWordBefore(heardBefore ?? '')
     setWordHint(''); setWordStreak(0); setWordErr(''); setWordExplain(null); setWordClip(''); setWordDebug('')
@@ -487,7 +538,8 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
 
   async function sayWord() {
     const word = practiceWord
-    if (!word || !student) return
+    const phrase = practicePhrase || practiceWord
+    if (!word || !phrase || !student) return
     endWordRun()
     try { speechSynthesis.cancel() } catch { /* ignore */ }
     setWordPhase('starting'); setWordResult(null); setWordHeard(''); setWordErr(''); setWordHint(''); setWordDebug('')
@@ -547,7 +599,7 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
         if (!voiceStart) {
           setWordHint(now - t0 > 2000 ? 'go' : '')
           if (now - t0 > 6000) handOver()
-        } else if (now - lastVoice > 700 || now - voiceStart > 4000) {
+        } else if (now - lastVoice > (phrase === word ? 700 : 900) || now - voiceStart > (phrase === word ? 4000 : 9000)) {
           handOver()
         } else {
           setWordHint('')
@@ -591,7 +643,7 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
       cfgScore.speechRecognitionLanguage = 'en-GB'
       const scorer = new sdk.SpeechRecognizer(cfgScore, sdk.AudioConfig.fromStreamInput(pushScore))
       // Miscue off: Azure lines the audio up against the target word and scores every sound.
-      new sdk.PronunciationAssessmentConfig(word, sdk.PronunciationAssessmentGradingSystem.HundredMark, sdk.PronunciationAssessmentGranularity.Phoneme, false).applyTo(scorer)
+      new sdk.PronunciationAssessmentConfig(phrase, sdk.PronunciationAssessmentGradingSystem.HundredMark, sdk.PronunciationAssessmentGranularity.Phoneme, false).applyTo(scorer)
       run.close = () => { plain.close(); scorer.close() }
 
       const once = (r: typeof plain) => new Promise<string>((resolve, reject) =>
@@ -603,22 +655,24 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
       setWordClip(wavUrl(run.chunks))
       endWordRun()
 
-      const norm = (t: string) => t.toLowerCase().replace(/[^a-z']+/g, ' ').trim()
-      const target = norm(word)
-      let alts: { lexical: string; display: string }[] = []
+      const expected = norm(phrase).split(' ')
+      const t = Math.max(0, expected.indexOf(norm(word).split(' ')[0]))
+      const target = expected[t]
+      let alts: { words: string[]; display: string }[] = []
       try {
         const j = JSON.parse(rawPlain || '{}') as { NBest?: { Lexical?: string; Display?: string }[] }
-        alts = (j.NBest ?? []).slice(0, 3).map(n => ({ lexical: norm(n.Lexical ?? ''), display: (n.Display ?? n.Lexical ?? '').replace(/[.?!,]+$/, '') }))
+        alts = (j.NBest ?? []).slice(0, 3).map(n => ({ words: norm(n.Lexical ?? '').split(' ').filter(Boolean), display: (n.Display ?? n.Lexical ?? '').replace(/[.?!,]+$/, '') }))
       } catch { /* unreadable */ }
       let sc: { score: number | null; info: string } = { score: null, info: 'no score' }
       try { sc = scoreFrom(rawScore, word) } catch { /* unreadable */ }
-      const matches = (a: string) => a === target || ` ${a} `.includes(` ${target} `)
-      const topHeard = alts[0]?.display ?? ''
+      // Judge the target word by what was recognised in its place in the phrase.
+      const at = alts.map(a => alignedWord(expected, a.words, t))
+      const topHeard = at[0] ?? ''
       let result: WordResult | null
-      if (alts[0] && matches(alts[0].lexical)) result = sc.score !== null && sc.score < 50 ? 'amber' : 'good'
-      else if (alts.slice(1).some(a => matches(a.lexical))) result = 'amber'
-      else result = voiced || topHeard ? 'bad' : null
-      if (debugOn) setWordDebug(`heard ${alts.map(a => `“${a.display}”`).join(' / ') || 'nothing'} · ${sc.info} · ${seconds.toFixed(1)}s · peak ${peak.toFixed(2)}`)
+      if (at[0] === target) result = sc.score !== null && sc.score < 50 ? 'amber' : 'good'
+      else if (at.slice(1).includes(target)) result = 'amber'
+      else result = voiced || alts.length ? 'bad' : null
+      if (debugOn) setWordDebug(`heard ${alts.map(a => `“${a.display}”`).join(' / ') || 'nothing'} · in place of “${target}”: ${at.map(x => x ?? '∅').join('/')} · ${sc.info} · ${seconds.toFixed(1)}s · peak ${peak.toFixed(2)}`)
       if (result === null) {
         setWordErr('We didn’t hear you. Tap “Say it” and speak up.'); setWordPhase('idle'); setWordHint(''); return
       }
@@ -627,7 +681,7 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
         setWordHint(''); setWordStreak(n => Math.min(n + 1, STREAK_GOAL))
       } else {
         setWordHint('listen')
-        setTimeout(() => hear(word, () => setWordHint('yourturn')), 900)
+        setTimeout(() => hear(phrase, () => setWordHint('yourturn')), 900)
       }
     } catch (e) {
       fail(e instanceof Error ? e.message : 'Something went wrong.')
@@ -706,9 +760,9 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
     .filter(w => !sounds.some(x => clean(x.heard) === w))
   const practiseList: { word: string; heard?: string }[] = [...sounds.map(x => ({ word: x.meant, heard: x.heard })), ...lowWords.map(w => ({ word: w }))].slice(0, 8)
   const coach = practiceWord && (
-    <WordCoach word={practiceWord} result={wordResult} heard={wordHeard} before={wordBefore} phase={wordPhase} hint={wordHint}
+    <WordCoach word={practiceWord} phrase={practicePhrase || practiceWord} result={wordResult} heard={wordHeard} before={wordBefore} phase={wordPhase} hint={wordHint}
       err={wordErr} explain={wordExplain} volume={wordVolume} streak={wordStreak} clip={wordClip} debug={wordDebug} tries={wordTries}
-      onSay={() => void sayWord()} onHear={() => hear(practiceWord)} onClose={closeCoach} onFinish={stopWord} />
+      onSay={() => void sayWord()} onHear={() => hear(practicePhrase || practiceWord)} onClose={closeCoach} onFinish={stopWord} />
   )
   return (
     <div className="rp">
@@ -740,7 +794,7 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
               )}
               {fb?.praise && <p className="rp-praise">👏 {fb.praise}</p>}
               <SaidText transcript={transcript} segs={segs.current} fixes={fixes} sounds={sounds} activeFix={activeFix}
-                onWord={openWordPractice} onFix={i => { closeCoach(); setActiveFix(i) }} />
+                onWord={(w, h) => openWordPractice(w, h, 'said')} onFix={i => { closeCoach(); setActiveFix(i) }} />
               <p className="rp-legend">
                 <span className="rp-key rp-key--fix"><s>wrong</s> <ins>right</ins></span> grammar fix
                 <span className="rp-key rp-key--pron">word</span> say it better (tap)
@@ -750,7 +804,7 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
           ) : fb?.b1Version ? (
             <>
               <p className="rp-b1-intro">This is <strong>your answer</strong> as a good starting-B1 student would say it. Same ideas, <mark className="rp-b1-new">highlighted</mark> parts are what changed.</p>
-              <B1Text text={fb.b1Version} onWord={openWordPractice} />
+              <B1Text text={fb.b1Version} onWord={w => openWordPractice(w, undefined, 'b1')} />
               {!!fb.b1Why?.length && (
                 <div className="rp-b1-why">
                   <strong>What B1 expects from you</strong>
@@ -777,7 +831,7 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
                   <div className="rp-card-head">Say these better</div>
                   <div className="rp-say">
                     {practiseList.map(x => (
-                      <button key={x.word + (x.heard ?? '')} type="button" onClick={() => openWordPractice(x.word, x.heard)}>
+                      <button key={x.word + (x.heard ?? '')} type="button" onClick={() => openWordPractice(x.word, x.heard, 'said')}>
                         <b>{x.word}</b>{x.heard && <small>we heard “{x.heard}”</small>}
                       </button>
                     ))}
