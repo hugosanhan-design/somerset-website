@@ -12,6 +12,7 @@ type Feedback = {
   fixes: Fix[]; drill: { prompt: string; items: { q: string; a: string }[] }
   sayAgain: string; praise: string; length: 'short' | 'good'
   b1Version?: string; b1Why?: string[]
+  level?: 'below' | 'starting' | 'solid'; verdict?: string
 }
 type Phase = 'pick' | 'connecting' | 'recording' | 'thinking' | 'feedback' | 'done'
 type Rec = { stop: () => Promise<void> }
@@ -20,6 +21,30 @@ type WordPhase = 'idle' | 'listening' | 'done'
 type WordHint = '' | 'go' | 'checking' | 'listen' | 'yourturn'
 
 const clean = (w: string) => w.toLowerCase().replace(/[^a-z']/g, '')
+const GOOD = 85
+const OK = 70
+
+type WordRun = {
+  push: { write: (b: ArrayBuffer) => void; close: () => void } | null
+  proc: ScriptProcessorNode | null
+  closed: boolean; close: () => void; stream: MediaStream; ctx: AudioContext | null
+  raf: number; peak: number; cancelled: boolean; timer: ReturnType<typeof setTimeout> | null
+}
+
+// Float audio at any sample rate → 16 kHz 16-bit mono PCM, the format Azure expects.
+function toPcm16(input: Float32Array, rate: number): ArrayBuffer {
+  const ratio = rate / 16000
+  const len = Math.floor(input.length / ratio)
+  const out = new Int16Array(len)
+  for (let i = 0; i < len; i++) {
+    const a = Math.floor(i * ratio), b = Math.max(a + 1, Math.floor((i + 1) * ratio))
+    let sum = 0
+    for (let j = a; j < b && j < input.length; j++) sum += input[j]
+    const v = Math.max(-1, Math.min(1, sum / (b - a)))
+    out[i] = v < 0 ? v * 0x8000 : v * 0x7fff
+  }
+  return out.buffer
+}
 
 function pronClass(accuracy: number, error: string) {
   if (error === 'Omission') return 'pw-omit'
@@ -119,7 +144,7 @@ function WordCoach({ word, score, phase, hint, phoneme, err, explain, volume, st
   explain: PronExplain | null; volume: number; streak: number
   onSay: () => void; onHear: () => void; onClose: () => void; onFinish: () => void
 }) {
-  const tier = phase === 'listening' ? 'listening' : score === null ? 'idle' : score >= 80 ? 'good' : score >= 55 ? 'amber' : 'bad'
+  const tier = phase === 'listening' ? 'listening' : score === null ? 'idle' : score >= GOOD ? 'good' : score >= OK ? 'amber' : 'bad'
   const locked = streak >= STREAK_GOAL
   // While listening the word grows with the student's voice; the colour then eases to the result.
   const style = phase === 'listening' && volume > 0
@@ -129,10 +154,10 @@ function WordCoach({ word, score, phase, hint, phoneme, err, explain, volume, st
     phase === 'listening' ? (hint === 'go' ? 'Go on, say it now 🎤' : hint === 'checking' ? 'Checking…' : 'Listening…')
     : score === null ? (explain?.how ? '' : 'Tap “Say it” and say the word.')
     : locked ? '🔒 Locked in! Tap another word.'
-    : score >= 80 ? `✓ Good! ${streak}/${STREAK_GOAL}, say it again`
+    : score >= GOOD ? `✓ Good! ${streak}/${STREAK_GOAL}, say it again`
     : hint === 'listen' ? '👂 Not yet. Listen…'
     : hint === 'yourturn' ? '🎙️ Your turn. Copy it.'
-    : score >= 55 ? 'Nearly. Listen and try again.' : 'Not yet. Listen and try again.'
+    : score >= OK ? 'Nearly. Listen and try again.' : 'Not yet. Listen and try again.'
 
   return (
     <div className="wc">
@@ -146,7 +171,7 @@ function WordCoach({ word, score, phase, hint, phoneme, err, explain, volume, st
       {explain?.ipa && <div className="wc-ipa">{explain.ipa}</div>}
       <p className={`wc-msg wc-msg--${tier}`}>
         {message}
-        {phoneme && score !== null && score < 80 && <span className="wc-phoneme"> · the /{phoneme.phoneme}/ sound</span>}
+        {phoneme?.phoneme && score !== null && score < GOOD && <span className="wc-phoneme"> · the /{phoneme.phoneme}/ sound</span>}
       </p>
       <div className="wc-actions">
         <button type="button" className="help-btn" onClick={onHear}>🔊 Hear it</button>
@@ -227,7 +252,7 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
   const media = useRef<{ mr: MediaRecorder; stream: MediaStream; chunks: Blob[] } | null>(null)
   const timer = useRef<ReturnType<typeof setInterval> | null>(null)
   const tokenRef = useRef<{ token: string; region: string; at: number } | null>(null)
-  const wordRun = useRef<{ close: () => void; stream: MediaStream; ctx: AudioContext | null; raf: number; peak: number; cancelled: boolean } | null>(null)
+  const wordRun = useRef<WordRun | null>(null)
   const coachRef = useRef<HTMLElement | null>(null)
   const [narrow, setNarrow] = useState(false)
 
@@ -392,6 +417,9 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
     if (!run) return
     wordRun.current = null
     cancelAnimationFrame(run.raf)
+    if (run.timer) clearTimeout(run.timer)
+    try { run.proc?.disconnect() } catch { /* already gone */ }
+    if (!run.closed) { run.closed = true; try { run.push?.close() } catch { /* already closed */ } }
     try { run.close() } catch { /* already closed */ }
     run.stream.getTracks().forEach(t => t.stop())
     run.ctx?.close().catch(() => {})
@@ -419,9 +447,13 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
       .sort((a, b) => a.score - b.score)
     const acc = target.PronunciationAssessment?.AccuracyScore
     if (typeof acc !== 'number') return { score: null, worst: null }
-    // Azure's word score can stay high when one sound is clearly wrong; the phoneme average can't.
+    // Azure is generous with whole words ("brash" for "brush" = 66), so one weak sound
+    // pulls the result down too. Tested with recorded audio, 2026-10-06.
     const avg = phonemes.length >= 2 ? phonemes.reduce((s, p) => s + p.score, 0) / phonemes.length : acc
-    return { score: Math.round(Math.min(acc, avg)), worst: phonemes[0] && phonemes[0].score < 70 ? phonemes[0] : null }
+    const weakest = phonemes[0]?.score ?? acc
+    // Azure only names phonemes for en-US; for en-GB the name is empty, so only pass it on when present.
+    const worst = phonemes[0] && phonemes[0].score < 75 && phonemes[0].phoneme ? phonemes[0] : null
+    return { score: Math.round(Math.min(acc, avg, weakest + 15)), worst }
   }
 
   async function sayWord() {
@@ -433,54 +465,84 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
 
     let stream: MediaStream
     try {
-      stream = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true } })
+      stream = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true } })
     } catch {
       setWordErr('Your browser blocked the microphone. Allow it and try again.'); setWordPhase('idle'); return
     }
-    const run = { close: () => {}, stream, ctx: null as AudioContext | null, raf: 0, peak: 0, cancelled: false }
+    const run: WordRun = { push: null, proc: null, closed: false, close: () => {}, stream, ctx: null, raf: 0, peak: 0, cancelled: false, timer: null }
     wordRun.current = run
+    const fail = (msg: string) => {
+      if (run.cancelled || wordRun.current !== run) return
+      endWordRun(); setWordErr(msg); setWordPhase('idle'); setWordHint('')
+    }
+    run.timer = setTimeout(() => fail('That took too long. Try again.'), 15000)
 
-    // One microphone stream feeds both the pulse and Azure (two streams at once upsets Safari).
     try {
-      const ctx = new AudioContext()
+      const [{ token, region }, sdk] = await Promise.all([getToken(), import('microsoft-cognitiveservices-speech-sdk')])
+      if (run.cancelled) return
+
+      // We feed Azure the audio ourselves and cut it off when the student stops talking.
+      // Left to decide on its own, Azure waited 6+ seconds after the word ended (longer with
+      // room noise), so the word never changed colour.
+      let ctx: AudioContext
+      let source: MediaStreamAudioSourceNode
+      try { ctx = new AudioContext({ sampleRate: 16000 }); source = ctx.createMediaStreamSource(stream) }
+      catch { ctx = new AudioContext(); source = ctx.createMediaStreamSource(stream) }
       run.ctx = ctx
+      await ctx.resume().catch(() => {})
+      const push = sdk.AudioInputStream.createPushStream(sdk.AudioStreamFormat.getWaveFormatPCM(16000, 16, 1))
+      run.push = push
+      const proc = ctx.createScriptProcessor(2048, 1, 1)
+      run.proc = proc
+      proc.onaudioprocess = e => { if (!run.closed) push.write(toPcm16(e.inputBuffer.getChannelData(0), ctx.sampleRate)) }
+      source.connect(proc); proc.connect(ctx.destination)
       const analyser = ctx.createAnalyser()
       analyser.fftSize = 512
-      ctx.createMediaStreamSource(stream).connect(analyser)
+      source.connect(analyser)
+
+      const cfg = sdk.SpeechConfig.fromAuthorizationToken(token, region)
+      cfg.speechRecognitionLanguage = 'en-GB'
+      // Miscue off: Azure lines the audio up against the target word and scores every sound.
+      // With miscue on, "brash" for "brush" counts as an extra word and the target as skipped.
+      const pa = new sdk.PronunciationAssessmentConfig(word, sdk.PronunciationAssessmentGradingSystem.HundredMark, sdk.PronunciationAssessmentGranularity.Phoneme, false)
+      const recognizer = new sdk.SpeechRecognizer(cfg, sdk.AudioConfig.fromStreamInput(push))
+      pa.applyTo(recognizer)
+      run.close = () => recognizer.close()
+
+      const handOver = () => {
+        if (run.closed) return
+        run.closed = true
+        setWordHint('checking'); setWordVolume(0)
+        try { push.close() } catch { /* already closed */ }
+      }
       const data = new Uint8Array(analyser.fftSize)
       const t0 = Date.now()
-      let lastVoice = 0
+      let floor = 0.03, voiceStart = 0, lastVoice = 0
       const tick = () => {
+        if (run.closed || run.cancelled) return
         analyser.getByteTimeDomainData(data)
         let sum = 0
         for (let i = 0; i < data.length; i++) sum += (data[i] - 128) * (data[i] - 128)
         const vol = Math.min(1, Math.sqrt(sum / data.length) / 40)
+        const now = Date.now()
+        if (!voiceStart && now - t0 < 300) floor = Math.min(0.15, Math.max(floor, vol))
+        if (vol > Math.max(0.1, floor * 2)) { if (!voiceStart) voiceStart = now; lastVoice = now }
         run.peak = Math.max(run.peak, vol)
         setWordVolume(vol)
-        const now = Date.now()
-        if (vol > 0.12) lastVoice = now
-        setWordHint(!lastVoice ? (now - t0 > 2000 ? 'go' : '') : now - lastVoice > 400 ? 'checking' : '')
+        if (!voiceStart) {
+          setWordHint(now - t0 > 2000 ? 'go' : '')
+          if (now - t0 > 6000) return handOver()
+        } else if (now - lastVoice > 700 || now - voiceStart > 4000) {
+          return handOver()
+        } else {
+          setWordHint('')
+        }
         run.raf = requestAnimationFrame(tick)
       }
       run.raf = requestAnimationFrame(tick)
-    } catch { /* no Web Audio: the CSS pulse still shows */ }
 
-    try {
-      const { token, region } = await getToken()
-      if (run.cancelled) return
-      const sdk = await import('microsoft-cognitiveservices-speech-sdk')
-      const cfg = sdk.SpeechConfig.fromAuthorizationToken(token, region)
-      cfg.speechRecognitionLanguage = 'en-GB'
-      cfg.setProperty(sdk.PropertyId.SpeechServiceConnection_InitialSilenceTimeoutMs, '5000')
-      cfg.setProperty(sdk.PropertyId.Speech_SegmentationSilenceTimeoutMs, '900')
-      // Miscue off: Azure lines the audio up against the target word and scores every sound.
-      // With miscue on, "brash" for "brush" counts as an extra word and the target as skipped.
-      const pa = new sdk.PronunciationAssessmentConfig(word, sdk.PronunciationAssessmentGradingSystem.HundredMark, sdk.PronunciationAssessmentGranularity.Phoneme, false)
-      const recognizer = new sdk.SpeechRecognizer(cfg, sdk.AudioConfig.fromStreamInput(stream))
-      pa.applyTo(recognizer)
-      run.close = () => recognizer.close()
       recognizer.recognizeOnceAsync(result => {
-        if (run.cancelled) return
+        if (run.cancelled || wordRun.current !== run) return
         const peak = run.peak
         endWordRun()
         let { score, worst } = { score: null as number | null, worst: null as { phoneme: string; score: number } | null }
@@ -491,20 +553,18 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
           setWordErr('We didn’t hear you. Tap “Say it” and speak up.'); setWordPhase('idle'); setWordHint(''); return
         }
         setWordScore(score); setWordPhoneme(worst); setWordPhase('done')
-        if (score >= 80) {
+        if (score >= GOOD) {
           setWordHint(''); setWordStreak(s => Math.min(s + 1, STREAK_GOAL))
         } else {
           setWordHint('listen')
           setTimeout(() => hear(word, () => setWordHint('yourturn')), 700)
         }
       }, (e: string) => {
-        if (run.cancelled) return
         console.error('[sayWord]', e)
-        endWordRun(); setWordErr('The microphone dropped. Try again.'); setWordPhase('idle'); setWordHint('')
+        fail('The microphone dropped. Try again.')
       })
     } catch (e) {
-      endWordRun()
-      setWordErr(e instanceof Error ? e.message : 'Something went wrong.'); setWordPhase('idle'); setWordHint('')
+      fail(e instanceof Error ? e.message : 'Something went wrong.')
     }
   }
 
@@ -602,6 +662,11 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
 
           {view === 'said' ? (
             <>
+              {fb?.verdict && (
+                <p className={`rp-verdict rp-verdict--${fb.level ?? 'starting'}`}>
+                  <b>{fb.level === 'below' ? 'Not B1 yet' : fb.level === 'solid' ? 'Solid B1' : 'Starting B1'}</b> {fb.verdict}
+                </p>
+              )}
               {fb?.praise && <p className="rp-praise">👏 {fb.praise}</p>}
               <SaidText transcript={transcript} segs={segs.current} fixes={fixes} activeFix={activeFix}
                 onWord={openWordPractice} onFix={i => { closeCoach(); setActiveFix(i) }} />

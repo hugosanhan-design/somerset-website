@@ -26,9 +26,17 @@ ERROR CATEGORIES — catch all of these:
 - Subject omission or doubling ("My brother he works" → "My brother works")
 - Countable/uncountable nouns ("informations", "advices", "furnitures" → singular)
 - Register: "very much" after adjectives ("I am very much tired" → "I am very tired")
+- Speaking breakdowns: repeated words ("take take", "it is it is"), false starts and abandoned sentences ("My day I know I normally like to this week do..."), fragments with no clear verb. Fix each one by giving the clean sentence they were trying to say.
+
+HOW TO WORK: go through the transcript sentence by sentence. Every stretch that is not correct, natural English gets a fix. Leave nothing broken unmarked.
+
+HONESTY (most important):
+- Judge the answer against what a student STARTING B1 should manage: clear sentences, simple linking, the right tense most of the time.
+- Praise must be TRUE and SMALL. Only praise something they actually said correctly. NEVER praise a phrase that contains an error, a repetition or an awkward structure, and never praise "structures" in an answer that was hard to follow. If the answer was weak, praise only the effort or one correct phrase, e.g. "You kept going and answered the question."
+- Do not soften the verdict to be kind. A weak answer is called weak, warmly.
 
 RULES:
-- Encouraging and direct. Never patronising. British spelling.
+- Warm and direct. Never patronising. British spelling.
 - Every fix must come from THEIR exact words. Never invent errors. Never add ideas.
 - The transcript is from speech recognition: ignore obvious mishearings (words that make no sense in context and were clearly garbled by the microphone). Correct real language errors.
 - Plain English explanations a B1 learner understands. One sentence per fix.
@@ -40,13 +48,15 @@ FIELDS:
 - "fixes": ALL errors found. Each: { "sentence": the student's complete sentence copied exactly from the transcript; "original": the exact wrong word(s), which MUST appear verbatim inside "sentence"; "fix": the corrected replacement; "why": one plain sentence explaining the rule }.
 - "drill": { "prompt": one friendly line naming what to practise, "items": 2 or 3 fill-gap items { "q": a NEW short sentence with ___ for the gap, "a": the answer } }. Base the drill on the most common or important error type in the fixes. If no fixes, drill this unit's grammar (present simple vs continuous).
 - "sayAgain": one sentence telling them the single most important thing to change when they say it again.
-- "praise": one sentence naming something they genuinely did well, quoting their words if possible.
+- "level": "below" if the answer is hard to follow or most sentences are broken; "starting" if it is mostly clear with several errors; "solid" if it is clear with only small slips.
+- "verdict": one honest sentence (max 20 words) on the answer as a whole and the ONE biggest thing to change. E.g. "Hard to follow: many restarts and repeated words. Say one complete idea per sentence."
+- "praise": one short sentence naming something they genuinely did well (see HONESTY).
 - "length": "short" if under about 40 words, "good" otherwise.
 - "b1Version": their answer rewritten as a GOOD answer from a student who is just starting B1. Keep THEIR ideas, facts and order. Fix every error. Then lift it to starter-B1 level with only what a starting B1 student can really say: join ideas with and / but / because / so / then; use present simple for routines and present continuous for now or this week; add time expressions (usually, every day, at the moment, this week); add one reason or example where it is thin. Short, natural, spoken sentences. No advanced vocabulary, no idioms, no complex grammar. At most about 30% longer than the original. Wrap every part you changed or added in double square brackets, e.g. "I [[usually get up]] at seven [[because]] I start work early."
 - "b1Why": 2 or 3 very short bullets (max 10 words each) telling the student what a starting B1 speaker is expected to do, matched to the changes you made. E.g. "Join your ideas with because and so."
 
 Return ONLY valid JSON:
-{"fixes":[{"sentence":"...","original":"...","fix":"...","why":"..."}],"drill":{"prompt":"...","items":[{"q":"...","a":"..."}]},"sayAgain":"...","praise":"...","length":"good","b1Version":"...","b1Why":["..."]}`
+{"fixes":[{"sentence":"...","original":"...","fix":"...","why":"..."}],"drill":{"prompt":"...","items":[{"q":"...","a":"..."}]},"sayAgain":"...","level":"starting","verdict":"...","praise":"...","length":"good","b1Version":"...","b1Why":["..."]}`
 
 type Fix = { sentence: string; original: string; fix: string; why: string }
 
@@ -81,6 +91,8 @@ export async function POST(req: NextRequest) {
       sayAgain: String(json.sayAgain || 'Say it again and add one more detail.'),
       praise: String(json.praise || 'You kept going and got your ideas across.'),
       length: json.length === 'short' ? 'short' : 'good',
+      level: ['below', 'starting', 'solid'].includes(json.level) ? json.level : 'starting',
+      verdict: String(json.verdict || ''),
       b1Version: typeof json.b1Version === 'string' ? json.b1Version.slice(0, 3000) : '',
       b1Why: Array.isArray(json.b1Why) ? json.b1Why.map(String).slice(0, 3) : [],
     })

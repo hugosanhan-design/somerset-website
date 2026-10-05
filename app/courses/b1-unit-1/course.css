@@ -503,7 +503,12 @@
 .rp-tabs button{font:700 .88rem var(--sans);color:#888;background:none;border:0;border-bottom:3px solid transparent;padding:.45rem .8rem .55rem;margin-bottom:-1px;cursor:pointer}
 .rp-tabs button.on{color:var(--ink);border-bottom-color:var(--accent)}
 .rp-tabs button:disabled{opacity:.45;cursor:default}
-.rp-praise{font-size:.92rem;color:var(--green-dk);font-weight:600;margin:0 0 .6rem}
+.rp-verdict{font-size:.95rem;line-height:1.45;border-radius:10px;padding:.55rem .8rem;margin:0 0 .45rem}
+.rp-verdict b{display:inline-block;font-size:.68rem;letter-spacing:1.2px;text-transform:uppercase;border-radius:99px;padding:.15rem .55rem;margin-right:.35rem;vertical-align:1px;color:#fff}
+.rp-verdict--below{background:#fdf1ee;color:#7a2a1e}.rp-verdict--below b{background:var(--coral)}
+.rp-verdict--starting{background:#fef5e4;color:#6b4a10}.rp-verdict--starting b{background:#d08f22}
+.rp-verdict--solid{background:#f1f8e8;color:#2f5a14}.rp-verdict--solid b{background:var(--green)}
+.rp-praise{font-size:.85rem;color:#777;margin:0 0 .6rem}
 .rp-text{font-family:var(--serif);font-size:1.3rem;line-height:2;color:var(--ink);margin:0 0 .8rem}
 /* every word is a button you can tap to practise */
 .pw{display:inline;font:inherit;color:inherit;background:none;border:0;padding:0 .04em;margin:0;line-height:inherit;cursor:pointer;border-radius:4px;transition:background .15s}
