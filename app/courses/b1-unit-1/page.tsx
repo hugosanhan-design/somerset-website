@@ -156,6 +156,60 @@ export default function B1Unit1Course() {
 
   useEffect(() => { window.scrollTo({ top: 0, behavior: 'smooth' }) }, [step])
 
+  // Register service worker and update last_seen every time the page loads
+  useEffect(() => {
+    if (!('serviceWorker' in navigator)) return
+    navigator.serviceWorker.register('/sw.js').catch(() => {})
+
+    const s = (() => { try { return JSON.parse(localStorage.getItem('somersetStudent') || 'null') } catch { return null } })()
+    if (!s?.name) return
+    const key = s.name.trim().toLowerCase().replace(/\s+/g, '-')
+    fetch('/api/courses/push-subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ studentKey: key, course: COURSE_ID }),
+    }).catch(() => {})
+  }, [])
+
+  // Ask for push permission once, after student saves their plan
+  useEffect(() => {
+    if (!progress.plan) return
+    if (!('Notification' in window) || !('serviceWorker' in navigator)) return
+    if (Notification.permission !== 'default') return
+    try { if (localStorage.getItem('somerset-push-asked')) return } catch { return }
+    try { localStorage.setItem('somerset-push-asked', '1') } catch {}
+
+    Notification.requestPermission().then(async (perm) => {
+      if (perm !== 'granted') return
+      const reg = await navigator.serviceWorker.ready
+      const vapidKey = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY
+      if (!vapidKey) return
+
+      const urlBase64ToUint8Array = (base64String: string) => {
+        const padding = '='.repeat((4 - (base64String.length % 4)) % 4)
+        const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/')
+        const raw = atob(base64)
+        return Uint8Array.from(Array.from(raw).map(c => c.charCodeAt(0)))
+      }
+
+      try {
+        const sub = await reg.pushManager.subscribe({
+          userVisibleOnly: true,
+          applicationServerKey: urlBase64ToUint8Array(vapidKey),
+        })
+        const s = JSON.parse(localStorage.getItem('somersetStudent') || 'null')
+        if (!s?.name) return
+        const key = s.name.trim().toLowerCase().replace(/\s+/g, '-')
+        await fetch('/api/courses/push-subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ studentKey: key, studentName: s.name, course: COURSE_ID, subscription: sub.toJSON() }),
+        })
+      } catch { /* user may have blocked or browser may not support */ }
+    })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [progress.plan])
+
   useEffect(() => {
     if (!progress.plan || studyDays.length) return
     setStudyDays(progress.plan.days); setStudyHours(progress.plan.hours); setStudyGoal(progress.plan.goal)
