@@ -12,24 +12,24 @@
   --sl-ink:#17281B;
   --sl-ink-2:#3A4A38;
   --sl-muted:#5C6657;
-  --sl-green:#57B82C;
-  --sl-green-2:#3D8B1F;
+  --sl-green:#557a49;
+  --sl-green-2:#365c3a;
   --sl-forest:#1E4227;
   --sl-forest-2:#15301C;
   --sl-rule:#D9D2BC;
   --sl-rule-2:rgba(23,40,27,.09);
-  --sl-w:268px;
-  --sl-mast:90px;
+  --sl-w:248px;
+  --sl-mast:72px;
   --sl-ease:cubic-bezier(.22,.61,.36,1);
   --sl-sans:'Instrument Sans',system-ui,sans-serif;
   --sl-brand:'Poppins',system-ui,sans-serif;
 }
 
 /* ---------- shell ---------- */
-.sl-shell{display:grid;grid-template-columns:var(--sl-w) 1fr;grid-template-rows:auto 1fr;min-height:100vh;min-height:100dvh;transition:grid-template-columns .28s var(--sl-ease);position:relative;background:var(--sl-cream)}
-.sl-shell.sl-collapsed{--sl-w:78px}
+.sl-shell{display:grid;grid-template-columns:var(--sl-w) 1fr;grid-template-rows:auto 1fr;min-height:100vh;min-height:100dvh;transition:grid-template-columns .28s var(--sl-ease);position:relative;background:radial-gradient(ellipse at 8% 2%,rgba(152,108,52,.26),transparent 32%),radial-gradient(ellipse at 72% 1%,rgba(255,247,218,.68),transparent 36%),linear-gradient(115deg,#d5b779 0%,#ecdbb8 46%,#f5f1e6 100%)}
+.sl-shell.sl-collapsed{--sl-w:68px}
 .sl-shell.sl-narrow{grid-template-columns:1fr}
-.sl-col{min-width:0;display:flex;flex-direction:column}
+.sl-col{min-width:0;display:flex;flex-direction:column;background:var(--sl-cream)}
 .sl-shell > main{min-width:0}
 
 
@@ -37,10 +37,10 @@
 /* The lockup is FLEXBOX TEXT, never an <img> of logo-colour.svg — those SVGs are
    live <text> at absolute x coords and overlap "Somerset" with LANGUAGE/CENTRE
    whenever the font renders wide. Three recorded recurrences. Do not swap it. */
-.sl-masthead{grid-column:1 / -1;height:var(--sl-mast);display:flex;align-items:center;gap:24px;padding:0 34px;background:var(--sl-cream);border-bottom:1px solid var(--sl-rule);font-family:var(--sl-sans);position:relative;z-index:110}
-.sl-lockup{display:flex;align-items:flex-end;gap:12px;text-decoration:none;line-height:1}
-.sl-lk-word{font-family:var(--sl-brand);font-weight:700;font-size:42px;letter-spacing:-.022em;line-height:.86;color:var(--sl-green)}
-.sl-lk-sub{display:flex;flex-direction:column;font-weight:700;font-size:10.5px;letter-spacing:.24em;line-height:1.22;color:var(--sl-ink);padding-bottom:5px}
+.sl-masthead{grid-column:1 / -1;height:var(--sl-mast);display:flex;align-items:center;gap:18px;padding:0 26px;background:linear-gradient(115deg,rgba(255,255,255,.56),rgba(255,255,255,.17) 48%,rgba(255,255,255,.34));border-bottom:1px solid rgba(255,255,255,.67);box-shadow:inset 0 1px rgba(255,255,255,.82),inset 0 -1px rgba(116,89,44,.09),0 8px 24px rgba(72,54,26,.095);-webkit-backdrop-filter:blur(26px) saturate(1.3);backdrop-filter:blur(26px) saturate(1.3);font-family:var(--sl-sans);position:relative;z-index:110}
+.sl-lockup{display:flex;align-items:flex-end;gap:10px;text-decoration:none;line-height:1}
+.sl-lk-word{font-family:var(--sl-brand);font-weight:700;font-size:36px;letter-spacing:-.022em;line-height:.86;color:var(--sl-green)}
+.sl-lk-sub{display:flex;flex-direction:column;font-weight:700;font-size:9.5px;letter-spacing:.23em;line-height:1.22;color:var(--sl-ink);padding-bottom:4px}
 .sl-mast-meta{margin-left:auto;font-size:10px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--sl-muted);white-space:nowrap}
 .sl-masthead .sl-burger{display:none;margin-left:12px}
 
@@ -48,11 +48,11 @@
 /* Masthead nav — the parent-facing path: Who we are / Courses / Contact + the
    Placement pill. The left rail is now only the free-content shelf. */
 .sl-mastnav{display:flex;align-items:center;gap:.25rem}
-.sl-mastnav a{font-size:.92rem;font-weight:500;color:var(--sl-ink);text-decoration:none;padding:.45rem 1rem;border-radius:50px;white-space:nowrap}
+.sl-mastnav a{font-size:.9rem;font-weight:500;color:var(--sl-ink);text-decoration:none;padding:.4rem .85rem;border-radius:50px;white-space:nowrap}
 .sl-mastnav a:hover{color:var(--sl-green-2);background:rgba(87,184,44,.08)}
-.sl-mastnav a.sl-mast-cta{background:var(--sl-ink);color:var(--sl-cream);padding:.62rem 1.35rem;margin-left:.7rem;font-weight:600}
+.sl-mastnav a.sl-mast-cta{background:var(--sl-ink);color:var(--sl-cream);padding:.55rem 1.2rem;margin-left:.55rem;font-weight:600}
 .sl-mastnav a.sl-mast-cta:hover{background:var(--sl-green-2);color:#fff}
-.sl-masthead .sl-mast-meta{margin-right:20px}
+.sl-masthead .sl-mast-meta{margin-right:12px}
 
 /* One nav, two homes: masthead-placed groups are rendered into the rail as well
    (so the mobile drawer is complete) and hidden there on wide screens. */
@@ -61,14 +61,14 @@
 .sl-narrow .sl-mast-meta{display:none}
 
 /* ---------- rail ---------- */
-.sl-rail{background:var(--sl-rail);border-right:1px solid var(--sl-rule);display:flex;flex-direction:column;padding:14px 14px 16px;position:sticky;top:0;min-height:calc(100dvh - var(--sl-mast));align-self:start;overflow:visible;z-index:100;font-family:var(--sl-sans)}
+.sl-rail{background:linear-gradient(105deg,rgba(255,255,255,.48),rgba(255,255,255,.12) 58%,rgba(255,255,255,.28));border-right:1px solid rgba(255,255,255,.62);box-shadow:inset 1px 0 rgba(255,255,255,.7),inset -1px 0 rgba(113,87,48,.08),6px 0 24px rgba(72,54,26,.075);-webkit-backdrop-filter:blur(26px) saturate(1.3);backdrop-filter:blur(26px) saturate(1.3);display:flex;flex-direction:column;padding:12px 12px 14px;position:sticky;top:0;min-height:calc(100dvh - var(--sl-mast));align-self:start;overflow:visible;z-index:100;font-family:var(--sl-sans)}
 /* The rail is a column flex container. Never give it a FIXED height: once the
-   masthead took 90px, the content no longer fit and flexbox silently shrank the
+   masthead took space, the content no longer fit and flexbox silently shrank the
    group labels to height:0 (they stayed in the DOM and the a11y tree, so only a
    computed-style check caught it). min-height + no shrinking keeps that impossible. */
 .sl-rail > *{flex-shrink:0}
 .sl-railtop{display:flex;justify-content:flex-end;align-items:center;min-height:26px;padding:0 2px}
-.sl-mark{width:38px;height:38px;border-radius:11px;background:var(--sl-green);color:#0F2410;display:grid;place-items:center;font-family:var(--sl-brand);font-weight:700;font-size:18px}
+.sl-mark{width:38px;height:38px;border-radius:11px;background:var(--sl-green);color:#fff;display:grid;place-items:center;font-family:var(--sl-brand);font-weight:700;font-size:18px}
 .sl-brandtext{min-width:0;overflow:hidden}
 .sl-name{display:block;font-family:var(--sl-brand);font-weight:700;font-size:13.5px;line-height:1.25;letter-spacing:-.01em;color:var(--sl-ink)}
 .sl-name b{color:var(--sl-green-2);font-weight:700}
@@ -78,7 +78,7 @@
 .sl-toggle:hover{background:var(--sl-rail-2);color:var(--sl-ink)}
 .sl-toggle svg{transition:transform .28s var(--sl-ease)}
 .sl-collapsed .sl-toggle svg{transform:rotate(180deg)}
-.sl-collapsed .sl-toggle{position:absolute;top:18px;right:-13px;background:var(--sl-paper);border:1px solid var(--sl-rule);width:26px;height:26px;z-index:6}
+.sl-collapsed .sl-toggle{position:absolute;top:14px;right:-12px;background:var(--sl-paper);border:1px solid var(--sl-rule);width:24px;height:24px;z-index:6}
 
 .sl-glabel{display:flex;align-items:center;gap:9px;font-size:10.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--sl-ink-2);padding:0 8px;margin:24px 0 7px;white-space:nowrap;overflow:hidden}
 .sl-glabel::after{content:"";flex:1;height:1px;background:var(--sl-rule)}
@@ -97,7 +97,7 @@
 .sl-item.sl-active .sl-ico{background:rgba(87,184,44,.18);color:var(--sl-green-2)}
 .sl-item.sl-active .sl-ico.sl-mono{background:rgba(87,184,44,.28)}
 .sl-item.sl-active .sl-lab{font-weight:600;color:var(--sl-green-2)}
-.sl-item.sl-active::before{content:"";position:absolute;left:-14px;top:9px;bottom:9px;width:3px;border-radius:0 3px 3px 0;background:var(--sl-green)}
+.sl-item.sl-active::before{content:"";position:absolute;left:-12px;top:9px;bottom:9px;width:3px;border-radius:0 3px 3px 0;background:var(--sl-green)}
 
 .sl-ctas{margin-top:18px;padding:0 2px;display:flex;flex-direction:column;gap:8px}
 .sl-cta{display:grid;grid-template-columns:34px 1fr;align-items:center;gap:11px;border-radius:11px;padding:9px 8px;text-decoration:none;background:var(--sl-ink);color:var(--sl-cream);transition:background .15s}
@@ -118,6 +118,9 @@
 
 /* ---------- collapsed ---------- */
 .sl-collapsed .sl-item,.sl-collapsed .sl-cta,.sl-collapsed .sl-account{grid-template-columns:34px;justify-content:center}
+.sl-collapsed .sl-rail{padding-inline:10px}
+.sl-collapsed .sl-item,.sl-collapsed .sl-cta,.sl-collapsed .sl-account{padding-inline:7px}
+.sl-collapsed .sl-item.sl-active::before{left:-10px}
 .sl-collapsed .sl-account{margin:16px auto 0;padding:9px}
 .sl-collapsed .sl-lab,
 .sl-collapsed .sl-who,
@@ -150,7 +153,7 @@
 .sl-burger{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;color:var(--sl-ink);border:0;background:none;cursor:pointer}
 .sl-scrim{position:fixed;inset:0;background:rgba(21,48,28,.42);opacity:0;pointer-events:none;transition:opacity .24s;z-index:95}
 .sl-narrow .sl-topbar{display:flex}
-.sl-narrow .sl-rail{position:fixed;top:0;bottom:0;left:0;width:266px;--sl-w:266px;height:100%;transform:translateX(-100%);transition:transform .28s var(--sl-ease);box-shadow:14px 0 44px -14px rgba(21,48,28,.4);overflow-y:auto}
+.sl-narrow .sl-rail{position:fixed;top:0;bottom:0;left:0;width:266px;--sl-w:266px;height:100%;background:linear-gradient(115deg,rgba(255,253,244,.88),rgba(255,250,235,.76));transform:translateX(-100%);transition:transform .28s var(--sl-ease);box-shadow:14px 0 44px -14px rgba(21,48,28,.4);overflow-y:auto}
 .sl-narrow .sl-toggle{display:none}
 .sl-narrow .sl-div{display:none}
 .sl-narrow .sl-item,.sl-narrow .sl-cta,.sl-narrow .sl-account{grid-template-columns:34px 1fr}
@@ -186,9 +189,9 @@
 }
 
 @media (max-width:899px){
-  .sl-shell{--sl-mast:64px}
+  .sl-shell{--sl-mast:58px}
   .sl-masthead{padding:0 16px;gap:14px}
-  .sl-lk-word{font-size:28px}
+  .sl-lk-word{font-size:26px}
   .sl-lk-sub{font-size:8px;letter-spacing:.2em;padding-bottom:3px}
   .sl-mast-meta{display:none}
   .sl-masthead .sl-burger{display:grid}
