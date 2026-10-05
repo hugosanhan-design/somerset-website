@@ -9,6 +9,75 @@ type Fix = { sentence: string; original: string; fix: string; why: string }
 type Feedback = { fixes: Fix[]; drill: { prompt: string; items: { q: string; a: string }[] }; sayAgain: string; praise: string; length: 'short' | 'good' }
 type Phase = 'pick' | 'connecting' | 'recording' | 'review' | 'thinking' | 'feedback' | 'done'
 type Rec = { stop: () => Promise<void> }
+type PronExplain = { ipa: string; how: string; rule: string | null; why: string; similar: string[] }
+
+function pronunciationClass(accuracy: number, error: string) {
+  if (error === 'Omission') return 'pron-omit'
+  if (accuracy >= 80) return 'pron-ok'
+  if (accuracy >= 55) return 'pron-ok pron-amber'
+  return 'pron-bad'
+}
+
+function PronTranscript({ segments, onPractise }: { segments: Segment[]; onPractise?: (word: string) => void }) {
+  const words = segments.flatMap(s => s.words)
+  if (!words.length) return null
+  return (
+    <p className="studio-pron-transcript">
+      {words.map((w, i) => {
+        const cls = pronunciationClass(w.accuracy, w.error)
+        const isOmit = w.error === 'Omission'
+        const title = w.error !== 'None' ? `${w.error} · ${Math.round(w.accuracy)}%${!isOmit && onPractise ? ' — tap to practise' : ''}` : `${Math.round(w.accuracy)}%${onPractise ? ' — tap to practise' : ''}`
+        return !isOmit && onPractise ? (
+          <button key={i} type="button" className={`${cls} pron-btn`} title={title} onClick={() => onPractise(w.word)}>
+            {w.word}{' '}
+          </button>
+        ) : (
+          <span key={i} className={cls} title={title}>{w.word}{' '}</span>
+        )
+      })}
+    </p>
+  )
+}
+
+function WordPracticePanel({ word, score, phase, explain, explainLoading, onSay, onHear, onClose }: {
+  word: string; score: number | null; phase: 'idle' | 'listening' | 'done'
+  explain: PronExplain | null; explainLoading: boolean
+  onSay: () => void; onHear: (w: string) => void; onClose: () => void
+}) {
+  const sc = score === null ? '' : score >= 80 ? 'word-score--good' : score >= 55 ? 'word-score--amber' : 'word-score--bad'
+  return (
+    <div className="word-practice-panel">
+      <div className="word-practice-header">
+        <span className="word-practice-title">{word}</span>
+        {explain?.ipa && <span className="word-practice-ipa">{explain.ipa}</span>}
+        <button type="button" className="word-practice-close" onClick={onClose} aria-label="Close">✕</button>
+      </div>
+      <div className="word-practice-actions">
+        <button type="button" className="help-btn" onClick={() => onHear(word)}>🔊 Hear it</button>
+        <button type="button" className={`studio-mic studio-mic--sm${phase === 'listening' ? ' studio-mic--active' : ''}`} onClick={onSay} disabled={phase === 'listening'}>
+          <span className="studio-mic-dot" />{phase === 'listening' ? 'Listening…' : '🎙️ Say it'}
+        </button>
+      </div>
+      {score !== null && (
+        <div className={`word-score ${sc}`}>
+          <div className="word-score-bar"><div className="word-score-fill" style={{ width: `${score}%` }} /></div>
+          <span className="word-score-label">{Math.round(score)}%{score >= 80 ? ' — great!' : score >= 55 ? ' — getting there, try again' : ' — keep practising'}</span>
+        </div>
+      )}
+      {explainLoading && <p className="word-practice-loading">Loading explanation…</p>}
+      {explain && (
+        <div className="word-practice-explain">
+          <p className="word-practice-how">{explain.how}</p>
+          {explain.rule && <p className="word-practice-rule"><strong>Rule:</strong> {explain.rule}</p>}
+          <p className="word-practice-why"><strong>Why it sounds like this:</strong> {explain.why}</p>
+          {explain.similar.length > 0 && (
+            <p className="word-practice-similar">Same pattern: <em>{explain.similar.join(' · ')}</em></p>
+          )}
+        </div>
+      )}
+    </div>
+  )
+}
 
 // The speaking loop, built on what worked in the Aoife prototype:
 // speak → "this is what we heard" (fix only mishearings) → at most three fixes from
@@ -53,6 +122,11 @@ export default function SpeakingStudio({ questions, student, onSpoken, onFixes, 
   const [drill, setDrill] = useState<string[]>([])
   const [drillChecked, setDrillChecked] = useState(false)
   const [clip, setClip] = useState('')
+  const [practiceWord, setPracticeWord] = useState<string | null>(null)
+  const [wordPhase, setWordPhase] = useState<'idle' | 'listening' | 'done'>('idle')
+  const [wordScore, setWordScore] = useState<number | null>(null)
+  const [wordExplain, setWordExplain] = useState<PronExplain | null>(null)
+  const [wordExplainLoading, setWordExplainLoading] = useState(false)
   const segs = useRef<Segment[]>([])
   const attemptRef = useRef<1 | 2>(1)
   const rec = useRef<Rec | null>(null)
@@ -96,8 +170,8 @@ export default function SpeakingStudio({ questions, student, onSpoken, onFixes, 
       const sdk = await import('microsoft-cognitiveservices-speech-sdk')
       const cfg = sdk.SpeechConfig.fromAuthorizationToken(d.token, d.region)
       cfg.speechRecognitionLanguage = 'en-GB'
-      // Long thinking pauses are normal at B1: don't end the phrase too early.
-      cfg.setProperty(sdk.PropertyId.Speech_SegmentationSilenceTimeoutMs, '1500')
+      // B1 learners pause longer when thinking in English — give them more space.
+      cfg.setProperty(sdk.PropertyId.Speech_SegmentationSilenceTimeoutMs, '2500')
       const recognizer = new sdk.SpeechRecognizer(cfg, sdk.AudioConfig.fromDefaultMicrophoneInput())
       // Empty reference text = unscripted: transcript + pronunciation scores in one pass.
       const pa = new sdk.PronunciationAssessmentConfig('', sdk.PronunciationAssessmentGradingSystem.HundredMark, sdk.PronunciationAssessmentGranularity.Word, false)
@@ -178,6 +252,56 @@ export default function SpeakingStudio({ questions, student, onSpoken, onFixes, 
     } catch { /* no speech synthesis: ignore */ }
   }
 
+  async function openWordPractice(word: string) {
+    setPracticeWord(word)
+    setWordPhase('idle')
+    setWordScore(null)
+    setWordExplain(null)
+    setWordExplainLoading(true)
+    try {
+      const r = await fetch('/api/courses/pronunciation-explain', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ word }),
+      })
+      if (r.ok) setWordExplain(await r.json())
+    } catch { /* explanation is optional */ }
+    setWordExplainLoading(false)
+  }
+
+  async function sayWord() {
+    if (!practiceWord || !student) return
+    setWordPhase('listening')
+    setWordScore(null)
+    try {
+      const r = await fetch('/api/courses/speech-token', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(student),
+      })
+      const d = await r.json().catch(() => ({}))
+      if (!r.ok) { setWordPhase('idle'); return }
+      const sdk = await import('microsoft-cognitiveservices-speech-sdk')
+      const cfg = sdk.SpeechConfig.fromAuthorizationToken(d.token, d.region)
+      cfg.speechRecognitionLanguage = 'en-GB'
+      const pa = new sdk.PronunciationAssessmentConfig(
+        practiceWord,
+        sdk.PronunciationAssessmentGradingSystem.HundredMark,
+        sdk.PronunciationAssessmentGranularity.Word,
+        true,
+      )
+      const recognizer = new sdk.SpeechRecognizer(cfg, sdk.AudioConfig.fromDefaultMicrophoneInput())
+      pa.applyTo(recognizer)
+      recognizer.recognizeOnceAsync(result => {
+        recognizer.close()
+        try {
+          const json = JSON.parse(result.properties.getProperty(sdk.PropertyId.SpeechServiceResponse_JsonResult) || '{}')
+          const score: unknown = json.NBest?.[0]?.PronunciationAssessment?.AccuracyScore
+          setWordScore(typeof score === 'number' ? score : null)
+        } catch { setWordScore(null) }
+        setWordPhase('done')
+      }, () => { setWordPhase('idle') })
+    } catch { setWordPhase('idle') }
+  }
+
   const remaining = Math.max(0, MAX_SECONDS - secs)
 
   return (
@@ -220,7 +344,21 @@ export default function SpeakingStudio({ questions, student, onSpoken, onFixes, 
             <div><strong className="small">{first.fluencyLabel}</strong><span>flow</span></div>
           </div>
           {clip && <audio className="studio-clip" controls src={clip} />}
-          <label className="studio-label">This is what we heard. <small>Fix only words we heard wrong, not your English: we need your mistakes to help you.</small></label>
+          <label className="studio-label">Pronunciation · tap any word to practise it</label>
+          <PronTranscript segments={segs.current} onPractise={openWordPractice} />
+          {practiceWord && (
+            <WordPracticePanel
+              word={practiceWord}
+              score={wordScore}
+              phase={wordPhase}
+              explain={wordExplain}
+              explainLoading={wordExplainLoading}
+              onSay={() => void sayWord()}
+              onHear={hear}
+              onClose={() => setPracticeWord(null)}
+            />
+          )}
+          <label className="studio-label" style={{ marginTop: '0.75rem' }}>This is what we heard. <small>Fix only words we heard wrong, not your English: we need your mistakes to help you.</small></label>
           <textarea className="writing studio-text" rows={6} value={transcript} onChange={e => setTranscript(e.target.value)} />
           {first.practise.length > 0 && (
             <div className="studio-practise">

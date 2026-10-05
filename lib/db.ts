@@ -288,6 +288,19 @@ async function initSchema(): Promise<void> {
       PRIMARY KEY (student_key, course)
     );
 
+    -- Web Push subscriptions for course re-engagement notifications.
+    CREATE TABLE IF NOT EXISTS push_subscriptions (
+      id           SERIAL PRIMARY KEY,
+      student_key  TEXT NOT NULL,
+      student_name TEXT NOT NULL DEFAULT '',
+      course       TEXT NOT NULL,
+      endpoint     TEXT NOT NULL UNIQUE,
+      p256dh       TEXT NOT NULL,
+      auth         TEXT NOT NULL,
+      last_seen    TIMESTAMPTZ DEFAULT NOW(),
+      created_at   TIMESTAMPTZ DEFAULT NOW()
+    );
+
     -- Azure speech sessions per student per day: the app's own spending cap,
     -- because Azure pay-as-you-go has none.
     CREATE TABLE IF NOT EXISTS speech_usage (

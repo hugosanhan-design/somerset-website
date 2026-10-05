@@ -505,10 +505,49 @@ button{font-family:inherit;cursor:pointer;border:0}
   color:var(--green);cursor:pointer;transform:skewX(var(--skew))}
 .tmrbtn.off{border-color:#777;color:#777}
 
+/* ---------- weekly tracker (added 2 Oct 2026) ----------
+   A compact strip below the team scorecards. Shows each team's
+   accumulated points for the current ISO week and a progress bar
+   toward WEEKLY_THRESHOLD. Turns gold once unlocked. */
+.weekly-bar{padding:2px 0 9px;display:flex;align-items:center;gap:13px;flex-wrap:wrap;flex-shrink:0}
+.wlbl{font-family:var(--cond);font-size:11px;font-weight:900;text-transform:uppercase;
+  letter-spacing:.12em;white-space:nowrap}
+.wt-slot{display:flex;align-items:center;gap:4px;font-family:var(--cond);font-size:11px;
+  font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+.wt-nm{color:rgba(255,255,255,.65)}
+.wt-pts{color:#fff;min-width:2.2ch;text-align:right}
+.wt-bar{width:50px;height:4px;background:rgba(255,255,255,.18);overflow:hidden;flex-shrink:0}
+.wt-bar-fill{height:100%;background:var(--green);transition:width .4s}
+.wt-bar.done .wt-bar-fill{background:var(--gold)}
+
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 .memory-game{height:calc(100dvh - 60px);min-height:560px}.memory-game .board{min-height:180px}.memory-game .pc img{position:absolute;inset:0}.memory-game>.row{flex-shrink:0}
 .picture-tf{overflow-y:auto;justify-content:flex-start!important;padding:20px!important;gap:12px!important}.picture-pair{display:flex;gap:20px;justify-content:center;flex-shrink:0}.picture-pair figure{margin:0;text-align:center}.picture-pair img{height:clamp(140px,36vh,330px);width:clamp(130px,25vw,300px);object-fit:contain;background:#181818;border:3px solid white}.picture-pair figcaption{font-size:16px;margin-top:5px}.picture-tf .q{font-size:clamp(22px,3vw,38px);max-width:1000px}.picture-hint{font-size:15px;max-width:800px;text-align:center}
 button:disabled{opacity:.4;cursor:not-allowed}
+
+/* ---------- somerset rounds + 1-2-3 (added 1 Oct 2026) ---------- */
+.tile.rounds{background:#7A3E9D;border-color:#fff}.tile.rounds p{color:rgba(255,255,255,.9)}
+.tile.rounds:hover,.tile.q123:hover{background:var(--gold);border-color:var(--dark)}
+.tile.rounds:hover p,.tile.rounds:hover h3,.tile.q123:hover p,.tile.q123:hover h3{color:var(--dark)}
+.tile.q123{background:var(--hot);border-color:#fff}.tile.q123 p{color:rgba(255,255,255,.92)}
+.rd .pmsg b{color:var(--gold)}
+.rd-names{display:flex;flex-wrap:wrap;gap:12px;margin:14px 0 18px}
+.rd-in{font:600 20px var(--sans);padding:.5em .7em;border:3px solid #fff;background:var(--dark2);color:#fff;width:min(250px,100%)}
+.rd-num{width:110px;display:inline-block;margin-left:8px}
+.rd-tcard{display:flex;flex-direction:column;gap:8px;background:rgba(0,0,0,.35);padding:12px;border-left:6px solid var(--green)}
+.rd-lbl{font-family:var(--cond);font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+.rd-qs{list-style:none;display:grid;gap:8px;margin:10px 0;max-width:980px}
+.rd-qs li{display:flex;gap:14px;align-items:flex-start;background:var(--dark2);border-left:6px solid var(--green);padding:10px 16px;font-size:clamp(16px,1.8vw,24px);line-height:1.25}
+.rd-qs li b{font-family:var(--cond);color:var(--gold);min-width:1.3em}
+.rd-qs li.done{opacity:.4;text-decoration:line-through;border-left-color:#777}
+.rd-who{font-family:var(--cond);font-weight:900;font-size:clamp(30px,5vw,72px);text-align:center;line-height:1.05}
+.rd-a{color:var(--green)}.rd-t{color:var(--gold)}
+.rd-vote{display:grid;gap:6px;margin:12px 0 18px;max-width:980px}
+.rd-vcard{display:flex;justify-content:space-between;align-items:center;gap:16px;background:var(--dark2);border-left:6px solid var(--hot);padding:7px 14px}
+.rd-vcard h3{font-family:var(--cond);font-size:clamp(20px,2.2vw,30px);text-transform:none}
+.rd-vcard p{font-size:clamp(13px,1.2vw,16px);opacity:.9;margin-top:2px;line-height:1.25}
+.rd-vc{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.rd-n{font-family:var(--cond);font-weight:900;font-size:clamp(24px,2.6vw,36px);min-width:1.4em;text-align:center}
 </style>
 </head>
 <body>
@@ -533,6 +572,7 @@ button:disabled{opacity:.4;cursor:not-allowed}
 <script src="units/adults-b12-w1.js"></script>
 <script src="units/adults-b12-w2.js"></script>
 <script src="units/adults-b12-w3.js"></script>
+<script src="units/adults-b12-w4.js"></script>
 <script src="units/b1a-u01-l01.js"></script>
 <script src="units/b1a-u01-l02.js"></script>
 <script src="units/b1a-u01-l03.js"></script>
@@ -629,7 +669,13 @@ button:disabled{opacity:.4;cursor:not-allowed}
 <script src="units/friday-b2-u01.js"></script>
 <script src="units/friday-b2-u01b.js"></script>
 <script src="units/pet1-u01.js"></script>
+<script src="units/b2conv-u00.js"></script>
 <script src="units/b2conv-u01.js"></script>
+<script src="units/b2conv-cowboy.js"></script>
+<script src="units/b2conv-weekend.js"></script>
+<script src="units/b2conv-paella.js"></script>
+<script src="units/b2conv-sport.js"></script>
+<script src="units/b2conv-siesta.js"></script>
 <script src="units/unit-01.js"></script>
 <script src="units/unit-02.js"></script>
 <script src="units/unit-03.js"></script>
@@ -810,11 +856,11 @@ const Teams = {
       t.mult = (this.handicap && s>0 && s<max) ? Math.round((max/s)*10)/10 : 1;
     });
   },
-  add(pts){ const t=this.list[this.turn]; t.score += Math.round(pts*(t.mult||1)); this.render(); },
+  add(pts){ const t=this.list[this.turn]; const actual=Math.round(pts*(t.mult||1)); t.score+=actual; this._trackWeekly(t.name,actual); this.render(); },
   steal(fromIdx,pts){
     const a=this.list[this.turn], b=this.list[fromIdx];
     if(!b||b===a) return;
-    b.score-=pts; a.score+=pts; this.render();
+    b.score-=pts; a.score+=pts; this._trackWeekly(a.name,pts); this.render();
   },
   next(){ this.turn=(this.turn+1)%this.list.length; this.render(); },
   html(){ return '<div class="teams">'+this.list.map((t,i)=>
@@ -825,7 +871,48 @@ const Teams = {
          <span class="pm"><button onclick="Teams.bump(${i},-1)">−</button>
          <button onclick="Teams.bump(${i},1)">+</button></span></div>`).join('')+
       `<button class="winbtn" onclick="Teams.declareWinner()" aria-label="Declare winner" title="Declare winner"><span>🏆</span></button>`
-      +'</div>'; },
+      +'</div>'+this._weeklyBarHtml(); },
+  /* Compact weekly-progress strip. Shows each team's accumulated ISO-week
+     points and a thin bar toward WEEKLY_THRESHOLD. Only renders when a
+     group is loaded (Game.unit is set). */
+  _weeklyBarHtml(){
+    const group = Game.unit && Game.unit.group;
+    if(!group || !this.list.length) return '';
+    const totals = WeeklyScores.totals(group);
+    const anyUnlocked = WeeklyScores.isUnlocked(group);
+    const slots = this.list.map(t=>{
+      const wt = totals[t.name] || 0;
+      const pct = Math.min(100, Math.round(wt / WEEKLY_THRESHOLD * 100));
+      const done = wt >= WEEKLY_THRESHOLD;
+      const nm = t.name.split(/[\s&]+/)[0].slice(0,6);
+      return `<span class="wt-slot"><span class="wt-nm">${esc(nm)}</span>`+
+             `<span class="wt-pts">${wt}</span>`+
+             `<span class="wt-bar${done?' done':''}"><span class="wt-bar-fill" style="width:${pct}%"></span></span>`+
+             `</span>`;
+    }).join('');
+    const status = anyUnlocked
+      ? `<span class="wlbl" style="color:var(--gold)">✓ UNLOCKED</span>`
+      : `<span class="wlbl" style="color:rgba(255,255,255,.38)">/${WEEKLY_THRESHOLD}</span>`;
+    return `<div class="weekly-bar"><span class="wlbl">📰 Week</span>${slots}${status}</div>`;
+  },
+  /* Called from add() and steal() to persist points and fire the unlock
+     celebration when a team first crosses WEEKLY_THRESHOLD this week. */
+  _trackWeekly(teamName, pts){
+    if(pts <= 0) return;
+    const group = Game.unit && Game.unit.group;
+    if(!group) return;
+    const {justUnlocked} = WeeklyScores.add(group, teamName, pts);
+    if(justUnlocked){
+      setTimeout(()=>{
+        if(ov.classList.contains('on')) return; // don't interrupt an active question
+        ov.className='ov on';
+        ov.innerHTML=`<div class="badge">📰 SOMERSET SUNDAY SPECIAL</div>
+          <div class="q" style="color:var(--gold)">${esc(teamName)} have unlocked this week's issue!</div>
+          <div class="q" style="font-size:clamp(16px,2vw,26px);color:rgba(255,255,255,.85)">Pick it up on Sunday. You earned it.</div>
+          <div class="row"><button class="btn" onclick="ov.classList.remove('on')"><span>Brilliant ✓</span></button></div>`;
+      }, 450);
+    }
+  },
   select(i){ if(Game._memSelected?.length || ov.classList.contains('on')){ toast('Finish this turn before changing team.'); return; } this.turn=i; this.render(); },
   bump(i,d){ this.list[i].score+=d; this.render(); },
   render(){ const el=$('#teamsBox'); if(el) el.innerHTML=this.html(); },
@@ -1043,7 +1130,9 @@ const Game = {
           tile('🦶','Sambori','Valencian hopscotch. Hop to CEL before the others.','Game.sambori()',i++),
           tile('🔥','La Falla','Build the monument piece by piece, then burn it.','Game.falla()',i++),
           u.case?tileCase(u,i++):'',
-          u.pursuit?tilePursuit(u,i++):''
+          u.pursuit?tilePursuit(u,i++):'',
+          u.rounds?tileRounds(u,i++):'',
+          u.quiz123?tile123(u,i++):''
         ].join(''); })()}
       </div></div>`;
   },
@@ -1969,8 +2058,304 @@ const Game = {
       Teams.next();
       this.drawPursuit(name+' just missed the final question — back in the ring. '+Teams.list[Teams.turn].name+'’s turn.');
     }
+  },
+
+  /* ---- 13 · SOMERSET ROUNDS (added 1 Oct 2026, B2 Conversación) ----
+     The first-class icebreaker. Students fill in a personal
+     questionnaire on paper (5 questions per round), then the app runs
+     the asking: it randomly picks WHO asks, WHICH question number, and
+     WHO they ask. Every question is used exactly once per round. With
+     as many students as questions (the usual 5/5) every student asks
+     once AND is asked once (a random derangement: nobody asks
+     themselves). Round 3 asks about the course topics; after it comes
+     a vote. Nothing here scores — it is conversation, not a contest.
+     Reads a `rounds` block on the unit:
+       rounds:{ students:[…], rounds:[{id,title,intro,questions:[{q,topic?}]}],
+                vote:{topics:[{id,title,blurb}]} } */
+  rounds(){
+    const r=this.unit.rounds;
+    this._rd={names:r.students.slice(), ri:0, plan:[], di:0, votes:{}};
+    this.roundsSetup();
+  },
+  roundsReadNames(){
+    const rd=this._rd; const n=rd.names.length;
+    rd.names=rd.names.map((old,i)=>{ const el=$('#rdn'+i); return (el&&el.value.trim())||old; });
+  },
+  roundsSetup(){
+    const rd=this._rd;
+    stage.innerHTML=`<div class="pad rd"><h1 class="h1">Somerset Rounds</h1>
+      <p class="sub">Who is in class today? Edit the names, then start Round 1.</p>
+      <div class="rd-names">${rd.names.map((n,i)=>`<input class="rd-in" id="rdn${i}" value="${attr(n)}" aria-label="Student ${i+1}">`).join('')}</div>
+      <div class="vrow">
+        <button class="btn" id="rdStart" onclick="Game.roundsStart(0)"><span>Start Round 1 ▶</span></button>
+        <button class="btn ghost" onclick="Game.roundsResize(1)"><span>+ Student</span></button>
+        <button class="btn ghost" onclick="Game.roundsResize(-1)"><span>− Student</span></button>
+        <button class="btn ghost" onclick="Game.home()"><span>Back</span></button>
+      </div></div>`;
+  },
+  roundsResize(d){
+    this.roundsReadNames(); const rd=this._rd;
+    if(d>0 && rd.names.length<8) rd.names.push('Student '+(rd.names.length+1));
+    if(d<0 && rd.names.length>2) rd.names.pop();
+    this.roundsSetup();
+  },
+  /* pure planner — exported on Game so the test can call it directly */
+  roundsDerange(list){
+    for(let k=0;k<300;k++){ const p=shuffle(list.slice()); if(p.every((x,i)=>x!==list[i])) return p; }
+    return list.slice(1).concat(list[0]);              // rotation is always a derangement
+  },
+  roundsPlan(names,nQ){
+    const n=names.length; if(n<2||nQ<1) return [];
+    const qs=shuffle([...Array(nQ).keys()]);
+    if(n===nQ){
+      const askers=shuffle(names.slice()), targets=this.roundsDerange(askers);
+      return askers.map((a,i)=>({asker:a,target:targets[i],q:qs[i]}));
+    }
+    let askers=[]; while(askers.length<nQ) askers=askers.concat(shuffle(names.slice()));
+    askers=askers.slice(0,nQ);
+    const asked={}; names.forEach(x=>asked[x]=0);
+    return askers.map((a,i)=>{
+      const cand=names.filter(x=>x!==a), min=Math.min(...cand.map(x=>asked[x]));
+      const t=shuffle(cand.filter(x=>asked[x]===min))[0]; asked[t]++;
+      return {asker:a,target:t,q:qs[i]};
+    });
+  },
+  roundsStart(ri){
+    const rd=this._rd; if(ri===0) this.roundsReadNames();
+    rd.ri=ri; rd.di=0;
+    rd.plan=this.roundsPlan(rd.names,this.unit.rounds.rounds[ri].questions.length);
+    this.roundsDraw();
+  },
+  roundsDraw(){
+    const rd=this._rd, R=this.unit.rounds.rounds[rd.ri], total=rd.plan.length;
+    const doneQ=rd.plan.slice(0,rd.di).map(p=>p.q);
+    const last=rd.di>=total;
+    stage.innerHTML=`<div class="pad rd"><h1 class="h1">Round ${rd.ri+1} · ${esc(R.title)}</h1>
+      <p class="sub">${esc(R.intro||'')}</p>
+      <ol class="rd-qs">${R.questions.map((q,i)=>`<li class="${doneQ.includes(i)?'done':''}"><b>${i+1}</b><span>${esc(q.q)}</span></li>`).join('')}</ol>
+      <p class="pmsg">${last?'Round '+(rd.ri+1)+' complete — every question has been asked.':'Question '+(rd.di+1)+' of '+total+'. Press the button and the app chooses.'}</p>
+      <div class="vrow">
+        ${last
+          ? (rd.ri<this.unit.rounds.rounds.length-1
+              ? `<button class="btn hot" onclick="Game.roundsStart(${rd.ri+1})"><span>Round ${rd.ri+2} ▶</span></button>`
+              : `<button class="btn hot" onclick="Game.roundsVote()"><span>🗳 Vote for the topics</span></button>`)
+          : `<button class="btn hot" id="rdDraw" onclick="Game.roundsSpin()"><span>🎲 Draw</span></button>`}
+        <button class="btn ghost" onclick="Game.rounds()"><span>↻ Start again</span></button>
+      </div></div>`;
+  },
+  roundsSpin(){
+    const rd=this._rd, p=rd.plan[rd.di]; if(!p) return;
+    const btn=$('#rdDraw'); if(btn) btn.disabled=true;
+    ov.className='ov on';
+    ov.innerHTML=`<div class="badge">DRAWING…</div><div class="rd-who" id="rdSpin">?</div>`;
+    let n=0; const spin=setInterval(()=>{
+      const el=$('#rdSpin'); if(el) el.textContent=rd.names[Math.random()*rd.names.length|0];
+      if(++n>9){ clearInterval(spin); this.roundsShow(); }
+    },80);
+  },
+  roundsShow(){
+    const rd=this._rd, p=rd.plan[rd.di], R=this.unit.rounds.rounds[rd.ri], q=R.questions[p.q];
+    ov.className='ov on';
+    ov.innerHTML=`<div class="badge">ROUND ${rd.ri+1} · QUESTION ${p.q+1}</div>
+      <div class="rd-who"><span class="rd-a">${esc(p.asker)}</span> asks <span class="rd-t">${esc(p.target)}</span></div>
+      <div class="q">${esc(q.q)}</div>
+      <p class="pmsg" style="text-align:center">${esc(R.listener||'Listener: ask one follow-up question.')}</p>
+      <div class="row"><button class="btn" onclick="Game.roundsNext()"><span>✔ Done · next</span></button></div>`;
+  },
+  roundsNext(){ ov.classList.remove('on'); this._rd.di++; this.roundsDraw(); },
+  roundsVote(){
+    const rd=this._rd, topics=this.unit.rounds.vote.topics;
+    const total=topics.reduce((s,t)=>s+(rd.votes[t.id]||0),0);
+    stage.innerHTML=`<div class="pad rd"><h1 class="h1">Vote</h1>
+      <p class="sub">Each student votes once · ${total} of ${rd.names.length} votes cast · the top two become Topic 1 and Topic 2</p>
+      <div class="rd-vote">${topics.map(t=>`<div class="rd-vcard">
+        <div><h3>${esc(t.title)}</h3><p>${esc(t.blurb||'')}</p></div>
+        <div class="rd-vc"><button class="btn ghost" aria-label="Remove a vote for ${esc(t.title)}" onclick="Game.roundsBump('${t.id}',-1)"><span>−</span></button>
+          <span class="rd-n" id="vn-${t.id}">${rd.votes[t.id]||0}</span>
+          <button class="btn" aria-label="Add a vote for ${esc(t.title)}" onclick="Game.roundsBump('${t.id}',1)"><span>+</span></button></div></div>`).join('')}</div>
+      <div class="vrow"><button class="btn hot" onclick="Game.roundsLock()"><span>🔒 Lock the result</span></button>
+        <button class="btn ghost" onclick="Game.roundsStart(${this.unit.rounds.rounds.length-1})"><span>Back to Round ${this.unit.rounds.rounds.length}</span></button></div></div>`;
+  },
+  roundsBump(id,d){
+    const rd=this._rd; rd.votes[id]=Math.max(0,(rd.votes[id]||0)+d); this.roundsVote();
+  },
+  /* random tie-break: shuffle first, then a stable sort on votes */
+  roundsRank(){
+    const rd=this._rd, topics=this.unit.rounds.vote.topics;
+    return shuffle(topics.slice()).sort((a,b)=>(rd.votes[b.id]||0)-(rd.votes[a.id]||0));
+  },
+  roundsLock(){
+    const rd=this._rd, total=Object.values(rd.votes).reduce((s,v)=>s+v,0);
+    if(!total){ toast('No votes yet.'); return; }
+    const rk=this.roundsRank(), v=t=>rd.votes[t.id]||0;
+    const tied=rk.slice(0,3).some((t,i,a)=>i>0&&v(t)===v(a[i-1])&&(i<=2));
+    rd.result=rk.slice(0,2);
+    ov.className='ov on winner';
+    ov.innerHTML=`<div class="badge">🗳 THE CLASS HAS CHOSEN</div>
+      <div class="q">Topic 1 · ${esc(rk[0].title)}</div>
+      <div class="q" style="font-size:clamp(22px,3.2vw,46px);color:var(--gold)">Topic 2 · ${esc(rk[1].title)}</div>
+      <p class="pmsg" style="text-align:center">${rk.map(t=>esc(t.title)+' '+v(t)).join(' · ')}${tied?' — a tie was settled by the app at random.':''}</p>
+      <div class="row"><button class="btn" onclick="ov.classList.remove('on')"><span>Close</span></button>
+        <button class="btn ghost" onclick="ov.classList.remove('on');Game.roundsVote()"><span>Change votes</span></button></div>`;
+  },
+
+  /* ---- 14 · SOMERSET 1-2-3 (added 1 Oct 2026, B2 Conversación) ----
+     The last 15 minutes of every Wednesday class. Teams (usually a
+     pair against a trio) each hold a monthly points BANK that starts
+     at 100 and never drops below 20 (the floor). Three rounds:
+       1 Quick-fire — 6 questions, alternate teams, +5 if right, no loss.
+       2 The Bid    — 4 questions; the team in turn bids 10/20/30/40
+                      BEFORE seeing the question: right +bid, wrong −bid
+                      (never below the floor).
+       3 The Final  — one question, both teams answer; right = +20,
+                      doubled for the team that is behind.
+     No handicap multiplier here (the pair/trio imbalance is what the
+     doubled Final is for). Same teacher-marking rule as every other
+     game: nothing marks itself and no clock scores. The bank is kept
+     in this browser's localStorage under a per-month key, so the new
+     month starts fresh at 100 automatically; if storage is blocked
+     the game still works and the teacher types the banks in.
+     Reads a `quiz123` block on the unit: {quick:[{q,a}], bid:[{q,a,hint}], final:{q,a}} */
+  T123_START:100, T123_FLOOR:20,
+  t123Key(){ const d=new Date(); return 'somerset123:'+(this.unit.group||'x')+':'+d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0'); },
+  t123Stored(){ try{ return JSON.parse(localStorage.getItem(this.t123Key())||'null'); }catch(e){ return null; } },
+  t123Persist(){ try{ localStorage.setItem(this.t123Key(),JSON.stringify(this._t.teams.map(t=>({name:t.name,members:t.members,bank:t.bank})))); }catch(e){} },
+  t123(){
+    const saved=this.t123Stored();
+    this._t={teams:(saved&&saved.length>=2)?saved.map(t=>({...t})):[
+      {name:'Team A',members:'',bank:this.T123_START},{name:'Team B',members:'',bank:this.T123_START}],
+      round:0,i:0,turn:0,order:[],bid:0,fin:[]};
+    this.t123Setup(!!saved);
+  },
+  t123Setup(fromSaved){
+    const T=this._t;
+    stage.innerHTML=`<div class="pad rd"><h1 class="h1">Somerset 1-2-3</h1>
+      <p class="sub">${fromSaved?'Banks carried over from earlier this month. Change anything that is wrong.':'New month — everyone starts on '+this.T123_START+'.'}</p>
+      <div class="rd-names">${T.teams.map((t,i)=>`<div class="rd-tcard">
+        <input class="rd-in" id="t123n${i}" value="${attr(t.name)}" aria-label="Team ${i+1} name">
+        <input class="rd-in" id="t123m${i}" value="${attr(t.members||'')}" placeholder="Members" aria-label="Team ${i+1} members">
+        <label class="rd-lbl">Bank <input class="rd-in rd-num" id="t123b${i}" type="number" value="${t.bank}"></label></div>`).join('')}</div>
+      <div class="vrow">
+        <button class="btn hot" onclick="Game.t123Begin()"><span>Round 1 · Quick-fire ▶</span></button>
+        <button class="btn ghost" onclick="Game.t123Teams(1)"><span>+ Team</span></button>
+        <button class="btn ghost" onclick="Game.t123Teams(-1)"><span>− Team</span></button>
+        <button class="btn ghost" onclick="Game.t123Reset()"><span>↺ Reset to ${this.T123_START}</span></button>
+        <button class="btn ghost" onclick="Game.home()"><span>Back</span></button>
+      </div></div>`;
+  },
+  t123Read(){
+    this._t.teams.forEach((t,i)=>{
+      const n=$('#t123n'+i), m=$('#t123m'+i), b=$('#t123b'+i);
+      if(n&&n.value.trim()) t.name=n.value.trim();
+      if(m) t.members=m.value.trim();
+      if(b&&b.value!=='') t.bank=Math.max(0,parseInt(b.value,10)||0);
+    });
+  },
+  t123Teams(d){
+    this.t123Read(); const T=this._t;
+    if(d>0&&T.teams.length<3) T.teams.push({name:'Team '+'ABC'[T.teams.length],members:'',bank:this.T123_START});
+    if(d<0&&T.teams.length>2) T.teams.pop();
+    this.t123Setup(false);
+  },
+  t123Reset(){ this.t123Read(); this._t.teams.forEach(t=>t.bank=this.T123_START); this.t123Setup(false); },
+  t123Board(){
+    return '<div class="teams">'+this._t.teams.map((t,i)=>`<div class="team ${i===this._t.turn&&this._t.round>0&&this._t.round<3?'on':''}">
+      <span class="nm">${esc(t.name)}</span><span class="sc" id="t123sc${i}">${t.bank}</span>
+      <span class="pm"><button onclick="Game.t123Bump(${i},-5)">−</button><button onclick="Game.t123Bump(${i},5)">+</button></span></div>`).join('')+'</div>';
+  },
+  t123Bump(i,d){ const t=this._t.teams[i]; t.bank=Math.max(0,t.bank+d); this.t123Persist(); const el=$('#t123sc'+i); if(el) el.textContent=t.bank; },
+  /* the one place where points change, so the floor rule lives here */
+  t123Apply(i,delta){
+    const t=this._t.teams[i];
+    t.bank = delta>=0 ? t.bank+delta : Math.max(t.bank+delta, Math.min(t.bank,this.T123_FLOOR));
+    this.t123Persist();
+  },
+  t123Begin(){
+    this.t123Read(); const T=this._t, Q=this.unit.quiz123;
+    T.round=1; T.i=0; T.turn=0;
+    T.order=shuffle(Q.quick.slice()); this.t123Persist(); this.t123Quick();
+  },
+  t123Quick(){
+    const T=this._t, Q=T.order, n=Q.length;
+    if(T.i>=n){ T.round=2; T.i=0; T.order=shuffle(this.unit.quiz123.bid.slice()); this.t123Intro(2); return; }
+    stage.innerHTML=`<div class="pad rd"><div id="teamsBox">${this.t123Board()}</div>
+      <h1 class="h1">1 · Quick-fire</h1>
+      <p class="sub">Right answer +5 · wrong answer costs nothing</p>
+      <p class="pmsg">Question ${T.i+1} of ${n} · ${esc(T.teams[T.turn].name)}</p>
+      <div class="vrow"><button class="btn hot" onclick="Game.t123AskQuick()"><span>Show the question ▶</span></button></div></div>`;
+  },
+  t123AskQuick(){
+    const T=this._t, q=T.order[T.i];
+    ov.className='ov on';
+    ov.innerHTML=`<div class="badge">1 · QUICK-FIRE · ${esc(T.teams[T.turn].name)}</div>
+      <div class="q">${esc(q.q)}</div>
+      <div class="a" id="ansBox">${esc(q.a)}${q.alt?' <small>('+esc(q.alt)+')</small>':''}</div>
+      <div class="row"><button class="btn ghost" onclick="$('#ansBox').classList.add('on')"><span>Show answer</span></button>
+        <button class="btn" onclick="Game.t123Mark(true)"><span>✔ +5</span></button>
+        <button class="btn hot" onclick="Game.t123Mark(false)"><span>✘ 0</span></button></div>`;
+  },
+  t123Mark(ok){
+    ov.classList.remove('on'); const T=this._t;
+    if(T.round===1){ if(ok) this.t123Apply(T.turn,5); T.i++; T.turn=(T.turn+1)%T.teams.length; this.t123Quick(); }
+    else { this.t123Apply(T.turn,ok?T.bid:-T.bid); T.i++; T.turn=(T.turn+1)%T.teams.length; this.t123Bid(); }
+  },
+  t123Intro(r){
+    const txt = r===2 ? ['2 · The Bid','Before you see the question, bid 10, 20, 30 or 40. Right: you win it. Wrong: you lose it (never below '+this.T123_FLOOR+').']
+                      : ['3 · The Final','One question for everyone. Right answer +20 — doubled for the team that is behind.'];
+    stage.innerHTML=`<div class="pad rd"><div id="teamsBox">${this.t123Board()}</div>
+      <h1 class="h1">${txt[0]}</h1><p class="pmsg">${txt[1]}</p>
+      <div class="vrow"><button class="btn hot" onclick="Game.${r===2?'t123Bid':'t123Final'}()"><span>Go ▶</span></button></div></div>`;
+  },
+  t123Bid(){
+    const T=this._t, n=this.unit.quiz123.bid.length;
+    if(T.i>=n){ T.round=3; this.t123Intro(3); return; }
+    const q=T.order[T.i];
+    stage.innerHTML=`<div class="pad rd"><div id="teamsBox">${this.t123Board()}</div>
+      <h1 class="h1">2 · The Bid</h1>
+      <p class="pmsg">Question ${T.i+1} of ${n} · ${esc(T.teams[T.turn].name)} · a clue before you bid: <b>${esc(q.hint||'none this time')}</b></p>
+      <p class="sub">How much do you bid?</p>
+      <div class="vrow">${[10,20,30,40].map(b=>`<button class="btn hot" onclick="Game.t123Place(${b})"><span>${b}</span></button>`).join('')}</div></div>`;
+  },
+  t123Place(b){
+    const T=this._t, q=T.order[T.i]; T.bid=b;
+    ov.className='ov on';
+    ov.innerHTML=`<div class="badge">2 · BID ${b} · ${esc(T.teams[T.turn].name)}</div>
+      <div class="q">${esc(q.q)}</div>
+      <div class="a" id="ansBox">${esc(q.a)}</div>
+      <div class="row"><button class="btn ghost" onclick="$('#ansBox').classList.add('on')"><span>Show answer</span></button>
+        <button class="btn" onclick="Game.t123Mark(true)"><span>✔ +${b}</span></button>
+        <button class="btn hot" onclick="Game.t123Mark(false)"><span>✘ −${b}</span></button></div>`;
+  },
+  t123Final(){
+    const T=this._t, f=this.unit.quiz123.final, banks=T.teams.map(t=>t.bank), lo=Math.min(...banks);
+    T.fin=T.teams.map(()=>false);
+    T.behind=T.teams.map(t=>t.bank===lo && banks.filter(b=>b===lo).length===1);
+    const row=()=>T.teams.map((t,i)=>`<button class="btn ${T.fin[i]?'':'ghost'}" onclick="Game.t123Toggle(${i})"><span>${T.fin[i]?'✔':'○'} ${esc(t.name)}${T.behind[i]?' (×2)':''}</span></button>`).join('');
+    this._t123Row=row;
+    ov.className='ov on';
+    ov.innerHTML=`<div class="badge">3 · THE FINAL${T.behind.some(Boolean)?' · THE TEAM BEHIND SCORES DOUBLE':''}</div>
+      <div class="q">${esc(f.q)}</div>
+      <div class="a" id="ansBox">${esc(f.a)}</div>
+      <div class="row"><button class="btn ghost" onclick="$('#ansBox').classList.add('on')"><span>Show answer</span></button></div>
+      <p class="pmsg" style="text-align:center">Tick every team that got it right, then finish.</p>
+      <div class="row" id="finRow">${row()}</div>
+      <div class="row"><button class="btn hot" onclick="Game.t123Finish()"><span>Finish the show ▶</span></button></div>`;
+  },
+  t123Toggle(i){ this._t.fin[i]=!this._t.fin[i]; $('#finRow').innerHTML=this._t123Row(); },
+  t123Finish(){
+    const T=this._t;
+    T.teams.forEach((t,i)=>{ if(T.fin[i]) this.t123Apply(i,T.behind[i]?40:20); });
+    ov.classList.remove('on'); T.round=4; this.t123Persist();
+    const max=Math.max(...T.teams.map(t=>t.bank)), win=T.teams.filter(t=>t.bank===max);
+    stage.innerHTML=`<div class="pad rd"><div id="teamsBox">${this.t123Board()}</div>
+      <h1 class="h1">That’s the show</h1>
+      <p class="pmsg">Today’s leader: <b>${win.map(w=>esc(w.name)).join(' & ')}</b> on ${max}. Banks are saved for the rest of this month. The team on top at the last class of the month wins the golden vote.</p>
+      <div class="vrow"><button class="btn" onclick="Game.t123Setup(true)"><span>Edit banks</span></button>
+        <button class="btn ghost" onclick="Game.home()"><span>Back to games</span></button></div></div>`;
   }
+
 };
+function attr(s){ return esc(s).replace(/"/g,'&quot;'); }
 function tile(ic,t,p,fn,i){ return `<button class="tile" style="--i:${i}" onclick="${/^Game\.(pickClass|load|intro|startVersion)/.test(fn)?fn:`Game.versions(${esc(JSON.stringify(fn)).replace(/"/g,'&quot;')},${esc(JSON.stringify(t)).replace(/"/g,'&quot;')})`}"><span class="ic">${ic}</span>
   <div><h3>${t}</h3><p>${p}</p></div></button>`; }
 function tileCase(u,i){ return `<button class="tile case" style="--i:${i}" onclick="Game.versions('Game.theCase()','The Case')"><span class="ic">🔦</span>
@@ -1984,6 +2369,15 @@ function tileCase(u,i){ return `<button class="tile case" style="--i:${i}" oncli
    declares a `pursuit` block, so no other group or unit is affected. */
 function tilePursuit(u,i){ return `<button class="tile pursuit" style="--i:${i}" onclick="Game.pursuit()"><span class="ic">🎲</span>
   <div><h3>Somerset Pursuit</h3><p>Roll the die, answer a category question, win the azulejo tile. Collect all six and answer the centre question to win.</p></div></button>`; }
+
+/* Somerset Rounds and Somerset 1-2-3 (added 1 Oct 2026) follow the same
+   additive pattern as Pursuit: own tile, called directly (no version
+   submenu), and only shown when the unit declares a `rounds` /
+   `quiz123` block, so no other group or unit is affected. */
+function tileRounds(u,i){ return `<button class="tile rounds" style="--i:${i}" onclick="Game.rounds()"><span class="ic">🎲</span>
+  <div><h3>Somerset Rounds</h3><p>Three rounds of questions. The app draws who asks whom — every question once. Then the class votes.</p></div></button>`; }
+function tile123(u,i){ return `<button class="tile q123" style="--i:${i}" onclick="Game.t123()"><span class="ic">🎬</span>
+  <div><h3>Somerset 1-2-3</h3><p>The closing quiz: Quick-fire, the Bid and the Final, on a monthly points bank.</p></div></button>`; }
 
 document.addEventListener('keydown',e=>{
   if(e.key==='Escape'){ ov.classList.remove('on'); stopTimer(); }
@@ -2072,6 +2466,52 @@ Object.assign(Game, {
 for(const name of ['home','intro','setup','load']){
   const original=Game[name];Game[name]=function(...args){if(this._teacher&&!this._teacher.closed){this._teacher.close();}this._teacher=null;this._teacherReady=false;return original.apply(this,args);};
 }
+
+/* ==================================================================
+   WEEKLY TRACKER — persistent team points across class sessions.
+   Key: somersetArcade:w:{group}:{year}:{isoWeek}
+   Points accumulate Mon–Sat, reset automatically on Sunday because
+   the week number changes. A team that reaches WEEKLY_THRESHOLD
+   earns the Somerset Sunday Special for that week.
+   ================================================================== */
+const WEEKLY_THRESHOLD = 100;
+
+const WeeklyScores = {
+  /* ISO week number (Monday = first day) */
+  _isoWeek(d) {
+    const t = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+    t.setUTCDate(t.getUTCDate() + 4 - (t.getUTCDay() || 7));
+    const y1 = new Date(Date.UTC(t.getUTCFullYear(), 0, 1));
+    return Math.ceil(((t - y1) / 86400000 + 1) / 7);
+  },
+  _key(group) {
+    const d = new Date();
+    return `somersetArcade:w:${group}:${d.getFullYear()}:${this._isoWeek(d)}`;
+  },
+  _load(group) {
+    try { return JSON.parse(localStorage.getItem(this._key(group)) || 'null') || {}; }
+    catch(e) { return {}; }
+  },
+  _save(group, data) {
+    try { localStorage.setItem(this._key(group), JSON.stringify(data)); } catch(e) {}
+  },
+  /* All accumulated totals for this group this week: {teamName: pts, …} */
+  totals(group) { return this._load(group); },
+  /* True if any team has reached the threshold this week */
+  isUnlocked(group) {
+    return Object.values(this._load(group)).some(v => v >= WEEKLY_THRESHOLD);
+  },
+  /* Add pts for teamName. Returns {weekTotal, justUnlocked}. Negatives ignored. */
+  add(group, teamName, pts) {
+    if (!group || pts <= 0) return {weekTotal: 0, justUnlocked: false};
+    const data = this._load(group);
+    const wasAbove = (data[teamName] || 0) >= WEEKLY_THRESHOLD;
+    data[teamName] = (data[teamName] || 0) + pts;
+    const nowAbove = data[teamName] >= WEEKLY_THRESHOLD;
+    this._save(group, data);
+    return {weekTotal: data[teamName], justUnlocked: nowAbove && !wasAbove};
+  }
+};
 
 Game.boot();
 </script>

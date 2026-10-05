@@ -1,0 +1,8 @@
+{
+  "crons": [
+    {
+      "path": "/api/courses/push-notify",
+      "schedule": "0 16 * * *"
+    }
+  ]
+}
