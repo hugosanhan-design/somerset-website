@@ -516,6 +516,13 @@
 .pw-amber{text-decoration:underline wavy #e8a33d;text-decoration-thickness:2px;text-underline-offset:5px}
 .pw-bad{text-decoration:underline wavy var(--coral);text-decoration-thickness:2px;text-underline-offset:5px;color:#a8392a}
 .pw-omit{color:#aaa}
+.pw-misheard{text-decoration:underline wavy var(--coral);text-decoration-thickness:2px;text-underline-offset:5px;color:#a8392a;background:#fdf1ee}
+.pw-misheard sup{font:700 .6em var(--sans);color:var(--coral);margin-left:.1em}
+.rp-say{display:flex;flex-wrap:wrap;gap:.4rem}
+.rp-say button{display:flex;flex-direction:column;align-items:flex-start;font:inherit;text-align:left;background:#fdf1ee;border:1px solid #f2c4b9;border-radius:10px;padding:.35rem .65rem;cursor:pointer;transition:transform .15s}
+.rp-say button:hover{transform:translateY(-1px);border-color:var(--coral)}
+.rp-say b{font-size:.95rem;color:#7a2a1e}
+.rp-say small{font-size:.72rem;color:#999}
 /* grammar fixes, shown inside the student's own words */
 .rp-fix{display:inline;font:inherit;line-height:inherit;background:none;border:0;padding:0 .1em;cursor:pointer;border-radius:6px;transition:background .15s}
 .rp-fix s{color:#a3a3a3;text-decoration-color:var(--coral);text-decoration-thickness:2px}
