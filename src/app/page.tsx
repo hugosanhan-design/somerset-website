@@ -575,7 +575,7 @@ export default function Home() {
         body.season-winter .apple-tree .canopy1 { fill: #77855F; }
         body.season-winter .apple-tree .canopy2 { fill: #8A9A70; }
         body.season-winter .apple-tree .apples { display: none; }
-        .wx-badge { position: absolute; right: 16px; bottom: 58%; z-index: 13; font-size: 0.66rem; font-weight: 600; letter-spacing: 0.06em; color: rgba(255,255,255,0.88); background: rgba(23,40,27,0.45); padding: 0.35rem 0.85rem; border-radius: 50px; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); pointer-events: none; white-space: nowrap; }
+        .wx-badge { position: absolute; top: 18px; right: 26px; z-index: 5; max-width: calc(100% - 52px); font-size: .67rem; font-weight: 600; letter-spacing: .01em; color: #26392f; background: rgba(255,251,239,.88); border: 1px solid rgba(255,255,255,.65); padding: .45rem .9rem; border-radius: 50px; box-shadow: 0 1px 8px rgba(31,38,31,.14); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); pointer-events: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .scene .prop, .scene .apple-tree, .scene .sheep-walk, .scene .crow, .scene .castle, .scene .falling-apple { position: absolute; pointer-events: none; }
         .prop { transform-origin: bottom center; }
         .prop.hay { width: 52px; bottom: 18%; }
@@ -841,9 +841,6 @@ export default function Home() {
           .card-badge { width: 62px; height: 62px; margin-bottom: 1.1rem; }
           .card-badge svg { width: 38px; height: 38px; }
           .review-card { padding: 1.7rem 1.6rem; }
-          /* the floating weather pill lands in the middle of content on a
-             narrow screen — drop it on mobile, it's decorative */
-          .wx-badge { display: none; }
           .castle { width: 96px; }
           .apple-tree { width: 62px; }
           .prop.pony { width: 46px; }
@@ -1038,7 +1035,6 @@ export default function Home() {
           63% { transform: translate(calc(var(--fall-x) + var(--wind-drift, 0px) * .6), var(--fall-y)) rotate(390deg); opacity: .7; }
           68%,100% { transform: translate(calc(var(--fall-x) + var(--wind-drift, 0px) * .6), var(--fall-y)) rotate(400deg); opacity: 0; }
         }
-        .wx-badge { z-index: 20; right: 78px; bottom: 9px; color: #26392f; background: rgba(255,251,239,.88); box-shadow: 0 1px 8px rgba(31,38,31,.14); font-size: .67rem; letter-spacing: .01em; }
         .fireflies { z-index: 13; }
         @media (max-width: 600px) {
           :root { --scene-h: clamp(115px, 19vh, 150px); }
@@ -1061,7 +1057,7 @@ export default function Home() {
           .pony { width: 32px; }
           .crow { display: block; }
           .castle-flag { left: 9.4%; top: 13%; width: 18px; }
-          .wx-badge { display: block; font-size: .55rem; max-width: calc(100% - 90px); overflow: hidden; text-overflow: ellipsis; right: 76px; bottom: 7px; }
+          .wx-badge { top: 12px; right: 14px; max-width: calc(100% - 28px); font-size: .6rem; }
         }
         @media (prefers-reduced-motion: reduce) {
           .sheep-walk, .sheep-walk.walking, .sheep-leg, .sheep-body, .sheep-figure, .sheep-transition-form, .sheep-chew, .crow, .crow-wings, .flag-cloth, .chimney-smoke span, .window-light, .weather-shade, .landscape, .solar-glow, .pencil-sun, .night-veil, .mist, .ff, .drop, .flake, .wind-grass span, .wind-leaves span { animation: none !important; transition: none !important; }
@@ -1079,7 +1075,7 @@ export default function Home() {
         .btn-primary { box-shadow: 0 7px 19px rgba(30,54,39,.15); }
         .btn-primary:hover { box-shadow: 0 10px 24px rgba(30,54,39,.22); }
         @media (max-width: 600px) {
-          .hero { padding-top: 3rem; }
+          .hero { padding-top: 4rem; }
           .hero-content { padding-top: 0; }
           .hero .eyebrow { margin-top: .5rem; margin-bottom: 1.25rem; }
           .hero h1 { margin-bottom: 1.1rem; }
@@ -1087,7 +1083,7 @@ export default function Home() {
           .hero-actions { gap: .7rem; }
         }
         @media (max-width: 600px) and (max-height: 740px) {
-          .hero { padding-top: 1rem; }
+          .hero { padding-top: 3.5rem; }
           .hero h1 { font-size: clamp(2.45rem, 10.5vw, 3rem); line-height: 1; margin-bottom: .75rem; }
           .hero .eyebrow { margin-top: 0; margin-bottom: .75rem; }
           .hero-lead { font-size: .91rem; line-height: 1.5; margin-bottom: .95rem; }
@@ -1122,6 +1118,7 @@ export default function Home() {
 
       <section className="hero" id="hero">
         <div className="hero-bg" aria-hidden="true" />
+        <div className="wx-badge" id="wxBadge">Checking the weather in Dunster…</div>
         <div className="hero-content">
           <div className="eyebrow"><span className="dot" /> Valencia · Est. 2013</div>
           <h1>
@@ -1229,7 +1226,6 @@ export default function Home() {
             <path d="m28 28 1 6 4 2m5-9 2 6 5 2" fill="none" stroke="#403a34" strokeWidth="1.1" strokeLinecap="round" />
           </svg>
 
-          <div className="wx-badge" id="wxBadge">Checking the weather in Dunster…</div>
           <div className="night-veil" aria-hidden="true" />
           <div className="fireflies" aria-hidden="true">
             <span className="ff" style={ffStyle('14%', '32%', '6.5s', '0s')} />
