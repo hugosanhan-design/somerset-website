@@ -818,7 +818,11 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
 
         <aside className="rp-side" ref={coachRef}>
           {practiceWord && !narrow ? coach : phase === 'thinking' ? (
-            <p className="studio-note studio-wait">Reading what you said…</p>
+            <div className="rp-card rp-reading" role="status">
+              <div className="rp-reading-dots" aria-hidden><span /><span /><span /></div>
+              <p className="rp-reading-title">Reading what you said…</p>
+              <p className="rp-reading-sub">Checking your grammar, the words we misheard and writing your B1 version.</p>
+            </div>
           ) : fbErr ? (
             <div className="rp-card">
               <p className="err">{fbErr}</p>

@@ -702,3 +702,12 @@
 .game-rec-why{display:block;font-size:.82rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .game-rec-time{font-size:.75rem;font-weight:600;color:var(--muted);flex-shrink:0;white-space:nowrap}
 .games-more{font-size:.82rem}
+
+.rp-reading{text-align:center;padding:2rem 1.2rem;background:linear-gradient(180deg,#fff,var(--accent-lt,#eaeff6));border-color:var(--accent)}
+.rp-reading-title{font-family:var(--serif);font-size:1.6rem;font-weight:700;line-height:1.2;margin:.7rem 0 .4rem;color:var(--ink)}
+.rp-reading-sub{font-size:.88rem;color:#666;margin:0}
+.rp-reading-dots{display:flex;justify-content:center;gap:.45rem}
+.rp-reading-dots span{width:12px;height:12px;border-radius:50%;background:var(--accent);animation:rp-bounce 1s ease-in-out infinite}
+.rp-reading-dots span:nth-child(2){animation-delay:.15s}
+.rp-reading-dots span:nth-child(3){animation-delay:.3s}
+@keyframes rp-bounce{0%,100%{transform:translateY(0);opacity:.4}50%{transform:translateY(-8px);opacity:1}}
