@@ -46,8 +46,8 @@ function HeardWords({ transcript, segs, onPractise }: { transcript: string; segs
   )
 }
 
-function WordPracticePanel({ word, score, phase, explain, explainLoading, onSay, onHear, onClose }: {
-  word: string; score: number | null; phase: 'idle' | 'listening' | 'done'
+function WordPracticePanel({ word, score, phase, wordErr, explain, explainLoading, onSay, onHear, onClose }: {
+  word: string; score: number | null; phase: 'idle' | 'listening' | 'done'; wordErr: string
   explain: PronExplain | null; explainLoading: boolean
   onSay: () => void; onHear: (w: string) => void; onClose: () => void
 }) {
@@ -71,6 +71,7 @@ function WordPracticePanel({ word, score, phase, explain, explainLoading, onSay,
           <span className="studio-mic-dot" />{phase === 'listening' ? 'Listening…' : '🎙️ Say it'}
         </button>
       </div>
+      {wordErr && <p className="word-practice-err">{wordErr}</p>}
       {explainLoading && <p className="word-practice-loading">Loading explanation…</p>}
       {explain && (
         <div className="word-practice-explain">
@@ -132,6 +133,7 @@ export default function SpeakingStudio({ questions, student, onSpoken, onFixes, 
   const [practiceWord, setPracticeWord] = useState<string | null>(null)
   const [wordPhase, setWordPhase] = useState<'idle' | 'listening' | 'done'>('idle')
   const [wordScore, setWordScore] = useState<number | null>(null)
+  const [wordErr, setWordErr] = useState('')
   const [wordExplain, setWordExplain] = useState<PronExplain | null>(null)
   const [wordExplainLoading, setWordExplainLoading] = useState(false)
   const segs = useRef<Segment[]>([])
@@ -263,6 +265,7 @@ export default function SpeakingStudio({ questions, student, onSpoken, onFixes, 
     setPracticeWord(word)
     setWordPhase('idle')
     setWordScore(null)
+    setWordErr('')
     setWordExplain(null)
     setWordExplainLoading(true)
     try {
@@ -279,13 +282,14 @@ export default function SpeakingStudio({ questions, student, onSpoken, onFixes, 
     if (!practiceWord || !student) return
     setWordPhase('listening')
     setWordScore(null)
+    setWordErr('')
     try {
       const r = await fetch('/api/courses/speech-token', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(student),
       })
       const d = await r.json().catch(() => ({}))
-      if (!r.ok) { setWordPhase('idle'); return }
+      if (!r.ok) { setWordErr(d.error || 'Microphone unavailable.'); setWordPhase('idle'); return }
       const sdk = await import('microsoft-cognitiveservices-speech-sdk')
       const cfg = sdk.SpeechConfig.fromAuthorizationToken(d.token, d.region)
       cfg.speechRecognitionLanguage = 'en-GB'
@@ -299,14 +303,39 @@ export default function SpeakingStudio({ questions, student, onSpoken, onFixes, 
       pa.applyTo(recognizer)
       recognizer.recognizeOnceAsync(result => {
         recognizer.close()
+        let score: number | null = null
         try {
-          const json = JSON.parse(result.properties.getProperty(sdk.PropertyId.SpeechServiceResponse_JsonResult) || '{}')
-          const score: unknown = json.NBest?.[0]?.PronunciationAssessment?.AccuracyScore
-          setWordScore(typeof score === 'number' ? score : null)
-        } catch { setWordScore(null) }
-        setWordPhase('done')
-      }, () => { setWordPhase('idle') })
-    } catch { setWordPhase('idle') }
+          const raw = result.properties.getProperty(sdk.PropertyId.SpeechServiceResponse_JsonResult)
+          if (raw) {
+            const json = JSON.parse(raw)
+            // Overall PronScore from the first NBest entry — most reliable signal
+            const pron = json.NBest?.[0]?.PronunciationAssessment
+            const wordPron = json.NBest?.[0]?.Words?.[0]?.PronunciationAssessment
+            const v = pron?.AccuracyScore ?? wordPron?.AccuracyScore ?? pron?.PronScore
+            if (typeof v === 'number') score = v
+          }
+        } catch { /* ignore parse error, score stays null */ }
+        if (score === null && result.reason !== undefined) {
+          // Recognised speech but couldn't extract score — show "didn't catch that"
+          setWordErr('We didn\'t quite catch that. Speak closer to the microphone and try again.')
+          setWordPhase('idle')
+        } else if (score === null) {
+          setWordErr('We didn\'t catch anything. Speak up and try again.')
+          setWordPhase('idle')
+        } else {
+          setWordScore(score)
+          setWordPhase('done')
+        }
+      }, (errMsg: string) => {
+        recognizer.close()
+        console.error('[sayWord]', errMsg)
+        setWordErr('The microphone dropped. Try again.')
+        setWordPhase('idle')
+      })
+    } catch (e) {
+      setWordErr(e instanceof Error ? e.message : 'Something went wrong.')
+      setWordPhase('idle')
+    }
   }
 
   const remaining = Math.max(0, MAX_SECONDS - secs)
@@ -358,6 +387,7 @@ export default function SpeakingStudio({ questions, student, onSpoken, onFixes, 
               word={practiceWord}
               score={wordScore}
               phase={wordPhase}
+              wordErr={wordErr}
               explain={wordExplain}
               explainLoading={wordExplainLoading}
               onSay={() => void sayWord()}
