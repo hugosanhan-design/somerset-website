@@ -18,24 +18,31 @@ function pronunciationClass(accuracy: number, error: string) {
   return 'pron-bad'
 }
 
-function PronTranscript({ segments, onPractise }: { segments: Segment[]; onPractise?: (word: string) => void }) {
-  const words = segments.flatMap(s => s.words)
-  if (!words.length) return null
+// Renders the "what we heard" transcript as tappable words, with pronunciation
+// colour coding where Azure returned data for that word.
+function HeardWords({ transcript, segs, onPractise }: { transcript: string; segs: Segment[]; onPractise: (word: string) => void }) {
+  const pronMap = new Map<string, { accuracy: number; error: string }>()
+  segs.flatMap(s => s.words).forEach(w => pronMap.set(w.word.toLowerCase().replace(/[^a-z']/g, ''), { accuracy: w.accuracy, error: w.error }))
+  const tokens = transcript.split(/(\s+)/)
   return (
-    <p className="studio-pron-transcript">
-      {words.map((w, i) => {
-        const cls = pronunciationClass(w.accuracy, w.error)
-        const isOmit = w.error === 'Omission'
-        const title = w.error !== 'None' ? `${w.error} · ${Math.round(w.accuracy)}%${!isOmit && onPractise ? ' — tap to practise' : ''}` : `${Math.round(w.accuracy)}%${onPractise ? ' — tap to practise' : ''}`
-        return !isOmit && onPractise ? (
-          <button key={i} type="button" className={`${cls} pron-btn`} title={title} onClick={() => onPractise(w.word)}>
-            {w.word}{' '}
+    <div className="heard-words">
+      {tokens.map((tok, i) => {
+        if (/^\s+$/.test(tok)) return <span key={i}> </span>
+        const clean = tok.toLowerCase().replace(/[^a-z']/g, '')
+        const p = pronMap.get(clean)
+        const cls = p ? pronunciationClass(p.accuracy, p.error) : ''
+        const isOmit = p?.error === 'Omission'
+        return !isOmit ? (
+          <button key={i} type="button" className={`heard-word-btn${cls ? ' ' + cls : ''}`}
+            title={p ? `${Math.round(p.accuracy)}% — tap to practise` : 'Tap to practise'}
+            onClick={() => onPractise(clean || tok)}>
+            {tok}
           </button>
         ) : (
-          <span key={i} className={cls} title={title}>{w.word}{' '}</span>
+          <span key={i} className="pron-omit">{tok}</span>
         )
       })}
-    </p>
+    </div>
   )
 }
 
@@ -44,26 +51,26 @@ function WordPracticePanel({ word, score, phase, explain, explainLoading, onSay,
   explain: PronExplain | null; explainLoading: boolean
   onSay: () => void; onHear: (w: string) => void; onClose: () => void
 }) {
-  const sc = score === null ? '' : score >= 80 ? 'word-score--good' : score >= 55 ? 'word-score--amber' : 'word-score--bad'
+  const sc = score === null ? 'word-display--idle' : score >= 80 ? 'word-display--good' : score >= 55 ? 'word-display--amber' : 'word-display--bad'
+  const msg = score === null ? null : score >= 80
+    ? { emoji: '😊', text: 'Perfect! You\'ve got this one.' }
+    : score >= 55
+    ? { emoji: '🙂', text: 'Nearly there — try once more.' }
+    : { emoji: '💪', text: 'Keep going — you\'ll get it.' }
   return (
     <div className="word-practice-panel">
-      <div className="word-practice-header">
-        <span className="word-practice-title">{word}</span>
+      <button type="button" className="word-practice-close" onClick={onClose} aria-label="Close">✕</button>
+      <div className="word-display-wrap">
+        <span className={`word-display ${sc}`}>{word}</span>
         {explain?.ipa && <span className="word-practice-ipa">{explain.ipa}</span>}
-        <button type="button" className="word-practice-close" onClick={onClose} aria-label="Close">✕</button>
       </div>
+      {msg && <p className={`word-msg word-msg--${score! >= 80 ? 'good' : score! >= 55 ? 'amber' : 'bad'}`}>{msg.emoji} {msg.text}</p>}
       <div className="word-practice-actions">
         <button type="button" className="help-btn" onClick={() => onHear(word)}>🔊 Hear it</button>
         <button type="button" className={`studio-mic studio-mic--sm${phase === 'listening' ? ' studio-mic--active' : ''}`} onClick={onSay} disabled={phase === 'listening'}>
           <span className="studio-mic-dot" />{phase === 'listening' ? 'Listening…' : '🎙️ Say it'}
         </button>
       </div>
-      {score !== null && (
-        <div className={`word-score ${sc}`}>
-          <div className="word-score-bar"><div className="word-score-fill" style={{ width: `${score}%` }} /></div>
-          <span className="word-score-label">{Math.round(score)}%{score >= 80 ? ' — great!' : score >= 55 ? ' — getting there, try again' : ' — keep practising'}</span>
-        </div>
-      )}
       {explainLoading && <p className="word-practice-loading">Loading explanation…</p>}
       {explain && (
         <div className="word-practice-explain">
@@ -344,8 +351,8 @@ export default function SpeakingStudio({ questions, student, onSpoken, onFixes, 
             <div><strong className="small">{first.fluencyLabel}</strong><span>flow</span></div>
           </div>
           {clip && <audio className="studio-clip" controls src={clip} />}
-          <label className="studio-label">Pronunciation · tap any word to practise it</label>
-          <PronTranscript segments={segs.current} onPractise={openWordPractice} />
+          <label className="studio-label">Tap any word to practise its pronunciation. <small>Fix mishearings in the box below.</small></label>
+          <HeardWords transcript={transcript} segs={segs.current} onPractise={openWordPractice} />
           {practiceWord && (
             <WordPracticePanel
               word={practiceWord}
@@ -358,8 +365,8 @@ export default function SpeakingStudio({ questions, student, onSpoken, onFixes, 
               onClose={() => setPracticeWord(null)}
             />
           )}
-          <label className="studio-label" style={{ marginTop: '0.75rem' }}>This is what we heard. <small>Fix only words we heard wrong, not your English: we need your mistakes to help you.</small></label>
-          <textarea className="writing studio-text" rows={6} value={transcript} onChange={e => setTranscript(e.target.value)} />
+          <label className="studio-label" style={{ marginTop: '0.75rem' }}><small>Correct only words we heard wrong (not your English):</small></label>
+          <textarea className="writing studio-text" rows={5} value={transcript} onChange={e => setTranscript(e.target.value)} />
           {first.practise.length > 0 && (
             <div className="studio-practise">
               <span className="section-head">Words to practise saying</span>

@@ -493,30 +493,31 @@
 .pron-ok.pron-amber{color:#8a5c00;border-bottom:2px solid #f0a500}
 .pron-bad{color:#b9412f;border-bottom:2px dashed #e05a3a}
 .pron-omit{color:#999;text-decoration:line-through}
-/* pron-btn: words in the transcript that are tappable for word practice */
-.pron-btn{display:inline;background:none;border:none;padding:0;font:inherit;cursor:pointer;border-radius:3px;transition:background .15s}
-.pron-btn:hover,.pron-btn:focus-visible{background:rgba(0,0,0,.07);outline:none}
+/* heard-words: tappable "what we heard" transcript */
+.heard-words{line-height:1.9;margin:.3rem 0 .1rem;padding:.5rem .6rem;background:#f8f8f6;border-radius:8px;font-size:.95rem}
+.heard-word-btn{display:inline;background:none;border:none;padding:0 1px;font:inherit;cursor:pointer;border-radius:3px;transition:background .15s;line-height:inherit}
+.heard-word-btn:hover,.heard-word-btn:focus-visible{background:rgba(0,0,0,.07);outline:none}
 /* word practice panel */
-.word-practice-panel{margin:.6rem 0 .2rem;padding:.85rem 1rem;background:#fff;border:1.5px solid #e2e0da;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
-.word-practice-header{display:flex;align-items:baseline;gap:.6rem;margin-bottom:.7rem}
-.word-practice-title{font-size:1.25rem;font-weight:700;color:var(--ink)}
-.word-practice-ipa{font-size:.95rem;color:#666;font-family:serif}
-.word-practice-close{margin-left:auto;background:none;border:none;color:#aaa;cursor:pointer;font-size:1rem;padding:0 .1rem;line-height:1}
+.word-practice-panel{position:relative;margin:.7rem 0 .3rem;padding:1.1rem 1rem 1rem;background:#fff;border:1.5px solid #e2e0da;border-radius:12px;box-shadow:0 3px 12px rgba(0,0,0,.08)}
+.word-practice-close{position:absolute;top:.7rem;right:.8rem;background:none;border:none;color:#bbb;cursor:pointer;font-size:1.1rem;padding:0;line-height:1}
 .word-practice-close:hover{color:var(--ink)}
-.word-practice-actions{display:flex;gap:.6rem;margin-bottom:.75rem;flex-wrap:wrap}
+/* big word display — the centrepiece */
+.word-display-wrap{text-align:center;margin:.3rem 0 .9rem}
+.word-display{display:block;font-size:2.6rem;font-weight:800;letter-spacing:-.5px;color:var(--ink);transition:color .4s ease;line-height:1.1}
+.word-display--idle{color:var(--ink)}
+.word-display--good{color:#2a6e1a}
+.word-display--amber{color:#8a5c00}
+.word-display--bad{color:#b9412f}
+.word-practice-ipa{display:block;font-size:1rem;color:#888;font-family:serif;margin-top:.2rem}
+/* feedback message below the word */
+.word-msg{text-align:center;font-size:1rem;font-weight:600;margin:.0 0 .75rem;padding:.4rem .6rem;border-radius:7px}
+.word-msg--good{color:#2a6e1a;background:#eaf4da}
+.word-msg--amber{color:#8a5c00;background:#fff3d0}
+.word-msg--bad{color:#b9412f;background:#fff0ee}
+.word-practice-actions{display:flex;gap:.6rem;margin-bottom:.6rem;justify-content:center;flex-wrap:wrap}
 .studio-mic--sm{padding:.45rem .9rem;font-size:.85rem;min-width:0}
-.word-score{margin:.2rem 0 .75rem}
-.word-score-bar{height:7px;background:#e8e6e0;border-radius:99px;overflow:hidden;margin-bottom:.35rem}
-.word-score-fill{height:100%;border-radius:99px;background:#999;transition:width .5s ease}
-.word-score--good .word-score-fill{background:#6BAE2E}
-.word-score--amber .word-score-fill{background:#f0a500}
-.word-score--bad .word-score-fill{background:#e05a3a}
-.word-score-label{font-size:.85rem;color:#555}
-.word-score--good .word-score-label{color:#2a6e1a}
-.word-score--amber .word-score-label{color:#8a5c00}
-.word-score--bad .word-score-label{color:#b9412f}
-.word-practice-loading{font-size:.85rem;color:#aaa;margin:.2rem 0}
-.word-practice-explain{font-size:.88rem;line-height:1.55;color:#444;border-top:1px solid #f0eeea;padding-top:.7rem}
+.word-practice-loading{font-size:.85rem;color:#aaa;margin:.2rem 0;text-align:center}
+.word-practice-explain{font-size:.88rem;line-height:1.55;color:#444;border-top:1px solid #f0eeea;padding-top:.7rem;margin-top:.4rem}
 .word-practice-explain p{margin:0 0 .45rem}
 .word-practice-explain p:last-child{margin-bottom:0}
 .word-practice-how{color:#333}
