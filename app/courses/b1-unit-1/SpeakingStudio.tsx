@@ -335,9 +335,8 @@ export default function SpeakingStudio({ questions, student, onSpoken, onFixes, 
             const json = JSON.parse(raw)
             const pron = json.NBest?.[0]?.PronunciationAssessment
             const wordPron = json.NBest?.[0]?.Words?.[0]?.PronunciationAssessment
-            const v = pron?.AccuracyScore ?? wordPron?.AccuracyScore ?? pron?.PronScore
-            if (typeof v === 'number') score = v
-            // Find the phoneme with the lowest accuracy score
+            const azureWordScore = pron?.AccuracyScore ?? wordPron?.AccuracyScore ?? pron?.PronScore
+            // Build phoneme score list
             const phonemes: Array<{ Phoneme: string; PronunciationAssessment: { AccuracyScore: number } }> =
               json.NBest?.[0]?.Words?.[0]?.Phonemes ?? []
             const scored = phonemes
@@ -345,6 +344,17 @@ export default function SpeakingStudio({ questions, student, onSpoken, onFixes, 
               .filter(p => typeof p.score === 'number') as { phoneme: string; score: number }[]
             scored.sort((a, b) => a.score - b.score)
             if (scored.length > 0 && scored[0].score < 70) worstPhoneme = scored[0]
+            if (typeof azureWordScore === 'number') {
+              if (scored.length >= 2) {
+                // Azure's word-level score can stay high even when a phoneme is badly wrong
+                // (e.g. "brash" scored as "brush" at word level). Cap it at the phoneme average
+                // so a mispronounced vowel genuinely drags the result down.
+                const phonemeAvg = scored.reduce((s, p) => s + p.score, 0) / scored.length
+                score = Math.round(Math.min(azureWordScore, phonemeAvg))
+              } else {
+                score = azureWordScore
+              }
+            }
           }
         } catch { /* ignore parse errors */ }
         if (score === null) {
