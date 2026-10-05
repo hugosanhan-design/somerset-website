@@ -1,143 +1,172 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { Fragment, useEffect, useRef, useState, type ReactNode } from 'react'
+import { createPortal } from 'react-dom'
 import { parseSegment, summarise, type Segment, type SpeakingSummary } from '@/lib/courses/speaking'
 import { checkAnswer } from '@/lib/courses/b1u1'
 
 const MAX_SECONDS = 90
+const STREAK_GOAL = 3
 type Fix = { sentence: string; original: string; fix: string; why: string }
-type Feedback = { fixes: Fix[]; drill: { prompt: string; items: { q: string; a: string }[] }; sayAgain: string; praise: string; length: 'short' | 'good' }
-type Phase = 'pick' | 'connecting' | 'recording' | 'review' | 'thinking' | 'feedback' | 'done'
+type Feedback = {
+  fixes: Fix[]; drill: { prompt: string; items: { q: string; a: string }[] }
+  sayAgain: string; praise: string; length: 'short' | 'good'
+  b1Version?: string; b1Why?: string[]
+}
+type Phase = 'pick' | 'connecting' | 'recording' | 'thinking' | 'feedback' | 'done'
 type Rec = { stop: () => Promise<void> }
 type PronExplain = { ipa: string; how: string; rule: string | null; similar: string[] }
+type WordPhase = 'idle' | 'listening' | 'done'
+type WordHint = '' | 'go' | 'checking' | 'listen' | 'yourturn'
 
-function pronunciationClass(accuracy: number, error: string) {
-  if (error === 'Omission') return 'pron-omit'
-  if (accuracy >= 80) return 'pron-ok'
-  if (accuracy >= 55) return 'pron-ok pron-amber'
-  return 'pron-bad'
+const clean = (w: string) => w.toLowerCase().replace(/[^a-z']/g, '')
+
+function pronClass(accuracy: number, error: string) {
+  if (error === 'Omission') return 'pw-omit'
+  if (accuracy >= 80) return ''
+  if (accuracy >= 55) return 'pw-amber'
+  return 'pw-bad'
 }
 
-// Renders the "what we heard" transcript as tappable words, with pronunciation
-// colour coding where Azure returned data for that word.
-function HeardWords({ transcript, segs, onPractise }: { transcript: string; segs: Segment[]; onPractise: (word: string) => void }) {
-  const pronMap = new Map<string, { accuracy: number; error: string }>()
-  segs.flatMap(s => s.words).forEach(w => pronMap.set(w.word.toLowerCase().replace(/[^a-z']/g, ''), { accuracy: w.accuracy, error: w.error }))
-  const tokens = transcript.split(/(\s+)/)
+// Splits the transcript into plain text and the stretches the feedback corrected,
+// so corrections can be shown inside the student's own words.
+type Piece = { kind: 'text'; text: string } | { kind: 'fix'; idx: number; text: string }
+function piecesFor(transcript: string, fixes: Fix[]): Piece[] {
+  const ranges: { start: number; end: number; idx: number }[] = []
+  fixes.forEach((f, idx) => {
+    const s = transcript.indexOf(f.sentence)
+    const start = s >= 0 ? s + f.sentence.indexOf(f.original) : transcript.indexOf(f.original)
+    if (start < 0) return
+    const end = start + f.original.length
+    if (ranges.some(r => start < r.end && end > r.start)) return
+    ranges.push({ start, end, idx })
+  })
+  ranges.sort((a, b) => a.start - b.start)
+  const out: Piece[] = []
+  let at = 0
+  for (const r of ranges) {
+    if (r.start > at) out.push({ kind: 'text', text: transcript.slice(at, r.start) })
+    out.push({ kind: 'fix', idx: r.idx, text: transcript.slice(r.start, r.end) })
+    at = r.end
+  }
+  if (at < transcript.length) out.push({ kind: 'text', text: transcript.slice(at) })
+  return out
+}
+
+function Words({ text, pron, onWord, extra = '' }: {
+  text: string; pron?: Map<string, { accuracy: number; error: string }>; onWord: (w: string) => void; extra?: string
+}) {
   return (
-    <div className="heard-words">
-      {tokens.map((tok, i) => {
-        if (/^\s+$/.test(tok)) return <span key={i}> </span>
-        const clean = tok.toLowerCase().replace(/[^a-z']/g, '')
-        const p = pronMap.get(clean)
-        const cls = p ? pronunciationClass(p.accuracy, p.error) : ''
-        const isOmit = p?.error === 'Omission'
-        return !isOmit ? (
-          <button key={i} type="button" className={`heard-word-btn${cls ? ' ' + cls : ''}`}
-            title={p ? `${Math.round(p.accuracy)}% — tap to practise` : 'Tap to practise'}
-            onClick={() => onPractise(clean || tok)}>
+    <>
+      {text.split(/(\s+)/).map((tok, i) => {
+        if (!tok) return null
+        if (/^\s+$/.test(tok)) return <Fragment key={i}>{tok}</Fragment>
+        const c = clean(tok)
+        if (!c) return <Fragment key={i}>{tok}</Fragment>
+        const p = pron?.get(c)
+        const cls = p ? pronClass(p.accuracy, p.error) : ''
+        return (
+          <button key={i} type="button" className={`pw${cls ? ' ' + cls : ''}${extra ? ' ' + extra : ''}`} onClick={() => onWord(c)}>
             {tok}
           </button>
-        ) : (
-          <span key={i} className="pron-omit">{tok}</span>
         )
       })}
-    </div>
+    </>
   )
 }
 
-function WordPracticePanel({ word, score, phase, wordTry, wordPhoneme, wordErr, explain, explainLoading, wordVolume, wordPause, wordStreak, onSay, onHear, onClose, onFinish }: {
-  word: string; score: number | null; phase: 'idle' | 'listening' | 'done'
-  wordTry: number; wordPhoneme: { phoneme: string; score: number } | null; wordErr: string
-  explain: PronExplain | null; explainLoading: boolean
-  wordVolume: number; wordPause: boolean; wordStreak: number
-  onSay: () => void; onHear: (w: string) => void; onClose: () => void; onFinish: () => void
+// "What you said": pronunciation problems underlined, grammar fixes shown in place.
+function SaidText({ transcript, segs, fixes, activeFix, onWord, onFix }: {
+  transcript: string; segs: Segment[]; fixes: Fix[]; activeFix: number | null
+  onWord: (w: string) => void; onFix: (i: number) => void
 }) {
-  const [showExplain, setShowExplain] = useState(false)
-  const spanRef = useRef<HTMLSpanElement>(null)
+  const pron = new Map<string, { accuracy: number; error: string }>()
+  segs.flatMap(s => s.words).forEach(w => {
+    const k = clean(w.word)
+    const prev = pron.get(k)
+    if (!prev || w.accuracy < prev.accuracy) pron.set(k, { accuracy: w.accuracy, error: w.error })
+  })
+  return (
+    <p className="rp-text">
+      {piecesFor(transcript, fixes).map((pc, i) => pc.kind === 'text'
+        ? <Words key={i} text={pc.text} pron={pron} onWord={onWord} />
+        : (
+          <button key={i} type="button" className={`rp-fix${activeFix === pc.idx ? ' on' : ''}`} onClick={() => onFix(pc.idx)}>
+            <s>{pc.text}</s> <ins>{fixes[pc.idx].fix}</ins>
+          </button>
+        ))}
+    </p>
+  )
+}
 
-  // Restart the result animation on every new attempt without remounting the span.
-  // (Remounting blocks CSS colour transitions; DOM reflow restarts the animation instead.)
-  useEffect(() => {
-    const el = spanRef.current
-    if (!el) return
-    el.style.animation = 'none'
-    void el.offsetHeight   // trigger reflow
-    el.style.animation = ''
-  }, [wordTry])
+// "B1 version": [[changed parts]] highlighted, every word still tappable to practise.
+function B1Text({ text, onWord }: { text: string; onWord: (w: string) => void }) {
+  return (
+    <p className="rp-text">
+      {text.split(/(\[\[[^\]]+\]\])/).map((part, i) => {
+        const m = part.match(/^\[\[([^\]]+)\]\]$/)
+        return m
+          ? <mark key={i} className="rp-b1-new"><Words text={m[1]} onWord={onWord} /></mark>
+          : <Words key={i} text={part} onWord={onWord} />
+      })}
+    </p>
+  )
+}
 
-  const animCls = phase === 'listening'
-    ? 'word-display--listening'
-    : score === null ? 'word-display--idle'
-    : score >= 80 ? 'word-display--good'
-    : score >= 55 ? 'word-display--amber'
-    : 'word-display--bad'
-
-  const msgTier = score === null ? null : score >= 80 ? 'good' : score >= 55 ? 'amber' : 'bad'
-  const locked = wordStreak >= 3
-  const msgText = score === null ? null
-    : locked ? '🔒 Locked in!'
-    : score >= 80 ? `✓ ${wordStreak}/3 — say it again`
-    : score >= 55 ? '🙂 Nearly there'
-    : '💪 Keep going'
-
-  // Volume-reactive scale during listening. When we have live audio (wordVolume > 0),
-  // disable the CSS pulse animation and drive the transform directly from mic level.
-  const wordStyle: React.CSSProperties = phase === 'listening' && wordVolume > 0
-    ? { transform: `scale(${1 + wordVolume * 0.4})`, transition: 'transform 0.07s linear', animation: 'none' }
-    : {}
+function WordCoach({ word, score, phase, hint, phoneme, err, explain, volume, streak, onSay, onHear, onClose, onFinish }: {
+  word: string; score: number | null; phase: WordPhase; hint: WordHint
+  phoneme: { phoneme: string; score: number } | null; err: string
+  explain: PronExplain | null; volume: number; streak: number
+  onSay: () => void; onHear: () => void; onClose: () => void; onFinish: () => void
+}) {
+  const tier = phase === 'listening' ? 'listening' : score === null ? 'idle' : score >= 80 ? 'good' : score >= 55 ? 'amber' : 'bad'
+  const locked = streak >= STREAK_GOAL
+  // While listening the word grows with the student's voice; the colour then eases to the result.
+  const style = phase === 'listening' && volume > 0
+    ? { transform: `scale(${1 + volume * 0.45})`, animation: 'none' }
+    : undefined
+  const message =
+    phase === 'listening' ? (hint === 'go' ? 'Go on, say it now 🎤' : hint === 'checking' ? 'Checking…' : 'Listening…')
+    : score === null ? (explain?.how ? '' : 'Tap “Say it” and say the word.')
+    : locked ? '🔒 Locked in! Tap another word.'
+    : score >= 80 ? `✓ Good! ${streak}/${STREAK_GOAL}, say it again`
+    : hint === 'listen' ? '👂 Not yet. Listen…'
+    : hint === 'yourturn' ? '🎙️ Your turn. Copy it.'
+    : score >= 55 ? 'Nearly. Listen and try again.' : 'Not yet. Listen and try again.'
 
   return (
-    <div className="word-practice-panel">
-      <button type="button" className="word-practice-close" onClick={onClose} aria-label="Close">✕</button>
-      <div className="word-display-wrap">
-        <span ref={spanRef} className={`word-display ${animCls}`} style={wordStyle}>{word}</span>
-        {explain?.ipa && <span className="word-practice-ipa">{explain.ipa}</span>}
+    <div className="wc">
+      <button type="button" className="wc-close" onClick={onClose} aria-label="Close">✕</button>
+      <div className="wc-streak" aria-label={`${streak} of ${STREAK_GOAL}`}>
+        {Array.from({ length: STREAK_GOAL }, (_, i) => <span key={i} className={i < streak ? 'on' : ''} />)}
       </div>
-      {phase === 'listening' && wordPause && (
-        <p className="word-listening-nudge">Say it again — keep going! 🎤</p>
-      )}
-      {msgText && (
-        <div className={`word-msg word-msg--${msgTier}`}>
-          <span>{msgText}</span>
-          {wordPhoneme && score !== null && score < 80 && (
-            <span className="word-phoneme-note"> · /{wordPhoneme.phoneme}/ {Math.round(wordPhoneme.score)}%</span>
-          )}
-        </div>
-      )}
-      <div className="word-practice-actions">
-        <button type="button" className="help-btn" onClick={() => onHear(word)}>🔊 Hear it</button>
-        {phase === 'listening' ? (
-          <button type="button" className="btn word-finish-btn" onClick={onFinish}>◼ Finish</button>
-        ) : (
-          <button type="button" className="studio-mic studio-mic--sm" onClick={onSay} disabled={locked}>
-            <span className="studio-mic-dot" />{locked ? '✓ Done' : '🎙️ Say it'}
-          </button>
-        )}
+      <div className="wc-word-wrap">
+        <span key={tier === 'listening' ? 'l' : `r-${score}`} className={`wc-word wc-word--${tier}`} style={style}>{word}</span>
       </div>
-      {wordErr && <p className="word-practice-err">{wordErr}</p>}
-      {(explain || explainLoading) && (
-        <button type="button" className="explain-toggle" onClick={() => setShowExplain(v => !v)}>
-          {explainLoading ? 'Loading…' : showExplain ? 'Hide ↑' : 'How to say it ↓'}
-        </button>
-      )}
-      {showExplain && explain && (
-        <div className="word-practice-explain">
+      {explain?.ipa && <div className="wc-ipa">{explain.ipa}</div>}
+      <p className={`wc-msg wc-msg--${tier}`}>
+        {message}
+        {phoneme && score !== null && score < 80 && <span className="wc-phoneme"> · the /{phoneme.phoneme}/ sound</span>}
+      </p>
+      <div className="wc-actions">
+        <button type="button" className="help-btn" onClick={onHear}>🔊 Hear it</button>
+        {phase === 'listening'
+          ? <button type="button" className="btn wc-stop" onClick={onFinish}>◼ Stop</button>
+          : <button type="button" className="studio-mic studio-mic--sm" onClick={onSay} disabled={locked}>
+              <span className="studio-mic-dot" />{locked ? 'Done' : hint === 'yourturn' ? 'Your turn' : 'Say it'}
+            </button>}
+      </div>
+      {err && <p className="wc-err">{err}</p>}
+      {explain?.how && (
+        <div className="wc-how">
           <p>{explain.how}</p>
-          {explain.rule && <p className="word-practice-rule">{explain.rule}</p>}
-          {explain.similar.length > 0 && (
-            <p className="word-practice-similar">Also: {explain.similar.join(' · ')}</p>
-          )}
+          {explain.rule && <p className="wc-rule">{explain.rule}</p>}
         </div>
       )}
     </div>
   )
 }
 
-// The speaking loop, built on what worked in the Aoife prototype:
-// speak → "this is what we heard" (fix only mishearings) → at most three fixes from
-// your own words + one quick drill → say it again → see what got better.
-// Audio streams from the microphone straight to Azure; nothing is stored.
 function has(text: string, phrase: string) {
   return !!phrase && text.toLowerCase().includes(phrase.toLowerCase())
 }
@@ -156,49 +185,74 @@ function highlight(text: string, fixes: Fix[]) {
   })
 }
 
-export default function SpeakingStudio({ questions, student, onSpoken, onFixes, onSecondTry }: {
+// The speaking loop: speak → one report built around what you said (fixes in place,
+// pronunciation to tap, a B1 version) → say it again → see what got better.
+// Audio streams from the microphone straight to Azure; nothing is stored.
+export default function SpeakingStudio({ questions, student, aside, onSpoken, onFixes, onSecondTry }: {
   questions: string[]
   student: { name: string; code: string } | null
+  aside?: ReactNode
   onSpoken: (s: SpeakingSummary) => void
   onFixes: (fixes: Fix[]) => void
   onSecondTry: (s: SpeakingSummary) => void
 }) {
   const [phase, setPhase] = useState<Phase>('pick')
   const [qi, setQi] = useState(0)
-  const [, setAttempt] = useState<1 | 2>(1)
   const [live, setLive] = useState('')
   const [heard, setHeard] = useState('')
   const [secs, setSecs] = useState(0)
   const [err, setErr] = useState('')
+  const [fbErr, setFbErr] = useState('')
   const [first, setFirst] = useState<SpeakingSummary | null>(null)
   const [second, setSecond] = useState<SpeakingSummary | null>(null)
   const [transcript, setTranscript] = useState('')
   const [fb, setFb] = useState<Feedback | null>(null)
+  const [view, setView] = useState<'said' | 'b1'>('said')
+  const [activeFix, setActiveFix] = useState<number | null>(null)
   const [drill, setDrill] = useState<string[]>([])
   const [drillChecked, setDrillChecked] = useState(false)
   const [clip, setClip] = useState('')
   const [practiceWord, setPracticeWord] = useState<string | null>(null)
-  const [wordPhase, setWordPhase] = useState<'idle' | 'listening' | 'done'>('idle')
+  const [wordPhase, setWordPhase] = useState<WordPhase>('idle')
   const [wordScore, setWordScore] = useState<number | null>(null)
   const [wordPhoneme, setWordPhoneme] = useState<{ phoneme: string; score: number } | null>(null)
-  const [wordTry, setWordTry] = useState(0)
+  const [wordHint, setWordHint] = useState<WordHint>('')
   const [wordErr, setWordErr] = useState('')
   const [wordExplain, setWordExplain] = useState<PronExplain | null>(null)
-  const [wordExplainLoading, setWordExplainLoading] = useState(false)
   const [wordVolume, setWordVolume] = useState(0)
-  const [wordPause, setWordPause] = useState(false)
   const [wordStreak, setWordStreak] = useState(0)
   const segs = useRef<Segment[]>([])
   const attemptRef = useRef<1 | 2>(1)
   const rec = useRef<Rec | null>(null)
   const media = useRef<{ mr: MediaRecorder; stream: MediaStream; chunks: Blob[] } | null>(null)
   const timer = useRef<ReturnType<typeof setInterval> | null>(null)
-  const recognizerRef = useRef<{ close: () => void } | null>(null)
-  const volRafRef = useRef(0)
-  const volCtxRef = useRef<AudioContext | null>(null)
-  const volStreamRef = useRef<MediaStream | null>(null)
+  const tokenRef = useRef<{ token: string; region: string; at: number } | null>(null)
+  const wordRun = useRef<{ close: () => void; stream: MediaStream; ctx: AudioContext | null; raf: number; peak: number; cancelled: boolean } | null>(null)
+  const coachRef = useRef<HTMLElement | null>(null)
+  const [narrow, setNarrow] = useState(false)
 
-  useEffect(() => () => { void rec.current?.stop(); stopMedia(); stopVolumeMonitor(); if (timer.current) clearInterval(timer.current) }, []) // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 900px)')
+    const on = () => setNarrow(mq.matches)
+    on(); mq.addEventListener('change', on)
+    return () => mq.removeEventListener('change', on)
+  }, [])
+
+  useEffect(() => () => {
+    void rec.current?.stop(); stopMedia(); endWordRun()
+    if (timer.current) clearInterval(timer.current)
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
+  // One Azure token lasts ten minutes, so reuse it instead of spending a daily session per attempt.
+  async function getToken() {
+    const c = tokenRef.current
+    if (c && Date.now() - c.at < 8 * 60_000) return c
+    const r = await fetch('/api/courses/speech-token', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(student) })
+    const d = await r.json().catch(() => ({}))
+    if (!r.ok) throw new Error(d.error || 'Speaking practice is unavailable right now.')
+    tokenRef.current = { token: d.token, region: d.region, at: Date.now() }
+    return tokenRef.current
+  }
 
   // A separate recording just so the student can hear themselves back. Uses the
   // browser's real format (webm on Chrome/Android, mp4 on iPhone). If it fails, skip it.
@@ -221,71 +275,23 @@ export default function SpeakingStudio({ questions, student, onSpoken, onFixes, 
     media.current = null
   }
 
-  async function startVolumeMonitor() {
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false })
-      volStreamRef.current = stream
-      const ctx = new AudioContext()
-      volCtxRef.current = ctx
-      const source = ctx.createMediaStreamSource(stream)
-      const analyser = ctx.createAnalyser()
-      analyser.fftSize = 256
-      source.connect(analyser)
-      const data = new Uint8Array(analyser.frequencyBinCount)
-      let silenceStart = Date.now()
-      const tick = () => {
-        analyser.getByteFrequencyData(data)
-        const vol = Math.min(1, (data.reduce((a, b) => a + b, 0) / data.length / 128) * 2.5)
-        setWordVolume(vol)
-        if (vol < 0.06) {
-          if (Date.now() - silenceStart > 1500) setWordPause(true)
-        } else {
-          silenceStart = Date.now()
-          setWordPause(false)
-        }
-        volRafRef.current = requestAnimationFrame(tick)
-      }
-      volRafRef.current = requestAnimationFrame(tick)
-    } catch { /* volume monitor is optional — falls back to CSS animation */ }
-  }
-
-  function stopVolumeMonitor() {
-    cancelAnimationFrame(volRafRef.current)
-    volStreamRef.current?.getTracks().forEach(t => t.stop())
-    volStreamRef.current = null
-    volCtxRef.current?.close().catch(() => {})
-    volCtxRef.current = null
-    setWordVolume(0)
-    setWordPause(false)
-  }
-
-  function finishWord() {
-    stopVolumeMonitor()
-    try { recognizerRef.current?.close() } catch { /* ignore */ }
-    recognizerRef.current = null
-    setWordPhase('idle')
-    setWordScore(null)
-  }
-
   async function start(which: 1 | 2) {
     setErr('')
     if (!student) { setErr('Sign in at Student’s Corner first, so your speaking can be checked.'); return }
-    setAttempt(which); attemptRef.current = which; setPhase('connecting'); setLive(''); setHeard(''); setSecs(0); setClip('')
+    attemptRef.current = which; setPhase('connecting'); setLive(''); setHeard(''); setSecs(0); setClip('')
+    setPracticeWord(null); endWordRun()
     segs.current = []
     try {
       // Microphone permission first, so a blocked mic never uses up a speaking session.
       await startMedia()
-      const r = await fetch('/api/courses/speech-token', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(student) })
-      const d = await r.json().catch(() => ({}))
-      if (!r.ok) throw new Error(d.error || 'Speaking practice is unavailable right now.')
+      const { token, region } = await getToken()
       const sdk = await import('microsoft-cognitiveservices-speech-sdk')
-      const cfg = sdk.SpeechConfig.fromAuthorizationToken(d.token, d.region)
+      const cfg = sdk.SpeechConfig.fromAuthorizationToken(token, region)
       cfg.speechRecognitionLanguage = 'en-GB'
       // B1 learners pause longer when thinking in English — give them more space.
       cfg.setProperty(sdk.PropertyId.Speech_SegmentationSilenceTimeoutMs, '2500')
       const recognizer = new sdk.SpeechRecognizer(cfg, sdk.AudioConfig.fromDefaultMicrophoneInput())
-      // Empty reference text = unscripted: transcript + pronunciation scores in one pass.
-      // Phoneme granularity so word accuracy is derived from phoneme averages (catches Spanish-accented vowels).
+      // Empty reference text = unscripted: transcript + phoneme-level pronunciation in one pass.
       const pa = new sdk.PronunciationAssessmentConfig('', sdk.PronunciationAssessmentGradingSystem.HundredMark, sdk.PronunciationAssessmentGranularity.Phoneme, false)
       pa.applyTo(recognizer)
       recognizer.recognizing = (_s, e) => setLive(e.result.text)
@@ -338,9 +344,9 @@ export default function SpeakingStudio({ questions, student, onSpoken, onFixes, 
     }
   }
 
-  async function getFeedback(transcriptOverride?: string) {
-    const t = transcriptOverride ?? transcript
-    setErr(''); setPhase('thinking')
+  // The report opens straight away with the transcript; feedback fills in beside it.
+  async function getFeedback(t: string) {
+    setErr(''); setFbErr(''); setFb(null); setActiveFix(null); setView('said'); setPhase('thinking')
     try {
       const r = await fetch('/api/courses/speaking-feedback', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
@@ -350,133 +356,165 @@ export default function SpeakingStudio({ questions, student, onSpoken, onFixes, 
       if (!r.ok) throw new Error(d.error || 'Feedback is unavailable right now.')
       setFb(d); setDrill(Array(d.drill.items.length).fill('')); setDrillChecked(false)
       onFixes(d.fixes)
-      setPhase('feedback')
     } catch (e) {
-      setErr(e instanceof Error ? e.message : 'Feedback is unavailable right now.'); setPhase('review')
+      setFbErr(e instanceof Error ? e.message : 'Feedback is unavailable right now.')
     }
+    setPhase('feedback')
   }
 
-  function hear(word: string) {
+  function hear(word: string, onEnd?: () => void) {
     try {
       const u = new SpeechSynthesisUtterance(word)
-      u.lang = 'en-GB'; u.rate = 0.85
+      u.lang = 'en-GB'; u.rate = 0.8
       const v = speechSynthesis.getVoices().find(x => x.lang === 'en-GB')
       if (v) u.voice = v
+      if (onEnd) u.onend = onEnd
       speechSynthesis.cancel(); speechSynthesis.speak(u)
-    } catch { /* no speech synthesis: ignore */ }
+    } catch { onEnd?.() }
   }
 
   async function openWordPractice(word: string) {
-    setPracticeWord(word)
-    setWordPhase('idle')
-    setWordScore(null)
-    setWordPhoneme(null)
-    setWordTry(0)
-    setWordStreak(0)
-    setWordErr('')
-    setWordExplain(null)
-    setWordExplainLoading(true)
+    endWordRun()
+    setPracticeWord(word); setWordPhase('idle'); setWordScore(null); setWordPhoneme(null)
+    setWordHint(''); setWordStreak(0); setWordErr(''); setWordExplain(null)
+    if (!window.matchMedia('(max-width: 900px)').matches) setTimeout(() => coachRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50)
     try {
       const r = await fetch('/api/courses/pronunciation-explain', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ word }),
       })
       if (r.ok) setWordExplain(await r.json())
-    } catch { /* explanation is optional */ }
-    setWordExplainLoading(false)
+    } catch { /* the explanation is optional */ }
+  }
+
+  function endWordRun() {
+    const run = wordRun.current
+    if (!run) return
+    wordRun.current = null
+    cancelAnimationFrame(run.raf)
+    try { run.close() } catch { /* already closed */ }
+    run.stream.getTracks().forEach(t => t.stop())
+    run.ctx?.close().catch(() => {})
+    setWordVolume(0)
+  }
+
+  function stopWord() {
+    if (wordRun.current) wordRun.current.cancelled = true
+    endWordRun()
+    setWordPhase('idle'); setWordHint('')
+  }
+
+  function scoreFrom(raw: string | undefined, ref: string): { score: number | null; worst: { phoneme: string; score: number } | null } {
+    if (!raw) return { score: null, worst: null }
+    type P = { Phoneme?: string; PronunciationAssessment?: { AccuracyScore?: number } }
+    type W = { Word?: string; PronunciationAssessment?: { AccuracyScore?: number; ErrorType?: string }; Phonemes?: P[] }
+    const json = JSON.parse(raw) as { NBest?: { Words?: W[] }[] }
+    const words = json.NBest?.[0]?.Words ?? []
+    const target = words.find(w => clean(w.Word ?? '') === ref && w.PronunciationAssessment?.ErrorType !== 'Insertion') ?? words[0]
+    if (!target) return { score: null, worst: null }
+    if (target.PronunciationAssessment?.ErrorType === 'Omission') return { score: 10, worst: null }
+    const phonemes = (target.Phonemes ?? [])
+      .map(p => ({ phoneme: String(p.Phoneme ?? ''), score: p.PronunciationAssessment?.AccuracyScore }))
+      .filter((p): p is { phoneme: string; score: number } => typeof p.score === 'number')
+      .sort((a, b) => a.score - b.score)
+    const acc = target.PronunciationAssessment?.AccuracyScore
+    if (typeof acc !== 'number') return { score: null, worst: null }
+    // Azure's word score can stay high when one sound is clearly wrong; the phoneme average can't.
+    const avg = phonemes.length >= 2 ? phonemes.reduce((s, p) => s + p.score, 0) / phonemes.length : acc
+    return { score: Math.round(Math.min(acc, avg)), worst: phonemes[0] && phonemes[0].score < 70 ? phonemes[0] : null }
   }
 
   async function sayWord() {
-    if (!practiceWord || !student) return
-    setWordTry(n => n + 1)
-    setWordPhase('listening')
-    setWordScore(null)
-    setWordPhoneme(null)
-    setWordErr('')
-    void startVolumeMonitor()
+    const word = practiceWord
+    if (!word || !student) return
+    endWordRun()
+    try { speechSynthesis.cancel() } catch { /* ignore */ }
+    setWordPhase('listening'); setWordScore(null); setWordPhoneme(null); setWordErr(''); setWordHint('')
+
+    let stream: MediaStream
     try {
-      const r = await fetch('/api/courses/speech-token', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(student),
-      })
-      const d = await r.json().catch(() => ({}))
-      if (!r.ok) { stopVolumeMonitor(); setWordErr(d.error || 'Microphone unavailable.'); setWordPhase('idle'); return }
+      stream = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true } })
+    } catch {
+      setWordErr('Your browser blocked the microphone. Allow it and try again.'); setWordPhase('idle'); return
+    }
+    const run = { close: () => {}, stream, ctx: null as AudioContext | null, raf: 0, peak: 0, cancelled: false }
+    wordRun.current = run
+
+    // One microphone stream feeds both the pulse and Azure (two streams at once upsets Safari).
+    try {
+      const ctx = new AudioContext()
+      run.ctx = ctx
+      const analyser = ctx.createAnalyser()
+      analyser.fftSize = 512
+      ctx.createMediaStreamSource(stream).connect(analyser)
+      const data = new Uint8Array(analyser.fftSize)
+      const t0 = Date.now()
+      let lastVoice = 0
+      const tick = () => {
+        analyser.getByteTimeDomainData(data)
+        let sum = 0
+        for (let i = 0; i < data.length; i++) sum += (data[i] - 128) * (data[i] - 128)
+        const vol = Math.min(1, Math.sqrt(sum / data.length) / 40)
+        run.peak = Math.max(run.peak, vol)
+        setWordVolume(vol)
+        const now = Date.now()
+        if (vol > 0.12) lastVoice = now
+        setWordHint(!lastVoice ? (now - t0 > 2000 ? 'go' : '') : now - lastVoice > 400 ? 'checking' : '')
+        run.raf = requestAnimationFrame(tick)
+      }
+      run.raf = requestAnimationFrame(tick)
+    } catch { /* no Web Audio: the CSS pulse still shows */ }
+
+    try {
+      const { token, region } = await getToken()
+      if (run.cancelled) return
       const sdk = await import('microsoft-cognitiveservices-speech-sdk')
-      const cfg = sdk.SpeechConfig.fromAuthorizationToken(d.token, d.region)
+      const cfg = sdk.SpeechConfig.fromAuthorizationToken(token, region)
       cfg.speechRecognitionLanguage = 'en-GB'
-      // 2s silence after speaking ends → auto-stop (so the student gets fast feedback)
-      cfg.setProperty(sdk.PropertyId.Speech_SegmentationSilenceTimeoutMs, '2000')
-      // Phoneme granularity: scores each individual sound, not just the word overall.
-      const pa = new sdk.PronunciationAssessmentConfig(
-        practiceWord,
-        sdk.PronunciationAssessmentGradingSystem.HundredMark,
-        sdk.PronunciationAssessmentGranularity.Phoneme,
-        true,
-      )
-      const recognizer = new sdk.SpeechRecognizer(cfg, sdk.AudioConfig.fromDefaultMicrophoneInput())
+      cfg.setProperty(sdk.PropertyId.SpeechServiceConnection_InitialSilenceTimeoutMs, '5000')
+      cfg.setProperty(sdk.PropertyId.Speech_SegmentationSilenceTimeoutMs, '900')
+      // Miscue off: Azure lines the audio up against the target word and scores every sound.
+      // With miscue on, "brash" for "brush" counts as an extra word and the target as skipped.
+      const pa = new sdk.PronunciationAssessmentConfig(word, sdk.PronunciationAssessmentGradingSystem.HundredMark, sdk.PronunciationAssessmentGranularity.Phoneme, false)
+      const recognizer = new sdk.SpeechRecognizer(cfg, sdk.AudioConfig.fromStreamInput(stream))
       pa.applyTo(recognizer)
-      recognizerRef.current = recognizer
+      run.close = () => recognizer.close()
       recognizer.recognizeOnceAsync(result => {
-        recognizerRef.current = null
-        stopVolumeMonitor()
-        recognizer.close()
-        let score: number | null = null
-        let worstPhoneme: { phoneme: string; score: number } | null = null
-        try {
-          const raw = result.properties.getProperty(sdk.PropertyId.SpeechServiceResponse_JsonResult)
-          if (raw) {
-            const json = JSON.parse(raw)
-            const pron = json.NBest?.[0]?.PronunciationAssessment
-            const wordPron = json.NBest?.[0]?.Words?.[0]?.PronunciationAssessment
-            const azureWordScore = pron?.AccuracyScore ?? wordPron?.AccuracyScore ?? pron?.PronScore
-            // Build phoneme score list
-            const phonemes: Array<{ Phoneme: string; PronunciationAssessment: { AccuracyScore: number } }> =
-              json.NBest?.[0]?.Words?.[0]?.Phonemes ?? []
-            const scored = phonemes
-              .map(p => ({ phoneme: p.Phoneme, score: p.PronunciationAssessment?.AccuracyScore }))
-              .filter(p => typeof p.score === 'number') as { phoneme: string; score: number }[]
-            scored.sort((a, b) => a.score - b.score)
-            if (scored.length > 0 && scored[0].score < 70) worstPhoneme = scored[0]
-            if (typeof azureWordScore === 'number') {
-              if (scored.length >= 2) {
-                // Azure's word-level score can stay high even when a phoneme is badly wrong
-                // (e.g. "brash" scored as "brush" at word level). Cap it at the phoneme average
-                // so a mispronounced vowel genuinely drags the result down.
-                const phonemeAvg = scored.reduce((s, p) => s + p.score, 0) / scored.length
-                score = Math.round(Math.min(azureWordScore, phonemeAvg))
-              } else {
-                score = azureWordScore
-              }
-            }
-          }
-        } catch { /* ignore parse errors */ }
+        if (run.cancelled) return
+        const peak = run.peak
+        endWordRun()
+        let { score, worst } = { score: null as number | null, worst: null as { phoneme: string; score: number } | null }
+        try { ({ score, worst } = scoreFrom(result.properties.getProperty(sdk.PropertyId.SpeechServiceResponse_JsonResult), word)) } catch { /* unreadable result */ }
+        // Heard a voice but Azure couldn't match it to the word at all: that's a miss, not silence.
+        if (score === null && peak > 0.2) score = 15
         if (score === null) {
-          setWordErr('We didn\'t catch that. Speak up and try again.')
-          setWordPhase('idle')
-        } else {
-          setWordScore(score)
-          setWordPhoneme(worstPhoneme)
-          setWordPhase('done')
-          if (score >= 80) setWordStreak(s => Math.min(s + 1, 3))
+          setWordErr('We didn’t hear you. Tap “Say it” and speak up.'); setWordPhase('idle'); setWordHint(''); return
         }
-      }, (errMsg: string) => {
-        recognizerRef.current = null
-        stopVolumeMonitor()
-        recognizer.close()
-        console.error('[sayWord]', errMsg)
-        setWordErr('The microphone dropped. Try again.')
-        setWordPhase('idle')
+        setWordScore(score); setWordPhoneme(worst); setWordPhase('done')
+        if (score >= 80) {
+          setWordHint(''); setWordStreak(s => Math.min(s + 1, STREAK_GOAL))
+        } else {
+          setWordHint('listen')
+          setTimeout(() => hear(word, () => setWordHint('yourturn')), 700)
+        }
+      }, (e: string) => {
+        if (run.cancelled) return
+        console.error('[sayWord]', e)
+        endWordRun(); setWordErr('The microphone dropped. Try again.'); setWordPhase('idle'); setWordHint('')
       })
     } catch (e) {
-      stopVolumeMonitor()
-      setWordErr(e instanceof Error ? e.message : 'Something went wrong.')
-      setWordPhase('idle')
+      endWordRun()
+      setWordErr(e instanceof Error ? e.message : 'Something went wrong.'); setWordPhase('idle'); setWordHint('')
     }
   }
 
-  const remaining = Math.max(0, MAX_SECONDS - secs)
+  function closeCoach() { stopWord(); setPracticeWord(null) }
+  function resetToPick() { closeCoach(); setPhase('pick'); setFirst(null); setSecond(null); setFb(null) }
 
-  return (
+  const remaining = Math.max(0, MAX_SECONDS - secs)
+  const report = (phase === 'thinking' || phase === 'feedback') && first
+
+  const setup = (
     <div className="studio">
       {phase === 'pick' && (
         <>
@@ -494,9 +532,7 @@ export default function SpeakingStudio({ questions, student, onSpoken, onFixes, 
           <p className="studio-note">{student ? 'Speak for 60 to 90 seconds. Your words appear as you talk. Nothing is recorded or stored.' : 'Sign in at Student’s Corner to have your speaking checked.'}</p>
         </>
       )}
-
       {phase === 'connecting' && <p className="studio-note studio-wait">Opening the microphone…</p>}
-
       {phase === 'recording' && (
         <div className="studio-live">
           <p className="studio-question">{questions[qi]}</p>
@@ -507,104 +543,143 @@ export default function SpeakingStudio({ questions, student, onSpoken, onFixes, 
           <button type="button" className="btn studio-stop" onClick={() => void stop()}>■ I&apos;ve finished</button>
         </div>
       )}
-
-
-      {phase === 'thinking' && <p className="studio-note studio-wait">Reading what you said…</p>}
-
-      {phase === 'done' && first && second && fb && (
-        <div className="studio-compare">
-          <div className="section-head">Your second try</div>
-          <p className="studio-heard studio-heard--done">{highlight(second.transcript, fb.fixes)}</p>
-          <div className="studio-stats">
-            <div><strong>{second.wordCount}</strong><span>{second.wordCount > first.wordCount ? `words (+${second.wordCount - first.wordCount})` : 'words'}</span></div>
-            <div><strong className="small">{second.fluencyLabel}</strong><span>{second.fluency > first.fluency + 3 ? 'smoother than before' : 'flow'}</span></div>
-            <div><strong>{fb.fixes.filter(f => has(second.transcript, f.fix)).length}/{fb.fixes.length}</strong><span>fixes used</span></div>
-          </div>
-          {fb.fixes.length > 0 && <p className="studio-note"><span className="hl-ok">Green</span> = a fix you used. <span className="hl-bad">Red</span> = the old mistake came back.</p>}
-          {clip && <audio className="studio-clip" controls src={clip} />}
-          <div className="row">
-            <button type="button" className="btn" onClick={() => { setFirst(second); setTranscript(second.transcript); setSecond(null); setFb(null); void getFeedback(second.transcript) }}>Get feedback on this answer →</button>
-            <button type="button" className="help-btn" onClick={() => { setPhase('pick'); setFirst(null); setSecond(null); setFb(null) }}>Try another question</button>
-          </div>
-        </div>
-      )}
-
-      {phase === 'feedback' && fb && first && (
-        <div className="studio-fb">
-          <div className="studio-stats">
-            <div><strong>{first.seconds}s</strong><span>speaking</span></div>
-            <div><strong>{first.wordCount}</strong><span>words</span></div>
-            <div><strong className="small">{first.fluencyLabel}</strong><span>flow</span></div>
-          </div>
-          {clip && <audio className="studio-clip" controls src={clip} />}
-          <label className="studio-label">Tap any word to practise its pronunciation.</label>
-          <HeardWords transcript={transcript} segs={segs.current} onPractise={openWordPractice} />
-          {practiceWord && (
-            <WordPracticePanel
-              word={practiceWord}
-              score={wordScore}
-              phase={wordPhase}
-              wordTry={wordTry}
-              wordPhoneme={wordPhoneme}
-              wordErr={wordErr}
-              explain={wordExplain}
-              explainLoading={wordExplainLoading}
-              wordVolume={wordVolume}
-              wordPause={wordPause}
-              wordStreak={wordStreak}
-              onSay={() => void sayWord()}
-              onHear={hear}
-              onClose={() => setPracticeWord(null)}
-              onFinish={finishWord}
-            />
-          )}
-          <p className="studio-praise">👏 {fb.praise}</p>
-          {fb.fixes.length > 0 ? (
-            <div className="task-list">
-              {fb.fixes.map((f, i) => (
-                <div key={i} className="task-row studio-fix">
-                  <span className="num">{i + 1}</span>
-                  <span className="task-text">
-                    <span>{f.sentence.split(f.original)[0]}<span className="struck">{f.original}</span> <strong className="spot-fix">{f.fix}</strong>{f.sentence.split(f.original).slice(1).join(f.original)}</span>
-                    <span className="studio-why">{f.why}</span>
-                  </span>
-                </div>
-              ))}
-              <p className="studio-note">These go into your <strong>Revise in 5</strong>, so you&apos;ll see them again.</p>
-            </div>
-          ) : <p className="studio-note">No mistakes worth fixing. Lovely.</p>}
-
-          {fb.drill.items.length > 0 && (
-            <div className="studio-drill">
-              <div className="section-head">{fb.drill.prompt}</div>
-              {fb.drill.items.map((it, i) => {
-                const ok = drillChecked ? checkAnswer(drill[i], [it.a]) !== 'wrong' : null
-                return (
-                  <div key={i} className={`task-row ${ok === null ? '' : ok ? 'ok' : 'bad'}`}>
-                    <span className="task-text task-text--flow">
-                      {it.q.split('___')[0]}
-                      <input className="studio-gap" value={drill[i]} disabled={drillChecked} onChange={e => setDrill(d => d.map((x, k) => (k === i ? e.target.value : x)))} />
-                      {it.q.split('___').slice(1).join('___')}
-                      {drillChecked && !ok && <span className="mark bad mark--inline">✗ <em>{it.a}</em></span>}
-                      {drillChecked && ok && <span className="mark ok mark--inline">✓</span>}
-                    </span>
-                  </div>
-                )
-              })}
-              {!drillChecked && <div className="row"><button type="button" className="help-btn" onClick={() => setDrillChecked(true)}>Check</button></div>}
-            </div>
-          )}
-
-          <div className="studio-again">
-            <p><strong>Now say it again.</strong> {fb.sayAgain}</p>
-            <button type="button" className="studio-mic" onClick={() => start(2)}><span className="studio-mic-dot" />🎙️ Say it again</button>
-            <button type="button" className="help-btn" style={{ marginTop: '.5rem' }} onClick={() => { setPhase('pick'); setFirst(null); setFb(null) }}>Try a different question</button>
-          </div>
-
-        </div>
-      )}
-
       {err && <p className="err">{err}</p>}
+    </div>
+  )
+
+  if (phase === 'pick' || phase === 'connecting' || phase === 'recording') {
+    return aside ? <div className="two-col-60">{setup}{aside}</div> : setup
+  }
+
+  if (phase === 'done' && first && second && fb) {
+    return (
+      <div className="studio-compare">
+        <div className="section-head">Your second try</div>
+        <p className="studio-heard studio-heard--done">{highlight(second.transcript, fb.fixes)}</p>
+        <div className="studio-stats">
+          <div><strong>{second.wordCount}</strong><span>{second.wordCount > first.wordCount ? `words (+${second.wordCount - first.wordCount})` : 'words'}</span></div>
+          <div><strong className="small">{second.fluencyLabel}</strong><span>{second.fluency > first.fluency + 3 ? 'smoother than before' : 'flow'}</span></div>
+          <div><strong>{fb.fixes.filter(f => has(second.transcript, f.fix)).length}/{fb.fixes.length}</strong><span>fixes used</span></div>
+        </div>
+        {fb.fixes.length > 0 && <p className="studio-note"><span className="hl-ok">Green</span> = a fix you used. <span className="hl-bad">Red</span> = the old mistake came back.</p>}
+        {clip && <audio className="studio-clip" controls src={clip} />}
+        <div className="row">
+          <button type="button" className="btn" onClick={() => { setFirst(second); setTranscript(second.transcript); setSecond(null); void getFeedback(second.transcript) }}>Get feedback on this answer →</button>
+          <button type="button" className="help-btn" onClick={resetToPick}>Try another question</button>
+        </div>
+      </div>
+    )
+  }
+
+  if (!report) return setup
+
+  const fixes = fb?.fixes ?? []
+  const coach = practiceWord && (
+    <WordCoach word={practiceWord} score={wordScore} phase={wordPhase} hint={wordHint} phoneme={wordPhoneme}
+      err={wordErr} explain={wordExplain} volume={wordVolume} streak={wordStreak}
+      onSay={() => void sayWord()} onHear={() => hear(practiceWord)} onClose={closeCoach} onFinish={stopWord} />
+  )
+  return (
+    <div className="rp">
+      <header className="rp-head">
+        <div className="rp-q"><span>You answered</span>{questions[qi]}</div>
+        <div className="rp-meta">
+          <span><b>{first.seconds}s</b> speaking</span>
+          <span><b>{first.wordCount}</b> words</span>
+          <span>{first.fluencyLabel}</span>
+          {clip && <audio className="rp-audio" controls src={clip} />}
+        </div>
+      </header>
+
+      <div className="rp-grid">
+        <main className="rp-main">
+          <div className="rp-tabs" role="tablist">
+            <button type="button" role="tab" aria-selected={view === 'said'} className={view === 'said' ? 'on' : ''} onClick={() => setView('said')}>What you said</button>
+            <button type="button" role="tab" aria-selected={view === 'b1'} className={view === 'b1' ? 'on' : ''} onClick={() => setView('b1')} disabled={!fb?.b1Version}>
+              Your B1 version{!fb && phase === 'thinking' ? ' …' : ''}
+            </button>
+          </div>
+
+          {view === 'said' ? (
+            <>
+              {fb?.praise && <p className="rp-praise">👏 {fb.praise}</p>}
+              <SaidText transcript={transcript} segs={segs.current} fixes={fixes} activeFix={activeFix}
+                onWord={openWordPractice} onFix={i => { closeCoach(); setActiveFix(i) }} />
+              <p className="rp-legend">
+                <span className="rp-key rp-key--fix"><s>wrong</s> <ins>right</ins></span> grammar fix
+                <span className="rp-key rp-key--pron">word</span> say it better
+                <span className="rp-key-tip">Tap any word to practise saying it.</span>
+              </p>
+            </>
+          ) : fb?.b1Version ? (
+            <>
+              <p className="rp-b1-intro">This is <strong>your answer</strong> as a good starting-B1 student would say it. Same ideas, <mark className="rp-b1-new">highlighted</mark> parts are what changed.</p>
+              <B1Text text={fb.b1Version} onWord={openWordPractice} />
+              {!!fb.b1Why?.length && (
+                <div className="rp-b1-why">
+                  <strong>What B1 expects from you</strong>
+                  <ul>{fb.b1Why.map((w, i) => <li key={i}>{w}</li>)}</ul>
+                </div>
+              )}
+              <button type="button" className="help-btn" onClick={() => hear(fb.b1Version!.replace(/\[\[|\]\]/g, ''))}>🔊 Listen to it</button>
+            </>
+          ) : null}
+        </main>
+
+        <aside className="rp-side" ref={coachRef}>
+          {practiceWord && !narrow ? coach : phase === 'thinking' ? (
+            <p className="studio-note studio-wait">Reading what you said…</p>
+          ) : fbErr ? (
+            <div className="rp-card">
+              <p className="err">{fbErr}</p>
+              <button type="button" className="btn" onClick={() => void getFeedback(transcript)}>Try again</button>
+            </div>
+          ) : fb && (
+            <>
+              <div className="rp-card">
+                <div className="rp-card-head">{fixes.length ? `${fixes.length} thing${fixes.length > 1 ? 's' : ''} to fix` : 'Nothing to fix. Lovely.'}</div>
+                <ol className="rp-fixes">
+                  {fixes.map((f, i) => (
+                    <li key={i} className={activeFix === i ? 'on' : ''}>
+                      <button type="button" onClick={() => setActiveFix(activeFix === i ? null : i)}>
+                        <s>{f.original}</s> → <ins>{f.fix}</ins>
+                      </button>
+                      {activeFix === i && <p className="rp-why">{f.why}</p>}
+                    </li>
+                  ))}
+                </ol>
+                {fixes.length > 0 && <p className="rp-small">These go into your <strong>Revise in 5</strong>.</p>}
+              </div>
+
+              {fb.drill.items.length > 0 && (
+                <details className="rp-card rp-drill">
+                  <summary>Quick practice · {fb.drill.prompt}</summary>
+                  {fb.drill.items.map((it, i) => {
+                    const ok = drillChecked ? checkAnswer(drill[i], [it.a]) !== 'wrong' : null
+                    return (
+                      <p key={i} className={`rp-drill-q ${ok === null ? '' : ok ? 'ok' : 'bad'}`}>
+                        {it.q.split('___')[0]}
+                        <input className="studio-gap" value={drill[i]} disabled={drillChecked} onChange={e => setDrill(d => d.map((x, k) => (k === i ? e.target.value : x)))} />
+                        {it.q.split('___').slice(1).join('___')}
+                        {drillChecked && (ok ? <span className="mark ok"> ✓</span> : <span className="mark bad"> ✗ <em>{it.a}</em></span>)}
+                      </p>
+                    )
+                  })}
+                  {!drillChecked && <button type="button" className="help-btn" onClick={() => setDrillChecked(true)}>Check</button>}
+                </details>
+              )}
+
+              <div className="rp-card rp-again">
+                <p><strong>Now say it again.</strong> {fb.sayAgain}</p>
+                <button type="button" className="studio-mic" onClick={() => start(2)}><span className="studio-mic-dot" />🎙️ Say it again</button>
+                <button type="button" className="rp-link" onClick={resetToPick}>Try a different question</button>
+              </div>
+            </>
+          )}
+          {err && <p className="err">{err}</p>}
+        </aside>
+      </div>
+      {narrow && coach && createPortal(<div className="wc-sheet">{coach}</div>, document.body)}
     </div>
   )
 }

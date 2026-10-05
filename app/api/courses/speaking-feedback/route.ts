@@ -42,9 +42,11 @@ FIELDS:
 - "sayAgain": one sentence telling them the single most important thing to change when they say it again.
 - "praise": one sentence naming something they genuinely did well, quoting their words if possible.
 - "length": "short" if under about 40 words, "good" otherwise.
+- "b1Version": their answer rewritten as a GOOD answer from a student who is just starting B1. Keep THEIR ideas, facts and order. Fix every error. Then lift it to starter-B1 level with only what a starting B1 student can really say: join ideas with and / but / because / so / then; use present simple for routines and present continuous for now or this week; add time expressions (usually, every day, at the moment, this week); add one reason or example where it is thin. Short, natural, spoken sentences. No advanced vocabulary, no idioms, no complex grammar. At most about 30% longer than the original. Wrap every part you changed or added in double square brackets, e.g. "I [[usually get up]] at seven [[because]] I start work early."
+- "b1Why": 2 or 3 very short bullets (max 10 words each) telling the student what a starting B1 speaker is expected to do, matched to the changes you made. E.g. "Join your ideas with because and so."
 
 Return ONLY valid JSON:
-{"fixes":[{"sentence":"...","original":"...","fix":"...","why":"..."}],"drill":{"prompt":"...","items":[{"q":"...","a":"..."}]},"sayAgain":"...","praise":"...","length":"good"}`
+{"fixes":[{"sentence":"...","original":"...","fix":"...","why":"..."}],"drill":{"prompt":"...","items":[{"q":"...","a":"..."}]},"sayAgain":"...","praise":"...","length":"good","b1Version":"...","b1Why":["..."]}`
 
 type Fix = { sentence: string; original: string; fix: string; why: string }
 
@@ -62,7 +64,7 @@ export async function POST(req: NextRequest) {
   try {
     const msg = await client.messages.create({
       model: 'claude-sonnet-5',
-      max_tokens: 2500,
+      max_tokens: 4000,
       system: SYSTEM,
       messages: [{ role: 'user', content: `Question: "${question}"\n\nWhat the student said (transcript):\n"""\n${transcript}\n"""\n\nGive the JSON now.` }],
     })
@@ -79,6 +81,8 @@ export async function POST(req: NextRequest) {
       sayAgain: String(json.sayAgain || 'Say it again and add one more detail.'),
       praise: String(json.praise || 'You kept going and got your ideas across.'),
       length: json.length === 'short' ? 'short' : 'good',
+      b1Version: typeof json.b1Version === 'string' ? json.b1Version.slice(0, 3000) : '',
+      b1Why: Array.isArray(json.b1Why) ? json.b1Why.map(String).slice(0, 3) : [],
     })
   } catch (e) {
     console.error('[speaking-feedback]', e)

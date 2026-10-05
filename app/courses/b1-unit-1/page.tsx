@@ -701,11 +701,26 @@ export default function B1Unit1Course() {
           {/* ── Step 6: Speaking ── */}
           {step === 6 && (
             <section className="card">
-              <LessonHead tag="F · Speaking" title="Talk about your day" aim="Answer one question out loud for 60 to 90 seconds. You'll see what we heard, get three tips, then say it again." />
-              <div className="two-col-60">
+              <LessonHead tag="F · Speaking" title="Talk about your day" aim="Answer one question out loud for 60 to 90 seconds. You'll see what you said with every fix in place, a B1 version of your answer, then say it again." />
                 <SpeakingStudio
                   questions={SPEAKING_QS}
                   student={student}
+                  aside={
+                    <div>
+                      <div className="section-head">Useful language</div>
+                      <div className="chips chips--static">
+                        {['I usually…', 'Every day I…', 'At the moment I\'m…', 'This week is different because…', 'At the weekend I\'m going to…'].map(p => <span key={p} className="chip chip--static">{p}</span>)}
+                      </div>
+                      <div className="noticing-box">
+                        <strong>Noticing:</strong> present simple for what you <em>usually</em> do, present continuous for what you&apos;re doing <em>this week</em>.
+                      </div>
+                      {!spokeDone && (
+                        <p className="studio-note">No microphone right now? Practise out loud anyway, then{' '}
+                          <button type="button" className="sc-link-btn" onClick={() => { setSpeakingDone(true); record([], 'speaking', 100) }}>mark it as done</button>.
+                        </p>
+                      )}
+                    </div>
+                  }
                   onSpoken={sum => {
                     setSpeakingDone(true)
                     record([], 'speaking', 100)
@@ -724,21 +739,6 @@ export default function B1Unit1Course() {
                     return next
                   })}
                 />
-                <div>
-                  <div className="section-head">Useful language</div>
-                  <div className="chips chips--static">
-                    {['I usually…', 'Every day I…', 'At the moment I\'m…', 'This week is different because…', 'At the weekend I\'m going to…'].map(p => <span key={p} className="chip chip--static">{p}</span>)}
-                  </div>
-                  <div className="noticing-box">
-                    <strong>Noticing:</strong> present simple for what you <em>usually</em> do, present continuous for what you&apos;re doing <em>this week</em>.
-                  </div>
-                  {!spokeDone && (
-                    <p className="studio-note">No microphone right now? Practise out loud anyway, then{' '}
-                      <button type="button" className="sc-link-btn" onClick={() => { setSpeakingDone(true); record([], 'speaking', 100) }}>mark it as done</button>.
-                    </p>
-                  )}
-                </div>
-              </div>
               {spokeDone && (
                 <Row><span className="done-pill">✓ Speaking done</span><Btn onClick={() => setStep(7)}>Next: Writing →</Btn></Row>
               )}
