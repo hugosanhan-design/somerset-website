@@ -575,6 +575,9 @@
 .wc-streak span{width:28px;height:6px;border-radius:99px;background:#ecebe6;transition:background .3s}
 .wc-streak span.on{background:var(--green)}
 .wc-word-wrap{min-height:4.2rem;display:flex;align-items:center;justify-content:center}
+.wc-word-wrap--phrase{flex-wrap:wrap;gap:.1rem .45rem;align-items:baseline;padding:.2rem .4rem}
+.wc-word-wrap--phrase .wc-word{font-size:2.3rem}
+.wc-ctx{font:600 1.25rem/1.3 var(--serif);color:#777}
 .wc-word{display:inline-block;font:800 2.8rem/1.1 var(--sans);letter-spacing:-.5px;color:var(--ink);transform-origin:center;transition:transform .1s linear}
 .wc-word--listening{color:#2563eb;animation:wc-pulse .9s ease-in-out infinite}
 .wc-word--good{color:#2f8a1d;animation:wc-good .8s ease both}
