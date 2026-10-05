@@ -9,7 +9,7 @@ type Fix = { sentence: string; original: string; fix: string; why: string }
 type Feedback = { fixes: Fix[]; drill: { prompt: string; items: { q: string; a: string }[] }; sayAgain: string; praise: string; length: 'short' | 'good' }
 type Phase = 'pick' | 'connecting' | 'recording' | 'review' | 'thinking' | 'feedback' | 'done'
 type Rec = { stop: () => Promise<void> }
-type PronExplain = { ipa: string; how: string; rule: string | null; why: string; similar: string[] }
+type PronExplain = { ipa: string; how: string; rule: string | null; similar: string[] }
 
 function pronunciationClass(accuracy: number, error: string) {
   if (error === 'Omission') return 'pron-omit'
@@ -46,35 +46,52 @@ function HeardWords({ transcript, segs, onPractise }: { transcript: string; segs
   )
 }
 
-function WordPracticePanel({ word, score, phase, wordTry, wordPhoneme, wordErr, explain, explainLoading, wordVolume, wordPause, onSay, onHear, onClose, onFinish }: {
+function WordPracticePanel({ word, score, phase, wordTry, wordPhoneme, wordErr, explain, explainLoading, wordVolume, wordPause, wordStreak, onSay, onHear, onClose, onFinish }: {
   word: string; score: number | null; phase: 'idle' | 'listening' | 'done'
   wordTry: number; wordPhoneme: { phoneme: string; score: number } | null; wordErr: string
   explain: PronExplain | null; explainLoading: boolean
-  wordVolume: number; wordPause: boolean
+  wordVolume: number; wordPause: boolean; wordStreak: number
   onSay: () => void; onHear: (w: string) => void; onClose: () => void; onFinish: () => void
 }) {
   const [showExplain, setShowExplain] = useState(false)
+  const spanRef = useRef<HTMLSpanElement>(null)
+
+  // Restart the result animation on every new attempt without remounting the span.
+  // (Remounting blocks CSS colour transitions; DOM reflow restarts the animation instead.)
+  useEffect(() => {
+    const el = spanRef.current
+    if (!el) return
+    el.style.animation = 'none'
+    void el.offsetHeight   // trigger reflow
+    el.style.animation = ''
+  }, [wordTry])
+
   const animCls = phase === 'listening'
     ? 'word-display--listening'
     : score === null ? 'word-display--idle'
     : score >= 80 ? 'word-display--good'
     : score >= 55 ? 'word-display--amber'
     : 'word-display--bad'
+
   const msgTier = score === null ? null : score >= 80 ? 'good' : score >= 55 ? 'amber' : 'bad'
+  const locked = wordStreak >= 3
   const msgText = score === null ? null
-    : score >= 80 ? '😊 Perfect!'
+    : locked ? '🔒 Locked in!'
+    : score >= 80 ? `✓ ${wordStreak}/3 — say it again`
     : score >= 55 ? '🙂 Nearly there'
     : '💪 Keep going'
+
   // Volume-reactive scale during listening. When we have live audio (wordVolume > 0),
   // disable the CSS pulse animation and drive the transform directly from mic level.
   const wordStyle: React.CSSProperties = phase === 'listening' && wordVolume > 0
     ? { transform: `scale(${1 + wordVolume * 0.4})`, transition: 'transform 0.07s linear', animation: 'none' }
     : {}
+
   return (
     <div className="word-practice-panel">
       <button type="button" className="word-practice-close" onClick={onClose} aria-label="Close">✕</button>
       <div className="word-display-wrap">
-        <span key={`${word}-${wordTry}`} className={`word-display ${animCls}`} style={wordStyle}>{word}</span>
+        <span ref={spanRef} className={`word-display ${animCls}`} style={wordStyle}>{word}</span>
         {explain?.ipa && <span className="word-practice-ipa">{explain.ipa}</span>}
       </div>
       {phase === 'listening' && wordPause && (
@@ -83,7 +100,9 @@ function WordPracticePanel({ word, score, phase, wordTry, wordPhoneme, wordErr, 
       {msgText && (
         <div className={`word-msg word-msg--${msgTier}`}>
           <span>{msgText}</span>
-          {wordPhoneme && <span className="word-phoneme-note"> · /{wordPhoneme.phoneme}/ {Math.round(wordPhoneme.score)}%</span>}
+          {wordPhoneme && score !== null && score < 80 && (
+            <span className="word-phoneme-note"> · /{wordPhoneme.phoneme}/ {Math.round(wordPhoneme.score)}%</span>
+          )}
         </div>
       )}
       <div className="word-practice-actions">
@@ -91,24 +110,23 @@ function WordPracticePanel({ word, score, phase, wordTry, wordPhoneme, wordErr, 
         {phase === 'listening' ? (
           <button type="button" className="btn word-finish-btn" onClick={onFinish}>◼ Finish</button>
         ) : (
-          <button type="button" className="studio-mic studio-mic--sm" onClick={onSay}>
-            <span className="studio-mic-dot" />🎙️ Say it
+          <button type="button" className="studio-mic studio-mic--sm" onClick={onSay} disabled={locked}>
+            <span className="studio-mic-dot" />{locked ? '✓ Done' : '🎙️ Say it'}
           </button>
         )}
       </div>
       {wordErr && <p className="word-practice-err">{wordErr}</p>}
       {(explain || explainLoading) && (
         <button type="button" className="explain-toggle" onClick={() => setShowExplain(v => !v)}>
-          {explainLoading ? 'Loading…' : showExplain ? 'Hide explanation ↑' : 'Why does it sound like this? ↓'}
+          {explainLoading ? 'Loading…' : showExplain ? 'Hide ↑' : 'How to say it ↓'}
         </button>
       )}
       {showExplain && explain && (
         <div className="word-practice-explain">
           <p>{explain.how}</p>
           {explain.rule && <p className="word-practice-rule">{explain.rule}</p>}
-          <p>{explain.why}</p>
           {explain.similar.length > 0 && (
-            <p className="word-practice-similar">{explain.similar.join(' · ')}</p>
+            <p className="word-practice-similar">Also: {explain.similar.join(' · ')}</p>
           )}
         </div>
       )}
@@ -169,6 +187,7 @@ export default function SpeakingStudio({ questions, student, onSpoken, onFixes, 
   const [wordExplainLoading, setWordExplainLoading] = useState(false)
   const [wordVolume, setWordVolume] = useState(0)
   const [wordPause, setWordPause] = useState(false)
+  const [wordStreak, setWordStreak] = useState(0)
   const segs = useRef<Segment[]>([])
   const attemptRef = useRef<1 | 2>(1)
   const rec = useRef<Rec | null>(null)
@@ -353,6 +372,7 @@ export default function SpeakingStudio({ questions, student, onSpoken, onFixes, 
     setWordScore(null)
     setWordPhoneme(null)
     setWordTry(0)
+    setWordStreak(0)
     setWordErr('')
     setWordExplain(null)
     setWordExplainLoading(true)
@@ -437,6 +457,7 @@ export default function SpeakingStudio({ questions, student, onSpoken, onFixes, 
           setWordScore(score)
           setWordPhoneme(worstPhoneme)
           setWordPhase('done')
+          if (score >= 80) setWordStreak(s => Math.min(s + 1, 3))
         }
       }, (errMsg: string) => {
         recognizerRef.current = null
@@ -530,6 +551,7 @@ export default function SpeakingStudio({ questions, student, onSpoken, onFixes, 
               explainLoading={wordExplainLoading}
               wordVolume={wordVolume}
               wordPause={wordPause}
+              wordStreak={wordStreak}
               onSay={() => void sayWord()}
               onHear={hear}
               onClose={() => setPracticeWord(null)}
