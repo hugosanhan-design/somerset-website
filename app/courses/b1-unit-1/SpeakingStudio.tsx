@@ -46,11 +46,12 @@ function HeardWords({ transcript, segs, onPractise }: { transcript: string; segs
   )
 }
 
-function WordPracticePanel({ word, score, phase, wordTry, wordPhoneme, wordErr, explain, explainLoading, onSay, onHear, onClose }: {
+function WordPracticePanel({ word, score, phase, wordTry, wordPhoneme, wordErr, explain, explainLoading, wordVolume, wordPause, onSay, onHear, onClose, onFinish }: {
   word: string; score: number | null; phase: 'idle' | 'listening' | 'done'
   wordTry: number; wordPhoneme: { phoneme: string; score: number } | null; wordErr: string
   explain: PronExplain | null; explainLoading: boolean
-  onSay: () => void; onHear: (w: string) => void; onClose: () => void
+  wordVolume: number; wordPause: boolean
+  onSay: () => void; onHear: (w: string) => void; onClose: () => void; onFinish: () => void
 }) {
   const [showExplain, setShowExplain] = useState(false)
   const animCls = phase === 'listening'
@@ -64,13 +65,21 @@ function WordPracticePanel({ word, score, phase, wordTry, wordPhoneme, wordErr, 
     : score >= 80 ? '😊 Perfect!'
     : score >= 55 ? '🙂 Nearly there'
     : '💪 Keep going'
+  // Volume-reactive scale during listening. When we have live audio (wordVolume > 0),
+  // disable the CSS pulse animation and drive the transform directly from mic level.
+  const wordStyle: React.CSSProperties = phase === 'listening' && wordVolume > 0
+    ? { transform: `scale(${1 + wordVolume * 0.4})`, transition: 'transform 0.07s linear', animation: 'none' }
+    : {}
   return (
     <div className="word-practice-panel">
       <button type="button" className="word-practice-close" onClick={onClose} aria-label="Close">✕</button>
       <div className="word-display-wrap">
-        <span key={`${word}-${wordTry}`} className={`word-display ${animCls}`}>{word}</span>
+        <span key={`${word}-${wordTry}`} className={`word-display ${animCls}`} style={wordStyle}>{word}</span>
         {explain?.ipa && <span className="word-practice-ipa">{explain.ipa}</span>}
       </div>
+      {phase === 'listening' && wordPause && (
+        <p className="word-listening-nudge">Say it again — keep going! 🎤</p>
+      )}
       {msgText && (
         <div className={`word-msg word-msg--${msgTier}`}>
           <span>{msgText}</span>
@@ -79,9 +88,13 @@ function WordPracticePanel({ word, score, phase, wordTry, wordPhoneme, wordErr, 
       )}
       <div className="word-practice-actions">
         <button type="button" className="help-btn" onClick={() => onHear(word)}>🔊 Hear it</button>
-        <button type="button" className={`studio-mic studio-mic--sm${phase === 'listening' ? ' studio-mic--active' : ''}`} onClick={onSay} disabled={phase === 'listening'}>
-          <span className="studio-mic-dot" />{phase === 'listening' ? 'Listening…' : '🎙️ Say it'}
-        </button>
+        {phase === 'listening' ? (
+          <button type="button" className="btn word-finish-btn" onClick={onFinish}>◼ Finish</button>
+        ) : (
+          <button type="button" className="studio-mic studio-mic--sm" onClick={onSay}>
+            <span className="studio-mic-dot" />🎙️ Say it
+          </button>
+        )}
       </div>
       {wordErr && <p className="word-practice-err">{wordErr}</p>}
       {(explain || explainLoading) && (
@@ -154,13 +167,19 @@ export default function SpeakingStudio({ questions, student, onSpoken, onFixes, 
   const [wordErr, setWordErr] = useState('')
   const [wordExplain, setWordExplain] = useState<PronExplain | null>(null)
   const [wordExplainLoading, setWordExplainLoading] = useState(false)
+  const [wordVolume, setWordVolume] = useState(0)
+  const [wordPause, setWordPause] = useState(false)
   const segs = useRef<Segment[]>([])
   const attemptRef = useRef<1 | 2>(1)
   const rec = useRef<Rec | null>(null)
   const media = useRef<{ mr: MediaRecorder; stream: MediaStream; chunks: Blob[] } | null>(null)
   const timer = useRef<ReturnType<typeof setInterval> | null>(null)
+  const recognizerRef = useRef<{ close: () => void } | null>(null)
+  const volRafRef = useRef(0)
+  const volCtxRef = useRef<AudioContext | null>(null)
+  const volStreamRef = useRef<MediaStream | null>(null)
 
-  useEffect(() => () => { void rec.current?.stop(); stopMedia(); if (timer.current) clearInterval(timer.current) }, [])
+  useEffect(() => () => { void rec.current?.stop(); stopMedia(); stopVolumeMonitor(); if (timer.current) clearInterval(timer.current) }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   // A separate recording just so the student can hear themselves back. Uses the
   // browser's real format (webm on Chrome/Android, mp4 on iPhone). If it fails, skip it.
@@ -183,6 +202,52 @@ export default function SpeakingStudio({ questions, student, onSpoken, onFixes, 
     media.current = null
   }
 
+  async function startVolumeMonitor() {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false })
+      volStreamRef.current = stream
+      const ctx = new AudioContext()
+      volCtxRef.current = ctx
+      const source = ctx.createMediaStreamSource(stream)
+      const analyser = ctx.createAnalyser()
+      analyser.fftSize = 256
+      source.connect(analyser)
+      const data = new Uint8Array(analyser.frequencyBinCount)
+      let silenceStart = Date.now()
+      const tick = () => {
+        analyser.getByteFrequencyData(data)
+        const vol = Math.min(1, (data.reduce((a, b) => a + b, 0) / data.length / 128) * 2.5)
+        setWordVolume(vol)
+        if (vol < 0.06) {
+          if (Date.now() - silenceStart > 1500) setWordPause(true)
+        } else {
+          silenceStart = Date.now()
+          setWordPause(false)
+        }
+        volRafRef.current = requestAnimationFrame(tick)
+      }
+      volRafRef.current = requestAnimationFrame(tick)
+    } catch { /* volume monitor is optional — falls back to CSS animation */ }
+  }
+
+  function stopVolumeMonitor() {
+    cancelAnimationFrame(volRafRef.current)
+    volStreamRef.current?.getTracks().forEach(t => t.stop())
+    volStreamRef.current = null
+    volCtxRef.current?.close().catch(() => {})
+    volCtxRef.current = null
+    setWordVolume(0)
+    setWordPause(false)
+  }
+
+  function finishWord() {
+    stopVolumeMonitor()
+    try { recognizerRef.current?.close() } catch { /* ignore */ }
+    recognizerRef.current = null
+    setWordPhase('idle')
+    setWordScore(null)
+  }
+
   async function start(which: 1 | 2) {
     setErr('')
     if (!student) { setErr('Sign in at Student’s Corner first, so your speaking can be checked.'); return }
@@ -201,7 +266,8 @@ export default function SpeakingStudio({ questions, student, onSpoken, onFixes, 
       cfg.setProperty(sdk.PropertyId.Speech_SegmentationSilenceTimeoutMs, '2500')
       const recognizer = new sdk.SpeechRecognizer(cfg, sdk.AudioConfig.fromDefaultMicrophoneInput())
       // Empty reference text = unscripted: transcript + pronunciation scores in one pass.
-      const pa = new sdk.PronunciationAssessmentConfig('', sdk.PronunciationAssessmentGradingSystem.HundredMark, sdk.PronunciationAssessmentGranularity.Word, false)
+      // Phoneme granularity so word accuracy is derived from phoneme averages (catches Spanish-accented vowels).
+      const pa = new sdk.PronunciationAssessmentConfig('', sdk.PronunciationAssessmentGradingSystem.HundredMark, sdk.PronunciationAssessmentGranularity.Phoneme, false)
       pa.applyTo(recognizer)
       recognizer.recognizing = (_s, e) => setLive(e.result.text)
       recognizer.recognized = (_s, e) => {
@@ -246,18 +312,20 @@ export default function SpeakingStudio({ questions, student, onSpoken, onFixes, 
       return
     }
     if (attemptRef.current === 1) {
-      setFirst(sum); setTranscript(sum.transcript); setPhase('review'); onSpoken(sum)
+      setFirst(sum); setTranscript(sum.transcript); onSpoken(sum)
+      void getFeedback(sum.transcript)
     } else {
       setSecond(sum); setPhase('done'); onSecondTry(sum)
     }
   }
 
-  async function getFeedback() {
+  async function getFeedback(transcriptOverride?: string) {
+    const t = transcriptOverride ?? transcript
     setErr(''); setPhase('thinking')
     try {
       const r = await fetch('/api/courses/speaking-feedback', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...student, question: questions[qi], transcript }),
+        body: JSON.stringify({ ...student, question: questions[qi], transcript: t }),
       })
       const d = await r.json().catch(() => ({}))
       if (!r.ok) throw new Error(d.error || 'Feedback is unavailable right now.')
@@ -305,18 +373,20 @@ export default function SpeakingStudio({ questions, student, onSpoken, onFixes, 
     setWordScore(null)
     setWordPhoneme(null)
     setWordErr('')
+    void startVolumeMonitor()
     try {
       const r = await fetch('/api/courses/speech-token', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(student),
       })
       const d = await r.json().catch(() => ({}))
-      if (!r.ok) { setWordErr(d.error || 'Microphone unavailable.'); setWordPhase('idle'); return }
+      if (!r.ok) { stopVolumeMonitor(); setWordErr(d.error || 'Microphone unavailable.'); setWordPhase('idle'); return }
       const sdk = await import('microsoft-cognitiveservices-speech-sdk')
       const cfg = sdk.SpeechConfig.fromAuthorizationToken(d.token, d.region)
       cfg.speechRecognitionLanguage = 'en-GB'
+      // 2s silence after speaking ends → auto-stop (so the student gets fast feedback)
+      cfg.setProperty(sdk.PropertyId.Speech_SegmentationSilenceTimeoutMs, '2000')
       // Phoneme granularity: scores each individual sound, not just the word overall.
-      // This catches a Spanish /t/ where English needs /θ/, merged vowels, etc.
       const pa = new sdk.PronunciationAssessmentConfig(
         practiceWord,
         sdk.PronunciationAssessmentGradingSystem.HundredMark,
@@ -325,7 +395,10 @@ export default function SpeakingStudio({ questions, student, onSpoken, onFixes, 
       )
       const recognizer = new sdk.SpeechRecognizer(cfg, sdk.AudioConfig.fromDefaultMicrophoneInput())
       pa.applyTo(recognizer)
+      recognizerRef.current = recognizer
       recognizer.recognizeOnceAsync(result => {
+        recognizerRef.current = null
+        stopVolumeMonitor()
         recognizer.close()
         let score: number | null = null
         let worstPhoneme: { phoneme: string; score: number } | null = null
@@ -366,12 +439,15 @@ export default function SpeakingStudio({ questions, student, onSpoken, onFixes, 
           setWordPhase('done')
         }
       }, (errMsg: string) => {
+        recognizerRef.current = null
+        stopVolumeMonitor()
         recognizer.close()
         console.error('[sayWord]', errMsg)
         setWordErr('The microphone dropped. Try again.')
         setWordPhase('idle')
       })
     } catch (e) {
+      stopVolumeMonitor()
       setWordErr(e instanceof Error ? e.message : 'Something went wrong.')
       setWordPhase('idle')
     }
@@ -411,45 +487,6 @@ export default function SpeakingStudio({ questions, student, onSpoken, onFixes, 
         </div>
       )}
 
-      {phase === 'review' && first && (
-        <>
-          <div className="studio-stats">
-            <div><strong>{first.seconds}s</strong><span>speaking</span></div>
-            <div><strong>{first.wordCount}</strong><span>words</span></div>
-            <div><strong className="small">{first.fluencyLabel}</strong><span>flow</span></div>
-          </div>
-          {clip && <audio className="studio-clip" controls src={clip} />}
-          <label className="studio-label">Tap any word to practise its pronunciation. <small>Fix mishearings in the box below.</small></label>
-          <HeardWords transcript={transcript} segs={segs.current} onPractise={openWordPractice} />
-          {practiceWord && (
-            <WordPracticePanel
-              word={practiceWord}
-              score={wordScore}
-              phase={wordPhase}
-              wordTry={wordTry}
-              wordPhoneme={wordPhoneme}
-              wordErr={wordErr}
-              explain={wordExplain}
-              explainLoading={wordExplainLoading}
-              onSay={() => void sayWord()}
-              onHear={hear}
-              onClose={() => setPracticeWord(null)}
-            />
-          )}
-          <label className="studio-label" style={{ marginTop: '0.75rem' }}><small>Correct only words we heard wrong (not your English):</small></label>
-          <textarea className="writing studio-text" rows={5} value={transcript} onChange={e => setTranscript(e.target.value)} />
-          {first.practise.length > 0 && (
-            <div className="studio-practise">
-              <span className="section-head">Words to practise saying</span>
-              <div className="chips chips--static">{first.practise.map(w => <button key={w} type="button" className="chip studio-word" onClick={() => hear(w)}>🔊 {w}</button>)}</div>
-            </div>
-          )}
-          <div className="row">
-            <button type="button" className="btn" onClick={getFeedback}>Get my feedback →</button>
-            <button type="button" className="help-btn" onClick={() => { setPhase('pick'); setFirst(null) }}>Record again</button>
-          </div>
-        </>
-      )}
 
       {phase === 'thinking' && <p className="studio-note studio-wait">Reading what you said…</p>}
 
@@ -465,14 +502,40 @@ export default function SpeakingStudio({ questions, student, onSpoken, onFixes, 
           {fb.fixes.length > 0 && <p className="studio-note"><span className="hl-ok">Green</span> = a fix you used. <span className="hl-bad">Red</span> = the old mistake came back.</p>}
           {clip && <audio className="studio-clip" controls src={clip} />}
           <div className="row">
-            <button type="button" className="btn" onClick={() => { setFirst(second); setTranscript(second.transcript); setSecond(null); setFb(null); setPhase('review') }}>Get feedback on this answer →</button>
+            <button type="button" className="btn" onClick={() => { setFirst(second); setTranscript(second.transcript); setSecond(null); setFb(null); void getFeedback(second.transcript) }}>Get feedback on this answer →</button>
             <button type="button" className="help-btn" onClick={() => { setPhase('pick'); setFirst(null); setSecond(null); setFb(null) }}>Try another question</button>
           </div>
         </div>
       )}
 
-      {phase === 'feedback' && fb && (
+      {phase === 'feedback' && fb && first && (
         <div className="studio-fb">
+          <div className="studio-stats">
+            <div><strong>{first.seconds}s</strong><span>speaking</span></div>
+            <div><strong>{first.wordCount}</strong><span>words</span></div>
+            <div><strong className="small">{first.fluencyLabel}</strong><span>flow</span></div>
+          </div>
+          {clip && <audio className="studio-clip" controls src={clip} />}
+          <label className="studio-label">Tap any word to practise its pronunciation.</label>
+          <HeardWords transcript={transcript} segs={segs.current} onPractise={openWordPractice} />
+          {practiceWord && (
+            <WordPracticePanel
+              word={practiceWord}
+              score={wordScore}
+              phase={wordPhase}
+              wordTry={wordTry}
+              wordPhoneme={wordPhoneme}
+              wordErr={wordErr}
+              explain={wordExplain}
+              explainLoading={wordExplainLoading}
+              wordVolume={wordVolume}
+              wordPause={wordPause}
+              onSay={() => void sayWord()}
+              onHear={hear}
+              onClose={() => setPracticeWord(null)}
+              onFinish={finishWord}
+            />
+          )}
           <p className="studio-praise">👏 {fb.praise}</p>
           {fb.fixes.length > 0 ? (
             <div className="task-list">
@@ -510,12 +573,11 @@ export default function SpeakingStudio({ questions, student, onSpoken, onFixes, 
             </div>
           )}
 
-          {(
-            <div className="studio-again">
-              <p><strong>Now say it again.</strong> {fb.sayAgain}</p>
-              <button type="button" className="studio-mic" onClick={() => start(2)}><span className="studio-mic-dot" />🎙️ Say it again</button>
-            </div>
-          )}
+          <div className="studio-again">
+            <p><strong>Now say it again.</strong> {fb.sayAgain}</p>
+            <button type="button" className="studio-mic" onClick={() => start(2)}><span className="studio-mic-dot" />🎙️ Say it again</button>
+            <button type="button" className="help-btn" style={{ marginTop: '.5rem' }} onClick={() => { setPhase('pick'); setFirst(null); setFb(null) }}>Try a different question</button>
+          </div>
 
         </div>
       )}
