@@ -52,6 +52,7 @@ function WordPracticePanel({ word, score, phase, wordTry, wordPhoneme, wordErr, 
   explain: PronExplain | null; explainLoading: boolean
   onSay: () => void; onHear: (w: string) => void; onClose: () => void
 }) {
+  const [showExplain, setShowExplain] = useState(false)
   const animCls = phase === 'listening'
     ? 'word-display--listening'
     : score === null ? 'word-display--idle'
@@ -60,25 +61,20 @@ function WordPracticePanel({ word, score, phase, wordTry, wordPhoneme, wordErr, 
     : 'word-display--bad'
   const msgTier = score === null ? null : score >= 80 ? 'good' : score >= 55 ? 'amber' : 'bad'
   const msgText = score === null ? null
-    : score >= 80 ? '😊 Perfect! You\'ve got this one.'
-    : score >= 55 ? '🙂 Nearly there — try once more.'
-    : '💪 Keep going — you\'ll get it.'
+    : score >= 80 ? '😊 Perfect!'
+    : score >= 55 ? '🙂 Nearly there'
+    : '💪 Keep going'
   return (
     <div className="word-practice-panel">
       <button type="button" className="word-practice-close" onClick={onClose} aria-label="Close">✕</button>
       <div className="word-display-wrap">
-        {/* wordTry as key forces the animation to restart on every new attempt */}
         <span key={`${word}-${wordTry}`} className={`word-display ${animCls}`}>{word}</span>
         {explain?.ipa && <span className="word-practice-ipa">{explain.ipa}</span>}
       </div>
       {msgText && (
         <div className={`word-msg word-msg--${msgTier}`}>
-          <p>{msgText}</p>
-          {wordPhoneme && (
-            <p className="word-phoneme-note">
-              The /{wordPhoneme.phoneme}/ sound scored {Math.round(wordPhoneme.score)}% — focus on that.
-            </p>
-          )}
+          <span>{msgText}</span>
+          {wordPhoneme && <span className="word-phoneme-note"> · /{wordPhoneme.phoneme}/ {Math.round(wordPhoneme.score)}%</span>}
         </div>
       )}
       <div className="word-practice-actions">
@@ -88,14 +84,18 @@ function WordPracticePanel({ word, score, phase, wordTry, wordPhoneme, wordErr, 
         </button>
       </div>
       {wordErr && <p className="word-practice-err">{wordErr}</p>}
-      {explainLoading && <p className="word-practice-loading">Loading explanation…</p>}
-      {explain && (
+      {(explain || explainLoading) && (
+        <button type="button" className="explain-toggle" onClick={() => setShowExplain(v => !v)}>
+          {explainLoading ? 'Loading…' : showExplain ? 'Hide explanation ↑' : 'Why does it sound like this? ↓'}
+        </button>
+      )}
+      {showExplain && explain && (
         <div className="word-practice-explain">
-          <p className="word-practice-how">{explain.how}</p>
-          {explain.rule && <p className="word-practice-rule"><strong>Rule:</strong> {explain.rule}</p>}
-          <p className="word-practice-why"><strong>Why it sounds like this:</strong> {explain.why}</p>
+          <p>{explain.how}</p>
+          {explain.rule && <p className="word-practice-rule">{explain.rule}</p>}
+          <p>{explain.why}</p>
           {explain.similar.length > 0 && (
-            <p className="word-practice-similar">Same pattern: <em>{explain.similar.join(' · ')}</em></p>
+            <p className="word-practice-similar">{explain.similar.join(' · ')}</p>
           )}
         </div>
       )}
