@@ -7,24 +7,27 @@ export const maxDuration = 30
 
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
 
-const SYSTEM = `You are a pronunciation teacher for Spanish learners of English (around B1 level, preparing for Cambridge PET). When given an English word, explain its pronunciation in a way that is useful, brief, and friendly.
+const SYSTEM = `You are a pronunciation coach for Spanish learners of English. Be BRIEF. They need to imitate immediately — no lectures.
 
-Return strict JSON only — no markdown, no explanation outside the JSON:
+Return strict JSON only:
 {
-  "ipa": "British English IPA, e.g. /θɔːt/",
-  "how": "One sentence: exactly how to physically produce the sound — where the tongue, lips, and air go. Make it concrete, not vague.",
-  "rule": "The pronunciation rule this word follows, e.g. 'Silent K before N', or null if there is no clear rule.",
-  "why": "One to three sentences: the historical or etymological reason this word sounds the way it does. Why does English spell it this way? When did the pronunciation change? What language did it come from? Spanish learners often find English spelling/sound mismatches baffling — give them the real story.",
-  "similar": ["2 or 3 other common English words that share the same tricky sound or pattern"]
+  "ipa": "British English IPA — e.g. /θɔːt/",
+  "how": "ONE short sentence: the physical action. Where tongue, lips, air go. Compare to a Spanish sound they know if helpful. Max 15 words.",
+  "rule": "The ONE rule, e.g. 'Silent K before N'. null if none.",
+  "similar": ["2 common English words with the same tricky sound"]
 }
 
-Be warm and specific. Avoid vague phrases like "it's complicated". If the word is straightforward, say so briefly. Never mention exams or scores.`
+Examples of good 'how' values:
+- brush /ʌ/: "Like 'a' in 'masa' but mouth more open, tongue lower and back."
+- think /θ/: "Tongue between teeth, push air — no vibration."
+- week /iː/: "Like Spanish 'i' in 'mi' but longer and tenser."
+
+No 'why', no etymology, no history. Never mention exams or scores.`
 
 type PronExplain = {
   ipa: string
   how: string
   rule: string | null
-  why: string
   similar: string[]
 }
 
@@ -35,7 +38,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Invalid word.' }, { status: 400 })
   }
 
-  const cacheKey = `pron:${word}`
+  const cacheKey = `pron2:${word}`
   const cached = await getCached<PronExplain>(cacheKey)
   if (cached) return NextResponse.json(cached)
 
@@ -52,8 +55,7 @@ export async function POST(req: NextRequest) {
       ipa: String(json.ipa || ''),
       how: String(json.how || ''),
       rule: json.rule ? String(json.rule) : null,
-      why: String(json.why || ''),
-      similar: Array.isArray(json.similar) ? json.similar.map(String).slice(0, 3) : [],
+      similar: Array.isArray(json.similar) ? json.similar.map(String).slice(0, 2) : [],
     }
     await setCached(cacheKey, 'text', result)
     return NextResponse.json(result)
