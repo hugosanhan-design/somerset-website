@@ -3,14 +3,14 @@
 // words and plain labels, never raw numbers.
 
 export type WordScore = { word: string; accuracy: number; error: string }
-export type Segment = { text: string; words: WordScore[]; accuracy: number; fluency: number; durationSec: number }
+export type Segment = { text: string; lexical: string; words: WordScore[]; accuracy: number; fluency: number; durationSec: number }
 
 type AzurePhoneme = { Phoneme?: string; PronunciationAssessment?: { AccuracyScore?: number } }
 type AzureWord = { Word?: string; AccuracyScore?: number; ErrorType?: string; PronunciationAssessment?: { AccuracyScore?: number; ErrorType?: string }; Phonemes?: AzurePhoneme[] }
 type AzureJson = {
   DisplayText?: string
   Duration?: number
-  NBest?: { Display?: string; AccuracyScore?: number; FluencyScore?: number; PronunciationAssessment?: { AccuracyScore?: number; FluencyScore?: number }; Words?: AzureWord[] }[]
+  NBest?: { Display?: string; Lexical?: string; AccuracyScore?: number; FluencyScore?: number; PronunciationAssessment?: { AccuracyScore?: number; FluencyScore?: number }; Words?: AzureWord[] }[]
 }
 
 function wordAccuracy(w: AzureWord): number {
@@ -39,6 +39,7 @@ export function parseSegment(json: string): Segment | null {
   })).filter(w => w.word)
   return {
     text: String(best.Display ?? d.DisplayText ?? ''),
+    lexical: String(best.Lexical ?? best.Display ?? d.DisplayText ?? '').toLowerCase(),
     words,
     accuracy: Number(pa.AccuracyScore ?? 0),
     fluency: Number(pa.FluencyScore ?? 0),
@@ -48,6 +49,7 @@ export function parseSegment(json: string): Segment | null {
 
 export type SpeakingSummary = {
   transcript: string
+  lexicalTranscript: string
   wordCount: number
   seconds: number
   accuracy: number      // word-weighted, kept for the teacher and for "better than last time"
@@ -70,11 +72,12 @@ export function summarise(segments: Segment[]): SpeakingSummary {
   const practise = Array.from(new Set(unclear.map(w => w.word.toLowerCase()))).slice(0, 5)
   return {
     transcript: segments.map(s => s.text).join(' ').trim(),
+    lexicalTranscript: segments.map(s => s.lexical).join(' ').trim(),
     wordCount: words.length,
     seconds: Math.round(segments.reduce((a, s) => a + s.durationSec, 0)),
     accuracy: segments.length ? weighted('accuracy') : 0,
     fluency,
-    fluencyLabel: fluency >= 80 ? 'Smooth and steady' : fluency >= 60 ? 'A few long pauses' : 'Lots of pauses: that’s normal at first',
+    fluencyLabel: fluency >= 80 ? 'Smooth and steady' : fluency >= 60 ? 'A few long pauses' : "Lots of pauses: that's normal at first",
     practise: n ? practise : [],
   }
 }
