@@ -20,8 +20,10 @@ type WordResult = 'good' | 'amber' | 'bad'
 type Phase = 'pick' | 'connecting' | 'recording' | 'thinking' | 'feedback' | 'done'
 type Rec = { stop: () => Promise<void> }
 type PronExplain = { ipa: string; how: string; rule: string | null; similar: string[] }
-type WordPhase = 'idle' | 'starting' | 'listening' | 'done'
+type WordPhase = 'idle' | 'hearing' | 'starting' | 'listening' | 'done'
+type DrillPhase = 'intro' | 'play-slow' | 'echo-slow' | 'play-hard' | 'echo-hard' | 'play-full' | 'listen-full' | null
 type WordHint = '' | 'go' | 'checking' | 'listen' | 'yourturn'
+type PronGoal = 'understood' | 'british'
 
 const clean = (w: string) => w.toLowerCase().replace(/[^a-z']/g, '')
 
@@ -84,6 +86,35 @@ function alignedWord(expected: string[], heard: string[], t: number): string | n
     } else j--
   }
   return null
+}
+
+
+// Syllable display data for the slow drill.
+// syl: how the word is split for visual highlighting
+// p1:  first TTS chunk (slow approach)   p2: hard phoneme/cluster (emphasised)
+type DrillData = { syl: string[]; p1: string; p2: string }
+const DRILL_DATA: Record<string, DrillData> = {
+  'architect':    { syl: ['ar', 'chi', 'tect'],       p1: 'archi',    p2: 'tect'     },
+  'hairdresser':  { syl: ['hair', 'dress', 'er'],     p1: 'hair',     p2: 'dresser'  },
+  'athlete':      { syl: ['ath', 'lete'],             p1: 'ath',      p2: 'lete'     },
+  'lawyer':       { syl: ['law', 'yer'],              p1: 'law',      p2: 'yer'      },
+  'firefighter':  { syl: ['fire', 'fight', 'er'],     p1: 'fire',     p2: 'fighter'  },
+  'cook':         { syl: ['cook'],                    p1: 'coo',      p2: 'k'        },
+  'soldier':      { syl: ['sol', 'dier'],             p1: 'sol',      p2: 'dier'     },
+  'actor':        { syl: ['ac', 'tor'],               p1: 'ac',       p2: 'tor'      },
+  'politician':   { syl: ['pol', 'i', 'ti', 'cian'], p1: 'politi',   p2: 'cian'     },
+  'librarian':    { syl: ['li', 'brar', 'i', 'an'],  p1: 'libra',    p2: 'rian'     },
+  'astronaut':    { syl: ['as', 'tro', 'naut'],      p1: 'astro',    p2: 'naut'     },
+  'calm':         { syl: ['calm'],                    p1: 'caa',      p2: 'lm'       },
+  'cheerful':     { syl: ['cheer', 'ful'],            p1: 'cheer',    p2: 'ful'      },
+  'confident':    { syl: ['con', 'fi', 'dent'],      p1: 'confi',    p2: 'dent'     },
+  'generous':     { syl: ['gen', 'er', 'ous'],       p1: 'gen',      p2: 'erous'    },
+  'honest':       { syl: ['hon', 'est'],              p1: 'hon',      p2: 'est'      },
+  'patient':      { syl: ['pa', 'tient'],             p1: 'pa',       p2: 'tient'    },
+  'reliable':     { syl: ['re', 'li', 'a', 'ble'],   p1: 'reli',     p2: 'able'     },
+  'shy':          { syl: ['shy'],                     p1: 'sh',       p2: 'y'        },
+  'sociable':     { syl: ['so', 'cia', 'ble'],       p1: 'so',       p2: 'ciable'   },
+  'hard-working': { syl: ['hard', 'work', 'ing'],    p1: 'hard',     p2: 'working'  },
 }
 
 // The exact audio Azure scored, as a playable WAV, so the student can hear themselves.
@@ -177,7 +208,7 @@ function SaidText({ transcript, segs, fixes, sounds, activeFix, onWord, onFix }:
       {piecesFor(transcript, fixes, sounds).map((pc, i) => pc.kind === 'text'
         ? <Words key={i} text={pc.text} pron={pron} onWord={onWord} />
         : pc.kind === 'sound' ? (
-          <button key={i} type="button" className="pw pw-bad pw-misheard" title={`We heard “${pc.text}”. Did you mean “${sounds[pc.idx].meant}”? Tap to practise.`}
+          <button key={i} type="button" className="pw pw-bad pw-misheard" title={`We heard "${pc.text}". Did you mean "${sounds[pc.idx].meant}"? Tap to practise.`}
             onClick={() => onWord(sounds[pc.idx].meant, pc.text)}>
             {pc.text}<sup>?</sup>
           </button>
@@ -204,54 +235,123 @@ function B1Text({ text, onWord }: { text: string; onWord: (w: string) => void })
   )
 }
 
-function WordCoach({ word, phrase, result, heard, before, phase, hint, err, explain, volume, streak, clip, debug, tries, onSay, onHear, onClose, onFinish }: {
+// Goal-selector modal: shown once before the first word-coach session.
+// Two options: intelligibility (default) or RP training (opt-in).
+function GoalModal({ onChoose }: { onChoose: (g: PronGoal) => void }) {
+  return createPortal(
+    <div className="goal-overlay" role="dialog" aria-modal="true" aria-label="What is your pronunciation goal?">
+      <div className="goal-modal">
+        <h2 className="goal-title">What&apos;s your goal?</h2>
+        <p className="goal-sub">Every learner is different. Pick what feels right for you.</p>
+        <div className="goal-options">
+          <button type="button" className="goal-opt goal-opt--main" onClick={() => onChoose('understood')}>
+            <span className="goal-opt-icon">🗣️</span>
+            <strong>Be understood</strong>
+            <span className="goal-opt-tag">Recommended</span>
+            <p>Say words clearly enough that any English speaker gets them. Your Spanish accent is part of who you are — Rafa Nadal, Penélope Cruz and Antonio Banderas kept theirs.</p>
+          </button>
+          <button type="button" className="goal-opt" onClick={() => onChoose('british')}>
+            <span className="goal-opt-icon">🎯</span>
+            <strong>Sound British</strong>
+            <p>Train towards a Received Pronunciation accent. Stricter scoring, more phoneme tips. Good if you specifically want to minimise your accent.</p>
+          </button>
+        </div>
+        <p className="goal-note">You can change this any time using the ⚙ button inside the practice window.</p>
+      </div>
+    </div>,
+    document.body
+  )
+}
+
+function WordCoach({ word, phrase, result, heard, before, phase, hint, err, explain, volume, streak, clip, debug, tries, goal, drillPhase, drillHighlight, onStart, onClose, onFinish, onChangeGoal }: {
   word: string; phrase: string; result: WordResult | null; heard: string; before: string; phase: WordPhase; hint: WordHint
   err: string; explain: PronExplain | null; volume: number; streak: number; clip: string; debug: string; tries: number
-  onSay: () => void; onHear: () => void; onClose: () => void; onFinish: () => void
+  goal: PronGoal; drillPhase: DrillPhase; drillHighlight: number
+  onStart: () => void; onClose: () => void; onFinish: () => void; onChangeGoal: () => void
 }) {
+  const dd = DRILL_DATA[word]
   const tier = phase === 'listening' ? 'listening' : result ?? 'idle'
   const locked = streak >= STREAK_GOAL
   const parts = phrase.split(/\s+/)
   const at = parts.findIndex(w => norm(w) === norm(word))
   const multi = parts.length > 1 && at >= 0
-  // While listening the word grows with the student's voice; the colour then eases to the result.
   const style = phase === 'listening' && volume > 0
     ? { transform: `scale(${1 + volume * 0.45})`, animation: 'none' }
     : undefined
-  const message =
-    phase === 'starting' ? 'One moment…'
-    : phase === 'listening' ? (hint === 'go' ? 'Go on, say it now 🎤' : hint === 'checking' ? 'Checking…' : 'Say it now 🎤')
-    : result === null ? (before ? `In your answer we heard “${before}”. Say the phrase.` : multi ? 'Say the whole phrase.' : 'Tap “Say it” and say the word.')
-    : result === 'good' ? (locked ? '🔒 Locked in! Tap another word.' : `✓ We heard “${word}”. ${streak}/${STREAK_GOAL}, say it again`)
-    : hint === 'yourturn' ? '🎙️ Your turn. Copy it.'
-    : result === 'amber' ? `Nearly. “${word}” sounded a bit like “${heard}”. Listen…`
-    : heard ? `We heard “${heard}”, not “${word}”. Listen…` : `We didn’t catch “${word}”. Listen…`
+  const goodMsg = goal === 'british'
+    ? (locked ? 'Locked in! Tap another word.' : `British RP accepted. ${streak}/${STREAK_GOAL}, say it again`)
+    : (locked ? 'Locked in! Tap another word.' : `Any English speaker would understand you. ${streak}/${STREAK_GOAL}, say it again`)
+  const drillMsg = drillPhase === 'intro' ? "Let's go slower. Repeat after me."
+    : drillPhase === 'play-slow' ? 'Listen carefully...'
+    : drillPhase === 'echo-slow' ? 'Now you say it'
+    : drillPhase === 'play-hard' ? 'Now the hard part...'
+    : drillPhase === 'echo-hard' ? 'Say that part'
+    : drillPhase === 'play-full' ? 'Full word:'
+    : drillPhase === 'listen-full' ? 'Your turn'
+    : null
+  const message = drillMsg ??
+    (phase === 'starting' ? 'One moment...'
+    : phase === 'hearing' ? 'Listen...'
+    : phase === 'listening' ? (hint === 'go' ? 'Go on, say it now' : hint === 'checking' ? 'Checking...' : 'Say it now')
+    : result === null ? (before ? `In your answer we heard "${before}". Say the phrase.` : multi ? 'Say the whole phrase.' : 'Tap Start and say the word.')
+    : result === 'good' ? goodMsg
+    : hint === 'yourturn' ? 'Your turn. Copy it.'
+    : result === 'amber' ? `Nearly. "${word}" sounded a bit like "${heard}". Listen...`
+    : heard ? `We heard "${heard}", not "${word}". Listen...` : `We didn't catch "${word}". Listen...`)
+
+  const showEar = phase === 'hearing' || (drillPhase !== null && ['play-slow', 'play-hard', 'play-full', 'echo-slow', 'echo-hard'].includes(drillPhase))
+  const showMouth = phase === 'starting' || phase === 'listening' || (drillPhase !== null && ['echo-slow', 'echo-hard', 'listen-full'].includes(drillPhase))
+  const showStart = phase === 'idle' && drillPhase === null && !locked
+  const showStop = (phase === 'listening' || phase === 'starting') && drillPhase === null
+
+  // Syllable display: split if DRILL_DATA exists, otherwise show word whole
+  const wordInner = dd && dd.syl.length > 1 ? (
+    <>
+      {dd.syl.map((s, i) => {
+        const on = drillHighlight >= 0 && (
+          (drillHighlight === 0 && i < dd.syl.length - 1) ||
+          (drillHighlight === dd.syl.length - 1 && i === dd.syl.length - 1)
+        )
+        return <span key={i} className={on ? 'syl syl--on' : 'syl'}>{s}</span>
+      })}
+    </>
+  ) : (multi ? parts[at] : word)
 
   return (
     <div className="wc">
-      <button type="button" className="wc-close" onClick={onClose} aria-label="Close">✕</button>
+      <div className="wc-top-row">
+        <button type="button" className="wc-close" onClick={onClose} aria-label="Close">x</button>
+        <button type="button" className="wc-goal-btn" onClick={onChangeGoal} title={goal === 'british' ? 'Goal: Sound British' : 'Goal: Be understood'}>
+          {goal === 'british' ? 'Sound British' : 'Be understood'}
+        </button>
+      </div>
       <div className="wc-streak" aria-label={`${streak} of ${STREAK_GOAL}`}>
         {Array.from({ length: STREAK_GOAL }, (_, i) => <span key={i} className={i < streak ? 'on' : ''} />)}
       </div>
       <div className={`wc-word-wrap${multi ? ' wc-word-wrap--phrase' : ''}`}>
         {multi && parts.slice(0, at).length > 0 && <span className="wc-ctx">{parts.slice(0, at).join(' ')}</span>}
-        <span key={tier === 'listening' ? 'l' : `r-${tries}`} className={`wc-word wc-word--${tier}`} style={style}>{multi ? parts[at] : word}</span>
+        <span key={tier === 'listening' ? 'l' : `r-${tries}`} className={`wc-word wc-word--${tier}`} style={style}>{wordInner}</span>
         {multi && parts.slice(at + 1).length > 0 && <span className="wc-ctx">{parts.slice(at + 1).join(' ')}</span>}
       </div>
       {explain?.ipa && <div className="wc-ipa">{explain.ipa}</div>}
-      <p className={`wc-msg wc-msg--${tier}`}>
-        {message}
-      </p>
+      <p className={`wc-msg wc-msg--${tier}`}>{message}</p>
       <div className="wc-actions">
-        <button type="button" className="help-btn" onClick={onHear}>🔊 Hear it</button>
-        {clip && phase === 'done' && (
-          <button type="button" className="help-btn" onClick={() => { try { void new Audio(clip).play() } catch { /* ignore */ } }}>🔁 Hear yourself</button>
+        <div className="wc-indicators">
+          <span className={`wc-ear${showEar ? ' wc-ear--on' : ''}`} aria-label="Listening">👂</span>
+          <span className={`wc-mouth${showMouth ? ' wc-mouth--on' : ''}`} aria-label="Speaking">👄</span>
+        </div>
+        {showStart && (
+          <button type="button" className="wc-start" onClick={onStart}>
+            {result === null ? 'Start' : 'Try again'}
+          </button>
         )}
-        {phase === 'listening' || phase === 'starting'
-          ? <button type="button" className="btn wc-stop" onClick={onFinish}>◼ Stop</button>
-          : <button type="button" className="studio-mic studio-mic--sm" onClick={onSay} disabled={locked}>
-              <span className="studio-mic-dot" />{locked ? 'Done' : hint === 'yourturn' ? 'Your turn' : 'Say it'}
-            </button>}
+        {locked && <span className="wc-locked">Locked in!</span>}
+        {showStop && (
+          <button type="button" className="btn wc-stop" onClick={onFinish}>Stop</button>
+        )}
+        {clip && phase === 'done' && !drillPhase && (
+          <button type="button" className="help-btn" onClick={() => { try { void new Audio(clip).play() } catch { /* ignore */ } }}>Hear yourself</button>
+        )}
       </div>
       {err && <p className="wc-err">{err}</p>}
       {debug && <p className="wc-debug">{debug}</p>}
@@ -325,6 +425,13 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
   const [wordClip, setWordClip] = useState('')
   const [wordDebug, setWordDebug] = useState('')
   const [debugOn, setDebugOn] = useState(false)
+  const [pronGoal, setPronGoal] = useState<PronGoal>('understood')
+  const [showGoalModal, setShowGoalModal] = useState(false)
+  const [drillPhase, setDrillPhase] = useState<DrillPhase>(null)
+  const [drillHighlight, setDrillHighlight] = useState(-1)
+  const [consecutiveBad, setConsecutiveBad] = useState(0)
+  const drillActive = useRef(false)
+  const drillReps = useRef(0)
   const segs = useRef<Segment[]>([])
   const attemptRef = useRef<1 | 2>(1)
   const rec = useRef<Rec | null>(null)
@@ -336,6 +443,13 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
   const [narrow, setNarrow] = useState(false)
 
   useEffect(() => { setDebugOn(new URLSearchParams(window.location.search).has('debug')) }, [])
+
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem('pron-goal') as PronGoal | null
+      if (saved === 'understood' || saved === 'british') setPronGoal(saved)
+    } catch { /* private browsing */ }
+  }, [])
 
   useEffect(() => {
     const mq = window.matchMedia('(max-width: 900px)')
@@ -383,7 +497,7 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
 
   async function start(which: 1 | 2) {
     setErr('')
-    if (!student) { setErr('Sign in at Student’s Corner first, so your speaking can be checked.'); return }
+    if (!student) { setErr("Sign in at Student's Corner first, so your speaking can be checked."); return }
     attemptRef.current = which; setPhase('connecting'); setLive(''); setHeard(''); setSecs(0); setClip('')
     setPracticeWord(null); endWordRun()
     segs.current = []
@@ -438,7 +552,7 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
     stopMedia()
     const sum = summarise(segs.current)
     if (sum.wordCount < 5) {
-      setErr('We didn’t catch enough. Speak a little closer to the microphone and try again.')
+      setErr("We didn't catch enough. Speak a little closer to the microphone and try again.")
       setPhase(attemptRef.current === 1 ? 'pick' : 'feedback')
       return
     }
@@ -468,10 +582,10 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
     setPhase('feedback')
   }
 
-  function hear(word: string, onEnd?: () => void) {
+  function hear(word: string, onEnd?: () => void, rate = 0.8) {
     try {
       const u = new SpeechSynthesisUtterance(word)
-      u.lang = 'en-GB'; u.rate = 0.8
+      u.lang = 'en-GB'; u.rate = rate
       const v = speechSynthesis.getVoices().find(x => x.lang === 'en-GB')
       if (v) u.voice = v
       if (onEnd) u.onend = onEnd
@@ -479,15 +593,59 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
     } catch { onEnd?.() }
   }
 
+  const hearAsync = (word: string, rate = 0.8) => new Promise<void>(resolve => hear(word, resolve, rate))
+  const sleep = (ms: number) => new Promise<void>(resolve => setTimeout(resolve, ms))
+
+  function vadDetect(ms = 600): Promise<boolean> {
+    return new Promise(async resolve => {
+      let stream: MediaStream
+      try { stream = await navigator.mediaDevices.getUserMedia({ audio: true }) }
+      catch { resolve(false); return }
+      const ctx = new AudioContext()
+      const src = ctx.createMediaStreamSource(stream)
+      const analyser = ctx.createAnalyser()
+      analyser.fftSize = 256
+      src.connect(analyser)
+      const data = new Float32Array(analyser.frequencyBinCount)
+      let voiceStart: number | null = null
+      let done = false
+      const finish = (v: boolean) => {
+        if (done) return; done = true
+        stream.getTracks().forEach(t => t.stop())
+        ctx.close().catch(() => {})
+        resolve(v)
+      }
+      const check = () => {
+        if (done) return
+        analyser.getFloatTimeDomainData(data)
+        const rms = Math.sqrt(data.reduce((s, v) => s + v * v, 0) / data.length)
+        if (rms > 0.04) {
+          if (voiceStart === null) voiceStart = Date.now()
+          else if (Date.now() - voiceStart > ms) { finish(true); return }
+        } else { voiceStart = null }
+        requestAnimationFrame(check)
+      }
+      check()
+      setTimeout(() => finish(false), 10000)
+    })
+  }
+
   function correctedText() {
     const f = fb?.fixes ?? [], so = fb?.sounds ?? []
     return piecesFor(transcript, f, so).map(pc => pc.kind === 'text' ? pc.text : pc.kind === 'fix' ? f[pc.idx].fix : so[pc.idx].meant).join('')
+  }
+
+  function chooseGoal(g: PronGoal) {
+    setPronGoal(g); setShowGoalModal(false)
+    try { localStorage.setItem('pron-goal', g); localStorage.setItem('pron-goal-set', '1') } catch { /* private browsing */ }
   }
 
   async function openWordPractice(word: string, heardBefore?: string, source: 'said' | 'b1' = 'said') {
     const context = source === 'b1' ? (fb?.b1Version ?? '').replace(/\[\[|\]\]/g, '') : correctedText()
     setPracticePhrase(phraseAround(word, context))
     endWordRun()
+    // Show the goal modal the first time a student opens word practice.
+    try { if (!localStorage.getItem('pron-goal-set')) setShowGoalModal(true) } catch { /* private browsing */ }
     setPracticeWord(word); setWordPhase('idle'); setWordResult(null); setWordHeard(''); setWordBefore(heardBefore ?? '')
     setWordHint(''); setWordStreak(0); setWordErr(''); setWordExplain(null); setWordClip(''); setWordDebug('')
     // Warm up the speech engine and token now, so the first "Say it" starts recording at once.
@@ -624,8 +782,10 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
       if (run.cancelled) return
       // Two checks on the same audio, at the same time:
       //  1. plain recognition: what did the student actually sound like? This is the main test.
-      //     Calibrated 2026-10-06 with 9 voices × 7 words: native voices were understood as the
-      //     target 47/49 times; Spanish-accented voices were misheard 11/14 times ("bruce" for brush).
+      //     Calibrated 2026-10-06 with 10 native + 6 Spanish voices × 21 Unit-1 words (phrase context):
+      //     native acceptance 98% (205/210); Spanish rejection 67% (85/126).
+      //     Edge case: "hard-working" — non-GB native voices sometimes hear "hardworking" as one token;
+      //     the aligner finds "hard" at position t and still passes correctly in practice.
       //  2. pronunciation score against the target: separates a clear word from a just-about one.
       //     On its own it was too noisy (natives 55–100, Spanish 54–70).
       const fmt = sdk.AudioStreamFormat.getWaveFormatPCM(16000, 16, 1)
@@ -656,7 +816,9 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
       endWordRun()
 
       const expected = norm(phrase).split(' ')
-      const t = Math.max(0, expected.indexOf(norm(word).split(' ')[0]))
+      const wordParts = norm(word).split(' ')  // ['hard','working'] for 'hard-working'
+      const wordFlat = wordParts.join('')       // 'hardworking' — Azure sometimes merges compound words
+      const t = Math.max(0, expected.indexOf(wordParts[0]))
       const target = expected[t]
       let alts: { words: string[]; display: string }[] = []
       try {
@@ -666,29 +828,143 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
       let sc: { score: number | null; info: string } = { score: null, info: 'no score' }
       try { sc = scoreFrom(rawScore, word) } catch { /* unreadable */ }
       // Judge the target word by what was recognised in its place in the phrase.
+      // Also accept merged compound tokens (e.g. Azure hears "hardworking" for "hard-working").
       const at = alts.map(a => alignedWord(expected, a.words, t))
       const topHeard = at[0] ?? ''
+      const isTarget = (w: string | null) => !!w && (w === target || (wordParts.length > 1 && w === wordFlat))
+      // In "Sound British" mode, require a higher pronunciation score to reach green.
+      const scoreThreshold = pronGoal === 'british' ? 65 : 50
       let result: WordResult | null
-      if (at[0] === target) result = sc.score !== null && sc.score < 50 ? 'amber' : 'good'
-      else if (at.slice(1).includes(target)) result = 'amber'
+      if (isTarget(at[0])) result = sc.score !== null && sc.score < scoreThreshold ? 'amber' : 'good'
+      else if (at.slice(1).some(isTarget)) result = 'amber'
       else result = voiced || alts.length ? 'bad' : null
-      if (debugOn) setWordDebug(`heard ${alts.map(a => `“${a.display}”`).join(' / ') || 'nothing'} · in place of “${target}”: ${at.map(x => x ?? '∅').join('/')} · ${sc.info} · ${seconds.toFixed(1)}s · peak ${peak.toFixed(2)}`)
+      if (debugOn) setWordDebug(`heard ${alts.map(a => `"${a.display}"`).join(' / ') || 'nothing'} · in place of "${target}": ${at.map(x => x ?? '∅').join('/')} · ${sc.info} · ${seconds.toFixed(1)}s · peak ${peak.toFixed(2)}`)
       if (result === null) {
-        setWordErr('We didn’t hear you. Tap “Say it” and speak up.'); setWordPhase('idle'); setWordHint(''); return
+        setWordErr("We didn't hear you. Tap \"Say it\" and speak up."); setWordPhase('idle'); setWordHint(''); return
       }
       setWordResult(result); setWordHeard(topHeard); setWordTries(n => n + 1); setWordPhase('done')
       if (result === 'good') {
         setWordHint(''); setWordStreak(n => Math.min(n + 1, STREAK_GOAL))
+        setConsecutiveBad(0)
+        if (drillActive.current) {
+          drillReps.current++
+          if (drillReps.current >= 2) {
+            drillActive.current = false
+            setDrillPhase(null); setDrillHighlight(-1)
+          } else {
+            setTimeout(async () => {
+              if (!drillActive.current) return
+              setWordResult(null); setWordPhase('idle'); setWordHint('')
+              await hearAsync(word || '', 0.75)
+              await sleep(300)
+              if (drillActive.current) void sayWord()
+            }, 900)
+          }
+        }
+      } else if (result === 'amber') {
+        setConsecutiveBad(0)
+        if (drillActive.current) {
+          drillReps.current++
+          if (drillReps.current >= 2) {
+            drillActive.current = false
+            setDrillPhase(null); setDrillHighlight(-1)
+          } else {
+            setTimeout(async () => {
+              if (!drillActive.current) return
+              setWordResult(null); setWordPhase('idle'); setWordHint('')
+              await hearAsync(word || '', 0.75)
+              await sleep(300)
+              if (drillActive.current) void sayWord()
+            }, 900)
+          }
+        } else {
+          setWordHint('listen')
+          setTimeout(() => hear(phrase, () => setWordHint('yourturn')), 900)
+        }
       } else {
-        setWordHint('listen')
-        setTimeout(() => hear(phrase, () => setWordHint('yourturn')), 900)
+        if (drillActive.current) {
+          setTimeout(async () => {
+            if (!drillActive.current) return
+            setWordResult(null); setWordPhase('idle'); setWordHint('')
+            await hearAsync(word || '', 0.75)
+            await sleep(300)
+            if (drillActive.current) void sayWord()
+          }, 900)
+        } else {
+          setConsecutiveBad(n => {
+            const next = n + 1
+            if (next >= 3) { setTimeout(() => startDrill(), 1000) }
+            else {
+              setWordHint('listen')
+              setTimeout(() => hear(phrase, () => setWordHint('yourturn')), 900)
+            }
+            return next
+          })
+        }
       }
     } catch (e) {
       fail(e instanceof Error ? e.message : 'Something went wrong.')
     }
   }
 
-  function closeCoach() { stopWord(); setPracticeWord(null) }
+  function closeCoach() {
+    drillActive.current = false
+    setDrillPhase(null)
+    setDrillHighlight(-1)
+    setConsecutiveBad(0)
+    stopWord(); setPracticeWord(null)
+  }
+  async function startDrill() {
+    const word = practiceWord
+    if (!word) return
+    const dd: DrillData = DRILL_DATA[word] ?? { syl: [word], p1: word.slice(0, Math.ceil(word.length / 2)), p2: word.slice(Math.ceil(word.length / 2)) }
+    drillActive.current = true
+    drillReps.current = 0
+    setConsecutiveBad(0)
+    setDrillPhase('intro')
+    setWordHint(''); setWordResult(null)
+    await sleep(2200)
+    if (!drillActive.current) return
+
+    setDrillPhase('play-slow'); setDrillHighlight(0)
+    await hearAsync(dd.p1, 0.35)
+    await sleep(350)
+    if (!drillActive.current) return
+
+    setDrillPhase('echo-slow')
+    await vadDetect(500)
+    await sleep(450)
+    if (!drillActive.current) return
+
+    setDrillPhase('play-hard'); setDrillHighlight(dd.syl.length - 1)
+    await hearAsync(dd.p2, 0.3)
+    await sleep(350)
+    if (!drillActive.current) return
+
+    setDrillPhase('echo-hard')
+    await vadDetect(500)
+    await sleep(450)
+    if (!drillActive.current) return
+
+    setDrillPhase('play-full'); setDrillHighlight(-1)
+    await hearAsync(word, 0.75)
+    await sleep(400)
+    if (!drillActive.current) return
+
+    setDrillPhase('listen-full')
+    void sayWord()
+  }
+
+  async function startPractice() {
+    if (!practiceWord || !student) return
+    const phrase = practicePhrase || practiceWord
+    setWordPhase('hearing'); setWordResult(null); setWordHint('')
+    await hearAsync(phrase, 0.8)
+    await sleep(350)
+    if (!practiceWord) return
+    void sayWord()
+  }
+
   function resetToPick() { closeCoach(); setPhase('pick'); setFirst(null); setSecond(null); setFb(null) }
 
   const remaining = Math.max(0, MAX_SECONDS - secs)
@@ -709,7 +985,7 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
           <button type="button" className="studio-mic" onClick={() => start(1)} disabled={!student}>
             <span className="studio-mic-dot" />🎙️ Start speaking
           </button>
-          <p className="studio-note">{student ? 'Speak for 60 to 90 seconds. Your words appear as you talk. Nothing is recorded or stored.' : 'Sign in at Student’s Corner to have your speaking checked.'}</p>
+          <p className="studio-note">{student ? 'Speak for 60 to 90 seconds. Your words appear as you talk. Nothing is recorded or stored.' : "Sign in at Student's Corner to have your speaking checked."}</p>
         </>
       )}
       {phase === 'connecting' && <p className="studio-note studio-wait">Opening the microphone…</p>}
@@ -762,7 +1038,9 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
   const coach = practiceWord && (
     <WordCoach word={practiceWord} phrase={practicePhrase || practiceWord} result={wordResult} heard={wordHeard} before={wordBefore} phase={wordPhase} hint={wordHint}
       err={wordErr} explain={wordExplain} volume={wordVolume} streak={wordStreak} clip={wordClip} debug={wordDebug} tries={wordTries}
-      onSay={() => void sayWord()} onHear={() => hear(practicePhrase || practiceWord)} onClose={closeCoach} onFinish={stopWord} />
+      goal={pronGoal} drillPhase={drillPhase} drillHighlight={drillHighlight}
+      onStart={() => void startPractice()} onClose={closeCoach} onFinish={stopWord}
+      onChangeGoal={() => setShowGoalModal(true)} />
   )
   return (
     <div className="rp">
@@ -836,7 +1114,7 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
                   <div className="rp-say">
                     {practiseList.map(x => (
                       <button key={x.word + (x.heard ?? '')} type="button" onClick={() => openWordPractice(x.word, x.heard, 'said')}>
-                        <b>{x.word}</b>{x.heard && <small>we heard “{x.heard}”</small>}
+                        <b>{x.word}</b>{x.heard && <small>we heard "{x.heard}"</small>}
                       </button>
                     ))}
                   </div>
@@ -886,6 +1164,7 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
         </aside>
       </div>
       {narrow && coach && createPortal(<div className="wc-sheet">{coach}</div>, document.body)}
+      {showGoalModal && <GoalModal onChoose={chooseGoal} />}
     </div>
   )
 }
