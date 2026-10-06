@@ -87,11 +87,12 @@ function narrow(heard: string, meant: string) {
 }
 
 export async function POST(req: NextRequest) {
-  const body = (await req.json().catch(() => ({}))) as { name?: string; code?: string; question?: string; transcript?: string }
+  const body = (await req.json().catch(() => ({}))) as { name?: string; code?: string; question?: string; transcript?: string; lexicalTranscript?: string }
   if (!lookupStudent(String(body.name || ''), String(body.code || ''))) {
-    return NextResponse.json({ error: 'Sign in at Student’s Corner first.' }, { status: 401 })
+    return NextResponse.json({ error: "Sign in at Student's Corner first." }, { status: 401 })
   }
   const transcript = String(body.transcript || '').trim().slice(0, 4000)
+  const lexicalTranscript = String(body.lexicalTranscript || '').trim().slice(0, 4000)
   const question = String(body.question || '').trim().slice(0, 300)
   if (transcript.split(/\s+/).length < 5) {
     return NextResponse.json({ error: 'Say a bit more first: two or three sentences.' }, { status: 400 })
@@ -102,7 +103,7 @@ export async function POST(req: NextRequest) {
       model: 'claude-sonnet-5',
       max_tokens: 4000,
       system: SYSTEM,
-      messages: [{ role: 'user', content: `Question: "${question}"\n\nWhat the student said (transcript):\n"""\n${transcript}\n"""\n\nGive the JSON now.` }],
+      messages: [{ role: 'user', content: `Question: "${question}"\n\nWhat the student said (transcript):\n"""\n${transcript}\n"""${lexicalTranscript && lexicalTranscript !== transcript ? `\n\nRaw recognition (before ASR grammar correction) — use this to catch errors Azure silently fixed, e.g. wrong verb forms:\n"""\n${lexicalTranscript}\n"""` : ''}\n\nGive the JSON now.` }],
     })
     const raw = msg.content.find((c): c is Anthropic.TextBlock => c.type === 'text')?.text || ''
     const json = JSON.parse(raw.match(/\{[\s\S]*\}/)?.[0] || '{}')
