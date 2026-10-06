@@ -544,13 +544,7 @@ export default function Home() {
     setTimeout(() => { setHeroSlide(i); setHeroFade(true) }, 220)
   }
 
-  return (
-    <>
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      <link rel="stylesheet" precedence="default" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Poppins:wght@600;700&display=swap" />
-
-      <style suppressHydrationWarning>{`
+  const pageCSS = `
         :root {
           --paper: #F5F1E6; --paper-2: #EDE7D6;
           --ink: #17281B; --racing: #1E4227; --racing-2: #2A5636;
@@ -1204,7 +1198,15 @@ export default function Home() {
           .hero-actions { gap: .5rem; }
           .hero-actions .btn { padding: .7rem 1.3rem; }
         }
-      `}</style>
+  `
+
+  return (
+    <>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      <link rel="stylesheet" precedence="default" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Poppins:wght@600;700&display=swap" />
+
+      <style dangerouslySetInnerHTML={{ __html: pageCSS }} />
 
       <div className="grain" aria-hidden="true" />
 
