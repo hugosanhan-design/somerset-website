@@ -102,10 +102,10 @@ export async function POST(req: NextRequest) {
   if (!(await requireSessionOrCode(req))) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
   try {
-    const { studentName, level, taskType, taskPrompt, studentText } = await req.json()
+    const { studentName, level, taskType, taskPrompt, studentText, studentNotes } = await req.json()
 
     // ── Pass 1: Audit (Haiku, temperature 0) ─────────────────────────────
-    const audit = await auditWriting(studentText, taskType)
+    const audit = await auditWriting(studentText, taskType, studentNotes)
 
     const mark = markFromErrors(audit.errors.length)
     const langScore = languageScoreFromErrors(audit.errors.length)

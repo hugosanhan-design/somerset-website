@@ -17,6 +17,7 @@ function CorrectPageInner() {
   const [taskType, setTaskType] = useState('Essay')
   const [taskPrompt, setTaskPrompt] = useState('')
   const [studentText, setStudentText] = useState('')
+  const [studentProfile, setStudentProfile] = useState('')
   const [loading, setLoading] = useState(false)
   const [generatingDocx, setGeneratingDocx] = useState(false)
   const [extracting, setExtracting] = useState(false)
@@ -30,6 +31,15 @@ function CorrectPageInner() {
   const iframeRef = useRef<HTMLIFrameElement>(null)
   const pdfInputRef = useRef<HTMLInputElement>(null)
   const photoInputRef = useRef<HTMLInputElement>(null)
+
+  async function handlePasteFromClipboard() {
+    try {
+      const text = await navigator.clipboard.readText()
+      if (text.trim()) setStudentText(text.trim())
+    } catch {
+      setExtractError('Clipboard access denied. Please paste manually into the text area.')
+    }
+  }
 
   async function handleFileExtract(file: File) {
     if (file.size > MAX_FILE_MB * 1024 * 1024) {
@@ -72,7 +82,7 @@ function CorrectPageInner() {
       const res = await fetch('/api/correct', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ studentName, level, taskType, taskPrompt, studentText }),
+        body: JSON.stringify({ studentName, level, taskType, taskPrompt, studentText, studentNotes: studentProfile }),
       })
       const data = await res.json()
       setReportHtml(data.html)
@@ -114,7 +124,7 @@ function CorrectPageInner() {
       const res = await fetch('/api/correct-docx', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ studentName, level, taskType, taskPrompt, studentText }),
+        body: JSON.stringify({ studentName, level, taskType, taskPrompt, studentText, studentNotes: studentProfile }),
       })
       if (!res.ok) { alert('Word generation failed. Please try again.'); return }
       const blob = await res.blob()
@@ -195,12 +205,15 @@ function CorrectPageInner() {
           />
 
           <label style={styles.label}>Student's answer <span style={styles.req}>*</span></label>
-          <div style={{ display: 'flex', gap: 8 }}>
+          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
             <button type="button" onClick={() => pdfInputRef.current?.click()} disabled={extracting} style={styles.uploadBtn}>
               📄 Upload PDF
             </button>
             <button type="button" onClick={() => photoInputRef.current?.click()} disabled={extracting} style={styles.uploadBtn}>
               📷 Photo / Image
+            </button>
+            <button type="button" onClick={handlePasteFromClipboard} disabled={extracting} style={styles.uploadBtn}>
+              📋 Paste
             </button>
             <input ref={pdfInputRef} type="file" accept="application/pdf" style={{ display: 'none' }}
               onChange={e => { const f = e.target.files?.[0]; if (f) handleFileExtract(f); e.target.value = '' }} />
@@ -217,6 +230,14 @@ function CorrectPageInner() {
             onChange={e => setStudentText(e.target.value)}
             placeholder="Paste the student's text here, or use the buttons above"
             required
+          />
+
+          <label style={styles.label}>Known error patterns <span style={{ color: '#9ca3af', fontWeight: 400 }}>(optional)</span></label>
+          <textarea
+            style={{ ...styles.input, height: 80, resize: 'vertical', fontSize: 13 }}
+            value={studentProfile}
+            onChange={e => setStudentProfile(e.target.value)}
+            placeholder="e.g. Capitals at sentence starts, arrived to → arrived at, sequence tense errors (was doing → did for first/then steps)"
           />
 
           <button type="submit" style={loading ? styles.buttonDisabled : styles.button} disabled={loading}>

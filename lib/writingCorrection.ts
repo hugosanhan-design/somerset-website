@@ -72,6 +72,7 @@ export interface WritingCorrectionInput {
   taskType: string
   taskPrompt: string
   studentText: string
+  studentNotes?: string
 }
 
 export interface WritingCorrectionResult {
@@ -83,7 +84,7 @@ export interface WritingCorrectionResult {
 
 export async function correctWriting(input: WritingCorrectionInput): Promise<WritingCorrectionResult> {
   // ── Pass 1: Audit (Haiku, temperature 0) ─────────────────────────────
-  const audit = await auditWriting(input.studentText, input.taskType)
+  const audit = await auditWriting(input.studentText, input.taskType, input.studentNotes)
 
   const mark = markFromErrors(audit.errors.length)
   const langScore = languageScoreFromErrors(audit.errors.length)

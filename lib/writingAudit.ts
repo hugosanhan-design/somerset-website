@@ -135,12 +135,13 @@ export interface AuditResult {
 export async function auditWriting(
   studentText: string,
   taskType: string,
+  studentNotes?: string,
 ): Promise<AuditResult> {
   const isFormal = FORMAL_TYPES.some(t => taskType.toLowerCase().includes(t))
 
   const userMessage = `TASK TYPE: ${taskType}
 IS FORMAL WRITING: ${isFormal ? 'YES — check contractions and register (categories 1 and 18)' : 'NO — skip contractions and register checks'}
-
+${studentNotes ? `\nADDITIONAL FOCUS AREAS FOR THIS STUDENT (pay extra attention to these known patterns):\n${studentNotes}\n` : ''}
 STUDENT TEXT:
 ${studentText}
 
