@@ -1,0 +1,1086 @@
+{
+ "id": "new-closeup-b2-split-a",
+ "name": "New Close-up B2 (3rd ed.), Split A",
+ "publisher": "National Geographic Learning",
+ "level": "B2",
+ "exam": "Cambridge B2 First (FCE)",
+ "note": "Units 1-6. Vocabulary transcribed from the book's own Vocabulary reference, pages 95-100. Grammar, reading, listening, speaking and writing strands from the Student's Book contents page. Nothing here is inferred.",
+ "source": "_source-books/NEW CLOSE UP B2 Split A y B/FCE Close-up New, Split A/",
+ "teachersBook": "_source-books/Close_up_B2_Teachers_Book.md",
+ "units": [
+  {
+   "unit": 1,
+   "title": "Jump for joy",
+   "sbPages": "5-16",
+   "tbPage": 20,
+   "grammar": [
+    "present simple and present continuous",
+    "present perfect simple and present perfect continuous"
+   ],
+   "reading": "finding key information in the text; multiple choice with one text",
+   "listening": "identifying your reason for listening; multiple choice, one per text",
+   "speaking": "answering personal questions; interview",
+   "writing": "using the correct tone; planning your response; writing an informal letter or email",
+   "useOfEnglish": "phrasal verbs; prepositions; open cloze (completing gapped texts)",
+   "liveWell": "resilience; positive and negative thinking",
+   "sections": [
+    {
+     "name": "Emotions",
+     "words": [
+      {
+       "w": "amazed",
+       "ex": "I'm amazed at how well she did in the exam."
+      },
+      {
+       "w": "anxious",
+       "ex": "I'm usually anxious before I get on a plane."
+      },
+      {
+       "w": "confident",
+       "ex": "He's confident and believes in himself."
+      },
+      {
+       "w": "desperate",
+       "ex": "There were a lot of people who were desperate for help after the earthquake."
+      },
+      {
+       "w": "embarrassed",
+       "ex": "I couldn't hide how embarrassed I felt."
+      },
+      {
+       "w": "frustrated",
+       "ex": "I get frustrated when I can't have what I want."
+      },
+      {
+       "w": "get under your skin",
+       "ex": "Tom is annoying, but don't let him get under your skin."
+      },
+      {
+       "w": "guilty",
+       "ex": "I feel guilty about forgetting my mother's birthday."
+      },
+      {
+       "w": "in agony",
+       "ex": "My tooth hurt so much, I was in agony."
+      },
+      {
+       "w": "lost for words",
+       "ex": "It was a really big surprise, I was lost for words."
+      },
+      {
+       "w": "on the edge of our seats",
+       "ex": "The film was so exciting that we were on the edge of our seats at the end."
+      },
+      {
+       "w": "overjoyed",
+       "ex": "I was overjoyed when my team won."
+      },
+      {
+       "w": "relieved",
+       "ex": "I'm relieved that you weren't hurt."
+      },
+      {
+       "w": "sympathetic",
+       "ex": "My teacher understood why I had missed the class and was sympathetic about the problems I was having."
+      },
+      {
+       "w": "with regret",
+       "ex": "With regret, I cannot come to your party tonight."
+      }
+     ]
+    },
+    {
+     "name": "Personality",
+     "words": [
+      {
+       "w": "aggressive",
+       "ex": "He got aggressive and started shouting."
+      },
+      {
+       "w": "arrogant",
+       "ex": "She's arrogant and thinks she's more important than other people."
+      },
+      {
+       "w": "bad-tempered",
+       "ex": "I'm bad-tempered in the mornings, never cheerful."
+      },
+      {
+       "w": "childish",
+       "ex": "He's 45, but sometimes acts in a childish way."
+      },
+      {
+       "w": "loyal",
+       "ex": "Olivia is very loyal to that supermarket and never goes anywhere else."
+      },
+      {
+       "w": "mature",
+       "ex": "Hannah is only 12, but seems mature for her age."
+      },
+      {
+       "w": "mean",
+       "ex": "Jack is quite mean, I've never seen him be kind to anyone."
+      },
+      {
+       "w": "reliable",
+       "ex": "My car is reliable, I've never had a problem with it."
+      },
+      {
+       "w": "sensitive",
+       "ex": "It's easy to hurt Andrew's feelings, he's so sensitive."
+      },
+      {
+       "w": "stubborn",
+       "ex": "Esther is very stubborn and never changes her mind, even if she's wrong."
+      }
+     ]
+    },
+    {
+     "name": "Phrasal verbs",
+     "words": [
+      {
+       "w": "cheer up",
+       "ex": "Anna felt ill, so I sent her some flowers to cheer her up."
+      },
+      {
+       "w": "chill out",
+       "ex": "I'm just chilling out tonight, watching a film at home."
+      },
+      {
+       "w": "fall out",
+       "ex": "Sarah and I fell out and we're not friends any more."
+      },
+      {
+       "w": "get down",
+       "ex": "This rain is getting me down. I hope it's sunny soon."
+      },
+      {
+       "w": "go off",
+       "ex": "I used to like this TV show, but I went off it."
+      },
+      {
+       "w": "hit it off",
+       "ex": "Jo and I hit it off and became friends as soon as we met."
+      },
+      {
+       "w": "stand up",
+       "ex": "Mark and I arranged to meet, but he stood me up and never came."
+      }
+     ]
+    },
+    {
+     "name": "Prepositions",
+     "words": [
+      {
+       "w": "burst into tears",
+       "ex": "The little girl burst into tears when she couldn't find her toy."
+      },
+      {
+       "w": "concentrate on",
+       "ex": "I listen to music when I want to concentrate on something."
+      },
+      {
+       "w": "focus on",
+       "ex": "I'm studying history and focusing on the 20th century."
+      },
+      {
+       "w": "lead to",
+       "ex": "Stricter laws will lead to fewer accidents on the roads."
+      },
+      {
+       "w": "respond to",
+       "ex": "Emma always responds to emails very quickly."
+      },
+      {
+       "w": "responsible for",
+       "ex": "The town council is responsible for cleaning the streets."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "unit": 2,
+   "title": "Global culture?",
+   "sbPages": "17-28",
+   "tbPage": 32,
+   "grammar": [
+    "past simple and past continuous",
+    "used to and would"
+   ],
+   "reading": "eliminating almost-right answers; matching prompts to text",
+   "listening": "predicting content; complete the sentences",
+   "speaking": "describing traditions; comparing",
+   "writing": "an article",
+   "useOfEnglish": "word formation",
+   "video": "Intercultural skills for turbulent times",
+   "sections": [
+    {
+     "name": "Traditions and festivals",
+     "words": [
+      {
+       "w": "ancestors",
+       "ex": "Some of my ancestors lived in Scotland hundreds of years ago."
+      },
+      {
+       "w": "bonds",
+       "ex": "There are strong bonds between England and the US because they share the same language."
+      },
+      {
+       "w": "ceremony",
+       "ex": "The sports competition finished with a fantastic closing ceremony."
+      },
+      {
+       "w": "costume",
+       "ex": "It's rare to see people dressed in the national costume nowadays."
+      },
+      {
+       "w": "festival",
+       "ex": "There is a big music festival in my city every summer."
+      },
+      {
+       "w": "festivities",
+       "ex": "The festivities include singing, dancing and lots of food."
+      },
+      {
+       "w": "legend",
+       "ex": "According to legend, there is treasure hidden at the bottom of the lake."
+      },
+      {
+       "w": "mask",
+       "ex": "He had a mask that covered his face."
+      },
+      {
+       "w": "origins",
+       "ex": "What are the origins of this idiom?"
+      },
+      {
+       "w": "parade",
+       "ex": "We watched the parade moving up the street from our balcony."
+      },
+      {
+       "w": "reception",
+       "ex": "We invited 50 guests to our wedding reception."
+      },
+      {
+       "w": "role",
+       "ex": "Musicians play an important role in my culture."
+      },
+      {
+       "w": "spectacle",
+       "ex": "The opening of the Olympic Games is always a great spectacle."
+      },
+      {
+       "w": "spectators",
+       "ex": "The stadium was full of spectators."
+      },
+      {
+       "w": "speech",
+       "ex": "My dad gave a speech at my wedding."
+      },
+      {
+       "w": "tradition",
+       "ex": "In the US, it's a tradition to have fireworks on the 4th of July."
+      },
+      {
+       "w": "witness",
+       "ex": "I need someone to be the witness and sign the certificate at my wedding."
+      }
+     ]
+    },
+    {
+     "name": "Phrasal verbs",
+     "words": [
+      {
+       "w": "call off",
+       "ex": "Hockey practice has been called off because our coach is ill."
+      },
+      {
+       "w": "date back",
+       "ex": "This tradition dates back hundreds of years."
+      },
+      {
+       "w": "go ahead",
+       "ex": "The festival will go ahead as planned, despite the bad weather."
+      },
+      {
+       "w": "identify with",
+       "ex": "Many young people don't identify with older politicians."
+      },
+      {
+       "w": "look back at",
+       "ex": "I don't like to look back at all the mistakes I've made."
+      },
+      {
+       "w": "spread out over",
+       "ex": "The festival is spread out over a week."
+      },
+      {
+       "w": "talk someone into",
+       "ex": "My friend didn't want to help me at first, but I talked her into it."
+      }
+     ]
+    },
+    {
+     "name": "Collocations and expressions",
+     "words": [
+      {
+       "w": "build a reputation as",
+       "ex": "My mother has built a reputation as a skilled architect."
+      },
+      {
+       "w": "have roots in",
+       "ex": "Some of my country's food has its roots in Italian cooking."
+      },
+      {
+       "w": "hold a festival",
+       "ex": "The music festival is held every year in the spring."
+      },
+      {
+       "w": "give a speech",
+       "ex": "Several important politicians gave speeches at the event."
+      },
+      {
+       "w": "play an important role",
+       "ex": "Music plays an important role in my life."
+      },
+      {
+       "w": "use without permission",
+       "ex": "Please don't use my computer without my permission."
+      },
+      {
+       "w": "widely known as",
+       "ex": "New York City is widely known as the 'big apple'."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "unit": 3,
+   "title": "Role models",
+   "sbPages": "29-40",
+   "tbPage": 43,
+   "grammar": [
+    "past perfect simple and past perfect continuous"
+   ],
+   "reading": "choosing the correct sentences; matching sentences to gaps",
+   "listening": "scanning statements while listening; matching prompts to spoken texts",
+   "speaking": "giving opinions about people",
+   "writing": "an essay",
+   "useOfEnglish": "phrasal verbs; expressions",
+   "liveWell": "time management; procrastination",
+   "sections": [
+    {
+     "name": "Success and fame",
+     "words": [
+      {
+       "w": "a household name",
+       "ex": "The TV chef is a household name, everyone knows her."
+      },
+      {
+       "w": "ambitious",
+       "ex": "He's very ambitious, but I'm not sure he'll succeed."
+      },
+      {
+       "w": "breakthrough",
+       "ex": "Scientists have made a breakthrough in understanding the disease."
+      },
+      {
+       "w": "claim to fame",
+       "ex": "My only claim to fame is that I was on a TV show three years ago."
+      },
+      {
+       "w": "comeback",
+       "ex": "The comedian, who was famous 20 years ago, is starting to make a comeback."
+      },
+      {
+       "w": "come out of nowhere",
+       "ex": "He came out of nowhere to become one of the most well-known singers in the country."
+      },
+      {
+       "w": "cope",
+       "ex": "It's difficult to cope with having children and a full-time job."
+      },
+      {
+       "w": "determination",
+       "ex": "As well as luck and skill, you need determination to succeed."
+      },
+      {
+       "w": "disgrace",
+       "ex": "The football player was found to have cheated, and he brought disgrace to his team."
+      },
+      {
+       "w": "encouragement",
+       "ex": "I offered my friend some encouragement when she was starting to doubt herself."
+      },
+      {
+       "w": "fail",
+       "ex": "I tried my best at the interview, but I failed to get the job."
+      },
+      {
+       "w": "fame",
+       "ex": "Fame and money don't always make people happy."
+      },
+      {
+       "w": "follow in someone's footsteps",
+       "ex": "I hope to follow in my grandfather's footsteps and become an engineer."
+      },
+      {
+       "w": "gossip",
+       "ex": "I don't like listening to gossip about other people's private lives."
+      },
+      {
+       "w": "influence",
+       "ex": "My aunt had a big influence on me when I was a child."
+      },
+      {
+       "w": "inspire",
+       "ex": "Which teacher has inspired you the most?"
+      },
+      {
+       "w": "never get anywhere",
+       "ex": "You'll never get anywhere with your piano lessons if you don't practise."
+      },
+      {
+       "w": "open doors",
+       "ex": "Knowing the right people can really open doors in life."
+      },
+      {
+       "w": "overcome",
+       "ex": "He overcame his natural shyness and became a successful actor."
+      },
+      {
+       "w": "reality",
+       "ex": "It's rare for someone's dreams to become reality."
+      },
+      {
+       "w": "rumour",
+       "ex": "There is a rumour that the actor is leaving the soap opera soon."
+      },
+      {
+       "w": "scandal",
+       "ex": "After the scandal, the politician had to resign."
+      },
+      {
+       "w": "secret of my success",
+       "ex": "My wife is the secret of my success, she has always supported me."
+      },
+      {
+       "w": "seize the chance",
+       "ex": "I was offered free tickets to the concert, so I seized the chance and went."
+      },
+      {
+       "w": "sponsor",
+       "ex": "Companies often sponsor sportspeople or teams for a lot of money."
+      },
+      {
+       "w": "succeed",
+       "ex": "If at first you don't succeed, keep trying."
+      }
+     ]
+    },
+    {
+     "name": "Phrasal verbs",
+     "words": [
+      {
+       "w": "catch up on",
+       "ex": "I hope we can meet soon to catch up on your news."
+      },
+      {
+       "w": "come up with",
+       "ex": "We need to come up with a new plan."
+      },
+      {
+       "w": "get away with",
+       "ex": "I made some mistakes in my test, but I got away with them."
+      },
+      {
+       "w": "live up to",
+       "ex": "The hotel I stayed at didn't live up to its photos on the internet."
+      },
+      {
+       "w": "look down on",
+       "ex": "Maria thinks people look down on her because she didn't go to university."
+      },
+      {
+       "w": "look up to",
+       "ex": "I look up to my brother because he's good at everything."
+      },
+      {
+       "w": "make up for",
+       "ex": "I bought my friend a coffee to make up for making her upset."
+      },
+      {
+       "w": "miss out on",
+       "ex": "There will be a big sale in the shops, which I don't want to miss out on."
+      }
+     ]
+    },
+    {
+     "name": "Expressions",
+     "words": [
+      {
+       "w": "draw attention to",
+       "ex": "I don't like to draw attention to myself."
+      },
+      {
+       "w": "lead the way",
+       "ex": "The company leads the way in mobile phone technology."
+      },
+      {
+       "w": "lose my passion for",
+       "ex": "I lost my passion for football after my team kept losing."
+      },
+      {
+       "w": "see the funny side",
+       "ex": "Someone made a joke about her, but she didn't see the funny side."
+      },
+      {
+       "w": "set a good example",
+       "ex": "Sportspeople should set a good example by not cheating."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "unit": 4,
+   "title": "City living",
+   "sbPages": "41-52",
+   "tbPage": 53,
+   "grammar": [
+    "future forms"
+   ],
+   "reading": "non-linear reading; matching prompts to texts",
+   "listening": "eliminating incorrect answers; multiple choice, seven questions",
+   "speaking": "comparing places; solving a problem",
+   "writing": "a report",
+   "useOfEnglish": "collocations and expressions",
+   "video": "Could biking in a city be bad for you?",
+   "sections": [
+    {
+     "name": "Cities",
+     "words": [
+      {
+       "w": "bike lane",
+       "ex": "Cyclists are happy because of the new bike lanes in the city."
+      },
+      {
+       "w": "commercial",
+       "ex": "The commercial district of the city includes several large hotels, shops and restaurants."
+      },
+      {
+       "w": "crossroads",
+       "ex": "Go straight on when you reach the crossroads."
+      },
+      {
+       "w": "facilities",
+       "ex": "My town needs more facilities, like schools, cinemas and dentists."
+      },
+      {
+       "w": "housing estate",
+       "ex": "I live in a tower block on a housing estate."
+      },
+      {
+       "w": "junction",
+       "ex": "Leave the motorway at the next junction."
+      },
+      {
+       "w": "industrial park",
+       "ex": "My father works in a factory in the town's industrial park."
+      },
+      {
+       "w": "inhabitants",
+       "ex": "My town has over 100,000 inhabitants."
+      },
+      {
+       "w": "outskirts",
+       "ex": "I live in the outskirts of the city, and it takes me about 45 minutes to get to the centre."
+      },
+      {
+       "w": "pavement",
+       "ex": "Please do not ride your bike on the pavement."
+      },
+      {
+       "w": "pedestrian crossing",
+       "ex": "This is a dangerous road because it's busy and there isn't a pedestrian crossing."
+      },
+      {
+       "w": "pedestrian zone",
+       "ex": "I'm looking forward to the city centre becoming a pedestrian zone with no cars."
+      },
+      {
+       "w": "rapid",
+       "ex": "Many people don't like the rapid pace of life in a busy city."
+      },
+      {
+       "w": "residential area",
+       "ex": "The west of my city is the main residential area, with lots of homes with gardens."
+      },
+      {
+       "w": "roadworks",
+       "ex": "There will be roadworks here next week, meaning that we'll need to find another route."
+      },
+      {
+       "w": "rural",
+       "ex": "I grew up in a rural area, the nearest town was 20 km away."
+      },
+      {
+       "w": "settle",
+       "ex": "When I'm older, I'd like to settle in the countryside and have a family."
+      },
+      {
+       "w": "speed camera",
+       "ex": "Don't drive fast here, there are lots of speed cameras."
+      },
+      {
+       "w": "speed limit",
+       "ex": "The speed limit is 30 km/h here."
+      },
+      {
+       "w": "suburbs",
+       "ex": "Many people live in the suburbs, but work in the city centre."
+      },
+      {
+       "w": "traffic light",
+       "ex": "When the traffic light is red, you have to stop."
+      },
+      {
+       "w": "urban",
+       "ex": "There is often a large amount of pollution in urban areas."
+      },
+      {
+       "w": "urbanisation",
+       "ex": "Urbanisation refers to the creation and development of towns and cities."
+      },
+      {
+       "w": "venue",
+       "ex": "The stadium is a great venue for rock concerts as well as big sporting events."
+      }
+     ]
+    },
+    {
+     "name": "Collocations and expressions",
+     "words": [
+      {
+       "w": "all over the place",
+       "ex": "These instructions are very unclear, they're all over the place."
+      },
+      {
+       "w": "best of both worlds",
+       "ex": "I've got a job in the city, but a house in the countryside, the best of both worlds."
+      },
+      {
+       "w": "from all walks of life",
+       "ex": "I travel a lot, so I meet people from all walks of life."
+      },
+      {
+       "w": "ghost town",
+       "ex": "It's like a ghost town here, there aren't any people on the streets."
+      },
+      {
+       "w": "go to town",
+       "ex": "Ryan and Lisa spent a lot of money, they really went to town."
+      },
+      {
+       "w": "life in the fast lane",
+       "ex": "Jo is a city-dweller who enjoys life in the fast lane, but her sister prefers living in a quiet village."
+      },
+      {
+       "w": "live on top of each other",
+       "ex": "My city is very crowded, with people living on top of each other."
+      },
+      {
+       "w": "on the increase",
+       "ex": "The city's population is on the increase, it went up 15% last year."
+      },
+      {
+       "w": "resist the temptation",
+       "ex": "I couldn't resist the temptation to buy some cake today."
+      },
+      {
+       "w": "talk of the town",
+       "ex": "The new shopping mall is the talk of the town."
+      },
+      {
+       "w": "take into consideration",
+       "ex": "When architects create a new building, they need to take the local area into consideration."
+      },
+      {
+       "w": "urban jungle",
+       "ex": "Noise, cars and concrete buildings are all part of the urban jungle."
+      },
+      {
+       "w": "without fail",
+       "ex": "My train to work is always here at 7:53, without fail."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "unit": 5,
+   "title": "Emerging technologies",
+   "sbPages": "53-64",
+   "tbPage": 64,
+   "grammar": [
+    "modals of permission and obligation",
+    "modals of ability",
+    "modals of probability"
+   ],
+   "reading": "coping with technical vocabulary; multiple choice, two short texts",
+   "listening": "choosing from pictures; multiple choice with picture options",
+   "speaking": "discussing technology; agreeing and disagreeing",
+   "writing": "an email",
+   "useOfEnglish": "phrasal verbs; prepositions",
+   "liveWell": "how we use technology; using technology positively",
+   "sections": [
+    {
+     "name": "Technology",
+     "words": [
+      {
+       "w": "access",
+       "ex": "To access the website, you need to enter a password."
+      },
+      {
+       "w": "app",
+       "ex": "We're developing smartphone apps to help students learn English."
+      },
+      {
+       "w": "attachment",
+       "ex": "I'll email you the file as an attachment."
+      },
+      {
+       "w": "backup",
+       "ex": "Make a backup of important files in case anything goes wrong."
+      },
+      {
+       "w": "bookmark",
+       "ex": "You can bookmark websites that you visit frequently."
+      },
+      {
+       "w": "browse",
+       "ex": "I spend about an hour a day browsing the internet."
+      },
+      {
+       "w": "display",
+       "ex": "It's not easy to display a lot of information on a small phone screen."
+      },
+      {
+       "w": "undo",
+       "ex": "You can press control and Z on your keyboard to undo a mistake."
+      },
+      {
+       "w": "upgrade",
+       "ex": "I'd like to upgrade to a new phone."
+      },
+      {
+       "w": "virtually",
+       "ex": "We meet each other virtually through a video call."
+      }
+     ]
+    },
+    {
+     "name": "Compound nouns",
+     "words": [
+      {
+       "w": "anti-virus",
+       "ex": "Can you help me install this anti-virus software onto my laptop?"
+      },
+      {
+       "w": "broadband",
+       "ex": "I've got a fast broadband internet connection."
+      },
+      {
+       "w": "database",
+       "ex": "My job involves putting information into a database."
+      },
+      {
+       "w": "desktop",
+       "ex": "I've got a laptop, not a desktop computer."
+      },
+      {
+       "w": "hard drive",
+       "ex": "I bought a new hard drive to put my photos on."
+      },
+      {
+       "w": "headset",
+       "ex": "I wear a headset when I'm making online calls."
+      },
+      {
+       "w": "network",
+       "ex": "The company spent a lot of money improving their computer network."
+      },
+      {
+       "w": "password",
+       "ex": "Now enter your password."
+      },
+      {
+       "w": "virtual reality",
+       "ex": "Virtual reality is a way of experiencing new 3-D environments."
+      },
+      {
+       "w": "wireless",
+       "ex": "I use a wireless mouse for work."
+      }
+     ]
+    },
+    {
+     "name": "Phrasal verbs",
+     "words": [
+      {
+       "w": "be taken in",
+       "ex": "Don't be taken in by emails from people you don't know, asking for your personal details."
+      },
+      {
+       "w": "come up",
+       "ex": "When I searched for information about my homework topic, thousands of results came up."
+      },
+      {
+       "w": "do without",
+       "ex": "It would be hard for me to do without my phone."
+      },
+      {
+       "w": "get hold of",
+       "ex": "Where can I get hold of some good anti-virus software?"
+      },
+      {
+       "w": "key in",
+       "ex": "Just key in your username and password."
+      },
+      {
+       "w": "speak up",
+       "ex": "Can you speak up, please? I can't hear you."
+      },
+      {
+       "w": "watch out for",
+       "ex": "Watch out for that wire! You might trip over it."
+      }
+     ]
+    },
+    {
+     "name": "Prepositions",
+     "words": [
+      {
+       "w": "arrange for",
+       "ex": "I need to arrange for someone to fix my laptop."
+      },
+      {
+       "w": "at risk of",
+       "ex": "You're at risk of breaking your phone if you drop it."
+      },
+      {
+       "w": "bad for",
+       "ex": "Spending too much time online is bad for you."
+      },
+      {
+       "w": "equipped with",
+       "ex": "My new laptop comes equipped with a webcam and speakers."
+      },
+      {
+       "w": "experiment with",
+       "ex": "I'm creating a website and experimenting with different designs."
+      },
+      {
+       "w": "respond to",
+       "ex": "Emma responds to her emails very quickly."
+      },
+      {
+       "w": "result in",
+       "ex": "Don't download strange programs from the internet, it could result in your computer getting a virus."
+      },
+      {
+       "w": "stare at",
+       "ex": "If you stare at a screen for too long, it hurts your eyes."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "unit": 6,
+   "title": "Take it easy",
+   "sbPages": "65-76",
+   "tbPage": 75,
+   "grammar": [
+    "the -ing form and infinitives"
+   ],
+   "reading": "identifying the purpose of a text; multiple choice with four texts",
+   "listening": "working out the missing information; complete the sentences",
+   "speaking": "giving opinions; picture discussion",
+   "writing": "a review",
+   "useOfEnglish": "phrasal verbs; prepositions; collocations",
+   "video": "Will future robots and AI take over?",
+   "sections": [
+    {
+     "name": "Sports",
+     "words": [
+      {
+       "w": "competitive",
+       "ex": "I prefer sport that I can do alone, rather than competitive games."
+      },
+      {
+       "w": "defender",
+       "ex": "Our football team has a brilliant new defender."
+      },
+      {
+       "w": "in the lead",
+       "ex": "My team was in the lead until the other side scored two extra goals."
+      },
+      {
+       "w": "lap",
+       "ex": "I completed two laps of the race course in under 20 minutes."
+      },
+      {
+       "w": "marathon",
+       "ex": "A marathon is 42 kilometres in length."
+      },
+      {
+       "w": "medal",
+       "ex": "She has won three Olympic gold medals."
+      },
+      {
+       "w": "on target",
+       "ex": "We're on target to achieve our goals at the end of the year."
+      },
+      {
+       "w": "opponent",
+       "ex": "I lost because my opponent was too strong."
+      },
+      {
+       "w": "penalty",
+       "ex": "The footballer was allowed a penalty kick."
+      },
+      {
+       "w": "pitch",
+       "ex": "The football game was cancelled because there was too much water on the pitch."
+      },
+      {
+       "w": "referee",
+       "ex": "The referee decided that the player had broken the rules."
+      },
+      {
+       "w": "represent",
+       "ex": "I'd love to represent my country at the Olympics."
+      },
+      {
+       "w": "round",
+       "ex": "We won this stage of the competition, and now we're going through to the next round."
+      },
+      {
+       "w": "save",
+       "ex": "The goalkeeper jumped to save the ball."
+      },
+      {
+       "w": "score",
+       "ex": "The team scored an extra goal in the last three minutes."
+      },
+      {
+       "w": "semifinal",
+       "ex": "If we win the semifinals, then we'll go through to the last stage of the competition."
+      },
+      {
+       "w": "set",
+       "ex": "My favourite tennis player won the set and now has a good chance of winning the whole match."
+      },
+      {
+       "w": "shot",
+       "ex": "That was a great shot by Messi, but it didn't hit the goal."
+      },
+      {
+       "w": "trophy",
+       "ex": "He's an excellent player, but he's never won a trophy."
+      },
+      {
+       "w": "victory",
+       "ex": "My team won an impressive victory over their opponents."
+      }
+     ]
+    },
+    {
+     "name": "Phrasal verbs",
+     "words": [
+      {
+       "w": "burst out",
+       "ex": "The joke was so funny, I burst out laughing."
+      },
+      {
+       "w": "give up",
+       "ex": "I know it's difficult, but don't give up."
+      },
+      {
+       "w": "keep up with",
+       "ex": "It's hard to keep up with James, because he runs so fast."
+      },
+      {
+       "w": "knock over",
+       "ex": "I bowled the ball and only managed to knock over one pin."
+      },
+      {
+       "w": "show off",
+       "ex": "He's bought a new car, and now he's showing it off to everyone."
+      },
+      {
+       "w": "take off",
+       "ex": "My sporting career only took off last year when I won that competition."
+      }
+     ]
+    },
+    {
+     "name": "Prepositions",
+     "words": [
+      {
+       "w": "a combination of",
+       "ex": "She was wearing a horrible combination of colours."
+      },
+      {
+       "w": "appeal to",
+       "ex": "Football appeals to people all over the world."
+      },
+      {
+       "w": "just for",
+       "ex": "My uncle bought a huge TV just for watching sports."
+      },
+      {
+       "w": "move on",
+       "ex": "Shall we move on to the next topic?"
+      },
+      {
+       "w": "onto something",
+       "ex": "That's a good idea, I think you're onto something."
+      }
+     ]
+    },
+    {
+     "name": "Collocations",
+     "words": [
+      {
+       "w": "come close to",
+       "ex": "I know I'll never come close to running a marathon."
+      },
+      {
+       "w": "hold an important place",
+       "ex": "Football holds an important place in my heart."
+      },
+      {
+       "w": "know the first thing",
+       "ex": "I don't know the first thing about cricket."
+      },
+      {
+       "w": "make a difference",
+       "ex": "Doing a little exercise every day can make a big difference to your health."
+      },
+      {
+       "w": "put your life at risk",
+       "ex": "Don't put your life at risk, wear a helmet."
+      },
+      {
+       "w": "take yourself seriously",
+       "ex": "Mark doesn't take himself very seriously."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

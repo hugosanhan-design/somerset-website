@@ -152,7 +152,7 @@ export default function MaterialsPage() {
             </div>
           ) : selectedUnit && (
             <div style={{ fontSize: 12, color: COLORS.muted, marginTop: 10 }}>
-              {selectedUnit.vocab?.length ? `${selectedUnit.vocab.length} words` : ''}
+              {selectedUnit.sections?.reduce((n, sec) => n + sec.words.length, 0) ? `${selectedUnit.sections.reduce((n, sec) => n + sec.words.length, 0)} words` : ''}
               {selectedUnit.sbPages ? ` · Student's Book pages ${selectedUnit.sbPages}` : ''}
               {selectedUnit.grammar?.length ? ` · grammar: ${selectedUnit.grammar.join(', ')}` : ''}
             </div>

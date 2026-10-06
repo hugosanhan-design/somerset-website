@@ -1,0 +1,180 @@
+/* Spanish for Expats — Valencia terracotta palette. Scoped under .sexp */
+.sexp{
+  --terra:#C4694A;--terra-dk:#9B4F35;--terra-lt:#fdf3ef;
+  --azul:#1D4E89;--azul-lt:#e8f0f8;
+  --gold:#E8B84B;--gold-lt:#fef8e4;
+  --green:#5a9a2c;--green-lt:#eaf4da;
+  --ink:#1A1A1A;--ink-lt:#f5f5f3;--white:#fff;
+  --accent:var(--terra);--accent-lt:var(--terra-lt);
+  --serif:Georgia,'Times New Roman',serif;
+  --sans:system-ui,-apple-system,Arial,sans-serif;
+  --radius:10px;
+  font-family:var(--sans);color:var(--ink);background:#faf8f5;
+  min-height:100vh;line-height:1.6;font-size:16px
+}
+.sexp *{box-sizing:border-box}
+.sexp p{margin:0 0 .8rem}.sexp p:last-child{margin-bottom:0}
+.sexp h1,.sexp h2,.sexp h3{margin:0}
+
+/* header */
+.sexp .site-header{position:sticky;top:0;z-index:100;background:var(--ink);color:#fff;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+.sexp .site-header__top{display:flex;align-items:center;gap:1rem;padding:.6rem 1.5rem;border-bottom:1px solid rgba(255,255,255,.1)}
+.sexp .unit-label{font-size:.72rem;opacity:.55;text-transform:uppercase;letter-spacing:1px;flex:1}
+.sexp .corner-link{color:rgba(255,255,255,.75);font-size:.78rem;font-weight:600;text-decoration:none;white-space:nowrap}
+.sexp .corner-link:hover{color:#fff}
+.sexp .lesson-nav{display:flex;padding:0 .75rem;overflow-x:auto;scrollbar-width:none}
+.sexp .lesson-nav::-webkit-scrollbar{display:none}
+.sexp .nav-btn{display:flex;align-items:center;gap:.4rem;padding:.6rem .9rem;font:600 .75rem/1 var(--sans);letter-spacing:.5px;color:rgba(255,255,255,.55);background:none;border:0;border-bottom:3px solid transparent;cursor:pointer;white-space:nowrap;transition:color .2s,border-color .2s}
+.sexp .nav-btn:hover:not(:disabled){color:#fff}
+.sexp .nav-btn:disabled{cursor:default;opacity:.45}
+.sexp .nav-btn.active{color:#fff;border-bottom-color:var(--terra)}
+.sexp .nav-btn.done{color:rgba(255,255,255,.8)}
+.sexp .nav-num,.sexp .nav-tick{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;font-size:.6rem;background:rgba(255,255,255,.12)}
+.sexp .nav-tick{background:var(--terra);color:#fff}
+
+/* hero */
+.sexp .hero{position:relative;height:200px;overflow:hidden;background:var(--ink);animation:sexpHeroIn .6s ease both}
+.sexp .hero--cover{height:420px}
+.sexp .hero-img{width:100%;height:100%;object-fit:cover;opacity:.68;display:block;animation:sexpHeroZoom 10s ease-out both;background:linear-gradient(135deg,#7a3f2a 0%,#c4694a 40%,#1d4e89 100%)}
+.sexp .hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.8) 0%,rgba(0,0,0,.1) 60%,transparent);display:flex;flex-direction:column;justify-content:flex-end;padding:1.6rem 2.5rem;pointer-events:none}
+.sexp .hero-label{font-size:.68rem;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin:0 0 .3rem;color:var(--terra)}
+.sexp .hero-title{font-family:var(--serif);font-size:2rem;color:#fff;line-height:1.1;text-shadow:0 2px 12px rgba(0,0,0,.45)}
+.sexp .hero--cover .hero-title{font-size:3.2rem}
+.sexp .hero-sub{color:rgba(255,255,255,.8);font-size:.95rem;margin:.4rem 0 0;max-width:640px}
+@keyframes sexpHeroIn{from{opacity:0}to{opacity:1}}
+@keyframes sexpHeroZoom{from{transform:scale(1.06)}to{transform:scale(1)}}
+
+/* progress strip */
+.sexp .goals-strip{background:#f7f4f0;border-top:3px solid var(--terra)}
+.sexp .goals-inner{max-width:1100px;margin:0 auto;padding:.7rem 1.5rem .8rem}
+.sexp .seg-bar{display:flex;gap:4px;margin-bottom:.45rem}
+.sexp .seg{flex:1;height:5px;border-radius:99px;background:#e0dcd7;transition:background .4s}
+.sexp .seg--done{background:var(--terra)}
+.sexp .seg--now{background:var(--terra);box-shadow:0 0 0 2px #fff,0 0 0 3px var(--terra)}
+.sexp .goals-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.3rem 1rem}
+.sexp .goal-text{font-size:.8rem;color:#555}
+.sexp .goal-text strong{color:var(--ink)}
+
+/* layout */
+.sexp .page-wrap{max-width:1100px;margin:0 auto;padding:2rem 1.5rem 4rem}
+.sexp .lesson{animation:sexpStepIn .45s cubic-bezier(.22,1,.36,1) both}
+@keyframes sexpStepIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.sexp .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.8rem;align-items:start}
+.sexp .two-col-60{display:grid;grid-template-columns:3fr 2fr;gap:1.8rem;align-items:start}
+@media(max-width:740px){.sexp .two-col,.sexp .two-col-60{grid-template-columns:1fr}}
+
+/* cards */
+.sexp .card{background:#fff;border:1px solid #e8e3de;border-radius:14px;padding:1.6rem 1.8rem 1.8rem;box-shadow:0 4px 18px rgba(0,0,0,.05);margin-bottom:1.5rem}
+.sexp .lesson-header{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:3px solid var(--accent)}
+.sexp .lesson-tag{flex-shrink:0;margin-top:.25rem;font-size:.66rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:.3rem .7rem;border-radius:4px;background:var(--accent);color:#fff;white-space:nowrap}
+.sexp .lesson-title{font-family:var(--serif);font-size:1.55rem;color:var(--ink);line-height:1.15}
+.sexp .lesson-aim{font-size:.85rem;color:#666;margin:.25rem 0 0}
+
+/* intro */
+.sexp .intro-card{background:#fff;border-radius:14px;box-shadow:0 4px 16px rgba(0,0,0,.08);padding:2rem 2rem 1.6rem;position:relative}
+.sexp .intro-card::before{content:'\201C';position:absolute;top:-.4rem;left:1.4rem;font-size:5rem;font-family:var(--serif);color:var(--terra-lt);line-height:1}
+.sexp .dropcap-text{font-family:var(--serif);font-size:1.02rem;line-height:1.75;position:relative}
+.sexp .dropcap{float:left;font-family:var(--serif);font-size:4rem;line-height:.8;padding:.15rem .4rem 0 0;color:var(--terra);font-weight:700}
+.sexp .intro-sub{font-size:.9rem;color:#555;margin-top:.8rem}
+.sexp .goal-list{list-style:none;padding:0;margin:1rem 0 0}
+.sexp .goal-list li{font-size:.86rem;color:#2a2a2a;position:relative;padding-left:1.1rem;margin-bottom:.35rem}
+.sexp .goal-list li::before{content:'✓';position:absolute;left:0;top:.1rem;color:var(--terra);font-weight:700;font-size:.75rem}
+
+/* level badge */
+.sexp .level-badge{display:inline-flex;align-items:center;gap:.4rem;font:700 .88rem var(--sans);padding:.4rem .9rem;border-radius:20px;margin-bottom:1rem}
+.sexp .level-badge--a1{background:var(--terra-lt);color:var(--terra-dk)}
+.sexp .level-badge--a2{background:var(--gold-lt);color:#8a6a10}
+.sexp .level-badge--b1{background:var(--green-lt);color:#3a6a1a}
+
+/* vocab card */
+.sexp .vocab-card{background:#fff;border-radius:14px;box-shadow:0 4px 18px rgba(0,0,0,.07);padding:2rem;text-align:center;max-width:540px;margin:0 auto 1.5rem;border:1.5px solid #f0ebe4}
+.sexp .vocab-emoji{font-size:3rem;margin-bottom:.75rem;display:block}
+.sexp .vocab-clue{font-size:1rem;color:#444;line-height:1.55;margin-bottom:.5rem}
+.sexp .vocab-note{font-size:.8rem;color:#999;font-style:italic;margin-bottom:1.2rem}
+.sexp .vocab-counter{font-size:.78rem;color:#aaa;margin-bottom:1.5rem}
+.sexp .vocab-input{width:100%;border:2px solid #ddd;border-radius:8px;padding:.75rem 1rem;font-size:1.05rem;font-family:var(--sans);outline:none;transition:border-color .2s;text-align:center}
+.sexp .vocab-input:focus{border-color:var(--terra)}
+.sexp .vocab-input--right{border-color:var(--green)!important;background:#f4fbee}
+.sexp .vocab-input--close{border-color:var(--gold)!important;background:#fffbef}
+.sexp .vocab-input--wrong{border-color:#e05a5a!important;background:#fff5f5}
+.sexp .vocab-reveal{font-size:.95rem;font-weight:700;color:var(--terra);margin-top:.6rem}
+.sexp .vocab-feedback{font-size:.82rem;margin-top:.4rem;min-height:1.2rem}
+.sexp .vocab-feedback--right{color:var(--green)}
+.sexp .vocab-feedback--close{color:#b07a10}
+.sexp .vocab-feedback--wrong{color:#c0392b}
+
+/* phrase drill */
+.sexp .phrase-context{font-size:.9rem;color:#555;font-style:italic;margin-bottom:.4rem}
+.sexp .phrase-translation{font-size:.88rem;color:var(--terra-dk);font-weight:600;margin-bottom:.8rem}
+
+/* poder exercise */
+.sexp .poder-sentence{font-family:var(--serif);font-size:1.15rem;line-height:1.8;text-align:center;margin:1.2rem 0}
+.sexp .poder-gap{display:inline-block;min-width:200px;border-bottom:2.5px solid var(--terra);padding:0 .3rem;margin:0 .2rem;vertical-align:bottom;text-align:center}
+.sexp .poder-gap input{border:none;outline:none;background:transparent;font-family:var(--serif);font-size:1.1rem;width:100%;text-align:center;color:var(--ink)}
+
+/* dialogue */
+.sexp .dialogue{background:#f9f6f1;border-radius:12px;padding:1.5rem;border:1px solid #ece6de}
+.sexp .dl-line{display:flex;gap:.75rem;margin-bottom:.9rem;align-items:flex-start}
+.sexp .dl-line:last-child{margin-bottom:0}
+.sexp .dl-who{flex-shrink:0;font-size:.72rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:.2rem .5rem;border-radius:4px;margin-top:.15rem;white-space:nowrap}
+.sexp .dl-who--narrator{color:#999;background:#eee}
+.sexp .dl-who--you{color:var(--white);background:var(--terra)}
+.sexp .dl-who--func{color:var(--white);background:var(--azul)}
+.sexp .dl-text{font-size:.95rem;line-height:1.55}
+
+/* multiple choice */
+.sexp .mcq-q{font-weight:600;font-size:.95rem;margin:.2rem 0 .75rem;line-height:1.45}
+.sexp .mcq-options{display:flex;flex-direction:column;gap:.45rem;margin-bottom:1.2rem}
+.sexp .mcq-opt{padding:.55rem 1rem;border-radius:8px;border:1.5px solid #ddd;background:#fff;cursor:pointer;font-size:.9rem;text-align:left;transition:all .15s}
+.sexp .mcq-opt:hover:not(:disabled){border-color:var(--terra);background:var(--terra-lt)}
+.sexp .mcq-opt--right{border-color:var(--green)!important;background:var(--green-lt)!important;font-weight:600}
+.sexp .mcq-opt--wrong{border-color:#e05a5a!important;background:#fff5f5!important}
+
+/* buttons */
+.sexp .btn{display:inline-flex;align-items:center;gap:.45rem;padding:.65rem 1.4rem;border-radius:8px;font:600 .9rem var(--sans);cursor:pointer;transition:all .18s;border:0}
+.sexp .btn--terra{background:var(--terra);color:#fff}
+.sexp .btn--terra:hover{background:var(--terra-dk)}
+.sexp .btn--outline{background:#fff;color:var(--terra);border:1.5px solid var(--terra)}
+.sexp .btn--outline:hover{background:var(--terra-lt)}
+.sexp .btn--ghost{background:transparent;color:#888;border:1.5px solid #ddd}
+.sexp .btn--ghost:hover{border-color:#bbb;color:#555}
+
+/* score strip */
+.sexp .score-strip{display:flex;gap:.75rem;flex-wrap:wrap;margin:1.5rem 0}
+.sexp .score-pill{display:flex;flex-direction:column;align-items:center;gap:.15rem;padding:.7rem 1.1rem;border-radius:10px;background:#f7f4f0;min-width:80px}
+.sexp .score-num{font-size:1.5rem;font-weight:700;line-height:1;color:var(--terra)}
+.sexp .score-label{font-size:.72rem;color:#888;text-transform:uppercase;letter-spacing:.5px}
+
+/* result */
+.sexp .result-banner{background:linear-gradient(135deg,var(--terra-dk) 0%,var(--terra) 100%);color:#fff;border-radius:16px;padding:2.5rem;text-align:center;margin-bottom:1.5rem}
+.sexp .result-trophy{font-size:3.5rem;margin-bottom:.5rem}
+.sexp .result-title{font-family:var(--serif);font-size:2rem;margin:0 0 .4rem}
+.sexp .result-sub{font-size:.95rem;opacity:.85}
+
+/* speaking */
+.sexp .speaking-prompt{background:var(--azul-lt);border-radius:12px;padding:1.5rem;border-left:4px solid var(--azul)}
+.sexp .speaking-prompt p{color:#2a4060;font-size:.95rem}
+
+/* label */
+.sexp .label{font-weight:700;font-size:.88rem;margin:0 0 .5rem;color:var(--ink)}
+
+/* tip box */
+.sexp .tip{background:var(--gold-lt);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:.75rem 1rem;margin:1rem 0;font-size:.88rem;color:#6a4c00}
+.sexp .tip strong{color:var(--terra-dk)}
+
+/* valencia note */
+.sexp .vlc-note{background:var(--terra-lt);border-left:4px solid var(--terra);border-radius:0 8px 8px 0;padding:.75rem 1rem;margin:1rem 0;font-size:.88rem;color:var(--terra-dk)}
+.sexp .vlc-note::before{content:'🍊 En Valencia: ';font-weight:700}
+
+/* progress bar (vocab) */
+.sexp .progress-track{height:6px;background:#ece6de;border-radius:99px;overflow:hidden;margin-bottom:1.5rem}
+.sexp .progress-fill{height:100%;background:var(--terra);border-radius:99px;transition:width .4s cubic-bezier(.22,1,.36,1)}
+
+/* mobile */
+@media(max-width:500px){
+  .sexp .hero-overlay{padding:1.2rem 1.2rem}
+  .sexp .hero-title{font-size:1.6rem}
+  .sexp .page-wrap{padding:1.2rem 1rem 3rem}
+  .sexp .card{padding:1.2rem 1.2rem 1.4rem}
+  .sexp .result-banner{padding:1.8rem 1.2rem}
+}

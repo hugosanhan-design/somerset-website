@@ -1,0 +1,2014 @@
+{
+ "group": "flyers",
+ "month": "2026-10",
+ "lessons": {
+  "2026-10-05": {
+   "n": 1,
+   "pages": "3-6"
+  },
+  "2026-10-07": {
+   "n": 2,
+   "pages": "7-9"
+  },
+  "2026-10-14": {
+   "n": 3,
+   "pages": "10-12"
+  },
+  "2026-10-19": {
+   "n": 4,
+   "pages": "13-15,18"
+  },
+  "2026-10-21": {
+   "n": 5,
+   "pages": "19,25"
+  },
+  "2026-10-26": {
+   "n": 6,
+   "pages": "20-22"
+  },
+  "2026-10-28": {
+   "n": 7,
+   "pages": "22-24"
+  }
+ },
+ "exercises": [
+  {
+   "id": "p3-what-do-i-know",
+   "page": 3,
+   "date": "2026-10-05",
+   "title": "What do I know?",
+   "instruction": "Tap the answer you chose in your booklet.",
+   "type": "mc",
+   "items": [
+    {
+     "n": 1,
+     "q": "You put seeds in the ground. You ___ them.",
+     "options": [
+      {
+       "key": "a",
+       "text": "pick"
+      },
+      {
+       "key": "b",
+       "text": "plant"
+      },
+      {
+       "key": "c",
+       "text": "weed"
+      }
+     ],
+     "correct": "b"
+    },
+    {
+     "n": 2,
+     "q": "The tomatoes are red and ready to eat. They are ___.",
+     "options": [
+      {
+       "key": "a",
+       "text": "ripe"
+      },
+      {
+       "key": "b",
+       "text": "seeds"
+      },
+      {
+       "key": "c",
+       "text": "green"
+      }
+     ],
+     "correct": "a"
+    },
+    {
+     "n": 3,
+     "q": "It's long and green. You eat it in a salad.",
+     "options": [
+      {
+       "key": "a",
+       "text": "a pumpkin"
+      },
+      {
+       "key": "b",
+       "text": "an onion"
+      },
+      {
+       "key": "c",
+       "text": "a cucumber"
+      }
+     ],
+     "correct": "c"
+    },
+    {
+     "n": 4,
+     "q": "It's big, round and orange.",
+     "options": [
+      {
+       "key": "a",
+       "text": "a pumpkin"
+      },
+      {
+       "key": "b",
+       "text": "a cabbage"
+      },
+      {
+       "key": "c",
+       "text": "chillis"
+      }
+     ],
+     "correct": "a"
+    },
+    {
+     "n": 5,
+     "q": "It's Saturday. I ___ go to school.",
+     "options": [
+      {
+       "key": "a",
+       "text": "don't have to"
+      },
+      {
+       "key": "b",
+       "text": "have to"
+      },
+      {
+       "key": "c",
+       "text": "has to"
+      }
+     ],
+     "correct": "a"
+    },
+    {
+     "n": 6,
+     "q": "My brother ___ walk the dog every morning.",
+     "options": [
+      {
+       "key": "a",
+       "text": "have to"
+      },
+      {
+       "key": "b",
+       "text": "don't have to"
+      },
+      {
+       "key": "c",
+       "text": "has to"
+      }
+     ],
+     "correct": "c"
+    },
+    {
+     "n": 7,
+     "q": "I go to the market on Mondays and Thursdays. I go ___.",
+     "options": [
+      {
+       "key": "a",
+       "text": "twice a week"
+      },
+      {
+       "key": "b",
+       "text": "once a week"
+      },
+      {
+       "key": "c",
+       "text": "every day"
+      }
+     ],
+     "correct": "a"
+    },
+    {
+     "n": 8,
+     "q": "Waiter: “What would you like?” You: “___ some vegetable soup, please.”",
+     "options": [
+      {
+       "key": "a",
+       "text": "I like"
+      },
+      {
+       "key": "b",
+       "text": "I'd like"
+      },
+      {
+       "key": "c",
+       "text": "I have"
+      }
+     ],
+     "correct": "b"
+    }
+   ]
+  },
+  {
+   "id": "p5-true-or-false",
+   "page": 5,
+   "date": "2026-10-05",
+   "title": "True or false?",
+   "instruction": "Tap T (true) or F (false) for the answer you wrote.",
+   "type": "tf",
+   "items": [
+    {
+     "n": 1,
+     "q": "Some families in Valencia grow their own food.",
+     "options": [
+      {
+       "key": "T",
+       "text": "True"
+      },
+      {
+       "key": "F",
+       "text": "False"
+      }
+     ],
+     "correct": "T"
+    },
+    {
+     "n": 2,
+     "q": "Everybody has space for a garden at home.",
+     "options": [
+      {
+       "key": "T",
+       "text": "True"
+      },
+      {
+       "key": "F",
+       "text": "False"
+      }
+     ],
+     "correct": "F"
+    },
+    {
+     "n": 3,
+     "q": "In a community garden, families share the space.",
+     "options": [
+      {
+       "key": "T",
+       "text": "True"
+      },
+      {
+       "key": "F",
+       "text": "False"
+      }
+     ],
+     "correct": "T"
+    },
+    {
+     "n": 4,
+     "q": "First you plant the seeds, then you dig.",
+     "options": [
+      {
+       "key": "T",
+       "text": "True"
+      },
+      {
+       "key": "F",
+       "text": "False"
+      }
+     ],
+     "correct": "F"
+    },
+    {
+     "n": 5,
+     "q": "Ripe vegetables are ready to pick.",
+     "options": [
+      {
+       "key": "T",
+       "text": "True"
+      },
+      {
+       "key": "F",
+       "text": "False"
+      }
+     ],
+     "correct": "T"
+    }
+   ]
+  },
+  {
+   "id": "p6-match-the-word",
+   "page": 6,
+   "date": "2026-10-05",
+   "title": "Match the word to its meaning",
+   "instruction": "Tap the letter you wrote in the box.",
+   "type": "match",
+   "items": [
+    {
+     "n": 1,
+     "q": "dig",
+     "options": [
+      {
+       "key": "a",
+       "text": "take fruit or vegetables off the plant"
+      },
+      {
+       "key": "b",
+       "text": "ready to eat"
+      },
+      {
+       "key": "c",
+       "text": "make a hole in the ground"
+      },
+      {
+       "key": "d",
+       "text": "a place with stalls where you buy food"
+      },
+      {
+       "key": "e",
+       "text": "give plants something to drink"
+      },
+      {
+       "key": "f",
+       "text": "very small things: new plants grow from them"
+      },
+      {
+       "key": "g",
+       "text": "put seeds in the ground"
+      },
+      {
+       "key": "h",
+       "text": "take the bad plants out of the garden"
+      }
+     ],
+     "correct": "c"
+    },
+    {
+     "n": 2,
+     "q": "plant",
+     "options": [
+      {
+       "key": "a",
+       "text": "take fruit or vegetables off the plant"
+      },
+      {
+       "key": "b",
+       "text": "ready to eat"
+      },
+      {
+       "key": "c",
+       "text": "make a hole in the ground"
+      },
+      {
+       "key": "d",
+       "text": "a place with stalls where you buy food"
+      },
+      {
+       "key": "e",
+       "text": "give plants something to drink"
+      },
+      {
+       "key": "f",
+       "text": "very small things: new plants grow from them"
+      },
+      {
+       "key": "g",
+       "text": "put seeds in the ground"
+      },
+      {
+       "key": "h",
+       "text": "take the bad plants out of the garden"
+      }
+     ],
+     "correct": "g"
+    },
+    {
+     "n": 3,
+     "q": "water",
+     "options": [
+      {
+       "key": "a",
+       "text": "take fruit or vegetables off the plant"
+      },
+      {
+       "key": "b",
+       "text": "ready to eat"
+      },
+      {
+       "key": "c",
+       "text": "make a hole in the ground"
+      },
+      {
+       "key": "d",
+       "text": "a place with stalls where you buy food"
+      },
+      {
+       "key": "e",
+       "text": "give plants something to drink"
+      },
+      {
+       "key": "f",
+       "text": "very small things: new plants grow from them"
+      },
+      {
+       "key": "g",
+       "text": "put seeds in the ground"
+      },
+      {
+       "key": "h",
+       "text": "take the bad plants out of the garden"
+      }
+     ],
+     "correct": "e"
+    },
+    {
+     "n": 4,
+     "q": "weed",
+     "options": [
+      {
+       "key": "a",
+       "text": "take fruit or vegetables off the plant"
+      },
+      {
+       "key": "b",
+       "text": "ready to eat"
+      },
+      {
+       "key": "c",
+       "text": "make a hole in the ground"
+      },
+      {
+       "key": "d",
+       "text": "a place with stalls where you buy food"
+      },
+      {
+       "key": "e",
+       "text": "give plants something to drink"
+      },
+      {
+       "key": "f",
+       "text": "very small things: new plants grow from them"
+      },
+      {
+       "key": "g",
+       "text": "put seeds in the ground"
+      },
+      {
+       "key": "h",
+       "text": "take the bad plants out of the garden"
+      }
+     ],
+     "correct": "h"
+    },
+    {
+     "n": 5,
+     "q": "pick",
+     "options": [
+      {
+       "key": "a",
+       "text": "take fruit or vegetables off the plant"
+      },
+      {
+       "key": "b",
+       "text": "ready to eat"
+      },
+      {
+       "key": "c",
+       "text": "make a hole in the ground"
+      },
+      {
+       "key": "d",
+       "text": "a place with stalls where you buy food"
+      },
+      {
+       "key": "e",
+       "text": "give plants something to drink"
+      },
+      {
+       "key": "f",
+       "text": "very small things: new plants grow from them"
+      },
+      {
+       "key": "g",
+       "text": "put seeds in the ground"
+      },
+      {
+       "key": "h",
+       "text": "take the bad plants out of the garden"
+      }
+     ],
+     "correct": "a"
+    },
+    {
+     "n": 6,
+     "q": "seeds",
+     "options": [
+      {
+       "key": "a",
+       "text": "take fruit or vegetables off the plant"
+      },
+      {
+       "key": "b",
+       "text": "ready to eat"
+      },
+      {
+       "key": "c",
+       "text": "make a hole in the ground"
+      },
+      {
+       "key": "d",
+       "text": "a place with stalls where you buy food"
+      },
+      {
+       "key": "e",
+       "text": "give plants something to drink"
+      },
+      {
+       "key": "f",
+       "text": "very small things: new plants grow from them"
+      },
+      {
+       "key": "g",
+       "text": "put seeds in the ground"
+      },
+      {
+       "key": "h",
+       "text": "take the bad plants out of the garden"
+      }
+     ],
+     "correct": "f"
+    },
+    {
+     "n": 7,
+     "q": "ripe",
+     "options": [
+      {
+       "key": "a",
+       "text": "take fruit or vegetables off the plant"
+      },
+      {
+       "key": "b",
+       "text": "ready to eat"
+      },
+      {
+       "key": "c",
+       "text": "make a hole in the ground"
+      },
+      {
+       "key": "d",
+       "text": "a place with stalls where you buy food"
+      },
+      {
+       "key": "e",
+       "text": "give plants something to drink"
+      },
+      {
+       "key": "f",
+       "text": "very small things: new plants grow from them"
+      },
+      {
+       "key": "g",
+       "text": "put seeds in the ground"
+      },
+      {
+       "key": "h",
+       "text": "take the bad plants out of the garden"
+      }
+     ],
+     "correct": "b"
+    },
+    {
+     "n": 8,
+     "q": "a market",
+     "options": [
+      {
+       "key": "a",
+       "text": "take fruit or vegetables off the plant"
+      },
+      {
+       "key": "b",
+       "text": "ready to eat"
+      },
+      {
+       "key": "c",
+       "text": "make a hole in the ground"
+      },
+      {
+       "key": "d",
+       "text": "a place with stalls where you buy food"
+      },
+      {
+       "key": "e",
+       "text": "give plants something to drink"
+      },
+      {
+       "key": "f",
+       "text": "very small things: new plants grow from them"
+      },
+      {
+       "key": "g",
+       "text": "put seeds in the ground"
+      },
+      {
+       "key": "h",
+       "text": "take the bad plants out of the garden"
+      }
+     ],
+     "correct": "d"
+    }
+   ]
+  },
+  {
+   "id": "p6-odd-one-out",
+   "page": 6,
+   "date": "2026-10-05",
+   "title": "Odd one out",
+   "instruction": "Tap the word you circled.",
+   "type": "mc",
+   "items": [
+    {
+     "n": 1,
+     "q": "Circle the odd one out.",
+     "options": [
+      {
+       "key": "dig",
+       "text": "dig"
+      },
+      {
+       "key": "plant",
+       "text": "plant"
+      },
+      {
+       "key": "cucumber",
+       "text": "cucumber"
+      },
+      {
+       "key": "water",
+       "text": "water"
+      }
+     ],
+     "correct": "cucumber"
+    },
+    {
+     "n": 2,
+     "q": "Circle the odd one out.",
+     "options": [
+      {
+       "key": "onion",
+       "text": "onion"
+      },
+      {
+       "key": "cabbage",
+       "text": "cabbage"
+      },
+      {
+       "key": "seeds",
+       "text": "seeds"
+      },
+      {
+       "key": "pumpkin",
+       "text": "pumpkin"
+      }
+     ],
+     "correct": "seeds"
+    },
+    {
+     "n": 3,
+     "q": "Circle the odd one out.",
+     "options": [
+      {
+       "key": "market",
+       "text": "market"
+      },
+      {
+       "key": "garden",
+       "text": "garden"
+      },
+      {
+       "key": "farm",
+       "text": "farm"
+      },
+      {
+       "key": "ripe",
+       "text": "ripe"
+      }
+     ],
+     "correct": "ripe"
+    }
+   ]
+  },
+  {
+   "id": "p6-fill-the-gaps",
+   "page": 6,
+   "date": "2026-10-05",
+   "title": "Fill the gaps",
+   "instruction": "Tap the word you wrote in each gap.",
+   "type": "bank",
+   "items": [
+    {
+     "n": 1,
+     "q": "We ___ a hole.",
+     "options": [
+      {
+       "key": "dig",
+       "text": "dig"
+      },
+      {
+       "key": "plant",
+       "text": "plant"
+      },
+      {
+       "key": "water",
+       "text": "water"
+      },
+      {
+       "key": "weed",
+       "text": "weed"
+      },
+      {
+       "key": "pick",
+       "text": "pick"
+      },
+      {
+       "key": "ripe",
+       "text": "ripe"
+      }
+     ],
+     "correct": "dig"
+    },
+    {
+     "n": 2,
+     "q": "Tomatoes are red and ___.",
+     "options": [
+      {
+       "key": "dig",
+       "text": "dig"
+      },
+      {
+       "key": "plant",
+       "text": "plant"
+      },
+      {
+       "key": "water",
+       "text": "water"
+      },
+      {
+       "key": "weed",
+       "text": "weed"
+      },
+      {
+       "key": "pick",
+       "text": "pick"
+      },
+      {
+       "key": "ripe",
+       "text": "ripe"
+      }
+     ],
+     "correct": "ripe"
+    },
+    {
+     "n": 3,
+     "q": "Please ___ the plants.",
+     "options": [
+      {
+       "key": "dig",
+       "text": "dig"
+      },
+      {
+       "key": "plant",
+       "text": "plant"
+      },
+      {
+       "key": "water",
+       "text": "water"
+      },
+      {
+       "key": "weed",
+       "text": "weed"
+      },
+      {
+       "key": "pick",
+       "text": "pick"
+      },
+      {
+       "key": "ripe",
+       "text": "ripe"
+      }
+     ],
+     "correct": "water"
+    },
+    {
+     "n": 4,
+     "q": "I ___ the beans.",
+     "options": [
+      {
+       "key": "dig",
+       "text": "dig"
+      },
+      {
+       "key": "plant",
+       "text": "plant"
+      },
+      {
+       "key": "water",
+       "text": "water"
+      },
+      {
+       "key": "weed",
+       "text": "weed"
+      },
+      {
+       "key": "pick",
+       "text": "pick"
+      },
+      {
+       "key": "ripe",
+       "text": "ripe"
+      }
+     ],
+     "correct": "pick"
+    },
+    {
+     "n": 5,
+     "q": "Ana has to ___ the garden.",
+     "options": [
+      {
+       "key": "dig",
+       "text": "dig"
+      },
+      {
+       "key": "plant",
+       "text": "plant"
+      },
+      {
+       "key": "water",
+       "text": "water"
+      },
+      {
+       "key": "weed",
+       "text": "weed"
+      },
+      {
+       "key": "pick",
+       "text": "pick"
+      },
+      {
+       "key": "ripe",
+       "text": "ripe"
+      }
+     ],
+     "correct": "weed"
+    },
+    {
+     "n": 6,
+     "q": "We ___ the seeds.",
+     "options": [
+      {
+       "key": "dig",
+       "text": "dig"
+      },
+      {
+       "key": "plant",
+       "text": "plant"
+      },
+      {
+       "key": "water",
+       "text": "water"
+      },
+      {
+       "key": "weed",
+       "text": "weed"
+      },
+      {
+       "key": "pick",
+       "text": "pick"
+      },
+      {
+       "key": "ripe",
+       "text": "ripe"
+      }
+     ],
+     "correct": "plant"
+    }
+   ]
+  },
+  {
+   "id": "p8-a-circle-the-right-words",
+   "page": 8,
+   "date": "2026-10-07",
+   "title": "A · Circle the right words",
+   "instruction": "Tap the words you circled.",
+   "type": "mc",
+   "items": [
+    {
+     "n": 1,
+     "q": "My sister ___ feed the cat.",
+     "options": [
+      {
+       "key": "has to",
+       "text": "has to"
+      },
+      {
+       "key": "have to",
+       "text": "have to"
+      }
+     ],
+     "correct": "has to"
+    },
+    {
+     "n": 2,
+     "q": "We ___ wear a uniform on Saturday.",
+     "options": [
+      {
+       "key": "don't have to",
+       "text": "don't have to"
+      },
+      {
+       "key": "doesn't have to",
+       "text": "doesn't have to"
+      }
+     ],
+     "correct": "don't have to"
+    },
+    {
+     "n": 3,
+     "q": "___ you have to help at home?",
+     "options": [
+      {
+       "key": "Do",
+       "text": "Do"
+      },
+      {
+       "key": "Does",
+       "text": "Does"
+      }
+     ],
+     "correct": "Do"
+    },
+    {
+     "n": 4,
+     "q": "Farmers ___ get up early.",
+     "options": [
+      {
+       "key": "has to",
+       "text": "has to"
+      },
+      {
+       "key": "have to",
+       "text": "have to"
+      }
+     ],
+     "correct": "have to"
+    },
+    {
+     "n": 5,
+     "q": "Leo ___ cook dinner.",
+     "options": [
+      {
+       "key": "don't have to",
+       "text": "don't have to"
+      },
+      {
+       "key": "doesn't have to",
+       "text": "doesn't have to"
+      }
+     ],
+     "correct": "doesn't have to"
+    }
+   ]
+  },
+  {
+   "id": "p15-a-circle-the-right-word",
+   "page": 15,
+   "date": "2026-10-19",
+   "title": "A · Circle the right word",
+   "instruction": "Tap the word you circled.",
+   "type": "mc",
+   "items": [
+    {
+     "n": 1,
+     "q": "___ you like some water?",
+     "options": [
+      {
+       "key": "Would",
+       "text": "Would"
+      },
+      {
+       "key": "Do",
+       "text": "Do"
+      }
+     ],
+     "correct": "Would"
+    },
+    {
+     "n": 2,
+     "q": "I'd ___ a salad, please.",
+     "options": [
+      {
+       "key": "like",
+       "text": "like"
+      },
+      {
+       "key": "likes",
+       "text": "likes"
+      }
+     ],
+     "correct": "like"
+    },
+    {
+     "n": 3,
+     "q": "What would you like? — ___ green beans, please.",
+     "options": [
+      {
+       "key": "I like",
+       "text": "I like"
+      },
+      {
+       "key": "I'd like",
+       "text": "I'd like"
+      }
+     ],
+     "correct": "I'd like"
+    },
+    {
+     "n": 4,
+     "q": "How ___ do you eat paella?",
+     "options": [
+      {
+       "key": "often",
+       "text": "often"
+      },
+      {
+       "key": "much",
+       "text": "much"
+      }
+     ],
+     "correct": "often"
+    }
+   ]
+  },
+  {
+   "id": "p11-match-the-two-halves",
+   "page": 11,
+   "date": "2026-10-14",
+   "title": "Match the two halves",
+   "instruction": "Tap the letter you chose for each start.",
+   "type": "match",
+   "items": [
+    {
+     "n": 1,
+     "q": "The tomatoes are ripe,",
+     "options": [
+      {
+       "key": "a",
+       "text": "you have to wash them."
+      },
+      {
+       "key": "b",
+       "text": "so we have to pick them."
+      },
+      {
+       "key": "c",
+       "text": "so we share a community garden."
+      },
+      {
+       "key": "d",
+       "text": "in her garden."
+      }
+     ],
+     "correct": "b"
+    },
+    {
+     "n": 2,
+     "q": "My grandma grows lettuce and carrots",
+     "options": [
+      {
+       "key": "a",
+       "text": "you have to wash them."
+      },
+      {
+       "key": "b",
+       "text": "so we have to pick them."
+      },
+      {
+       "key": "c",
+       "text": "so we share a community garden."
+      },
+      {
+       "key": "d",
+       "text": "in her garden."
+      }
+     ],
+     "correct": "d"
+    },
+    {
+     "n": 3,
+     "q": "We don't have space at home,",
+     "options": [
+      {
+       "key": "a",
+       "text": "you have to wash them."
+      },
+      {
+       "key": "b",
+       "text": "so we have to pick them."
+      },
+      {
+       "key": "c",
+       "text": "so we share a community garden."
+      },
+      {
+       "key": "d",
+       "text": "in her garden."
+      }
+     ],
+     "correct": "c"
+    },
+    {
+     "n": 4,
+     "q": "Before you eat vegetables from the garden,",
+     "options": [
+      {
+       "key": "a",
+       "text": "you have to wash them."
+      },
+      {
+       "key": "b",
+       "text": "so we have to pick them."
+      },
+      {
+       "key": "c",
+       "text": "so we share a community garden."
+      },
+      {
+       "key": "d",
+       "text": "in her garden."
+      }
+     ],
+     "correct": "a"
+    }
+   ]
+  },
+  {
+   "id": "p12-a-read-and-write",
+   "page": 12,
+   "date": "2026-10-14",
+   "title": "A · Read and write the vegetable",
+   "instruction": "Tap the vegetable you wrote.",
+   "type": "bank",
+   "items": [
+    {
+     "n": 1,
+     "q": "It's long and green. You can eat it in a salad.",
+     "options": [
+      {
+       "key": "cabbage",
+       "text": "cabbage"
+      },
+      {
+       "key": "chillis",
+       "text": "chillis"
+      },
+      {
+       "key": "cucumber",
+       "text": "cucumber"
+      },
+      {
+       "key": "onion",
+       "text": "onion"
+      },
+      {
+       "key": "pumpkin",
+       "text": "pumpkin"
+      },
+      {
+       "key": "aubergine",
+       "text": "aubergine"
+      }
+     ],
+     "correct": "cucumber"
+    },
+    {
+     "n": 2,
+     "q": "It's big, round and orange.",
+     "options": [
+      {
+       "key": "cabbage",
+       "text": "cabbage"
+      },
+      {
+       "key": "chillis",
+       "text": "chillis"
+      },
+      {
+       "key": "cucumber",
+       "text": "cucumber"
+      },
+      {
+       "key": "onion",
+       "text": "onion"
+      },
+      {
+       "key": "pumpkin",
+       "text": "pumpkin"
+      },
+      {
+       "key": "aubergine",
+       "text": "aubergine"
+      }
+     ],
+     "correct": "pumpkin"
+    },
+    {
+     "n": 3,
+     "q": "It's purple and long. You cook it.",
+     "options": [
+      {
+       "key": "cabbage",
+       "text": "cabbage"
+      },
+      {
+       "key": "chillis",
+       "text": "chillis"
+      },
+      {
+       "key": "cucumber",
+       "text": "cucumber"
+      },
+      {
+       "key": "onion",
+       "text": "onion"
+      },
+      {
+       "key": "pumpkin",
+       "text": "pumpkin"
+      },
+      {
+       "key": "aubergine",
+       "text": "aubergine"
+      }
+     ],
+     "correct": "aubergine"
+    },
+    {
+     "n": 4,
+     "q": "They're small, red and very hot!",
+     "options": [
+      {
+       "key": "cabbage",
+       "text": "cabbage"
+      },
+      {
+       "key": "chillis",
+       "text": "chillis"
+      },
+      {
+       "key": "cucumber",
+       "text": "cucumber"
+      },
+      {
+       "key": "onion",
+       "text": "onion"
+      },
+      {
+       "key": "pumpkin",
+       "text": "pumpkin"
+      },
+      {
+       "key": "aubergine",
+       "text": "aubergine"
+      }
+     ],
+     "correct": "chillis"
+    },
+    {
+     "n": 5,
+     "q": "It makes you cry when you cut it.",
+     "options": [
+      {
+       "key": "cabbage",
+       "text": "cabbage"
+      },
+      {
+       "key": "chillis",
+       "text": "chillis"
+      },
+      {
+       "key": "cucumber",
+       "text": "cucumber"
+      },
+      {
+       "key": "onion",
+       "text": "onion"
+      },
+      {
+       "key": "pumpkin",
+       "text": "pumpkin"
+      },
+      {
+       "key": "aubergine",
+       "text": "aubergine"
+      }
+     ],
+     "correct": "onion"
+    },
+    {
+     "n": 6,
+     "q": "It's green and round, with lots of leaves.",
+     "options": [
+      {
+       "key": "cabbage",
+       "text": "cabbage"
+      },
+      {
+       "key": "chillis",
+       "text": "chillis"
+      },
+      {
+       "key": "cucumber",
+       "text": "cucumber"
+      },
+      {
+       "key": "onion",
+       "text": "onion"
+      },
+      {
+       "key": "pumpkin",
+       "text": "pumpkin"
+      },
+      {
+       "key": "aubergine",
+       "text": "aubergine"
+      }
+     ],
+     "correct": "cabbage"
+    }
+   ]
+  },
+  {
+   "id": "p12-b-a-or-an",
+   "page": 12,
+   "date": "2026-10-14",
+   "title": "B · a or an?",
+   "instruction": "Tap a or an for the word you wrote.",
+   "type": "aan",
+   "items": [
+    {
+     "n": 1,
+     "q": "___ onion",
+     "options": [
+      {
+       "key": "a",
+       "text": "a"
+      },
+      {
+       "key": "an",
+       "text": "an"
+      }
+     ],
+     "correct": "an"
+    },
+    {
+     "n": 2,
+     "q": "___ cabbage",
+     "options": [
+      {
+       "key": "a",
+       "text": "a"
+      },
+      {
+       "key": "an",
+       "text": "an"
+      }
+     ],
+     "correct": "a"
+    },
+    {
+     "n": 3,
+     "q": "___ aubergine",
+     "options": [
+      {
+       "key": "a",
+       "text": "a"
+      },
+      {
+       "key": "an",
+       "text": "an"
+      }
+     ],
+     "correct": "an"
+    },
+    {
+     "n": 4,
+     "q": "___ pumpkin",
+     "options": [
+      {
+       "key": "a",
+       "text": "a"
+      },
+      {
+       "key": "an",
+       "text": "an"
+      }
+     ],
+     "correct": "a"
+    },
+    {
+     "n": 5,
+     "q": "___ courgette",
+     "options": [
+      {
+       "key": "a",
+       "text": "a"
+      },
+      {
+       "key": "an",
+       "text": "an"
+      }
+     ],
+     "correct": "a"
+    },
+    {
+     "n": 6,
+     "q": "___ apple",
+     "options": [
+      {
+       "key": "a",
+       "text": "a"
+      },
+      {
+       "key": "an",
+       "text": "an"
+      }
+     ],
+     "correct": "an"
+    },
+    {
+     "n": 7,
+     "q": "___ egg",
+     "options": [
+      {
+       "key": "a",
+       "text": "a"
+      },
+      {
+       "key": "an",
+       "text": "an"
+      }
+     ],
+     "correct": "an"
+    },
+    {
+     "n": 8,
+     "q": "___ carrot",
+     "options": [
+      {
+       "key": "a",
+       "text": "a"
+      },
+      {
+       "key": "an",
+       "text": "an"
+      }
+     ],
+     "correct": "a"
+    }
+   ]
+  },
+  {
+   "id": "p12-c-sort-them",
+   "page": 12,
+   "date": "2026-10-14",
+   "title": "C · Sort them",
+   "instruction": "Tap where you put each word.",
+   "type": "sort",
+   "items": [
+    {
+     "n": 1,
+     "q": "carrots",
+     "options": [
+      {
+       "key": "under",
+       "text": "Under the ground"
+      },
+      {
+       "key": "above",
+       "text": "Above the ground"
+      }
+     ],
+     "correct": "under"
+    },
+    {
+     "n": 2,
+     "q": "a pumpkin",
+     "options": [
+      {
+       "key": "under",
+       "text": "Under the ground"
+      },
+      {
+       "key": "above",
+       "text": "Above the ground"
+      }
+     ],
+     "correct": "above"
+    },
+    {
+     "n": 3,
+     "q": "onions",
+     "options": [
+      {
+       "key": "under",
+       "text": "Under the ground"
+      },
+      {
+       "key": "above",
+       "text": "Above the ground"
+      }
+     ],
+     "correct": "under"
+    },
+    {
+     "n": 4,
+     "q": "a courgette",
+     "options": [
+      {
+       "key": "under",
+       "text": "Under the ground"
+      },
+      {
+       "key": "above",
+       "text": "Above the ground"
+      }
+     ],
+     "correct": "above"
+    },
+    {
+     "n": 5,
+     "q": "potatoes",
+     "options": [
+      {
+       "key": "under",
+       "text": "Under the ground"
+      },
+      {
+       "key": "above",
+       "text": "Above the ground"
+      }
+     ],
+     "correct": "under"
+    },
+    {
+     "n": 6,
+     "q": "a cucumber",
+     "options": [
+      {
+       "key": "under",
+       "text": "Under the ground"
+      },
+      {
+       "key": "above",
+       "text": "Above the ground"
+      }
+     ],
+     "correct": "above"
+    }
+   ]
+  },
+  {
+   "id": "p14-noras-week",
+   "page": 14,
+   "date": "2026-10-19",
+   "title": "Read the diary · Nora's week",
+   "instruction": "Tap the words you wrote.",
+   "type": "bank",
+   "items": [
+    {
+     "n": 1,
+     "q": "How often does Nora water the plants? She waters them ___.",
+     "options": [
+      {
+       "key": "every day",
+       "text": "every day"
+      },
+      {
+       "key": "once a week",
+       "text": "once a week"
+      },
+      {
+       "key": "twice a week",
+       "text": "twice a week"
+      },
+      {
+       "key": "once a month",
+       "text": "once a month"
+      },
+      {
+       "key": "twice a month",
+       "text": "twice a month"
+      }
+     ],
+     "correct": "twice a week"
+    },
+    {
+     "n": 2,
+     "q": "How often does she go to the market? She goes ___.",
+     "options": [
+      {
+       "key": "every day",
+       "text": "every day"
+      },
+      {
+       "key": "once a week",
+       "text": "once a week"
+      },
+      {
+       "key": "twice a week",
+       "text": "twice a week"
+      },
+      {
+       "key": "once a month",
+       "text": "once a month"
+      },
+      {
+       "key": "twice a month",
+       "text": "twice a month"
+      }
+     ],
+     "correct": "once a week"
+    },
+    {
+     "n": 3,
+     "q": "How often does she eat vegetables? She eats them ___.",
+     "options": [
+      {
+       "key": "every day",
+       "text": "every day"
+      },
+      {
+       "key": "once a week",
+       "text": "once a week"
+      },
+      {
+       "key": "twice a week",
+       "text": "twice a week"
+      },
+      {
+       "key": "once a month",
+       "text": "once a month"
+      },
+      {
+       "key": "twice a month",
+       "text": "twice a month"
+      }
+     ],
+     "correct": "every day"
+    }
+   ]
+  },
+  {
+   "id": "p21-farm-check",
+   "page": 21,
+   "date": "2026-10-26",
+   "title": "Farm check · page 20 · T or F",
+   "instruction": "Tap T (true) or F (false) for the answer you circled.",
+   "type": "tf",
+   "items": [
+    {
+     "n": 1,
+     "q": "The indoor farm is in Miyagi, Japan.",
+     "options": [
+      {
+       "key": "T",
+       "text": "True"
+      },
+      {
+       "key": "F",
+       "text": "False"
+      }
+     ],
+     "correct": "T"
+    },
+    {
+     "n": 2,
+     "q": "Farmers grow the lettuce outdoors, in fields.",
+     "options": [
+      {
+       "key": "T",
+       "text": "True"
+      },
+      {
+       "key": "F",
+       "text": "False"
+      }
+     ],
+     "correct": "F"
+    },
+    {
+     "n": 3,
+     "q": "Indoor farms use more water than outdoor farms.",
+     "options": [
+      {
+       "key": "T",
+       "text": "True"
+      },
+      {
+       "key": "F",
+       "text": "False"
+      }
+     ],
+     "correct": "F"
+    },
+    {
+     "n": 4,
+     "q": "The indoor farm throws away less lettuce than an outdoor farm.",
+     "options": [
+      {
+       "key": "T",
+       "text": "True"
+      },
+      {
+       "key": "F",
+       "text": "False"
+      }
+     ],
+     "correct": "T"
+    }
+   ]
+  },
+  {
+   "id": "p23-test-part1-listening",
+   "page": 23,
+   "date": "2026-10-28",
+   "title": "Unit 2 test · Part 1 · Listening",
+   "instruction": "Tap a, b or c: the answer you circled while you listened.",
+   "type": "mc",
+   "items": [
+    {
+     "n": 1,
+     "q": "Who has to tidy the room?",
+     "options": [
+      {
+       "key": "a",
+       "text": "Nico"
+      },
+      {
+       "key": "b",
+       "text": "Nico's sister"
+      },
+      {
+       "key": "c",
+       "text": "Nico's dad"
+      }
+     ],
+     "correct": "b"
+    },
+    {
+     "n": 2,
+     "q": "What does the girl buy?",
+     "options": [
+      {
+       "key": "a",
+       "text": "courgettes, an aubergine and a cabbage"
+      },
+      {
+       "key": "b",
+       "text": "onions, an aubergine and a cabbage"
+      },
+      {
+       "key": "c",
+       "text": "courgettes, a pumpkin and a cabbage"
+      }
+     ],
+     "correct": "a"
+    },
+    {
+     "n": 3,
+     "q": "How often do they water the plants?",
+     "options": [
+      {
+       "key": "a",
+       "text": "once a week"
+      },
+      {
+       "key": "b",
+       "text": "twice a week"
+      },
+      {
+       "key": "c",
+       "text": "every day"
+      }
+     ],
+     "correct": "b"
+    },
+    {
+     "n": 4,
+     "q": "What would the brother like?",
+     "options": [
+      {
+       "key": "a",
+       "text": "an orange juice"
+      },
+      {
+       "key": "b",
+       "text": "a water"
+      },
+      {
+       "key": "c",
+       "text": "a soup"
+      }
+     ],
+     "correct": "b"
+    },
+    {
+     "n": 5,
+     "q": "What do they do after they plant the seeds?",
+     "options": [
+      {
+       "key": "a",
+       "text": "dig the ground"
+      },
+      {
+       "key": "b",
+       "text": "water them"
+      },
+      {
+       "key": "c",
+       "text": "pick the pumpkins"
+      }
+     ],
+     "correct": "b"
+    }
+   ]
+  },
+  {
+   "id": "p24-test-part3-vegetables",
+   "page": 24,
+   "date": "2026-10-28",
+   "title": "Unit 2 test · Part 3 · Vegetables",
+   "instruction": "Tap the vegetable you wrote. Two words are extra.",
+   "type": "bank",
+   "items": [
+    {
+     "n": 1,
+     "q": "It's big and orange. You can make soup with it.",
+     "options": [
+      {
+       "key": "courgette",
+       "text": "courgette"
+      },
+      {
+       "key": "aubergine",
+       "text": "aubergine"
+      },
+      {
+       "key": "cabbage",
+       "text": "cabbage"
+      },
+      {
+       "key": "pumpkin",
+       "text": "pumpkin"
+      },
+      {
+       "key": "onion",
+       "text": "onion"
+      },
+      {
+       "key": "chillis",
+       "text": "chillis"
+      },
+      {
+       "key": "green beans",
+       "text": "green beans"
+      }
+     ],
+     "correct": "pumpkin"
+    },
+    {
+     "n": 2,
+     "q": "It's purple and long.",
+     "options": [
+      {
+       "key": "courgette",
+       "text": "courgette"
+      },
+      {
+       "key": "aubergine",
+       "text": "aubergine"
+      },
+      {
+       "key": "cabbage",
+       "text": "cabbage"
+      },
+      {
+       "key": "pumpkin",
+       "text": "pumpkin"
+      },
+      {
+       "key": "onion",
+       "text": "onion"
+      },
+      {
+       "key": "chillis",
+       "text": "chillis"
+      },
+      {
+       "key": "green beans",
+       "text": "green beans"
+      }
+     ],
+     "correct": "aubergine"
+    },
+    {
+     "n": 3,
+     "q": "It's green and it has lots of leaves.",
+     "options": [
+      {
+       "key": "courgette",
+       "text": "courgette"
+      },
+      {
+       "key": "aubergine",
+       "text": "aubergine"
+      },
+      {
+       "key": "cabbage",
+       "text": "cabbage"
+      },
+      {
+       "key": "pumpkin",
+       "text": "pumpkin"
+      },
+      {
+       "key": "onion",
+       "text": "onion"
+      },
+      {
+       "key": "chillis",
+       "text": "chillis"
+      },
+      {
+       "key": "green beans",
+       "text": "green beans"
+      }
+     ],
+     "correct": "cabbage"
+    },
+    {
+     "n": 4,
+     "q": "It grows under the ground. It makes you cry!",
+     "options": [
+      {
+       "key": "courgette",
+       "text": "courgette"
+      },
+      {
+       "key": "aubergine",
+       "text": "aubergine"
+      },
+      {
+       "key": "cabbage",
+       "text": "cabbage"
+      },
+      {
+       "key": "pumpkin",
+       "text": "pumpkin"
+      },
+      {
+       "key": "onion",
+       "text": "onion"
+      },
+      {
+       "key": "chillis",
+       "text": "chillis"
+      },
+      {
+       "key": "green beans",
+       "text": "green beans"
+      }
+     ],
+     "correct": "onion"
+    },
+    {
+     "n": 5,
+     "q": "They are small, red or green, and very hot.",
+     "options": [
+      {
+       "key": "courgette",
+       "text": "courgette"
+      },
+      {
+       "key": "aubergine",
+       "text": "aubergine"
+      },
+      {
+       "key": "cabbage",
+       "text": "cabbage"
+      },
+      {
+       "key": "pumpkin",
+       "text": "pumpkin"
+      },
+      {
+       "key": "onion",
+       "text": "onion"
+      },
+      {
+       "key": "chillis",
+       "text": "chillis"
+      },
+      {
+       "key": "green beans",
+       "text": "green beans"
+      }
+     ],
+     "correct": "chillis"
+    }
+   ]
+  }
+ ]
+}
