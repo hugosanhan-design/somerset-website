@@ -3,7 +3,8 @@ node_modules
 
 # Local dev SQLite database — never ship local test/dev data to production.
 # This is also why past deployments carried stale test accounts: this wasn't excluded before.
-/data/
+/data/*
+!/data/*.ts
 .env*
 
 # Build artifacts / local-only files
