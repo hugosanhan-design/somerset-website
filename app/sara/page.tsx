@@ -42,6 +42,18 @@ export default function SaraPage() {
     setCodeError('')
   }
 
+  async function handlePasteFromClipboard() {
+    try {
+      const text = await navigator.clipboard.readText()
+      if (text.trim()) {
+        setStudentText(text)
+        setExtractError('')
+      }
+    } catch {
+      setExtractError('Clipboard access blocked — use Cmd+V / Ctrl+V directly in the text box.')
+    }
+  }
+
   async function handleFileExtract(file: File) {
     if (file.size > MAX_FILE_MB * 1024 * 1024) {
       setExtractError(`File too large — max ${MAX_FILE_MB} MB.`)
@@ -171,12 +183,15 @@ export default function SaraPage() {
           />
 
           <label style={s.label}>Student's answer <span style={s.req}>*</span></label>
-          <div style={{ display: 'flex', gap: 8 }}>
+          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
             <button type="button" onClick={() => pdfInputRef.current?.click()} disabled={extracting} style={s.uploadBtn}>
               📄 Upload PDF
             </button>
             <button type="button" onClick={() => photoInputRef.current?.click()} disabled={extracting} style={s.uploadBtn}>
               📷 Photo / Image
+            </button>
+            <button type="button" onClick={handlePasteFromClipboard} disabled={extracting} style={s.uploadBtn}>
+              📋 Paste
             </button>
             <input ref={pdfInputRef} type="file" accept="application/pdf" style={{ display: 'none' }}
               onChange={e => { const f = e.target.files?.[0]; if (f) handleFileExtract(f); e.target.value = '' }} />
