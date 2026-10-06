@@ -20,6 +20,49 @@ const GOOGLE_REVIEWS_URL = 'https://www.google.com/maps/place/Somerset+Language+
 const FACEBOOK_URL = 'https://www.facebook.com/SomersetLanguageCentre/'
 const MEJOR_URL = 'https://mejor.es/@somerset-language-centre/'
 
+const HERO_SLIDES = [
+  {
+    tag: 'SMALL GROUPS · NATIVE TEACHERS',
+    text: 'Small groups, native teachers and forty years of craft — for children, teens and adults. A little corner of the English countryside, in the heart of Valencia.',
+    ctaLabel: 'Find my level',
+    ctaHref: '/placement',
+    cta2Label: 'View courses',
+    cta2Href: '/#courses',
+  },
+  {
+    tag: 'NEW · ONLINE COURSE',
+    text: 'Complete B1 course online: AI pronunciation coaching, a 60-second word sprint game, and instant writing feedback. Start any time, learn at your own pace.',
+    ctaLabel: 'Try B1 Unit 1',
+    ctaHref: 'https://somerset-app.vercel.app/courses/b1-unit-1',
+    cta2Label: null as string | null,
+    cta2Href: null as string | null,
+  },
+  {
+    tag: 'FREE · 3 MINUTES',
+    text: 'Not sure which level you are? Take our free placement test and find out exactly where to start — from A1 to C1.',
+    ctaLabel: 'Find my level',
+    ctaHref: '/placement',
+    cta2Label: null as string | null,
+    cta2Href: null as string | null,
+  },
+  {
+    tag: 'COMING SOON · ESPAÑOL',
+    text: 'Spanish courses for English expats, travellers and anyone making Valencia home — language, culture and practical life, all in one place.',
+    ctaLabel: 'Tell me more',
+    ctaHref: '/contact',
+    cta2Label: null as string | null,
+    cta2Href: null as string | null,
+  },
+  {
+    tag: 'FREE · EVERY MORNING',
+    text: 'Daily Quizzical: a short reading piece each morning — the true, more complicated history behind things everyone assumes they already know.',
+    ctaLabel: "Read today's",
+    ctaHref: '/daily-quizzical',
+    cta2Label: null as string | null,
+    cta2Href: null as string | null,
+  },
+]
+
 const REVIEWS = [
   { name: 'Lorena', text: 'Súper contenta con esta academia. Todo el personal es muy agradable y los profesores, muy dedicados. ¡Es el sitio donde mejor me han preparado para los exámenes!' },
   { name: 'Raquel Roldán', text: 'Es una academia familiar con un trato personal y muy bueno. Las clases son reducidas y los profesores muy atentos. Lo recomiendo a todo el mundo 100%.' },
@@ -113,6 +156,9 @@ export default function Home() {
   const [openCourse, setOpenCourse] = useState<number | null>(null)
   // Which rating source's reviews are open in the in-page modal (null = closed)
   const [reviewSrc, setReviewSrc] = useState<string | null>(null)
+  const [heroSlide, setHeroSlide] = useState(0)
+  const [heroPaused, setHeroPaused] = useState(false)
+  const [heroFade, setHeroFade] = useState(true)
 
   useEffect(() => {
     if (!reviewSrc) return
@@ -461,6 +507,23 @@ export default function Home() {
     return () => cleanups.forEach(fn => fn())
   }, [])
 
+  useEffect(() => {
+    if (heroPaused) return
+    const id = setInterval(() => {
+      setHeroFade(false)
+      setTimeout(() => {
+        setHeroSlide(s => (s + 1) % HERO_SLIDES.length)
+        setHeroFade(true)
+      }, 300)
+    }, 6000)
+    return () => clearInterval(id)
+  }, [heroPaused])
+
+  function goToSlide(i: number) {
+    setHeroFade(false)
+    setTimeout(() => { setHeroSlide(i); setHeroFade(true) }, 220)
+  }
+
   return (
     <>
       <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -533,6 +596,15 @@ export default function Home() {
         @keyframes line-up { to { transform: translateY(0); } }
         .hero-lead { font-size: clamp(1rem, 1.4vw, 1.14rem); font-weight: 400; color: rgba(255,255,255,0.92); line-height: 1.75; max-width: 52ch; margin: 0 auto 2.6rem; text-wrap: pretty; text-shadow: 0 1px 12px rgba(0,0,0,0.35); opacity: 0; animation: rise-in 1.1s cubic-bezier(0.22,1,0.36,1) 2.25s forwards; }
         .hero-actions { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; opacity: 0; animation: rise-in 1.1s cubic-bezier(0.22,1,0.36,1) 2.45s forwards; }
+        .hero-carousel { position: relative; }
+        .hero-carousel-inner { transition: opacity 0.28s ease, transform 0.28s ease; }
+        .hc-on  { opacity: 1; transform: translateY(0); }
+        .hc-off { opacity: 0; transform: translateY(8px); pointer-events: none; }
+        .hero-slide-tag { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--leaf); margin-bottom: 0.6rem; opacity: 0; animation: rise-in 1.1s cubic-bezier(0.22,1,0.36,1) 2.1s forwards; }
+        .hero-dots { display: flex; align-items: center; justify-content: center; gap: 9px; margin-top: 1.5rem; opacity: 0; animation: rise-in 1.1s cubic-bezier(0.22,1,0.36,1) 2.6s forwards; }
+        .hdot { width: 7px; height: 7px; border-radius: 50%; border: none; background: rgba(255,255,255,0.3); cursor: pointer; padding: 0; transition: background 0.2s, transform 0.2s; }
+        .hdot--on { background: #fff; transform: scale(1.45); }
+        .hdot:hover { background: rgba(255,255,255,0.65); }
         @keyframes rise-in { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
         :root { --scene-h: 22.5vh; }
         .scene { position: fixed; bottom: 0; left: 0; width: 100%; height: var(--scene-h); pointer-events: none; z-index: 90; -webkit-mask-image: linear-gradient(to top, #000 82%, rgba(0,0,0,0.2) 100%); mask-image: linear-gradient(to top, #000 82%, rgba(0,0,0,0.2) 100%); filter: saturate(var(--sc-sat, 0.88)) brightness(var(--sc-bri, 0.98)); transition: filter 1.8s ease; }
@@ -745,7 +817,7 @@ export default function Home() {
         .placement-title em { font-style: italic; color: var(--green-dk); }
         .placement-sub { font-size: 1rem; font-weight: 400; color: var(--muted); margin-top: 1rem; max-width: 42ch; line-height: 1.7; text-wrap: pretty; }
         .quizzical { background: var(--paper); padding: var(--py) 0; position: relative; overflow: hidden; }
-        .quizzical::before { content: '“'; position: absolute; left: -3%; top: 50%; transform: translateY(-58%); font-family: var(--serif); font-style: italic; font-size: clamp(18rem, 34vw, 30rem); font-weight: 340; color: rgba(30,66,39,0.05); line-height: 1; pointer-events: none; }
+        .quizzical::before { content: '"'; position: absolute; left: -3%; top: 50%; transform: translateY(-58%); font-family: var(--serif); font-style: italic; font-size: clamp(18rem, 34vw, 30rem); font-weight: 340; color: rgba(30,66,39,0.05); line-height: 1; pointer-events: none; }
         .quizzical-inner { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 4rem; }
         .quizzical-tag { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--racing); background: rgba(30,66,39,0.08); padding: 0.4rem 1rem; border-radius: 50px; margin-bottom: 1.3rem; }
         .quizzical-title { font-family: var(--serif); font-size: clamp(2rem, 3.6vw, 3rem); font-weight: 380; line-height: 1.14; letter-spacing: -0.015em; max-width: 20ch; }
@@ -872,7 +944,9 @@ export default function Home() {
         body.intro-skip .curtain { display: none; }
         body.intro-skip .eyebrow,
         body.intro-skip .hero-lead,
-        body.intro-skip .hero-actions { opacity: 1; animation: none; }
+        body.intro-skip .hero-actions,
+        body.intro-skip .hero-slide-tag,
+        body.intro-skip .hero-dots { opacity: 1; animation: none; }
         body.intro-skip .hl > span { transform: none; animation: none; }
         body.intro-skip .hero-bg { animation: hero-kenburns 38s ease-in-out infinite alternate; }
         /* Coloured-pencil panorama: registered seasonal plates and live weather. */
@@ -1125,10 +1199,36 @@ export default function Home() {
             <span className="hl"><span>Where Valencia</span></span>
             <span className="hl"><span>learns <em>English</em></span></span>
           </h1>
-          <p className="hero-lead">Small groups, native teachers and forty years of craft — for children, teens and adults. A little corner of the English countryside, in the heart of Valencia.</p>
-          <div className="hero-actions">
-            <a href="/placement" className="btn btn-primary">Find my level <span className="btn-arr">→</span></a>
-            <a href="/#courses" className="btn btn-outline-white">View courses</a>
+          <div
+            className="hero-carousel"
+            onMouseEnter={() => setHeroPaused(true)}
+            onMouseLeave={() => setHeroPaused(false)}
+          >
+            <div className={"hero-carousel-inner" + (heroFade ? " hc-on" : " hc-off")}>
+              <div className="hero-slide-tag">{HERO_SLIDES[heroSlide].tag}</div>
+              <p className="hero-lead">{HERO_SLIDES[heroSlide].text}</p>
+              <div className="hero-actions">
+                <a href={HERO_SLIDES[heroSlide].ctaHref} className="btn btn-primary">
+                  {HERO_SLIDES[heroSlide].ctaLabel} <span className="btn-arr">→</span>
+                </a>
+                {HERO_SLIDES[heroSlide].cta2Label && (
+                  <a href={HERO_SLIDES[heroSlide].cta2Href!} className="btn btn-outline-white">
+                    {HERO_SLIDES[heroSlide].cta2Label}
+                  </a>
+                )}
+              </div>
+            </div>
+            <div className="hero-dots">
+              {HERO_SLIDES.map((_, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  aria-label={"Slide " + (i + 1)}
+                  className={"hdot" + (i === heroSlide ? " hdot--on" : "")}
+                  onClick={() => goToSlide(i)}
+                />
+              ))}
+            </div>
           </div>
         </div>
 
@@ -1423,7 +1523,7 @@ export default function Home() {
             {REVIEWS.map((r, i) => (
               <blockquote className="review-card reveal" data-d={String(i % 3)} key={r.name}>
                 <div className="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
-                <p className="review-text">“{r.text}”</p>
+                <p className="review-text">"{r.text}"</p>
                 <footer className="review-meta">
                   <cite className="review-name">{r.name}</cite>
                   <span className="review-src">Google review</span>
@@ -1554,7 +1654,7 @@ export default function Home() {
               {REVIEW_SOURCES[reviewSrc].reviews.map(r => (
                 <blockquote className="rv-item" key={r.name}>
                   <div className="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
-                  <p className="rv-text">“{r.text}”</p>
+                  <p className="rv-text">"{r.text}"</p>
                   <cite className="rv-name">{r.name}</cite>
                 </blockquote>
               ))}
