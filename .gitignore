@@ -2,6 +2,7 @@
 node_modules
 # Portal lives in the Somerset App repo — not part of the marketing website
 /app/
+_archive/
 
 # Local dev SQLite database — never ship local test/dev data to production.
 # This is also why past deployments carried stale test accounts: this wasn't excluded before.

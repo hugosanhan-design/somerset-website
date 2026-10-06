@@ -23,6 +23,7 @@ const MEJOR_URL = 'https://mejor.es/@somerset-language-centre/'
 const HERO_SLIDES = [
   {
     tag: 'SMALL GROUPS · NATIVE TEACHERS',
+    accent: 'var(--leaf)',
     text: 'Small groups, native teachers and forty years of craft — for children, teens and adults. A little corner of the English countryside, in the heart of Valencia.',
     ctaLabel: 'Find my level',
     ctaHref: '/placement',
@@ -31,6 +32,7 @@ const HERO_SLIDES = [
   },
   {
     tag: 'NEW · ONLINE COURSE',
+    accent: 'var(--cheddar)',
     text: 'Complete B1 course online: AI pronunciation coaching, a 60-second word sprint game, and instant writing feedback. Start any time, learn at your own pace.',
     ctaLabel: 'Try B1 Unit 1',
     ctaHref: 'https://somerset-app.vercel.app/courses/b1-unit-1',
@@ -39,6 +41,7 @@ const HERO_SLIDES = [
   },
   {
     tag: 'FREE · 3 MINUTES',
+    accent: 'var(--heather)',
     text: 'Not sure which level you are? Take our free placement test and find out exactly where to start — from A1 to C1.',
     ctaLabel: 'Find my level',
     ctaHref: '/placement',
@@ -47,6 +50,7 @@ const HERO_SLIDES = [
   },
   {
     tag: 'COMING SOON · ESPAÑOL',
+    accent: 'var(--cider)',
     text: 'Spanish courses for English expats, travellers and anyone making Valencia home — language, culture and practical life, all in one place.',
     ctaLabel: 'Tell me more',
     ctaHref: '/contact',
@@ -55,6 +59,7 @@ const HERO_SLIDES = [
   },
   {
     tag: 'FREE · EVERY MORNING',
+    accent: 'var(--brass)',
     text: 'Daily Quizzical: a short reading piece each morning — the true, more complicated history behind things everyone assumes they already know.',
     ctaLabel: "Read today's",
     ctaHref: '/daily-quizzical',
@@ -421,6 +426,19 @@ export default function Home() {
       scene.style.setProperty('--sun-x', `${light.sunX}%`)
       scene.style.setProperty('--sun-y', `${light.sunY}%`)
       scene.style.setProperty('--sun-opacity', String(light.sunOpacity * (weatherKind === 'clear' ? 1 : weatherKind === 'cloudy' ? 0.28 : 0.06)))
+      // Hero sky sun and dynamic shadows
+      const _prog = Math.max(0, Math.min(1, (light.sunX - 27) / 47))
+      const _ht = Math.sin(Math.PI * _prog)
+      const _heroY = 82 - _ht * 74
+      document.documentElement.style.setProperty('--hero-sun-x', `${light.sunX}%`)
+      document.documentElement.style.setProperty('--hero-sun-y', `${_heroY.toFixed(1)}%`)
+      document.documentElement.style.setProperty('--hero-sun-opacity', String((light.sunOpacity * (weatherKind === 'clear' ? 0.9 : weatherKind === 'cloudy' ? 0.22 : 0.04)).toFixed(3)))
+      const _shdX = ((50.5 - light.sunX) / 50.5) * 5 * (1 - _ht)
+      const _shdY = Math.max(2, 8 - _ht * 6)
+      document.documentElement.style.setProperty('--shadow-x', `${_shdX.toFixed(1)}px`)
+      document.documentElement.style.setProperty('--shadow-y', `${_shdY.toFixed(1)}px`)
+      document.documentElement.style.setProperty('--shadow-scale', `${Math.max(0.6, 2.2 - _ht * 1.6).toFixed(2)}`)
+      document.documentElement.style.setProperty('--scene-shadow', `drop-shadow(${_shdX.toFixed(1)}px ${_shdY.toFixed(1)}px 3px rgba(0,0,0,0.22))`)
       document.body.dataset.solarNight = light.lightsOn ? '1' : '0'
       update()
       if (badge) badge.textContent = `${weatherSummary} · ${light.phase}`
@@ -456,6 +474,8 @@ export default function Home() {
           scene.style.setProperty('--flag-bend', `${Math.max(4, wind.strength * 21)}deg`)
           scene.style.setProperty('--flag-duration', `${Math.max(0.36, 1.35 - wind.strength * 0.9)}s`)
         }
+        document.documentElement.style.setProperty('--cloud-speed', `${Math.max(8, 75 - windSpeed * 1.2).toFixed(0)}s`)
+        document.body.classList.toggle('wind-west', wind.eastward < -0.1)
         Array.from(document.body.classList).forEach(cl => { if (cl.startsWith('wx-')) document.body.classList.remove(cl) })
         document.body.classList.add('wx-' + weather)
         document.body.dataset.wxNight = current.is_day === 0 ? '1' : '0'
@@ -597,14 +617,33 @@ export default function Home() {
         .hero-lead { font-size: clamp(1rem, 1.4vw, 1.14rem); font-weight: 400; color: rgba(255,255,255,0.92); line-height: 1.75; max-width: 52ch; margin: 0 auto 2.6rem; text-wrap: pretty; text-shadow: 0 1px 12px rgba(0,0,0,0.35); opacity: 0; animation: rise-in 1.1s cubic-bezier(0.22,1,0.36,1) 2.25s forwards; }
         .hero-actions { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; opacity: 0; animation: rise-in 1.1s cubic-bezier(0.22,1,0.36,1) 2.45s forwards; }
         .hero-carousel { position: relative; }
-        .hero-carousel-inner { transition: opacity 0.28s ease, transform 0.28s ease; }
-        .hc-on  { opacity: 1; transform: translateY(0); }
-        .hc-off { opacity: 0; transform: translateY(8px); pointer-events: none; }
-        .hero-slide-tag { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--leaf); margin-bottom: 0.6rem; opacity: 0; animation: rise-in 1.1s cubic-bezier(0.22,1,0.36,1) 2.1s forwards; }
-        .hero-dots { display: flex; align-items: center; justify-content: center; gap: 9px; margin-top: 1.5rem; opacity: 0; animation: rise-in 1.1s cubic-bezier(0.22,1,0.36,1) 2.6s forwards; }
-        .hdot { width: 7px; height: 7px; border-radius: 50%; border: none; background: rgba(255,255,255,0.3); cursor: pointer; padding: 0; transition: background 0.2s, transform 0.2s; }
-        .hdot--on { background: #fff; transform: scale(1.45); }
+        .hero-carousel-inner { transition: opacity 0.32s ease, transform 0.32s ease; }
+        .hc-on  { opacity: 1; transform: translateY(0) translateX(0); }
+        .hc-off { opacity: 0; transform: translateY(12px) translateX(-6px); pointer-events: none; }
+        .hero-slide-tag { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: var(--slide-accent, var(--leaf)); border-left: 3px solid var(--slide-accent, var(--leaf)); padding-left: 10px; margin-bottom: 0.9rem; opacity: 0; animation: rise-in 1.1s cubic-bezier(0.22,1,0.36,1) 2.1s forwards; transition: color 0.32s ease, border-color 0.32s ease; }
+        .hero-dots { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 1.6rem; opacity: 0; animation: rise-in 1.1s cubic-bezier(0.22,1,0.36,1) 2.6s forwards; }
+        .hdot { width: 8px; height: 8px; border-radius: 50%; border: none; background: rgba(255,255,255,0.3); cursor: pointer; padding: 0; transition: background 0.3s, transform 0.3s, width 0.3s; }
+        .hdot--on { background: var(--slide-accent, #fff); transform: scale(1.5); }
         .hdot:hover { background: rgba(255,255,255,0.65); }
+        /* Hero sky sun */
+        .hero-sun { position: absolute; z-index: 2; pointer-events: none; left: var(--hero-sun-x, 55%); top: var(--hero-sun-y, 22%); transform: translate(-50%, -50%); opacity: var(--hero-sun-opacity, 0); transition: left 60s linear, top 60s linear, opacity 3s ease; width: clamp(80px, 9vw, 140px); height: clamp(80px, 9vw, 140px); }
+        /* Clouds */
+        .hero-cloud { position: absolute; z-index: 2; pointer-events: none; opacity: 0; transition: opacity 3s ease; }
+        body.wx-cloudy .hero-cloud { opacity: 1; }
+        body.wx-rain .hero-cloud, body.wx-snow .hero-cloud { opacity: 0.75; }
+        .hero-cloud.c1 { top: 12%; width: clamp(160px, 18vw, 260px); animation: cloud-drift-e var(--cloud-speed, 45s) linear infinite; }
+        .hero-cloud.c2 { top: 24%; width: clamp(110px, 13vw, 195px); animation: cloud-drift-e var(--cloud-speed, 45s) linear infinite calc(var(--cloud-speed, 45s) * -0.38); }
+        .hero-cloud.c3 { top: 7%; width: clamp(90px, 10vw, 155px); animation: cloud-drift-e var(--cloud-speed, 45s) linear infinite calc(var(--cloud-speed, 45s) * -0.68); }
+        body.wind-west .hero-cloud { animation-name: cloud-drift-w; }
+        @keyframes cloud-drift-e { from { transform: translateX(-130%); } to { transform: translateX(130vw); } }
+        @keyframes cloud-drift-w { from { transform: translateX(130vw); } to { transform: translateX(-130%); } }
+        /* Cloud ground shadows */
+        .cloud-shadow { position: absolute; z-index: 2; bottom: 8%; height: 16px; border-radius: 50%; filter: blur(10px); pointer-events: none; opacity: 0; transition: opacity 3s ease; }
+        body.wx-cloudy .cloud-shadow, body.wx-rain .cloud-shadow { opacity: 1; }
+        .cloud-shadow.cs1 { width: clamp(70px,10vw,130px); background: radial-gradient(ellipse, rgba(30,50,30,0.32) 30%, transparent 75%); animation: cloud-drift-e var(--cloud-speed, 45s) linear infinite; }
+        .cloud-shadow.cs2 { width: clamp(50px,7vw,95px); background: radial-gradient(ellipse, rgba(30,50,30,0.25) 30%, transparent 75%); animation: cloud-drift-e var(--cloud-speed, 45s) linear infinite calc(var(--cloud-speed, 45s) * -0.38); }
+        .cloud-shadow.cs3 { width: clamp(40px,5vw,75px); background: radial-gradient(ellipse, rgba(30,50,30,0.2) 30%, transparent 75%); animation: cloud-drift-e var(--cloud-speed, 45s) linear infinite calc(var(--cloud-speed, 45s) * -0.68); }
+        body.wind-west .cloud-shadow { animation-name: cloud-drift-w; }
         @keyframes rise-in { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
         :root { --scene-h: 22.5vh; }
         .scene { position: fixed; bottom: 0; left: 0; width: 100%; height: var(--scene-h); pointer-events: none; z-index: 90; -webkit-mask-image: linear-gradient(to top, #000 82%, rgba(0,0,0,0.2) 100%); mask-image: linear-gradient(to top, #000 82%, rgba(0,0,0,0.2) 100%); filter: saturate(var(--sc-sat, 0.88)) brightness(var(--sc-bri, 0.98)); transition: filter 1.8s ease; }
@@ -983,7 +1022,7 @@ export default function Home() {
         .solar-glow.dawn { opacity: var(--dawn-opacity, 0); background: radial-gradient(ellipse at 28% 52%, rgba(246,179,100,.8), transparent 42%), linear-gradient(to top, rgba(241,159,117,.42), transparent 72%); mix-blend-mode: multiply; }
         .solar-glow.afternoon { opacity: var(--afternoon-opacity, 0); background: linear-gradient(145deg, rgba(248,206,125,.15), rgba(229,163,82,.7) 78%, transparent); mix-blend-mode: multiply; }
         .solar-glow.dusk { opacity: var(--dusk-opacity, 0); background: radial-gradient(ellipse at 74% 52%, rgba(247,174,80,.85), transparent 39%), linear-gradient(to top, rgba(152,105,149,.5), transparent 75%); mix-blend-mode: multiply; }
-        .pencil-sun { position: absolute; z-index: 3; left: var(--sun-x, 50%); top: var(--sun-y, 18%); width: clamp(22px, 2.9vw, 40px); height: clamp(22px, 2.9vw, 40px); transform: translate(-50%, -50%); opacity: var(--sun-opacity, 0); pointer-events: none; transition: left var(--solar-transition, 0s) linear, top var(--solar-transition, 0s) linear, opacity var(--solar-transition, 0s) linear; filter: drop-shadow(0 0 10px rgba(245,194,103,.52)); }
+        .pencil-sun { display: none; }
         .weather-shade { position: absolute; inset: 0; z-index: 2; pointer-events: none; opacity: 0; transition: opacity 1.5s ease; }
         body.wx-cloudy .weather-shade { opacity: 0.52; background: linear-gradient(#aabac4 0%, transparent 68%); }
         body.wx-rain .weather-shade, body.wx-thunder .weather-shade { opacity: 0.63; background: linear-gradient(#667f91 0%, #7c8a82 53%, transparent 100%); mix-blend-mode: multiply; }
@@ -1020,7 +1059,8 @@ export default function Home() {
         .chimney-smoke span { position: absolute; bottom: 0; left: 10px; width: 12px; height: 8px; border: 2px solid rgba(108,105,98,.66); border-left-color: transparent; border-bottom-color: transparent; border-radius: 50%; filter: blur(.5px); animation: pencil-smoke 4s ease-out infinite; opacity: 0; }
         .chimney-smoke span:nth-child(2) { animation-delay: 1.3s; } .chimney-smoke span:nth-child(3) { animation-delay: 2.6s; }
         @keyframes pencil-smoke { 0%{transform:translate(0,1px) scale(.6);opacity:0} 20%{opacity:.7} 100%{transform:translate(var(--smoke-drift, -9px),-34px) scale(1.7);opacity:0} }
-        .sheep-walk { z-index: 15; width: clamp(56px, 5.1vw, 76px); height: clamp(50px, 4.7vw, 68px); transform: translateX(-50%); animation: none; transition: left .12s linear, bottom .12s linear; filter: brightness(var(--landscape-brightness, 1)) saturate(.72) contrast(.92); }
+        .sheep-walk { z-index: 15; width: clamp(56px, 5.1vw, 76px); height: clamp(50px, 4.7vw, 68px); transform: translateX(-50%); animation: none; transition: left .12s linear, bottom .12s linear; filter: brightness(var(--landscape-brightness, 1)) saturate(.72) contrast(.92) var(--scene-shadow, drop-shadow(3px 3px 2px rgba(0,0,0,0.18))); }
+        .castle-shadow { position: absolute; z-index: 2; bottom: 0; left: 2%; width: clamp(100px,13vw,180px); height: 16px; background: radial-gradient(ellipse at center, rgba(20,35,20,0.35) 20%, transparent 72%); filter: blur(7px); transform-origin: center bottom; transform: scaleX(var(--shadow-scale,1.2)) translateX(calc(var(--shadow-x,3px) * 2)); pointer-events: none; }
         .sheep-walk.walking { animation: pencil-sheep-bob .36s ease-in-out infinite; }
         @keyframes pencil-sheep-bob { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(-2px)} }
         .sheep-figure { position: absolute; inset: 0; transform-origin: center center; transition: transform .22s ease; }
@@ -1192,6 +1232,60 @@ export default function Home() {
 
       <section className="hero" id="hero">
         <div className="hero-bg" aria-hidden="true" />
+        {/* Hero sky sun — tracks real Somerset solar position */}
+        <div className="hero-sun" aria-hidden="true">
+          <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="sg" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stopColor="#FFE87A" stopOpacity="1"/>
+                <stop offset="45%" stopColor="#FFD040" stopOpacity="0.7"/>
+                <stop offset="100%" stopColor="#F5A020" stopOpacity="0"/>
+              </radialGradient>
+            </defs>
+            <circle cx="60" cy="60" r="58" fill="url(#sg)" opacity="0.45"/>
+            <g stroke="#FFDF65" strokeWidth="2.2" strokeLinecap="round" opacity="0.75">
+              <line x1="60" y1="6" x2="60" y2="20"/>
+              <line x1="60" y1="100" x2="60" y2="114"/>
+              <line x1="6" y1="60" x2="20" y2="60"/>
+              <line x1="100" y1="60" x2="114" y2="60"/>
+              <line x1="18" y1="18" x2="28" y2="28"/>
+              <line x1="92" y1="92" x2="102" y2="102"/>
+              <line x1="102" y1="18" x2="92" y2="28"/>
+              <line x1="18" y1="102" x2="28" y2="92"/>
+            </g>
+            <circle cx="60" cy="60" r="26" fill="#FFE860" opacity="0.95"/>
+            <circle cx="60" cy="60" r="20" fill="#FFF8C0" opacity="0.85"/>
+            <circle cx="54" cy="55" r="4" fill="#FFFAE8" opacity="0.6"/>
+          </svg>
+        </div>
+        {/* Animated clouds — visible on cloudy days, speed from live wind data */}
+        <div className="hero-cloud c1" aria-hidden="true">
+          <svg viewBox="0 0 200 70" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="55" cy="48" r="26" fill="rgba(240,243,248,0.88)"/>
+            <circle cx="82" cy="36" r="34" fill="rgba(240,243,248,0.88)"/>
+            <circle cx="120" cy="40" r="27" fill="rgba(240,243,248,0.88)"/>
+            <circle cx="148" cy="48" r="20" fill="rgba(240,243,248,0.88)"/>
+            <rect x="35" y="46" width="133" height="30" fill="rgba(240,243,248,0.88)" rx="8"/>
+          </svg>
+        </div>
+        <div className="hero-cloud c2" aria-hidden="true">
+          <svg viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="40" cy="40" r="22" fill="rgba(235,240,248,0.82)"/>
+            <circle cx="65" cy="30" r="28" fill="rgba(235,240,248,0.82)"/>
+            <circle cx="100" cy="33" r="22" fill="rgba(235,240,248,0.82)"/>
+            <circle cx="124" cy="40" r="17" fill="rgba(235,240,248,0.82)"/>
+            <rect x="22" y="38" width="119" height="26" fill="rgba(235,240,248,0.82)" rx="7"/>
+          </svg>
+        </div>
+        <div className="hero-cloud c3" aria-hidden="true">
+          <svg viewBox="0 0 130 55" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="37" r="20" fill="rgba(238,242,250,0.78)"/>
+            <circle cx="54" cy="28" r="25" fill="rgba(238,242,250,0.78)"/>
+            <circle cx="85" cy="30" r="19" fill="rgba(238,242,250,0.78)"/>
+            <circle cx="105" cy="38" r="15" fill="rgba(238,242,250,0.78)"/>
+            <rect x="17" y="36" width="103" height="22" fill="rgba(238,242,250,0.78)" rx="6"/>
+          </svg>
+        </div>
         <div className="wx-badge" id="wxBadge">Checking the weather in Dunster…</div>
         <div className="hero-content">
           <div className="eyebrow"><span className="dot" /> Valencia · Est. 2013</div>
@@ -1201,6 +1295,7 @@ export default function Home() {
           </h1>
           <div
             className="hero-carousel"
+            style={{ '--slide-accent': HERO_SLIDES[heroSlide].accent } as React.CSSProperties}
             onMouseEnter={() => setHeroPaused(true)}
             onMouseLeave={() => setHeroPaused(false)}
           >
@@ -1234,6 +1329,10 @@ export default function Home() {
 
         <div className="scene" aria-label="A hand-drawn Somerset landscape that changes with the local season and weather">
           <div className="landscape" aria-hidden="true" />
+          <div className="castle-shadow" aria-hidden="true" />
+          <div className="cloud-shadow cs1" aria-hidden="true" />
+          <div className="cloud-shadow cs2" aria-hidden="true" />
+          <div className="cloud-shadow cs3" aria-hidden="true" />
           <div className="weather-shade" aria-hidden="true" />
           <div className="solar-glow dawn" aria-hidden="true" />
           <div className="solar-glow afternoon" aria-hidden="true" />
