@@ -299,9 +299,9 @@ function WordCoach({ word, phrase, result, heard, before, phase, hint, err, expl
     : result === 'amber' ? `Nearly. "${word}" sounded a bit like "${heard}". Listen...`
     : heard ? `We heard "${heard}", not "${word}". Listen...` : `We didn't catch "${word}". Listen...`)
 
-  const showEar = phase === 'hearing' || (drillPhase !== null && ['play-slow', 'play-hard', 'play-full', 'echo-slow', 'echo-hard'].includes(drillPhase))
+  const showEar = phase === 'hearing' || hint === 'listen' || (drillPhase !== null && ['play-slow', 'play-hard', 'play-full', 'echo-slow', 'echo-hard'].includes(drillPhase))
   const showMouth = phase === 'starting' || phase === 'listening' || (drillPhase !== null && ['echo-slow', 'echo-hard', 'listen-full'].includes(drillPhase))
-  const showStart = phase === 'idle' && drillPhase === null && !locked
+  const showStart = (phase === 'idle' || phase === 'done') && drillPhase === null && !locked
   const showStop = (phase === 'listening' || phase === 'starting') && drillPhase === null
 
   // Syllable display: split if DRILL_DATA exists, otherwise show word whole
