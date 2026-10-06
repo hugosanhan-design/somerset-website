@@ -145,8 +145,8 @@ export default function MaterialsPage() {
           </div>
           {selectedUnit && (
             <div style={{ fontSize: 12, color: COLORS.muted, marginTop: 10 }}>
-              {selectedUnit.sections.reduce((n, sec) => n + sec.words.length, 0)} words across{' '}
-              {selectedUnit.sections.map(sec => sec.name.toLowerCase()).join(', ')}
+              {(selectedUnit.sections ?? []).reduce((n, sec) => n + sec.words.length, 0)} words across{' '}
+              {(selectedUnit.sections ?? []).map(sec => sec.name.toLowerCase()).join(', ') || 'vocabulary'}
               {selectedUnit.sbPages ? ` · Student's Book pages ${selectedUnit.sbPages}` : ''}
               {selectedUnit.grammar?.length ? ` · grammar: ${selectedUnit.grammar.join(', ')}` : ''}
             </div>

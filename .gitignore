@@ -5,6 +5,8 @@ node_modules
 # This is also why past deployments carried stale test accounts: this wasn't excluded before.
 /data/*
 !/data/*.ts
+!/data/*.json
+!/data/cbt/
 .env*
 
 # Build artifacts / local-only files
