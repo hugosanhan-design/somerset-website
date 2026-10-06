@@ -1,0 +1,123 @@
+{
+  "_comment": "SINGLE SOURCE OF TRUTH for site navigation. `place` decides where a group or CTA lives on wide screens: 'masthead' = the top bar (the parent-facing conversion path), 'rail' = the slim left shelf (free content for returning students). Everything is ALSO rendered into the rail markup so the mobile drawer holds the whole nav; CSS hides the masthead-placed items there on wide screens. Consumed by src/lib/nav-render.mjs, scripts/build-nav.mjs, and the two Python generators. Change nav here and nowhere else.",
+  "brand": {
+    "href": "/",
+    "name": "Somerset",
+    "rest": " Language Centre",
+    "sub": "Valencia · Est. 2013",
+    "monogram": "S"
+  },
+  "groups": [
+    {
+      "id": "visit",
+      "label": "Visit us",
+      "public": true,
+      "items": [
+        {
+          "href": "/about",
+          "label": "Who we are",
+          "icon": "about"
+        },
+        {
+          "href": "/courses",
+          "label": "Courses & timetables",
+          "short": "Courses",
+          "icon": "courses"
+        },
+        {
+          "href": "/contact",
+          "label": "Contact",
+          "icon": "contact"
+        }
+      ],
+      "place": "masthead"
+    },
+    {
+      "id": "free",
+      "label": "Learn, free",
+      "public": true,
+      "note": "Stays public and indexable. This is the school's only organic acquisition surface — do not put these behind the student sign-in.",
+      "items": [
+        {
+          "href": "/daily-quizzical",
+          "label": "Daily Quizzical",
+          "icon": "monogram:DQ"
+        },
+        {
+          "href": "/exercises",
+          "label": "Exercises",
+          "icon": "exercises"
+        },
+        {
+          "href": "/games",
+          "label": "Games",
+          "icon": "games"
+        },
+        {
+          "href": "/blog",
+          "label": "Blog",
+          "icon": "blog"
+        }
+      ],
+      "place": "rail"
+    },
+    {
+      "id": "classes",
+      "label": "Your classes",
+      "public": false,
+      "items": [
+        {
+          "href": "/student",
+          "label": "My group",
+          "icon": "group"
+        },
+        {
+          "href": "/student/corrections",
+          "label": "Corrections",
+          "icon": "check"
+        },
+        {
+          "href": "/student/progress",
+          "label": "Progress",
+          "icon": "level"
+        }
+      ],
+      "place": "rail"
+    }
+  ],
+  "ctas": [
+    {
+      "href": "/placement",
+      "label": "Find my level →",
+      "short": "Find my level",
+      "icon": "level",
+      "style": "solid",
+      "public": true,
+      "place": "masthead"
+    },
+    {
+      "href": "/student",
+      "label": "Student area →",
+      "short": "Students",
+      "icon": "key",
+      "style": "ghost",
+      "public": true,
+      "place": "masthead"
+    },
+    {
+      "href": "/student",
+      "label": "Student area",
+      "icon": "key",
+      "style": "ghost",
+      "public": true,
+      "place": "rail"
+    }
+  ],
+  "foot": {
+    "hours": "601 12 95 52 · 963 38 89 33",
+    "address": "Calle Ministro Luis Mayans, 31, Bajo · Valencia",
+    "meta": "info@somersetlc.com · ★ 5.0 · 49 reviews",
+    "_comment": "Address and phones taken from the site footer (the authoritative source). Do NOT use C/ Visitación 23 — that is Hugo's vacant commercial unit, not the academy. Opening hours are deliberately absent: none were verified."
+  },
+  "breakpoint": 900
+}

@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+:root {
+  --green: #6BAE2E;
+  --green-dark: #4d8520;
+  --green-light: #eaf4da;
+}
+
+body {
+  font-family: Arial, 'Liberation Sans', sans-serif;
+}

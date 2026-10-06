@@ -1,0 +1,33 @@
+<!--
+  Somerset Language Centre — WHITE wordmark SVG (white on green/dark backgrounds)
+  Fixed 4 Jun 2026: widened viewBox, LANGUAGE CENTRE repositioned to clear "Somerset"
+  Use: HTML worksheets on green header bars or dark backgrounds
+-->
+<svg viewBox="0 0 430 56" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Somerset Language Centre">
+  <!-- Somerset wordmark — white -->
+  <text
+    x="0" y="46"
+    font-family="'Arial Black', 'Arial', sans-serif"
+    font-weight="800"
+    font-size="50"
+    fill="#FFFFFF"
+    letter-spacing="-1"
+  >Somerset</text>
+  <!-- LANGUAGE CENTRE stack — white, positioned clear of wordmark -->
+  <text
+    x="272" y="25"
+    font-family="Arial, Helvetica, sans-serif"
+    font-weight="700"
+    font-size="11.5"
+    fill="#FFFFFF"
+    letter-spacing="2.5"
+  >LANGUAGE</text>
+  <text
+    x="272" y="43"
+    font-family="Arial, Helvetica, sans-serif"
+    font-weight="700"
+    font-size="11.5"
+    fill="#FFFFFF"
+    letter-spacing="2.5"
+  >CENTRE</text>
+</svg>
