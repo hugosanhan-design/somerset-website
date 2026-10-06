@@ -5,11 +5,24 @@
 export type WordScore = { word: string; accuracy: number; error: string }
 export type Segment = { text: string; words: WordScore[]; accuracy: number; fluency: number; durationSec: number }
 
-type AzureWord = { Word?: string; AccuracyScore?: number; ErrorType?: string; PronunciationAssessment?: { AccuracyScore?: number; ErrorType?: string } }
+type AzurePhoneme = { Phoneme?: string; PronunciationAssessment?: { AccuracyScore?: number } }
+type AzureWord = { Word?: string; AccuracyScore?: number; ErrorType?: string; PronunciationAssessment?: { AccuracyScore?: number; ErrorType?: string }; Phonemes?: AzurePhoneme[] }
 type AzureJson = {
   DisplayText?: string
   Duration?: number
   NBest?: { Display?: string; AccuracyScore?: number; FluencyScore?: number; PronunciationAssessment?: { AccuracyScore?: number; FluencyScore?: number }; Words?: AzureWord[] }[]
+}
+
+function wordAccuracy(w: AzureWord): number {
+  const azureScore = Number(w.PronunciationAssessment?.AccuracyScore ?? w.AccuracyScore ?? 100)
+  const phonemes = (w.Phonemes ?? [])
+    .map(p => p.PronunciationAssessment?.AccuracyScore)
+    .filter((s): s is number => typeof s === 'number')
+  if (phonemes.length >= 2) {
+    const avg = phonemes.reduce((a, b) => a + b, 0) / phonemes.length
+    return Math.round(Math.min(azureScore, avg))
+  }
+  return azureScore
 }
 
 // One recognised phrase from the SDK's JSON result (SpeechServiceResponse_JsonResult).
@@ -21,7 +34,7 @@ export function parseSegment(json: string): Segment | null {
   const pa = best.PronunciationAssessment ?? best
   const words = (best.Words ?? []).map(w => ({
     word: String(w.Word ?? ''),
-    accuracy: Number(w.PronunciationAssessment?.AccuracyScore ?? w.AccuracyScore ?? 100),
+    accuracy: wordAccuracy(w),
     error: String(w.PronunciationAssessment?.ErrorType ?? w.ErrorType ?? 'None'),
   })).filter(w => w.word)
   return {
