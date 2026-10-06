@@ -293,7 +293,7 @@ function WordCoach({ word, phrase, result, heard, before, phase, hint, err, expl
     (phase === 'starting' ? 'One moment...'
     : phase === 'hearing' ? 'Listen...'
     : phase === 'listening' ? (hint === 'go' ? 'Go on, say it now' : hint === 'checking' ? 'Checking...' : 'Say it now')
-    : result === null ? (before ? `In your answer we heard "${before}". Say the phrase.` : multi ? 'Say the whole phrase.' : 'Tap Start and say the word.')
+    : result === null ? (before ? `We heard "${before}" for this word. Say it clearly.` : 'Tap Start and say the word.')
     : result === 'good' ? goodMsg
     : hint === 'yourturn' ? 'Your turn. Copy it.'
     : result === 'amber' ? `Nearly. "${word}" sounded a bit like "${heard}". Listen...`
@@ -328,10 +328,8 @@ function WordCoach({ word, phrase, result, heard, before, phase, hint, err, expl
       <div className="wc-streak" aria-label={`${streak} of ${STREAK_GOAL}`}>
         {Array.from({ length: STREAK_GOAL }, (_, i) => <span key={i} className={i < streak ? 'on' : ''} />)}
       </div>
-      <div className={`wc-word-wrap${multi ? ' wc-word-wrap--phrase' : ''}`}>
-        {multi && parts.slice(0, at).length > 0 && <span className="wc-ctx">{parts.slice(0, at).join(' ')}</span>}
+      <div className="wc-word-wrap">
         <span key={tier === 'listening' ? 'l' : `r-${tries}`} className={`wc-word wc-word--${tier}`} style={style}>{wordInner}</span>
-        {multi && parts.slice(at + 1).length > 0 && <span className="wc-ctx">{parts.slice(at + 1).join(' ')}</span>}
       </div>
       {explain?.ipa && <div className="wc-ipa">{explain.ipa}</div>}
       <p className={`wc-msg wc-msg--${tier}`}>{message}</p>
@@ -582,7 +580,7 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
     setPhase('feedback')
   }
 
-  function hear(word: string, onEnd?: () => void, rate = 0.8) {
+  function hearFallback(word: string, onEnd?: () => void, rate = 0.8) {
     try {
       const u = new SpeechSynthesisUtterance(word)
       u.lang = 'en-GB'; u.rate = rate
@@ -593,7 +591,33 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
     } catch { onEnd?.() }
   }
 
-  const hearAsync = (word: string, rate = 0.8) => new Promise<void>(resolve => hear(word, resolve, rate))
+  // Map 0..1 rate to SSML prosody rate string
+  function toSsmlRate(rate: number): string {
+    if (rate <= 0.32) return 'x-slow'
+    if (rate <= 0.55) return 'slow'
+    if (rate <= 0.85) return 'medium'
+    return 'medium'
+  }
+
+  // Neural TTS via Azure; falls back to browser synthesis if unavailable
+  async function hearNeural(text: string, rate = 0.9): Promise<void> {
+    try {
+      if (!student) throw new Error('no student')
+      const { token, region } = await getToken()
+      const sdk = await import('microsoft-cognitiveservices-speech-sdk')
+      const cfg = sdk.SpeechConfig.fromAuthorizationToken(token, region)
+      cfg.speechSynthesisVoiceName = 'en-GB-SoniaNeural'
+      const synth = new sdk.SpeechSynthesizer(cfg)
+      const ssml = `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-GB"><voice name="en-GB-SoniaNeural"><prosody rate="${toSsmlRate(rate)}">${text}</prosody></voice></speak>`
+      return new Promise(resolve => {
+        synth.speakSsmlAsync(ssml, () => { synth.close(); resolve() }, () => { synth.close(); resolve() })
+      })
+    } catch {
+      return new Promise(resolve => hearFallback(text, resolve, rate))
+    }
+  }
+
+  const hearAsync = hearNeural
   const sleep = (ms: number) => new Promise<void>(resolve => setTimeout(resolve, ms))
 
   function vadDetect(ms = 600): Promise<boolean> {
@@ -879,7 +903,7 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
           }
         } else {
           setWordHint('listen')
-          setTimeout(() => hear(phrase, () => setWordHint('yourturn')), 900)
+          setTimeout(() => hearNeural(phrase).then(() => { setWordHint('yourturn'); setTimeout(() => void sayWord(), 500) }), 900)
         }
       } else {
         if (drillActive.current) {
@@ -896,7 +920,7 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
             if (next >= 3) { setTimeout(() => startDrill(), 1000) }
             else {
               setWordHint('listen')
-              setTimeout(() => hear(phrase, () => setWordHint('yourturn')), 900)
+              setTimeout(() => hearNeural(phrase).then(() => { setWordHint('yourturn'); setTimeout(() => void sayWord(), 500) }), 900)
             }
             return next
           })
@@ -1072,7 +1096,7 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
               )}
               {fb?.praise && <p className="rp-praise">👏 {fb.praise}</p>}
               <SaidText transcript={transcript} segs={segs.current} fixes={fixes} sounds={sounds} activeFix={activeFix}
-                onWord={(w, h) => openWordPractice(w, h, 'said')} onFix={i => { closeCoach(); setActiveFix(i) }} />
+                onWord={(w, h) => openWordPractice(w, h, 'said')} onFix={i => { setActiveFix(i); void openWordPractice(fixes[i].fix, undefined, 'said') }} />
               <p className="rp-legend">
                 <span className="rp-key rp-key--fix"><s>wrong</s> <ins>right</ins></span> grammar fix
                 <span className="rp-key rp-key--pron">word</span> say it better (tap)
@@ -1089,7 +1113,7 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
                   <ul>{fb.b1Why.map((w, i) => <li key={i}>{w}</li>)}</ul>
                 </div>
               )}
-              <button type="button" className="help-btn" onClick={() => hear(fb.b1Version!.replace(/\[\[|\]\]/g, ''))}>🔊 Listen to it</button>
+              <button type="button" className="help-btn" onClick={() => void hearNeural(fb.b1Version!.replace(/\[\[|\]\]/g, ''))}>🔊 Listen to it</button>
             </>
           ) : null}
         </main>
