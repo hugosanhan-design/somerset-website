@@ -550,7 +550,7 @@ export default function Home() {
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       <link rel="stylesheet" precedence="default" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Poppins:wght@600;700&display=swap" />
 
-      <style>{`
+      <style suppressHydrationWarning>{`
         :root {
           --paper: #F5F1E6; --paper-2: #EDE7D6;
           --ink: #17281B; --racing: #1E4227; --racing-2: #2A5636;
@@ -1258,32 +1258,57 @@ export default function Home() {
             <circle cx="54" cy="55" r="4" fill="#FFFAE8" opacity="0.6"/>
           </svg>
         </div>
-        {/* Animated clouds — visible on cloudy days, speed from live wind data */}
+        {/* Animated clouds — pencil-sketch style matching the illustrated scene below */}
         <div className="hero-cloud c1" aria-hidden="true">
-          <svg viewBox="0 0 200 70" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="55" cy="48" r="26" fill="rgba(240,243,248,0.88)"/>
-            <circle cx="82" cy="36" r="34" fill="rgba(240,243,248,0.88)"/>
-            <circle cx="120" cy="40" r="27" fill="rgba(240,243,248,0.88)"/>
-            <circle cx="148" cy="48" r="20" fill="rgba(240,243,248,0.88)"/>
-            <rect x="35" y="46" width="133" height="30" fill="rgba(240,243,248,0.88)" rx="8"/>
+          <svg viewBox="0 0 220 82" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <filter id="pf-a" x="-6%" y="-6%" width="112%" height="112%">
+                <feTurbulence type="turbulence" baseFrequency="0.04 0.06" numOctaves="4" seed="5" result="noise"/>
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.8" xChannelSelector="R" yChannelSelector="G"/>
+              </filter>
+            </defs>
+            <g filter="url(#pf-a)">
+              <path d="M22 72 Q8 72 6 62 Q2 50 12 43 Q16 36 26 35 Q22 24 30 17 Q40 9 52 13 Q58 6 70 9 Q82 11 84 23 Q92 17 104 22 Q116 28 112 42 Q122 40 130 50 Q136 62 124 70 Q80 80 22 72 Z"
+                    fill="#E0DBCE" stroke="#9A9287" strokeWidth="1.1" strokeOpacity="0.68"/>
+              <path d="M38 28 Q44 18 56 15" stroke="#EDE8DA" strokeWidth="1.5" strokeOpacity="0.65" fill="none" strokeLinecap="round"/>
+              <path d="M60 14 Q70 9 80 13" stroke="#EDE8DA" strokeWidth="1.0" strokeOpacity="0.5" fill="none" strokeLinecap="round"/>
+              <path d="M90 20 Q100 16 108 22" stroke="#EDE8DA" strokeWidth="0.9" strokeOpacity="0.4" fill="none" strokeLinecap="round"/>
+              <path d="M26 62 Q72 70 122 66 Q150 63 182 56" stroke="#C6C0B2" strokeWidth="1.4" strokeOpacity="0.28" fill="none" strokeLinecap="round"/>
+            </g>
           </svg>
         </div>
         <div className="hero-cloud c2" aria-hidden="true">
-          <svg viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="40" cy="40" r="22" fill="rgba(235,240,248,0.82)"/>
-            <circle cx="65" cy="30" r="28" fill="rgba(235,240,248,0.82)"/>
-            <circle cx="100" cy="33" r="22" fill="rgba(235,240,248,0.82)"/>
-            <circle cx="124" cy="40" r="17" fill="rgba(235,240,248,0.82)"/>
-            <rect x="22" y="38" width="119" height="26" fill="rgba(235,240,248,0.82)" rx="7"/>
+          <svg viewBox="0 0 175 65" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <filter id="pf-b" x="-6%" y="-6%" width="112%" height="112%">
+                <feTurbulence type="turbulence" baseFrequency="0.05 0.04" numOctaves="3" seed="12" result="noise"/>
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.2" xChannelSelector="R" yChannelSelector="G"/>
+              </filter>
+            </defs>
+            <g filter="url(#pf-b)">
+              <path d="M18 57 Q6 57 4 48 Q0 40 10 34 Q14 28 22 27 Q20 18 28 13 Q38 8 50 13 Q56 7 66 9 Q76 11 78 22 Q88 18 96 26 Q102 34 96 44 Q106 44 110 52 Q112 60 100 62 Q18 68 18 57 Z"
+                    fill="#DDDACE" stroke="#97907F" strokeWidth="1.0" strokeOpacity="0.62"/>
+              <path d="M32 22 Q40 14 52 12" stroke="#EAE5D8" strokeWidth="1.3" strokeOpacity="0.6" fill="none" strokeLinecap="round"/>
+              <path d="M58 10 Q68 7 76 13" stroke="#EAE5D8" strokeWidth="0.9" strokeOpacity="0.45" fill="none" strokeLinecap="round"/>
+              <path d="M22 50 Q56 58 96 54 Q118 51 138 44" stroke="#C2BDB0" strokeWidth="1.2" strokeOpacity="0.26" fill="none" strokeLinecap="round"/>
+            </g>
           </svg>
         </div>
         <div className="hero-cloud c3" aria-hidden="true">
-          <svg viewBox="0 0 130 55" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="32" cy="37" r="20" fill="rgba(238,242,250,0.78)"/>
-            <circle cx="54" cy="28" r="25" fill="rgba(238,242,250,0.78)"/>
-            <circle cx="85" cy="30" r="19" fill="rgba(238,242,250,0.78)"/>
-            <circle cx="105" cy="38" r="15" fill="rgba(238,242,250,0.78)"/>
-            <rect x="17" y="36" width="103" height="22" fill="rgba(238,242,250,0.78)" rx="6"/>
+          <svg viewBox="0 0 140 55" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <filter id="pf-c" x="-6%" y="-6%" width="112%" height="112%">
+                <feTurbulence type="turbulence" baseFrequency="0.06 0.04" numOctaves="3" seed="19" result="noise"/>
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.0" xChannelSelector="R" yChannelSelector="G"/>
+              </filter>
+            </defs>
+            <g filter="url(#pf-c)">
+              <path d="M14 45 Q4 45 3 37 Q0 30 8 25 Q12 20 20 21 Q18 13 26 9 Q36 5 46 10 Q52 5 60 7 Q70 9 70 19 Q78 16 84 22 Q90 28 86 36 Q94 36 98 42 Q100 48 90 50 Q14 54 14 45 Z"
+                    fill="#D9D6CC" stroke="#948D80" strokeWidth="0.9" strokeOpacity="0.58"/>
+              <path d="M26 18 Q34 11 44 9" stroke="#E6E0D3" strokeWidth="1.1" strokeOpacity="0.58" fill="none" strokeLinecap="round"/>
+              <path d="M50 7 Q58 4 66 8" stroke="#E6E0D3" strokeWidth="0.8" strokeOpacity="0.4" fill="none" strokeLinecap="round"/>
+              <path d="M18 40 Q46 48 84 44 Q96 42 108 36" stroke="#C0BAB0" strokeWidth="1.0" strokeOpacity="0.24" fill="none" strokeLinecap="round"/>
+            </g>
           </svg>
         </div>
         <div className="wx-badge" id="wxBadge">Checking the weather in Dunster…</div>
