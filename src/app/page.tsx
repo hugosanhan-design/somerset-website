@@ -165,7 +165,7 @@ export default function Home() {
     const beginLowering = () => {
       if (!sheep || reduceMotion) return
       if (sheep.classList.contains('eating') || sheep.classList.contains('walking') || sheepStages.some(stage => sheep.classList.contains(stage))) return
-      if ([...sheep.querySelectorAll<HTMLImageElement>('.sheep-transition-pose')].some(img => !img.complete || !img.naturalWidth)) {
+      if (Array.from(sheep.querySelectorAll<HTMLImageElement>('.sheep-transition-pose')).some(img => !img.complete || !img.naturalWidth)) {
         sheepRestTimer = window.setTimeout(beginLowering, 150)
         return
       }
