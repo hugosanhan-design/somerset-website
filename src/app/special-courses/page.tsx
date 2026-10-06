@@ -152,7 +152,7 @@ export default function SpecialCoursesPage() {
           <div className="sc-hero-badges">
             <span className="sc-badge"><span className="sc-badge-dot" />Spain-specific vocabulary</span>
             <span className="sc-badge"><span className="sc-badge-dot" />Valencia layer in every module</span>
-            <span className="sc-badge"><span className="sc-badge-dot" />Live sessions with Somerset teachers</span>
+            <span className="sc-badge"><span className="sc-badge-dot" />Built by Somerset teachers in Valencia</span>
             <span className="sc-badge"><span className="sc-badge-dot" />Self-paced — your schedule</span>
           </div>
         </section>
@@ -297,7 +297,7 @@ export default function SpecialCoursesPage() {
           <div className="sc-section-header">
             <div className="sc-section-eyebrow">How it works</div>
             <h2>Flexible enough for a working life</h2>
-            <p>Short lessons you can do at 7am. Live sessions with a real teacher. No fixed schedule to miss.</p>
+            <p>Short lessons you can do at 7am, on the train, or whenever you have 15 minutes. No fixed schedule, no classroom.</p>
           </div>
           <div className="sc-format-grid">
             <div className="sc-format-card">
@@ -308,8 +308,8 @@ export default function SpecialCoursesPage() {
             <div className="sc-format-card sc-format-highlight">
               <div className="sc-format-tag">Somerset&apos;s differentiator</div>
               <div className="sc-format-icon">🧑‍🏫</div>
-              <h3>Live group sessions</h3>
-              <p>Each module ends with a small-group session with a Somerset teacher. 4–6 people. 60 minutes. The part that actually moves you forward.</p>
+              <h3>Built by people who live here</h3>
+              <p>Written by Somerset teachers who&apos;ve navigated Valencia themselves — the actual offices, hospitals, and cultural realities, not a generic Spain guide.</p>
             </div>
             <div className="sc-format-card">
               <div className="sc-format-icon">🗺️</div>
