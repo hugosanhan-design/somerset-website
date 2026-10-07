@@ -402,3 +402,7 @@
 .sexp .exp-links a{font-size:.8rem;font-weight:600;color:var(--azul);background:var(--azul-lt);border-radius:99px;padding:.35rem .8rem;text-decoration:none}
 .sexp .exp-links a:hover{background:var(--azul);color:#fff}
 .sexp .exp-checked{font-size:.75rem;color:#3d6b1c;margin-top:.7rem!important}
+.sexp .exp-playall{margin-left:.7rem;letter-spacing:0;text-transform:none;vertical-align:middle}
+.sexp .exp-play{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;margin-right:.45rem;border-radius:50%;border:0;background:var(--terra);color:#fff;font-size:.6rem;cursor:pointer;vertical-align:middle;flex-shrink:0}
+.sexp .exp-say--them .exp-play{background:var(--azul)}
+.sexp .exp-play:hover{transform:scale(1.1)}

@@ -26,6 +26,21 @@ function countdown(d: Date): { text: string; tone: 'ok' | 'soon' | 'late' } {
   return { text: `in ${days} days`, tone: days <= 7 ? 'soon' : 'ok' }
 }
 
+const sayAudio = (id: DocId, i: number) => `/courses/spanish-expats/audio/say/${id}-${i}.mp3`
+
+let current: HTMLAudioElement | null = null
+function playSeq(srcs: string[]) {
+  current?.pause()
+  const next = (k: number) => {
+    if (k >= srcs.length) return
+    const a = new Audio(srcs[k])
+    current = a
+    a.onended = () => setTimeout(() => next(k + 1), 350)
+    a.play().catch(() => {})
+  }
+  next(0)
+}
+
 function downloadIcs(name: string, ics: string) {
   const url = URL.createObjectURL(new Blob([ics], { type: 'text/calendar;charset=utf-8' }))
   const a = document.createElement('a')
@@ -222,12 +237,18 @@ export default function MiExpediente({ route, nat, purpose, onRead }: {
 
                   {doc.say && (
                     <section>
-                      <h3>Say it in Spanish</h3>
+                      <h3>
+                        Say it in Spanish
+                        <button className="exp-mini exp-playall" onClick={() => playSeq(doc.say!.map((_, i) => sayAudio(id, i)))}>▶ Play the conversation</button>
+                      </h3>
                       <ul className="exp-say">
-                        {doc.say.map(p => (
+                        {doc.say.map((p, i) => (
                           <li key={p.es} className={`exp-say--${p.who}`}>
                             <span className="exp-say__who">{p.who === 'you' ? 'You' : 'They say'}</span>
-                            <span className="exp-say__es">{p.es}</span>
+                            <span className="exp-say__es">
+                              <button className="exp-play" onClick={() => playSeq([sayAudio(id, i)])} aria-label={`Listen: ${p.es}`}>▶</button>
+                              {p.es}
+                            </span>
                             <span className="exp-say__en">{p.en}</span>
                           </li>
                         ))}
