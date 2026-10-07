@@ -310,6 +310,25 @@ export const PHRASE_ITEMS_SE: PhraseItemSE[] = PHRASES_M1.map(p => ({
 }))
 export const ALL_ITEMS_SE: ItemSE[] = [...VOCAB_ITEMS_SE, ...PHRASE_ITEMS_SE]
 
+// ─── Match drag data ──────────────────────────────────────────────────────────
+// 6 of the 8 phrases used in a situation-matching drag activity (step 3).
+// Item IDs use m1:match: prefix — never rename once stored in progress.
+
+export type MatchItem = { id: string; situation: string; phrase: string }
+export const MATCH_QS: MatchItem[] = [
+  { id: 'match-nie', situation: "You've just arrived. Tell the clerk why you're there.", phrase: 'Vengo a pedir el NIE.' },
+  { id: 'match-repite', situation: "The clerk is speaking too fast — ask them to slow down.", phrase: '¿Puede repetir más despacio, por favor?' },
+  { id: 'match-entiendo', situation: "You caught some words but not everything — be honest.", phrase: 'Perdona, no entiendo del todo.' },
+  { id: 'match-docs', situation: "You're not sure what paperwork to bring — ask.", phrase: '¿Qué documentos necesito?' },
+  { id: 'match-pagar', situation: "You'd prefer not to use cash for the tasa — ask.", phrase: '¿Puedo pagar con tarjeta?' },
+  { id: 'match-justificante', situation: "You always want proof you were there — ask for a receipt.", phrase: 'Necesito un justificante, por favor.' },
+]
+export const MATCH_OPTIONS: string[] = MATCH_QS.map(q => q.phrase)
+export type MatchItemSE = { id: string; kind: 'match'; phrase: string; situation: string }
+export const MATCH_ITEMS_SE: MatchItemSE[] = MATCH_QS.map(q => ({
+  id: `m1:match:${q.id}`, kind: 'match' as const, phrase: q.phrase, situation: q.situation,
+}))
+
 // ─── Answer checking ──────────────────────────────────────────────────────────
 
 export function normaliseSE(s: string): string {
