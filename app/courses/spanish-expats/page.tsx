@@ -15,27 +15,37 @@ import {
   MATCH_QS, MATCH_OPTIONS,
   type PoderItem,
 } from '@/lib/courses/spanishExpats'
+import { photoSE, type PhotoKeySE } from '@/lib/courses/photosExpats'
 
 // ─── Step metadata ─────────────────────────────────────────────────────────────
 
 const ACCENT_DEFAULT = '#C4694A'
 
 type StepMeta = {
-  nav: string; tag: string; title: string; aim: string; accent: string
+  nav: string; tag: string; title: string; aim: string; accent: string; photo: PhotoKeySE
 }
 const STEPS: StepMeta[] = [
-  { nav: 'Inicio', tag: 'Módulo 1', title: 'El primer mes', aim: 'What to expect in your first month in Spain — and the Spanish to handle it.', accent: '#C4694A' },
-  { nav: 'Vocabulario', tag: 'Lección A', title: 'Los documentos esenciales', aim: '12 terms you will need before your first week is out. Type each one from memory.', accent: '#9B4F35' },
-  { nav: 'Frases', tag: 'Lección B', title: 'En la oficina', aim: '8 key phrases for any government office — the ones that will actually save you.', accent: '#1D4E89' },
-  { nav: 'Emparejar', tag: 'Lección C', title: '¿Cuál es la frase?', aim: 'Drag the right phrase onto each situation. 6 real office scenarios.', accent: '#5a9a2c' },
-  { nav: 'Gramática', tag: 'Lección D', title: 'Poder + infinitivo', aim: 'One structure covers half your bureaucracy Spanish: "Can you…?" "Can I…?"', accent: '#E8B84B' },
-  { nav: 'Diálogo', tag: 'Lección E', title: 'En la extranjería', aim: 'Follow Sarah through her NIE appointment in Valencia. Then answer four questions.', accent: '#9B4F35' },
-  { nav: 'Hablar', tag: 'Lección F', title: 'A practicar', aim: 'Talk through your own situation out loud. Use the phrases from this module.', accent: '#1D4E89' },
-  { nav: 'Resultado', tag: 'Módulo 1', title: '¿Qué tal?', aim: 'Your scores across the module, and what to work on next.', accent: '#C4694A' },
+  { nav: 'Inicio', tag: 'Módulo 1', title: 'El primer mes', aim: 'What to expect in your first month in Spain — and the Spanish to handle it.', accent: '#C4694A', photo: 'ayuntamiento' },
+  { nav: 'Vocabulario', tag: 'Lección A', title: 'Los documentos esenciales', aim: '12 terms you will need before your first week is out. Type each one from memory.', accent: '#9B4F35', photo: 'plaza-ayuntamiento' },
+  { nav: 'Frases', tag: 'Lección B', title: 'En la oficina', aim: '8 key phrases for any government office — the ones that will actually save you.', accent: '#1D4E89', photo: 'ayuntamiento' },
+  { nav: 'Emparejar', tag: 'Lección C', title: '¿Cuál es la frase?', aim: 'Drag the right phrase onto each situation. 6 real office scenarios.', accent: '#5a9a2c', photo: 'plaza-reina' },
+  { nav: 'Gramática', tag: 'Lección D', title: 'Poder + infinitivo', aim: 'One structure covers half your bureaucracy Spanish: "Can you…?" "Can I…?"', accent: '#E8B84B', photo: 'plaza-ayuntamiento' },
+  { nav: 'Diálogo', tag: 'Lección E', title: 'En la extranjería', aim: 'Follow Sarah through her NIE appointment in Valencia. Then answer four questions.', accent: '#9B4F35', photo: 'plaza-reina' },
+  { nav: 'Hablar', tag: 'Lección F', title: 'A practicar', aim: 'Talk through your own situation out loud. Use the phrases from this module.', accent: '#1D4E89', photo: 'ayuntamiento' },
+  { nav: 'Resultado', tag: 'Módulo 1', title: '¿Qué tal?', aim: 'Your scores across the module, and what to work on next.', accent: '#C4694A', photo: 'plaza-reina' },
 ]
 // step: 0=welcome, 1=vocab, 2=phrases, 3=match, 4=grammar, 5=dialogue, 6=speaking, 7=result
 
 // ─── Helpers ───────────────────────────────────────────────────────────────────
+
+function PhotoCreditSE({ k }: { k: PhotoKeySE }) {
+  const p = photoSE(k)
+  return (
+    <a className="photo-credit" href={p.page} target="_blank" rel="noopener noreferrer">
+      Photo: {p.author} · {p.licence}
+    </a>
+  )
+}
 
 function pct(done: number, total: number) {
   return total === 0 ? 0 : Math.round((done / total) * 100)
@@ -1006,11 +1016,13 @@ export default function SpanishExpatsPage() {
 
       {/* Hero */}
       <div className={`hero${step === 0 ? ' hero--cover' : ''}`}>
-        <div className="hero-img" style={{
-          backgroundImage: step === 0
-            ? 'linear-gradient(135deg, #5a2a1a 0%, #c4694a 45%, #1d4e89 100%)'
-            : `linear-gradient(135deg, ${accent}cc 0%, ${accent}88 100%)`,
-        }} />
+        <img
+          className="hero-img"
+          src={photoSE(meta.photo).src}
+          alt={photoSE(meta.photo).alt}
+          style={{ objectPosition: photoSE(meta.photo).focus }}
+        />
+        <PhotoCreditSE k={meta.photo} />
         <div className="hero-overlay">
           <span className="hero-label">{meta.tag}</span>
           <h1 className="hero-title">{meta.title}</h1>
