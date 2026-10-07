@@ -41,6 +41,8 @@ export default function UploadWork() {
     image_url: string
   } | null>(null)
   const [saving, setSaving] = useState(false)
+  const [pasteNotice, setPasteNotice] = useState('')
+  const cameraRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     fetch(`/api/students/${id}`).then(r => r.json()).then(setStudent)
@@ -63,6 +65,20 @@ export default function UploadWork() {
     setPreview(URL.createObjectURL(f))
     setResult(null)
     setStatus('idle')
+  }
+
+  async function handlePaste() {
+    try {
+      const text = await navigator.clipboard.readText()
+      if (text.trim()) {
+        setForm(f => ({ ...f, teacher_notes: (f.teacher_notes ? f.teacher_notes + '\n\n' : '') + text.trim() }))
+        setPasteNotice('Text pasted ✓')
+        setTimeout(() => setPasteNotice(''), 3000)
+      }
+    } catch {
+      setPasteNotice('Clipboard access denied — paste manually below')
+      setTimeout(() => setPasteNotice(''), 4000)
+    }
   }
 
   async function runAnalysis() {
@@ -208,6 +224,7 @@ export default function UploadWork() {
             )}
           </div>
           <input ref={fileRef} type="file" accept="image/*" onChange={handleFile} style={{ display: 'none' }} />
+          <input ref={cameraRef} type="file" accept="image/*" capture="environment" onChange={handleFile} style={{ display: 'none' }} />
           {preview && (
             <button
               type="button"
@@ -216,6 +233,20 @@ export default function UploadWork() {
             >
               ✕ Remove image
             </button>
+          )}
+          {/* Quick-action buttons */}
+          <div style={{ display: 'flex', gap: 8, marginTop: 10, flexWrap: 'wrap' }}>
+            <button type="button" onClick={() => cameraRef.current?.click()}
+              style={{ fontSize: 13, padding: '6px 14px', borderRadius: 6, border: '1px solid #d1d5db', background: '#fff', cursor: 'pointer', color: '#374151' }}>
+              📷 Scan with camera
+            </button>
+            <button type="button" onClick={handlePaste}
+              style={{ fontSize: 13, padding: '6px 14px', borderRadius: 6, border: '1px solid #d1d5db', background: '#fff', cursor: 'pointer', color: '#374151' }}>
+              📋 Paste text
+            </button>
+          </div>
+          {pasteNotice && (
+            <p style={{ fontSize: 12, color: pasteNotice.includes('denied') ? '#c0392b' : '#2d6a0a', margin: '6px 0 0' }}>{pasteNotice}</p>
           )}
         </div>
 
