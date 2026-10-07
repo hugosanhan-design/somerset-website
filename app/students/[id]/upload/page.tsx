@@ -41,7 +41,10 @@ export default function UploadWork() {
     feedback: string
     error_patterns: string[]
     image_url: string
+    transcription?: string
   } | null>(null)
+  const [reportHtml, setReportHtml] = useState<string | null>(null)
+  const [reportStatus, setReportStatus] = useState<'idle' | 'generating' | 'done' | 'error'>('idle')
   const [saving, setSaving] = useState(false)
   const [pasteNotice, setPasteNotice] = useState('')
   const cameraRef = useRef<HTMLInputElement>(null)
@@ -103,6 +106,32 @@ export default function UploadWork() {
     const data = await res.json()
     setResult(data)
     setStatus('done')
+  }
+
+  async function generateReport() {
+    const transcription = result?.transcription || pastedText
+    if (!transcription || !student) return
+    setReportStatus('generating')
+    setReportHtml(null)
+    try {
+      const res = await fetch('/api/correct', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          studentName: student.name,
+          level: student.level || 'B1',
+          taskType: form.type,
+          taskPrompt: form.task_prompt || '',
+          studentText: transcription,
+        }),
+      })
+      if (!res.ok) { setReportStatus('error'); return }
+      const data = await res.json()
+      setReportHtml(data.html)
+      setReportStatus('done')
+    } catch {
+      setReportStatus('error')
+    }
   }
 
   async function saveEntry() {
@@ -303,22 +332,59 @@ export default function UploadWork() {
         )}
 
         {status === 'done' && result && (
-          <div style={{ backgroundColor: '#f0fae6', border: '1.5px solid #6BAE2E', borderRadius: 10, padding: 20, marginBottom: 20 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 14 }}>
-              <div style={{ fontSize: 13, fontWeight: 700, color: '#3d6b1a', textTransform: 'uppercase', letterSpacing: '0.05em' }}>AI Analysis complete</div>
-              {result.score != null && (
-                <div style={{ fontSize: 28, fontWeight: 700, color: scoreColor(result.score) }}>{result.score}<span style={{ fontSize: 14, color: '#6b7280' }}>/100</span></div>
+          <div style={{ marginBottom: 20 }}>
+            <div style={{ backgroundColor: '#f0fae6', border: '1.5px solid #6BAE2E', borderRadius: 10, padding: 20, marginBottom: 12 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 14 }}>
+                <div style={{ fontSize: 13, fontWeight: 700, color: '#3d6b1a', textTransform: 'uppercase', letterSpacing: '0.05em' }}>AI Analysis complete</div>
+                {result.score != null && (
+                  <div style={{ fontSize: 28, fontWeight: 700, color: scoreColor(result.score) }}>{result.score}<span style={{ fontSize: 14, color: '#6b7280' }}>/100</span></div>
+                )}
+              </div>
+              <p style={{ fontSize: 14, color: '#374151', lineHeight: 1.6, margin: '0 0 12px' }}>{result.feedback}</p>
+              {result.error_patterns.length > 0 && (
+                <div>
+                  <div style={{ fontSize: 12, fontWeight: 700, color: '#6b7280', marginBottom: 6, textTransform: 'uppercase' }}>Areas to work on</div>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                    {result.error_patterns.map(p => (
+                      <span key={p} style={patternChip}>{p}</span>
+                    ))}
+                  </div>
+                </div>
               )}
             </div>
-            <p style={{ fontSize: 14, color: '#374151', lineHeight: 1.6, margin: '0 0 12px' }}>{result.feedback}</p>
-            {result.error_patterns.length > 0 && (
-              <div>
-                <div style={{ fontSize: 12, fontWeight: 700, color: '#6b7280', marginBottom: 6, textTransform: 'uppercase' }}>Areas to work on</div>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
-                  {result.error_patterns.map(p => (
-                    <span key={p} style={patternChip}>{p}</span>
-                  ))}
+
+            {/* Full report */}
+            {(result.transcription || pastedText) && reportStatus === 'idle' && (
+              <button onClick={generateReport} style={{ ...btnGreen, width: '100%', background: '#1A1A1A', borderColor: '#1A1A1A' }}>
+                📄 Generate full Writing Report
+              </button>
+            )}
+            {reportStatus === 'generating' && (
+              <div style={analysisBox('#f5f5f5', '#374151')}>
+                <div style={{ fontSize: 20, marginBottom: 6 }}>⏳</div>
+                <p style={{ margin: 0, fontSize: 14, fontWeight: 600 }}>Building the Writing Report…</p>
+                <p style={{ margin: '4px 0 0', fontSize: 13, opacity: 0.7 }}>This takes 30–60 seconds — annotated text, corrections table, practice exercises.</p>
+              </div>
+            )}
+            {reportStatus === 'error' && (
+              <p style={{ fontSize: 13, color: '#991b1b', margin: '8px 0 0' }}>Report generation failed. You can still save the entry.</p>
+            )}
+            {reportStatus === 'done' && reportHtml && (
+              <div style={{ border: '1.5px solid #d1d5db', borderRadius: 10, overflow: 'hidden', marginTop: 4 }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 16px', borderBottom: '1px solid #e5e7eb', background: '#f9fafb' }}>
+                  <span style={{ fontSize: 13, fontWeight: 600, color: '#374151' }}>Writing Report</span>
+                  <div style={{ display: 'flex', gap: 8 }}>
+                    <button onClick={() => (document.getElementById('report-frame') as HTMLIFrameElement)?.contentWindow?.print()}
+                      style={{ fontSize: 12, padding: '5px 12px', borderRadius: 5, border: '1px solid #d1d5db', background: '#fff', cursor: 'pointer' }}>
+                      🖨️ Print
+                    </button>
+                    <button onClick={generateReport}
+                      style={{ fontSize: 12, padding: '5px 12px', borderRadius: 5, border: '1px solid #d1d5db', background: '#fff', cursor: 'pointer' }}>
+                      ↻ Regenerate
+                    </button>
+                  </div>
                 </div>
+                <iframe id="report-frame" srcDoc={reportHtml} style={{ width: '100%', height: '70vh', border: 'none' }} title="Writing Report" />
               </div>
             )}
           </div>
