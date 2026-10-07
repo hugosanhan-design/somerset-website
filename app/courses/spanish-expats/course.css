@@ -406,3 +406,17 @@
 .sexp .exp-play{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;margin-right:.45rem;border-radius:50%;border:0;background:var(--terra);color:#fff;font-size:.6rem;cursor:pointer;vertical-align:middle;flex-shrink:0}
 .sexp .exp-say--them .exp-play{background:var(--azul)}
 .sexp .exp-play:hover{transform:scale(1.1)}
+.sexp .ruta-doc__icon,.sexp .exp-task__icon{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;background:var(--terra-lt);color:var(--terra-dk);flex-shrink:0}
+.sexp .exp-task__icon{width:32px;height:32px;background:var(--azul-lt);color:var(--azul)}
+.sexp .ruta-opt__icon{display:inline-flex;color:var(--terra-dk);margin-bottom:.2rem}
+.sexp .ruta-opt--on .ruta-opt__icon{color:var(--terra)}
+.sexp .ruta-clock{display:inline-flex;vertical-align:-2px;margin-right:.3rem;color:var(--terra)}
+.sexp .exp-privacy{display:inline-flex;align-items:center;gap:.4rem}
+/* header: keep it one line on phones */
+.sexp .unit-label{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+@media(max-width:600px){
+  .sexp .site-header__top{padding:.55rem 1rem}
+  .sexp .unit-label{display:none}
+  .sexp .site-header__top>a:first-child{flex:1}
+}
+.sexp .hero-label{align-self:flex-start;background:rgba(0,0,0,.5);color:#f6c3ae;padding:.2rem .55rem;border-radius:4px}

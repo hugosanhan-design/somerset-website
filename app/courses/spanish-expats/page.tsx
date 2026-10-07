@@ -17,6 +17,7 @@ import {
 } from '@/lib/courses/spanishExpats'
 import { photoSE, type PhotoKeySE } from '@/lib/courses/photosExpats'
 import MiExpediente from './MiExpediente'
+import { Icon } from './icons'
 import {
   DOCS, NATIONALITIES, PURPOSES, REALITY, GOTCHAS, GESTOR, RUTA_LAST_VERIFIED,
   routeFor, docsFor,
@@ -944,7 +945,7 @@ function DocCardView({ doc, open, onToggle, onZoom }: {
   return (
     <div className={`ruta-doc${open ? ' ruta-doc--open' : ''}`} id={`doc-${doc.id}`}>
       <button className="ruta-doc__head" onClick={onToggle} aria-expanded={open}>
-        <span className="ruta-doc__emoji" aria-hidden>{doc.emoji}</span>
+        <span className="ruta-doc__icon"><Icon name={doc.id} /></span>
         <span className="ruta-doc__names">
           <span className="ruta-doc__es">{doc.es}</span>
           <span className="ruta-doc__en">{doc.en}</span>
@@ -1075,7 +1076,7 @@ function RutaStep({ onDone }: { onDone: () => void }) {
             <div className="ruta-pick ruta-pick--5">
               {PURPOSES.map(p => (
                 <button key={p.id} className={`ruta-opt${purpose === p.id ? ' ruta-opt--on' : ''}`} onClick={() => { setPurpose(p.id); setOpen(null) }}>
-                  <span className="ruta-opt__emoji" aria-hidden>{p.emoji}</span><strong>{p.label}</strong>
+                  <span className="ruta-opt__icon"><Icon name={p.id} size={24} /></span><strong>{p.label}</strong>
                 </button>
               ))}
             </div>
@@ -1094,7 +1095,7 @@ function RutaStep({ onDone }: { onDone: () => void }) {
                 <ul>
                   {route[ph.key].map(item => (
                     <li key={item.text} className={item.deadline ? 'ruta-item--deadline' : undefined}>
-                      <span>{item.deadline && <span className="ruta-clock" title="Deadline">⏱ </span>}{item.text}</span>
+                      <span>{item.deadline && <span className="ruta-clock" title="Deadline"><Icon name="clock" size={14} /></span>}{item.text}</span>
                       {item.doc && (
                         <button className="ruta-link" onClick={() => jump(item.doc!)}>{DOCS[item.doc].es} →</button>
                       )}

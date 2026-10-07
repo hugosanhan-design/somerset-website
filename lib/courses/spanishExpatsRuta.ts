@@ -15,12 +15,12 @@ export const NATIONALITIES: { id: Nationality; label: string; sub: string }[] = 
   { id: 'noneu', label: 'Other non-EU', sub: 'US, Canada, Australia, LatAm…' },
 ]
 
-export const PURPOSES: { id: Purpose; label: string; emoji: string }[] = [
-  { id: 'work', label: 'Work for a Spanish employer', emoji: '💼' },
-  { id: 'nomad', label: 'Work remotely (digital nomad)', emoji: '💻' },
-  { id: 'study', label: 'Study', emoji: '🎓' },
-  { id: 'retire', label: 'Retire / live off savings', emoji: '🌅' },
-  { id: 'family', label: 'Join family', emoji: '👨‍👩‍👧' },
+export const PURPOSES: { id: Purpose; label: string }[] = [
+  { id: 'work', label: 'Work for a Spanish employer' },
+  { id: 'nomad', label: 'Work remotely (digital nomad)' },
+  { id: 'study', label: 'Study' },
+  { id: 'retire', label: 'Retire / live off savings' },
+  { id: 'family', label: 'Join family' },
 ]
 
 // ─── Document cards ──────────────────────────────────────────────────────────
@@ -34,7 +34,6 @@ export type DocCard = {
   id: DocId
   es: string
   en: string
-  emoji: string
   images?: DocImage[]
   what: string
   who: string
@@ -109,7 +108,7 @@ const IMG = '/courses/spanish-expats/docs/'
 
 export const DOCS: Record<DocId, DocCard> = {
   visa: {
-    id: 'visa', es: 'Visado nacional (tipo D)', en: 'Long-stay visa', emoji: '🛂',
+    id: 'visa', es: 'Visado nacional (tipo D)', en: 'Long-stay visa',
     images: [{
       src: IMG + 'visa-d-sticker-specimen-eu.jpg',
       alt: 'Official specimen of the EU long-stay visa sticker',
@@ -161,7 +160,7 @@ export const DOCS: Record<DocId, DocCard> = {
   },
 
   supporting: {
-    id: 'supporting', es: 'Apostilla y traducción jurada', en: 'Apostille & sworn translation', emoji: '📑',
+    id: 'supporting', es: 'Apostilla y traducción jurada', en: 'Apostille & sworn translation',
     images: [{
       src: IMG + 'apostille-specimen-redacted.jpg',
       alt: 'An apostille certificate with ten numbered fields, personal details redacted',
@@ -186,7 +185,7 @@ export const DOCS: Record<DocId, DocCard> = {
   },
 
   nie: {
-    id: 'nie', es: 'NIE', en: 'Foreigner ID number', emoji: '🔢',
+    id: 'nie', es: 'NIE', en: 'Foreigner ID number',
     what: 'Your foreigner identity number — for life. It appears on your tax papers, contracts and residence card. The NIE certificate (form EX-15) is just the paper proving the number.',
     who: 'Everyone. Residents get it automatically: EU citizens on their green certificate, non-EU on their visa/TIE. You only need a separate NIE certificate for one-off things (buying a flat, a car) before you are a resident.',
     before: 'yes',
@@ -235,7 +234,7 @@ export const DOCS: Record<DocId, DocCard> = {
   },
 
   padron: {
-    id: 'padron', es: 'Empadronamiento', en: 'Town hall registration', emoji: '🏠',
+    id: 'padron', es: 'Empadronamiento', en: 'Town hall registration',
     what: 'Registering your address on the city\'s population register. The proof is the certificado de empadronamiento.',
     who: 'Everyone who lives in Valencia — EU, UK and non-EU. It\'s compulsory, and almost everything else needs it.',
     before: 'no',
@@ -282,7 +281,7 @@ export const DOCS: Record<DocId, DocCard> = {
   },
 
   'eu-cert': {
-    id: 'eu-cert', es: 'Certificado de Registro de Ciudadano de la UE', en: 'EU registration ("green") certificate', emoji: '🟩',
+    id: 'eu-cert', es: 'Certificado de Registro de Ciudadano de la UE', en: 'EU registration ("green") certificate',
     what: 'Registration as an EU resident in Spain. It carries your NIE.',
     who: 'EU, EEA and Swiss citizens staying more than 3 months. Not for Brits who arrived after 2020.',
     before: 'no',
@@ -332,7 +331,7 @@ export const DOCS: Record<DocId, DocCard> = {
   },
 
   tie: {
-    id: 'tie', es: 'TIE', en: 'Foreigner identity card', emoji: '💳',
+    id: 'tie', es: 'TIE', en: 'Foreigner identity card',
     images: [
       {
         src: IMG + 'tie-front.jpg',
@@ -406,7 +405,7 @@ export const DOCS: Record<DocId, DocCard> = {
   },
 
   nuss: {
-    id: 'nuss', es: 'Número de la Seguridad Social (NUSS)', en: 'Social Security number', emoji: '🧾',
+    id: 'nuss', es: 'Número de la Seguridad Social (NUSS)', en: 'Social Security number',
     what: 'Your lifetime Social Security number. Needed to work, be registered by an employer, or be self-employed.',
     who: 'Anyone who will work in Spain (employed or self-employed), and nomads who join Spanish Social Security.',
     before: 'partly',
@@ -437,7 +436,7 @@ export const DOCS: Record<DocId, DocCard> = {
   },
 
   sip: {
-    id: 'sip', es: 'Tarjeta SIP', en: 'Valencian health card', emoji: '🏥',
+    id: 'sip', es: 'Tarjeta SIP', en: 'Valencian health card',
     what: 'The card for the Valencian public health service. You need it at your local centro de salud.',
     who: 'People insured through work (and their family), pensioners with public cover (e.g. an S1), or people paying into the convenio especial. Private-insurance only (most non-lucrative, students, many nomads)? No SIP — you use your insurer.',
     before: 'no',
@@ -473,7 +472,7 @@ export const DOCS: Record<DocId, DocCard> = {
   },
 
   digital: {
-    id: 'digital', es: 'Certificado digital y Cl@ve', en: 'Online government ID', emoji: '🔐',
+    id: 'digital', es: 'Certificado digital y Cl@ve', en: 'Online government ID',
     what: 'Two ways to prove who you are online: the FNMT digital certificate (installed in your browser) and Cl@ve (a login + app).',
     who: 'Everyone with a NIE. You will need one for renewals, padrón certificates, taxes and official notifications.',
     before: 'partly',
@@ -509,7 +508,7 @@ export const DOCS: Record<DocId, DocCard> = {
   },
 
   bank: {
-    id: 'bank', es: 'Cuenta bancaria', en: 'Spanish bank account', emoji: '🏦',
+    id: 'bank', es: 'Cuenta bancaria', en: 'Spanish bank account',
     what: 'A Spanish IBAN — landlords, utilities and payroll will ask for one.',
     who: 'Everyone.',
     before: 'partly',
