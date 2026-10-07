@@ -16,6 +16,11 @@ import {
   type PoderItem,
 } from '@/lib/courses/spanishExpats'
 import { photoSE, type PhotoKeySE } from '@/lib/courses/photosExpats'
+import {
+  DOCS, NATIONALITIES, PURPOSES, REALITY, GOTCHAS, GESTOR, RUTA_LAST_VERIFIED,
+  routeFor, docsFor,
+  type Nationality, type Purpose, type DocId, type DocCard, type DocImage, type Route,
+} from '@/lib/courses/spanishExpatsRuta'
 
 // ─── Step metadata ─────────────────────────────────────────────────────────────
 
@@ -26,6 +31,7 @@ type StepMeta = {
 }
 const STEPS: StepMeta[] = [
   { nav: 'Inicio', tag: 'Módulo 1', title: 'El primer mes', aim: 'What to expect in your first month in Spain — and the Spanish to handle it.', accent: '#C4694A', photo: 'ayuntamiento' },
+  { nav: 'Tu ruta', tag: 'Antes de empezar', title: 'Tu ruta: los papeles', aim: 'Which documents you need, in what order, what they cost and how long they take — for your situation.', accent: '#7a3f2a', photo: 'plaza-reina' },
   { nav: 'Vocabulario', tag: 'Lección A', title: 'Los documentos esenciales', aim: '12 terms you will need before your first week is out. Type each one from memory.', accent: '#9B4F35', photo: 'plaza-ayuntamiento' },
   { nav: 'Frases', tag: 'Lección B', title: 'En la oficina', aim: '8 key phrases for any government office — the ones that will actually save you.', accent: '#1D4E89', photo: 'ayuntamiento' },
   { nav: 'Emparejar', tag: 'Lección C', title: '¿Cuál es la frase?', aim: 'Drag the right phrase onto each situation. 6 real office scenarios.', accent: '#5a9a2c', photo: 'plaza-reina' },
@@ -34,7 +40,7 @@ const STEPS: StepMeta[] = [
   { nav: 'Hablar', tag: 'Lección F', title: 'A practicar', aim: 'Talk through your own situation out loud. Use the phrases from this module.', accent: '#1D4E89', photo: 'ayuntamiento' },
   { nav: 'Resultado', tag: 'Módulo 1', title: '¿Qué tal?', aim: 'Your scores across the module, and what to work on next.', accent: '#C4694A', photo: 'plaza-reina' },
 ]
-// step: 0=welcome, 1=vocab, 2=phrases, 3=match, 4=grammar, 5=dialogue, 6=speaking, 7=result
+// step: 0=welcome, 1=ruta, 2=vocab, 3=phrases, 4=match, 5=grammar, 6=dialogue, 7=speaking, 8=result
 
 // ─── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -923,6 +929,253 @@ function ResultStep({
 
 // ─── Main page ─────────────────────────────────────────────────────────────────
 
+// ─── Tu ruta: personalised paperwork map ──────────────────────────────────────
+
+const BEFORE_LABEL: Record<DocCard['before'], string> = {
+  yes: 'Can do before you leave',
+  partly: 'Partly before you leave',
+  no: 'In Spain only',
+}
+
+function DocCardView({ doc, open, onToggle, onZoom }: {
+  doc: DocCard; open: boolean; onToggle: () => void; onZoom: (img: DocImage) => void
+}) {
+  return (
+    <div className={`ruta-doc${open ? ' ruta-doc--open' : ''}`} id={`doc-${doc.id}`}>
+      <button className="ruta-doc__head" onClick={onToggle} aria-expanded={open}>
+        <span className="ruta-doc__emoji" aria-hidden>{doc.emoji}</span>
+        <span className="ruta-doc__names">
+          <span className="ruta-doc__es">{doc.es}</span>
+          <span className="ruta-doc__en">{doc.en}</span>
+        </span>
+        <span className={`ruta-badge ruta-badge--${doc.before}`}>{BEFORE_LABEL[doc.before]}</span>
+        <span className="ruta-doc__chev" aria-hidden>{open ? '−' : '+'}</span>
+      </button>
+      {open && (
+        <div className="ruta-doc__body">
+          {doc.images && (
+            <div className="ruta-imgs">
+              {doc.images.map(img => (
+                <figure key={img.src} className="ruta-fig">
+                  <button className="ruta-fig__btn" onClick={() => onZoom(img)} aria-label={`Enlarge: ${img.alt}`}>
+                    <img src={img.src} alt={img.alt} loading="lazy" />
+                  </button>
+                  <figcaption>
+                    {img.caption}{' '}
+                    <a href={img.creditUrl} target="_blank" rel="noopener noreferrer" className="ruta-credit">{img.credit}</a>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          )}
+          <p className="ruta-what">{doc.what}</p>
+          <dl className="ruta-facts">
+            <div><dt>Who needs it</dt><dd>{doc.who}</dd></div>
+            <div><dt>Before you leave?</dt><dd>{doc.beforeNote}</dd></div>
+            <div><dt>Where</dt><dd>{doc.where}</dd></div>
+            <div><dt>Cost</dt><dd>{doc.cost}</dd></div>
+            <div><dt>How long</dt><dd>{doc.time}</dd></div>
+            {doc.needs && <div><dt>You need first</dt><dd>{doc.needs}</dd></div>}
+            {doc.unlocks && <div><dt>It unlocks</dt><dd>{doc.unlocks}</dd></div>}
+          </dl>
+          <p className="label">Step by step</p>
+          <ol className="ruta-steps">
+            {doc.steps.map(s => <li key={s}>{s}</li>)}
+          </ol>
+          {doc.watch && <div className="ruta-watch"><strong>Watch out:</strong> {doc.watch}</div>}
+          <p className="ruta-sources">
+            Official source{doc.sources.length > 1 ? 's' : ''}:{' '}
+            {doc.sources.map((s, i) => (
+              <span key={s.url}>{i > 0 && ' · '}<a href={s.url} target="_blank" rel="noopener noreferrer">{s.label}</a></span>
+            ))}
+          </p>
+        </div>
+      )}
+    </div>
+  )
+}
+
+function RutaStep({ onDone }: { onDone: () => void }) {
+  const [nat, setNat] = useState<Nationality | null>(null)
+  const [purpose, setPurpose] = useState<Purpose | null>(null)
+  const [open, setOpen] = useState<DocId | null>(null)
+  const [showOthers, setShowOthers] = useState(false)
+  const [zoom, setZoom] = useState<DocImage | null>(null)
+
+  useEffect(() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem('sexp:m1:ruta') || 'null')
+      if (saved?.nat) setNat(saved.nat)
+      if (saved?.purpose) setPurpose(saved.purpose)
+    } catch { /* fresh */ }
+  }, [])
+
+  useEffect(() => {
+    if (!nat) return
+    try { localStorage.setItem('sexp:m1:ruta', JSON.stringify({ nat, purpose })) } catch { /* ignore */ }
+  }, [nat, purpose])
+
+  const ready = nat === 'uk-old' || (nat !== null && purpose !== null)
+  const route = ready ? routeFor(nat!, purpose ?? 'retire') : null
+  const mine = route ? docsFor(route) : []
+  const others = (Object.keys(DOCS) as DocId[]).filter(id => !mine.includes(id))
+
+  function jump(id: DocId) {
+    setOpen(id)
+    if (!mine.includes(id)) setShowOthers(true)
+    setTimeout(() => document.getElementById(`doc-${id}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 60)
+  }
+
+  const phases: { key: keyof Pick<Route, 'before' | 'week' | 'month'>; es: string; en: string }[] = [
+    { key: 'before', es: 'Antes de salir', en: 'Before you leave' },
+    { key: 'week', es: 'Primera semana', en: 'First week' },
+    { key: 'month', es: 'Primer mes', en: 'First month' },
+  ]
+
+  return (
+    <div className="ruta">
+      <div className="card">
+        <div className="lesson-header">
+          <div className="lesson-tag">Tu ruta</div>
+          <div>
+            <div className="lesson-title">Your paperwork route</div>
+            <div className="lesson-aim">Which documents you need, in what order, what they cost and how long they take — for your situation. Then we learn the words.</div>
+          </div>
+        </div>
+        <div className="ruta-rules">
+          <div className="ruta-rule"><span>1</span><p><strong>Padrón first.</strong> Registering your address at the town hall unlocks almost everything else.</p></div>
+          <div className="ruta-rule"><span>2</span><p><strong>The NIE is a number</strong>, not residence. Having one doesn&apos;t mean you can live here.</p></div>
+          <div className="ruta-rule"><span>3</span><p><strong>Two systems.</strong> Police for cards and numbers; the Oficina de Extranjería for permits.</p></div>
+        </div>
+      </div>
+
+      <div className="card">
+        <p className="label">1 · Where is your passport from?</p>
+        <div className="ruta-pick ruta-pick--4">
+          {NATIONALITIES.map(n => (
+            <button key={n.id} className={`ruta-opt${nat === n.id ? ' ruta-opt--on' : ''}`} onClick={() => { setNat(n.id); setOpen(null) }}>
+              <strong>{n.label}</strong><span>{n.sub}</span>
+            </button>
+          ))}
+        </div>
+        {nat && nat !== 'uk-old' && (
+          <>
+            <p className="label" style={{ marginTop: '1.4rem' }}>2 · Why are you moving?</p>
+            <div className="ruta-pick ruta-pick--5">
+              {PURPOSES.map(p => (
+                <button key={p.id} className={`ruta-opt${purpose === p.id ? ' ruta-opt--on' : ''}`} onClick={() => { setPurpose(p.id); setOpen(null) }}>
+                  <span className="ruta-opt__emoji" aria-hidden>{p.emoji}</span><strong>{p.label}</strong>
+                </button>
+              ))}
+            </div>
+          </>
+        )}
+      </div>
+
+      {route && (
+        <div className="card">
+          <p className="label">Your route</p>
+          {route.note && <p className="ruta-note">{route.note}</p>}
+          <div className="ruta-timeline">
+            {phases.map(ph => route[ph.key].length > 0 && (
+              <div key={ph.key} className="ruta-phase">
+                <div className="ruta-phase__head"><span className="ruta-phase__es">{ph.es}</span><span className="ruta-phase__en">{ph.en}</span></div>
+                <ul>
+                  {route[ph.key].map(item => (
+                    <li key={item.text} className={item.deadline ? 'ruta-item--deadline' : undefined}>
+                      <span>{item.deadline && <span className="ruta-clock" title="Deadline">⏱ </span>}{item.text}</span>
+                      {item.doc && (
+                        <button className="ruta-link" onClick={() => jump(item.doc!)}>{DOCS[item.doc].es} →</button>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <div className="card">
+        <p className="label">{route ? 'Your documents' : 'The essential documents'}</p>
+        {!route && <p className="ruta-note">Choose your situation above to see only the documents you need. Here are all of them.</p>}
+        {(route ? mine : (Object.keys(DOCS) as DocId[])).map(id => (
+          <DocCardView key={id} doc={DOCS[id]} open={open === id} onToggle={() => setOpen(open === id ? null : id)} onZoom={setZoom} />
+        ))}
+        {route && others.length > 0 && (
+          <>
+            <button className="btn btn--ghost" style={{ marginTop: '1rem' }} onClick={() => setShowOthers(v => !v)}>
+              {showOthers ? 'Hide' : 'Show'} the other {others.length} documents (not on your route)
+            </button>
+            {showOthers && others.map(id => (
+              <DocCardView key={id} doc={DOCS[id]} open={open === id} onToggle={() => setOpen(open === id ? null : id)} onZoom={setZoom} />
+            ))}
+          </>
+        )}
+      </div>
+
+      <div className="card">
+        <p className="label">Valencia reality check</p>
+        <div className="two-col">
+          {REALITY.systems.map(s => (
+            <div key={s.name} className="ruta-system">
+              <strong>{s.name}</strong>
+              <p className="ruta-system__does">{s.does}</p>
+              <p>{s.how}</p>
+            </div>
+          ))}
+        </div>
+        <p className="ruta-small">Official backlog at the Valencia Oficina de Extranjería on {REALITY.backlogDate} — applications being reviewed were submitted around:</p>
+        <ul className="ruta-backlog">
+          {REALITY.backlog.map(b => <li key={b.what}><span>{b.what}</span><strong>{b.upTo}</strong></li>)}
+        </ul>
+        <ul className="ruta-tips">
+          {REALITY.tips.map(t => <li key={t}>{t}</li>)}
+        </ul>
+        <p className="ruta-sources"><a href={REALITY.source.url} target="_blank" rel="noopener noreferrer">{REALITY.source.label}</a></p>
+      </div>
+
+      <div className="two-col">
+        <div className="card">
+          <p className="label">Classic mistakes</p>
+          <ul className="ruta-gotchas">{GOTCHAS.map(g => <li key={g}>{g}</li>)}</ul>
+        </div>
+        <div className="card">
+          <p className="label">Do I need a gestor?</p>
+          <p className="ruta-small"><strong>Worth it for:</strong></p>
+          <ul className="ruta-tips">{GESTOR.worth.map(g => <li key={g}>{g}</li>)}</ul>
+          <p className="ruta-small"><strong>Do it yourself:</strong> {GESTOR.notWorth.join(' · ')}</p>
+          <p className="ruta-small">{GESTOR.limits}</p>
+          <p className="ruta-small">{GESTOR.price}</p>
+        </div>
+      </div>
+
+      <div className="ruta-disclaimer">
+        Last verified {RUTA_LAST_VERIFIED}. This is practical guidance, not legal advice — fees and procedures change. Always check the official source linked on each card, or ask a gestor.
+      </div>
+
+      <div style={{ textAlign: 'center', margin: '1.5rem 0 .5rem' }}>
+        <button className="btn btn--terra" style={{ fontSize: '1rem', padding: '.8rem 2rem' }} onClick={onDone}>
+          Now learn the words → Vocabulario
+        </button>
+      </div>
+
+      {zoom && createPortal(
+        <div className="sexp" style={{ minHeight: 0, background: 'none' }}>
+          <div className="ruta-zoom" onClick={() => setZoom(null)} role="dialog" aria-label={zoom.alt}>
+            <figure onClick={e => e.stopPropagation()}>
+              <img src={zoom.src} alt={zoom.alt} />
+              <figcaption>{zoom.caption} <a href={zoom.creditUrl} target="_blank" rel="noopener noreferrer">{zoom.credit}</a></figcaption>
+              <button className="btn btn--ghost" onClick={() => setZoom(null)}>Close</button>
+            </figure>
+          </div>
+        </div>,
+        document.body,
+      )}
+    </div>
+  )
+}
+
 export default function SpanishExpatsPage() {
   const { progress, update } = useProgress(COURSE_ID)
 
@@ -1048,6 +1301,7 @@ export default function SpanishExpatsPage() {
                       This module gives you the vocabulary and phrases to get through that first month with your dignity intact. It will not make the bureaucracy faster — nothing can — but it will make it survivable.
                     </p>
                     <ul className="goal-list">
+                      <li>Your personal paperwork route: which documents, in what order, what they cost and how long they take</li>
                       <li>12 essential terms for documents and processes</li>
                       <li>8 key phrases for any government office</li>
                       <li>The <em>poder + infinitive</em> structure that covers half your bureaucracy Spanish</li>
@@ -1056,7 +1310,7 @@ export default function SpanishExpatsPage() {
                   </div>
 
                   <div className="vlc-note">
-                    Valencia has its own quirks: the Oficina de Extranjería booking system opens at midnight and fills in minutes. Set an alarm. Alternatively — hire a gestor.
+                    Police appointments (NIE, TIE, EU certificate) are booked online and they are scarce — new slots appear daily, so check often and screenshot every attempt. Never pay anyone who &quot;sells&quot; an appointment.
                   </div>
                 </div>
 
@@ -1099,28 +1353,31 @@ export default function SpanishExpatsPage() {
             </div>
           )}
 
-          {/* Step 1: Vocabulary */}
-          {step === 1 && (
+          {/* Step 1: Tu ruta — paperwork map */}
+          {step === 1 && <RutaStep onDone={() => setStep(2)} />}
+
+          {/* Step 2: Vocabulary */}
+          {step === 2 && (
             <div>
               <div className="card" style={{ marginBottom: '1rem' }}>
                 <div className="lesson-header">
                   <div className="lesson-tag">Vocabulario</div>
                   <div>
                     <div className="lesson-title">Los documentos esenciales</div>
-                    <div className="lesson-aim">Read the description and type the Spanish term from memory. Accents matter, but a near-miss counts as close.</div>
+                    <div className="lesson-aim">You&apos;ve seen the documents — now make the words stick. Read the description and type the Spanish term from memory. Accents matter, but a near-miss counts as close.</div>
                   </div>
                 </div>
               </div>
               <VocabDrillWrapper
                 savedScore={vocabScore}
-                onDone={(score) => { setVocabScore(score); setStep(2) }}
+                onDone={(score) => { setVocabScore(score); setStep(3) }}
                 updateProgress={update}
               />
             </div>
           )}
 
           {/* Step 2: Phrases */}
-          {step === 2 && (
+          {step === 3 && (
             <div>
               <div className="card" style={{ marginBottom: '1rem' }}>
                 <div className="lesson-header">
@@ -1139,11 +1396,11 @@ export default function SpanishExpatsPage() {
                   <p style={{ fontFamily: 'Georgia, serif', fontSize: '1.4rem', marginBottom: '.5rem' }}>
                     {phraseScore} / {PHRASES_M1.length} correct
                   </p>
-                  <button className="btn btn--terra" onClick={() => setStep(3)}>Next: Emparejar →</button>
+                  <button className="btn btn--terra" onClick={() => setStep(4)}>Next: Emparejar →</button>
                 </div>
               ) : (
                 <PhraseDrill
-                  onDone={(score) => { setPhraseScore(score); setStep(3) }}
+                  onDone={(score) => { setPhraseScore(score); setStep(4) }}
                   updateProgress={update}
                 />
               )}
@@ -1151,7 +1408,7 @@ export default function SpanishExpatsPage() {
           )}
 
           {/* Step 3: Match drag */}
-          {step === 3 && (
+          {step === 4 && (
             <div>
               <div className="card" style={{ marginBottom: '1rem' }}>
                 <div className="lesson-header">
@@ -1167,11 +1424,11 @@ export default function SpanishExpatsPage() {
                   <p style={{ fontFamily: 'Georgia, serif', fontSize: '1.4rem', marginBottom: '.5rem' }}>
                     {Math.round(matchScore)} / {MATCH_QS.length} correct
                   </p>
-                  <button className="btn btn--terra" onClick={() => setStep(4)}>Next: Gramática →</button>
+                  <button className="btn btn--terra" onClick={() => setStep(5)}>Next: Gramática →</button>
                 </div>
               ) : (
                 <MatchDragSE
-                  onDone={(score) => { setMatchScore(score); setStep(4) }}
+                  onDone={(score) => { setMatchScore(score); setStep(5) }}
                   updateProgress={update}
                 />
               )}
@@ -1179,43 +1436,43 @@ export default function SpanishExpatsPage() {
           )}
 
           {/* Step 4: Grammar */}
-          {step === 4 && (
+          {step === 5 && (
             grammarScore !== undefined ? (
               <div className="card" style={{ textAlign: 'center' }}>
                 <p style={{ fontFamily: 'Georgia, serif', fontSize: '1.4rem', marginBottom: '.5rem' }}>
                   {grammarScore} / {PODER_QS.length} correct
                 </p>
-                <button className="btn btn--terra" onClick={() => setStep(5)}>Next: Diálogo →</button>
+                <button className="btn btn--terra" onClick={() => setStep(6)}>Next: Diálogo →</button>
               </div>
             ) : (
-              <PoderExercise onDone={(score) => { setGrammarScore(score); setStep(5) }} />
+              <PoderExercise onDone={(score) => { setGrammarScore(score); setStep(6) }} />
             )
           )}
 
           {/* Step 5: Dialogue */}
-          {step === 5 && (
+          {step === 6 && (
             dialogueScore !== undefined ? (
               <div className="card" style={{ textAlign: 'center' }}>
                 <p style={{ fontFamily: 'Georgia, serif', fontSize: '1.4rem', marginBottom: '.5rem' }}>
                   {dialogueScore} / {DIALOGUE_QS.length} correct
                 </p>
-                <button className="btn btn--terra" onClick={() => setStep(6)}>Next: A hablar →</button>
+                <button className="btn btn--terra" onClick={() => setStep(7)}>Next: A hablar →</button>
               </div>
             ) : (
-              <DialogueLesson onDone={(score) => { setDialogueScore(score); setStep(6) }} />
+              <DialogueLesson onDone={(score) => { setDialogueScore(score); setStep(7) }} />
             )
           )}
 
           {/* Step 6: Speaking */}
-          {step === 6 && (
+          {step === 7 && (
             <SpeakingStep onDone={() => {
               update(p => markActive(p))
-              setStep(7)
+              setStep(8)
             }} />
           )}
 
           {/* Step 7: Result */}
-          {step === 7 && (
+          {step === 8 && (
             <ResultStep
               scores={{
                 vocab: vocabScore ?? 0,

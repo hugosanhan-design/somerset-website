@@ -236,3 +236,80 @@
   .sexp .card{padding:1.2rem 1.2rem 1.4rem}
   .sexp .result-banner{padding:1.8rem 1.2rem}
 }
+
+/* ── Tu ruta (paperwork map) ── */
+.sexp .ruta-rules{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.sexp .ruta-rule{display:flex;gap:.7rem;align-items:flex-start;background:var(--terra-lt);border-radius:var(--radius);padding:.9rem 1rem;font-size:.9rem}
+.sexp .ruta-rule span{flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--terra);color:#fff;font:700 .85rem/26px var(--sans);text-align:center}
+.sexp .ruta-pick{display:grid;gap:.7rem}
+.sexp .ruta-pick--4{grid-template-columns:repeat(4,1fr)}
+.sexp .ruta-pick--5{grid-template-columns:repeat(5,1fr)}
+.sexp .ruta-opt{display:flex;flex-direction:column;gap:.2rem;align-items:flex-start;text-align:left;background:#fff;border:1.5px solid #e2dcd5;border-radius:var(--radius);padding:.8rem .9rem;font:inherit;font-size:.88rem;cursor:pointer;transition:border-color .15s,background .15s}
+.sexp .ruta-opt span{font-size:.76rem;color:#888}
+.sexp .ruta-opt:hover{border-color:var(--terra)}
+.sexp .ruta-opt--on{border-color:var(--terra);background:var(--terra-lt);box-shadow:0 0 0 2px var(--terra) inset}
+.sexp .ruta-opt__emoji{font-size:1.4rem!important;color:inherit!important}
+.sexp .ruta-note{font-size:.9rem;color:#666}
+.sexp .ruta-timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.sexp .ruta-phase{background:var(--ink-lt);border-radius:var(--radius);padding:1rem}
+.sexp .ruta-phase__head{display:flex;flex-direction:column;margin-bottom:.6rem;padding-bottom:.5rem;border-bottom:2px solid var(--terra)}
+.sexp .ruta-phase__es{font-family:var(--serif);font-size:1.15rem}
+.sexp .ruta-phase__en{font-size:.72rem;text-transform:uppercase;letter-spacing:1px;color:#999}
+.sexp .ruta-phase ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.6rem}
+.sexp .ruta-phase li{font-size:.86rem;background:#fff;border-radius:8px;padding:.6rem .7rem;display:flex;flex-direction:column;gap:.35rem;border-left:3px solid #ddd}
+.sexp .ruta-item--deadline{border-left-color:var(--terra)!important}
+.sexp .ruta-link{align-self:flex-start;background:none;border:0;padding:0;font:600 .78rem var(--sans);color:var(--azul);cursor:pointer}
+.sexp .ruta-link:hover{text-decoration:underline}
+.sexp .ruta-doc{border:1px solid #e8e3de;border-radius:var(--radius);margin-top:.7rem;background:#fff;scroll-margin-top:110px}
+.sexp .ruta-doc--open{border-color:var(--terra);box-shadow:0 4px 14px rgba(196,105,74,.12)}
+.sexp .ruta-doc__head{width:100%;display:flex;align-items:center;gap:.8rem;padding:.85rem 1rem;background:none;border:0;font:inherit;text-align:left;cursor:pointer}
+.sexp .ruta-doc__emoji{font-size:1.5rem}
+.sexp .ruta-doc__names{flex:1;display:flex;flex-direction:column}
+.sexp .ruta-doc__es{font-weight:700;font-size:.98rem}
+.sexp .ruta-doc__en{font-size:.8rem;color:#888}
+.sexp .ruta-doc__chev{font-size:1.3rem;color:var(--terra);width:20px;text-align:center}
+.sexp .ruta-badge{font-size:.68rem;font-weight:700;padding:.2rem .55rem;border-radius:99px;white-space:nowrap}
+.sexp .ruta-badge--yes{background:var(--green-lt);color:#3d6b1c}
+.sexp .ruta-badge--partly{background:var(--gold-lt);color:#7a5800}
+.sexp .ruta-badge--no{background:var(--azul-lt);color:var(--azul)}
+.sexp .ruta-doc__body{padding:0 1.1rem 1.2rem;border-top:1px solid #f0ebe6}
+.sexp .ruta-imgs{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.9rem;margin:1rem 0}
+.sexp .ruta-fig{margin:0}
+.sexp .ruta-fig__btn{display:block;width:100%;padding:0;border:1px solid #e8e3de;border-radius:8px;overflow:hidden;background:#f6f4f1;cursor:zoom-in}
+.sexp .ruta-fig__btn img{display:block;width:100%;height:170px;object-fit:contain}
+.sexp .ruta-fig figcaption{font-size:.76rem;color:#666;margin-top:.35rem;line-height:1.4}
+.sexp .ruta-credit{color:#999;font-size:.7rem}
+.sexp .ruta-what{font-size:.98rem;margin-top:1rem!important}
+.sexp .ruta-facts{display:grid;grid-template-columns:1fr 1fr;gap:.6rem 1.2rem;margin:1rem 0}
+.sexp .ruta-facts div{background:var(--ink-lt);border-radius:8px;padding:.6rem .8rem}
+.sexp .ruta-facts dt{font-size:.68rem;text-transform:uppercase;letter-spacing:1px;color:#999;font-weight:700}
+.sexp .ruta-facts dd{margin:.15rem 0 0;font-size:.87rem}
+.sexp .ruta-steps{margin:0 0 1rem;padding-left:1.3rem;font-size:.9rem}
+.sexp .ruta-steps li{margin-bottom:.35rem}
+.sexp .ruta-watch{background:#fdeeee;border-left:4px solid #c0392b;border-radius:0 8px 8px 0;padding:.7rem .9rem;font-size:.86rem;color:#7a1f15;margin-bottom:.9rem}
+.sexp .ruta-sources{font-size:.75rem;color:#888}
+.sexp .ruta-sources a{color:var(--azul)}
+.sexp .ruta-system{background:var(--ink-lt);border-radius:var(--radius);padding:1rem;font-size:.88rem}
+.sexp .ruta-system__does{color:var(--terra-dk);font-weight:600;margin:.2rem 0 .4rem!important}
+.sexp .ruta-small{font-size:.86rem;color:#555;margin-top:1rem!important}
+.sexp .ruta-backlog{list-style:none;padding:0;margin:.5rem 0 1rem;display:grid;gap:.4rem}
+.sexp .ruta-backlog li{display:flex;justify-content:space-between;gap:1rem;font-size:.86rem;border-bottom:1px dashed #ddd;padding-bottom:.3rem}
+.sexp .ruta-tips,.sexp .ruta-gotchas{padding-left:1.2rem;font-size:.88rem;margin:.4rem 0}
+.sexp .ruta-tips li,.sexp .ruta-gotchas li{margin-bottom:.35rem}
+.sexp .ruta-disclaimer{font-size:.8rem;color:#777;background:#fff;border:1px dashed #ddd;border-radius:var(--radius);padding:.8rem 1rem;text-align:center}
+.sexp .ruta-zoom{position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.82);display:flex;align-items:center;justify-content:center;padding:1rem}
+.sexp .ruta-zoom figure{margin:0;max-width:960px;width:100%;background:#fff;border-radius:12px;padding:1rem;display:flex;flex-direction:column;gap:.6rem;align-items:center}
+.sexp .ruta-zoom img{max-width:100%;max-height:72vh;object-fit:contain}
+.sexp .ruta-zoom figcaption{font-size:.82rem;color:#555;text-align:center}
+.sexp .ruta-zoom figcaption a{color:#999}
+@media(max-width:900px){
+  .sexp .ruta-pick--5{grid-template-columns:repeat(3,1fr)}
+  .sexp .ruta-timeline{grid-template-columns:1fr}
+}
+@media(max-width:740px){
+  .sexp .ruta-rules{grid-template-columns:1fr}
+  .sexp .ruta-pick--4,.sexp .ruta-pick--5{grid-template-columns:1fr 1fr}
+  .sexp .ruta-facts{grid-template-columns:1fr}
+  .sexp .ruta-doc__head{flex-wrap:wrap}
+  .sexp .ruta-badge{order:4;margin-left:2.3rem}
+}

@@ -34,5 +34,65 @@
     "size": "558K",
     "changes": "Resized to max 1600px",
     "added": "2026-10-07"
+  },
+  {
+    "file": "docs/tie-front.jpg",
+    "source": "Wikimedia Commons (EU Regulation 2017/1954 annex, EUR-Lex)",
+    "url": "https://commons.wikimedia.org/wiki/File:Aufenthaltstitel_Europa-Muster_2019.png",
+    "licence": "CC BY 4.0",
+    "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+    "author": "European Union, EUR-Lex",
+    "alt": "Official specimen of the front of the Spanish residence card (TIE), with numbered blank fields",
+    "size": "362K",
+    "changes": "Cropped to front, resized to max 1200px, re-encoded JPEG q85",
+    "added": "2026-10-08"
+  },
+  {
+    "file": "docs/tie-back.jpg",
+    "source": "Wikimedia Commons (EU Regulation 2017/1954 annex, EUR-Lex)",
+    "url": "https://commons.wikimedia.org/wiki/File:Aufenthaltstitel_Europa-Muster_2019.png",
+    "licence": "CC BY 4.0",
+    "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+    "author": "European Union, EUR-Lex",
+    "alt": "Official specimen of the back of the Spanish residence card (TIE), showing chip and ESPAÑA lettering",
+    "size": "393K",
+    "changes": "Cropped to back, resized to max 1200px, re-encoded JPEG q85",
+    "added": "2026-10-08"
+  },
+  {
+    "file": "docs/visa-d-sticker-specimen-eu.jpg",
+    "source": "Wikimedia Commons (Official Journal of the EU, OJ L 235, 2.9.2008)",
+    "url": "https://commons.wikimedia.org/wiki/File:Schengenvisum-specimen.jpg",
+    "licence": "Public domain (PD-EUGov)",
+    "licence_url": "https://eur-lex.europa.eu/content/legal-notice/legal-notice.html",
+    "author": "European Union, EUR-Lex",
+    "alt": "Official specimen of the EU uniform long-stay visa sticker (German-labelled; Spain's has the same layout)",
+    "size": "273K",
+    "changes": "Resized to max 1200px, re-encoded JPEG q85",
+    "added": "2026-10-08"
+  },
+  {
+    "file": "docs/apostille-specimen-redacted.jpg",
+    "source": "Wikimedia Commons",
+    "url": "https://commons.wikimedia.org/wiki/File:Apostille_Sample_-_Hong_Kong,_China_in_2020.png",
+    "licence": "CC BY-SA 4.0",
+    "licence_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "author": "S 0524",
+    "alt": "A Hague Convention apostille with its ten standard numbered fields; personal details redacted",
+    "size": "260K",
+    "changes": "Resized to max 1200px, converted PNG to JPEG q85",
+    "added": "2026-10-08"
+  },
+  {
+    "file": "docs/ex17-form-page1.jpg",
+    "source": "Ministerio de Inclusión, Seguridad Social y Migraciones (blank official form)",
+    "url": "https://ucraniaurgente.inclusion.gob.es/documents/d/migraciones/ex17-formulario-solicitud-tarjeta-de-identidad-de-extranjero",
+    "licence": "Blank official form (art. 13 LPI; Ley 37/2007 reuse)",
+    "licence_url": "https://www.boe.es/buscar/act.php?id=BOE-A-1996-8930#a13",
+    "author": "Gobierno de España",
+    "alt": "First page of the blank EX-17 form, the application for the TIE card",
+    "size": "190K",
+    "changes": "Page 1 rendered from official PDF, resized to max 1200px, JPEG q85",
+    "added": "2026-10-08"
   }
 ]

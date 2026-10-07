@@ -19,7 +19,7 @@ export const VOCAB_M1: {
   {
     id: 'tie', emoji: '💳',
     answer: 'TIE',
-    clue: 'The physical card you receive after registering as a resident — replaces the old green residency card.',
+    clue: 'The residence card for non-EU residents (including Brits since 2021). You give your fingerprints to get it.',
     note: 'Tarjeta de Identidad de Extranjero',
   },
   {
@@ -37,7 +37,7 @@ export const VOCAB_M1: {
   {
     id: 'extranjeria', emoji: '🏛️',
     answer: 'extranjería',
-    clue: 'The government office that processes residency applications, NIE and TIE.',
+    clue: 'The government office that decides residence and work permits. (The NIE and TIE themselves are done at the police station.)',
     note: 'From extranjero/a = foreigner',
   },
   {
@@ -73,8 +73,8 @@ export const VOCAB_M1: {
   {
     id: 'tasa', emoji: '💰',
     answer: 'tasa',
-    clue: 'The official fee you pay for government services — there is one for the NIE, one for the TIE.',
-    note: 'modelo 790 = the payment form for most tasas',
+    clue: 'The official fee you pay for a government service — €9.84 for the NIE, €16.08 for a first TIE. Paid before the appointment.',
+    note: 'modelo 790 código 012 = the police fee form; pay at a bank or online',
   },
   {
     id: 'domiciliar', emoji: '🏦',
@@ -127,7 +127,7 @@ export const PHRASES_M1: {
   },
   {
     id: 'ph-pagar',
-    context: 'At the window, paying the tasa (fee):',
+    context: 'At the bank, paying the tasa (fee) before your appointment:',
     answer: '¿Puedo pagar con tarjeta?',
     translation: 'Can I pay by card?',
   },
@@ -182,7 +182,7 @@ export const PODER_QS: PoderItem[] = [
 // ─── Dialogue: at the Oficina de Extranjería, Valencia ───────────────────────
 
 export const DIALOGUE_M1: { who: string; line: string; isYou?: boolean }[] = [
-  { who: 'Narrator', line: "It's a Tuesday morning. Oficina de Extranjería, Valencia. You arrive with your documents. There is a short queue." },
+  { who: 'Narrator', line: "It's a Tuesday morning. Comisaría de Policía, Valencia — NIE appointments are at the police station. You arrive with your documents. There is a short queue." },
   { who: 'Funcionario', line: 'Buenos días. ¿Tiene cita previa?' },
   { who: 'You', line: 'Sí, buenos días. Tengo una cita a las diez. Me llamo Sarah Cooper.', isYou: true },
   { who: 'Funcionario', line: '¿Me puede dar el número de referencia, por favor?' },
@@ -193,15 +193,15 @@ export const DIALOGUE_M1: { who: string; line: string; isYou?: boolean }[] = [
   { who: 'You', line: 'Perdona, no entiendo del todo. ¿Puede repetir más despacio?', isYou: true },
   { who: 'Funcionaria', line: '¿Viene a pedir el NIE? El número de identidad para extranjeros.' },
   { who: 'You', line: 'Sí, exacto. Vengo a pedir el NIE.', isYou: true },
-  { who: 'Funcionaria', line: 'Bien. ¿Tiene el formulario EX-15, el pasaporte y una fotocopia?' },
-  { who: 'You', line: 'Sí, lo tengo todo aquí.', isYou: true },
-  { who: 'Funcionaria', line: 'Perfecto. También necesita pagar la tasa. Son diez euros con setenta.' },
-  { who: 'You', line: '¿Puedo pagar con tarjeta?', isYou: true },
-  { who: 'Funcionaria', line: 'Sí, con tarjeta es posible. Un momento.' },
+  { who: 'Funcionaria', line: 'Bien. ¿Tiene el formulario EX-15, el pasaporte con una fotocopia y el documento que explica por qué necesita el NIE?' },
+  { who: 'You', line: 'Sí, lo tengo todo aquí. ¿Puedo pagar la tasa con tarjeta?', isYou: true },
+  { who: 'Funcionaria', line: 'Aquí no se paga. La tasa, el modelo 790, se paga antes: en el banco o por internet. ¿Tiene el justificante?' },
+  { who: 'You', line: 'Sí, la pagué ayer en el banco. Nueve euros con ochenta y cuatro. Aquí está.', isYou: true },
+  { who: 'Funcionaria', line: 'Perfecto. Un momento, por favor.' },
   { who: 'You', line: 'Gracias. ¿Cuánto tiempo tarda el proceso?', isYou: true },
-  { who: 'Funcionaria', line: 'Normalmente de diez a quince días hábiles. Le enviamos el NIE por correo.' },
-  { who: 'You', line: 'Necesito un justificante, por favor.', isYou: true },
-  { who: 'Funcionaria', line: 'Claro. Aquí tiene. ¡Buena suerte!' },
+  { who: 'Funcionaria', line: 'Si todo está correcto, le damos el certificado hoy mismo. Aquí tiene. Recuerde: el NIE es solo un número. No es la residencia.' },
+  { who: 'You', line: 'Entendido. Muchas gracias.', isYou: true },
+  { who: 'Funcionaria', line: 'De nada. ¡Buena suerte!' },
 ]
 
 export type DialogueQ = { q: string; options: string[]; a: string }
@@ -217,14 +217,14 @@ export const DIALOGUE_QS: DialogueQ[] = [
     a: "She doesn't understand completely",
   },
   {
-    q: 'How does Sarah pay the tasa?',
-    options: ['Cash', 'By card', 'Bank transfer', 'Online before arriving'],
-    a: 'By card',
+    q: 'How did Sarah pay the tasa?',
+    options: ['Cash at the window', 'By card at the window', 'In advance, at the bank', "She didn't need to pay"],
+    a: 'In advance, at the bank',
   },
   {
-    q: 'How long will the NIE process take?',
-    options: ['Same day', '3–5 working days', '10–15 working days', 'A month'],
-    a: '10–15 working days',
+    q: 'If everything is correct, when does Sarah get her NIE certificate?',
+    options: ['The same day', '3–5 working days', '10–15 working days', 'A month later, by post'],
+    a: 'The same day',
   },
 ]
 
