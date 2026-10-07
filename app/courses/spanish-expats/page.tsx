@@ -984,6 +984,16 @@ function DocCardView({ doc, open, onToggle, onZoom }: {
             {doc.steps.map(s => <li key={s}>{s}</li>)}
           </ol>
           {doc.watch && <div className="ruta-watch"><strong>Watch out:</strong> {doc.watch}</div>}
+          {doc.booking?.links && (
+            <>
+              <p className="label">Official links</p>
+              <div className="exp-links" style={{ marginBottom: '1rem' }}>
+                {doc.booking.links.map(l => (
+                  <a key={l.url} href={l.url} target="_blank" rel="noopener noreferrer">{l.label} ↗</a>
+                ))}
+              </div>
+            </>
+          )}
           <p className="ruta-sources">
             Official source{doc.sources.length > 1 ? 's' : ''}:{' '}
             {doc.sources.map((s, i) => (
@@ -1135,6 +1145,12 @@ function RutaStep({ onDone }: { onDone: () => void }) {
         <ul className="ruta-tips">
           {REALITY.tips.map(t => <li key={t}>{t}</li>)}
         </ul>
+        <p className="label" style={{ marginTop: '1.2rem' }}>Official links you&apos;ll use again and again</p>
+        <div className="exp-links">
+          {REALITY.links.map(l => (
+            <a key={l.url} href={l.url} target="_blank" rel="noopener noreferrer">{l.label} ↗</a>
+          ))}
+        </div>
         <p className="ruta-sources"><a href={REALITY.source.url} target="_blank" rel="noopener noreferrer">{REALITY.source.label}</a></p>
       </div>
 

@@ -174,6 +174,16 @@ export default function MiExpediente({ route, nat, purpose, onRead }: {
                           {doc.booking.urlLabel ?? 'Open the official website'} ↗
                         </a>
                       )}
+                      {doc.booking.links && (
+                        <div className="exp-links">
+                          {doc.booking.links.filter(l => l.url !== doc.booking!.url).map(l => (
+                            <a key={l.url} href={l.url} target="_blank" rel="noopener noreferrer">{l.label} ↗</a>
+                          ))}
+                        </div>
+                      )}
+                      {doc.booking.checked && (
+                        <p className="exp-checked">✓ Steps checked on the official website on {doc.booking.checked}. Websites change — if a label looks different, look for the closest match.</p>
+                      )}
                     </section>
                   )}
 

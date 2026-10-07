@@ -27,7 +27,7 @@ export const PURPOSES: { id: Purpose; label: string; emoji: string }[] = [
 
 export type DocImage = { src: string; alt: string; caption: string; credit: string; creditUrl: string }
 export type Source = { label: string; url: string }
-export type Booking = { how: string; url?: string; urlLabel?: string; office?: string; steps: string[] }
+export type Booking = { how: string; url?: string; urlLabel?: string; office?: string; steps: string[]; links?: Source[]; checked?: string }
 export type Phrase = { who: 'you' | 'them'; es: string; en: string }
 
 export type DocCard = {
@@ -76,6 +76,35 @@ const S = {
   govuk: { label: 'GOV.UK — registering as a resident in Spain', url: 'https://www.gov.uk/guidance/spain-registering-as-a-resident-and-getting-a-tie' },
 }
 
+// Deep links — every one opened and checked on 8 Oct 2026. Labels say what the page does.
+const L = {
+  icpValencia: { label: 'Book: police cita previa — Valencia', url: 'https://icp.administracionelectronica.gob.es/icpplus/citar?p=46&locale=es' },
+  fee790: { label: 'Pay: modelo 790-012 fee form', url: 'https://sede.policia.gob.es/Tasa790_012/' },
+  ex15: { label: 'Form EX-15 (PDF, fillable)', url: 'https://www.inclusion.gob.es/documents/d/migraciones/ex15-formulario-solicitud-numero-de-identidad-de-extranjero-y-certificados-editable.pdf' },
+  ex17: { label: 'Form EX-17 (PDF, fillable)', url: 'https://www.inclusion.gob.es/documents/d/migraciones/ex17-formulario-solicitud-tarjeta-de-identidad-de-extranjero-editable.pdf' },
+  ex18: { label: 'Form EX-18 (PDF, fillable)', url: 'https://www.inclusion.gob.es/documents/d/migraciones/ex18-formulario-inscripcion-en-el-rce-residencia-ciudadano-de-la-ue-editable.pdf' },
+  ex19: { label: 'Form EX-19 — non-EU family of EU citizens (PDF)', url: 'https://www.inclusion.gob.es/documents/d/migraciones/ex19-formulario-tarjeta-de-residencia-de-familiar-de-ciudadano-de-la-ue-editable.pdf' },
+  ex20: { label: 'Form EX-20 — UK, resident before 2021 (PDF)', url: 'https://www.inclusion.gob.es/documents/d/migraciones/ex20-formulario-residencia-articulo-50-tue-para-nacionales-del-reino-unido-editable.pdf' },
+  ex01: { label: 'Form EX-01 — non-lucrative residence (PDF)', url: 'https://www.inclusion.gob.es/documents/d/migraciones/ex01-formulario-autorizacion-de-residencia-temporal-no-lucrativa-editable-1.pdf' },
+  allForms: { label: 'All official immigration forms', url: 'https://www.inclusion.gob.es/web/migraciones/modelos-generales' },
+  padronMayoral: { label: 'Book: padrón — C/ Arzobispo Mayoral 1', url: 'https://www.valencia.es/QSIGE/apps/citaprevia/index.html?idioma=ES#!/newAppointment/99' },
+  padronTabacalera: { label: 'Book: padrón — OAC Tabacalera', url: 'https://www.valencia.es/QSIGE/apps/citaprevia/index.html?idioma=ES#!/newAppointment/33' },
+  padronJuntas: { label: 'Book: padrón — district offices (Juntas)', url: 'https://www.valencia.es/QSIGE/apps/citaprevia/index.html?idioma=ES#!/newAppointment/16' },
+  padronOffices: { label: 'All padrón offices and phones', url: 'https://www.valencia.es/-/2020-padron-1' },
+  padronOnline: { label: 'Register online instead (needs digital ID)', url: 'https://sede.valencia.es/sede/registro/procedimiento/PA.GP.11?lang=1' },
+  padronCert: { label: 'Get your padrón certificate', url: 'https://www.valencia.es/cas/tramites/certificado-de-padron' },
+  ta1: { label: 'Form TA.1 (Social Security)', url: 'https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/Afiliacion/10817/31190/572' },
+  sipFinder: { label: 'Find your centro de salud', url: 'https://www.san.gva.es/es/web/portal-del-paciente/informacion-centros' },
+  sipOnline: { label: 'Apply for SIP online (needs digital ID)', url: 'https://sede.gva.es/es/detall-tramit?id_proc=21561&version=red' },
+  gvaApp: { label: 'GVA +Salut app (virtual SIP card)', url: 'https://www.san.gva.es/es/web/app-gva-mes-salut' },
+  fnmtOffices: { label: 'FNMT — map of identity-check offices', url: 'https://mapaoficinascert.appspot.com/' },
+  fnmtInPerson: { label: 'FNMT — in-person identity check explained', url: 'https://www.sede.fnmt.gob.es/certificados/persona-fisica/obtener-certificado-software/acreditar-identidad/presencial' },
+  accvValencia: { label: 'Book: ACCV digital certificate at Valencia city hall', url: 'https://www.valencia.es/QSIGE/apps/citaprevia/index.html?idioma=ES#!/newAppointment/13' },
+  mercurio: { label: 'MERCURIO — file permit applications online', url: 'https://mercurio.delegaciondelgobierno.gob.es/mercurio/inicioMercurio.html' },
+  fileStatus: { label: 'Check the status of your immigration file', url: 'https://infoext2.delegaciondelgobierno.gob.es/infoext2/' },
+  carpeta: { label: 'Carpeta Ciudadana — your official notifications', url: 'https://carpetaciudadana.gob.es' },
+}
+
 const IMG = '/courses/spanish-expats/docs/'
 
 export const DOCS: Record<DocId, DocCard> = {
@@ -107,6 +136,7 @@ export const DOCS: Record<DocId, DocCard> = {
     booking: {
       how: 'Your Spanish consulate\'s website — most book through an outside agency (e.g. BLS).',
       url: 'https://www.exteriores.gob.es', urlLabel: 'Find your consulate (exteriores.gob.es)',
+      links: [L.ex01, L.allForms],
       steps: [
         'Find the Spanish consulate that covers where you live, and open its visa page.',
         'Check its exact document list for your visa type — consulates add their own requirements.',
@@ -176,15 +206,18 @@ export const DOCS: Record<DocId, DocCard> = {
     sources: [S.fees, S.nieConsulate, S.icp, S.leaflet],
     booking: {
       how: 'Online — police cita previa (in Spain) or your consulate (abroad).',
-      url: S.icp.url, urlLabel: 'Open police cita previa',
+      url: L.icpValencia.url, urlLabel: 'Book the NIE appointment (Valencia)',
+      checked: '8 Oct 2026',
       steps: [
-        'Pay the 790-012 fee first (€9.84) on the police fee website — print the receipt.',
-        'Open the police cita previa website and choose the province: Valencia.',
-        'Choose the NIE procedure — it is usually listed as "Certificados y Asignación de NIE" (wording can vary).',
-        'Choose any office offered for it, enter your passport details and pick a slot.',
-        'No slots? Try again at different times and days, and screenshot every attempt.',
-        'Save the appointment confirmation (justificante de cita) — write the reference below.',
+        'Download and fill in form EX-15 (link below).',
+        'Pay the fee first: on the 790-012 form choose "Asignación de NIE a instancia del interesado" (€9.84). Pay online or at a bank, and print the receipt.',
+        'Open the booking link — Valencia is already selected.',
+        'Leave the office on "Cualquier oficina" (any office) unless you need a specific one.',
+        'Under "Trámites Policía Nacional" choose "POLICIA-CERTIFICADOS Y ASIGNACION NIE".',
+        'Enter your passport details and pick a slot. Be quick: the session expires if you leave it idle.',
+        'No slots? Try again at different times and days, and screenshot every attempt. Save the confirmation (justificante de cita).',
       ],
+      links: [L.ex15, L.fee790, L.icpValencia],
     },
     bring: [
       'Form EX-15, filled in and signed + a copy',
@@ -207,28 +240,31 @@ export const DOCS: Record<DocId, DocCard> = {
     who: 'Everyone who lives in Valencia — EU, UK and non-EU. It\'s compulsory, and almost everything else needs it.',
     before: 'no',
     beforeNote: 'You need a real Valencia address first.',
-    where: 'By appointment — call 010 (or 963 100 010) or book on valencia.es. Oficina del Padrón (entrance Periodista Azzati 2), OAC Tabacalera (C/ Amadeu de Savoia 11), or a district office (Junta Municipal). Mon–Fri 8:30–14:00.',
+    where: 'By appointment at the Oficina del Padrón (C/ Arzobispo Mayoral 1), OAC Tabacalera (C/ Amadeo de Saboya 11) or a district office (Junta Municipal). No appointments available? You can go WITHOUT one to C/ Periodista Azzati 1 or OAC Tabacalera. Mon–Fri 8:30–14:00.',
     cost: 'Free.',
     time: 'Often the same day if your papers are right. Legal maximum: 3 months.',
     steps: [
       'Sign a lease of MORE than 6 months that shows the referencia catastral (cadastral reference) — or get the IBI tax receipt from your landlord.',
-      'Book the appointment (010 or valencia.es).',
+      'Book the appointment online (city booking system) or by phone (010). No slots? Go without one to C/ Periodista Azzati 1 or OAC Tabacalera.',
       'Bring: passport (or TIE / EU ID), the lease, and your last rent receipt or transfer (from the last 2 months).',
       'Ask for the certificado de empadronamiento — you will need it for the TIE and SIP card.',
     ],
     unlocks: 'TIE card, SIP health card, schools, local services. Starts the clock for public health cover via convenio especial.',
     watch: 'Valencia rejects month-to-month leases, leases of 6 months or less, and leases without the cadastral reference. Renting a room? The lease must say which room. Renew: every 2 years if you are not in the Central Register of Foreigners.',
-    sources: [S.padron],
+    sources: [S.padron, L.padronOffices],
     booking: {
-      how: 'By phone (010) or online on valencia.es.',
-      url: S.padron.url, urlLabel: 'valencia.es — empadronamiento',
-      office: 'Oficina del Padrón — entrance C/ Periodista Azzati 2',
+      how: 'Online on the city\'s booking system — or by phone (010 / 963 52 54 78).',
+      url: L.padronTabacalera.url, urlLabel: 'Book the padrón (OAC Tabacalera)',
+      office: 'OAC Tabacalera — C/ Amadeo de Saboya 11',
+      checked: '8 Oct 2026',
       steps: [
-        'Call 010 (from a mobile or outside Valencia: 963 100 010), or book online on valencia.es.',
-        'Ask for an appointment to register on the padrón (empadronarse). It\'s one appointment per person, unless you go as a family.',
-        'Choose the main Oficina del Padrón, OAC Tabacalera or the district office (Junta Municipal) nearest you.',
-        'Write the date, time and office below.',
+        'Pick an office below — each link opens the city\'s booking form with that office already chosen.',
+        'Book one appointment per person (a family can go together).',
+        'Fill in your name and ID document, choose a day and time, and keep the confirmation.',
+        'No appointments? Valencia says you can go WITHOUT one to C/ Periodista Azzati 1 (access) or OAC Tabacalera, 8:30–14:00 — or register online if you already have a digital ID.',
+        'Questions about padrón procedures: 962 081 104.',
       ],
+      links: [L.padronMayoral, L.padronTabacalera, L.padronJuntas, L.padronOnline, L.padronCert, L.padronOffices],
     },
     bring: [
       'Passport (or TIE / EU ID card)',
@@ -265,16 +301,19 @@ export const DOCS: Record<DocId, DocCard> = {
     sources: [S.euCert, S.offices, S.fees],
     booking: {
       how: 'Online — police cita previa.',
-      url: S.icp.url, urlLabel: 'Open police cita previa',
+      url: L.icpValencia.url, urlLabel: 'Book the EU certificate appointment (Valencia)',
       office: 'Comisaría de Bailén — C/ Bailén 9',
+      checked: '8 Oct 2026',
       steps: [
-        'Pay the 790-012 fee first (€12) on the police fee website — print the receipt.',
-        'Open the police cita previa website and choose the province: Valencia.',
-        'Choose the EU certificate procedure — usually listed as "Certificado de Registro de Ciudadano de la U.E." (wording can vary).',
-        'Choose Comisaría de Bailén, enter your passport/ID details and pick a slot.',
+        'Download and fill in form EX-18 (link below).',
+        'Pay the fee first: on the 790-012 form choose the EU registration certificate box (€12). Print the receipt.',
+        'Open the booking link — Valencia is already selected.',
+        'Office: "CNP-COMISARIA DE BAILEN, Bailen, 9" — or leave "Cualquier oficina" (any office) for more chances.',
+        'Under "Trámites Policía Nacional" choose "POLICIA-CERTIFICADO DE REGISTRO DE CIUDADANO DE LA U.E.".',
+        'Enter your passport/ID details and pick a slot. Be quick: the session expires if you leave it idle.',
         'No slots? Try again at different times and days, and screenshot every attempt — your 3-month deadline still applies.',
-        'Save the appointment confirmation (justificante de cita) — write the reference below.',
       ],
+      links: [L.ex18, L.fee790, L.icpValencia, L.ex19],
     },
     bring: [
       'Form EX-18, filled in and signed',
@@ -320,13 +359,13 @@ export const DOCS: Record<DocId, DocCard> = {
     beforeNote: 'Only in Spain.',
     where: 'Comisaría de Patraix, C/ dels Gremis 6, València. Book "Toma de huellas (expedición de tarjeta)" on the police cita previa website.',
     cost: '€16.08 first card · €19.30 renewal · €21.87 long-term · €12.00 UK Withdrawal Agreement — all modelo 790 código 012.',
-    time: 'Fingerprint appointment: weeks. Then a second visit to collect the card.',
+    time: 'Fingerprint appointment: weeks. Then a second appointment ("Recogida de tarjeta") to collect the card.',
     steps: [
       'Get on the padrón and take the certificado de empadronamiento (ideally less than 3 months old).',
       'Pay the 790-012 fee — in the right box for your case.',
       'Book "toma de huellas" for Patraix.',
       'Attend with: form EX-17, passport, 1 recent passport photo, paid fee, padrón certificate, your visa or resolution. You get a receipt (resguardo).',
-      'Return with the resguardo to collect your card.',
+      'Book a second appointment ("Recogida de tarjeta") and bring the resguardo to collect your card.',
     ],
     needs: 'Visa or authorisation + padrón. Employed workers: Social Security registration (alta) first.',
     unlocks: 'Easy travel in and out of Schengen, resident bank account, digital certificate, Cl@ve.',
@@ -334,16 +373,19 @@ export const DOCS: Record<DocId, DocCard> = {
     sources: [S.leaflet, S.offices, S.fees, S.govuk],
     booking: {
       how: 'Online — police cita previa.',
-      url: S.icp.url, urlLabel: 'Open police cita previa',
+      url: L.icpValencia.url, urlLabel: 'Book the TIE fingerprints (Valencia)',
       office: 'Comisaría de Patraix — C/ dels Gremis 6',
+      checked: '8 Oct 2026',
       steps: [
-        'Pay the 790-012 fee first, in the right box (€16.08 for a first card) — print the receipt.',
-        'Open the police cita previa website and choose the province: Valencia.',
-        'Choose the fingerprint procedure — usually listed as "Toma de huellas (expedición de tarjeta)" (wording can vary).',
-        'Choose Comisaría de Patraix if offered, enter your passport details and pick a slot. No slots? Other offices in the province (Sagunto, Alzira, Gandia, Ontinyent) sometimes have them.',
-        'Screenshot every attempt — your 1-month deadline still applies.',
-        'Save the appointment confirmation (justificante de cita) — write the reference below.',
+        'Download and fill in form EX-17 (link below). UK resident before 2021? You also need form EX-20.',
+        'Pay the fee first, in the right box of the 790-012 form (€16.08 for a first card; €12 for a UK Withdrawal Agreement card). Print the receipt.',
+        'Open the booking link — Valencia is already selected.',
+        'Office: "CNP COMISARIA PATRAIX EXTRANJERIA, GREMIS, 6" — or leave "Cualquier oficina" (any office). Other offices in the province (Sagunto, Alzira, Gandia, Ontinyent…) sometimes have slots.',
+        'Under "Trámites Policía Nacional" choose "POLICÍA-TOMA DE HUELLAS (EXPEDICIÓN DE TARJETA) INICIAL, RENOVACIÓN, DUPLICADO Y LEY 14/2013".',
+        'Enter your passport details and pick a slot. Be quick: the session expires if you leave it idle. Screenshot every attempt — your 1-month deadline still applies.',
+        'After the fingerprints, book a SECOND appointment to collect the card: "POLICIA - RECOGIDA DE TARJETA DE IDENTIDAD DE EXTRANJERO (TIE)".',
       ],
+      links: [L.ex17, L.fee790, L.icpValencia, L.ex20],
     },
     bring: [
       'Form EX-17, filled in and signed',
@@ -359,6 +401,7 @@ export const DOCS: Record<DocId, DocCard> = {
       { who: 'them', es: 'Ponga el dedo índice aquí, por favor.', en: 'Put your index finger here, please.' },
       { who: 'them', es: 'Este es su resguardo. Vuelva en unas semanas para recoger la tarjeta.', en: 'This is your receipt. Come back in a few weeks to collect the card.' },
       { who: 'you', es: '¿Tengo que pedir otra cita para recogerla?', en: 'Do I need to book another appointment to collect it?' },
+      { who: 'them', es: 'Sí. Pida cita previa para la recogida de la tarjeta.', en: 'Yes. Book an appointment to collect the card.' },
     ],
   },
 
@@ -380,7 +423,9 @@ export const DOCS: Record<DocId, DocCard> = {
     sources: [S.nuss],
     booking: {
       how: 'Online on Import@ss — no appointment needed. Or your employer requests it.',
-      url: S.nuss.url, urlLabel: 'Open Import@ss',
+      url: S.nuss.url, urlLabel: 'Request your NUSS on Import@ss',
+      checked: '8 Oct 2026',
+      links: [L.ta1, S.nuss],
       steps: [
         'Download and fill in form TA.1.',
         'On Import@ss choose "Solicitar el número de la Seguridad Social", then the option without electronic ID.',
@@ -403,19 +448,21 @@ export const DOCS: Record<DocId, DocCard> = {
     steps: [
       'Workers: get your NUSS → your employer registers you → INSS recognises your right to healthcare.',
       'Take your NIE/TIE, padrón certificate and the INSS document to your centro de salud.',
-      'Collect the card — and download the SIP Virtual app.',
+      'Collect the card — and download the GVA +Salut app (virtual SIP card).',
     ],
     needs: 'Padrón + NIE/TIE + a right to public healthcare.',
     watch: 'Non-lucrative residents can\'t get the convenio especial in their first year. Keep that private insurance.',
     sources: [S.sip, S.convenio],
     booking: {
       how: 'In person at your centro de salud — or online on sede.gva.es with a digital certificate or Cl@ve.',
-      url: S.sip.url, urlLabel: 'GVA — SIP card',
+      url: L.sipFinder.url, urlLabel: 'Find your centro de salud',
+      checked: '8 Oct 2026',
       steps: [
-        'Find your centro de salud (it depends on your address).',
-        'Go in person — or apply online on sede.gva.es and collect the card there.',
-        'Download the SIP Virtual app once you\'re registered.',
+        'Find your centro de salud — it depends on your address (search by address, no SIP number needed).',
+        'Go in person — or apply online on sede.gva.es with a digital ID and collect the card there.',
+        'Once registered, download the GVA +Salut app: it includes a virtual SIP card.',
       ],
+      links: [L.sipFinder, L.sipOnline, L.gvaApp, S.sip],
     },
     bring: ['NIE / TIE / EU certificate', 'Passport', 'Padrón certificate', 'The INSS document confirming your right to healthcare'],
     say: [
@@ -444,12 +491,15 @@ export const DOCS: Record<DocId, DocCard> = {
     sources: [S.fnmt, S.clave, S.leaflet],
     booking: {
       how: 'Online request on the FNMT website, then an identity check in person.',
-      url: S.fnmt.url, urlLabel: 'Open FNMT',
+      url: S.fnmt.url, urlLabel: 'Request the FNMT certificate',
+      checked: '8 Oct 2026',
       steps: [
         'On the FNMT website, request a "certificado de persona física" — you get a código de solicitud by email.',
-        'Use the FNMT office locator to book an identity check (tax and Social Security offices need an appointment).',
-        'After the check, download the certificate in the SAME browser — then make a backup copy.',
+        'Find an identity-check office on the FNMT map (tax and Social Security offices need an appointment).',
+        'After the check, download the certificate in the SAME browser (about 1 hour later) — then make a backup copy.',
+        'Valencia alternative: the city hall issues the Valencian region\'s own digital certificate (ACCV) by appointment at C/ Arzobispo Mayoral 1 or OAC Tabacalera.',
       ],
+      links: [S.fnmt, L.fnmtOffices, L.fnmtInPerson, L.accvValencia, S.clave],
     },
     bring: ['Your código de solicitud (email)', 'TIE or EU certificate', 'Passport'],
     say: [
@@ -556,7 +606,7 @@ export function routeFor(nat: Nationality, purpose: Purpose): Route {
   before.push({ text: 'Optional: get your NIE at the consulate if you need it to buy or rent before you move.', doc: 'nie' })
 
   week.push({ text: 'Rent with a lease of MORE than 6 months showing the referencia catastral.', doc: 'padron' })
-  week.push({ text: 'Book your padrón appointment (call 010) — it\'s free.', doc: 'padron' })
+  week.push({ text: 'Book your padrón appointment (online or call 010) — it\'s free. No slots? Walk in at C/ Periodista Azzati 1.', doc: 'padron' })
   if (eu) week.push({ text: 'Book your EU certificate appointment at Comisaría Bailén.', doc: 'eu-cert' })
   else week.push({
     text: purpose === 'work'
@@ -664,7 +714,9 @@ export const REALITY = {
     'Try other offices in the province: Sagunto, Alzira, Gandia, Ontinyent.',
     'Never pay anyone who "sells" an appointment.',
     'A granted permit is fully valid even while you wait for the card.',
+    'No padrón appointments? The city says you can go without one to C/ Periodista Azzati 1 or OAC Tabacalera.',
   ],
+  links: [L.icpValencia, L.fee790, L.fileStatus, L.carpeta, L.mercurio, L.allForms],
   source: S.leaflet,
 }
 

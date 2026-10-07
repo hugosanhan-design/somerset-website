@@ -398,3 +398,7 @@
   .sexp .exp-fields{grid-template-columns:1fr}
   .sexp .exp-say li{max-width:100%}
 }
+.sexp .exp-links{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.8rem}
+.sexp .exp-links a{font-size:.8rem;font-weight:600;color:var(--azul);background:var(--azul-lt);border-radius:99px;padding:.35rem .8rem;text-decoration:none}
+.sexp .exp-links a:hover{background:var(--azul);color:#fff}
+.sexp .exp-checked{font-size:.75rem;color:#3d6b1c;margin-top:.7rem!important}
