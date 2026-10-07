@@ -29,6 +29,7 @@ export default function UploadWork() {
     type: 'class_exercise',
     title: '',
     date: new Date().toISOString().slice(0, 10),
+    task_prompt: '',
     teacher_notes: '',
   })
   const [imageFile, setImageFile] = useState<File | null>(null)
@@ -89,6 +90,7 @@ export default function UploadWork() {
     fd.append('type', form.type)
     fd.append('level', student?.level || 'B1')
     fd.append('title', form.title)
+    if (form.task_prompt.trim()) fd.append('criteria', form.task_prompt.trim())
 
     const res = await fetch('/api/analyse-work', { method: 'POST', body: fd })
     if (!res.ok) { setStatus('error'); return }
@@ -197,6 +199,21 @@ export default function UploadWork() {
             <label style={labelStyle}>Date</label>
             <input type="date" value={form.date} onChange={e => setForm(f => ({ ...f, date: e.target.value }))} style={inputStyle} />
           </div>
+        </div>
+
+        {/* Task prompt */}
+        <div style={{ marginBottom: 20 }}>
+          <label style={labelStyle}>Task prompt (optional)</label>
+          <textarea
+            value={form.task_prompt}
+            onChange={e => setForm(f => ({ ...f, task_prompt: e.target.value }))}
+            placeholder="What was the student asked to do? e.g. Write about your last holiday using past simple and past continuous."
+            rows={2}
+            style={{ ...inputStyle, resize: 'vertical', lineHeight: 1.5 }}
+          />
+          <p style={{ fontSize: 11.5, color: '#9ca3af', margin: '4px 0 0' }}>
+            If provided, the AI will check whether the student answered the right question and use it to focus the scoring criteria.
+          </p>
         </div>
 
         {/* Image upload */}
