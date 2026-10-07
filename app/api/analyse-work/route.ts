@@ -54,6 +54,59 @@ async function transcribe(imageData: string, mediaType: MediaType): Promise<stri
   return textBlock?.text.trim() || ''
 }
 
+function buildPrompt(
+  workType: string, level: string, title: string,
+  transcription: string, criteriaList: string[], hasCriteria: boolean,
+): string {
+  if (hasCriteria) {
+    return `You are an experienced English language teacher at Somerset Language Centre, Valencia, Spain.
+You are checking student work: ${WORK_TYPE_LABELS[workType] || workType}.
+The student's approximate CEFR level is ${level}.
+${title ? `Exercise: "${title}"` : ''}
+
+STUDENT TEXT:
+"""
+${transcription || '(text not available)'}
+"""
+
+REQUIRED CRITERIA for this exercise — check each one individually:
+${criteriaList.map((c, i) => `${i + 1}. ${c}`).join('\n')}
+
+For EACH criterion, decide met (true/false) strictly from what the student actually wrote. Quote exact words (or note absence) as evidence.
+
+Then give:
+1. A SCORE out of 100. HARD RULE: if ANY criterion is false, score must be 50 or lower. Only if ALL are met should score reflect overall quality (60 = adequate, 75 = good, 90+ = excellent).
+2. A SHORT FEEDBACK paragraph (3-5 sentences) written to the teacher — name which criteria failed and why.
+3. ERROR PATTERNS: 2-4 recurring issues. Include failed criteria phrased as error patterns.
+
+Respond in JSON only:
+{"score": <0-100>, "feedback": "<paragraph>", "error_patterns": ["<p1>", ...], "criteria_check": [{"criterion": "<text>", "met": <bool>, "evidence": "<quote or 'not present'>"}]}
+
+If text is unreadable: {"score": null, "feedback": "Could not analyse — please check the upload.", "error_patterns": [], "criteria_check": []}`
+  }
+  return `You are an experienced English language teacher at Somerset Language Centre, Valencia, Spain.
+You are reviewing student work: ${WORK_TYPE_LABELS[workType] || workType}.
+The student's approximate CEFR level is ${level}.
+${title ? `Work title: "${title}"` : ''}
+
+No specific grading criteria were given, so this is a general impression only — say so plainly in the feedback.
+
+STUDENT TEXT:
+"""
+${transcription || '(text not available)'}
+"""
+
+Provide:
+1. A SCORE out of 100 (60 = adequate, 75 = good, 90+ = excellent)
+2. A SHORT FEEDBACK paragraph (3-5 sentences) to the teacher — constructive, specific, level-aware. Note that no specific criteria were set.
+3. ERROR PATTERNS: 2-4 recurring issues. Empty list if the work is excellent.
+
+Respond in JSON only:
+{"score": <0-100>, "feedback": "<paragraph>", "error_patterns": ["<p1>", ...], "criteria_check": []}
+
+If text is unreadable: {"score": null, "feedback": "Could not analyse — please check the upload.", "error_patterns": [], "criteria_check": []}`
+}
+
 // Two callers use this route:
 //  1. The old one-step upload (`/students/[id]/upload`) — sends a fresh `image` file,
 //     gets score+feedback+image_url back immediately.
@@ -73,6 +126,7 @@ export async function POST(req: NextRequest) {
   const formData = await req.formData()
   const imageFile = formData.get('image') as File | null
   const existingImageUrl = (formData.get('imageUrl') as string) || ''
+  const directText = (formData.get('text') as string) || ''
   const workType = (formData.get('type') as string) || 'class_exercise'
   const level = (formData.get('level') as string) || 'B1'
   const title = (formData.get('title') as string) || ''
@@ -82,8 +136,33 @@ export async function POST(req: NextRequest) {
     .map(c => c.trim())
     .filter(Boolean)
 
-  if (!imageFile && !existingImageUrl) {
-    return NextResponse.json({ error: 'No image provided' }, { status: 400 })
+  if (!imageFile && !existingImageUrl && !directText) {
+    return NextResponse.json({ error: 'No image or text provided' }, { status: 400 })
+  }
+
+  // Text-only path — teacher pasted the student's typed work; skip image upload and OCR.
+  if (directText && !imageFile && !existingImageUrl) {
+    const transcription = directText
+    const hasCriteria = criteriaList.length > 0
+    const prompt = buildPrompt(workType, level, title, transcription, criteriaList, hasCriteria)
+    try {
+      const response = await client.messages.create({
+        model: 'claude-opus-4-5-20251101',
+        max_tokens: 900,
+        messages: [{ role: 'user', content: prompt }],
+      })
+      const raw = response.content[0].type === 'text' ? response.content[0].text : ''
+      const jsonMatch = raw.match(/\{[\s\S]*\}/)
+      const parsed = jsonMatch ? JSON.parse(jsonMatch[0]) : { score: null, feedback: raw, error_patterns: [], criteria_check: [] }
+      const criteriaCheck: CriteriaCheck[] = parsed.criteria_check || []
+      const anyCriterionFailed = criteriaCheck.some(c => c.met === false)
+      let score = parsed.score
+      if (anyCriterionFailed && typeof score === 'number' && score > 50) score = 50
+      return NextResponse.json({ score, feedback: parsed.feedback, error_patterns: parsed.error_patterns || [], criteria_check: criteriaCheck, transcription, image_url: '' })
+    } catch (err) {
+      console.error('Analysis error (text-only):', err)
+      return NextResponse.json({ score: null, feedback: 'AI analysis failed. You can add notes manually.', error_patterns: [], criteria_check: [], transcription, image_url: '' })
+    }
   }
 
   let imageUrl: string
@@ -118,66 +197,7 @@ export async function POST(req: NextRequest) {
   }
 
   const hasCriteria = criteriaList.length > 0
-
-  const prompt = hasCriteria
-    ? `You are an experienced English language teacher at Somerset Language Centre, Valencia, Spain.
-You are checking a photo of student work: ${WORK_TYPE_LABELS[workType] || workType}.
-The student's approximate CEFR level is ${level}.
-${title ? `Exercise: "${title}"` : ''}
-
-TRANSCRIPTION (produced separately by OCR from the photo — treat this as the authoritative text; use the photo only to resolve anything the transcription leaves unclear):
-"""
-${transcription || '(transcription failed — read directly from the photo)'}
-"""
-
-REQUIRED CRITERIA for this exercise — check each one individually against the transcription above:
-${criteriaList.map((c, i) => `${i + 1}. ${c}`).join('\n')}
-
-For EACH criterion, decide met (true/false) strictly from what the student actually wrote — not what they probably meant, not what would be needed to make the sentence work. A missing subject, a missing auxiliary, or a wrong verb form makes that criterion false even if the rest of the sentence reads fluently. Quote the exact words (or note their absence) as evidence.
-
-Then give:
-1. A SCORE out of 100. HARD RULE: if ANY required criterion is false, the score must be 50 or lower, however fluent or well-formed the rest of the writing is — this task was specifically testing those criteria, not general fluency. Only if ALL criteria are met should the score reflect overall quality (60 = adequate for level, 75 = good, 90+ = excellent).
-2. A SHORT FEEDBACK paragraph (3-5 sentences) written directly to the teacher — name which criteria failed and why, in plain terms, before any general comment on fluency.
-3. ERROR PATTERNS: 2-4 recurring issues (e.g. "missing subject pronoun", "verb tense consistency"). Include the failed criteria here too, phrased as error patterns.
-
-Respond in JSON only, with this exact structure:
-{
-  "score": <number 0-100>,
-  "feedback": "<teacher-facing paragraph>",
-  "error_patterns": ["<pattern 1>", "<pattern 2>", ...],
-  "criteria_check": [{"criterion": "<criterion text>", "met": <true|false>, "evidence": "<exact quote or 'not present'>"}]
-}
-
-If the image/transcription is unreadable or not student work, return:
-{"score": null, "feedback": "Could not analyse this image — please check the upload.", "error_patterns": [], "criteria_check": []}`
-    : `You are an experienced English language teacher at Somerset Language Centre, Valencia, Spain.
-You are reviewing a photo of student work: ${WORK_TYPE_LABELS[workType] || workType}.
-The student's approximate CEFR level is ${level}.
-${title ? `Work title: "${title}"` : ''}
-
-No specific grading criteria were given for this exercise, so this can only be a general impression of the writing — it is NOT a check against what the exercise was meant to practise. Say so plainly in the feedback rather than implying a more precise check was done.
-
-TRANSCRIPTION (produced separately by OCR from the photo):
-"""
-${transcription || '(transcription failed — read directly from the photo)'}
-"""
-
-Please analyse the student's work carefully and provide:
-
-1. A SCORE out of 100 (where 60 = adequate for level, 75 = good, 90+ = excellent)
-2. A SHORT FEEDBACK paragraph (3-5 sentences) written directly to the teacher — constructive, specific, level-aware. Open by noting no specific criteria were set for this task. Mention what the student does well and what to work on.
-3. ERROR PATTERNS: List 2–4 recurring issues you can identify (e.g. "article use", "verb tense consistency", "spelling"). If the work is excellent with no clear patterns, return an empty list.
-
-Respond in JSON only, with this exact structure:
-{
-  "score": <number 0-100>,
-  "feedback": "<teacher-facing paragraph>",
-  "error_patterns": ["<pattern 1>", "<pattern 2>", ...],
-  "criteria_check": []
-}
-
-If the image/transcription is unreadable or not student work, return:
-{"score": null, "feedback": "Could not analyse this image — please check the upload.", "error_patterns": [], "criteria_check": []}`
+  const prompt = buildPrompt(workType, level, title, transcription, criteriaList, hasCriteria)
 
   try {
     const response = await client.messages.create({

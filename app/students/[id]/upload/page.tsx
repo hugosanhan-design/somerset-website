@@ -34,6 +34,7 @@ export default function UploadWork() {
   })
   const [imageFile, setImageFile] = useState<File | null>(null)
   const [preview, setPreview] = useState<string | null>(null)
+  const [pastedText, setPastedText] = useState<string>('')
   const [status, setStatus] = useState<'idle' | 'analysing' | 'done' | 'error'>('idle')
   const [result, setResult] = useState<{
     score: number | null
@@ -72,8 +73,12 @@ export default function UploadWork() {
     try {
       const text = await navigator.clipboard.readText()
       if (text.trim()) {
-        setForm(f => ({ ...f, teacher_notes: (f.teacher_notes ? f.teacher_notes + '\n\n' : '') + text.trim() }))
-        setPasteNotice('Text pasted ✓')
+        setPastedText(text.trim())
+        setImageFile(null)
+        setPreview(null)
+        setResult(null)
+        setStatus('idle')
+        setPasteNotice('Student text pasted ✓')
         setTimeout(() => setPasteNotice(''), 3000)
       }
     } catch {
@@ -83,10 +88,11 @@ export default function UploadWork() {
   }
 
   async function runAnalysis() {
-    if (!imageFile) return
+    if (!imageFile && !pastedText) return
     setStatus('analysing')
     const fd = new FormData()
-    fd.append('image', imageFile)
+    if (imageFile) fd.append('image', imageFile)
+    if (pastedText) fd.append('text', pastedText)
     fd.append('type', form.type)
     fd.append('level', student?.level || 'B1')
     fd.append('title', form.title)
@@ -222,16 +228,21 @@ export default function UploadWork() {
           <div
             onDrop={handleDrop}
             onDragOver={e => e.preventDefault()}
-            onClick={() => fileRef.current?.click()}
+            onClick={() => !pastedText && fileRef.current?.click()}
             style={{
-              border: preview ? '2px solid #6BAE2E' : '2px dashed #d1d5db',
-              borderRadius: 10, padding: preview ? 0 : '32px 20px',
-              textAlign: 'center', cursor: 'pointer', backgroundColor: '#fff',
+              border: (preview || pastedText) ? '2px solid #6BAE2E' : '2px dashed #d1d5db',
+              borderRadius: 10, padding: (preview || pastedText) ? '16px 20px' : '32px 20px',
+              textAlign: 'center', cursor: pastedText ? 'default' : 'pointer', backgroundColor: '#fff',
               overflow: 'hidden', transition: 'border-color 0.15s',
             }}
           >
             {preview ? (
               <img src={preview} alt="Preview" style={{ width: '100%', maxHeight: 360, objectFit: 'contain', display: 'block' }} />
+            ) : pastedText ? (
+              <div style={{ textAlign: 'left' }}>
+                <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#6BAE2E', marginBottom: 6 }}>Student text</div>
+                <pre style={{ fontSize: 13, color: '#374151', whiteSpace: 'pre-wrap', wordBreak: 'break-word', margin: 0, maxHeight: 200, overflowY: 'auto', fontFamily: 'inherit', lineHeight: 1.5 }}>{pastedText}</pre>
+              </div>
             ) : (
               <div style={{ color: '#9ca3af' }}>
                 <div style={{ fontSize: 32, marginBottom: 8 }}>📷</div>
@@ -251,6 +262,15 @@ export default function UploadWork() {
               ✕ Remove image
             </button>
           )}
+          {pastedText && (
+            <button
+              type="button"
+              onClick={() => { setPastedText(''); setResult(null); setStatus('idle') }}
+              style={{ marginTop: 8, fontSize: 12, color: '#6b7280', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+            >
+              ✕ Clear text
+            </button>
+          )}
           {/* Quick-action buttons */}
           <div style={{ display: 'flex', gap: 8, marginTop: 10, flexWrap: 'wrap' }}>
             <button type="button" onClick={() => cameraRef.current?.click()}
@@ -268,7 +288,7 @@ export default function UploadWork() {
         </div>
 
         {/* AI analysis */}
-        {imageFile && status === 'idle' && !result && (
+        {(imageFile || pastedText) && status === 'idle' && !result && (
           <button onClick={runAnalysis} style={{ ...btnGreen, marginBottom: 20, width: '100%' }}>
             🤖 Analyse with AI
           </button>
