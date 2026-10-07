@@ -27,6 +27,8 @@ export const PURPOSES: { id: Purpose; label: string; emoji: string }[] = [
 
 export type DocImage = { src: string; alt: string; caption: string; credit: string; creditUrl: string }
 export type Source = { label: string; url: string }
+export type Booking = { how: string; url?: string; urlLabel?: string; office?: string; steps: string[] }
+export type Phrase = { who: 'you' | 'them'; es: string; en: string }
 
 export type DocCard = {
   id: DocId
@@ -46,6 +48,9 @@ export type DocCard = {
   unlocks?: string
   watch?: string
   sources: Source[]
+  booking?: Booking
+  bring?: string[]
+  say?: Phrase[]
 }
 
 const S = {
@@ -99,6 +104,30 @@ export const DOCS: Record<DocId, DocCard> = {
     unlocks: 'Entry to Spain to live. Your NIE number comes with it.',
     watch: 'A tourist offered a job in Spain must go home to get the visa — it cannot be done from Spain.',
     sources: [S.nonLucrative, S.study, S.work, S.nomad, S.leaflet],
+    booking: {
+      how: 'Your Spanish consulate\'s website — most book through an outside agency (e.g. BLS).',
+      url: 'https://www.exteriores.gob.es', urlLabel: 'Find your consulate (exteriores.gob.es)',
+      steps: [
+        'Find the Spanish consulate that covers where you live, and open its visa page.',
+        'Check its exact document list for your visa type — consulates add their own requirements.',
+        'Book the appointment through the consulate or its agency. You must attend in person.',
+        'Save the confirmation and write the date below.',
+      ],
+    },
+    bring: [
+      'Passport valid for at least 1 more year + copies',
+      'National visa application form + photo',
+      'Criminal record certificate — apostilled + sworn translation',
+      'Medical certificate',
+      'Proof of funds / income',
+      'Health insurance certificate (no co-payments, no waiting periods)',
+      'Proof of payment of the visa fee',
+    ],
+    say: [
+      { who: 'you', es: 'Tengo cita para solicitar un visado nacional.', en: 'I have an appointment to apply for a national visa.' },
+      { who: 'them', es: '¿Tiene el certificado de antecedentes penales apostillado?', en: 'Do you have the apostilled criminal record certificate?' },
+      { who: 'you', es: 'Sí, y aquí está la traducción jurada.', en: 'Yes, and here is the sworn translation.' },
+    ],
   },
 
   supporting: {
@@ -145,6 +174,31 @@ export const DOCS: Record<DocId, DocCard> = {
     unlocks: 'Buying property or a car, some bank accounts, utility contracts, the digital certificate.',
     watch: '"I have my NIE, so I\'m a resident" — no. The NIE is only a number. It does not let you live in Spain.',
     sources: [S.fees, S.nieConsulate, S.icp, S.leaflet],
+    booking: {
+      how: 'Online — police cita previa (in Spain) or your consulate (abroad).',
+      url: S.icp.url, urlLabel: 'Open police cita previa',
+      steps: [
+        'Pay the 790-012 fee first (€9.84) on the police fee website — print the receipt.',
+        'Open the police cita previa website and choose the province: Valencia.',
+        'Choose the NIE procedure — it is usually listed as "Certificados y Asignación de NIE" (wording can vary).',
+        'Choose any office offered for it, enter your passport details and pick a slot.',
+        'No slots? Try again at different times and days, and screenshot every attempt.',
+        'Save the appointment confirmation (justificante de cita) — write the reference below.',
+      ],
+    },
+    bring: [
+      'Form EX-15, filled in and signed + a copy',
+      'Passport + a copy',
+      'Paid 790-012 fee (€9.84)',
+      'Proof of why you need the NIE (deposit contract, job offer, notary letter…)',
+      'Appointment confirmation',
+    ],
+    say: [
+      { who: 'you', es: 'Buenos días. Vengo a pedir el NIE.', en: 'Good morning. I\'ve come to apply for the NIE.' },
+      { who: 'them', es: '¿Por qué necesita el NIE?', en: 'Why do you need the NIE?' },
+      { who: 'you', es: 'Para comprar un piso. Aquí tiene el contrato de arras.', en: 'To buy a flat. Here is the deposit contract.' },
+      { who: 'them', es: '¿Tiene el justificante de la tasa?', en: 'Do you have the fee receipt?' },
+    ],
   },
 
   padron: {
@@ -165,6 +219,30 @@ export const DOCS: Record<DocId, DocCard> = {
     unlocks: 'TIE card, SIP health card, schools, local services. Starts the clock for public health cover via convenio especial.',
     watch: 'Valencia rejects month-to-month leases, leases of 6 months or less, and leases without the cadastral reference. Renting a room? The lease must say which room. Renew: every 2 years if you are not in the Central Register of Foreigners.',
     sources: [S.padron],
+    booking: {
+      how: 'By phone (010) or online on valencia.es.',
+      url: S.padron.url, urlLabel: 'valencia.es — empadronamiento',
+      office: 'Oficina del Padrón — entrance C/ Periodista Azzati 2',
+      steps: [
+        'Call 010 (from a mobile or outside Valencia: 963 100 010), or book online on valencia.es.',
+        'Ask for an appointment to register on the padrón (empadronarse). It\'s one appointment per person, unless you go as a family.',
+        'Choose the main Oficina del Padrón, OAC Tabacalera or the district office (Junta Municipal) nearest you.',
+        'Write the date, time and office below.',
+      ],
+    },
+    bring: [
+      'Passport (or TIE / EU ID card)',
+      'Lease — more than 6 months, signed by everyone, showing the referencia catastral',
+      'Your last rent receipt or bank transfer (from the last 2 months)',
+      'Renting a room or living in someone else\'s home? The authorisation form + the owner\'s ID and deeds or lease',
+    ],
+    say: [
+      { who: 'you', es: 'Hola, buenos días. Quería pedir cita para empadronarme.', en: 'Hello. I\'d like an appointment to register on the padrón.' },
+      { who: 'them', es: '¿En qué barrio vive?', en: 'Which neighbourhood do you live in?' },
+      { who: 'you', es: 'Vivo en Russafa. ¿Qué documentos tengo que llevar?', en: 'I live in Russafa. What documents do I need to bring?' },
+      { who: 'them', es: 'El pasaporte, el contrato de alquiler y el último recibo.', en: 'Your passport, the lease and the last rent receipt.' },
+      { who: 'you', es: '¿Me da el certificado de empadronamiento, por favor?', en: 'Could I have the padrón certificate, please?' },
+    ],
   },
 
   'eu-cert': {
@@ -185,6 +263,33 @@ export const DOCS: Record<DocId, DocCard> = {
     unlocks: 'Social Security number, SIP card (if working), resident bank account, digital certificate.',
     watch: 'Deadline: within 3 months of arriving. Not working? The EHIC card does not prove residence — bring private insurance or an S1.',
     sources: [S.euCert, S.offices, S.fees],
+    booking: {
+      how: 'Online — police cita previa.',
+      url: S.icp.url, urlLabel: 'Open police cita previa',
+      office: 'Comisaría de Bailén — C/ Bailén 9',
+      steps: [
+        'Pay the 790-012 fee first (€12) on the police fee website — print the receipt.',
+        'Open the police cita previa website and choose the province: Valencia.',
+        'Choose the EU certificate procedure — usually listed as "Certificado de Registro de Ciudadano de la U.E." (wording can vary).',
+        'Choose Comisaría de Bailén, enter your passport/ID details and pick a slot.',
+        'No slots? Try again at different times and days, and screenshot every attempt — your 3-month deadline still applies.',
+        'Save the appointment confirmation (justificante de cita) — write the reference below.',
+      ],
+    },
+    bring: [
+      'Form EX-18, filled in and signed',
+      'Passport or national ID card + a copy',
+      'Paid 790-012 fee (€12)',
+      'Proof of your situation: work contract or Social Security registration; or funds + health insurance; or enrolment + insurance',
+      'Padrón certificate (recommended)',
+      'Appointment confirmation',
+    ],
+    say: [
+      { who: 'them', es: '¿Tiene cita?', en: 'Do you have an appointment?' },
+      { who: 'you', es: 'Sí, para el certificado de registro de ciudadano de la Unión.', en: 'Yes, for the EU registration certificate.' },
+      { who: 'them', es: '¿Me da el pasaporte, el formulario y el justificante de la tasa?', en: 'Can you give me your passport, the form and the fee receipt?' },
+      { who: 'you', es: 'Aquí tiene. También traigo mi contrato de trabajo.', en: 'Here you are. I\'ve also brought my work contract.' },
+    ],
   },
 
   tie: {
@@ -227,6 +332,34 @@ export const DOCS: Record<DocId, DocCard> = {
     unlocks: 'Easy travel in and out of Schengen, resident bank account, digital certificate, Cl@ve.',
     watch: 'Deadline: within 1 month of entering Spain (employed workers: within 1 month of their Social Security alta). Moving flat? You need a new card with your new padrón.',
     sources: [S.leaflet, S.offices, S.fees, S.govuk],
+    booking: {
+      how: 'Online — police cita previa.',
+      url: S.icp.url, urlLabel: 'Open police cita previa',
+      office: 'Comisaría de Patraix — C/ dels Gremis 6',
+      steps: [
+        'Pay the 790-012 fee first, in the right box (€16.08 for a first card) — print the receipt.',
+        'Open the police cita previa website and choose the province: Valencia.',
+        'Choose the fingerprint procedure — usually listed as "Toma de huellas (expedición de tarjeta)" (wording can vary).',
+        'Choose Comisaría de Patraix if offered, enter your passport details and pick a slot. No slots? Other offices in the province (Sagunto, Alzira, Gandia, Ontinyent) sometimes have them.',
+        'Screenshot every attempt — your 1-month deadline still applies.',
+        'Save the appointment confirmation (justificante de cita) — write the reference below.',
+      ],
+    },
+    bring: [
+      'Form EX-17, filled in and signed',
+      'Passport + a copy',
+      '1 recent passport-size photo',
+      'Paid 790-012 fee (€16.08 for a first card)',
+      'Padrón certificate (ideally less than 3 months old)',
+      'Your visa, or the resolution granting your permit',
+      'Appointment confirmation',
+    ],
+    say: [
+      { who: 'you', es: 'Buenos días. Vengo a la toma de huellas para la TIE.', en: 'Good morning. I\'m here for the TIE fingerprints.' },
+      { who: 'them', es: 'Ponga el dedo índice aquí, por favor.', en: 'Put your index finger here, please.' },
+      { who: 'them', es: 'Este es su resguardo. Vuelva en unas semanas para recoger la tarjeta.', en: 'This is your receipt. Come back in a few weeks to collect the card.' },
+      { who: 'you', es: '¿Tengo que pedir otra cita para recogerla?', en: 'Do I need to book another appointment to collect it?' },
+    ],
   },
 
   nuss: {
@@ -245,6 +378,17 @@ export const DOCS: Record<DocId, DocCard> = {
     ],
     unlocks: 'Your employer\'s registration (alta) → public healthcare → SIP card.',
     sources: [S.nuss],
+    booking: {
+      how: 'Online on Import@ss — no appointment needed. Or your employer requests it.',
+      url: S.nuss.url, urlLabel: 'Open Import@ss',
+      steps: [
+        'Download and fill in form TA.1.',
+        'On Import@ss choose "Solicitar el número de la Seguridad Social", then the option without electronic ID.',
+        'Upload a photo of your ID and a selfie holding it.',
+        'The number arrives by email — note the date below.',
+      ],
+    },
+    bring: ['Passport or NIE/TIE (photo)', 'Form TA.1', 'A selfie holding your ID', 'An email address'],
   },
 
   sip: {
@@ -264,6 +408,21 @@ export const DOCS: Record<DocId, DocCard> = {
     needs: 'Padrón + NIE/TIE + a right to public healthcare.',
     watch: 'Non-lucrative residents can\'t get the convenio especial in their first year. Keep that private insurance.',
     sources: [S.sip, S.convenio],
+    booking: {
+      how: 'In person at your centro de salud — or online on sede.gva.es with a digital certificate or Cl@ve.',
+      url: S.sip.url, urlLabel: 'GVA — SIP card',
+      steps: [
+        'Find your centro de salud (it depends on your address).',
+        'Go in person — or apply online on sede.gva.es and collect the card there.',
+        'Download the SIP Virtual app once you\'re registered.',
+      ],
+    },
+    bring: ['NIE / TIE / EU certificate', 'Passport', 'Padrón certificate', 'The INSS document confirming your right to healthcare'],
+    say: [
+      { who: 'you', es: 'Hola. Quería darme de alta para la tarjeta SIP.', en: 'Hello. I\'d like to register for the SIP card.' },
+      { who: 'them', es: '¿Tiene el documento del INSS?', en: 'Do you have the INSS document?' },
+      { who: 'you', es: 'Sí, y el certificado de empadronamiento.', en: 'Yes, and the padrón certificate.' },
+    ],
   },
 
   digital: {
@@ -283,6 +442,20 @@ export const DOCS: Record<DocId, DocCard> = {
     needs: 'NIE + passport (and TIE or EU certificate).',
     watch: 'Valencia\'s Oficina de Extranjería sends decisions to your online Carpeta Ciudadana. The first time you open a notice there counts as being officially notified.',
     sources: [S.fnmt, S.clave, S.leaflet],
+    booking: {
+      how: 'Online request on the FNMT website, then an identity check in person.',
+      url: S.fnmt.url, urlLabel: 'Open FNMT',
+      steps: [
+        'On the FNMT website, request a "certificado de persona física" — you get a código de solicitud by email.',
+        'Use the FNMT office locator to book an identity check (tax and Social Security offices need an appointment).',
+        'After the check, download the certificate in the SAME browser — then make a backup copy.',
+      ],
+    },
+    bring: ['Your código de solicitud (email)', 'TIE or EU certificate', 'Passport'],
+    say: [
+      { who: 'you', es: 'Tengo cita para acreditar mi identidad para el certificado digital.', en: 'I have an appointment to verify my identity for the digital certificate.' },
+      { who: 'them', es: '¿Me da el código de solicitud?', en: 'Can you give me the request code?' },
+    ],
   },
 
   bank: {
@@ -299,6 +472,19 @@ export const DOCS: Record<DocId, DocCard> = {
       'Once you have your padrón and TIE/green certificate, switch it to a resident account.',
     ],
     sources: [S.bde],
+    booking: {
+      how: 'Walk in, or book on the bank\'s website.',
+      steps: [
+        'Compare a couple of banks — ask about monthly fees, and about the basic payment account (cuenta de pago básica).',
+        'Book an appointment or walk in with your documents.',
+      ],
+    },
+    bring: ['Passport', 'NIE (certificate, TIE or EU certificate)', 'Padrón certificate (for a resident account)', 'Proof of income or job'],
+    say: [
+      { who: 'you', es: 'Quería abrir una cuenta. ¿Tienen una cuenta de pago básica?', en: 'I\'d like to open an account. Do you have a basic payment account?' },
+      { who: 'them', es: '¿Es usted residente o no residente?', en: 'Are you resident or non-resident?' },
+      { who: 'you', es: 'Todavía no soy residente. Tengo el NIE.', en: 'I\'m not resident yet. I have my NIE.' },
+    ],
   },
 }
 
@@ -401,6 +587,63 @@ export function docsFor(route: Route): DocId[] {
   ids.add('padron'); ids.add('digital'); ids.add('bank')
   const order: DocId[] = ['visa', 'supporting', 'nie', 'padron', 'eu-cert', 'tie', 'nuss', 'sip', 'digital', 'bank']
   return order.filter(id => ids.has(id))
+}
+
+// ─── Mi expediente: deadlines + calendar ──────────────────────────────────────
+
+export type Deadline = { label: string; doc: DocId; date: Date | null; legal: boolean; note: string }
+
+export function addDays(d: Date, n: number) { const x = new Date(d); x.setDate(x.getDate() + n); return x }
+export function addMonths(d: Date, n: number) {
+  const x = new Date(d.getFullYear(), d.getMonth() + n, 1)
+  const last = new Date(x.getFullYear(), x.getMonth() + 1, 0).getDate()
+  x.setDate(Math.min(d.getDate(), last))
+  return x
+}
+export function parseDay(s?: string): Date | null {
+  if (!s) return null
+  const [y, m, d] = s.split('-').map(Number)
+  return y && m && d ? new Date(y, m - 1, d) : null
+}
+
+export function deadlinesFor(nat: Nationality, purpose: Purpose, arrival: Date | null, alta: Date | null): Deadline[] {
+  if (nat === 'uk-old') return []
+  const out: Deadline[] = [
+    { label: 'Padrón appointment', doc: 'padron', date: arrival && addDays(arrival, 7), legal: false, note: 'Our suggestion, not a legal deadline — almost everything else needs it.' },
+  ]
+  if (nat === 'eu') {
+    out.push({ label: 'EU registration certificate', doc: 'eu-cert', date: arrival && addMonths(arrival, 3), legal: true, note: 'Within 3 months of arriving.' })
+  } else if (purpose === 'work') {
+    out.push({ label: 'Social Security registration (alta)', doc: 'nuss', date: arrival && addMonths(arrival, 3), legal: true, note: 'Within 3 months of entering Spain.' })
+    out.push({ label: 'TIE fingerprints', doc: 'tie', date: alta && addMonths(alta, 1), legal: true, note: alta ? 'Within 1 month of your Social Security registration.' : 'Within 1 month of your Social Security registration — add that date when you have it.' })
+  } else {
+    out.push({ label: 'TIE fingerprints', doc: 'tie', date: arrival && addMonths(arrival, 1), legal: true, note: purpose === 'study' ? 'Within 1 month of entering Spain (if you stay more than 6 months).' : 'Within 1 month of entering Spain.' })
+  }
+  return out
+}
+
+const pad = (n: number) => String(n).padStart(2, '0')
+const icsDay = (d: Date) => `${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}`
+const icsEsc = (s: string) => s.replace(/[\\;,]/g, m => '\\' + m).replace(/\n/g, '\\n')
+
+export function buildIcs(ev: { title: string; day: Date; time?: string; location?: string; description?: string; alarm: string }) {
+  const stamp = new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d+/, '')
+  const lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Somerset Language Centre//Mi expediente//ES', 'BEGIN:VEVENT',
+    `UID:${stamp}-${Math.random().toString(36).slice(2)}@somerset`, `DTSTAMP:${stamp}`]
+  if (ev.time) {
+    const [h, m] = ev.time.split(':').map(Number)
+    const start = new Date(ev.day); start.setHours(h, m)
+    const end = new Date(start.getTime() + 60 * 60 * 1000)
+    const dt = (d: Date) => `${icsDay(d)}T${pad(d.getHours())}${pad(d.getMinutes())}00`
+    lines.push(`DTSTART:${dt(start)}`, `DTEND:${dt(end)}`)
+  } else {
+    lines.push(`DTSTART;VALUE=DATE:${icsDay(ev.day)}`, `DTEND;VALUE=DATE:${icsDay(addDays(ev.day, 1))}`)
+  }
+  lines.push(`SUMMARY:${icsEsc(ev.title)}`)
+  if (ev.location) lines.push(`LOCATION:${icsEsc(ev.location)}`)
+  if (ev.description) lines.push(`DESCRIPTION:${icsEsc(ev.description)}`)
+  lines.push('BEGIN:VALARM', 'ACTION:DISPLAY', `DESCRIPTION:${icsEsc(ev.title)}`, `TRIGGER:${ev.alarm}`, 'END:VALARM', 'END:VEVENT', 'END:VCALENDAR')
+  return lines.join('\r\n')
 }
 
 // ─── Valencia reality check ─────────────────────────────────────────────────

@@ -16,6 +16,7 @@ import {
   type PoderItem,
 } from '@/lib/courses/spanishExpats'
 import { photoSE, type PhotoKeySE } from '@/lib/courses/photosExpats'
+import MiExpediente from './MiExpediente'
 import {
   DOCS, NATIONALITIES, PURPOSES, REALITY, GOTCHAS, GESTOR, RUTA_LAST_VERIFIED,
   routeFor, docsFor,
@@ -1095,6 +1096,8 @@ function RutaStep({ onDone }: { onDone: () => void }) {
           </div>
         </div>
       )}
+
+      {route && nat && <MiExpediente route={route} nat={nat} purpose={purpose} onRead={jump} />}
 
       <div className="card">
         <p className="label">{route ? 'Your documents' : 'The essential documents'}</p>
