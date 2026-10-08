@@ -16,7 +16,7 @@ import {
   type PoderItem,
 } from '@/lib/courses/spanishExpats'
 import { photoSE, type PhotoKeySE } from '@/lib/courses/photosExpats'
-import { VOCAB_PHOTOS } from '@/lib/courses/spanishExpatsPhotos'
+import { VOCAB_PHOTOS, CLUE_POPUPS, type CoursePhoto } from '@/lib/courses/spanishExpatsPhotos'
 import MiExpediente from './MiExpediente'
 import { Icon } from './icons'
 import {
@@ -46,6 +46,43 @@ const STEPS: StepMeta[] = [
 // step: 0=welcome, 1=ruta, 2=vocab, 3=phrases, 4=match, 5=grammar, 6=dialogue, 7=speaking, 8=result
 
 // ─── Helpers ───────────────────────────────────────────────────────────────────
+
+// Clue text where chosen words open a pop-up with a related real image.
+function ClueText({ id, text }: { id: string; text: string }) {
+  const [pop, setPop] = useState<CoursePhoto | null>(null)
+  const pops = CLUE_POPUPS[id] ?? []
+  const parts: (string | { phrase: string; photo: CoursePhoto })[] = [text]
+  for (const p of pops) {
+    for (let i = 0; i < parts.length; i++) {
+      const part = parts[i]
+      if (typeof part !== 'string') continue
+      const at = part.indexOf(p.phrase)
+      if (at < 0) continue
+      parts.splice(i, 1, part.slice(0, at), p, part.slice(at + p.phrase.length))
+      break
+    }
+  }
+  return (
+    <>
+      {parts.map((part, i) => typeof part === 'string'
+        ? <span key={i}>{part}</span>
+        : <button key={i} type="button" className="clue-pop" onClick={() => setPop(part.photo)}>{part.phrase}</button>)}
+      {pop && createPortal(
+        <div className="sexp" style={{ minHeight: 0, background: 'none' }}>
+          <div className="ruta-zoom" onClick={() => setPop(null)} role="dialog" aria-label={pop.alt}>
+            <figure onClick={e => e.stopPropagation()}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={pop.src} alt={pop.alt} />
+              <figcaption>{pop.caption} <a href={pop.creditUrl} target="_blank" rel="noopener noreferrer">{pop.credit}</a></figcaption>
+              <button className="btn btn--ghost" onClick={() => setPop(null)}>Close</button>
+            </figure>
+          </div>
+        </div>,
+        document.body,
+      )}
+    </>
+  )
+}
 
 function PhotoCreditSE({ k }: { k: PhotoKeySE }) {
   const p = photoSE(k)
@@ -173,7 +210,7 @@ function VocabDrill({ onDone, updateProgress }: {
         ) : (
           <span className="vocab-emoji"><Icon name={item.icon} size={64} /></span>
         )}
-        <p className="vocab-clue">{item.clue}</p>
+        <p className="vocab-clue"><ClueText id={item.id} text={item.clue} /></p>
         <p className="vocab-note">{item.note}</p>
         <p className="vocab-counter">{idx + 1} / {total}</p>
         <input

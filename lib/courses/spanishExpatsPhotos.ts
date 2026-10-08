@@ -5,15 +5,16 @@ export type CoursePhoto = { src: string; alt: string; caption: string; credit: s
 
 const DOCS = '/courses/spanish-expats/docs/'
 
+const BANK: CoursePhoto = {
+  src: DOCS + 'bank-branch.jpg',
+  alt: 'A bank branch in Xàtiva, Valencia province',
+  caption: 'A local bank branch. To open an account here you will need your NIE.',
+  credit: 'B.N.Sanchez · CC BY-SA 4.0',
+  creditUrl: 'https://commons.wikimedia.org/wiki/File:Caixa_Ontinyent.jpg',
+}
+
 // Keyed by VOCAB_M1 id. The caption is only shown after the learner answers (it names the term).
 export const VOCAB_PHOTOS: Record<string, CoursePhoto> = {
-  nie: {
-    src: DOCS + 'ex15-form-page1.jpg',
-    alt: 'First page of the blank EX-15 form',
-    caption: 'Form EX-15 — the official application for your NIE number.',
-    credit: 'Gobierno de España · blank official form',
-    creditUrl: 'https://www.inclusion.gob.es/web/migraciones/modelos-generales',
-  },
   tie: {
     src: DOCS + 'tie-front.jpg',
     alt: 'Official specimen of the front of the Spanish residence card',
@@ -63,4 +64,16 @@ export const VOCAB_PHOTOS: Record<string, CoursePhoto> = {
     credit: 'B.N.Sanchez · CC BY-SA 4.0',
     creditUrl: 'https://commons.wikimedia.org/wiki/File:Caixa_Ontinyent.jpg',
   },
+}
+
+// Words in a clue that open a pop-up with a related real image.
+export const CLUE_POPUPS: Record<string, { phrase: string; photo: CoursePhoto }[]> = {
+  nie: [{ phrase: 'bank account', photo: BANK }],
+  tasa: [{ phrase: 'first TIE', photo: {
+    src: DOCS + 'tie-front.jpg',
+    alt: 'Official specimen of the front of the Spanish residence card',
+    caption: 'The TIE card (official EU specimen for Spain).',
+    credit: 'European Union, EUR-Lex · CC BY 4.0 · cropped',
+    creditUrl: 'https://commons.wikimedia.org/wiki/File:Aufenthaltstitel_Europa-Muster_2019.png',
+  } }],
 }

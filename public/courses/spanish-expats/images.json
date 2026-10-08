@@ -190,5 +190,17 @@
     "size": "848x1200, 224943 bytes",
     "changes": "Page 1 rendered from the official PDF (version TA.1 07-2024; PDFKit 2x), resized to max 1200px, JPEG q85",
     "added": "2026-10-08"
+  },
+  {
+    "file": "docs/sip-card.jpg",
+    "source": "Ministerio de Sanidad — Modelos de tarjetas sanitarias en el SNS (specimen, sample data)",
+    "url": "https://www.sanidad.gob.es/va/areas/carteraServicios/docs/MODELOS_DE_TARJETAS_SANITARIAS_EN_EL_SNS_-_PLAN_VEO.pdf",
+    "licence": "Reuse per sanidad.gob.es Aviso legal (cite source); logos excluded — GVA logo blurred",
+    "licence_url": "https://www.sanidad.gob.es/aviso-legal",
+    "author": "Ministerio de Sanidad (card design: Generalitat Valenciana)",
+    "alt": "Specimen of the Valencian SIP health card with sample data",
+    "size": "~130K",
+    "changes": "Generalitat Valenciana logo blurred (Hugo's rule 8 Oct 2026: blur logos/private data on real documents)",
+    "added": "2026-10-08"
   }
 ]

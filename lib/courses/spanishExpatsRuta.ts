@@ -457,6 +457,11 @@ export const DOCS: Record<DocId, DocCard> = {
 
   sip: {
     id: 'sip', es: 'Tarjeta SIP', en: 'Valencian health card',
+    images: [{
+      src: IMG + 'sip-card.jpg', alt: 'Specimen of the Valencian SIP health card with sample data',
+      caption: 'The SIP card (official specimen with sample data). Red box: your SIP number. Green: your national health code (CIPSNS).',
+      credit: 'Ministerio de Sanidad specimen · logo blurred', creditUrl: 'https://www.sanidad.gob.es/va/areas/carteraServicios/docs/MODELOS_DE_TARJETAS_SANITARIAS_EN_EL_SNS_-_PLAN_VEO.pdf',
+    }],
     what: 'The card for the Valencian public health service. You need it at your local centro de salud.',
     who: 'People insured through work (and their family), pensioners with public cover (e.g. an S1), or people paying into the convenio especial. Private-insurance only (most non-lucrative, students, many nomads)? No SIP — you use your insurer.',
     before: 'no',
