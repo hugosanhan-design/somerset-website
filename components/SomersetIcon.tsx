@@ -37,12 +37,15 @@ const laptop = ({ f, d }: Kit) => <>
   <path {...f(C.stone)} d="M1.5 17.5h21l-1.5 2.5H3z" />
 </>
 
-const temple = ({ f, d }: Kit, bank: boolean) => <>
+const temple = ({ f, l, d }: Kit, bank: boolean) => <>
   <path {...f(C.stone)} d="M2.5 8.5 12 3l9.5 5.5z" />
   <rect {...f(C.stone)} x="3.5" y="9.3" width="17" height="1.8" rx=".4" />
-  {[5, 9, 13, 17].map(x => <rect key={x} {...f(C.white)} x={x} y="12" width="2" height="6" rx=".4" />)}
+  {(bank ? [4.6, 17.4] : [5, 9, 13, 17]).map(x => <rect key={x} {...f(C.white)} x={x} y="12" width="2" height="6" rx=".4" />)}
   <rect {...f(C.stoneDk)} x="2.5" y="18.6" width="19" height="2.4" rx=".5" />
-  {bank ? <circle {...f(C.gold)} cx="12" cy="6.6" r="1.6" /> : <circle {...d(FRESH)} cx="12" cy="6.8" r="1" />}
+  {bank ? <>
+    <circle {...f(C.gold)} cx="12" cy="14.6" r="4.3" />
+    <path {...l(GREEN, 1.05)} d="M14.2 12.6a2.7 2.7 0 1 0 0 4M9.4 14h3.8M9.4 15.3h3.8" />
+  </> : <circle {...d(FRESH)} cx="12" cy="6.8" r="1" />}
 </>
 
 const P: Record<IconName, (k: Kit) => ReactNode> = {
