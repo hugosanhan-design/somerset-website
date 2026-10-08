@@ -468,3 +468,39 @@
   .sexp .fg-body{grid-template-columns:1fr;grid-template-rows:minmax(0,52vh) auto}
   .sexp .fg-page{max-height:52vh}
 }
+
+/* Instant feedback in the poder exercise */
+.sexp .poder-done{color:#2d7a0f;background:#e3f3d6;border-radius:8px;padding:.05rem .6rem;margin:0 .2rem}
+.sexp .poder-done--close{color:#8a6410;background:#fbefcf}
+.sexp .poder-win{animation:sexpWin .55s cubic-bezier(.22,1,.36,1)}
+.sexp .poder-cheer{text-align:center;color:#2d7a0f;font-weight:700;margin:.1rem 0 0;animation:sexpPop .5s cubic-bezier(.34,1.56,.64,1)}
+.sexp .poder-revise{text-align:center;color:#8a6d1d;font-size:.82rem;font-weight:600;margin:.1rem 0 0}
+.sexp .poder-gap--bad{border-bottom-color:#e0604a}
+.sexp .poder-shake{animation:mdRefuse .4s}
+@keyframes sexpWin{0%{transform:scale(.98)}60%{transform:scale(1.015)}100%{transform:none}}
+@keyframes sexpPop{0%{transform:scale(0)}100%{transform:scale(1)}}
+@media (prefers-reduced-motion:reduce){.sexp .poder-win,.sexp .poder-cheer,.sexp .poder-shake{animation:none}}
+/* Emparejar — visual phrase cards */
+.sexp .md-scene{width:100%;text-align:left;margin-bottom:1rem}
+.sexp .md-scene__who{display:inline-flex;align-items:center;gap:.5rem;font-size:.72rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#888;margin-bottom:.5rem}
+.sexp .md-scene .md-situation{font-family:var(--serif);font-size:1.25rem;font-weight:400;color:var(--ink);background:var(--ink-lt);border-radius:12px;padding:.9rem 1.1rem;margin:0;position:relative}
+.sexp .md-bag-head{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap}
+.sexp .md-en-toggle{display:inline-flex;align-items:center;gap:.4rem;font-size:.8rem;color:#666;cursor:pointer;user-select:none}
+.sexp .md-en-toggle input{accent-color:var(--green);width:16px;height:16px}
+.sexp .md-grid{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+@media(max-width:620px){.sexp .md-grid{grid-template-columns:1fr}}
+.sexp .md-pcard{position:relative;display:flex;align-items:stretch;background:#fff;border:2px solid #e5e0da;border-radius:14px;transition:border-color .15s,box-shadow .15s,transform .15s,opacity .2s}
+.sexp .md-pcard:hover:not(.used){border-color:var(--green);box-shadow:0 6px 16px rgba(0,0,0,.08);transform:translateY(-2px)}
+.sexp .md-pcard__main{flex:1;display:flex;align-items:center;gap:.8rem;text-align:left;background:none;border:0;padding:.85rem .9rem;font:inherit;color:inherit;cursor:grab;touch-action:none;user-select:none;min-width:0}
+.sexp .md-pcard__main:disabled{cursor:default}
+.sexp .md-pcard__main svg{flex-shrink:0}
+.sexp .md-pcard__text{display:flex;flex-direction:column;gap:.15rem;min-width:0}
+.sexp .md-pcard__es{font-family:var(--serif);font-size:1.05rem;line-height:1.3;color:var(--ink)}
+.sexp .md-pcard__en{font-size:.78rem;color:#888}
+.sexp .md-pcard__play{flex-shrink:0;align-self:center;width:34px;height:34px;margin-right:.7rem;border-radius:50%;border:0;background:var(--azul);color:#fff;font-size:.7rem;cursor:pointer}
+.sexp .md-pcard__play:hover{transform:scale(1.08)}
+.sexp .md-pcard.used{opacity:.4}
+.sexp .md-pcard.used .md-pcard__es{text-decoration:line-through}
+.sexp .md-pcard.right{opacity:1;border-color:var(--green);background:var(--green-lt)}
+.sexp .md-pcard.right .md-pcard__es{text-decoration:none;font-weight:700}
+.sexp .md-pcard.lifting{opacity:.5}

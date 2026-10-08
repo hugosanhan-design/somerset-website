@@ -18,7 +18,7 @@ import {
 import { photoSE, type PhotoKeySE } from '@/lib/courses/photosExpats'
 import { VOCAB_PHOTOS, CLUE_POPUPS, type CoursePhoto } from '@/lib/courses/spanishExpatsPhotos'
 import MiExpediente from './MiExpediente'
-import { Icon } from './icons'
+import { Icon, type IconName } from './icons'
 import { FormGuideButton } from './FormGuide'
 import { FORM_FOR } from '@/lib/courses/spanishExpatsForms'
 import {
@@ -430,6 +430,12 @@ function PhraseDrill({ onDone, updateProgress }: {
 // Drag a phrase chip onto the situation card that matches it.
 // Scoring: 1pt first try, 0.5pt second, 0pt after 3 misses (auto-reveal).
 
+// What each phrase does, as a Somerset icon (by PHRASES_M1 id).
+const PHRASE_ICON: Record<string, IconName> = {
+  'ph-cita': 'nie', 'ph-ayuda': 'hand', 'ph-repite': 'sound', 'ph-entiendo': 'confused',
+  'ph-documentos': 'register', 'ph-tarda': 'stopwatch', 'ph-pagar': 'tie', 'ph-justificante': 'documents',
+}
+
 function MatchDragSE({ onDone, updateProgress }: {
   onDone: (score: number) => void
   updateProgress: (fn: (p: Progress) => Progress) => void
@@ -443,6 +449,7 @@ function MatchDragSE({ onDone, updateProgress }: {
   const [refused, setRefused] = useState('')
   const [drag, setDrag] = useState<{ phrase: string; x: number; y: number } | null>(null)
   const [over, setOver] = useState(false)
+  const [showEn, setShowEn] = useState(false)
   const target = useRef<HTMLDivElement>(null)
   const root = useRef<HTMLDivElement>(null)
   const press = useRef<{ phrase: string; x: number; y: number; moved: boolean } | null>(null)
@@ -528,10 +535,13 @@ function MatchDragSE({ onDone, updateProgress }: {
         key={`c${idx}-${shake}`}
         className={`md-card${over ? ' over' : ''}${shake && status === 'asking' && refused ? ' refuse' : ''}`}
       >
-        <p className="md-situation">{q.situation}</p>
+        <div className="md-scene">
+          <span className="md-scene__who"><Icon name="government" size={30} /> At the office · situation {idx + 1}</span>
+          <p className="md-situation">{q.situation}</p>
+        </div>
         <div className={`md-slot${status !== 'asking' ? ' md-slot--filled' : ''}`}>
           {status === 'asking'
-            ? <span className="md-slot-empty">drag a phrase here</span>
+            ? <span className="md-slot-empty">Drag the right phrase here — or tap it below</span>
             : <span className="md-slot-phrase">{q.phrase}</span>
           }
         </div>
@@ -551,23 +561,36 @@ function MatchDragSE({ onDone, updateProgress }: {
       </div>
 
       <div className="pd-bag">
-        <div className="pd-bag-label"><Icon name="speak" size={18} className="ico-inline" /> Your phrases <small>Drag a phrase onto the situation, or tap it</small></div>
-        <div className="md-chips">
+        <div className="md-bag-head">
+          <div className="pd-bag-label"><Icon name="speak" size={18} className="ico-inline" /> Your phrases <small>Which one would you say? Tap ▶ to hear it.</small></div>
+          <label className="md-en-toggle"><input type="checkbox" checked={showEn} onChange={e => setShowEn(e.target.checked)} /> Show English</label>
+        </div>
+        <div className="md-grid">
           {bag.map(phrase => {
             const used = tried.includes(phrase) || (status !== 'asking' && phrase === q.phrase)
             const isRight = status !== 'asking' && phrase === q.phrase
+            const ph = PHRASES_M1.find(p => p.answer === phrase)
             return (
-              <button key={phrase} type="button"
-                className={`md-chip${used ? ' used' : ''}${isRight ? ' right' : ''}${drag?.phrase === phrase ? ' lifting' : ''}`}
-                disabled={used || status !== 'asking'}
-                onPointerDown={e => onDown(e, phrase)}
-                onPointerMove={onMove}
-                onPointerUp={onUp}
-                onPointerCancel={() => { press.current = null; setDrag(null); setOver(false) }}
-                onClick={e => { if (e.detail === 0) attempt(phrase) }}
-              >
-                {phrase}
-              </button>
+              <div key={phrase} className={`md-pcard${used ? ' used' : ''}${isRight ? ' right' : ''}${drag?.phrase === phrase ? ' lifting' : ''}`}>
+                <button type="button" className="md-pcard__main"
+                  disabled={used || status !== 'asking'}
+                  onPointerDown={e => onDown(e, phrase)}
+                  onPointerMove={onMove}
+                  onPointerUp={onUp}
+                  onPointerCancel={() => { press.current = null; setDrag(null); setOver(false) }}
+                  onClick={e => { if (e.detail === 0) attempt(phrase) }}
+                >
+                  <Icon name={ph ? PHRASE_ICON[ph.id] ?? 'speak' : 'speak'} size={40} />
+                  <span className="md-pcard__text">
+                    <span className="md-pcard__es">{phrase}</span>
+                    {(showEn || used) && ph && <span className="md-pcard__en">{ph.translation}</span>}
+                  </span>
+                </button>
+                {ph && (
+                  <button type="button" className="md-pcard__play" aria-label={`Listen: ${phrase}`}
+                    onClick={() => { new Audio(`/courses/spanish-expats/audio/${ph.id}.mp3`).play().catch(() => {}) }}>▶</button>
+                )}
+              </div>
             )
           })}
         </div>
@@ -631,17 +654,27 @@ function ExplainVideoSE() {
 // ─── Grammar: poder + infinitive ──────────────────────────────────────────────
 
 function PoderExercise({ onDone }: { onDone: (score: number) => void }) {
-  const [answers, setAnswers] = useState<string[]>(Array(PODER_QS.length).fill(''))
-  const [checked, setChecked] = useState<('idle' | 'right' | 'close' | 'wrong')[]>(Array(PODER_QS.length).fill('idle'))
-  const [submitted, setSubmitted] = useState(false)
+  // Instant feedback: each gap is judged as soon as it is right (typing) or when you leave it / press Enter.
+  type PS = { value: string; done: boolean; first: boolean; kind: 'right' | 'close' | null; wrongs: number }
+  const [items, setItems] = useState<PS[]>(PODER_QS.map(() => ({ value: '', done: false, first: false, kind: null, wrongs: 0 })))
+  const [shake, setShake] = useState<number | null>(null)
 
-  function checkAll() {
-    const results = PODER_QS.map((q, i) => checkAnswerSE(answers[i], q.answer))
-    setChecked(results)
-    setSubmitted(true)
+  function judge(i: number, value: string, final: boolean) {
+    setItems(prev => prev.map((it, j) => {
+      if (j !== i || it.done) return it
+      const r = checkAnswerSE(value, PODER_QS[i].answer)
+      if (r === 'right') return { value, done: true, first: it.wrongs === 0, kind: 'right', wrongs: it.wrongs }
+      if (!final) return { ...it, value }
+      if (r === 'close') return { value, done: true, first: it.wrongs === 0, kind: 'close', wrongs: it.wrongs }
+      if (value.trim()) { setShake(i); setTimeout(() => setShake(null), 450); return { ...it, value, wrongs: it.wrongs + 1 } }
+      return { ...it, value }
+    }))
   }
 
-  const score = checked.filter(r => r === 'right' || r === 'close').length
+  const doneCount = items.filter(it => it.done).length
+  const allDone = doneCount === PODER_QS.length
+  const score = items.filter(it => it.done && it.first).length
+  const CHEERS = ['¡Sí!', '¡Perfecto!', '¡Exacto!', '¡Muy bien!']
 
   return (
     <div>
@@ -650,7 +683,7 @@ function PoderExercise({ onDone }: { onDone: (score: number) => void }) {
           <div className="lesson-tag" style={{ background: '#E8B84B', color: '#fff' }}>Gramática</div>
           <div>
             <div className="lesson-title">Poder + infinitivo</div>
-            <div className="lesson-aim">Fill in each gap with the correct form of <strong>poder</strong> + the verb.</div>
+            <div className="lesson-aim">Fill in each gap with the correct form of <strong>poder</strong> + the verb. Right answers turn green at once.</div>
           </div>
         </div>
 
@@ -662,59 +695,54 @@ function PoderExercise({ onDone }: { onDone: (score: number) => void }) {
           <em> ¿Puede repetir?</em> = Can you repeat?
         </div>
 
-        {PODER_QS.map((q, i) => (
-          <div key={q.id} style={{ marginBottom: '1.5rem' }}>
-            <p className="phrase-context">{q.context}</p>
-            <p className="phrase-translation" style={{ fontSize: '.82rem', color: '#999', fontWeight: 400 }}>
-              {q.translation}
-            </p>
-            <div className="poder-sentence">
-              {q.pre}
-              <span className="poder-gap">
-                <input
-                  className="poder-gap"
-                  value={answers[i]}
-                  onChange={e => {
-                    if (!submitted) {
-                      const next = [...answers]
-                      next[i] = e.target.value
-                      setAnswers(next)
-                    }
-                  }}
-                  placeholder="poder + verbo…"
-                  disabled={submitted}
-                  style={{
-                    color: !submitted ? undefined
-                      : checked[i] === 'right' ? '#2d7a0f'
-                      : checked[i] === 'close' ? '#b07a10'
-                      : '#c0392b',
-                  }}
-                />
-              </span>
-              {q.post}
-            </div>
-            {submitted && checked[i] !== 'right' && (
-              <p style={{ textAlign: 'center', fontSize: '.85rem', color: '#c4694a', fontWeight: 600 }}>
-                → {q.answer}
+        {PODER_QS.map((q, i) => {
+          const it = items[i]
+          return (
+            <div key={q.id} className={`poder-item${it.done && it.first ? ' poder-win' : ''}${shake === i ? ' poder-shake' : ''}`} style={{ marginBottom: '1.5rem' }}>
+              <p className="phrase-context">{q.context}</p>
+              <p className="phrase-translation" style={{ fontSize: '.82rem', color: '#999', fontWeight: 400 }}>
+                {q.translation}
               </p>
-            )}
-          </div>
-        ))}
+              <div className="poder-sentence">
+                {q.pre}
+                {it.done
+                  ? <b className={`poder-done${it.kind === 'close' ? ' poder-done--close' : ''}`}>{q.answer}</b>
+                  : (
+                    <span className={`poder-gap${it.wrongs ? ' poder-gap--bad' : ''}`}>
+                      <input
+                        className="poder-gap"
+                        value={it.value}
+                        onChange={e => judge(i, e.target.value, false)}
+                        onBlur={e => judge(i, e.target.value, true)}
+                        onKeyDown={e => { if (e.key === 'Enter') judge(i, (e.target as HTMLInputElement).value, true) }}
+                        placeholder="poder + verbo…"
+                        autoCapitalize="none" autoCorrect="off" spellCheck={false}
+                      />
+                    </span>
+                  )}
+                {q.post}
+              </div>
+              {it.done && it.first && <p className="poder-cheer">✓ {CHEERS[i % CHEERS.length]}</p>}
+              {it.done && !it.first && <p className="poder-revise">Lo repasaremos más tarde</p>}
+              {it.done && it.kind === 'close' && <p className="poder-revise">Casi: la forma correcta es <b>{q.answer}</b></p>}
+            </div>
+          )
+        })}
 
-        {!submitted ? (
-          <div style={{ textAlign: 'center', marginTop: '1.5rem' }}>
-            <button className="btn btn--terra" onClick={checkAll}>Comprobar todo →</button>
-          </div>
-        ) : (
-          <div style={{ textAlign: 'center', marginTop: '1.5rem' }}>
-            <p style={{ fontFamily: 'Georgia, serif', fontSize: '1.2rem', marginBottom: '1rem' }}>
-              {score} / {PODER_QS.length} correct
-            </p>
-            <button className="btn btn--terra" onClick={() => onDone(score)}>
-              Next: Diálogo →
-            </button>
-          </div>
-        )}
+        <div style={{ textAlign: 'center', marginTop: '1.5rem' }}>
+          {!allDone ? (
+            <p style={{ color: '#888', fontSize: '.9rem' }}>{doneCount} / {PODER_QS.length}</p>
+          ) : (
+            <>
+              <p style={{ fontFamily: 'Georgia, serif', fontSize: '1.2rem', marginBottom: '1rem' }}>
+                {score} / {PODER_QS.length} a la primera
+              </p>
+              <button className="btn btn--terra" onClick={() => onDone(score)}>
+                Next: Diálogo →
+              </button>
+            </>
+          )}
+        </div>
       </div>
     </div>
   )

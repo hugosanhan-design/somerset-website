@@ -14,7 +14,7 @@ export type IconName =
   | 'correct' | 'wrong' | 'almost' | 'tip' | 'celebrate' | 'well-done'
   | 'listen' | 'speak' | 'read' | 'write' | 'video' | 'sound' | 'clock' | 'lock'
   | 'exam' | 'resume' | 'test' | 'game' | 'books' | 'mic' | 'puzzle' | 'stopwatch'
-  | 'school' | 'chart' | 'hand' | 'camera' | 'mailbox' | 'pen' | 'phone'
+  | 'school' | 'chart' | 'hand' | 'camera' | 'mailbox' | 'pen' | 'phone' | 'confused'
 
 export type IconVariant = 'sello' | 'linea'
 
@@ -400,6 +400,14 @@ const P: Record<IconName, (k: Kit) => ReactNode> = {
     <rect {...d(C.dark)} x="10.2" y="9.2" width="2.4" height="2.4" />
     <rect {...d(FRESH)} x="13.6" y="9.4" width="1.2" height="1.2" />
     <path {...l(C.red, 1.8)} d="M1.5 15h5.2M4.5 12.6 6.9 15l-2.4 2.4" />
+  </>,
+  // 😕 confused face
+  confused: ({ f, l, d }) => <>
+    <circle {...f(C.yellow)} cx="12" cy="12" r="9.5" />
+    <circle {...d(C.dark)} cx="8.8" cy="10" r="1.2" />
+    <circle {...d(C.dark)} cx="15.2" cy="10" r="1.2" />
+    <path {...l(C.dark, 1.5)} d="M8.4 16.2c1.3-1.2 2.6-.2 3.6-.9s2.3-1 3.6.2" />
+    <path {...l('#D9A520', 1.2)} d="M13.8 6.8l2.8-.9" />
   </>,
   // ⏱ (small inline mark)
   clock: ({ f, l }) => <>
