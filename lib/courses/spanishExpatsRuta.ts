@@ -421,6 +421,11 @@ export const DOCS: Record<DocId, DocCard> = {
 
   nuss: {
     id: 'nuss', es: 'Número de la Seguridad Social (NUSS)', en: 'Social Security number',
+    images: [{
+      src: IMG + 'ta1-form.jpg', alt: 'First page of the blank TA.1 Social Security form',
+      caption: 'Form TA.1 — the request for your Social Security number.',
+      credit: 'Seguridad Social (TGSS) · blank official form', creditUrl: 'https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/Afiliacion/10817/31190/572',
+    }],
     what: 'Your lifetime Social Security number. Needed to work, be registered by an employer, or be self-employed.',
     who: 'Anyone who will work in Spain (employed or self-employed), and nomads who join Spanish Social Security.',
     before: 'partly',
@@ -524,6 +529,11 @@ export const DOCS: Record<DocId, DocCard> = {
 
   bank: {
     id: 'bank', es: 'Cuenta bancaria', en: 'Spanish bank account',
+    images: [{
+      src: IMG + 'bank-branch.jpg', alt: 'A bank branch in Xàtiva, Valencia province',
+      caption: 'A local bank branch (Xàtiva, Valencia province). Ask about the cuenta de pago básica.',
+      credit: 'B.N.Sanchez · CC BY-SA 4.0', creditUrl: 'https://commons.wikimedia.org/wiki/File:Caixa_Ontinyent.jpg',
+    }],
     what: 'A Spanish IBAN — landlords, utilities and payroll will ask for one.',
     who: 'Everyone.',
     before: 'partly',

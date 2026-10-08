@@ -118,5 +118,77 @@
     "size": "~165K",
     "changes": "Page 1 rendered from official PDF (qlmanage), JPEG q85, max 1200px",
     "added": "2026-10-08"
+  },
+  {
+    "file": "docs/comisaria-zapadores.jpg",
+    "source": "Wikimedia Commons",
+    "url": "https://commons.wikimedia.org/wiki/File:Comisar%C3%ADa_de_Zapadores,_Polic%C3%ADa_Nacional.jpg",
+    "licence": "CC BY-SA 4.0",
+    "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "author": "19Tarrestnom65",
+    "alt": "Yellow three-storey Policía Nacional station on Calle Zapadores, Valencia, with the blue POLICÍA box sign and Spanish flag by the entrance",
+    "size": "1200x906, 309728 bytes",
+    "changes": "Cropped to the facade and entrance sign, resized to max 1200px, re-encoded JPEG q85",
+    "added": "2026-10-08"
+  },
+  {
+    "file": "docs/gestoria.jpg",
+    "source": "Wikimedia Commons",
+    "url": "https://commons.wikimedia.org/wiki/File:Val%C3%A8ncia_408.jpg",
+    "licence": "CC BY-SA 3.0",
+    "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "author": "Xavier Badia Castellà",
+    "alt": "Street-level shopfront of 'Gestoria Baltanás, S.L. — Tràmits de l'automòbil' with green sign, at number 408 of carrer de València, Barcelona",
+    "size": "1200x1118, 457488 bytes",
+    "changes": "Cropped to the ground-floor shopfront, resized to max 1200px, re-encoded JPEG q85",
+    "added": "2026-10-08"
+  },
+  {
+    "file": "docs/turno-ticket.jpg",
+    "source": "Wikimedia Commons (Ayuntamiento de Madrid, Diario de Madrid)",
+    "url": "https://commons.wikimedia.org/wiki/File:La_Oficina_de_Atenci%C3%B3n_a_la_Ciudadan%C3%ADa,_a_pleno_rendimiento_en_su_nueva_sede_03.jpg",
+    "licence": "CC BY 4.0",
+    "licence_url": "https://creativecommons.org/licenses/by/4.0",
+    "author": "Diario de Madrid (Ayuntamiento de Madrid)",
+    "alt": "Waiting area of a Madrid city council citizen-service office: rows of blue chairs facing numbered counters, with red LED turn-number displays hanging from the ceiling",
+    "size": "1200x797, 216833 bytes",
+    "changes": "Resized to max 1200px, re-encoded JPEG q85; no crop",
+    "added": "2026-10-08"
+  },
+  {
+    "file": "docs/bank-branch.jpg",
+    "source": "Wikimedia Commons",
+    "url": "https://commons.wikimedia.org/wiki/File:Caixa_Ontinyent.jpg",
+    "licence": "CC BY-SA 4.0",
+    "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "author": "B.N.Sanchez.",
+    "alt": "Street-level branch of the savings bank Caixa Ontinyent in Xàtiva (Valencia province): glass doors, navy fascia, a no-entry sign and a recycling bin on the pavement",
+    "size": "1200x900, 289839 bytes",
+    "changes": "Resized to max 1200px, re-encoded JPEG q85; no crop",
+    "added": "2026-10-08"
+  },
+  {
+    "file": "docs/padron-form.jpg",
+    "source": "Ayuntamiento de Sevilla (sevilla.org) — official blank PDF",
+    "url": "https://www.sevilla.org/servicios/empadronamiento/hoja-padronal-v6-formulario-web-1.pdf",
+    "licence": "Spanish public-sector information (art. 13 LPI; Ley 37/2007)",
+    "licence_url": "https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555",
+    "author": "Ayuntamiento de Sevilla",
+    "alt": "Blank Seville city council 'hoja padronal' (padrón registration sheet), landscape, with address boxes and four blocks for each person's name, birth date, nationality, DNI/NIE or passport and signature",
+    "size": "1200x848, 275435 bytes",
+    "changes": "Page 1 of 2 rendered from the official PDF (PDFKit, 2x), resized to max 1200px, JPEG q85",
+    "added": "2026-10-08"
+  },
+  {
+    "file": "docs/ta1-form.jpg",
+    "source": "Tesorería General de la Seguridad Social (seg-social.es) — official PDF",
+    "url": "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/Afiliacion/10817/31190/572",
+    "licence": "Spanish public-sector information (art. 13 LPI; Ley 37/2007)",
+    "licence_url": "https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555",
+    "author": "Ministerio de Inclusión, Seguridad Social y Migraciones / TGSS",
+    "alt": "Blank page 1 of the Seguridad Social TA.1 form 'Solicitud de afiliación a la Seguridad Social, asignación de número de Seguridad Social y variación de datos', with lilac field blocks",
+    "size": "848x1200, 224943 bytes",
+    "changes": "Page 1 rendered from the official PDF (version TA.1 07-2024; PDFKit 2x), resized to max 1200px, JPEG q85",
+    "added": "2026-10-08"
   }
 ]
