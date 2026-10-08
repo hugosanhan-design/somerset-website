@@ -16,6 +16,7 @@ import {
   type PoderItem,
 } from '@/lib/courses/spanishExpats'
 import { photoSE, type PhotoKeySE } from '@/lib/courses/photosExpats'
+import { VOCAB_PHOTOS } from '@/lib/courses/spanishExpatsPhotos'
 import MiExpediente from './MiExpediente'
 import { Icon } from './icons'
 import {
@@ -157,7 +158,21 @@ function VocabDrill({ onDone, updateProgress }: {
         <div className="progress-fill" style={{ width: `${pct(idx, total)}%` }} />
       </div>
       <div className="vocab-card">
-        <span className="vocab-emoji"><Icon name={item.icon} size={64} /></span>
+        {VOCAB_PHOTOS[item.id] ? (
+          <figure className="vocab-photo">
+            <div className="vocab-photo__frame">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={VOCAB_PHOTOS[item.id].src} alt={VOCAB_PHOTOS[item.id].alt} />
+              <span className="vocab-photo__icon" title="Somerset icon"><Icon name={item.icon} size={52} /></span>
+            </div>
+            <figcaption>
+              {status !== 'idle' && <>{VOCAB_PHOTOS[item.id].caption} </>}
+              <a href={VOCAB_PHOTOS[item.id].creditUrl} target="_blank" rel="noopener noreferrer">{VOCAB_PHOTOS[item.id].credit}</a>
+            </figcaption>
+          </figure>
+        ) : (
+          <span className="vocab-emoji"><Icon name={item.icon} size={64} /></span>
+        )}
         <p className="vocab-clue">{item.clue}</p>
         <p className="vocab-note">{item.note}</p>
         <p className="vocab-counter">{idx + 1} / {total}</p>
@@ -182,6 +197,7 @@ function VocabDrill({ onDone, updateProgress }: {
             {showReveal && (
               <p className="vocab-reveal">{item.answer}</p>
             )}
+            <p className="vocab-iconkey"><Icon name={item.icon} size={28} /> <span>In this course, this icon means <strong>{item.answer}</strong>.</span></p>
             <p className={`vocab-feedback vocab-feedback--${status}`}>
               {status === 'right' ? <><Icon name="correct" size={20} className="ico-inline" /> Perfecto</> : status === 'close' ? <><Icon name="almost" size={20} className="ico-inline" /> Close — check the spelling</> : <><Icon name="wrong" size={20} className="ico-inline" /> Not quite</>}
             </p>

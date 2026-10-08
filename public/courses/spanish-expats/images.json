@@ -94,5 +94,29 @@
     "size": "190K",
     "changes": "Page 1 rendered from official PDF, resized to max 1200px, JPEG q85",
     "added": "2026-10-08"
+  },
+  {
+    "file": "docs/ex15-form-page1.jpg",
+    "source": "Ministerio de Inclusión, Seguridad Social y Migraciones (blank official form)",
+    "url": "https://www.inclusion.gob.es/documents/d/migraciones/ex15-formulario-solicitud-numero-de-identidad-de-extranjero-y-certificados-editable.pdf",
+    "licence": "Blank official form (art. 13 LPI; Ley 37/2007 reuse)",
+    "licence_url": "https://www.boe.es/buscar/act.php?id=BOE-A-1996-8930#a13",
+    "author": "Gobierno de España",
+    "alt": "First page of the blank EX-15 (NIE and certificates application) form",
+    "size": "~165K",
+    "changes": "Page 1 rendered from official PDF (qlmanage), JPEG q85, max 1200px",
+    "added": "2026-10-08"
+  },
+  {
+    "file": "docs/ex18-form-page1.jpg",
+    "source": "Ministerio de Inclusión, Seguridad Social y Migraciones (blank official form)",
+    "url": "https://www.inclusion.gob.es/documents/d/migraciones/ex18-formulario-inscripcion-en-el-rce-residencia-ciudadano-de-la-ue-editable.pdf",
+    "licence": "Blank official form (art. 13 LPI; Ley 37/2007 reuse)",
+    "licence_url": "https://www.boe.es/buscar/act.php?id=BOE-A-1996-8930#a13",
+    "author": "Gobierno de España",
+    "alt": "First page of the blank EX-18 (EU citizen registration application) form",
+    "size": "~165K",
+    "changes": "Page 1 rendered from official PDF (qlmanage), JPEG q85, max 1200px",
+    "added": "2026-10-08"
   }
 ]

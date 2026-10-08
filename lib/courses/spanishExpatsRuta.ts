@@ -186,6 +186,11 @@ export const DOCS: Record<DocId, DocCard> = {
 
   nie: {
     id: 'nie', es: 'NIE', en: 'Foreigner ID number',
+    images: [{
+      src: IMG + 'ex15-form-page1.jpg', alt: 'First page of the blank EX-15 form',
+      caption: 'Form EX-15 — the application you bring to your NIE appointment.',
+      credit: 'Gobierno de España · blank official form', creditUrl: 'https://www.inclusion.gob.es/web/migraciones/modelos-generales',
+    }],
     what: 'Your foreigner identity number — for life. It appears on your tax papers, contracts and residence card. The NIE certificate (form EX-15) is just the paper proving the number.',
     who: 'Everyone. Residents get it automatically: EU citizens on their green certificate, non-EU on their visa/TIE. You only need a separate NIE certificate for one-off things (buying a flat, a car) before you are a resident.',
     before: 'yes',
@@ -235,6 +240,11 @@ export const DOCS: Record<DocId, DocCard> = {
 
   padron: {
     id: 'padron', es: 'Empadronamiento', en: 'Town hall registration',
+    images: [{
+      src: '/courses/spanish-expats/ayuntamiento.jpg', alt: 'The Ayuntamiento (town hall) of Valencia',
+      caption: 'The padrón is kept by the Ajuntament de València — the city council on Plaza del Ayuntamiento.',
+      credit: 'Diego Delso · CC BY-SA 4.0', creditUrl: 'https://commons.wikimedia.org/wiki/File:Ayuntamiento_de_Valencia,_Espa%C3%B1a,_2014-06-30,_DD_120.JPG',
+    }],
     what: 'Registering your address on the city\'s population register. The proof is the certificado de empadronamiento.',
     who: 'Everyone who lives in Valencia — EU, UK and non-EU. It\'s compulsory, and almost everything else needs it.',
     before: 'no',
@@ -282,6 +292,11 @@ export const DOCS: Record<DocId, DocCard> = {
 
   'eu-cert': {
     id: 'eu-cert', es: 'Certificado de Registro de Ciudadano de la UE', en: 'EU registration ("green") certificate',
+    images: [{
+      src: IMG + 'ex18-form-page1.jpg', alt: 'First page of the blank EX-18 form',
+      caption: 'Form EX-18 — the application for the EU registration certificate.',
+      credit: 'Gobierno de España · blank official form', creditUrl: 'https://www.inclusion.gob.es/web/migraciones/modelos-generales',
+    }],
     what: 'Registration as an EU resident in Spain. It carries your NIE.',
     who: 'EU, EEA and Swiss citizens staying more than 3 months. Not for Brits who arrived after 2020.',
     before: 'no',
