@@ -66,7 +66,7 @@ export const VOCAB_M1: {
     note: 'Certificado de empadronamiento = printed proof from the Ayuntamiento',
   },
   {
-    id: 'numero-referencia', icon: 'ticket',
+    id: 'numero-referencia', icon: 'digits',
     answer: 'número de referencia',
     clue: 'The reference number the website gives you when you book an appointment. Screenshot it immediately.',
     note: 'You will hear "su número de referencia" the moment you arrive at any government office.',
