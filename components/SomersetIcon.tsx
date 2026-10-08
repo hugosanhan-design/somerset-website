@@ -14,6 +14,7 @@ export type IconName =
   | 'correct' | 'wrong' | 'almost' | 'tip' | 'celebrate' | 'well-done'
   | 'listen' | 'speak' | 'read' | 'write' | 'video' | 'sound' | 'clock' | 'lock'
   | 'exam' | 'resume' | 'test' | 'game' | 'books' | 'mic' | 'puzzle' | 'stopwatch'
+  | 'school' | 'chart' | 'hand' | 'camera' | 'mailbox' | 'pen' | 'phone'
 
 export type IconVariant = 'sello' | 'linea'
 
@@ -339,6 +340,66 @@ const P: Record<IconName, (k: Kit) => ReactNode> = {
     <circle {...f(C.white)} cx="12" cy="13.6" r="6.1" />
     <path {...l(C.red, 1.7)} d="M12 13.6V9.2" />
     <path {...l(C.dark, 1.4)} d="m12 13.6 3 1.8" />
+  </>,
+  // 🏫 school (groups)
+  school: ({ f, l, d }) => <>
+    <rect {...f(C.beige)} x="2.5" y="10" width="19" height="11" rx="1" />
+    <rect {...f(C.beige)} x="8.5" y="5" width="7" height="5.5" />
+    <path {...f(C.red)} d="M7.6 5.4 12 2.2l4.4 3.2z" />
+    <circle {...f(C.white)} cx="12" cy="7.9" r="1.7" />
+    <path {...l(C.dark, .9)} d="M12 7v.9h.8" />
+    <rect {...f(C.sky)} x="4.5" y="13" width="3" height="2.6" rx=".3" />
+    <rect {...f(C.sky)} x="16.5" y="13" width="3" height="2.6" rx=".3" />
+    <rect {...f(C.brown)} x="10.5" y="15.4" width="3" height="5.6" rx=".3" />
+    <path {...d(FRESH)} d="M12.4 1h2.6l-.7.8.7.8h-2.6z" />
+  </>,
+  // 📊 bar chart (students)
+  chart: ({ f, l }) => <>
+    <rect {...f(C.white)} x="3" y="3" width="18" height="18" rx="2" />
+    <rect {...f(C.red)} x="6" y="12" width="3" height="6" rx=".4" />
+    <rect {...f(C.blue)} x="10.5" y="7" width="3" height="11" rx=".4" />
+    <rect {...f(FRESH)} x="15" y="9.5" width="3" height="8.5" rx=".4" />
+    <path {...l(C.grey, 1.2)} d="M5 18.6h14" />
+  </>,
+  // 🖐️ raised hand (student input)
+  hand: ({ f, l }) => <>
+    <path {...f(C.yellow)} d="M8.4 21c-2.5-1.5-4-4-4.5-6.5l-.8-3.4c-.2-.9.6-1.6 1.4-1.2.5.2.8.7 1 1.2l.9 2.4V5.2a1.2 1.2 0 0 1 2.4 0v6V3.6a1.2 1.2 0 0 1 2.4 0v7.6V4.4a1.2 1.2 0 0 1 2.4 0v7V6.4a1.2 1.2 0 0 1 2.4 0v8.2c0 3.5-1.6 5.6-3.4 6.4z" />
+    <path {...l('#D9A520', 1)} d="M8.8 15.5c1.4.8 3 .8 4.4 0" />
+  </>,
+  // 📷 camera (scan work)
+  camera: ({ f, d }) => <>
+    <path {...f(C.dark)} d="m8 7.2 1.4-2.5h5.2L16 7.2z" />
+    <rect {...f(C.dark)} x="2.5" y="7" width="19" height="13" rx="2" />
+    <circle {...f(C.grey)} cx="12" cy="13.5" r="4.4" />
+    <circle {...d(C.sky)} cx="12" cy="13.5" r="2.6" />
+    <circle {...d(C.white)} cx="11" cy="12.5" r=".8" />
+    <rect {...d(FRESH)} x="17" y="9" width="2.6" height="1.5" rx=".4" />
+  </>,
+  // 📬 mailbox with letter (catch-up packs)
+  mailbox: ({ f, l, d }) => <>
+    <rect {...f(C.brown)} x="10.5" y="15.8" width="3" height="6" rx=".4" />
+    <path {...f(C.blue)} d="M3 9.5a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4V16H3z" />
+    <path {...f(C.navy)} d="M3 9.5a4 4 0 0 1 8 0V16H3z" />
+    <rect {...f(C.white)} x="4.4" y="6.8" width="5.4" height="3.6" rx=".4" />
+    <path {...l(C.red, 1.6)} d="M17.4 12.5V5.4" />
+    <rect {...d(C.red)} x="17.4" y="4.6" width="3.2" height="2.3" rx=".3" />
+  </>,
+  // 🖊️ pen (mock correction)
+  pen: ({ f, l }) => <>
+    <path {...f(C.blue)} d="m4.6 16.8 10.6-10.6 2.6 2.6L7.2 19.4z" />
+    <path {...f(C.grey)} d="M4.6 16.8 3.2 21l4-1.6z" />
+    <path {...f(C.dark)} d="m15.2 6.2 1.4-1.4a1.8 1.8 0 0 1 2.6 0l.2.2a1.8 1.8 0 0 1 0 2.6l-1.4 1.4z" />
+    <path {...l(C.white, 1)} d="m8 15 6-6" />
+  </>,
+  // 📲 phone with arrow (student QR)
+  phone: ({ f, l, d }) => <>
+    <rect {...f(C.dark)} x="8" y="2.5" width="10" height="19" rx="2" />
+    <rect {...d(C.white)} x="9.4" y="4.6" width="7.2" height="14.2" rx=".6" />
+    <rect {...d(C.dark)} x="10.2" y="6" width="2.4" height="2.4" />
+    <rect {...d(C.dark)} x="13.4" y="6" width="2.4" height="2.4" />
+    <rect {...d(C.dark)} x="10.2" y="9.2" width="2.4" height="2.4" />
+    <rect {...d(FRESH)} x="13.6" y="9.4" width="1.2" height="1.2" />
+    <path {...l(C.red, 1.8)} d="M1.5 15h5.2M4.5 12.6 6.9 15l-2.4 2.4" />
   </>,
   // ⏱ (small inline mark)
   clock: ({ f, l }) => <>

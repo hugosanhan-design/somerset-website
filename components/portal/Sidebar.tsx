@@ -15,25 +15,26 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { signOut, useSession } from 'next-auth/react'
 import SomersetLogo from '@/components/SomersetLogo'
+import { SomersetIcon, type IconName } from '@/components/SomersetIcon'
 
 import { PORTAL } from '@/lib/portalTheme'
 
-const PRIMARY = [
-  { href: '/dashboard', icon: '📅', label: 'Dashboard' },
-  { href: '/groups', icon: '🏫', label: 'Groups' },
-  { href: '/students', icon: '📊', label: 'Students' },
-  { href: '/classroom', icon: '🖐️', label: 'Student input' },
-  { href: '/scan', icon: '📷', label: 'Scan work' },
-  { href: '/correct-queue', icon: '✅', label: 'To correct' },
-  { href: '/correct', icon: '✍️', label: 'Correct writing' },
-  { href: '/catchup', icon: '📬', label: 'Catch-up packs' },
+const PRIMARY: { href: string; icon: IconName; label: string }[] = [
+  { href: '/dashboard', icon: 'calendar', label: 'Dashboard' },
+  { href: '/groups', icon: 'school', label: 'Groups' },
+  { href: '/students', icon: 'chart', label: 'Students' },
+  { href: '/classroom', icon: 'hand', label: 'Student input' },
+  { href: '/scan', icon: 'camera', label: 'Scan work' },
+  { href: '/correct-queue', icon: 'correct', label: 'To correct' },
+  { href: '/correct', icon: 'write', label: 'Correct writing' },
+  { href: '/catchup', icon: 'mailbox', label: 'Catch-up packs' },
 ]
 
-const EXTRAS = [
-  { href: '/intake', icon: '📋', label: 'Placement quiz' },
-  { href: '/cbt', icon: '🖥️', label: 'Sit the exam' },
-  { href: '/mocks', icon: '🖊️', label: 'Mock correction' },
-  { href: '/qr', icon: '📲', label: 'Student QR' },
+const EXTRAS: { href: string; icon: IconName; label: string }[] = [
+  { href: '/intake', icon: 'register', label: 'Placement quiz' },
+  { href: '/cbt', icon: 'exam', label: 'Sit the exam' },
+  { href: '/mocks', icon: 'pen', label: 'Mock correction' },
+  { href: '/qr', icon: 'phone', label: 'Student QR' },
 ]
 
 export default function Sidebar() {
@@ -84,7 +85,7 @@ export default function Sidebar() {
   )
 }
 
-function NavLink({ href, icon, label, active }: { href: string; icon: string; label: string; active: boolean }) {
+function NavLink({ href, icon, label, active }: { href: string; icon: IconName; label: string; active: boolean }) {
   return (
     <Link
       href={href}
@@ -102,7 +103,7 @@ function NavLink({ href, icon, label, active }: { href: string; icon: string; la
         textDecoration: 'none',
       }}
     >
-      <span style={{ fontSize: 16 }}>{icon}</span>
+      <SomersetIcon name={icon} size={26} />
       {label}
     </Link>
   )
