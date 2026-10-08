@@ -163,7 +163,7 @@ export default function MiExpediente({ route, nat, purpose, onRead }: {
             <div key={id} className={`exp-task exp-task--${t.status}${isOpen ? ' exp-task--open' : ''}`}>
               <button className="exp-task__head" onClick={() => setOpen(isOpen ? null : id)} aria-expanded={isOpen}>
                 <span className="exp-dot" aria-hidden>{t.status === 'done' ? '✓' : ''}</span>
-                <span className="exp-task__icon"><Icon name={id} size={20} /></span>
+                <span className="exp-task__icon"><Icon name={id} size={30} /></span>
                 <span className="exp-task__names">
                   <span className="exp-task__es">{doc.es}</span>
                   <span className="exp-task__en">
@@ -267,7 +267,7 @@ export default function MiExpediente({ route, nat, purpose, onRead }: {
       </div>
 
       <div className="exp-foot">
-        <span className="exp-privacy"><Icon name="lock" size={15} /> Saved only on this device. Never type passport or NIE numbers here.</span>
+        <span className="exp-privacy"><Icon name="lock" size={15} variant="linea" /> Saved only on this device. Never type passport or NIE numbers here.</span>
         <button className="exp-mini" onClick={clearAll}>Clear</button>
       </div>
     </div>

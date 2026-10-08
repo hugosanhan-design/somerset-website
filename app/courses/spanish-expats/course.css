@@ -420,3 +420,7 @@
   .sexp .site-header__top>a:first-child{flex:1}
 }
 .sexp .hero-label{align-self:flex-start;background:rgba(0,0,0,.5);color:#f6c3ae;padding:.2rem .55rem;border-radius:4px}
+/* Somerset Sello icons */
+.sexp .ico-inline{display:inline-block;vertical-align:-4px;margin-right:.15rem}
+.sexp .vocab-emoji svg,.sexp .result-trophy svg{display:inline-block}
+.sexp .ruta-doc__icon,.sexp .exp-task__icon{background:none!important;width:auto;height:auto}

@@ -157,7 +157,7 @@ function VocabDrill({ onDone, updateProgress }: {
         <div className="progress-fill" style={{ width: `${pct(idx, total)}%` }} />
       </div>
       <div className="vocab-card">
-        <span className="vocab-emoji">{item.emoji}</span>
+        <span className="vocab-emoji"><Icon name={item.icon} size={64} /></span>
         <p className="vocab-clue">{item.clue}</p>
         <p className="vocab-note">{item.note}</p>
         <p className="vocab-counter">{idx + 1} / {total}</p>
@@ -183,7 +183,7 @@ function VocabDrill({ onDone, updateProgress }: {
               <p className="vocab-reveal">{item.answer}</p>
             )}
             <p className={`vocab-feedback vocab-feedback--${status}`}>
-              {status === 'right' ? '✓ Perfecto' : status === 'close' ? '~ Close — check the spelling' : '✗ Not quite'}
+              {status === 'right' ? <><Icon name="correct" size={20} className="ico-inline" /> Perfecto</> : status === 'close' ? <><Icon name="almost" size={20} className="ico-inline" /> Close — check the spelling</> : <><Icon name="wrong" size={20} className="ico-inline" /> Not quite</>}
             </p>
           </>
         )}
@@ -236,7 +236,7 @@ function VocabDrillWrapper({ savedScore, onDone, updateProgress }: {
     return (
       <div className="card" style={{ textAlign: 'center' }}>
         <p style={{ fontSize: '2rem', marginBottom: '.5rem' }}>
-          {pctScore >= 80 ? '🎉' : pctScore >= 50 ? '👍' : '💪'}
+          <Icon name={pctScore >= 80 ? 'celebrate' : pctScore >= 50 ? 'well-done' : 'almost'} size={56} />
         </p>
         <p style={{ fontFamily: 'Georgia, serif', fontSize: '1.4rem', marginBottom: '.4rem' }}>
           {finalScore} / {VOCAB_M1.length} correct
@@ -318,7 +318,7 @@ function PhraseDrill({ onDone, updateProgress }: {
         <p className="phrase-translation">{item.translation}</p>
         <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '.6rem' }}>
           <button type="button" className="btn btn--ghost audio-btn" onClick={playAudio} aria-label="Listen to phrase">
-            🔊 Listen
+            <Icon name="sound" size={20} className="ico-inline" /> Listen
           </button>
         </div>
         <p className="vocab-counter">{idx + 1} / {total}</p>
@@ -342,7 +342,7 @@ function PhraseDrill({ onDone, updateProgress }: {
           <>
             {showReveal && <p className="vocab-reveal">{item.answer}</p>}
             <p className={`vocab-feedback vocab-feedback--${status}`}>
-              {status === 'right' ? '✓ Perfecto' : status === 'close' ? '~ Close — check accents or spelling' : '✗ Not quite — check the answer above'}
+              {status === 'right' ? <><Icon name="correct" size={20} className="ico-inline" /> Perfecto</> : status === 'close' ? <><Icon name="almost" size={20} className="ico-inline" /> Close — check accents or spelling</> : <><Icon name="wrong" size={20} className="ico-inline" /> Not quite — check the answer above</>}
             </p>
           </>
         )}
@@ -481,11 +481,11 @@ function MatchDragSE({ onDone, updateProgress }: {
           }
         </div>
         {refused && status === 'asking' && (
-          <p className="md-nope" key={`n${shake}`}>✗ not that one</p>
+          <p className="md-nope" key={`n${shake}`}><Icon name="wrong" size={18} className="ico-inline" /> not that one</p>
         )}
         {status === 'right' && (
           <p className="deck-verdict right" style={{ textAlign: 'center', marginTop: '.75rem' }}>
-            {lastPoints === 1 ? '✓ First time!' : '✓ Got it'}
+            <Icon name="correct" size={18} className="ico-inline" /> {lastPoints === 1 ? 'First time!' : 'Got it'}
           </p>
         )}
         {status === 'revealed' && (
@@ -496,7 +496,7 @@ function MatchDragSE({ onDone, updateProgress }: {
       </div>
 
       <div className="pd-bag">
-        <div className="pd-bag-label">🗣 Your phrases <small>Drag a phrase onto the situation, or tap it</small></div>
+        <div className="pd-bag-label"><Icon name="speak" size={18} className="ico-inline" /> Your phrases <small>Drag a phrase onto the situation, or tap it</small></div>
         <div className="md-chips">
           {bag.map(phrase => {
             const used = tried.includes(phrase) || (status !== 'asking' && phrase === q.phrase)
@@ -545,7 +545,7 @@ function ExplainVideoSE() {
       {open ? (
         <div className="sexp-ev-wrap">
           <div className="sexp-ev-top">
-            <span className="sexp-ev-label">🎬 Poder explained</span>
+            <span className="sexp-ev-label"><Icon name="video" size={18} className="ico-inline" /> Poder explained</span>
             <button className="sexp-ev-close" onClick={() => setOpen(false)} aria-label="Close video">✕</button>
           </div>
           <div className="sexp-ev-frame-wrap">
@@ -560,7 +560,7 @@ function ExplainVideoSE() {
         </div>
       ) : (
         <button className="sexp-ev-btn" onClick={() => setOpen(true)}>
-          🎬 Watch: How to use poder (8 min)
+          <Icon name="video" size={20} className="ico-inline" /> Watch: How to use poder (8 min)
         </button>
       )}
       <details className="sexp-ev-notes" open={!open}>
@@ -702,7 +702,7 @@ function DialogueLesson({ onDone }: { onDone: (score: number) => void }) {
           {(showFull ? DIALOGUE_M1 : DIALOGUE_M1.slice(0, 8)).map((line, i) => (
             <div key={i} className="dl-line">
               <span className={`dl-who dl-who--${line.who === 'You' ? 'you' : line.who === 'Narrator' ? 'narrator' : 'func'}`}>
-                {line.who === 'You' ? '🗣 You' : line.who}
+                {line.who === 'You' ? <><Icon name="speak" size={16} className="ico-inline" /> You</> : line.who}
               </span>
               <span className="dl-text">{line.line}</span>
             </div>
@@ -839,7 +839,7 @@ function SpeakingStep({ onDone }: { onDone: () => void }) {
           <div className="speaking-prompt" style={{ marginBottom: '1.5rem' }}>
             <p style={{ fontWeight: 600, marginBottom: '.4rem' }}>{PROMPTS[chosen].prompt}</p>
             <p style={{ fontSize: '.82rem', color: '#2a4060', opacity: .75 }}>
-              💡 {PROMPTS[chosen].hint}
+              <Icon name="tip" size={20} className="ico-inline" /> {PROMPTS[chosen].hint}
             </p>
           </div>
         )}
@@ -869,7 +869,7 @@ function ResultStep({
   return (
     <div>
       <div className="result-banner">
-        <div className="result-trophy">🎉</div>
+        <div className="result-trophy"><Icon name="celebrate" size={72} /></div>
         <h2 className="result-title">Módulo 1 completo</h2>
         <p className="result-sub">
           {total} / {maxTotal} correct across all sections
@@ -945,7 +945,7 @@ function DocCardView({ doc, open, onToggle, onZoom }: {
   return (
     <div className={`ruta-doc${open ? ' ruta-doc--open' : ''}`} id={`doc-${doc.id}`}>
       <button className="ruta-doc__head" onClick={onToggle} aria-expanded={open}>
-        <span className="ruta-doc__icon"><Icon name={doc.id} /></span>
+        <span className="ruta-doc__icon"><Icon name={doc.id} size={36} /></span>
         <span className="ruta-doc__names">
           <span className="ruta-doc__es">{doc.es}</span>
           <span className="ruta-doc__en">{doc.en}</span>
@@ -1076,7 +1076,7 @@ function RutaStep({ onDone }: { onDone: () => void }) {
             <div className="ruta-pick ruta-pick--5">
               {PURPOSES.map(p => (
                 <button key={p.id} className={`ruta-opt${purpose === p.id ? ' ruta-opt--on' : ''}`} onClick={() => { setPurpose(p.id); setOpen(null) }}>
-                  <span className="ruta-opt__icon"><Icon name={p.id} size={24} /></span><strong>{p.label}</strong>
+                  <span className="ruta-opt__icon"><Icon name={p.id} size={30} /></span><strong>{p.label}</strong>
                 </button>
               ))}
             </div>
@@ -1095,7 +1095,7 @@ function RutaStep({ onDone }: { onDone: () => void }) {
                 <ul>
                   {route[ph.key].map(item => (
                     <li key={item.text} className={item.deadline ? 'ruta-item--deadline' : undefined}>
-                      <span>{item.deadline && <span className="ruta-clock" title="Deadline"><Icon name="clock" size={14} /></span>}{item.text}</span>
+                      <span>{item.deadline && <span className="ruta-clock" title="Deadline"><Icon name="clock" size={14} variant="linea" /></span>}{item.text}</span>
                       {item.doc && (
                         <button className="ruta-link" onClick={() => jump(item.doc!)}>{DOCS[item.doc].es} →</button>
                       )}

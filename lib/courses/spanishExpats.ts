@@ -1,3 +1,4 @@
+import type { IconName } from '@/components/SomersetIcon'
 // Spanish for Expats — Module 1: The First Month
 // Content: NIE/TIE, empadronamiento, bank, key oficina phrases, poder + infinitive.
 // Item ids are stored in students' saved progress, so never rename an existing id.
@@ -8,76 +9,76 @@ export const MODULE_ID = 'm1'
 // ─── Vocabulary ───────────────────────────────────────────────────────────────
 
 export const VOCAB_M1: {
-  id: string; emoji: string; answer: string; clue: string; note: string
+  id: string; icon: IconName; answer: string; clue: string; note: string
 }[] = [
   {
-    id: 'nie', emoji: '🪪',
+    id: 'nie', icon: 'nie',
     answer: 'NIE',
     clue: 'The number every foreigner needs to work, open a bank account or sign a contract in Spain.',
     note: 'Número de Identidad de Extranjero',
   },
   {
-    id: 'tie', emoji: '💳',
+    id: 'tie', icon: 'tie',
     answer: 'TIE',
     clue: 'The residence card for non-EU residents (including Brits since 2021). You give your fingerprints to get it.',
     note: 'Tarjeta de Identidad de Extranjero',
   },
   {
-    id: 'empadronamiento', emoji: '🏠',
+    id: 'empadronamiento', icon: 'padron',
     answer: 'empadronamiento',
     clue: 'The act of registering your address with the local council. Required for almost everything official.',
     note: 'empadronarse = to register; certificado de empadronamiento = the proof',
   },
   {
-    id: 'cita-previa', emoji: '📅',
+    id: 'cita-previa', icon: 'calendar',
     answer: 'cita previa',
     clue: 'An advance appointment — booked online through the government website. You cannot simply walk in.',
     note: 'cita = appointment; previa = prior/in advance',
   },
   {
-    id: 'extranjeria', emoji: '🏛️',
+    id: 'extranjeria', icon: 'government',
     answer: 'extranjería',
     clue: 'The government office that decides residence and work permits. (The NIE and TIE themselves are done at the police station.)',
     note: 'From extranjero/a = foreigner',
   },
   {
-    id: 'gestor', emoji: '🧾',
+    id: 'gestor', icon: 'documents',
     answer: 'gestor',
     clue: 'An administrative agent who handles paperwork on your behalf. Worth every euro in your first year.',
     note: 'gestoría = the office; gestor/a = the person',
   },
   {
-    id: 'sede-electronica', emoji: '💻',
+    id: 'sede-electronica', icon: 'device',
     answer: 'sede electrónica',
     clue: 'The official government online portal — where you book appointments and submit forms.',
     note: 'Literally: electronic seat/office. Full of frustration but unavoidable.',
   },
   {
-    id: 'certificado-digital', emoji: '🔐',
+    id: 'certificado-digital', icon: 'digital',
     answer: 'certificado digital',
     clue: 'A digital certificate that lets you sign documents and access government services online.',
     note: 'Essential for taxes, social security, and almost everything after year 1.',
   },
   {
-    id: 'padron', emoji: '📋',
+    id: 'padron', icon: 'register',
     answer: 'padrón',
     clue: 'The municipal register of residents. Being on this list ("empadronado") unlocks most services.',
     note: 'Certificado de empadronamiento = printed proof from the Ayuntamiento',
   },
   {
-    id: 'numero-referencia', emoji: '🔢',
+    id: 'numero-referencia', icon: 'ticket',
     answer: 'número de referencia',
     clue: 'The reference number the website gives you when you book an appointment. Screenshot it immediately.',
     note: 'You will hear "su número de referencia" the moment you arrive at any government office.',
   },
   {
-    id: 'tasa', emoji: '💰',
+    id: 'tasa', icon: 'money',
     answer: 'tasa',
     clue: 'The official fee you pay for a government service — €9.84 for the NIE, €16.08 for a first TIE. Paid before the appointment.',
     note: 'modelo 790 código 012 = the police fee form; pay at a bank or online',
   },
   {
-    id: 'domiciliar', emoji: '🏦',
+    id: 'domiciliar', icon: 'bank',
     answer: 'domiciliar',
     clue: 'To set up a direct debit from your bank account. Landlords and utility companies will ask you to do this.',
     note: 'domiciliar el pago = set up the direct debit payment',
@@ -298,12 +299,12 @@ export function getLevelLabel(score: number): { level: string; label: string; no
 
 // ─── Item bank for spaced repetition ─────────────────────────────────────────
 
-export type VocabItemSE = { id: string; kind: 'vocab'; answer: string; clue: string; emoji: string }
+export type VocabItemSE = { id: string; kind: 'vocab'; answer: string; clue: string; icon: IconName }
 export type PhraseItemSE = { id: string; kind: 'phrase'; answer: string; context: string; translation: string }
 export type ItemSE = VocabItemSE | PhraseItemSE
 
 export const VOCAB_ITEMS_SE: VocabItemSE[] = VOCAB_M1.map(v => ({
-  id: `m1:vocab:${v.id}`, kind: 'vocab' as const, answer: v.answer, clue: v.clue, emoji: v.emoji,
+  id: `m1:vocab:${v.id}`, kind: 'vocab' as const, answer: v.answer, clue: v.clue, icon: v.icon,
 }))
 export const PHRASE_ITEMS_SE: PhraseItemSE[] = PHRASES_M1.map(p => ({
   id: `m1:phrase:${p.id}`, kind: 'phrase' as const, answer: p.answer, context: p.context, translation: p.translation,
