@@ -102,6 +102,7 @@ const L = {
   mercurio: { label: 'MERCURIO — file permit applications online', url: 'https://mercurio.delegaciondelgobierno.gob.es/mercurio/inicioMercurio.html' },
   fileStatus: { label: 'Check the status of your immigration file', url: 'https://infoext2.delegaciondelgobierno.gob.es/infoext2/' },
   carpeta: { label: 'Carpeta Ciudadana — your official notifications', url: 'https://carpetaciudadana.gob.es' },
+  pradoEu: { label: 'See the official EU certificate card (EU PRADO register)', url: 'https://www.consilium.europa.eu/prado/en/ESP-HP-01002/index.html' },
 }
 
 const IMG = '/courses/spanish-expats/docs/'
@@ -244,6 +245,10 @@ export const DOCS: Record<DocId, DocCard> = {
       src: '/courses/spanish-expats/ayuntamiento.jpg', alt: 'The Ayuntamiento (town hall) of Valencia',
       caption: 'The padrón is kept by the Ajuntament de València — the city council on Plaza del Ayuntamiento.',
       credit: 'Diego Delso · CC BY-SA 4.0', creditUrl: 'https://commons.wikimedia.org/wiki/File:Ayuntamiento_de_Valencia,_Espa%C3%B1a,_2014-06-30,_DD_120.JPG',
+    }, {
+      src: IMG + 'volante-empadronamiento.jpg', alt: 'The official model of the volante de empadronamiento',
+      caption: 'What you get: a volante / certificado de empadronamiento (official national model).',
+      credit: 'BOE-A-2020-4784, Annex IX · official text', creditUrl: 'https://www.boe.es/buscar/act.php?id=BOE-A-2020-4784',
     }],
     what: 'Registering your address on the city\'s population register. The proof is the certificado de empadronamiento.',
     who: 'Everyone who lives in Valencia — EU, UK and non-EU. It\'s compulsory, and almost everything else needs it.',
@@ -327,7 +332,7 @@ export const DOCS: Record<DocId, DocCard> = {
         'Enter your passport/ID details and pick a slot. Be quick: the session expires if you leave it idle.',
         'No slots? Try again at different times and days, and screenshot every attempt — your 3-month deadline still applies.',
       ],
-      links: [L.ex18, L.fee790, L.icpValencia, L.ex19],
+      links: [L.ex18, L.fee790, L.icpValencia, L.pradoEu, L.ex19],
     },
     bring: [
       'Form EX-18, filled in and signed',

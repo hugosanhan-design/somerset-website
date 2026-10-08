@@ -202,5 +202,17 @@
     "size": "~130K",
     "changes": "Generalitat Valenciana logo blurred (Hugo's rule 8 Oct 2026: blur logos/private data on real documents)",
     "added": "2026-10-08"
+  },
+  {
+    "file": "docs/volante-empadronamiento.jpg",
+    "source": "BOE núm. 122, 2 May 2020, BOE-A-2020-4784, Annex IX (official model volante de empadronamiento)",
+    "url": "https://www.boe.es/boe/dias/2020/05/02/pdfs/BOE-A-2020-4784.pdf",
+    "licence": "Official text — outside copyright (art. 13 LPI); reusable under Ley 37/2007 with source cited",
+    "licence_url": "https://www.boe.es/buscar/act.php?id=BOE-A-1996-8930#a13",
+    "author": "Boletín Oficial del Estado / Ministerio de Asuntos Económicos",
+    "alt": "The official model of the volante de empadronamiento",
+    "size": "~",
+    "changes": "Cropped to the certificate (BOE header/footer removed), max 1200px, JPEG q85",
+    "added": "2026-10-08"
   }
 ]

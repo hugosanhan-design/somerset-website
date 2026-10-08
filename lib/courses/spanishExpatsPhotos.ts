@@ -23,11 +23,11 @@ export const VOCAB_PHOTOS: Record<string, CoursePhoto> = {
     creditUrl: 'https://commons.wikimedia.org/wiki/File:Aufenthaltstitel_Europa-Muster_2019.png',
   },
   empadronamiento: {
-    src: '/courses/spanish-expats/ayuntamiento.jpg',
-    alt: 'The Ayuntamiento (town hall) of Valencia',
-    caption: 'You register your address with the Ajuntament de València — the city council.',
-    credit: 'Diego Delso · CC BY-SA 4.0',
-    creditUrl: 'https://commons.wikimedia.org/wiki/File:Ayuntamiento_de_Valencia,_Espa%C3%B1a,_2014-06-30,_DD_120.JPG',
+    src: DOCS + 'padron-form.jpg',
+    alt: 'A blank padrón registration sheet',
+    caption: 'The registration sheet you fill in to get on the padrón (this blank one is Sevilla\'s — Valencia\'s is filled in at the office).',
+    credit: 'Ayuntamiento de Sevilla · blank official form',
+    creditUrl: 'https://www.sevilla.org/servicios/empadronamiento/hoja-padronal-v6-formulario-web-1.pdf',
   },
   extranjeria: {
     src: DOCS + 'comisaria-zapadores.jpg',
@@ -44,11 +44,11 @@ export const VOCAB_PHOTOS: Record<string, CoursePhoto> = {
     creditUrl: 'https://commons.wikimedia.org/wiki/File:Val%C3%A8ncia_408.jpg',
   },
   padron: {
-    src: DOCS + 'padron-form.jpg',
-    alt: 'A blank padrón registration sheet',
-    caption: 'A padrón registration sheet (this one is Sevilla\'s — in Valencia you fill it in at the office).',
-    credit: 'Ayuntamiento de Sevilla · blank official form',
-    creditUrl: 'https://www.sevilla.org/servicios/empadronamiento/hoja-padronal-v6-formulario-web-1.pdf',
+    src: DOCS + 'volante-empadronamiento.jpg',
+    alt: 'The official model of the volante de empadronamiento',
+    caption: 'A volante de empadronamiento — the official model Spanish town halls use. It proves you are on the padrón.',
+    credit: 'BOE-A-2020-4784, Annex IX · official text',
+    creditUrl: 'https://www.boe.es/buscar/act.php?id=BOE-A-2020-4784',
   },
   'numero-referencia': {
     src: DOCS + 'turno-ticket.jpg',
@@ -68,6 +68,13 @@ export const VOCAB_PHOTOS: Record<string, CoursePhoto> = {
 
 // Words in a clue that open a pop-up with a related real image.
 export const CLUE_POPUPS: Record<string, { phrase: string; photo: CoursePhoto }[]> = {
+  empadronamiento: [{ phrase: 'local council', photo: {
+    src: '/courses/spanish-expats/ayuntamiento.jpg',
+    alt: 'The Ayuntamiento (town hall) of Valencia',
+    caption: 'The Ajuntament de València — Valencia\'s city council, which keeps the padrón.',
+    credit: 'Diego Delso · CC BY-SA 4.0',
+    creditUrl: 'https://commons.wikimedia.org/wiki/File:Ayuntamiento_de_Valencia,_Espa%C3%B1a,_2014-06-30,_DD_120.JPG',
+  } }],
   nie: [{ phrase: 'bank account', photo: BANK }],
   tasa: [{ phrase: 'first TIE', photo: {
     src: DOCS + 'tie-front.jpg',
