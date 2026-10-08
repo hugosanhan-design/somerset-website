@@ -13,6 +13,7 @@ export type IconName =
   | 'work' | 'nomad' | 'study' | 'retire' | 'family'
   | 'correct' | 'wrong' | 'almost' | 'tip' | 'celebrate' | 'well-done'
   | 'listen' | 'speak' | 'read' | 'write' | 'video' | 'sound' | 'clock' | 'lock'
+  | 'exam' | 'resume' | 'test' | 'game' | 'books' | 'mic' | 'puzzle' | 'stopwatch'
 
 export type IconVariant = 'sello' | 'linea'
 
@@ -278,6 +279,66 @@ const P: Record<IconName, (k: Kit) => ReactNode> = {
   sound: ({ f, l }) => <>
     <path {...f(C.grey)} d="M3 9h4l5.5-4.5v15L7 15H3z" />
     <path {...l(C.blue, 1.8)} d="M15.5 9a4 4 0 0 1 0 6M18.5 6.5a7.5 7.5 0 0 1 0 11" />
+  </>,
+  // 🖥️ desktop computer (mock exam)
+  exam: ({ f, d }) => <>
+    <rect {...f(C.grey)} x="2.5" y="3.5" width="19" height="12.5" rx="1.5" />
+    <rect {...d(C.sky)} x="4.2" y="5.2" width="15.6" height="9.1" rx=".6" />
+    <rect {...d(C.white)} x="6" y="7" width="7" height="1.3" rx=".6" />
+    <rect {...d(C.white)} x="6" y="9.5" width="10" height="1.3" rx=".6" />
+    <rect {...d(FRESH)} x="6" y="12" width="4.5" height="1.3" rx=".6" />
+    <path {...f(C.grey)} d="M10 16h4l.8 3H9.2z" />
+    <rect {...f(C.stone)} x="7" y="19" width="10" height="1.9" rx=".9" />
+  </>,
+  // ↩️ continue / resume
+  resume: ({ f, l }) => <>
+    <rect {...f(C.blue)} x="2.5" y="2.5" width="19" height="19" rx="4" />
+    <path {...l(C.white, 2.4)} d="M7.8 9.2h6.7a3.8 3.8 0 0 1 0 7.6h-3.3M10.6 6.4 7.8 9.2l2.8 2.8" />
+  </>,
+  // 📝 memo with pencil (placement test)
+  test: ({ f, l }) => <>
+    <rect {...f(C.white)} x="3.5" y="3" width="13" height="17.5" rx="1.5" />
+    <path {...l(C.grey, 1.3)} d="M6.5 7.5h7M6.5 10.5h7M6.5 13.5h4.5" />
+    <path {...f(C.yellow)} d="m11.6 18.2 7.4-7.4 2.4 2.4-7.4 7.4z" />
+    <path {...f('#E8C39E')} d="m11.6 18.2-.9 3.3 3.3-.9z" />
+    <path {...f(C.pink)} d="m19 10.8 1-1a1.3 1.3 0 0 1 1.8 0l.6.6a1.3 1.3 0 0 1 0 1.8l-1 1z" />
+  </>,
+  // 🎮 game controller
+  game: ({ f, l, d }) => <>
+    <path {...f(C.dark)} d="M7 7.5h10a5 5 0 0 1 4.8 6.4l-1.3 4.4a2.3 2.3 0 0 1-3.9.9L14.4 17H9.6l-2.2 2.2a2.3 2.3 0 0 1-3.9-.9l-1.3-4.4A5 5 0 0 1 7 7.5z" />
+    <path {...l(C.white, 1.7)} d="M7.6 10.6v4M5.6 12.6h4" />
+    <circle {...d(C.red)} cx="16.2" cy="11.4" r="1.1" />
+    <circle {...d(FRESH)} cx="18.4" cy="13.6" r="1.1" />
+    <circle {...d(C.gold)} cx="14" cy="13.6" r="1.1" />
+  </>,
+  // 📚 stack of books (online course)
+  books: ({ f, l }) => <>
+    <rect {...f(C.red)} x="2.5" y="16" width="19" height="4.5" rx="1" />
+    <rect {...f(C.blue)} x="4" y="11.3" width="16.5" height="4.7" rx="1" />
+    <rect {...f(FRESH)} x="3.2" y="6.6" width="15.5" height="4.7" rx="1" />
+    <rect {...f(C.gold)} x="6" y="2.6" width="11" height="4" rx="1" />
+    <path {...l(C.white, 1.3)} d="M5 18.2h3.5M6.5 13.6h3.5M5.7 8.9h3.5" />
+  </>,
+  // 🎙️ studio microphone (speaking plan)
+  mic: ({ f, l }) => <>
+    <rect {...f(C.grey)} x="8.5" y="2.5" width="7" height="11.5" rx="3.5" />
+    <path {...l(C.dark, 1.2)} d="M9 6h6M9 8.5h6M9 11h6" />
+    <path {...l(C.dark, 1.7)} d="M6 10.5v1a6 6 0 0 0 12 0v-1M12 17.5V20" />
+    <rect {...f(C.dark)} x="8" y="20" width="8" height="1.8" rx=".9" />
+  </>,
+  // 🧩 puzzle piece (word formation)
+  puzzle: ({ f, l }) => <>
+    <path {...f(FRESH)} d="M4 8h4.2a2.3 2.3 0 1 1 4.6 0H17v4.2a2.3 2.3 0 1 1 0 4.6V21H4z" />
+    <path {...l('#4D8520', 1.2)} d="M6.5 11.5c0 2 1 3.4 2.5 4" />
+  </>,
+  // ⏱️ stopwatch (warm-up)
+  stopwatch: ({ f, l }) => <>
+    <rect {...f(C.grey)} x="10.5" y="2.4" width="3" height="2.4" rx=".6" />
+    <rect {...f(C.grey)} x="17.2" y="5.4" width="2.6" height="1.9" rx=".5" transform="rotate(45 18.5 6.35)" />
+    <circle {...f(C.stone)} cx="12" cy="13.6" r="7.8" />
+    <circle {...f(C.white)} cx="12" cy="13.6" r="6.1" />
+    <path {...l(C.red, 1.7)} d="M12 13.6V9.2" />
+    <path {...l(C.dark, 1.4)} d="m12 13.6 3 1.8" />
   </>,
   // ⏱ (small inline mark)
   clock: ({ f, l }) => <>

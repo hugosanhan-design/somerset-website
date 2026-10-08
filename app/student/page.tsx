@@ -7,18 +7,25 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import SomersetLogo from '@/components/SomersetLogo'
+import { SomersetIcon, type IconName } from '@/components/SomersetIcon'
 
 interface StudentLink { emoji: string; title: string; desc: string; href: string }
 interface StudentArea { displayName: string; links: StudentLink[] }
 
-type Tool = { emoji: string; title: string; desc: string; href: string; accent: string; accentLt: string; tag: string }
+type Tool = { icon: IconName; title: string; desc: string; href: string; accent: string; accentLt: string; tag: string }
 const TOOLS: Tool[] = [
-  { emoji: '🖥️', title: 'Sit a mock exam', desc: 'Cambridge-style B2 First: Reading, Use of English, Writing and Listening, timed like the real thing.', href: '/cbt', accent: '#E1614C', accentLt: '#fdf0ed', tag: 'Exam' },
-  { emoji: '↩️', title: 'Continue an exam', desc: 'Started a mock and got cut off? Enter your resume code and carry on from where you left off, on any computer.', href: '/cbt', accent: '#2C4A6E', accentLt: '#eaeff6', tag: 'Exam' },
-  { emoji: '📋', title: 'Placement quiz', desc: 'A quick adaptive quiz to find your level. For new students.', href: '/intake', accent: '#3E8FB0', accentLt: '#e8f4f9', tag: 'Level' },
-  { emoji: '📝', title: 'Placement test', desc: 'The longer level test, A1 to C1. Your result goes straight to the centre.', href: '/placement/index.html', accent: '#E8A33D', accentLt: '#fef5e4', tag: 'Level' },
-  { emoji: '🎮', title: 'English games', desc: 'Grammar sprint, irregular verbs, vocabulary and more. Practise for fun.', href: '/games/index.html', accent: '#4d8520', accentLt: '#eaf4da', tag: 'Practice' },
+  { icon: 'exam', title: 'Sit a mock exam', desc: 'Cambridge-style B2 First: Reading, Use of English, Writing and Listening, timed like the real thing.', href: '/cbt', accent: '#E1614C', accentLt: '#fdf0ed', tag: 'Exam' },
+  { icon: 'resume', title: 'Continue an exam', desc: 'Started a mock and got cut off? Enter your resume code and carry on from where you left off, on any computer.', href: '/cbt', accent: '#2C4A6E', accentLt: '#eaeff6', tag: 'Exam' },
+  { icon: 'register', title: 'Placement quiz', desc: 'A quick adaptive quiz to find your level. For new students.', href: '/intake', accent: '#3E8FB0', accentLt: '#e8f4f9', tag: 'Level' },
+  { icon: 'test', title: 'Placement test', desc: 'The longer level test, A1 to C1. Your result goes straight to the centre.', href: '/placement/index.html', accent: '#E8A33D', accentLt: '#fef5e4', tag: 'Level' },
+  { icon: 'game', title: 'English games', desc: 'Grammar sprint, irregular verbs, vocabulary and more. Practise for fun.', href: '/games/index.html', accent: '#4d8520', accentLt: '#eaf4da', tag: 'Practice' },
 ]
+
+// "Your area" links come from the server with an emoji; show the matching Somerset icon.
+const EMOJI_ICON: Record<string, IconName> = {
+  '📚': 'books', '🍊': 'valencia', '🎉': 'celebrate', '🎙️': 'mic', '🧩': 'puzzle', '⏱️': 'stopwatch',
+  '🖥️': 'exam', '📋': 'register', '📝': 'test', '🎮': 'game', '🎧': 'listen', '📖': 'read', '✏️': 'write', '🎬': 'video',
+}
 
 export default function StudentCorner() {
   const [name, setName] = useState('')
@@ -126,7 +133,7 @@ export default function StudentCorner() {
                 <div className="sc-list">
                   {area.links.map((l, i) => (
                     <a key={l.href} href={l.href} className="sc-tool sc-tool--mine" style={{ animationDelay: `${i * 60}ms` }}>
-                      <span className="sc-emoji">{l.emoji}</span>
+                      <span className="sc-emoji">{EMOJI_ICON[l.emoji] ? <SomersetIcon name={EMOJI_ICON[l.emoji]} size={48} /> : l.emoji}</span>
                       <span className="sc-tool-body">
                         <span className="sc-tool-title">{l.title}</span>
                         <span className="sc-tool-desc">{l.desc}</span>
@@ -145,7 +152,7 @@ export default function StudentCorner() {
             <div className="sc-tools">
               {TOOLS.map((t, i) => (
                 <a key={t.title} href={t.href} className="sc-tool" style={{ '--accent': t.accent, '--accent-lt': t.accentLt, animationDelay: `${120 + i * 60}ms` } as React.CSSProperties}>
-                  <span className="sc-emoji">{t.emoji}</span>
+                  <span className="sc-emoji"><SomersetIcon name={t.icon} size={48} /></span>
                   <span className="sc-tool-body">
                     <span className="sc-kicker">{t.tag}</span>
                     <span className="sc-tool-title">{t.title}</span>
@@ -218,7 +225,8 @@ const CSS = `
 .sc-tool{--accent:var(--green);--accent-lt:var(--green-lt);display:flex;align-items:flex-start;gap:.9rem;background:#fff;border:1px solid #e5e5e5;border-left:4px solid var(--accent);border-radius:12px;padding:1rem 1.1rem;text-decoration:none;color:inherit;box-shadow:0 2px 8px rgba(0,0,0,.04);transition:transform .2s cubic-bezier(.22,1,.36,1),box-shadow .2s;animation:scIn .45s cubic-bezier(.22,1,.36,1) both}
 .sc-tool:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.09)}
 .sc-tool:hover .sc-chev{color:var(--accent);transform:translateX(3px)}
-.sc-emoji{flex-shrink:0;width:44px;height:44px;border-radius:12px;background:var(--accent-lt);display:inline-flex;align-items:center;justify-content:center;font-size:1.35rem}
+.sc-emoji{flex-shrink:0;width:48px;height:48px;display:inline-flex;align-items:center;justify-content:center;font-size:1.6rem;transition:transform .2s cubic-bezier(.22,1,.36,1)}
+.sc-tool:hover .sc-emoji{transform:rotate(-6deg) scale(1.06)}
 .sc-tool-body{display:flex;flex-direction:column;gap:.1rem;flex:1;min-width:0}
 .sc-kicker{font-size:.62rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent)}
 .sc-tool-title{font-family:var(--serif);font-size:1.08rem;font-weight:700;line-height:1.25}
