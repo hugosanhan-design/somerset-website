@@ -6,6 +6,8 @@ import {
   type DocId, type Nationality, type Purpose, type Route,
 } from '@/lib/courses/spanishExpatsRuta'
 import { Icon } from './icons'
+import { FormGuideButton } from './FormGuide'
+import { FORM_FOR } from '@/lib/courses/spanishExpatsForms'
 
 type Status = 'todo' | 'booked' | 'done'
 type Task = { status: Status; date?: string; time?: string; office?: string; ref?: string; bring?: Record<number, boolean> }
@@ -186,6 +188,7 @@ export default function MiExpediente({ route, nat, purpose, onRead }: {
                       <h3>How to book</h3>
                       <p className="exp-muted">{doc.booking.how}</p>
                       <ol className="exp-steps">{doc.booking.steps.map(s => <li key={s}>{s}</li>)}</ol>
+                      {FORM_FOR[id] && <FormGuideButton id={FORM_FOR[id]!} />}
                       {doc.booking.url && (
                         <a className="btn btn--terra exp-go" href={doc.booking.url} target="_blank" rel="noopener noreferrer">
                           {doc.booking.urlLabel ?? 'Open the official website'} ↗

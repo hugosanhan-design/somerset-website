@@ -19,6 +19,8 @@ import { photoSE, type PhotoKeySE } from '@/lib/courses/photosExpats'
 import { VOCAB_PHOTOS, CLUE_POPUPS, type CoursePhoto } from '@/lib/courses/spanishExpatsPhotos'
 import MiExpediente from './MiExpediente'
 import { Icon } from './icons'
+import { FormGuideButton } from './FormGuide'
+import { FORM_FOR } from '@/lib/courses/spanishExpatsForms'
 import {
   DOCS, NATIONALITIES, PURPOSES, REALITY, GOTCHAS, GESTOR, RUTA_LAST_VERIFIED,
   routeFor, docsFor,
@@ -1023,6 +1025,7 @@ function DocCardView({ doc, open, onToggle, onZoom }: {
               ))}
             </div>
           )}
+          {FORM_FOR[doc.id] && <FormGuideButton id={FORM_FOR[doc.id]!} />}
           <p className="ruta-what">{doc.what}</p>
           <dl className="ruta-facts">
             <div><dt>Who needs it</dt><dd>{doc.who}</dd></div>
