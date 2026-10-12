@@ -33,11 +33,14 @@ export const BOOKS: Book[] = [
     exam: 'PET/B1 Preliminary',
     verified: true,
     units: [
+      // Unit 1 corrected 13 Oct 2026 against the Teacher's Book (Somerset Worksheets/_source-books/
+      // NewCloseUp_B1_TeachersBook_AllUnits.md, lines 1919–2930). Units 2–12 below were NOT checked
+      // against the book and should be treated as unverified until someone does.
       {
-        unit: 1, title: 'Me & My Day', sbPages: '6–17',
-        grammar: ['present simple', 'present continuous'],
-        vocab: ['teacher', 'nurse', 'engineer', 'journalist', 'chef', 'pilot', 'architect', 'accountant', 'doctor', 'lawyer', 'mechanic', 'programmer'],
-        strands: ['jobs and work', 'daily routines', 'personality adjectives', 'present tenses contrast'],
+        unit: 1, title: 'Perfect for the job', sbPages: '5–16',
+        grammar: ['present simple and present continuous (all uses: facts, habits, schedules, narratives; now, temporary, annoying habits, arrangements, pictures)', 'adverbs of frequency and time expressions', 'spelling: -s/-es/-ies and -ing forms', 'stative verbs, incl. verbs with two meanings (have, think, see, smell, expect, be)', 'have vs have got', 'countable and uncountable nouns, irregular plurals, a piece of', 'quantifiers: some, any, no, a lot of/lots of/plenty of, enough, much, many, (a) few, (a) little, several, a number of, a bit of'],
+        vocab: ['architect', 'astronaut', 'athlete', 'actor', 'camera operator', 'cook', 'firefighter', 'hairdresser', 'lawyer', 'librarian', 'politician', 'soldier', 'generous', 'hard-working', 'nervous', 'relaxed', 'sociable', 'unkind', 'reliable', 'lazy', 'confident', 'patient', 'miserable', 'cheerful', 'candidate', 'full-time', 'retired', 'qualification', 'unemployed', 'apply', 'out of work', 'get married', 'grow up', 'go out with', 'split up', 'bring up'],
+        strands: ['jobs', 'personality adjectives', 'employment vocabulary', 'life events (phrasal verbs)', 'reading: gapped text (matching sentences to gaps)', 'listening: choosing the correct picture; multiple choice with picture options', 'speaking: talking about your life, giving detailed answers, interview', 'writing: informal email, including all the information'],
       },
       {
         unit: 2, title: 'Family Matters', sbPages: '18–29',

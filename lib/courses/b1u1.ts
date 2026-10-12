@@ -202,3 +202,151 @@ export const VIDEOS: Record<'welcome' | 'tenses' | 'stative', ExplainerVideo> = 
     ],
   },
 }
+
+// ─── Mirror of New Close-up B1 Unit 1 "Perfect for the job" (added 13 Oct 2026) ────────────
+// The book's syllabus and task shapes; our own sentences (the book's texts stay in the book).
+// Plain objects so this file stays free of React; the page maps them to Deck items.
+
+export type PlainChoice = { id: string; kind: 'choice'; q: string; options: string[]; answer: number; after?: string }
+export type PlainGap = { id: string; kind: 'gap'; before: string; after?: string; answers: string[]; bank?: string[] }
+export type PlainDeckItem = PlainChoice | PlainGap
+
+const ch = (id: string, q: string, options: string[], answer: number, after?: string): PlainChoice => ({ id, kind: 'choice', q, options, answer, after })
+const gap = (id: string, before: string, answers: string[], after?: string, bank?: string[]): PlainGap => ({ id, kind: 'gap', before, after, answers, bank })
+
+// Grammar 1b — the other uses of the two tenses (book p9 grammar guide)
+export const TENSE_USE_QS: PlainChoice[] = [
+  ch('use:0', 'Water ___ at 100 degrees.', ['boils', 'is boiling', 'boil'], 0, 'A fact or general truth: present simple.'),
+  ch('use:1', 'The train to Castelló ___ at 8:15 tomorrow.', ['leaves', 'is leaving', 'leave'], 0, 'A timetable or schedule, even for the future: present simple.'),
+  ch('use:2', "We ___ to a new flat in Benimaclet next week — it's all arranged.", ['are moving', 'move', 'moves'], 0, 'A fixed arrangement for the future: present continuous.'),
+  ch('use:3', 'My brother ___ my headphones without asking!', ['is always taking', 'always takes', 'always take'], 0, 'An annoying habit: always + present continuous.'),
+  ch('use:4', 'Núria ___ for the Ajuntament — she has been there for ten years.', ['works', 'is working', 'work'], 0, 'A permanent situation: present simple.'),
+  ch('use:5', "Pau ___ English this term because he wants to pass PET.", ['is studying', 'studies', 'study'], 0, 'A temporary or changing situation: present continuous.'),
+  ch('use:6', 'In this photo, my cousins ___ in front of the Micalet.', ['are standing', 'stand', 'stands'], 0, 'Describing a picture: present continuous.'),
+  ch('use:7', 'The mascletà ___ at two o’clock every day in Fallas.', ['starts', 'is starting', 'start'], 0, 'A schedule: present simple.'),
+  ch('use:8', 'Look at the baby — he ___ so fast!', ['is growing up', 'grows up', 'grow up'], 0, 'A changing situation: present continuous.'),
+  ch('use:9', 'In the film, the detective ___ to Valencia and ___ a secret.', ['travels … finds', 'is travelling … is finding', 'travel … find'], 0, 'Narratives, plots and commentaries: present simple.'),
+]
+
+// Adverbs of frequency and time expressions (book p9)
+export const FREQ_QS: PlainChoice[] = [
+  ch('freq:0', 'Which sentence puts the adverb in the right place?', ['I always walk to school.', 'I walk always to school.', 'Always I walk to school.'], 0, 'Adverbs of frequency go before the main verb.'),
+  ch('freq:1', 'Which sentence puts the adverb in the right place?', ["You're always late.", "You always're late.", 'You are late always.'], 0, 'But after the verb be.'),
+  ch('freq:2', '"I practise the guitar ___." Which is a present-simple time expression?', ['twice a week', 'at the moment', 'this afternoon'], 0),
+  ch('freq:3', '"Dad is working ___." Which fits the present continuous?', ['tonight', 'every Friday', 'on Sundays'], 0),
+  ch('freq:4', 'Put these in order from most to least often: often · hardly ever · usually', ['usually, often, hardly ever', 'often, usually, hardly ever', 'hardly ever, often, usually'], 0),
+  ch('freq:5', "She's ___ texting during dinner — it drives her mum mad.", ['constantly', 'seldom', 'never'], 0, 'Annoying habits: always / constantly / forever + continuous.'),
+  ch('freq:6', 'We go to the Albufera ___.', ['every other weekend', 'right now', 'for the time being'], 0),
+  ch('freq:7', '"I ___ eat meat." = almost never', ['hardly ever', 'usually', 'often'], 0),
+]
+
+// Spelling: he/she/it -s/-es/-ies and -ing forms (book p9)
+export const SPELL_QS: PlainGap[] = [
+  gap('sp:0', 'I watch TV. → He', ['watches'], 'TV.'),
+  gap('sp:1', 'I try hard. → She', ['tries'], 'hard.'),
+  gap('sp:2', 'I play padel. → He', ['plays'], 'padel.'),
+  gap('sp:3', 'I go to Ruzafa. → She', ['goes'], 'to Ruzafa.'),
+  gap('sp:4', 'I fix bikes. → He', ['fixes'], 'bikes.'),
+  gap('sp:5', 'sit → I am', ['sitting'], 'by the river.'),
+  gap('sp:6', 'make → She is', ['making'], 'horchata.'),
+  gap('sp:7', 'admit → He is', ['admitting'], 'he was wrong.'),
+  gap('sp:8', 'enter → They are', ['entering'], 'the Mercat.'),
+  gap('sp:9', 'travel → We are', ['travelling', 'traveling'], 'to Alicante.'),
+  gap('sp:10', 'wear → You are', ['wearing'], 'my jacket!'),
+]
+
+// Stative or action? Verbs with two meanings, plus have vs have got (book p9 + Look! box)
+export const STATIVE2_QS: PlainChoice[] = [
+  ch('st2:0', 'I ___ this paella is the best in El Palmar.', ['think', 'am thinking'], 0, 'think = opinion: stative.'),
+  ch('st2:1', "Be quiet, I ___ about the answer.", ['am thinking', 'think'], 0, 'think about = have on your mind: action.'),
+  ch('st2:2', 'This horchata ___ great.', ['tastes', 'is tasting'], 0, 'taste = has a flavour: stative.'),
+  ch('st2:3', 'The chef ___ the soup to check the salt.', ['is tasting', 'tastes'], 0, 'taste = the action of trying: action.'),
+  ch('st2:4', 'I ___ Marta at the Plaza de la Reina at six.', ['am seeing', 'see'], 0, 'see = meet: action.'),
+  ch('st2:5', '"The bus is late again." "I ___."', ['see', 'am seeing'], 0, 'see = understand: stative.'),
+  ch('st2:6', 'We ___ lunch at the moment — can I call you back?', ['are having', 'have'], 0, 'have = eat: action.'),
+  ch('st2:7', 'My grandfather ___ a boat on the Albufera.', ['has', 'is having'], 0, 'have = own: stative.'),
+  ch('st2:8', "Amina ___ just ___ silly today — she's usually very serious.", ['is … being', 'is … be', '… is'], 0, 'be + -ing for behaviour that is not normal: action.'),
+  ch('st2:9', 'I ___ an email from the school about the exam.', ['am expecting', 'expect'], 0, 'expect = wait for: action.'),
+]
+export const HAVEGOT_QS: PlainChoice[] = [
+  ch('hg:0', 'Which is correct?', ["I've got two sisters.", "I'm having two sisters."], 0, 'Possession and relationships: have / have got.'),
+  ch('hg:1', 'Which is correct?', ["She's having a shower now.", "She's got a shower now."], 0, 'Actions (a shower, lunch, a party): have, never have got.'),
+  ch('hg:2', 'Which is correct?', ["Have you got a bike?", "Do you have got a bike?"], 0, 'Question with have got: Have you got…?'),
+  ch('hg:3', 'Which is correct?', ["We don't have much time.", "We don't have got much time."], 0, 'Negative with have: don’t have. With have got: haven’t got.'),
+  ch('hg:4', 'Which is correct?', ["He hasn't got a job at the moment.", "He hasn't a job got at the moment."], 0),
+  ch('hg:5', 'Which is correct?', ['They have breakfast at the bar every day.', 'They have got breakfast at the bar every day.'], 0, 'have breakfast = eat: an action, so no have got.'),
+]
+
+// Personality — the five book adjectives the picture lesson does not cover (book p8)
+export const PERS2_QS: PlainChoice[] = [
+  ch('pers2:0', 'Before an exam, Carla bites her nails and can’t sit still. She’s', ['nervous', 'relaxed', 'lazy'], 0),
+  ch('pers2:1', 'On Sunday afternoons my dad lies on the sofa with no plans at all. He’s completely', ['relaxed', 'nervous', 'miserable'], 0),
+  ch('pers2:2', 'The waiter shouted at the old man for being slow. That was', ['unkind', 'generous', 'cheerful'], 0),
+  ch('pers2:3', 'Joan never does his homework and leaves everything to the last minute. He’s', ['lazy', 'hard-working', 'reliable'], 0),
+  ch('pers2:4', 'It rained all week in Somerset and Tom didn’t smile once. He was', ['miserable', 'cheerful', 'sociable'], 0),
+  ch('pers2:5', 'Opposites: hard-working ↔', ['lazy', 'unkind', 'nervous'], 0),
+  ch('pers2:6', 'Opposites: cheerful ↔', ['miserable', 'relaxed', 'patient'], 0),
+  ch('pers2:7', 'Opposites: nervous ↔', ['relaxed', 'reliable', 'confident'], 0),
+]
+
+// Vocabulary 2 — employment words and life events with phrasal verbs (book p12)
+export const EMPLOY_QS: PlainChoice[] = [
+  ch('emp:0', 'A person who is trying to get a particular job:', ['candidate', 'qualification', 'retired'], 0),
+  ch('emp:1', 'Working all the usual hours of the week, not just some of them:', ['full-time', 'unemployed', 'out of work'], 0),
+  ch('emp:2', 'A certificate or exam you have passed:', ['qualification', 'candidate', 'career'], 0),
+  ch('emp:3', 'No longer working because you are 65 or older:', ['retired', 'unemployed', 'full-time'], 0),
+  ch('emp:4', 'Without a job:', ['unemployed', 'retired', 'full-time'], 0),
+  ch('emp:5', 'To write to a company asking for a job:', ['apply', 'retire', 'qualify'], 0),
+  ch('emp:6', '"My uncle is ___ work at the moment, but he has an interview on Friday."', ['out of', 'off', 'without'], 0),
+]
+export const LIFE_QS: PlainGap[] = [
+  gap('life:0', 'Sara was born in Bristol but she grew', ['up'], 'in Valencia.', ['up', 'out', 'to', 'for', 'with', 'married']),
+  gap('life:1', 'My parents got', ['married'], 'in the Basílica in 1998.', ['up', 'out', 'to', 'for', 'with', 'married']),
+  gap('life:2', 'Pau started going out', ['with'], 'Laia at the Fallas last year.', ['up', 'out', 'to', 'for', 'with', 'married']),
+  gap('life:3', 'They split', ['up'], 'after six months, but they are still friends.', ['up', 'out', 'to', 'for', 'with', 'married']),
+  gap('life:4', 'She left school at eighteen and went', ['to'], 'university in Castelló.', ['up', 'out', 'to', 'for', 'with', 'married']),
+  gap('life:5', 'My grandmother was brought', ['up'], 'by her aunt in Morocco.', ['up', 'out', 'to', 'for', 'with', 'married']),
+  gap('life:6', 'He applied', ['for'], 'a job as a lifeguard at the Malvarrosa.', ['up', 'out', 'to', 'for', 'with', 'married']),
+  gap('life:7', 'After university she got a job and moved', ['out'], 'of her parents’ flat.', ['up', 'out', 'to', 'for', 'with', 'married']),
+]
+
+// Grammar 2 — countable and uncountable nouns (book p13)
+export const COUNT_QS: PlainChoice[] = [
+  ch('cu:0', 'advice', ['uncountable', 'countable'], 0, 'Abstract nouns like advice, information, news are uncountable: a piece of advice.'),
+  ch('cu:1', 'qualification', ['countable', 'uncountable'], 0),
+  ch('cu:2', 'traffic', ['uncountable', 'countable'], 0),
+  ch('cu:3', 'candidate', ['countable', 'uncountable'], 0),
+  ch('cu:4', 'homework', ['uncountable', 'countable'], 0, 'Even though it ends in -s in your head: homework, not homeworks.'),
+  ch('cu:5', 'news — "The news ___ bad."', ['is', 'are'], 0, 'news looks plural but is uncountable: it takes a singular verb.'),
+  ch('cu:6', 'furniture', ['uncountable', 'countable'], 0),
+  ch('cu:7', '"Two ___, please!" — in a bar', ['coffees', 'coffee'], 0, 'coffee = the drink is uncountable; coffees = cups: countable.'),
+  ch('cu:8', '"This window is made of ___."', ['glass', 'glasses', 'a glass'], 0, 'glass = the material: uncountable.'),
+  ch('cu:9', '"She studies ___ at the university."', ['medicine', 'medicines', 'a medicine'], 0, 'medicine = the subject: uncountable; medicines = pills: countable.'),
+  ch('cu:10', '"There isn’t much ___ in this flat." (space)', ['room', 'rooms', 'a room'], 0, 'room = space: uncountable. a room = a part of a house: countable.'),
+  ch('cu:11', '"Can I give you a ___ of advice?"', ['piece', 'slice', 'bit'], 0, 'To count an uncountable noun: a piece of.'),
+]
+export const PLURAL_QS: PlainGap[] = [
+  gap('pl:0', 'one person → two', ['people']),
+  gap('pl:1', 'one child → three', ['children']),
+  gap('pl:2', 'one woman → two', ['women']),
+  gap('pl:3', 'one foot → two', ['feet']),
+  gap('pl:4', 'one tooth → thirty-two', ['teeth']),
+  gap('pl:5', 'one mouse → ten', ['mice']),
+  gap('pl:6', 'one knife → six', ['knives']),
+  gap('pl:7', 'one fish → a lot of', ['fish']),
+  gap('pl:8', 'one leaf → many', ['leaves']),
+]
+export const QUANT_QS: PlainChoice[] = [
+  ch('qt:0', '"Have you got ___ milk?" "Yes, there’s ___ in the fridge."', ['any … a little', 'some … a few', 'many … some'], 0, 'any in questions; a little with uncountable nouns.'),
+  ch('qt:1', '"How ___ oranges do you want?" "Just ___ ."', ['many … a few', 'much … a little', 'many … a little'], 0, 'many / a few with countable nouns.'),
+  ch('qt:2', 'There wasn’t ___ sugar in the horchata.', ['much', 'many', 'a few'], 0, 'much with uncountable, in negatives and questions.'),
+  ch('qt:3', 'We’ve got ___ bread, but no cheese.', ['some', 'any', 'many'], 0, 'some in affirmative sentences.'),
+  ch('qt:4', 'Not ___ people came to the concert at the Palau.', ['many', 'much', 'a little'], 0),
+  ch('qt:5', 'There are ___ children in the park today — it’s empty.', ['no', 'any', 'some'], 0, 'no = affirmative sentence with a negative meaning.'),
+  ch('qt:6', 'Would you like ___ coffee?', ['some', 'any', 'many'], 0, 'Offers and requests use some, even in questions.'),
+  ch('qt:7', 'He doesn’t do ___ exercise.', ['enough', 'many', 'a few'], 0),
+  ch('qt:8', 'We need ___ kilo of tomatoes for the gazpacho.', ['a', 'some', 'many'], 0, 'A specific quantity: a kilo of, two litres of.'),
+  ch('qt:9', '___ students didn’t turn up — only three.', ['A few', 'A little', 'Much'], 0),
+  ch('qt:10', 'You only need to add ___ salt.', ['a bit of', 'a few', 'several'], 0, 'a bit of / a great deal of with uncountable nouns.'),
+  ch('qt:11', 'There are ___ reasons to visit the Albufera.', ['plenty of', 'much', 'a little'], 0, 'plenty of / lots of / a lot of go with both.'),
+]

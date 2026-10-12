@@ -18,6 +18,7 @@ import GamesSection from './GamesSection'
 import { recordAnswer, markActive, dueCount, type Progress } from '@/lib/courses/progress'
 import {
   COURSE_ID, JOB_QS, PERS_QS, VIDEOS, GRAMMAR_QS, STATIVE_QS, WORD_ITEMS, ALL_ITEMS,
+  TENSE_USE_QS, FREQ_QS, SPELL_QS, STATIVE2_QS, HAVEGOT_QS, PERS2_QS, EMPLOY_QS, LIFE_QS, COUNT_QS, PLURAL_QS, QUANT_QS, type PlainDeckItem,
   stativeSentence, stativeCorrection,
 } from '@/lib/courses/b1u1'
 
@@ -76,14 +77,16 @@ const STUDY_GOALS = ['Pass the PET exam', 'Improve my everyday English', 'Prepar
 type Device = 'phone' | 'computer' | 'either'
 type StepMeta = { nav: string; tag: string; title: string; aim: string; accent: string; accentLt: string; photo: PhotoKey; device?: Device; why?: string; key?: string }
 const STEPS: StepMeta[] = [
-  { nav: 'Start', tag: 'Unit 1', title: 'Me & My Day', aim: 'Daily routines · Present tenses · Valencia mornings', accent: '#6BAE2E', accentLt: '#eaf4da', photo: 'mercat-central' },
+  { nav: 'Start', tag: 'Unit 1', title: 'Perfect for the job', aim: 'Jobs · Personality · Present tenses · Countable nouns and quantifiers · Valencia mornings', accent: '#6BAE2E', accentLt: '#eaf4da', photo: 'mercat-central' },
   { nav: 'Jobs', tag: 'Lesson A', title: 'Jobs', aim: 'Twelve jobs, twelve clues. Read each one and type the job from memory.', accent: '#3E8FB0', accentLt: '#e8f4f9', photo: 'fruit-stall', device: 'phone', why: 'Short cards, one at a time.', key: 'jobs' },
-  { nav: 'Personality', tag: 'Lesson B', title: 'What kind of person are you?', aim: 'Ten adjectives of personality, in sentences from everyday Valencia.', accent: '#E8A33D', accentLt: '#fef5e4', photo: 'fruit-stall', device: 'either', why: '', key: 'personality' },
-  { nav: 'Grammar', tag: 'Lesson C', title: 'Usually… but this week', aim: 'Present simple for routines, present continuous for right now. Then catch the stative-verb mistakes.', accent: '#E1614C', accentLt: '#fdf0ed', photo: 'hemisferic', device: 'either', why: '', key: 'grammar' },
-  { nav: 'Reading', tag: 'Lesson D', title: 'The interview at the Ciutat', aim: 'Three candidates, one job. Read the dialogue and answer four questions.', accent: '#4d8520', accentLt: '#eaf4da', photo: 'hemisferic', device: 'computer', why: 'The text and the questions sit side by side.', key: 'reading' },
-  { nav: 'Listening', tag: 'Lesson E', title: 'Who is speaking?', aim: 'Three people talk about their jobs, then six short conversations. Each recording plays twice, like the exam.', accent: '#6A4C93', accentLt: '#efeaf6', photo: 'hemisferic', device: 'phone', why: 'Put your headphones on.', key: 'listening' },
-  { nav: 'Speaking', tag: 'Lesson F', title: 'Talk about your day', aim: 'Sixty to ninety seconds about your routine, out loud.', accent: '#2C4A6E', accentLt: '#eaeff6', photo: 'glastonbury-tor', device: 'phone', why: 'Phone microphones are usually better than laptop ones.', key: 'speaking' },
-  { nav: 'Writing', tag: 'Lesson G', title: 'An email to a penfriend', aim: '70 to 100 words. Your teacher reads it and sends you personal feedback.', accent: '#1A1A1A', accentLt: '#f5f5f3', photo: 'glastonbury-tor', device: 'computer', why: 'Writing 100 words is much easier on a keyboard.', key: 'writing' },
+  { nav: 'Personality', tag: 'Lesson B', title: 'What kind of person are you?', aim: 'Twelve adjectives of personality, in sentences from everyday Valencia.', accent: '#E8A33D', accentLt: '#fef5e4', photo: 'fruit-stall', device: 'either', why: '', key: 'personality' },
+  { nav: 'Grammar 1', tag: 'Lesson C', title: 'Usually… but this week', aim: 'Present simple and present continuous: every use, the spelling, the adverbs, and the stative verbs that change meaning.', accent: '#E1614C', accentLt: '#fdf0ed', photo: 'hemisferic', device: 'either', why: '', key: 'grammar' },
+  { nav: 'Reading', tag: 'Lesson D', title: 'The interview at the Ciutat', aim: 'Three candidates, one job. Read the dialogue and answer four questions.', accent: '#4d8520', accentLt: '#eaf4da', photo: 'hemisferic', device: 'computer', why: 'The text and the questions sit side by side on a wide screen.', key: 'reading' },
+  { nav: 'Vocabulary', tag: 'Lesson E', title: 'Work and life events', aim: 'Employment words, and the phrasal verbs for the big moments: grow up, go out with, split up, get married.', accent: '#C9A24B', accentLt: '#f6eedb', photo: 'fruit-stall', device: 'phone', why: 'Short cards, one at a time.', key: 'vocab2' },
+  { nav: 'Grammar 2', tag: 'Lesson F', title: 'How much? How many?', aim: 'Countable and uncountable nouns, irregular plurals, and the quantifiers that go with each.', accent: '#8C5E9C', accentLt: '#f1e9f4', photo: 'hemisferic', device: 'either', why: '', key: 'grammar2' },
+  { nav: 'Listening', tag: 'Lesson G', title: 'Who is speaking?', aim: 'Three people talk about their jobs, then six short conversations. Each recording plays twice, like the exam.', accent: '#6A4C93', accentLt: '#efeaf6', photo: 'hemisferic', device: 'phone', why: 'Put your headphones on.', key: 'listening' },
+  { nav: 'Speaking', tag: 'Lesson H', title: 'Talk about your day', aim: 'Sixty to ninety seconds about your routine, out loud.', accent: '#2C4A6E', accentLt: '#eaeff6', photo: 'glastonbury-tor', device: 'phone', why: 'Phone microphones are usually better than laptop ones.', key: 'speaking' },
+  { nav: 'Writing', tag: 'Lesson I', title: 'An email to a penfriend', aim: '70 to 100 words. Your teacher reads it and sends you personal feedback.', accent: '#1A1A1A', accentLt: '#f5f5f3', photo: 'glastonbury-tor', device: 'computer', why: 'Writing 100 words is much easier on a keyboard.', key: 'writing' },
   { nav: 'Result', tag: 'Unit 1', title: 'How did Unit 1 go?', aim: 'Your scores across the unit, and how far along the road to PET you are.', accent: '#6BAE2E', accentLt: '#eaf4da', photo: 'mercat-central' },
 ]
 
@@ -237,9 +240,15 @@ export default function B1Unit1Course() {
   const spokeDone = speakingDone || saved('speaking') !== null
   const wroteDone = writingSubmitted || saved('writing') !== null
 
+  // Book-mirror lessons (13 Oct 2026): scores are saved per deck, averaged per lesson.
+  const avg = (...xs: (number | null)[]) => xs.every(x => x !== null) ? Math.round(xs.reduce((a, b) => a + (b as number), 0) / xs.length) : null
+  const tenseUseScore = saved('tenseuse'), spellScore = saved('spelling'), stative2Score = saved('stative2')
+  const pers2Score = saved('pers2'), vocab2Score = saved('vocab2'), countScore = saved('countable'), quantScore = saved('quantifiers')
   // Unit 1 is one of twelve: readiness is the PET journey, not the average of today's scores.
-  const grammarLesson = grammarScore !== null && stativeScore !== null ? Math.round((grammarScore + stativeScore) / 2) : null
-  const unit1Lessons = [jobScore, persScore, grammarLesson, readingScore, listeningScore, spokeDone ? 100 : null, wroteDone ? 100 : null]
+  const grammarLesson = avg(grammarScore, stativeScore, tenseUseScore, spellScore, stative2Score)
+  const persLesson = avg(persScore, pers2Score)
+  const grammar2Lesson = avg(countScore, quantScore)
+  const unit1Lessons = [jobScore, persLesson, grammarLesson, readingScore, vocab2Score, grammar2Lesson, listeningScore, spokeDone ? 100 : null, wroteDone ? 100 : null]
   const lessonsDone = unit1Lessons.filter(x => x !== null).length
   const readiness = petReadiness([unitValue(unit1Lessons)])
   const stage = plantStage(readiness)
@@ -248,8 +257,9 @@ export default function B1Unit1Course() {
   const planDone = !!progress.plan
   const stepDone = [
     planDone,
-    jobScore !== null, persScore !== null, grammarScore !== null && stativeScore !== null,
-    readingScore !== null, listeningScore !== null, spokeDone, wroteDone, false,
+    jobScore !== null, persLesson !== null, grammarLesson !== null,
+    readingScore !== null, vocab2Score !== null, grammar2Lesson !== null,
+    listeningScore !== null, spokeDone, wroteDone, false,
   ]
   // Lessons open in any order once the plan is set: a phone day skips the computer lessons.
   const maxReachable = planDone ? STEPS.length - 1 : 0
@@ -338,6 +348,15 @@ export default function B1Unit1Course() {
     icons: [<SomersetIcon key="r" name="correct" size={36} />, <SomersetIcon key="w" name="wrong" size={36} />],
     after: s.isWrong ? `✎ ${stativeCorrection(s)}` : 'Correct as it is.',
   }))
+  // Book-mirror decks (New Close-up B1 Unit 1, added 13 Oct 2026). Plain data → Deck items.
+  const plain = (items: PlainDeckItem[]): DeckItem[] => items as DeckItem[]
+  const tenseUseDeck = plain([...TENSE_USE_QS, ...FREQ_QS])
+  const spellDeck = plain(SPELL_QS)
+  const stative2Deck = plain([...STATIVE2_QS, ...HAVEGOT_QS])
+  const pers2Deck = plain(PERS2_QS)
+  const vocab2Deck = plain([...EMPLOY_QS, ...LIFE_QS])
+  const countDeck = plain([...COUNT_QS, ...PLURAL_QS])
+  const quantDeck = plain(QUANT_QS)
   const readingDeck: DeckItem[] = READING_QS.map((r, i) => ({
     id: `r:${i}`, kind: 'choice' as const, q: r.q, options: r.options, answer: Math.max(0, r.options.indexOf(r.a)),
   }))
@@ -492,6 +511,7 @@ export default function B1Unit1Course() {
 
           {/* ── Step 2: Personality ── */}
           {step === 2 && (
+            <>
             <section className="card">
               <LessonHead tag="B · Vocabulary" title="What kind of person are they?" aim="Read the sentence and give the person the right adjective. Watch their face change." />
               {!persResults ? (
@@ -505,12 +525,15 @@ export default function B1Unit1Course() {
               ) : (
                 <DeckSummary results={persResults} onRetry={() => setPersResults(null)} />
               )}
-              {persResults && (
-                <Row>
-                  <ScoreBadge score={persScore!} />
-                  <Btn onClick={() => setStep(3)}>Next: Grammar →</Btn>
-                </Row>
-              )}
+              {persResults && <Row><ScoreBadge score={persScore!} /></Row>}
+            </section>
+            </>
+          )}
+          {step === 2 && (
+            <section className="card">
+              <LessonHead tag="B · Vocabulary" title="The other five" aim="Nervous, relaxed, unkind, lazy, miserable — and their opposites. Pick the adjective that fits." />
+              <Deck items={pers2Deck} onAnswer={deckAnswer('pers2')} onDone={deckDone('pers2')} endTitle="Adjectives done" />
+              {pers2Score !== null && <Row><ScoreBadge score={pers2Score} /><Btn onClick={() => setStep(3)}>Next: Grammar →</Btn></Row>}
             </section>
           )}
 
@@ -539,7 +562,38 @@ export default function B1Unit1Course() {
                   <p>Verbs of thinking, feeling, owning and the senses (<em>know, believe, want, own, taste, smell</em>) describe states, not actions. They stay in the present simple even when we mean &ldquo;now&rdquo;.</p>
                 </div>
                 <Deck items={stativeDeck} onAnswer={deckAnswer('stative')} onDone={deckDone('stative')} endTitle="Stative verbs done" />
-                {stativeScore !== null && <Row><ScoreBadge score={stativeScore} /><Btn onClick={() => setStep(4)}>Next: Reading →</Btn></Row>}
+                {stativeScore !== null && <Row><ScoreBadge score={stativeScore} /></Row>}
+              </section>
+
+              <section className="card">
+                <LessonHead tag="E · Grammar" title="Every use of the two tenses" aim="Facts, timetables, stories and annoying habits. Then the adverbs of frequency and time expressions that signal each tense." />
+                <div className="grammar-box">
+                  <h4>Remember</h4>
+                  <table>
+                    <tbody>
+                      <tr><th>Present simple</th><td>facts · permanent situations · habits · timetables · stories</td><td><code>always</code> <code>twice a week</code> <code>on Sundays</code></td></tr>
+                      <tr><th>Present continuous</th><td>now · temporary · annoying habits · fixed arrangements · pictures</td><td><code>at the moment</code> <code>tonight</code> <code>always!</code></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <Deck items={tenseUseDeck} onAnswer={deckAnswer('tenseuse')} onDone={deckDone('tenseuse')} endTitle="Uses and adverbs done" />
+                {tenseUseScore !== null && <Row><ScoreBadge score={tenseUseScore} /></Row>}
+              </section>
+
+              <section className="card">
+                <LessonHead tag="F · Grammar" title="Spelling: -s, -es, -ies and -ing" aim="Type the form. Watch, try, play, go, fix; sit, make, admit, travel." />
+                <div className="tip-box">
+                  <strong>Rules</strong>
+                  <p>He/she/it: -s, -sh, -ch, -x, -o → <em>-es</em> (watches, goes). Consonant + y → <em>-ies</em> (tries), vowel + y → <em>-s</em> (plays). <em>-ing</em>: one vowel + one consonant doubles (sitting, admitting); final -e drops (making); final -l doubles (travelling).</p>
+                </div>
+                <Deck items={spellDeck} onAnswer={deckAnswer('spelling')} onDone={deckDone('spelling')} endTitle="Spelling done" />
+                {spellScore !== null && <Row><ScoreBadge score={spellScore} /></Row>}
+              </section>
+
+              <section className="card">
+                <LessonHead tag="G · Grammar" title="One verb, two meanings — and have got" aim="Think, taste, see, have, be, expect: stative in one meaning, an action in the other. Then have vs have got." />
+                <Deck items={stative2Deck} onAnswer={deckAnswer('stative2')} onDone={deckDone('stative2')} endTitle="Two meanings done" />
+                {stative2Score !== null && <Row><ScoreBadge score={stative2Score} /><Btn onClick={() => setStep(4)}>Next: Reading →</Btn></Row>}
               </section>
             </>
           )}
@@ -559,14 +613,59 @@ export default function B1Unit1Course() {
                 </article>
                 <div>
                   <Deck items={readingDeck} onAnswer={deckAnswer('reading')} onDone={deckDone('reading')} endTitle="Reading done" />
-                  {readingScore !== null && <Row><ScoreBadge score={readingScore} /><Btn onClick={() => setStep(5)}>Next: Listening →</Btn></Row>}
+                  {readingScore !== null && <Row><ScoreBadge score={readingScore} /><Btn onClick={() => setStep(5)}>Next: Vocabulary →</Btn></Row>}
                 </div>
               </div>
             </section>
           )}
 
-          {/* ── Step 5: Listening ── */}
+          {/* ── Step 5: Vocabulary 2 — employment and life events ── */}
           {step === 5 && (
+            <section className="card">
+              <LessonHead tag="E · Vocabulary" title="Work and life events" aim="Six employment words, then the phrasal verbs of a life story. Tap the missing word." />
+              <Deck items={vocab2Deck} onAnswer={deckAnswer('vocab2')} onDone={deckDone('vocab2')} endTitle="Vocabulary done" />
+              {vocab2Score !== null && <Row><ScoreBadge score={vocab2Score} /><Btn onClick={() => setStep(6)}>Next: Grammar 2 →</Btn></Row>}
+            </section>
+          )}
+
+          {/* ── Step 6: Grammar 2 — countable, uncountable, quantifiers ── */}
+          {step === 6 && (
+            <>
+              <section className="card">
+                <LessonHead tag="F · Grammar" title="Countable or uncountable?" aim="Advice, traffic, news and homework are uncountable. Some nouns are both, with a change of meaning. Then the irregular plurals." />
+                <div className="grammar-box">
+                  <h4>Remember</h4>
+                  <table>
+                    <tbody>
+                      <tr><th>Countable</th><td>singular and plural, verb agrees</td><td><code>a candidate</code> <code>two coffees</code> <code>people</code></td></tr>
+                      <tr><th>Uncountable</th><td>singular only, singular verb, <em>it</em></td><td><code>advice</code> <code>news is</code> <code>a piece of</code></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <Deck items={countDeck} onAnswer={deckAnswer('countable')} onDone={deckDone('countable')} endTitle="Nouns done" />
+                {countScore !== null && <Row><ScoreBadge score={countScore} /></Row>}
+              </section>
+
+              <section className="card">
+                <LessonHead tag="G · Grammar" title="Quantifiers" aim="Some and any, much and many, a few and a little, plenty of and enough. Choose what fits." />
+                <div className="grammar-box">
+                  <h4>Remember</h4>
+                  <table>
+                    <tbody>
+                      <tr><th>Countable</th><td><code>many</code> <code>a few</code> <code>several</code> <code>a number of</code></td></tr>
+                      <tr><th>Uncountable</th><td><code>much</code> <code>a little</code> <code>a bit of</code> <code>a great deal of</code></td></tr>
+                      <tr><th>Both</th><td><code>some</code> <code>any</code> <code>no</code> <code>a lot of</code> <code>lots of</code> <code>plenty of</code> <code>enough</code></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <Deck items={quantDeck} onAnswer={deckAnswer('quantifiers')} onDone={deckDone('quantifiers')} endTitle="Quantifiers done" />
+                {quantScore !== null && <Row><ScoreBadge score={quantScore} /><Btn onClick={() => setStep(7)}>Next: Listening →</Btn></Row>}
+              </section>
+            </>
+          )}
+
+          {/* ── Step 7: Listening ── */}
+          {step === 7 && (
             <>
               <section className="card">
                 <LessonHead tag="E · Listening" title="Who is speaking?" aim="Listen to three people talking about their jobs. Match each speaker with a job. You do not need two of the jobs." />
@@ -585,13 +684,13 @@ export default function B1Unit1Course() {
                 <LessonHead tag="Listening Part 1" title="Six short conversations" aim="For each question, choose the correct answer. In the real exam the options are pictures." />
                 <Deck items={l2Deck} onAnswer={deckAnswer('listening')} endTitle="Listening done"
                   onDone={(f, t) => deckDone('listening')(f + (l1Result?.firsts ?? 0), t + (l1Result?.total ?? L1_ANS.length))} />
-                {listeningScore !== null && <Row><ScoreBadge score={listeningScore} /><Btn onClick={() => setStep(6)}>Next: Speaking →</Btn></Row>}
+                {listeningScore !== null && <Row><ScoreBadge score={listeningScore} /><Btn onClick={() => setStep(8)}>Next: Speaking →</Btn></Row>}
               </section>
             </>
           )}
 
           {/* ── Step 6: Speaking ── */}
-          {step === 6 && (
+          {step === 8 && (
             <section className="card">
               <LessonHead tag="F · Speaking" title="Talk about your day" aim="Answer one question out loud for 60 to 90 seconds. You'll see what you said with every fix in place, a B1 version of your answer, then say it again." />
                 <SpeakingStudio
@@ -632,13 +731,13 @@ export default function B1Unit1Course() {
                   })}
                 />
               {spokeDone && (
-                <Row><span className="done-pill">✓ Speaking done</span><Btn onClick={() => setStep(7)}>Next: Writing →</Btn></Row>
+                <Row><span className="done-pill">✓ Speaking done</span><Btn onClick={() => setStep(9)}>Next: Writing →</Btn></Row>
               )}
             </section>
           )}
 
           {/* ── Step 7: Writing ── */}
-          {step === 7 && (
+          {step === 9 && (
             <section className="card">
               <LessonHead tag="G · Writing" title="An email to a penfriend" aim="Write 70 to 100 words. Your teacher reviews it and emails you personal feedback." />
               {!writingSubmitted ? (
@@ -675,14 +774,14 @@ export default function B1Unit1Course() {
                   <div className="sent-icon">📬</div>
                   <h3>Sent to your teacher</h3>
                   <p>They&apos;ll read it, check the feedback, and email you a full report with your mistakes and how to improve.</p>
-                  <Btn onClick={() => setStep(8)}>See your results →</Btn>
+                  <Btn onClick={() => setStep(10)}>See your results →</Btn>
                 </div>
               )}
             </section>
           )}
 
           {/* ── Step 8: Results ── */}
-          {step === 8 && (
+          {step === 10 && (
             <>
               <section className="i-can">
                 <div className="i-can-top">
