@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { Fraunces } from 'next/font/google'
+import { Fraunces, Instrument_Sans } from 'next/font/google'
 import './globals.css'
 import AuthProvider from '@/components/AuthProvider'
 
@@ -14,6 +14,9 @@ import AuthProvider from '@/components/AuthProvider'
 // Google Fonts block does not apply here — that block is specific to the
 // weasyprint PDF pipeline, which never touches this app.
 const fraunces = Fraunces({ subsets: ['latin'], variable: '--font-fraunces', display: 'swap' })
+// Instrument Sans (12 Oct 2026): the website's body/UI face, used by the online
+// courses via app/courses/_kit/tokens.css. Same self-hosting story as Fraunces.
+const instrument = Instrument_Sans({ subsets: ['latin'], variable: '--font-instrument', display: 'swap' })
 //
 // PWA: manifest + icons (public/manifest.json, public/icons/) let teachers add
 // the Portal to their phone/desktop home screen via the browser's own "Install
@@ -47,7 +50,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={fraunces.variable}>
+    <html lang="en" className={`${fraunces.variable} ${instrument.variable}`}>
       <body><AuthProvider>{children}</AuthProvider></body>
     </html>
   )

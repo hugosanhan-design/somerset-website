@@ -1,0 +1,38 @@
+/* Somerset course design system — tokens.
+   Source of truth for colour and type in every online course.
+   Values match the public website's :root (somerset-website/src/app/page.tsx).
+   A course sets ONLY --accent / --accent-lt on its own root; everything else comes from here. */
+
+.course{
+  /* paper & ink */
+  --paper:#F5F1E6;--paper-2:#EDE7D6;--white:#fff;
+  --ink:#17281B;--ink-soft:#3A3024;--muted:#5C6657;--line:#D9D2BC;
+  /* greens */
+  --racing:#1E4227;--racing-2:#2A5636;--green:#557a49;--green-dk:#365c3a;--leaf:#b9cd9d;
+  --green-lt:#e9efe3;
+  /* brass & signals */
+  --brass:#C9A24B;--brass-lt:#f6eedb;
+  --cheddar:#E3A33A;--cheddar-lt:#fbf0dc;
+  --cider:#B23A2C;--cider-lt:#f7e6e3;
+  --heather:#8C5E9C;
+  /* course accent — override per course */
+  --accent:var(--racing-2);--accent-lt:var(--green-lt);
+  /* type */
+  --serif:var(--font-fraunces),'Fraunces',Georgia,serif;
+  --sans:var(--font-instrument),'Instrument Sans',system-ui,-apple-system,sans-serif;
+  --brand:'Poppins',var(--sans);
+  /* shape */
+  --radius:20px;--radius-sm:12px;--pill:50px;
+  --shadow:0 6px 24px rgba(23,40,27,.08);--shadow-lift:0 12px 32px rgba(23,40,27,.14);
+  /* legacy aliases used by course bodies written before the kit */
+  --ink-lt:var(--paper-2);--amber:var(--cheddar);--coral:var(--cider);
+
+  font-family:var(--sans);color:var(--ink);background:var(--paper);
+  min-height:100vh;line-height:1.6;font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+.course *{box-sizing:border-box}
+.course ::selection{background:var(--green);color:#fff}
+.course p{margin:0 0 .8rem}.course p:last-child{margin-bottom:0}
+.course h1,.course h2,.course h3{margin:0;font-family:var(--serif);font-weight:500;letter-spacing:-.01em}
+.course img{max-width:100%}
