@@ -118,12 +118,12 @@
 .struck{text-decoration:line-through;color:#888}
 .fix{font-size:.86rem;color:var(--green-dk);font-weight:600}
 
-.grammar-box{background:#fff;border:2px solid #e5e5e5;border-radius:10px;padding:1rem 1.2rem;margin-bottom:1.2rem}
+.grammar-box{background:var(--paper-2);border:0;border-radius:var(--radius-sm);padding:1rem 1.2rem;margin-bottom:1.2rem}
 .grammar-box h4{font-size:.7rem;text-transform:uppercase;letter-spacing:1px;color:var(--accent);margin:0 0 .6rem;font-weight:700}
-.grammar-box table{width:100%;border-collapse:collapse;font-size:.85rem}
+.grammar-box table{width:100%;border-collapse:collapse;font-size:1rem}
 .grammar-box td,.grammar-box th{padding:.45rem .6rem;border:1px solid #e6e6e6;text-align:left}
 .grammar-box th{background:var(--accent-lt);font-weight:700;white-space:nowrap}
-.grammar-box code{background:var(--ink-lt);padding:.1rem .4rem;border-radius:3px;font-size:.8rem;margin-right:.2rem}
+.grammar-box code{background:var(--ink-lt);padding:.1rem .45rem;border-radius:6px;font-size:.95rem;margin-right:.25rem}
 .tip-box{background:#fffbe6;border-left:4px solid var(--amber);border-radius:0 10px 10px 0;padding:.9rem 1.2rem;margin-bottom:1.2rem}
 .tip-box strong{color:var(--amber);font-size:.68rem;text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:.3rem}
 .tip-box p{font-size:.9rem;line-height:1.6}

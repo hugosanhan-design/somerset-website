@@ -2,7 +2,7 @@
 // Somerset course design system — the six pieces every online course is built from.
 // Canonical exemplar: /courses/kit-preview. Clone that; don't restyle in a course.
 // Rules: tokens live in tokens.css, classes are ck-*, a course only sets --accent.
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import SomersetLogo from '@/components/SomersetLogo'
 import './tokens.css'
@@ -257,6 +257,139 @@ export function ResultSummary({ score, max, title, sub, items, children }: {
         </ul>
       )}
       {children}
+    </div>
+  )
+}
+
+// ───────── Deck: one item at a time, big, instant feedback ─────────
+// The replacement for the "worksheet list" (10 numbered sentences with tiny chips).
+// choice: pick an option card. A blank written as ___ in `q` is highlighted and filled on success.
+// gap: type the answer (or tap a bank word when `bank` is given). Two misses reveal the answer.
+export type DeckItem =
+  | { id: string; kind: 'choice'; q: string; options: string[]; answer: number; icons?: (React.ReactNode | undefined)[]; gloss?: string; after?: React.ReactNode }
+  | { id: string; kind: 'gap'; before: string; after?: string; answers: string[]; bank?: string[]; gloss?: string }
+
+const BLANK_RE = /_{3,}/
+export const normAnswer = (s: string) => s.toLowerCase().replace(/[.,;:!?"']+$/g, '').replace(/\s+/g, ' ').trim()
+
+export function Deck({
+  items, onAnswer, onDone, onRestart, listen, glossLabel = 'Show translation', endTitle = 'Done', endSub, endExtra, resetKey,
+}: {
+  items: DeckItem[]
+  onAnswer?: (item: DeckItem, ok: boolean, firstTry: boolean, chosen: string) => void
+  onDone?: (firsts: number, total: number) => void
+  onRestart?: () => void                   // "Practise again" pressed (e.g. stop recording scores)
+  listen?: (text: string) => void          // renders ▶ on option cards
+  glossLabel?: string
+  endTitle?: React.ReactNode; endSub?: React.ReactNode; endExtra?: React.ReactNode
+  resetKey?: unknown                       // change it to start again from item 1
+}) {
+  const [idx, setIdx] = useState(0)
+  const [wrong, setWrong] = useState<string[]>([])
+  const [done, setDone] = useState<null | { first: boolean; revealed: boolean }>(null)
+  const [typed, setTyped] = useState('')
+  const [results, setResults] = useState<boolean[]>([])
+  const [finished, setFinished] = useState(false)
+  const [showGloss, setShowGloss] = useState(false)
+  const [shake, setShake] = useState(false)
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const total = items.length
+  const it = items[Math.min(idx, total - 1)]
+  const hasGloss = items.some(i => i.gloss)
+
+  function reset() { setIdx(0); setWrong([]); setDone(null); setTyped(''); setResults([]); setFinished(false) }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => { reset() }, [resetKey])
+  useEffect(() => () => { if (timer.current) clearTimeout(timer.current) }, [])
+
+  function advance(nextResults: boolean[]) {
+    if (idx + 1 >= total) { setFinished(true); onDone?.(nextResults.filter(Boolean).length, total); return }
+    setIdx(idx + 1); setWrong([]); setDone(null); setTyped('')
+  }
+  function attempt(chosen: string, ok: boolean) {
+    if (done) return
+    const firstTry = wrong.length === 0
+    onAnswer?.(it, ok, firstTry, chosen)
+    if (ok) {
+      const next = [...results, firstTry]
+      setResults(next); setDone({ first: firstTry, revealed: false })
+      timer.current = setTimeout(() => advance(next), firstTry ? 950 : 1400)
+      return
+    }
+    const w = [...wrong, chosen]
+    setWrong(w); setShake(true); setTimeout(() => setShake(false), 450)
+    if (it.kind === 'gap' && w.length >= 2) {
+      const next = [...results, false]
+      setResults(next); setDone({ first: false, revealed: true })
+    }
+  }
+
+  const answerText = it.kind === 'choice' ? it.options[it.answer] : it.answers[0]
+  function blank(filled: boolean) {
+    return <span className={`ck-blank${filled ? ' is-filled' : ''}`}>{filled ? answerText : <span className="ck-blank__dots">…</span>}</span>
+  }
+  function question() {
+    if (it.kind === 'gap') return <>{it.before} {blank(!!done)}{it.after ? ` ${it.after}` : ''}</>
+    if (!BLANK_RE.test(it.q)) return <>{it.q}</>
+    const parts = it.q.split(BLANK_RE)
+    return <>{parts.map((p, i) => <React.Fragment key={i}>{p}{i < parts.length - 1 && blank(!!done)}</React.Fragment>)}</>
+  }
+
+  if (finished) {
+    const firsts = results.filter(Boolean).length
+    return (
+      <ResultSummary score={firsts} max={total} title={endTitle} sub={endSub ?? (firsts === total ? 'All of them first time.' : 'The ones you missed are saved to revise.')}>
+        <div className="ck-row" style={{ justifyContent: 'center' }}>
+          <Btn variant="ghost" onClick={() => { reset(); onRestart?.() }}>↻ Practise again</Btn>
+          {endExtra}
+        </div>
+      </ResultSummary>
+    )
+  }
+
+  const bank = it.kind === 'gap' ? it.bank : undefined
+  return (
+    <div className="ck-deck">
+      <div className="ck-grid__head">
+        <Dots states={items.map((_, i) => (i < results.length ? (results[i] ? 'ok' : 'bad') : null))} now={idx} count={`${idx + 1} / ${total}`} />
+        {hasGloss && (
+          <label className="ck-switch"><input type="checkbox" checked={showGloss} onChange={e => setShowGloss(e.target.checked)} /> {glossLabel}</label>
+        )}
+      </div>
+      <div className={`ck-card ck-deck__card${shake ? ' is-shake' : ''}`} key={it.id}>
+        <p className="ck-deck__q">{question()}</p>
+        {showGloss && it.gloss && <p className="ck-deck__gloss">{it.gloss}</p>}
+
+        {!done && it.kind === 'choice' && (
+          <ChoiceGrid cols={it.options.length <= 2 || it.options.join('').length > 60 ? 2 : 2}>
+            {it.options.map((o, i) => (
+              <OptionCard key={`${it.id}-${i}`} text={o} icon={it.icons?.[i]} state={wrong.includes(String(i)) ? 'wrong' : 'idle'}
+                onPick={() => attempt(String(i), i === it.answer)} onPlay={listen ? () => listen(o) : undefined} />
+            ))}
+          </ChoiceGrid>
+        )}
+        {!done && it.kind === 'gap' && bank && (
+          <ChoiceGrid>
+            {bank.map(w => (
+              <OptionCard key={w} text={w} state={wrong.includes(normAnswer(w)) ? 'wrong' : 'idle'}
+                onPick={() => attempt(normAnswer(w), it.answers.map(normAnswer).includes(normAnswer(w)))} onPlay={listen ? () => listen(w) : undefined} />
+            ))}
+          </ChoiceGrid>
+        )}
+        {!done && it.kind === 'gap' && !bank && (
+          <input className="ck-deck__input" value={typed} autoFocus autoCapitalize="none" autoCorrect="off" spellCheck={false} aria-label="Your answer"
+            placeholder="Type it here"
+            onChange={e => { const v = e.target.value; setTyped(v); if (it.answers.map(normAnswer).includes(normAnswer(v))) attempt(normAnswer(v), true) }}
+            onKeyDown={e => { if (e.key === 'Enter' && typed.trim() && !wrong.includes(normAnswer(typed))) attempt(normAnswer(typed), it.answers.map(normAnswer).includes(normAnswer(typed))) }} />
+        )}
+        {!done && wrong.length > 0 && <Feedback kind="wrong" text={it.kind === 'gap' ? 'Not quite — try once more.' : 'Not that one — try again.'} />}
+        {done && (
+          <Feedback kind={done.revealed ? 'wrong' : done.first ? 'win' : 'quiet'} n={idx}
+            text={done.revealed ? <>The answer is <strong>{answerText}</strong>.</> : undefined} revise={!done.first} />
+        )}
+        {done && it.kind === 'choice' && it.after && <p className="ck-deck__after">{it.after}</p>}
+        {done?.revealed && <div className="ck-row"><Btn variant="accent" onClick={() => advance(results)}>Next →</Btn></div>}
+      </div>
     </div>
   )
 }

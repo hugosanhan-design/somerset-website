@@ -3,7 +3,15 @@
 // Every kit piece in every state, with real course content. New courses clone what they see here.
 import { useState } from 'react'
 import { SomersetIcon } from '@/components/SomersetIcon'
-import { CourseShell, StepHead, OptionCard, ChoiceGrid, Feedback, Dots, ResultSummary, Btn, type OptionState } from '../_kit'
+import { CourseShell, StepHead, OptionCard, ChoiceGrid, Feedback, Dots, ResultSummary, Btn, Deck, type OptionState, type DeckItem } from '../_kit'
+
+const DECK: DeckItem[] = [
+  { id: 'd1', kind: 'choice', q: 'Tomàs usually ___ football on Saturdays.', options: ['plays', 'is playing', 'play'], answer: 0, gloss: 'Tomàs suele jugar al fútbol los sábados.' },
+  { id: 'd2', kind: 'choice', q: 'This week he ___ Dragon Ball because it’s raining.', options: ['is watching', 'watches', 'watch'], answer: 0 },
+  { id: 'd3', kind: 'choice', q: 'I’m knowing the answer already.', options: ['Right', 'Wrong'], answer: 1, icons: [<SomersetIcon key="a" name="correct" size={36} />, <SomersetIcon key="b" name="wrong" size={36} />], after: '✎ I know the answer already.' },
+  { id: 'd4', kind: 'gap', before: 'The Mercado Central', after: 'at 7:30 every morning.', answers: ['opens'], bank: ['opens', 'is opening', 'open', 'opened'] },
+  { id: 'd5', kind: 'gap', before: '¿Tengo que pedir cita', after: '?', answers: ['previa'] },
+]
 
 const STEPS = [{ nav: 'Inicio' }, { nav: 'Vocabulario' }, { nav: 'Frases' }, { nav: 'Emparejar' }, { nav: 'Gramática' }, { nav: 'Diálogo' }, { nav: 'Hablar' }, { nav: 'Resultado' }]
 
@@ -55,6 +63,12 @@ export default function KitPreview() {
         <span style={{ flex: 1 }} />
         <Btn sm variant="ghost" onClick={() => setStep(s => (s + 1) % STEPS.length)}>Next step →</Btn>
       </div>
+
+      {/* the Deck — replaces every worksheet list */}
+      <section className="ck-card ck-card--paper">
+        <StepHead tag="C · Grammar" title="Usually… but this week" aim="One sentence at a time. Right? Green and on to the next. Wrong? Red, try again." />
+        <Deck items={DECK} listen={() => {}} glossLabel="Mostrar español" endTitle="Grammar done" />
+      </section>
 
       <div className="ck-cols--60">
         <div>

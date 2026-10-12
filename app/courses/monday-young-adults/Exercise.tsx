@@ -4,6 +4,7 @@ import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 're
 import { SomersetIcon, type IconName } from '@/components/SomersetIcon'
 import { recordAnswer, addMistake, type Progress } from '@/lib/courses/progress'
 import type { Activity, Exercise, Item } from '@/lib/courses/mondayYoungAdults'
+import { Deck, type DeckItem } from '../_kit'
 
 // Instant feedback: every answer is judged the moment it is given.
 //  - Right first time: the item opens to the full width with the word in green (celebration).
@@ -12,8 +13,6 @@ import type { Activity, Exercise, Item } from '@/lib/courses/mondayYoungAdults'
 type St = { wrong: string[]; done: boolean; first: boolean }
 
 export const norm = (s: string) => s.toLowerCase().replace(/[.,;:!?"']+$/g, '').replace(/\s+/g, ' ').trim()
-const BLANK = /_{3,}/
-const CHEERS = ['Yes!', 'Perfect!', 'Spot on!', 'Great!', 'Nice one!', 'Correct!']
 const COLOURS = ['#6a4fb3', '#d2573f', '#2b8a9e', '#c9871a', '#3d8b3d', '#b0457a', '#4a6fa5', '#8a7a2e']
 
 // Read a word or phrase aloud in British English (browser voice).
@@ -48,8 +47,8 @@ export default function ExerciseCard({ act, ex, progress, update, head }: {
   const key = `${act.id}.${ex.id}`
   const saved = progress.lessons[key]
   const [st, setSt] = useState<Record<string, St>>({})
-  const [typed, setTyped] = useState<Record<string, string>>({})
   const [shake, setShake] = useState<string | null>(null)
+  const [result, setResult] = useState<{ firsts: number; total: number } | null>(null)
   const [practice, setPractice] = useState(false)
   const [showEs, setShowEs] = useState(false)
   const recording = !saved && !practice
@@ -83,92 +82,56 @@ export default function ExerciseCard({ act, ex, progress, update, head }: {
   }
 
   const isMatch = ex.items.every(it => it.kind === 'match') && (ex.options ?? []).length > 0
-  // House rule: long lists of short items run in two columns on wide screens.
-  const twoCols = total >= 6 && ex.items.every(it => it.kind !== 'choice' || (it.q.length <= 60 && it.options.join('').length <= 45))
+
+  // Everything that is not a match board runs as a one-at-a-time Deck (12 Oct 2026):
+  // one big sentence, option cards, instant feedback. Bank words become tappable cards.
+  const deckItems: DeckItem[] = ex.items.flatMap((it, n): DeckItem[] => {
+    const gloss = ex.gloss?.[n]
+    if (it.kind === 'match') return []
+    if (it.kind === 'gap') return [{ ...it, gloss, bank: ex.bank }]
+    return [{ ...it, gloss, icons: it.options.map(o => (ICON_FOR[o] ? <SomersetIcon key={o} name={ICON_FOR[o]} size={34} /> : undefined)) }]
+  })
+  function deckAnswer(it: DeckItem, ok: boolean, firstTry: boolean, chosen: string) {
+    if (recording && firstTry) update(p => recordAnswer(p, `${key}.${it.id}`.slice(0, 60), ok))
+    if (recording && !ok) {
+      const pick = it.kind === 'choice' ? (it.options[Number(chosen)] ?? chosen) : chosen
+      update(p => addMistake(p, `${key}.${it.id}`, pick))
+    }
+  }
+  function deckDone(firsts: number, n: number) {
+    setResult({ firsts, total: n })
+    if (recording) update(p => ({ ...p, lessons: { ...p.lessons, [key]: { score: Math.round((firsts / n) * 100), at: Date.now() } } }))
+  }
 
   return (
     <section className="card" data-tour="exercise">
       {head}
-      {ex.bank && <div className="chips chips--static">{ex.bank.map(w => <span key={w} className="chip chip--static">{w}</span>)}</div>}
-      {ex.gloss && (
-        <label className="oc-switch">
-          <input type="checkbox" checked={showEs} onChange={e => setShowEs(e.target.checked)} />
-          <span className="oc-track" aria-hidden />
-          <span>Mostrar español</span>
-        </label>
-      )}
-      <p className="match-count">{doneCount} / {total} done{firstCount ? ` · ${firstCount} first time` : ''}</p>
-
       {isMatch ? (
-        <MatchBoard ex={ex} st={st} attempt={attempt} shake={shake} showEs={showEs} />
+        <>
+          {ex.gloss && (
+            <label className="oc-switch">
+              <input type="checkbox" checked={showEs} onChange={e => setShowEs(e.target.checked)} />
+              <span className="oc-track" aria-hidden />
+              <span>Mostrar español</span>
+            </label>
+          )}
+          <p className="match-count">{doneCount} / {total} done{firstCount ? ` · ${firstCount} first time` : ''}</p>
+          <MatchBoard ex={ex} st={st} attempt={attempt} shake={shake} showEs={showEs} />
+          <div className="row">
+            {allDone && <strong className="score-pill">{firstCount} / {total} first time</strong>}
+            {allDone && saved && <span className="saved-note">Saved · {saved.score}%</span>}
+            {allDone && <button className="btn btn--ghost" onClick={() => { setSt({}); setPractice(true) }}>↻ Practise again</button>}
+          </div>
+          {allDone && <div className="tip-box"><strong>En español</strong><p>{ex.es}</p></div>}
+        </>
       ) : (
-        <div className={`task-list ex-list${twoCols ? ' task-list--2col' : ''}`}>
-          {ex.items.map((it, n) => {
-            const s = st[it.id]
-            const win = !!s?.done && s.first
-            const redo = !!s?.done && !s.first
-            return (
-              <div key={it.id} className={`task-row ex-row${win ? ' ex-win' : ''}${redo ? ' ex-redo' : ''}${shake === it.id ? ' bad' : ''}`}>
-                <span className="num">{n + 1}</span>
-                <div className="task-text">
-                  {it.kind === 'gap' && (
-                    <>
-                      {it.before}{' '}
-                      {s?.done
-                        ? <b className="ex-word">{it.answers[0]}</b>
-                        : <input className={`gap-input${shake === it.id ? ' gap-bad' : ''}`} value={typed[it.id] ?? ''}
-                            onChange={e => { const v = e.target.value; setTyped(t => ({ ...t, [it.id]: v })); if (isRight(it, v)) attempt(it, v) }}
-                            onBlur={e => attempt(it, e.target.value)}
-                            onKeyDown={e => { if (e.key === 'Enter') attempt(it, (e.target as HTMLInputElement).value) }}
-                            autoCapitalize="none" autoCorrect="off" spellCheck={false} aria-label={`Answer ${n + 1}`} />}
-                      {it.after ? ` ${it.after}` : ''}
-                    </>
-                  )}
-                  {it.kind === 'choice' && (
-                    <>
-                      {s?.done && BLANK.test(it.q)
-                        ? it.q.split(BLANK).reduce<ReactNode[]>((acc, part, i, arr) => {
-                            acc.push(part)
-                            if (i < arr.length - 1) acc.push(<b key={i} className="ex-word">{it.options[it.answer]}</b>)
-                            return acc
-                          }, [])
-                        : <span>{it.q}</span>}
-                      {s?.done && !BLANK.test(it.q) && <> <b className="ex-word">{it.options[it.answer]}</b></>}
-                      {!s?.done && (
-                        <div className={`oc-grid${it.options.join('').length > 60 ? ' oc-grid--long' : ''}`}>
-                          {it.options.map((o, i) => {
-                            const wrong = s?.wrong.includes(String(i))
-                            const icon = ICON_FOR[o]
-                            return (
-                              <div key={i} className={`oc-card${wrong ? ' oc-bad' : ''}`}>
-                                <button type="button" className="oc-main" disabled={wrong} onClick={() => attempt(it, String(i))}>
-                                  {icon && <SomersetIcon name={icon} size={34} />}
-                                  <span className="oc-text">{o}</span>
-                                </button>
-                                <Listen text={o} />
-                              </div>
-                            )
-                          })}
-                        </div>
-                      )}
-                    </>
-                  )}
-                  {redo && <span className="ex-revise">added to your revision</span>}
-                </div>
-                {win && <span className="ex-burst" aria-hidden>✓</span>}
-                {win && <span className="ex-cheer">{CHEERS[n % CHEERS.length]}</span>}
-              </div>
-            )
-          })}
-        </div>
+        <>
+          <Deck items={deckItems} glossLabel="Mostrar español" listen={speak}
+            onAnswer={deckAnswer} onDone={deckDone} onRestart={() => setPractice(true)}
+            endTitle={`${ex.title} — done`} endSub={saved ? `Saved · ${saved.score}%` : undefined} />
+          {result && <div className="tip-box"><strong>En español</strong><p>{ex.es}</p></div>}
+        </>
       )}
-
-      <div className="row">
-        {allDone && <strong className="score-pill">{firstCount} / {total} first time</strong>}
-        {allDone && saved && <span className="saved-note">Saved · {saved.score}%</span>}
-        {allDone && <button className="btn btn--ghost" onClick={() => { setSt({}); setTyped({}); setPractice(true) }}>↻ Practise again</button>}
-      </div>
-      {allDone && <div className="tip-box"><strong>En español</strong><p>{ex.es}</p></div>}
     </section>
   )
 }

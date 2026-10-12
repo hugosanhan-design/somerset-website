@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { CourseShell } from '../_kit'
+import { CourseShell, Deck, type DeckItem } from '../_kit'
+import { SomersetIcon } from '@/components/SomersetIcon'
 import RecallDeck, { type DeckResult } from './RecallDeck'
 import SpeakingStudio from './SpeakingStudio'
 import PersonalityDrag from './PersonalityDrag'
@@ -325,6 +326,25 @@ export default function B1Unit1Course() {
     }
   }
 
+  // Grammar + stative as one-at-a-time decks (12 Oct 2026). Item ids match the old inline keys,
+  // so spaced repetition and "Improve my mistakes" keep working.
+  const grammarDeck: DeckItem[] = GRAMMAR_QS.flatMap((g, qi) => g.answers.map((ans, bi) => {
+    let b = 0
+    const q = g.text.replace(/\[\d+\]/g, () => { const i = b++; return i === bi ? '___' : g.answers[i] })
+    return { id: `gram:${qi}:${bi}`, kind: 'choice' as const, q, options: g.options[bi], answer: Math.max(0, g.options[bi].indexOf(ans)) }
+  }))
+  const stativeDeck: DeckItem[] = STATIVE_QS.map((s, i) => ({
+    id: `stat:${i}`, kind: 'choice' as const, q: stativeSentence(s), options: ['Right', 'Wrong'], answer: s.isWrong ? 1 : 0,
+    icons: [<SomersetIcon key="r" name="correct" size={36} />, <SomersetIcon key="w" name="wrong" size={36} />],
+    after: s.isWrong ? `✎ ${stativeCorrection(s)}` : 'Correct as it is.',
+  }))
+  const deckAnswer = (lesson: string) => (item: DeckItem, ok: boolean, firstTry: boolean) => {
+    if (firstTry && saved(lesson) === null) update(p => recordAnswer(p, item.id, ok))
+  }
+  const deckDone = (lesson: string) => (firsts: number, total: number) => {
+    if (saved(lesson) === null) update(p => ({ ...markActive(p), lessons: { ...p.lessons, [lesson]: { score: Math.round(firsts / total * 100), at: Date.now() } } }))
+  }
+
   const m = STEPS[step]
   const isCover = step === 0
   const heroPhoto = photo(m.photo)
@@ -497,35 +517,8 @@ export default function B1Unit1Course() {
                     </tbody>
                   </table>
                 </div>
-                <div className="task-list">
-                  {GRAMMAR_QS.map((item, qi) => {
-                    let blankIdx = 0
-                    const parts = item.text.split(/(\[\d+\])/)
-                    const keys = item.answers.map((_, bi) => `g:${qi}:${bi}`)
-                    const rowWin = keys.every(k => done1(k))
-                    const rowDone = keys.every(k => inst[k]?.done)
-                    return (
-                      <div key={qi} className={`task-row ex-row${rowWin ? ' ex-win' : ''}${rowDone && !rowWin ? ' ex-redo' : ''}${keys.some(k => shakeKey === k) ? ' bad' : ''}`}>
-                        <span className="num">{qi + 1}</span>
-                        <span className="task-text task-text--flow">
-                          {parts.map((part, pi) => {
-                            if (!/^\[\d+\]$/.test(part)) return <span key={pi}>{part}</span>
-                            const bi = blankIdx++
-                            const k = keys[bi]
-                            return inst[k]?.done
-                              ? <b key={pi} className="ex-word">{item.answers[bi]}</b>
-                              : <span key={pi}>{renderOpts(k, item.options[bi], item.answers[bi], GR, `gram:${qi}:${bi}`, false, true)}</span>
-                          })}
-                          {rowDone && !rowWin && <span className="ex-revise">added to your revision</span>}
-                        </span>
-                        {rowWin && celebrate(qi)}
-                      </div>
-                    )
-                  })}
-                </div>
-                <Row>
-                  {!gC.all ? progressNote(gC) : <ScoreBadge score={grammarScore!} />}
-                </Row>
+                <Deck items={grammarDeck} onAnswer={deckAnswer('grammar')} onDone={deckDone('grammar')} endTitle="Grammar done" />
+                {grammarScore !== null && <Row><ScoreBadge score={grammarScore} /></Row>}
               </section>
 
               <section className="card">
@@ -534,31 +527,8 @@ export default function B1Unit1Course() {
                   <strong>Language tip</strong>
                   <p>Verbs of thinking, feeling, owning and the senses (<em>know, believe, want, own, taste, smell</em>) describe states, not actions. They stay in the present simple even when we mean &ldquo;now&rdquo;.</p>
                 </div>
-                <div className="task-list">
-                  {STATIVE_QS.map((item, i) => {
-                    const k = `s:${i}`
-                    const st = inst[k]
-                    const win = done1(k)
-                    return (
-                      <div key={i} className={`task-row ex-row${win ? ' ex-win' : ''}${st?.done && !st.first ? ' ex-redo' : ''}${shakeKey === k ? ' bad' : ''}`}>
-                        <span className="num">{i + 1}</span>
-                        <span className="task-text">
-                          <span className={st?.done && item.isWrong ? 'struck' : ''}>{stativeSentence(item)}</span>
-                          {st?.done && item.isWrong && <span className="fix">{stativeCorrection(item)}</span>}
-                          {st?.done && !item.isWrong && <b className="ex-word" style={{ marginLeft: '.5rem' }}>correct as it is</b>}
-                          {st?.done && !st.first && <span className="ex-revise">added to your revision</span>}
-                          {!st?.done && <div style={{ marginTop: '.5rem' }}>{renderOpts(k, ['Right', 'Wrong'], item.isWrong ? 'Wrong' : 'Right', ST, `stat:${i}`)}</div>}
-                        </span>
-                        {win && celebrate(i)}
-                      </div>
-                    )
-                  })}
-                </div>
-                <Row>
-                  {!sC.all
-                    ? progressNote(sC)
-                    : <><ScoreBadge score={stativeScore!} /><Btn onClick={() => setStep(4)}>Next: Reading →</Btn></>}
-                </Row>
+                <Deck items={stativeDeck} onAnswer={deckAnswer('stative')} onDone={deckDone('stative')} endTitle="Stative verbs done" />
+                {stativeScore !== null && <Row><ScoreBadge score={stativeScore} /><Btn onClick={() => setStep(4)}>Next: Reading →</Btn></Row>}
               </section>
             </>
           )}
