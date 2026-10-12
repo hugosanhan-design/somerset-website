@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>GEN01 — Paper 3: Listening (question paper)</title>
+<style>
+* { box-sizing: border-box; }
+body {
+  font-family: "Liberation Sans", Arial, Helvetica, sans-serif;
+  color: #1A1A1A; font-size: 12pt; line-height: 1.42;
+}
+@page cover {
+  margin: 0;
+  @bottom-left { content: none; } @bottom-center { content: none; } @bottom-right { content: none; }
+  @left-top { content: none; } @left-bottom { content: none; }
+  @right-top { content: none; } @right-bottom { content: none; }
+}
+.cover-page { page: cover; page-break-after: always; }
+
+/* ---- Logo (CSS flexbox text lockup, per reference_somerset_logo.md canonical standard) ---- */
+.logo { display: flex; align-items: flex-end; gap: 11px; }
+.logo .word { font-weight: 800; font-size: 33pt; letter-spacing: -1.2px; line-height: .9; }
+.logo .lc { font-weight: 700; font-size: 8.5pt; letter-spacing: 2.5px; line-height: 1.18; padding-bottom: 4px; }
+.logo.on-white .word { color: #6BAE2E; } .logo.on-white .lc { color: #666; }
+.logo.on-green .word { color: #ffffff; } .logo.on-green .lc { color: #e8f3da; }
+
+/* ---- Cover page ---- */
+.cover-bar { background: #6BAE2E; color: #fff; padding: 24px 40px 20px; }
+.cover-kicker { font-size: 11.5pt; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #e8f3da; margin: 13px 0 3px; }
+.cover-title { font-size: 24pt; font-weight: 800; letter-spacing: -.3px; margin: 0; }
+.cover-body { padding: 18px 40px 0; }
+.cover-fields { display: table; width: 100%; border-collapse: collapse; margin-bottom: 12px; }
+.cover-fields .row { display: table-row; }
+.cover-fields .cell { display: table-cell; padding: 6px 0; border-bottom: 1px solid #d8ded1; font-size: 12pt; }
+.cover-fields .label { width: 34%; font-weight: 700; color: #3f3f3f; }
+.cover-panel {
+  background: #F2F7EC; border: 1px solid #cfe2ba; border-left: 5px solid #6BAE2E;
+  border-radius: 3px; padding: 11px 18px; margin-bottom: 11px;
+}
+.cover-panel h3 { margin: 0 0 6px; font-size: 12pt; letter-spacing: .04em; color: #1E4227; text-transform: uppercase; }
+.cover-panel ul { margin: 0; padding-left: 20px; }
+.cover-panel li { margin-bottom: 4px; font-size: 12pt; }
+.cover-parts-table { width: 100%; border-collapse: collapse; font-size: 12pt; }
+.cover-parts-table th, .cover-parts-table td { text-align: left; padding: 3px 8px; border-bottom: 1px solid #e2e8da; }
+.cover-parts-table th { color: #3f3f3f; font-size: 11pt; text-transform: uppercase; letter-spacing: .05em; }
+.draft-banner {
+  border: 1.5px solid #B23A2E; background: #FBEDEB; color: #7a281f; border-radius: 3px;
+  padding: 10px 16px; font-size: 11.5pt; line-height: 1.4; margin: 12px 0 0;
+}
+.draft-banner strong { display: block; font-size: 12pt; margin-bottom: 3px; letter-spacing: .03em; text-transform: uppercase; }
+.teacher-banner {
+  border: 1.5px solid #1E4227; background: #eef3ea; color: #1E4227; border-radius: 3px;
+  padding: 10px 16px; font-size: 11.5pt; line-height: 1.4; margin: 12px 0 0;
+}
+.teacher-banner strong { display: block; font-size: 12pt; margin-bottom: 3px; letter-spacing: .03em; text-transform: uppercase; }
+
+/* ---- Body pages: dark "Part N" badge (copies the source's compact tag, not the
+   old green rectangle), plain unboxed instructions ---- */
+.part { break-before: page; }
+.part:first-of-type { break-before: auto; }
+.part-head { break-after: avoid; page-break-after: avoid; margin-bottom: 6px; }
+.part-head .label { display: inline-block; background: #2b2b2b; color: #fff; font-weight: 800;
+  font-size: 13pt; letter-spacing: .02em; padding: 5px 18px; border-radius: 3px 12px 3px 3px; }
+.part-title { font-size: 15pt; font-weight: 800; color: #1E4227; margin: 8px 0 4px; }
+.instructions {
+  font-size: 12pt; margin: 8px 0 4px; line-height: 1.45;
+  break-inside: avoid; page-break-inside: avoid;
+}
+.exam-note { font-size: 12pt; font-weight: 700; margin: 2px 0 14px; }
+.section-rule { border: none; border-top: 1px solid #999; margin: 10px 0 16px; }
+
+.passage-title { font-size: 16pt; font-weight: 800; margin: 6px 0 10px; text-align: center; }
+.passage p { font-size: 14pt; line-height: 1.55; margin: 0 0 12px; text-align: justify; }
+.passage.two-col { columns: 2; column-gap: 26px; }
+.passage.two-col p { text-align: justify; }
+.gapnum { font-weight: 800; color: #1E4227; }
+
+/* ---- Example graphics: literal answer-sheet-style boxes, not an inline highlight ---- */
+.example-block { margin: 2px 0 16px; font-size: 12pt; break-inside: avoid; page-break-inside: avoid; }
+.example-label { font-weight: 700; margin-right: 12px; }
+.bubble-row { display: inline-flex; align-items: center; gap: 7px; border: 1px solid #999;
+  border-radius: 4px; padding: 5px 12px; vertical-align: middle; }
+.bubble-row .bubble-num { font-weight: 800; margin-right: 4px; }
+.bubble { display: inline-flex; align-items: center; justify-content: center; width: 19px; height: 19px;
+  border: 1.4px solid #333; border-radius: 50%; font-size: 10.5pt; font-weight: 700; }
+.bubble.shaded { background: #1E4227; color: #fff; border-color: #1E4227; }
+.letterbox-row { display: inline-flex; align-items: center; gap: 2px; vertical-align: middle; }
+.letterbox-row .letterbox-num { font-weight: 800; margin-right: 10px; }
+.letterbox { display: inline-flex; align-items: center; justify-content: center; width: 17px; height: 21px;
+  border: 1.4px solid #333; font-weight: 700; font-size: 11pt; text-transform: uppercase; }
+
+.mcq-block { break-inside: avoid; page-break-inside: avoid; margin: 0 0 16px; }
+.mcq-q { font-size: 12pt; font-weight: 700; margin-bottom: 3px; }
+.mcq-context { font-size: 12pt; font-style: italic; color: #444; margin-bottom: 2px; }
+.mcq-options { display: flex; flex-wrap: wrap; gap: 4px 18px; margin: 5px 0 0 14px; }
+.mcq-options.stacked { display: block; margin-left: 14px; }
+.mcq-options.stacked .opt { display: block; margin-bottom: 3px; }
+.opt { font-size: 12pt; white-space: nowrap; }
+.opt b { display: inline-block; width: 15px; }
+
+.gap-list { columns: 2; column-gap: 28px; margin-top: 4px; }
+.gap-item { break-inside: avoid; page-break-inside: avoid; font-size: 12pt; margin-bottom: 9px; }
+
+/* Word-formation stems: plain bold text, no box (copies the source's unboxed
+   right-margin stems as closely as a reflowed layout allows) */
+.stems-list { columns: 2; column-gap: 24px; margin: 10px 0 14px; break-inside: avoid; page-break-inside: avoid; }
+.stems-list .stem-item { font-size: 12pt; margin-bottom: 6px; }
+.stems-list .stem-item b { color: #1A1A1A; letter-spacing: .02em; }
+
+.transform-item { break-inside: avoid; page-break-inside: avoid; margin: 0 0 18px; }
+.transform-item .q1 { font-size: 12pt; margin-bottom: 3px; }
+.transform-item .kw { font-weight: 800; letter-spacing: .04em; display: block; margin: 3px 0; }
+.transform-item .gapped { font-size: 12pt; }
+
+.kwt-example { margin: 4px 0 18px; font-size: 12pt; break-inside: avoid; page-break-inside: avoid; }
+.kwt-example .kw { font-weight: 800; letter-spacing: .04em; display: block; margin: 3px 0; }
+.answer-sheet-box { display: inline-block; border: 1.3px solid #333; border-radius: 2px; padding: 3px 14px;
+  font-family: "Liberation Serif", "Times New Roman", serif; font-style: italic; font-size: 12.5pt; margin-top: 4px; }
+
+.gap-review-list { margin: 10px 0 0 18px; }
+.gap-review-list li { font-size: 12pt; margin-bottom: 4px; }
+
+/* Answer slot: shaded number + blank box, the recurring "answer sheet" motif
+   used for gapped-text numbers and multiple-matching answers */
+.answer-slot { display: inline-flex; border: 1.3px solid #333; border-radius: 2px; overflow: hidden;
+  font-weight: 800; font-size: 11.5pt; vertical-align: middle; }
+.answer-slot .num { background: #d9d9d9; padding: 2px 8px; }
+.answer-slot .blank { padding: 2px 20px; background: #fff; }
+.answer-slot.inline { margin: 0 2px; }
+
+.gaptext-options { border: 1px solid #333; border-radius: 3px; padding: 14px 20px; margin: 8px 0 4px;
+  columns: 2; column-gap: 26px; break-inside: avoid; page-break-inside: avoid; }
+.gaptext-options .opt-item { font-size: 12pt; margin: 0 0 14px; break-inside: avoid; page-break-inside: avoid; }
+.gaptext-options .opt-item b { margin-right: 8px; }
+
+.mm-text { break-inside: avoid; page-break-inside: avoid; margin: 0 0 16px; }
+.mm-text .who { font-weight: 800; font-size: 13pt; margin: 0 0 3px; }
+.mm-text p { font-size: 12pt; line-height: 1.5; margin: 4px 0 0; text-align: justify; }
+.mm-texts-box { border: 1px solid #333; border-radius: 3px; padding: 14px 20px; margin: 8px 0 16px;
+  columns: 2; column-gap: 26px; }
+
+.mm-questions { margin-top: 6px; }
+.mm-q { break-inside: avoid; page-break-inside: avoid; font-size: 12pt; margin: 0 0 14px;
+  display: flex; justify-content: space-between; align-items: center; gap: 14px; }
+.mm-q .qtext { flex: 1; }
+
+.answer-line { display: inline-block; border-bottom: 1px solid #999; width: 26px; text-align: center; }
+
+/* ---- Writing tasks ---- */
+.wtask-block { margin: 0 0 20px; }
+.wtask-block .wprompt { font-size: 12.5pt; margin: 0 0 10px; }
+.compulsory-tag { display: inline-block; background: #1E4227; color: #fff; font-size: 10.5pt; font-weight: 700;
+  letter-spacing: .05em; padding: 2px 9px; border-radius: 2px; margin-left: 8px; vertical-align: middle; }
+.choice-tag { display: inline-block; background: #888; color: #fff; font-size: 10.5pt; font-weight: 700;
+  letter-spacing: .05em; padding: 2px 9px; border-radius: 2px; margin-left: 8px; vertical-align: middle; }
+.write-cue { font-weight: 700; margin-top: 10px; }
+
+/* Notebook graphic for the Part 1 essay notes, copying the source's spiral-pad box */
+.notebook { border: 1px solid #999; border-radius: 5px; margin: 14px 20px 18px; break-inside: avoid; page-break-inside: avoid; }
+.notebook-spiral { background: #e6e6e6; border-bottom: 1px solid #999; border-radius: 5px 5px 0 0;
+  padding: 5px 10px; font-size: 15pt; letter-spacing: 1px; color: #9a9a9a; text-align: center;
+  overflow: hidden; white-space: nowrap; line-height: 1; }
+.notebook-body { padding: 16px 26px 18px; }
+.notebook-title { font-size: 14pt; font-weight: 700; text-align: center; margin: 0 0 10px; }
+.notebook hr { border: none; border-top: 1px solid #999; margin: 8px 0; }
+.notebook-label { font-weight: 800; margin: 10px 0 2px; }
+.notebook ol { margin: 8px 0 0 20px; }
+.notebook ol li { font-size: 12.5pt; margin-bottom: 4px; }
+
+/* Magazine-announcement box (bordered, green rule) for review/article tasks */
+.notice-box { border: 1.5px solid #6BAE2E; border-radius: 3px; padding: 14px 22px; margin: 10px 20px 16px;
+  break-inside: avoid; page-break-inside: avoid; }
+.notice-box .notice-title { font-size: 15pt; font-weight: 800; margin: 0 0 8px; }
+.notice-box .notice-body { font-size: 12.5pt; }
+
+/* Email box for the email task */
+.email-box { border: 1px solid #999; border-radius: 4px; margin: 10px 20px 16px; overflow: hidden;
+  break-inside: avoid; page-break-inside: avoid; }
+.email-header { background: #e6e6e6; padding: 7px 14px; font-size: 11pt; color: #666; }
+.email-body { background: #fff; padding: 14px 20px; font-size: 12.5pt; }
+.email-body p { margin: 0 0 8px; }
+
+/* ---- Listening ---- */
+.lsent-list { margin-top: 6px; }
+.lsent-item { break-inside: avoid; page-break-inside: avoid; font-size: 12pt; margin-bottom: 13px; }
+.lsent-item .num { font-weight: 800; margin-right: 4px; }
+
+.speaker-list { columns: 2; column-gap: 26px; margin: 6px 0 16px; break-inside: avoid; page-break-inside: avoid; }
+.speaker-list .opt-item { font-size: 12pt; margin: 0 0 16px; break-inside: avoid; page-break-inside: avoid; }
+.speaker-list .opt-item b { margin-right: 8px; }
+.speaker-answers { margin-top: 4px; }
+.speaker-answers .mm-q { margin: 0 0 16px; }
+
+.script-block { background: #fbfcf9; border: 1px solid #e2e8da; border-radius: 3px; padding: 12px 16px;
+  margin: 0 0 16px; font-size: 12pt; line-height: 1.55; }
+.script-block.short { break-inside: avoid; page-break-inside: avoid; }
+.script-block .spk { font-weight: 800; color: #1E4227; }
+.script-label { font-size: 11pt; font-weight: 800; text-transform: uppercase; letter-spacing: .05em;
+  color: #1E4227; margin: 0 0 4px; }
+.key-tag { display: inline-block; background: #1E4227; color: #fff; font-weight: 800; font-size: 11pt;
+  padding: 1px 9px; border-radius: 2px; margin-left: 8px; }
+
+/* ---- Answer key tables ---- */
+.ak-table { width: 100%; border-collapse: collapse; margin: 6px 0 18px; break-inside: avoid; page-break-inside: avoid; }
+.ak-table th, .ak-table td { border: 1px solid #d8ecc4; padding: 5px 9px; font-size: 12pt; text-align: left; }
+.ak-table th { background: #F2F7EC; color: #1E4227; }
+.bs-note { font-size: 11.5pt; color: #444; margin: 4px 0 18px; padding-left: 4px; border-left: 3px solid #cfd; }
+
+@page {
+  size: A4;
+  margin: 1.9cm 1.8cm 1.55cm 1.8cm;
+  @bottom-left {
+    content: "SOMERSET LANGUAGE CENTRE \00B7 VALENCIA \00B7 B2 EXAM PRACTICE \00B7 GEN01 (DRAFT)";
+    font-family: "Liberation Sans", Arial, sans-serif; font-size: 8pt; letter-spacing: .09em;
+    color: #8a8a7a; white-space: nowrap; border-top: 1px solid #dcdcd4; padding-top: 7px; vertical-align: top;
+  }
+  @bottom-center { content: " "; width: 100%; border-top: 1px solid #dcdcd4; }
+  @bottom-right {
+    content: counter(page);
+    font-family: "Liberation Sans", Arial, sans-serif; font-size: 11.5pt; font-weight: bold;
+    color: #fff; background: #1E4227; white-space: nowrap; padding: 2px 10px; border-radius: 2px;
+    vertical-align: top; margin-top: 2px;
+  }
+}
+</style></head><body>
+
+<section class="cover-page">
+  <div class="cover-bar">
+    <div class="logo on-green"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+    <div class="cover-kicker">Somerset Language Centre &middot; B2-level exam practice &middot; Cambridge format</div>
+    <p class="cover-title">Listening</p>
+  </div>
+  <div class="cover-body">
+    <div class="cover-fields"><div class="row"><div class="cell label">Candidate Name</div><div class="cell"></div></div><div class="row"><div class="cell label">Candidate Number</div><div class="cell"></div></div><div class="row"><div class="cell label">Centre</div><div class="cell"></div></div><div class="row"><div class="cell label">Date</div><div class="cell"></div></div></div>
+    <div class="cover-panel">
+      <h3>Time allowed</h3>
+      <p style="margin:0;font-size:13pt;">approx. 40 minutes</p>
+    </div>
+    <div class="cover-panel">
+      <h3>Instructions to candidates</h3>
+      <ul><li>This paper contains four parts. You will hear each recording twice.</li>
+      <li>Write your answers on the question paper.</li>
+      <li>You will have time to check your answers at the end of the test.</li></ul>
+    </div>
+    <div class="cover-panel">
+      <h3>Information for candidates</h3>
+      <table class="cover-parts-table"><tr><th>Part</th><th>Questions</th></tr><tr><td>Part 1</td><td>1–8</td></tr><tr><td>Part 2</td><td>9–18</td></tr><tr><td>Part 3</td><td>19–23</td></tr><tr><td>Part 4</td><td>24–30</td></tr></table>
+    </div>
+    <div class="draft-banner"><strong>Draft — not for live use</strong>
+          Original Somerset content (GEN01), Cambridge B2-level format, laid out to match Somerset's
+          own reference practice paper. Every objectively-scored part has passed a blind-solve check,
+          but no teacher has reviewed this paper end to end yet. Do not administer this to a student
+          until Hugo or Sara has read it in full.</div>
+  </div>
+</section>
+<div class="part"><div class="draft-banner" style="margin-bottom:18px;">
+      <strong>Audio not yet recorded</strong>
+      This is a print preview of the Listening question paper only. No audio track exists for
+      GEN01 yet, so this paper cannot be sat as a real listening test. Once audio is generated
+      and reviewed, this file becomes the student question paper to use alongside it. Until then,
+      see the separate Teacher Audioscript for read-aloud piloting.
+    </div><div class="part-head"><span class="label">Part 1</span></div>
+      <p class="instructions">You will hear people talking in eight different situations. For questions 1–8,
+      choose the best answer (A, B or C). You will hear each recording twice.</p>
+      <div class="mcq-block">
+          <div class="mcq-context">1&nbsp;&nbsp;You hear a woman talking about a course she took.</div>
+          <div class="mcq-q">What does the speaker say about the pottery course?</div>
+          <div class="mcq-options stacked"><span class="opt">A &nbsp; A family member encouraged her to try it.</span><span class="opt">B &nbsp; She found it easy from the very first lesson.</span><span class="opt">C &nbsp; She has decided not to continue with it.</span></div>
+        </div><div class="mcq-block">
+          <div class="mcq-context">2&nbsp;&nbsp;You hear a man talking about moving house.</div>
+          <div class="mcq-q">How did the speaker find the flat he eventually bought?</div>
+          <div class="mcq-options stacked"><span class="opt">A &nbsp; He had been searching for it online for months.</span><span class="opt">B &nbsp; A colleague told him about it.</span><span class="opt">C &nbsp; He saw it advertised in a local shop window.</span></div>
+        </div><div class="mcq-block">
+          <div class="mcq-context">3&nbsp;&nbsp;You hear a teenager talking about a school trip.</div>
+          <div class="mcq-q">What does the speaker say about the school trip?</div>
+          <div class="mcq-options stacked"><span class="opt">A &nbsp; He had never visited the museum before.</span><span class="opt">B &nbsp; His enthusiasm grew once he was there.</span><span class="opt">C &nbsp; He was disappointed by the exhibition.</span></div>
+        </div><div class="mcq-block">
+          <div class="mcq-context">4&nbsp;&nbsp;You hear a woman talking about her job.</div>
+          <div class="mcq-q">What does the speaker say about her career change?</div>
+          <div class="mcq-options stacked"><span class="opt">A &nbsp; She regrets the drop in income.</span><span class="opt">B &nbsp; She still finds the job exhausting.</span><span class="opt">C &nbsp; She prioritised job satisfaction over salary.</span></div>
+        </div><div class="mcq-block">
+          <div class="mcq-context">5&nbsp;&nbsp;You hear a man talking about a sports injury.</div>
+          <div class="mcq-q">What does the speaker say about his recovery?</div>
+          <div class="mcq-options stacked"><span class="opt">A &nbsp; He is following his physio's advice despite his impatience.</span><span class="opt">B &nbsp; He returned to playing sooner than the physio recommended.</span><span class="opt">C &nbsp; He disagreed with the physio's assessment of his injury.</span></div>
+        </div><div class="mcq-block">
+          <div class="mcq-context">6&nbsp;&nbsp;You hear a woman talking about learning a language.</div>
+          <div class="mcq-q">What has the speaker decided to do about her Portuguese?</div>
+          <div class="mcq-options stacked"><span class="opt">A &nbsp; Spend more time using the language app.</span><span class="opt">B &nbsp; Stop learning the language for now.</span><span class="opt">C &nbsp; Start attending a class with other people.</span></div>
+        </div><div class="mcq-block">
+          <div class="mcq-context">7&nbsp;&nbsp;You hear a man talking about a restaurant.</div>
+          <div class="mcq-q">What does the speaker say about the restaurant?</div>
+          <div class="mcq-options stacked"><span class="opt">A &nbsp; The food did not live up to his expectations.</span><span class="opt">B &nbsp; He would avoid returning because of the slow service.</span><span class="opt">C &nbsp; The meal took much longer than he had planned.</span></div>
+        </div><div class="mcq-block">
+          <div class="mcq-context">8&nbsp;&nbsp;You hear a woman talking about volunteering.</div>
+          <div class="mcq-q">What does the speaker say surprised her most about volunteering?</div>
+          <div class="mcq-options stacked"><span class="opt">A &nbsp; How much she enjoyed being around animals.</span><span class="opt">B &nbsp; How close she became to the other volunteers.</span><span class="opt">C &nbsp; How long she has continued doing it.</span></div>
+        </div></div><div class="part"><div class="part-head"><span class="label">Part 2</span></div>
+      <p class="instructions">You will hear a man called Dan giving a talk about a photography club.
+      For questions 9–18, complete the sentences with a word or short phrase.</p>
+      <p class="passage-title">Riverside Photography Club</p>
+      <div class="lsent-list"><div class="lsent-item"><span class="num">(9)</span> The club was founded in <span class="answer-line">&nbsp;</span> .</div><div class="lsent-item"><span class="num">(10)</span> The club does not meet during the month of <span class="answer-line">&nbsp;</span> .</div><div class="lsent-item"><span class="num">(11)</span> This term the club is focusing mainly on <span class="answer-line">&nbsp;</span> photography.</div><div class="lsent-item"><span class="num">(12)</span> The first four weeks of term will cover <span class="answer-line">&nbsp;</span> .</div><div class="lsent-item"><span class="num">(13)</span> Students who don't bring a camera can <span class="answer-line">&nbsp;</span> one for the evening.</div><div class="lsent-item"><span class="num">(14)</span> Full membership for the term costs £ <span class="answer-line">&nbsp;</span> .</div><div class="lsent-item"><span class="num">(15)</span> The first field trip this term will be to <span class="answer-line">&nbsp;</span> .</div><div class="lsent-item"><span class="num">(16)</span> Everyone must hand in a completed <span class="answer-line">&nbsp;</span> by next Tuesday.</div><div class="lsent-item"><span class="num">(17)</span> The club's online group is run through an app called <span class="answer-line">&nbsp;</span> .</div><div class="lsent-item"><span class="num">(18)</span> Tonight's session will focus on the camera's <span class="answer-line">&nbsp;</span> settings.</div></div></div><div class="part"><div class="part-head"><span class="label">Part 3</span></div>
+      <p class="instructions">You will hear five short extracts in which people talk about starting their own
+      business. For questions 19–23, choose from the list (A–H) what each speaker says. There are three
+      extra letters which you do not need to use.</p>
+      <div class="speaker-list"><div class="opt-item"><b>A</b>They received unexpected financial help.</div><div class="opt-item"><b>B</b>They underestimated how much time it would take.</div><div class="opt-item"><b>C</b>They were motivated by a negative experience at work.</div><div class="opt-item"><b>D</b>They regret not starting sooner.</div><div class="opt-item"><b>E</b>Their family were unsupportive of the decision.</div><div class="opt-item"><b>F</b>They had no relevant experience in the field.</div><div class="opt-item"><b>G</b>They found the paperwork more difficult than expected.</div><div class="opt-item"><b>H</b>A friend became their business partner.</div></div>
+      <div class="speaker-answers"><div class="mm-q"><span class="qtext">Speaker 1</span><span class="answer-slot"><span class="num">19</span><span class="blank">&nbsp;&nbsp;</span></span></div><div class="mm-q"><span class="qtext">Speaker 2</span><span class="answer-slot"><span class="num">20</span><span class="blank">&nbsp;&nbsp;</span></span></div><div class="mm-q"><span class="qtext">Speaker 3</span><span class="answer-slot"><span class="num">21</span><span class="blank">&nbsp;&nbsp;</span></span></div><div class="mm-q"><span class="qtext">Speaker 4</span><span class="answer-slot"><span class="num">22</span><span class="blank">&nbsp;&nbsp;</span></span></div><div class="mm-q"><span class="qtext">Speaker 5</span><span class="answer-slot"><span class="num">23</span><span class="blank">&nbsp;&nbsp;</span></span></div></div></div><div class="part"><div class="part-head"><span class="label">Part 4</span></div>
+      <p class="instructions">You will hear an interview with a wildlife photographer called Claire Byrne.
+      For questions 24–30, choose the best answer (A, B or C).</p>
+      <div class="mcq-block">
+          <div class="mcq-q">24&nbsp;&nbsp;Why did Claire start photographing urban wildlife?</div>
+          <div class="mcq-options stacked"><span class="opt">A &nbsp; She had deliberately planned the project for years.</span><span class="opt">B &nbsp; An unplanned delay in London led her to notice foxes nearby.</span><span class="opt">C &nbsp; A publisher specifically commissioned the project.</span></div>
+        </div><div class="mcq-block">
+          <div class="mcq-q">25&nbsp;&nbsp;What does Claire say about photographing animals in cities compared to somewhere like the Amazon?</div>
+          <div class="mcq-options stacked"><span class="opt">A &nbsp; It required less patience than she expected.</span><span class="opt">B &nbsp; It was more physically demanding overall.</span><span class="opt">C &nbsp; It was harder in ways people don't expect.</span></div>
+        </div><div class="mcq-block">
+          <div class="mcq-q">26&nbsp;&nbsp;How does Claire feel about the photograph of the fox family?</div>
+          <div class="mcq-options stacked"><span class="opt">A &nbsp; It is her proudest image, but not her personal favourite.</span><span class="opt">B &nbsp; It is both her proudest and her favourite image.</span><span class="opt">C &nbsp; She now regrets including it in the book.</span></div>
+        </div><div class="mcq-block">
+          <div class="mcq-q">27&nbsp;&nbsp;What does Claire's favourite photograph in the book show?</div>
+          <div class="mcq-options stacked"><span class="opt">A &nbsp; A dramatic scene of foxes at night.</span><span class="opt">B &nbsp; A heron standing still on a rooftop.</span><span class="opt">C &nbsp; A busy street full of urban wildlife.</span></div>
+        </div><div class="mcq-block">
+          <div class="mcq-q">28&nbsp;&nbsp;What message does Claire want the project to communicate?</div>
+          <div class="mcq-options stacked"><span class="opt">A &nbsp; Wildlife photography requires travelling to remote places.</span><span class="opt">B &nbsp; Wildlife exists close to us if we look for it.</span><span class="opt">C &nbsp; Urban animals are becoming increasingly rare.</span></div>
+        </div><div class="mcq-block">
+          <div class="mcq-q">29&nbsp;&nbsp;What advice does Claire give to people starting out in wildlife photography?</div>
+          <div class="mcq-options stacked"><span class="opt">A &nbsp; Invest in the best equipment available before beginning.</span><span class="opt">B &nbsp; Focus on spending time outdoors observing animals.</span><span class="opt">C &nbsp; Avoid urban locations until gaining more experience.</span></div>
+        </div><div class="mcq-block">
+          <div class="mcq-q">30&nbsp;&nbsp;What does Claire say about her future plans?</div>
+          <div class="mcq-options stacked"><span class="opt">A &nbsp; She has a confirmed project starting in Spain.</span><span class="opt">B &nbsp; She intends to keep working without a break.</span><span class="opt">C &nbsp; She has an unconfirmed idea for a project near Valencia.</span></div>
+        </div></div>
+</body></html>

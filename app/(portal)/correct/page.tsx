@@ -84,7 +84,11 @@ function CorrectPageInner() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ studentName, level, taskType, taskPrompt, studentText, studentNotes: studentProfile }),
       })
-      const data = await res.json()
+      const data = await res.json().catch(() => ({}))
+      if (!res.ok || !data.html) {
+        alert(`The report could not be generated.\n\n${data.detail || data.error || `Server error (${res.status}).`}`)
+        return
+      }
       setReportHtml(data.html)
 
       // Auto-save to student ficha if a student was selected

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>GEN01 — Listening Audioscript (teacher only)</title>
+<style>
+* { box-sizing: border-box; }
+body {
+  font-family: "Liberation Sans", Arial, Helvetica, sans-serif;
+  color: #1A1A1A; font-size: 12pt; line-height: 1.42;
+}
+@page cover {
+  margin: 0;
+  @bottom-left { content: none; } @bottom-center { content: none; } @bottom-right { content: none; }
+  @left-top { content: none; } @left-bottom { content: none; }
+  @right-top { content: none; } @right-bottom { content: none; }
+}
+.cover-page { page: cover; page-break-after: always; }
+
+/* ---- Logo (CSS flexbox text lockup, per reference_somerset_logo.md canonical standard) ---- */
+.logo { display: flex; align-items: flex-end; gap: 11px; }
+.logo .word { font-weight: 800; font-size: 33pt; letter-spacing: -1.2px; line-height: .9; }
+.logo .lc { font-weight: 700; font-size: 8.5pt; letter-spacing: 2.5px; line-height: 1.18; padding-bottom: 4px; }
+.logo.on-white .word { color: #6BAE2E; } .logo.on-white .lc { color: #666; }
+.logo.on-green .word { color: #ffffff; } .logo.on-green .lc { color: #e8f3da; }
+
+/* ---- Cover page ---- */
+.cover-bar { background: #6BAE2E; color: #fff; padding: 24px 40px 20px; }
+.cover-kicker { font-size: 11.5pt; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #e8f3da; margin: 13px 0 3px; }
+.cover-title { font-size: 24pt; font-weight: 800; letter-spacing: -.3px; margin: 0; }
+.cover-body { padding: 18px 40px 0; }
+.cover-fields { display: table; width: 100%; border-collapse: collapse; margin-bottom: 12px; }
+.cover-fields .row { display: table-row; }
+.cover-fields .cell { display: table-cell; padding: 6px 0; border-bottom: 1px solid #d8ded1; font-size: 12pt; }
+.cover-fields .label { width: 34%; font-weight: 700; color: #3f3f3f; }
+.cover-panel {
+  background: #F2F7EC; border: 1px solid #cfe2ba; border-left: 5px solid #6BAE2E;
+  border-radius: 3px; padding: 11px 18px; margin-bottom: 11px;
+}
+.cover-panel h3 { margin: 0 0 6px; font-size: 12pt; letter-spacing: .04em; color: #1E4227; text-transform: uppercase; }
+.cover-panel ul { margin: 0; padding-left: 20px; }
+.cover-panel li { margin-bottom: 4px; font-size: 12pt; }
+.cover-parts-table { width: 100%; border-collapse: collapse; font-size: 12pt; }
+.cover-parts-table th, .cover-parts-table td { text-align: left; padding: 3px 8px; border-bottom: 1px solid #e2e8da; }
+.cover-parts-table th { color: #3f3f3f; font-size: 11pt; text-transform: uppercase; letter-spacing: .05em; }
+.draft-banner {
+  border: 1.5px solid #B23A2E; background: #FBEDEB; color: #7a281f; border-radius: 3px;
+  padding: 10px 16px; font-size: 11.5pt; line-height: 1.4; margin: 12px 0 0;
+}
+.draft-banner strong { display: block; font-size: 12pt; margin-bottom: 3px; letter-spacing: .03em; text-transform: uppercase; }
+.teacher-banner {
+  border: 1.5px solid #1E4227; background: #eef3ea; color: #1E4227; border-radius: 3px;
+  padding: 10px 16px; font-size: 11.5pt; line-height: 1.4; margin: 12px 0 0;
+}
+.teacher-banner strong { display: block; font-size: 12pt; margin-bottom: 3px; letter-spacing: .03em; text-transform: uppercase; }
+
+/* ---- Body pages: dark "Part N" badge (copies the source's compact tag, not the
+   old green rectangle), plain unboxed instructions ---- */
+.part { break-before: page; }
+.part:first-of-type { break-before: auto; }
+.part-head { break-after: avoid; page-break-after: avoid; margin-bottom: 6px; }
+.part-head .label { display: inline-block; background: #2b2b2b; color: #fff; font-weight: 800;
+  font-size: 13pt; letter-spacing: .02em; padding: 5px 18px; border-radius: 3px 12px 3px 3px; }
+.part-title { font-size: 15pt; font-weight: 800; color: #1E4227; margin: 8px 0 4px; }
+.instructions {
+  font-size: 12pt; margin: 8px 0 4px; line-height: 1.45;
+  break-inside: avoid; page-break-inside: avoid;
+}
+.exam-note { font-size: 12pt; font-weight: 700; margin: 2px 0 14px; }
+.section-rule { border: none; border-top: 1px solid #999; margin: 10px 0 16px; }
+
+.passage-title { font-size: 16pt; font-weight: 800; margin: 6px 0 10px; text-align: center; }
+.passage p { font-size: 14pt; line-height: 1.55; margin: 0 0 12px; text-align: justify; }
+.passage.two-col { columns: 2; column-gap: 26px; }
+.passage.two-col p { text-align: justify; }
+.gapnum { font-weight: 800; color: #1E4227; }
+
+/* ---- Example graphics: literal answer-sheet-style boxes, not an inline highlight ---- */
+.example-block { margin: 2px 0 16px; font-size: 12pt; break-inside: avoid; page-break-inside: avoid; }
+.example-label { font-weight: 700; margin-right: 12px; }
+.bubble-row { display: inline-flex; align-items: center; gap: 7px; border: 1px solid #999;
+  border-radius: 4px; padding: 5px 12px; vertical-align: middle; }
+.bubble-row .bubble-num { font-weight: 800; margin-right: 4px; }
+.bubble { display: inline-flex; align-items: center; justify-content: center; width: 19px; height: 19px;
+  border: 1.4px solid #333; border-radius: 50%; font-size: 10.5pt; font-weight: 700; }
+.bubble.shaded { background: #1E4227; color: #fff; border-color: #1E4227; }
+.letterbox-row { display: inline-flex; align-items: center; gap: 2px; vertical-align: middle; }
+.letterbox-row .letterbox-num { font-weight: 800; margin-right: 10px; }
+.letterbox { display: inline-flex; align-items: center; justify-content: center; width: 17px; height: 21px;
+  border: 1.4px solid #333; font-weight: 700; font-size: 11pt; text-transform: uppercase; }
+
+.mcq-block { break-inside: avoid; page-break-inside: avoid; margin: 0 0 16px; }
+.mcq-q { font-size: 12pt; font-weight: 700; margin-bottom: 3px; }
+.mcq-context { font-size: 12pt; font-style: italic; color: #444; margin-bottom: 2px; }
+.mcq-options { display: flex; flex-wrap: wrap; gap: 4px 18px; margin: 5px 0 0 14px; }
+.mcq-options.stacked { display: block; margin-left: 14px; }
+.mcq-options.stacked .opt { display: block; margin-bottom: 3px; }
+.opt { font-size: 12pt; white-space: nowrap; }
+.opt b { display: inline-block; width: 15px; }
+
+.gap-list { columns: 2; column-gap: 28px; margin-top: 4px; }
+.gap-item { break-inside: avoid; page-break-inside: avoid; font-size: 12pt; margin-bottom: 9px; }
+
+/* Word-formation stems: plain bold text, no box (copies the source's unboxed
+   right-margin stems as closely as a reflowed layout allows) */
+.stems-list { columns: 2; column-gap: 24px; margin: 10px 0 14px; break-inside: avoid; page-break-inside: avoid; }
+.stems-list .stem-item { font-size: 12pt; margin-bottom: 6px; }
+.stems-list .stem-item b { color: #1A1A1A; letter-spacing: .02em; }
+
+.transform-item { break-inside: avoid; page-break-inside: avoid; margin: 0 0 18px; }
+.transform-item .q1 { font-size: 12pt; margin-bottom: 3px; }
+.transform-item .kw { font-weight: 800; letter-spacing: .04em; display: block; margin: 3px 0; }
+.transform-item .gapped { font-size: 12pt; }
+
+.kwt-example { margin: 4px 0 18px; font-size: 12pt; break-inside: avoid; page-break-inside: avoid; }
+.kwt-example .kw { font-weight: 800; letter-spacing: .04em; display: block; margin: 3px 0; }
+.answer-sheet-box { display: inline-block; border: 1.3px solid #333; border-radius: 2px; padding: 3px 14px;
+  font-family: "Liberation Serif", "Times New Roman", serif; font-style: italic; font-size: 12.5pt; margin-top: 4px; }
+
+.gap-review-list { margin: 10px 0 0 18px; }
+.gap-review-list li { font-size: 12pt; margin-bottom: 4px; }
+
+/* Answer slot: shaded number + blank box, the recurring "answer sheet" motif
+   used for gapped-text numbers and multiple-matching answers */
+.answer-slot { display: inline-flex; border: 1.3px solid #333; border-radius: 2px; overflow: hidden;
+  font-weight: 800; font-size: 11.5pt; vertical-align: middle; }
+.answer-slot .num { background: #d9d9d9; padding: 2px 8px; }
+.answer-slot .blank { padding: 2px 20px; background: #fff; }
+.answer-slot.inline { margin: 0 2px; }
+
+.gaptext-options { border: 1px solid #333; border-radius: 3px; padding: 14px 20px; margin: 8px 0 4px;
+  columns: 2; column-gap: 26px; break-inside: avoid; page-break-inside: avoid; }
+.gaptext-options .opt-item { font-size: 12pt; margin: 0 0 14px; break-inside: avoid; page-break-inside: avoid; }
+.gaptext-options .opt-item b { margin-right: 8px; }
+
+.mm-text { break-inside: avoid; page-break-inside: avoid; margin: 0 0 16px; }
+.mm-text .who { font-weight: 800; font-size: 13pt; margin: 0 0 3px; }
+.mm-text p { font-size: 12pt; line-height: 1.5; margin: 4px 0 0; text-align: justify; }
+.mm-texts-box { border: 1px solid #333; border-radius: 3px; padding: 14px 20px; margin: 8px 0 16px;
+  columns: 2; column-gap: 26px; }
+
+.mm-questions { margin-top: 6px; }
+.mm-q { break-inside: avoid; page-break-inside: avoid; font-size: 12pt; margin: 0 0 14px;
+  display: flex; justify-content: space-between; align-items: center; gap: 14px; }
+.mm-q .qtext { flex: 1; }
+
+.answer-line { display: inline-block; border-bottom: 1px solid #999; width: 26px; text-align: center; }
+
+/* ---- Writing tasks ---- */
+.wtask-block { margin: 0 0 20px; }
+.wtask-block .wprompt { font-size: 12.5pt; margin: 0 0 10px; }
+.compulsory-tag { display: inline-block; background: #1E4227; color: #fff; font-size: 10.5pt; font-weight: 700;
+  letter-spacing: .05em; padding: 2px 9px; border-radius: 2px; margin-left: 8px; vertical-align: middle; }
+.choice-tag { display: inline-block; background: #888; color: #fff; font-size: 10.5pt; font-weight: 700;
+  letter-spacing: .05em; padding: 2px 9px; border-radius: 2px; margin-left: 8px; vertical-align: middle; }
+.write-cue { font-weight: 700; margin-top: 10px; }
+
+/* Notebook graphic for the Part 1 essay notes, copying the source's spiral-pad box */
+.notebook { border: 1px solid #999; border-radius: 5px; margin: 14px 20px 18px; break-inside: avoid; page-break-inside: avoid; }
+.notebook-spiral { background: #e6e6e6; border-bottom: 1px solid #999; border-radius: 5px 5px 0 0;
+  padding: 5px 10px; font-size: 15pt; letter-spacing: 1px; color: #9a9a9a; text-align: center;
+  overflow: hidden; white-space: nowrap; line-height: 1; }
+.notebook-body { padding: 16px 26px 18px; }
+.notebook-title { font-size: 14pt; font-weight: 700; text-align: center; margin: 0 0 10px; }
+.notebook hr { border: none; border-top: 1px solid #999; margin: 8px 0; }
+.notebook-label { font-weight: 800; margin: 10px 0 2px; }
+.notebook ol { margin: 8px 0 0 20px; }
+.notebook ol li { font-size: 12.5pt; margin-bottom: 4px; }
+
+/* Magazine-announcement box (bordered, green rule) for review/article tasks */
+.notice-box { border: 1.5px solid #6BAE2E; border-radius: 3px; padding: 14px 22px; margin: 10px 20px 16px;
+  break-inside: avoid; page-break-inside: avoid; }
+.notice-box .notice-title { font-size: 15pt; font-weight: 800; margin: 0 0 8px; }
+.notice-box .notice-body { font-size: 12.5pt; }
+
+/* Email box for the email task */
+.email-box { border: 1px solid #999; border-radius: 4px; margin: 10px 20px 16px; overflow: hidden;
+  break-inside: avoid; page-break-inside: avoid; }
+.email-header { background: #e6e6e6; padding: 7px 14px; font-size: 11pt; color: #666; }
+.email-body { background: #fff; padding: 14px 20px; font-size: 12.5pt; }
+.email-body p { margin: 0 0 8px; }
+
+/* ---- Listening ---- */
+.lsent-list { margin-top: 6px; }
+.lsent-item { break-inside: avoid; page-break-inside: avoid; font-size: 12pt; margin-bottom: 13px; }
+.lsent-item .num { font-weight: 800; margin-right: 4px; }
+
+.speaker-list { columns: 2; column-gap: 26px; margin: 6px 0 16px; break-inside: avoid; page-break-inside: avoid; }
+.speaker-list .opt-item { font-size: 12pt; margin: 0 0 16px; break-inside: avoid; page-break-inside: avoid; }
+.speaker-list .opt-item b { margin-right: 8px; }
+.speaker-answers { margin-top: 4px; }
+.speaker-answers .mm-q { margin: 0 0 16px; }
+
+.script-block { background: #fbfcf9; border: 1px solid #e2e8da; border-radius: 3px; padding: 12px 16px;
+  margin: 0 0 16px; font-size: 12pt; line-height: 1.55; }
+.script-block.short { break-inside: avoid; page-break-inside: avoid; }
+.script-block .spk { font-weight: 800; color: #1E4227; }
+.script-label { font-size: 11pt; font-weight: 800; text-transform: uppercase; letter-spacing: .05em;
+  color: #1E4227; margin: 0 0 4px; }
+.key-tag { display: inline-block; background: #1E4227; color: #fff; font-weight: 800; font-size: 11pt;
+  padding: 1px 9px; border-radius: 2px; margin-left: 8px; }
+
+/* ---- Answer key tables ---- */
+.ak-table { width: 100%; border-collapse: collapse; margin: 6px 0 18px; break-inside: avoid; page-break-inside: avoid; }
+.ak-table th, .ak-table td { border: 1px solid #d8ecc4; padding: 5px 9px; font-size: 12pt; text-align: left; }
+.ak-table th { background: #F2F7EC; color: #1E4227; }
+.bs-note { font-size: 11.5pt; color: #444; margin: 4px 0 18px; padding-left: 4px; border-left: 3px solid #cfd; }
+
+@page {
+  size: A4;
+  margin: 1.9cm 1.8cm 1.55cm 1.8cm;
+  @bottom-left {
+    content: "SOMERSET LANGUAGE CENTRE \00B7 VALENCIA \00B7 B2 EXAM PRACTICE \00B7 GEN01 (DRAFT)";
+    font-family: "Liberation Sans", Arial, sans-serif; font-size: 8pt; letter-spacing: .09em;
+    color: #8a8a7a; white-space: nowrap; border-top: 1px solid #dcdcd4; padding-top: 7px; vertical-align: top;
+  }
+  @bottom-center { content: " "; width: 100%; border-top: 1px solid #dcdcd4; }
+  @bottom-right {
+    content: counter(page);
+    font-family: "Liberation Sans", Arial, sans-serif; font-size: 11.5pt; font-weight: bold;
+    color: #fff; background: #1E4227; white-space: nowrap; padding: 2px 10px; border-radius: 2px;
+    vertical-align: top; margin-top: 2px;
+  }
+}
+</style></head><body>
+
+<section class="cover-page">
+  <div class="cover-bar">
+    <div class="logo on-green"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+    <div class="cover-kicker">Somerset Language Centre &middot; B2-level exam practice &middot; Cambridge format</div>
+    <p class="cover-title">Listening — Audioscript</p>
+  </div>
+  <div class="cover-body">
+    <div class="cover-fields"><div class="row"><div class="cell label">Candidate Name</div><div class="cell"></div></div><div class="row"><div class="cell label">Candidate Number</div><div class="cell"></div></div><div class="row"><div class="cell label">Centre</div><div class="cell"></div></div><div class="row"><div class="cell label">Date</div><div class="cell"></div></div></div>
+    <div class="cover-panel">
+      <h3>Time allowed</h3>
+      <p style="margin:0;font-size:13pt;">for teacher use</p>
+    </div>
+    <div class="cover-panel">
+      <h3>Instructions to candidates</h3>
+      <ul><li>Read each script aloud twice, at a natural exam pace, with a short pause between the two readings.</li><li>Do not show this document to students.</li></ul>
+    </div>
+    <div class="cover-panel">
+      <h3>Information for candidates</h3>
+      <table class="cover-parts-table"><tr><th>Part</th><th>Questions</th></tr><tr><td>Part 1</td><td>8 extracts</td></tr><tr><td>Part 2</td><td>1 monologue</td></tr><tr><td>Part 3</td><td>5 speakers</td></tr><tr><td>Part 4</td><td>1 interview</td></tr></table>
+    </div>
+    <div class="teacher-banner"><strong>Teacher copy — confidential</strong>
+          Contains answers and/or the listening scripts. Do not give this copy to students.</div>
+  </div>
+</section>
+<div class="part"><div class="part-head"><span class="label">Part 1 script</span></div><div class="script-block short"><div class="script-label">Extract 1 <span class="key-tag">Key: A</span></div>“I finally got round to doing that pottery course I'd been talking about for years — my sister actually bought me the voucher for my birthday, otherwise I probably never would have signed up. I was terrible at first, everything kept collapsing on the wheel, but by the third session I'd made something I was proud of. I'm already looking at booking the next level up.”</div><div class="script-block short"><div class="script-label">Extract 2 <span class="key-tag">Key: B</span></div>“We'd been looking for a new flat for months, and I was starting to lose hope — everything in our price range needed so much work. Then a colleague mentioned a place near hers that had just come onto the market. We went to see it that same evening and put in an offer the next morning.”</div><div class="script-block short"><div class="script-label">Extract 3 <span class="key-tag">Key: B</span></div>“Everyone else in my class was really excited about the school trip, but I'd been to that museum loads of times with my parents, so I wasn't that bothered. It turned out there was a whole new exhibition about space travel, though, and I ended up being the one dragging my friends around wanting to see everything.”</div><div class="script-block short"><div class="script-label">Extract 4 <span class="key-tag">Key: C</span></div>“I switched careers about two years ago, from marketing into teaching, and people still ask if I regret the pay cut. I don't — I reached a point where doing something useful mattered more to me than the salary. It wasn't an easy decision at the time, and my first year in the classroom was genuinely exhausting. But I wouldn't go back.”</div><div class="script-block short"><div class="script-label">Extract 5 <span class="key-tag">Key: A</span></div>“I twisted my ankle playing five-a-side about six weeks ago, and I was convinced I'd be back on the pitch within a fortnight. The physio had other ideas, though — she was quite blunt about it, telling me straight that rushing it would only make things worse in the long run. I'm still doing the exercises she gave me every single day, even though I'm fed up with them.”</div><div class="script-block short"><div class="script-label">Extract 6 <span class="key-tag">Key: C</span></div>“I've been trying to learn Portuguese for about a year now, mostly using an app on my phone during my commute. It's fine for building up vocabulary, but I noticed recently that I still freeze up completely the moment I try to have an actual conversation with someone. So I've just signed up for a weekly class with real people instead.”</div><div class="script-block short"><div class="script-label">Extract 7 <span class="key-tag">Key: C</span></div>“A friend recommended this new place in town, and I went in with fairly high expectations after everything she'd said. The food itself was excellent, genuinely some of the best I've had this year, but the service was so slow that we ended up sitting there for nearly three hours for what should have been a quick dinner. I'd still go back, but I'd book much earlier in the evening next time.”</div><div class="script-block short"><div class="script-label">Extract 8 <span class="key-tag">Key: B</span></div>“I started volunteering at the animal shelter almost by accident — a friend cancelled on me one Saturday and I ended up going along to what was supposed to be her shift instead of mine. That was over a year ago now, and I still go every single week. What surprised me most wasn't how much I enjoyed working with the animals, which I expected, but how much I've got to know the other volunteers there.”</div></div><div class="part"><div class="part-head"><span class="label">Part 2 script</span></div>
+      <div class="script-block"><div class="script-label">“Welcome to Riverside Photography Club”</div>Good evening everyone, and welcome to your first session with Riverside Photography Club. I'm Dan, and I'll be running most of the Tuesday evening sessions this term.<br>Just a bit of background: the club was founded in nineteen ninety-four, which actually makes us one of the oldest photography clubs in the whole region. We meet here at the community centre every week, except during the month of August, when we take a short summer break.<br>This term, we're focusing mainly on portrait photography, which I know a few of you specifically signed up for. We'll spend the first four weeks on lighting techniques before moving on to editing software in the second half of term.<br>If you haven't brought a camera tonight, don't worry — we do have a small number of cameras you can borrow for the evening, though I'd recommend bringing your own from next week if you can, even if it's just the one on your phone.<br>Membership for the full term costs thirty-five pounds, and that includes access to our online resource library as well as the two field trips we run each term. Our first field trip this term will be to Alderley Castle, which most of you will know is about twenty minutes from here by car.<br>One thing I do need from everyone tonight is a completed registration form — you'll find these on the table by the door, and I'll need them back to me by next Tuesday at the very latest, so please don't forget.<br>Finally, a quick note on our online group: we post weekly challenges and feedback there, and it's run through an app called Lensview rather than the usual social media platforms, mainly because it lets us share full-resolution images without them losing quality.<br>Right, let's get started with tonight's session, which is going to be all about understanding your camera's manual settings.</div>
+      <p style="font-size:11.5pt;font-weight:700;margin:8px 0 4px;">Gap keys:</p>
+      <ul class="gap-review-list"><li>9. The club was founded in ___ . — <b>1994 (nineteen ninety-four)</b></li><li>10. The club does not meet during the month of ___ . — <b>August</b></li><li>11. This term the club is focusing mainly on ___ photography. — <b>portrait</b></li><li>12. The first four weeks of term will cover ___ . — <b>lighting techniques</b></li><li>13. Students who don't bring a camera can ___ one for the evening. — <b>borrow</b></li><li>14. Full membership for the term costs £ ___ . — <b>35</b></li><li>15. The first field trip this term will be to ___ . — <b>Alderley Castle</b></li><li>16. Everyone must hand in a completed ___ by next Tuesday. — <b>registration form</b></li><li>17. The club's online group is run through an app called ___ . — <b>Lensview</b></li><li>18. Tonight's session will focus on the camera's ___ settings. — <b>manual</b></li></ul></div><div class="part"><div class="part-head"><span class="label">Part 3 script</span></div><div class="script-block short"><div class="script-label">Speaker 1 (Q19) <span class="key-tag">Key: C</span></div>“I'd been made redundant twice in three years working for other people, and after the second time I just thought, right, I'm not doing this again — I'm going to work for myself from now on. It wasn't some brave lifelong dream, if I'm honest, it was more that I'd simply had enough of being let go through no fault of my own.”</div><div class="script-block short"><div class="script-label">Speaker 2 (Q20) <span class="key-tag">Key: G</span></div>“Everyone assumes the hard part is coming up with the idea, but for me it was genuinely the admin — registering the company, understanding the tax side of things, all of that. I'd never dealt with anything like it before and it took me twice as long as I expected just to get set up properly, let alone actually start trading.”</div><div class="script-block short"><div class="script-label">Speaker 3 (Q21) <span class="key-tag">Key: H</span></div>“My old university flatmate got in touch completely out of the blue, saying she'd had this idea for years and wanted to know if I fancied doing it with her. I said yes almost immediately, which looking back was a bit reckless, but three years on we still run the company together and it's honestly the best decision I've made.”</div><div class="script-block short"><div class="script-label">Speaker 4 (Q22) <span class="key-tag">Key: A</span></div>“I remember an aunt of mine, completely unprompted, offering to lend me the money to get started after hearing me talk about the idea at a family dinner. I hadn't asked her for anything, and I was genuinely shocked — it wasn't a huge amount, but it was enough to cover the first few months of rent on a small workspace.”</div><div class="script-block short"><div class="script-label">Speaker 5 (Q23) <span class="key-tag">Key: B</span></div>“I honestly thought I'd be able to run the business in the evenings and weekends alongside my normal job, at least for the first year. That turned out to be completely unrealistic — within a couple of months it had basically taken over every spare hour I had, and I ended up having to quit my job much sooner than I'd planned.”</div></div><div class="part"><div class="part-head"><span class="label">Part 4 script</span></div>
+      <div class="script-block"><p><span class="spk">Interviewer:</span> Today I'm talking to wildlife photographer Claire Byrne about her new book, out this month. Claire, welcome.</p><p><span class="spk">Claire:</span> Thanks for having me.</p><p><span class="spk">Interviewer:</span> So, this book focuses on urban wildlife specifically — animals living in cities. What drew you to that, after years photographing more remote locations?</p><p><span class="spk">Claire:</span> It was almost an accident. I was between bigger expeditions, stuck in London for a few months longer than planned, and I started noticing foxes on my evening walks. I thought, well, I've got the equipment sitting here doing nothing, I may as well use it. What started as something to fill the time completely took over — I ended up spending eighteen months on it in the end.</p><p><span class="spk">Interviewer:</span> And was it harder or easier than photographing wildlife somewhere like the Amazon, say?</p><p><span class="spk">Claire:</span> People always assume it must be easier, because you're not dealing with extreme heat or difficult terrain, but I'd say it was harder in its own way. Urban animals are very wary of people — more wary than animals that rarely see humans at all — so you actually need more patience, not less. I spent whole nights getting nothing usable at all.</p><p><span class="spk">Interviewer:</span> Was there a particular image in the book that mattered most to you?</p><p><span class="spk">Claire:</span> There's a shot of a fox family denning under an old railway bridge that I'm proud of, but it's not actually my favourite in the book. My favourite is a much quieter image — just a heron standing completely still on a car park roof at dawn. It's not dramatic at all, but something about it captures exactly what I was trying to say with the whole project.</p><p><span class="spk">Interviewer:</span> Which is?</p><p><span class="spk">Claire:</span> That wildlife isn't only out there somewhere far away that most of us will never see. It's already here, right alongside us, if we're willing to actually look for it.</p><p><span class="spk">Interviewer:</span> Do you have advice for someone wanting to get into this kind of photography themselves?</p><p><span class="spk">Claire:</span> Don't wait for the perfect equipment — that's probably my main advice. People always ask me about camera gear and think that's the barrier, but the biggest difference is just spending time outdoors, learning the patterns of the animals near you. I made most of my best early images with equipment I'd now consider fairly basic.</p><p><span class="spk">Interviewer:</span> And what's next for you?</p><p><span class="spk">Claire:</span> I'm actually taking a proper break for the first time in years. It feels strange to admit that. After that, I have a vague idea about a similar project somewhere in Spain, maybe around Valencia — there's a lot of birdlife in the wetlands just south of the city that hasn't really been documented. But that's still just an idea at this stage, nothing confirmed.</p><p><span class="spk">Interviewer:</span> Claire Byrne, thank you very much.</p><p><span class="spk">Claire:</span> Thank you.</p></div></div>
+</body></html>

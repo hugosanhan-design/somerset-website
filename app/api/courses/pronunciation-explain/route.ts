@@ -24,6 +24,25 @@ Examples of good 'how' values:
 
 No 'why', no etymology, no history. Never mention exams or scores.`
 
+// Spanish for Expats: English speakers learning the Spanish spoken in Valencia (Castilian).
+const SYSTEM_ES = `You are a pronunciation coach for English speakers learning Spanish in Valencia, Spain. Be BRIEF. They need to imitate immediately, no lectures.
+
+Return strict JSON only:
+{
+  "ipa": "Castilian Spanish IPA, e.g. /ˈθita/",
+  "how": "ONE short sentence: the physical action. Where tongue, lips, air go. Compare to an English sound they know if helpful. Max 15 words.",
+  "rule": "The ONE rule, e.g. 'J is a rough h from the throat'. null if none.",
+  "similar": ["2 common Spanish words with the same tricky sound"]
+}
+
+Examples of good 'how' values:
+- cita /θ/: "Like English 'th' in 'think': in Valencia the c before i is a th."
+- perro /r/: "Roll the r: tip of the tongue flutters behind the top teeth."
+- trabajo /x/: "Like a strong English 'h', pushed from the back of the throat."
+- documento /o/: "Short, pure 'o', no glide into 'ou' like English 'go'."
+
+No 'why', no etymology, no history. Never mention exams or scores.`
+
 type PronExplain = {
   ipa: string
   how: string
@@ -32,13 +51,14 @@ type PronExplain = {
 }
 
 export async function POST(req: NextRequest) {
-  const body = (await req.json().catch(() => ({}))) as { word?: string }
+  const body = (await req.json().catch(() => ({}))) as { word?: string; lang?: string }
+  const es = body.lang === 'es'
   const word = String(body.word || '').trim().toLowerCase().slice(0, 60)
-  if (!word || !/^[a-z'-]+$/.test(word)) {
+  if (!word || !(es ? /^[a-zà-öø-ÿ'-]+$/ : /^[a-z'-]+$/).test(word)) {
     return NextResponse.json({ error: 'Invalid word.' }, { status: 400 })
   }
 
-  const cacheKey = `pron2:${word}`
+  const cacheKey = es ? `pron-es1:${word}` : `pron2:${word}`
   const cached = await getCached<PronExplain>(cacheKey)
   if (cached) return NextResponse.json(cached)
 
@@ -46,7 +66,7 @@ export async function POST(req: NextRequest) {
     const msg = await client.messages.create({
       model: 'claude-haiku-4-5-20251001',
       max_tokens: 600,
-      system: SYSTEM,
+      system: es ? SYSTEM_ES : SYSTEM,
       messages: [{ role: 'user', content: `Word: "${word}"` }],
     })
     const raw = msg.content.find((c): c is Anthropic.TextBlock => c.type === 'text')?.text || ''

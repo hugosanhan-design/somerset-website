@@ -21,7 +21,17 @@ export type Progress = {
   // The student's own mistakes from speaking, revised later in Spot the mistake.
   personal?: Record<string, PersonalFix>
   speaking?: { at: number; accuracy: number; fluency: number; words: number }[]
+  // Free writing the student sends to the teacher, keyed '<activity>:<task>'.
+  writing?: Record<string, { text: string; at: number }>
+  // Every exercise item the student got wrong, keyed by item id: what they chose, how often,
+  // and how many clean answers in a row they have given since (in "Improve my mistakes").
+  mistakes?: Record<string, Mistake>
 }
+
+export type Mistake = { n: number; picks: string[]; at: number; fixes: number }
+
+// Clean answers in a row needed before an item leaves the "to improve" list.
+export const FIXED_AFTER = 2
 
 export type PersonalFix = { pre: string; seg: string; post: string; fix: string; why: string; at: number }
 
@@ -62,6 +72,30 @@ export function recordAnswer(p: Progress, id: string, cleanFirstTry: boolean, no
 export function markActive(p: Progress, now = Date.now()): Progress {
   const today = localDate(now)
   return p.days.includes(today) ? p : { ...p, days: [...p.days, today].sort() }
+}
+
+// A wrong answer: count it, keep the last few things the student chose, restart the run.
+export function addMistake(p: Progress, id: string, pick: string, now = Date.now()): Progress {
+  const key = id.slice(0, 60)
+  const prev = p.mistakes?.[key]
+  const label = pick.trim().slice(0, 60)
+  const picks = [...(prev?.picks ?? []).filter(x => x !== label), ...(label ? [label] : [])].slice(-5)
+  const mistakes = { ...(p.mistakes ?? {}), [key]: { n: (prev?.n ?? 0) + 1, picks, at: now, fixes: 0 } }
+  return markActive({ ...p, mistakes }, now)
+}
+
+// A clean first-try answer in "Improve my mistakes".
+export function addFix(p: Progress, id: string, now = Date.now()): Progress {
+  const key = id.slice(0, 60)
+  const prev = p.mistakes?.[key]
+  if (!prev) return p
+  return markActive({ ...p, mistakes: { ...p.mistakes, [key]: { ...prev, at: now, fixes: prev.fixes + 1 } } }, now)
+}
+
+export function openMistakeIds(p: Progress, known?: (id: string) => boolean): string[] {
+  return Object.entries(p.mistakes ?? {})
+    .filter(([id, m]) => m.fixes < FIXED_AFTER && (!known || known(id)))
+    .map(([id]) => id)
 }
 
 // Revise picks: overdue first (oldest due first), then weakest box, then most-missed.
@@ -146,7 +180,17 @@ export function mergeProgress(a: Progress, b: Progress): Progress {
     .filter((x, i, arr) => arr.findIndex(y => y.at === x.at) === i)
     .sort((x, y) => x.at - y.at)
     .slice(-50)
-  return { v: 1, items, days: Array.from(new Set([...a.days, ...b.days])).sort(), plan, best, lessons, personal, speaking }
+  const writing = { ...(a.writing ?? {}) }
+  for (const [k, v] of Object.entries(b.writing ?? {})) if (!writing[k] || v.at > writing[k].at) writing[k] = v
+  // Mistakes: the copy touched most recently wins its counters; the picks are joined.
+  const mistakes: Record<string, Mistake> = { ...(a.mistakes ?? {}) }
+  for (const [k, v] of Object.entries(b.mistakes ?? {})) {
+    const x = mistakes[k]
+    if (!x) { mistakes[k] = v; continue }
+    const newer = v.at > x.at ? v : x
+    mistakes[k] = { n: Math.max(x.n, v.n), picks: Array.from(new Set([...x.picks, ...v.picks])).slice(-5), at: newer.at, fixes: newer.fixes }
+  }
+  return { v: 1, items, days: Array.from(new Set([...a.days, ...b.days])).sort(), plan, best, lessons, personal, speaking, writing, mistakes }
 }
 
 export function sanitiseProgress(raw: unknown): Progress {
@@ -183,6 +227,20 @@ export function sanitiseProgress(raw: unknown): Progress {
       .filter(x => x && typeof x === 'object')
       .map(x => ({ at: Number(x.at) || 0, accuracy: Number(x.accuracy) || 0, fluency: Number(x.fluency) || 0, words: Number(x.words) || 0 }))
       .slice(-50)
+  }
+  if (r.writing && typeof r.writing === 'object') {
+    p.writing = {}
+    for (const [k, v] of Object.entries(r.writing).slice(0, 40)) {
+      if (k.length < 40 && v && typeof v === 'object' && typeof v.text === 'string') p.writing[k] = { text: v.text.slice(0, 5000), at: Number(v.at) || 0 }
+    }
+  }
+  if (r.mistakes && typeof r.mistakes === 'object') {
+    p.mistakes = {}
+    for (const [k, v] of Object.entries(r.mistakes).slice(0, 200)) {
+      if (k.length > 60 || !v || typeof v !== 'object') continue
+      const picks = Array.isArray(v.picks) ? v.picks.filter(x => typeof x === 'string').map(x => x.slice(0, 60)).slice(-5) : []
+      p.mistakes[k] = { n: Math.max(0, Math.min(999, Number(v.n) || 0)), picks, at: Number(v.at) || 0, fixes: Math.max(0, Math.min(99, Number(v.fixes) || 0)) }
+    }
   }
   return p
 }

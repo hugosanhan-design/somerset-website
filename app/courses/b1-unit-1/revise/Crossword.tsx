@@ -6,7 +6,7 @@ import type { WordItem } from '@/lib/courses/b1u1'
 
 type Dir = 'across' | 'down'
 
-// Clue → typed word, on a real grid. "Check" locks every finished word that is right;
+// Clue → typed word, on a real grid. A word locks green as soon as it is right; "Check" marks wrong letters;
 // a word solved on the first check counts as a clean recall, later or revealed ones don't.
 export default function Crossword({ items, onRecord, onDone }: {
   items: WordItem[]
@@ -41,6 +41,21 @@ export default function Crossword({ items, onRecord, onDone }: {
     return () => clearTimeout(t)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [allDone])
+
+  // Lock each word the moment it is complete and right (instant feedback, no Check needed).
+  useEffect(() => {
+    const done: Record<string, 'clean' | 'late'> = {}
+    for (const p of placed) {
+      if (solved[p.id]) continue
+      const letters = cellsOf(p).map(([r, c]) => grid[r][c])
+      if (letters.every(Boolean) && letters.join('') === p.word) done[p.id] = missed.has(p.id) ? 'late' : 'clean'
+    }
+    const ids = Object.keys(done)
+    if (!ids.length) return
+    ids.forEach(id => onRecord(id, done[id] === 'clean'))
+    setSolved(s => ({ ...s, ...done }))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [grid])
 
   function select(r: number, c: number) {
     const here = wordsAt(r, c)
@@ -189,7 +204,7 @@ export default function Crossword({ items, onRecord, onDone }: {
           : <>
               <button type="button" className="btn" onClick={check} disabled={filledCount === 0}>Check</button>
               <button type="button" className="help-btn" onClick={reveal}>Reveal this word</button>
-              <span className="xw-hint">{Object.keys(solved).length} of {placed.length} done · a word right on its first check moves up a level</span>
+              <span className="xw-hint">{Object.keys(solved).length} of {placed.length} done · a right word locks in by itself · Check shows wrong letters</span>
             </>}
       </div>
     </div>

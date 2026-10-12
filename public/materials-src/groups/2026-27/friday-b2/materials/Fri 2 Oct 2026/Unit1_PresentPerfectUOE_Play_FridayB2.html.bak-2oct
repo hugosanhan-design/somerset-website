@@ -184,7 +184,7 @@
 
 <div class="toggle-bar">
   <button class="toggle-btn active" id="btnTrio" onclick="showVersion('trio')">Trio &middot; Ainhoa, Sonia, Luc&iacute;a</button>
-  <button class="toggle-btn" id="btnQuartet" onclick="showVersion('quartet')">Group of 4 &middot; Elena, Marta, Valeria, Zoe</button>
+  <button class="toggle-btn" id="btnQuartet" onclick="showVersion('quartet')">Group of 4 &middot; Elena, Marta, Valeria, Nora</button>
 </div>
 
 <!-- ================= TRIO VERSION ================= -->
@@ -217,18 +217,18 @@
     <span class="cast-pill char-a">Elena</span>
     <span class="cast-pill char-b">Marta</span>
     <span class="cast-pill char-c">Valeria</span>
-    <span class="cast-pill char-d">Zoe</span>
+    <span class="cast-pill char-d">Nora</span>
   </div>
   <p class="scene-setup">Cycling along the Turia gardens on a Sunday afternoon.</p>
   <p class="focus-tags">Present perfect simple &amp; continuous &middot; phrasal verbs &middot; prepositions (p.13)</p>
   <main>
     <div class="line char-a"><div class="char-name">Elena</div><div class="line-text">I can't believe it's <b>been</b> three weeks since school finished &mdash; I've <b>missed</b> the Turia gardens so much.</div></div>
-    <div class="line char-b"><div class="char-name">Marta</div><div class="line-text">Me too! Zoe, have you <b>ever cycled</b> here before? It's basically the whole city on one bike path.</div></div>
-    <div class="line char-d"><div class="char-name">Zoe</div><div class="line-text"><b>Never</b> &mdash; I only moved here in September, remember? But I've <b>already fallen</b> in love with it. Everyone's been so welcoming, we <b>hit it off</b> straight away.</div></div>
+    <div class="line char-b"><div class="char-name">Marta</div><div class="line-text">Me too! Nora, have you <b>ever cycled</b> here before? It's basically the whole city on one bike path.</div></div>
+    <div class="line char-d"><div class="char-name">Nora</div><div class="line-text"><b>Never</b> &mdash; I only moved here in September, remember? But I've <b>already fallen</b> in love with it. Everyone's been so welcoming, we <b>hit it off</b> straight away.</div></div>
     <div class="line char-c"><div class="char-name">Valeria</div><div class="line-text">Aw, we're glad you joined! Although Elena's <b>been getting</b> me <b>down</b> all summer complaining about her phone.</div></div>
     <div class="line char-a"><div class="char-name">Elena</div><div class="line-text">Because it broke and I <b>still haven't fixed</b> it! I've <b>been relying</b> on Marta for everything.</div></div>
     <div class="line char-b"><div class="char-name">Marta</div><div class="line-text">True, and honestly it's starting to <b>get</b> me <b>down</b> too, ha. Anyway, has anyone read that article about music and the brain?</div></div>
-    <div class="line char-d"><div class="char-name">Zoe</div><div class="line-text">Yes! It said your brain <b>concentrates on</b> predicting the next note, and when it's right, it gives you a little reward &mdash; that's why a good song can <b>cheer</b> you <b>up</b> instantly.</div></div>
+    <div class="line char-d"><div class="char-name">Nora</div><div class="line-text">Yes! It said your brain <b>concentrates on</b> predicting the next note, and when it's right, it gives you a little reward &mdash; that's why a good song can <b>cheer</b> you <b>up</b> instantly.</div></div>
     <div class="line char-c"><div class="char-name">Valeria</div><div class="line-text">That explains why I nearly <b>burst into</b> tears at the fireworks concert in July &mdash; the music just got to me.</div></div>
     <div class="stage-direction">Elena checks her watch.</div>
     <div class="line char-a"><div class="char-name">Elena</div><div class="line-text">Sharing stuff like that really <b>leads to</b> stronger friendships, I think. Right, shall we get going before it gets dark?</div></div>
@@ -238,7 +238,7 @@
 </div>
 
 <div class="cast-note">
-  <b>Teacher's note (not for students).</b> Two full, different scripts &mdash; not the same scene with names swapped &mdash; because the group is now seven (Zoe joined 25 Sep 2026): the established trio (Ainhoa, Sonia, Luc&iacute;a) performs one, and the group of four (Elena, Marta, Valeria, Zoe) performs the other, so both groups run their own play in the same class rather than repeating one script. Both versions drill present perfect simple/continuous with the SB p.12 adverbs (already, still, yet, just, ever, never, before) and all seven p.13 phrasal verbs (go off, cheer up, chill out, hit it off, fall out, get down, stand up) plus four of the p.13 prepositions (lead to, concentrate on, responsible for &rarr; implied via "relying on", burst into). The Valorie Salimpoor open-cloze passage (music predicting the brain's reward response) is referenced in both scenes as a natural bridge into the Exam Task, paraphrased rather than quoted. Zoe's line in the quartet places her as an established member of the group, not a guest.
+  <b>Teacher's note (not for students).</b> Two full, different scripts &mdash; not the same scene with names swapped &mdash; because the group is now seven (Nora joined 25 Sep 2026): the established trio (Ainhoa, Sonia, Luc&iacute;a) performs one, and the group of four (Elena, Marta, Valeria, Nora) performs the other, so both groups run their own play in the same class rather than repeating one script. Both versions drill present perfect simple/continuous with the SB p.12 adverbs (already, still, yet, just, ever, never, before) and all seven p.13 phrasal verbs (go off, cheer up, chill out, hit it off, fall out, get down, stand up) plus four of the p.13 prepositions (lead to, concentrate on, responsible for &rarr; implied via "relying on", burst into). The Valorie Salimpoor open-cloze passage (music predicting the brain's reward response) is referenced in both scenes as a natural bridge into the Exam Task, paraphrased rather than quoted. Nora's line in the quartet places her as an established member of the group, not a guest.
 </div>
 
 <footer>Somerset Language Centre &middot; Val&egrave;ncia &middot; Friday B2 &middot; Unit 1</footer>

@@ -4,6 +4,8 @@ import { Fragment, useEffect, useRef, useState, type ReactNode } from 'react'
 import { createPortal } from 'react-dom'
 import { parseSegment, summarise, type Segment, type SpeakingSummary } from '@/lib/courses/speaking'
 import { checkAnswer } from '@/lib/courses/b1u1'
+import { checkAnswerSE } from '@/lib/courses/spanishExpats'
+import { SPEAKING_EN, type SpeakingLang } from '@/lib/courses/speakingLang'
 
 const MAX_SECONDS = 90
 const STREAK_GOAL = 3
@@ -25,7 +27,8 @@ type DrillPhase = 'intro' | 'play-slow' | 'echo-slow' | 'play-hard' | 'echo-hard
 type WordHint = '' | 'go' | 'checking' | 'listen' | 'yourturn'
 type PronGoal = 'understood' | 'british'
 
-const clean = (w: string) => w.toLowerCase().replace(/[^a-z']/g, '')
+// Letters include accented Latin ones, so Spanish words (está, años) stay whole.
+const clean = (w: string) => w.toLowerCase().replace(/[^a-zà-öø-ÿ']/g, '')
 
 type WordRun = {
   pushes: { write: (b: ArrayBuffer) => void; close: () => void }[]
@@ -50,7 +53,7 @@ function toPcm16(input: Float32Array, rate: number): Int16Array {
   return out
 }
 
-const norm = (t: string) => t.toLowerCase().replace(/[^a-z']+/g, ' ').trim()
+const norm = (t: string) => t.toLowerCase().replace(/[^a-zà-öø-ÿ']+/g, ' ').trim()
 
 // A short stretch of the student's own sentence around the word. Said on its own, a short
 // word gives the recogniser nothing to go on ("went" heard as "wind"); in a phrase, native
@@ -153,7 +156,7 @@ function piecesFor(transcript: string, fixes: Fix[], sounds: Sound[]): Piece[] {
     if (free(start, end)) ranges.push({ start, end, idx, kind: 'fix' })
   })
   sounds.forEach((x, idx) => {
-    const m = new RegExp(`(^|[^A-Za-z'])(${x.heard.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})(?=$|[^A-Za-z'])`).exec(transcript)
+    const m = new RegExp(`(^|[^A-Za-zÀ-ÖØ-öø-ÿ'])(${x.heard.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})(?=$|[^A-Za-zÀ-ÖØ-öø-ÿ'])`).exec(transcript)
     if (!m) return
     const start = m.index + m[1].length, end = start + m[2].length
     if (free(start, end)) ranges.push({ start, end, idx, kind: 'sound' })
@@ -263,10 +266,10 @@ function GoalModal({ onChoose }: { onChoose: (g: PronGoal) => void }) {
   )
 }
 
-function WordCoach({ word, phrase, result, heard, before, phase, hint, err, explain, volume, streak, clip, debug, tries, goal, drillPhase, drillHighlight, onStart, onClose, onFinish, onChangeGoal }: {
+function WordCoach({ word, phrase, result, heard, before, phase, hint, err, explain, volume, streak, clip, debug, tries, goal, drillPhase, drillHighlight, speakers, showGoal, onStart, onClose, onFinish, onChangeGoal }: {
   word: string; phrase: string; result: WordResult | null; heard: string; before: string; phase: WordPhase; hint: WordHint
   err: string; explain: PronExplain | null; volume: number; streak: number; clip: string; debug: string; tries: number
-  goal: PronGoal; drillPhase: DrillPhase; drillHighlight: number
+  goal: PronGoal; drillPhase: DrillPhase; drillHighlight: number; speakers: string; showGoal: boolean
   onStart: () => void; onClose: () => void; onFinish: () => void; onChangeGoal: () => void
 }) {
   const dd = DRILL_DATA[word]
@@ -280,7 +283,7 @@ function WordCoach({ word, phrase, result, heard, before, phase, hint, err, expl
     : undefined
   const goodMsg = goal === 'british'
     ? (locked ? 'Locked in! Tap another word.' : `British RP accepted. ${streak}/${STREAK_GOAL}, say it again`)
-    : (locked ? 'Locked in! Tap another word.' : `Any English speaker would understand you. ${streak}/${STREAK_GOAL}, say it again`)
+    : (locked ? 'Locked in! Tap another word.' : `Any ${speakers} speaker would understand you. ${streak}/${STREAK_GOAL}, say it again`)
   const drillMsg = drillPhase === 'intro' ? "Let's go slower. Repeat after me."
     : drillPhase === 'play-slow' ? 'Listen carefully...'
     : drillPhase === 'echo-slow' ? 'Now you say it'
@@ -321,9 +324,11 @@ function WordCoach({ word, phrase, result, heard, before, phase, hint, err, expl
     <div className="wc">
       <div className="wc-top-row">
         <button type="button" className="wc-close" onClick={onClose} aria-label="Close">x</button>
-        <button type="button" className="wc-goal-btn" onClick={onChangeGoal} title={goal === 'british' ? 'Goal: Sound British' : 'Goal: Be understood'}>
-          {goal === 'british' ? 'Sound British' : 'Be understood'}
-        </button>
+        {showGoal && (
+          <button type="button" className="wc-goal-btn" onClick={onChangeGoal} title={goal === 'british' ? 'Goal: Sound British' : 'Goal: Be understood'}>
+            {goal === 'british' ? 'Sound British' : 'Be understood'}
+          </button>
+        )}
       </div>
       <div className="wc-streak" aria-label={`${streak} of ${STREAK_GOAL}`}>
         {Array.from({ length: STREAK_GOAL }, (_, i) => <span key={i} className={i < streak ? 'on' : ''} />)}
@@ -384,8 +389,9 @@ function highlight(text: string, fixes: Fix[]) {
 // The speaking loop: speak → one report built around what you said (fixes in place,
 // pronunciation to tap, a B1 version) → say it again → see what got better.
 // Audio streams from the microphone straight to Azure; nothing is stored.
-export default function SpeakingStudio({ questions, student, aside, onSpoken, onFixes, onSecondTry }: {
+export default function SpeakingStudio({ questions, student, aside, onSpoken, onFixes, onSecondTry, lang = SPEAKING_EN }: {
   questions: string[]
+  lang?: SpeakingLang
   student: { name: string; code: string } | null
   aside?: ReactNode
   onSpoken: (s: SpeakingSummary) => void
@@ -505,7 +511,7 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
       const { token, region } = await getToken()
       const sdk = await import('microsoft-cognitiveservices-speech-sdk')
       const cfg = sdk.SpeechConfig.fromAuthorizationToken(token, region)
-      cfg.speechRecognitionLanguage = 'en-GB'
+      cfg.speechRecognitionLanguage = lang.locale
       // B1 learners pause longer when thinking in English — give them more space.
       cfg.setProperty(sdk.PropertyId.Speech_SegmentationSilenceTimeoutMs, '2500')
       const recognizer = new sdk.SpeechRecognizer(cfg, sdk.AudioConfig.fromDefaultMicrophoneInput())
@@ -568,7 +574,7 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
     try {
       const r = await fetch('/api/courses/speaking-feedback', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...student, question: questions[qi], transcript: t }),
+        body: JSON.stringify({ ...student, question: questions[qi], transcript: t, lang: lang.code }),
       })
       const d = await r.json().catch(() => ({}))
       if (!r.ok) throw new Error(d.error || 'Feedback is unavailable right now.')
@@ -583,8 +589,8 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
   function hearFallback(word: string, onEnd?: () => void, rate = 0.8) {
     try {
       const u = new SpeechSynthesisUtterance(word)
-      u.lang = 'en-GB'; u.rate = rate
-      const v = speechSynthesis.getVoices().find(x => x.lang === 'en-GB')
+      u.lang = lang.locale; u.rate = rate
+      const v = speechSynthesis.getVoices().find(x => x.lang.replace('_', '-') === lang.locale)
       if (v) u.voice = v
       if (onEnd) u.onend = onEnd
       speechSynthesis.cancel(); speechSynthesis.speak(u)
@@ -606,9 +612,9 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
       const { token, region } = await getToken()
       const sdk = await import('microsoft-cognitiveservices-speech-sdk')
       const cfg = sdk.SpeechConfig.fromAuthorizationToken(token, region)
-      cfg.speechSynthesisVoiceName = 'en-GB-SoniaNeural'
+      cfg.speechSynthesisVoiceName = lang.voice
       const synth = new sdk.SpeechSynthesizer(cfg)
-      const ssml = `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-GB"><voice name="en-GB-SoniaNeural"><prosody rate="${toSsmlRate(rate)}">${text}</prosody></voice></speak>`
+      const ssml = `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="${lang.locale}"><voice name="${lang.voice}"><prosody rate="${toSsmlRate(rate)}">${text}</prosody></voice></speak>`
       return new Promise(resolve => {
         synth.speakSsmlAsync(ssml, () => { synth.close(); resolve() }, () => { synth.close(); resolve() })
       })
@@ -669,7 +675,7 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
     setPracticePhrase(phraseAround(word, context))
     endWordRun()
     // Show the goal modal the first time a student opens word practice.
-    try { if (!localStorage.getItem('pron-goal-set')) setShowGoalModal(true) } catch { /* private browsing */ }
+    if (lang.goalPicker) try { if (!localStorage.getItem('pron-goal-set')) setShowGoalModal(true) } catch { /* private browsing */ }
     setPracticeWord(word); setWordPhase('idle'); setWordResult(null); setWordHeard(''); setWordBefore(heardBefore ?? '')
     setWordHint(''); setWordStreak(0); setWordErr(''); setWordExplain(null); setWordClip(''); setWordDebug('')
     // Warm up the speech engine and token now, so the first "Say it" starts recording at once.
@@ -679,7 +685,7 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
     try {
       const r = await fetch('/api/courses/pronunciation-explain', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ word }),
+        body: JSON.stringify({ word, lang: lang.code }),
       })
       if (r.ok) setWordExplain(await r.json())
     } catch { /* the explanation is optional */ }
@@ -820,11 +826,11 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
       if (run.closed) { pushPlain.close(); pushScore.close() }
 
       const cfgPlain = sdk.SpeechConfig.fromAuthorizationToken(token, region)
-      cfgPlain.speechRecognitionLanguage = 'en-GB'
+      cfgPlain.speechRecognitionLanguage = lang.locale
       cfgPlain.outputFormat = sdk.OutputFormat.Detailed
       const plain = new sdk.SpeechRecognizer(cfgPlain, sdk.AudioConfig.fromStreamInput(pushPlain))
       const cfgScore = sdk.SpeechConfig.fromAuthorizationToken(token, region)
-      cfgScore.speechRecognitionLanguage = 'en-GB'
+      cfgScore.speechRecognitionLanguage = lang.locale
       const scorer = new sdk.SpeechRecognizer(cfgScore, sdk.AudioConfig.fromStreamInput(pushScore))
       // Miscue off: Azure lines the audio up against the target word and scores every sound.
       new sdk.PronunciationAssessmentConfig(phrase, sdk.PronunciationAssessmentGradingSystem.HundredMark, sdk.PronunciationAssessmentGranularity.Phoneme, false).applyTo(scorer)
@@ -857,7 +863,7 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
       const topHeard = at[0] ?? ''
       const isTarget = (w: string | null) => !!w && (w === target || (wordParts.length > 1 && w === wordFlat))
       // In "Sound British" mode, require a higher pronunciation score to reach green.
-      const scoreThreshold = pronGoal === 'british' ? 65 : 50
+      const scoreThreshold = lang.goalPicker && pronGoal === 'british' ? 65 : 50
       let result: WordResult | null
       if (isTarget(at[0])) result = sc.score !== null && sc.score < scoreThreshold ? 'amber' : 'good'
       else if (at.slice(1).some(isTarget)) result = 'amber'
@@ -992,6 +998,8 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
   function resetToPick() { closeCoach(); setPhase('pick'); setFirst(null); setSecond(null); setFb(null) }
 
   const remaining = Math.max(0, MAX_SECONDS - secs)
+  // English (PET) renders exactly as before; other languages get a scoped wrapper for their own styles.
+  const shell = (n: ReactNode) => lang.code === 'en' ? <>{n}</> : <div className={`spk spk-${lang.code}`}>{n}</div>
   const report = (phase === 'thinking' || phase === 'feedback') && first
 
   const setup = (
@@ -1009,7 +1017,7 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
           <button type="button" className="studio-mic" onClick={() => start(1)} disabled={!student}>
             <span className="studio-mic-dot" />🎙️ Start speaking
           </button>
-          <p className="studio-note">{student ? 'Speak for 60 to 90 seconds. Your words appear as you talk. Nothing is recorded or stored.' : "Sign in at Student's Corner to have your speaking checked."}</p>
+          <p className="studio-note">{student ? `Speak for ${lang.minSeconds} to ${MAX_SECONDS} seconds. Your words appear as you talk. Nothing is recorded or stored.` : "Sign in at Student's Corner to have your speaking checked."}</p>
         </>
       )}
       {phase === 'connecting' && <p className="studio-note studio-wait">Opening the microphone…</p>}
@@ -1017,8 +1025,8 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
         <div className="studio-live">
           <p className="studio-question">{questions[qi]}</p>
           <div className="studio-wave" aria-hidden>{Array.from({ length: 5 }, (_, i) => <span key={i} style={{ animationDelay: `${i * 0.12}s` }} />)}</div>
-          <div className="studio-timer"><span style={{ width: `${(secs / MAX_SECONDS) * 100}%` }} className={secs >= 60 ? 'ok' : ''} /></div>
-          <p className="studio-secs">{secs < 60 ? `${secs}s · keep going to 60` : `${secs}s · great, finish when you're ready (${remaining}s left)`}</p>
+          <div className="studio-timer"><span style={{ width: `${(secs / MAX_SECONDS) * 100}%` }} className={secs >= lang.minSeconds ? 'ok' : ''} /></div>
+          <p className="studio-secs">{secs < lang.minSeconds ? `${secs}s · keep going to ${lang.minSeconds}` : `${secs}s · great, finish when you're ready (${remaining}s left)`}</p>
           <p className="studio-heard">{heard} <span className="studio-partial">{live}</span>{!heard && !live && <em>Listening…</em>}</p>
           <button type="button" className="btn studio-stop" onClick={() => void stop()}>■ I&apos;ve finished</button>
         </div>
@@ -1028,11 +1036,11 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
   )
 
   if (phase === 'pick' || phase === 'connecting' || phase === 'recording') {
-    return aside ? <div className="two-col-60">{setup}{aside}</div> : setup
+    return shell(aside ? <div className="two-col-60">{setup}{aside}</div> : setup)
   }
 
   if (phase === 'done' && first && second && fb) {
-    return (
+    return shell(
       <div className="studio-compare">
         <div className="section-head">Your second try</div>
         <p className="studio-heard studio-heard--done">{highlight(second.transcript, fb.fixes)}</p>
@@ -1051,7 +1059,7 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
     )
   }
 
-  if (!report) return setup
+  if (!report) return shell(setup)
 
   const fixes = fb?.fixes ?? []
   const sounds = fb?.sounds ?? []
@@ -1062,11 +1070,11 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
   const coach = practiceWord && (
     <WordCoach word={practiceWord} phrase={practicePhrase || practiceWord} result={wordResult} heard={wordHeard} before={wordBefore} phase={wordPhase} hint={wordHint}
       err={wordErr} explain={wordExplain} volume={wordVolume} streak={wordStreak} clip={wordClip} debug={wordDebug} tries={wordTries}
-      goal={pronGoal} drillPhase={drillPhase} drillHighlight={drillHighlight}
+      goal={pronGoal} drillPhase={drillPhase} drillHighlight={drillHighlight} speakers={lang.speakers} showGoal={lang.goalPicker}
       onStart={() => void startPractice()} onClose={closeCoach} onFinish={stopWord}
       onChangeGoal={() => setShowGoalModal(true)} />
   )
-  return (
+  return shell(
     <div className="rp">
       <header className="rp-head">
         <div className="rp-q"><span>You answered</span>{questions[qi]}</div>
@@ -1083,7 +1091,7 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
           <div className="rp-tabs" role="tablist">
             <button type="button" role="tab" aria-selected={view === 'said'} className={view === 'said' ? 'on' : ''} onClick={() => setView('said')}>What you said</button>
             <button type="button" role="tab" aria-selected={view === 'b1'} className={view === 'b1' ? 'on' : ''} onClick={() => setView('b1')} disabled={!fb?.b1Version}>
-              Your B1 version{!fb && phase === 'thinking' ? ' …' : ''}
+              {lang.versionTab}{!fb && phase === 'thinking' ? ' …' : ''}
             </button>
           </div>
 
@@ -1091,7 +1099,7 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
             <>
               {fb?.verdict && (
                 <p className={`rp-verdict rp-verdict--${fb.level ?? 'starting'}`}>
-                  <b>{fb.level === 'below' ? 'Not B1 yet' : fb.level === 'solid' ? 'Solid B1' : 'Starting B1'}</b> {fb.verdict}
+                  <b>{lang.levels[fb.level ?? 'starting']}</b> {fb.verdict}
                 </p>
               )}
               {fb?.praise && <p className="rp-praise">👏 {fb.praise}</p>}
@@ -1105,11 +1113,13 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
             </>
           ) : fb?.b1Version ? (
             <>
-              <p className="rp-b1-intro">This is <strong>your answer</strong> as a good starting-B1 student would say it. Same ideas, <mark className="rp-b1-new">highlighted</mark> parts are what changed.</p>
+              <p className="rp-b1-intro">{lang.code === 'en'
+                ? <>This is <strong>your answer</strong> as a good starting-B1 student would say it. Same ideas, <mark className="rp-b1-new">highlighted</mark> parts are what changed.</>
+                : lang.versionIntro}</p>
               <B1Text text={fb.b1Version} onWord={w => openWordPractice(w, undefined, 'b1')} />
               {!!fb.b1Why?.length && (
                 <div className="rp-b1-why">
-                  <strong>What B1 expects from you</strong>
+                  <strong>{lang.versionWhy}</strong>
                   <ul>{fb.b1Why.map((w, i) => <li key={i}>{w}</li>)}</ul>
                 </div>
               )}
@@ -1123,7 +1133,7 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
             <div className="rp-card rp-reading" role="status">
               <div className="rp-reading-dots" aria-hidden><span /><span /><span /></div>
               <p className="rp-reading-title">Reading what you said…</p>
-              <p className="rp-reading-sub">Checking your grammar, the words we misheard and writing your B1 version.</p>
+              <p className="rp-reading-sub">{lang.thinking}</p>
             </div>
           ) : fbErr ? (
             <div className="rp-card">
@@ -1156,18 +1166,20 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
                     </li>
                   ))}
                 </ol>
-                {fixes.length > 0 && <p className="rp-small">These go into your <strong>Revise in 5</strong>.</p>}
+                {fixes.length > 0 && lang.code === 'en' && <p className="rp-small">These go into your <strong>Revise in 5</strong>.</p>}
               </div>
 
               {fb.drill.items.length > 0 && (
                 <details className="rp-card rp-drill">
                   <summary>Quick practice · {fb.drill.prompt}</summary>
                   {fb.drill.items.map((it, i) => {
-                    const ok = drillChecked ? checkAnswer(drill[i], [it.a]) !== 'wrong' : null
+                    const verdict = lang.code === 'es' ? checkAnswerSE(drill[i], it.a) : checkAnswer(drill[i], [it.a])
+                    // Right answers turn green as soon as they are typed; Check only reveals the rest.
+                    const ok = verdict === 'right' ? true : drillChecked ? verdict !== 'wrong' : null
                     return (
                       <p key={i} className={`rp-drill-q ${ok === null ? '' : ok ? 'ok' : 'bad'}`}>
                         {it.q.split('___')[0]}
-                        <input className="studio-gap" value={drill[i]} disabled={drillChecked} onChange={e => setDrill(d => d.map((x, k) => (k === i ? e.target.value : x)))} />
+                        <input className={`studio-gap${ok ? ' studio-gap--win' : ''}`} value={drill[i]} disabled={drillChecked || ok === true} onChange={e => setDrill(d => d.map((x, k) => (k === i ? e.target.value : x)))} />
                         {it.q.split('___').slice(1).join('___')}
                         {drillChecked && (ok ? <span className="mark ok"> ✓</span> : <span className="mark bad"> ✗ <em>{it.a}</em></span>)}
                       </p>
@@ -1187,7 +1199,7 @@ export default function SpeakingStudio({ questions, student, aside, onSpoken, on
           {err && <p className="err">{err}</p>}
         </aside>
       </div>
-      {narrow && coach && createPortal(<div className="wc-sheet">{coach}</div>, document.body)}
+      {narrow && coach && createPortal(<div className={`wc-sheet${lang.code === 'en' ? '' : ' spk-' + lang.code}`}>{coach}</div>, document.body)}
       {showGoalModal && <GoalModal onChoose={chooseGoal} />}
     </div>
   )

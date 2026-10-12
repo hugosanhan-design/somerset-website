@@ -116,7 +116,8 @@ Produce the complete HTML document now.`
   const message = await client.messages.create({
     model: 'claude-sonnet-5',
     max_tokens: 8192,
-    temperature: 0,
+    // No temperature here: Sonnet 5.x rejects non-default sampling params (HTTP 400).
+    // Consistency comes from pass 1 (audit) plus mark/score derived from the error count.
     system: WRITING_SYSTEM_PROMPT,
     messages: [{ role: 'user', content: userMessage }],
   })

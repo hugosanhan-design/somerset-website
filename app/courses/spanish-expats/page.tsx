@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef, useMemo } from 'react'
+import { useState, useEffect, useRef, useMemo, type ReactNode } from 'react'
 import { createPortal } from 'react-dom'
 import Link from 'next/link'
 import SomersetLogo from '@/components/SomersetLogo'
@@ -8,7 +8,7 @@ import { useProgress } from '@/lib/courses/useProgress'
 import { recordAnswer, markActive, type Progress } from '@/lib/courses/progress'
 import {
   COURSE_ID, MODULE_ID,
-  VOCAB_M1, PHRASES_M1, PODER_QS, DIALOGUE_M1, DIALOGUE_QS,
+  VOCAB_M1, PHRASES_M1, PODER_QS, DIALOGUE_M1, DIALOGUE_QS, DIALOGUE_SPOTS,
   LEVEL_QS, getLevelLabel,
   normaliseSE, checkAnswerSE,
   VOCAB_ITEMS_SE, PHRASE_ITEMS_SE,
@@ -18,6 +18,11 @@ import {
 import { photoSE, type PhotoKeySE } from '@/lib/courses/photosExpats'
 import { VOCAB_PHOTOS, CLUE_POPUPS, type CoursePhoto } from '@/lib/courses/spanishExpatsPhotos'
 import MiExpediente from './MiExpediente'
+import SpeakingStudio from '../b1-unit-1/SpeakingStudio'
+import DialogueReader, { type ReaderLine } from '@/components/speaking/DialogueReader'
+import { SPEAKING_ES } from '@/lib/courses/speakingLang'
+import WritingStep from './WritingStep'
+import { shortHashSE } from '@/lib/courses/spanishExpats'
 import { Icon, type IconName } from './icons'
 import { FormGuideButton } from './FormGuide'
 import { FORM_FOR } from '@/lib/courses/spanishExpatsForms'
@@ -41,11 +46,12 @@ const STEPS: StepMeta[] = [
   { nav: 'Frases', tag: 'Lección B', title: 'En la oficina', aim: '8 key phrases for any government office — the ones that will actually save you.', accent: '#1D4E89', photo: 'ayuntamiento' },
   { nav: 'Emparejar', tag: 'Lección C', title: '¿Cuál es la frase?', aim: 'Drag the right phrase onto each situation. 6 real office scenarios.', accent: '#5a9a2c', photo: 'plaza-reina' },
   { nav: 'Gramática', tag: 'Lección D', title: 'Poder + infinitivo', aim: 'One structure covers half your bureaucracy Spanish: "Can you…?" "Can I…?"', accent: '#E8B84B', photo: 'plaza-ayuntamiento' },
-  { nav: 'Diálogo', tag: 'Lección E', title: 'En la extranjería', aim: 'Follow Sarah through her NIE appointment in Valencia. Then answer four questions.', accent: '#9B4F35', photo: 'plaza-reina' },
-  { nav: 'Hablar', tag: 'Lección F', title: 'A practicar', aim: 'Talk through your own situation out loud. Use the phrases from this module.', accent: '#1D4E89', photo: 'ayuntamiento' },
+  { nav: 'Diálogo', tag: 'Lección E', title: 'En la comisaría', aim: 'Follow Sarah through her NIE appointment, answer four questions, then read her part out loud.', accent: '#9B4F35', photo: 'plaza-reina' },
+  { nav: 'Hablar', tag: 'Lección F', title: 'A practicar', aim: 'No script now: say it your own way, see every fix, then say it again.', accent: '#1D4E89', photo: 'ayuntamiento' },
+  { nav: 'Escribir', tag: 'Lección G', title: 'Por escrito', aim: 'Write a short message you could really send this week. It comes back corrected and ready to copy.', accent: '#5a9a2c', photo: 'plaza-ayuntamiento' },
   { nav: 'Resultado', tag: 'Módulo 1', title: '¿Qué tal?', aim: 'Your scores across the module, and what to work on next.', accent: '#C4694A', photo: 'plaza-reina' },
 ]
-// step: 0=welcome, 1=ruta, 2=vocab, 3=phrases, 4=match, 5=grammar, 6=dialogue, 7=speaking, 8=result
+// step: 0=welcome, 1=ruta, 2=vocab, 3=phrases, 4=match, 5=grammar, 6=dialogue (+ read aloud), 7=speaking, 8=writing, 9=result
 
 // ─── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -162,16 +168,16 @@ function VocabDrill({ onDone, updateProgress }: {
   const total = VOCAB_M1.length
   const done = idx >= total
 
-  function submit() {
-    if (status !== 'idle' || !input.trim()) return
-    const result = checkAnswerSE(input, item.answer)
+  function submit(value = input) {
+    if (status !== 'idle' || !value.trim()) return
+    const result = checkAnswerSE(value, item.answer)
     setStatus(result)
     const clean = result === 'right' || result === 'close'
     if (clean) setScore(s => s + 1)
     const itemId = VOCAB_ITEMS_SE[idx].id
     updateProgress(p => recordAnswer(p, itemId, clean))
     if (result === 'right') {
-      setTimeout(() => advance(), 900)
+      setTimeout(() => advance(), 1300)
     } else {
       setShowReveal(true)
     }
@@ -215,11 +221,18 @@ function VocabDrill({ onDone, updateProgress }: {
         <p className="vocab-clue"><ClueText id={item.id} text={item.clue} /></p>
         <p className="vocab-note">{item.note}</p>
         <p className="vocab-counter">{idx + 1} / {total}</p>
+        {status === 'right' ? <p className="type-win">{item.answer}</p> : (
         <input
           ref={inputRef}
           className={`vocab-input${status === 'idle' ? '' : ` vocab-input--${status}`}`}
           value={input}
-          onChange={e => { if (status === 'idle') setInput(e.target.value) }}
+          onChange={e => {
+            if (status !== 'idle') return
+            const v = e.target.value
+            setInput(v)
+            // Right answers are accepted the moment they are typed: no button, no Enter.
+            if (checkAnswerSE(v, item.answer) === 'right') submit(v)
+          }}
           onKeyDown={e => {
             if (e.key === 'Enter') {
               if (status === 'idle') submit()
@@ -231,6 +244,7 @@ function VocabDrill({ onDone, updateProgress }: {
           autoComplete="off"
           spellCheck={false}
         />
+        )}
         {status !== 'idle' && (
           <>
             {showReveal && (
@@ -245,7 +259,7 @@ function VocabDrill({ onDone, updateProgress }: {
         <div style={{ display: 'flex', gap: '.7rem', justifyContent: 'center', marginTop: '1rem' }}>
           {status === 'idle' ? (
             <>
-              <button className="btn btn--terra" onClick={submit}>Check →</button>
+              <button className="btn btn--terra" onClick={() => submit()}>Check →</button>
               <button className="btn btn--ghost" onClick={advance}>Skip</button>
             </>
           ) : (
@@ -334,15 +348,15 @@ function PhraseDrill({ onDone, updateProgress }: {
   const item = PHRASES_M1[idx]
   const total = PHRASES_M1.length
 
-  function submit() {
-    if (status !== 'idle' || !input.trim()) return
-    const result = checkAnswerSE(input, item.answer)
+  function submit(value = input) {
+    if (status !== 'idle' || !value.trim()) return
+    const result = checkAnswerSE(value, item.answer)
     setStatus(result)
     const clean = result === 'right' || result === 'close'
     if (clean) setScore(s => s + 1)
     const itemId = PHRASE_ITEMS_SE[idx].id
     updateProgress(p => recordAnswer(p, itemId, clean))
-    if (result === 'right') setTimeout(() => advance(), 900)
+    if (result === 'right') setTimeout(() => advance(), 1300)
     else setShowReveal(true)
   }
 
@@ -377,11 +391,18 @@ function PhraseDrill({ onDone, updateProgress }: {
           </button>
         </div>
         <p className="vocab-counter">{idx + 1} / {total}</p>
+        {status === 'right' ? <p className="type-win">{item.answer}</p> : (
         <input
           ref={inputRef}
           className={`vocab-input${status === 'idle' ? '' : ` vocab-input--${status}`}`}
           value={input}
-          onChange={e => { if (status === 'idle') setInput(e.target.value) }}
+          onChange={e => {
+            if (status !== 'idle') return
+            const v = e.target.value
+            setInput(v)
+            // Right answers are accepted the moment they are typed: no button, no Enter.
+            if (checkAnswerSE(v, item.answer) === 'right') submit(v)
+          }}
           onKeyDown={e => {
             if (e.key === 'Enter') {
               if (status === 'idle') submit()
@@ -393,6 +414,7 @@ function PhraseDrill({ onDone, updateProgress }: {
           autoComplete="off"
           spellCheck={false}
         />
+        )}
         {status !== 'idle' && (
           <>
             {showReveal && <p className="vocab-reveal">{item.answer}</p>}
@@ -404,7 +426,7 @@ function PhraseDrill({ onDone, updateProgress }: {
         <div style={{ display: 'flex', gap: '.7rem', justifyContent: 'center', marginTop: '1rem' }}>
           {status === 'idle' ? (
             <>
-              <button className="btn btn--terra" onClick={submit}>Comprobar →</button>
+              <button className="btn btn--terra" onClick={() => submit()}>Comprobar →</button>
               <button className="btn btn--ghost" onClick={advance}>Skip</button>
             </>
           ) : (
@@ -606,46 +628,55 @@ function MatchDragSE({ onDone, updateProgress }: {
   )
 }
 
-// ─── Explain video (inline, grammar step) ─────────────────────────────────────
+// ─── Recorded audio (ElevenLabs) — no synthetic voices in this course ─────────
+
+const AUDIO = '/courses/spanish-expats/audio'
+let clipPlayer: HTMLAudioElement | null = null
+function playClip(url: string) {
+  try {
+    clipPlayer?.pause()
+    clipPlayer = new Audio(url)
+    void clipPlayer.play().catch(() => {})
+  } catch { /* no audio on this device */ }
+}
+const phraseAudio = (id: string) => `${AUDIO}/${id}.mp3`
+// Dialogue lines recorded one file per line; narrator lines have none.
+const dialogueAudio = (i: number) => DIALOGUE_M1[i].who === 'Narrator' ? undefined : `${AUDIO}/dialogue/dl-${String(i).padStart(2, '0')}.mp3`
+
+// ─── Explain video (grammar step) ─────────────────────────────────────────────
 
 function ExplainVideoSE() {
   const [open, setOpen] = useState(false)
-  const YOUTUBE_ID = 'CoKEawEVVTY' // "How to Use Spanish Verb PODER" — Hola Spanish (47k views)
+  const YOUTUBE_ID = 'CoKEawEVVTY' // "How to Use Spanish Verb PODER" — Hola Spanish
   const KEY_POINTS = [
-    'Poder conjugates: puedo (I can), puede (you/he/she can), pueden (they/you can)',
+    'Poder conjugates: puedo (I can), puede (you/he/she can), pueden (they/you all can)',
     'Always followed by an infinitive: ¿Puedo pagar? = Can I pay?',
     'At the office you need two forms: puedo (can I?) and puede (can you?)',
     'Negative: No puedo abrir el archivo = I can\'t open the file',
   ]
-
   return (
-    <div style={{ marginBottom: '1.5rem' }}>
+    <div className="gx-video">
       {open ? (
-        <div className="sexp-ev-wrap">
-          <div className="sexp-ev-top">
-            <span className="sexp-ev-label"><Icon name="video" size={18} className="ico-inline" /> Poder explained</span>
-            <button className="sexp-ev-close" onClick={() => setOpen(false)} aria-label="Close video">✕</button>
-          </div>
-          <div className="sexp-ev-frame-wrap">
-            <iframe
-              className="sexp-ev-frame"
-              src={`https://www.youtube-nocookie.com/embed/${YOUTUBE_ID}?rel=0&modestbranding=1`}
-              title="How to use poder in Spanish"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          </div>
+        <div className="sexp-ev-frame-wrap gx-video__frame">
+          <iframe
+            className="sexp-ev-frame"
+            src={`https://www.youtube-nocookie.com/embed/${YOUTUBE_ID}?rel=0&modestbranding=1&autoplay=1`}
+            title="How to use poder in Spanish"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
         </div>
       ) : (
-        <button className="sexp-ev-btn" onClick={() => setOpen(true)}>
-          <Icon name="video" size={20} className="ico-inline" /> Watch: How to use poder (8 min)
+        <button type="button" className="gx-video__thumb" onClick={() => setOpen(true)} aria-label="Play the video: how to use poder">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={`https://i.ytimg.com/vi/${YOUTUBE_ID}/hqdefault.jpg`} alt="" loading="lazy" />
+          <span className="gx-video__play">▶</span>
+          <span className="gx-video__label"><Icon name="video" size={18} className="ico-inline" /> Poder explained · 8 min</span>
         </button>
       )}
-      <details className="sexp-ev-notes" open={!open}>
-        <summary>Key points</summary>
-        <ol>
-          {KEY_POINTS.map((pt, i) => <li key={i}>{pt}</li>)}
-        </ol>
+      <details className="sexp-ev-notes gx-video__notes">
+        <summary>Key points from the video</summary>
+        <ol>{KEY_POINTS.map((pt, i) => <li key={i}>{pt}</li>)}</ol>
       </details>
     </div>
   )
@@ -653,285 +684,457 @@ function ExplainVideoSE() {
 
 // ─── Grammar: poder + infinitive ──────────────────────────────────────────────
 
-function PoderExercise({ onDone }: { onDone: (score: number) => void }) {
+const PODER_FORMS: { form: string; who: string; en: string; ex: string; icon: IconName; audio: string }[] = [
+  { form: 'puedo', who: 'yo', en: 'I can · Can I…?', ex: '¿Puedo pagar con tarjeta?', icon: 'money', audio: phraseAudio('ph-pagar') },
+  { form: 'puede', who: 'usted · él · ella', en: 'You can · Can you…? (polite)', ex: '¿Me puede ayudar?', icon: 'hand', audio: phraseAudio('ph-ayuda') },
+  { form: 'pueden', who: 'ustedes · ellos', en: 'You all / they can', ex: '¿Pueden atenderme mañana?', icon: 'calendar', audio: `${AUDIO}/m1/g-pueden.mp3` },
+]
+// The full sentence of each gap-fill, recorded.
+const PODER_AUDIO: Record<string, string> = {
+  'pod-1': phraseAudio('ph-ayuda'), 'pod-2': phraseAudio('ph-pagar'), 'pod-3': `${AUDIO}/m1/g-repetir.mp3`,
+  'pod-4': `${AUDIO}/m1/g-archivo.mp3`, 'pod-5': `${AUDIO}/m1/g-pueden.mp3`,
+}
+const PODER_ICON: Record<string, IconName> = {
+  'pod-1': 'hand', 'pod-2': 'money', 'pod-3': 'sound', 'pod-4': 'device', 'pod-5': 'calendar',
+}
+const CHEERS = ['¡Sí!', '¡Perfecto!', '¡Exacto!', '¡Muy bien!', '¡Eso es!']
+
+function PoderExercise({ onDone, updateProgress }: {
+  onDone: (score: number) => void
+  updateProgress: (fn: (p: Progress) => Progress) => void
+}) {
   // Instant feedback: each gap is judged as soon as it is right (typing) or when you leave it / press Enter.
   type PS = { value: string; done: boolean; first: boolean; kind: 'right' | 'close' | null; wrongs: number }
   const [items, setItems] = useState<PS[]>(PODER_QS.map(() => ({ value: '', done: false, first: false, kind: null, wrongs: 0 })))
   const [shake, setShake] = useState<number | null>(null)
 
   function judge(i: number, value: string, final: boolean) {
-    setItems(prev => prev.map((it, j) => {
-      if (j !== i || it.done) return it
-      const r = checkAnswerSE(value, PODER_QS[i].answer)
-      if (r === 'right') return { value, done: true, first: it.wrongs === 0, kind: 'right', wrongs: it.wrongs }
-      if (!final) return { ...it, value }
-      if (r === 'close') return { value, done: true, first: it.wrongs === 0, kind: 'close', wrongs: it.wrongs }
-      if (value.trim()) { setShake(i); setTimeout(() => setShake(null), 450); return { ...it, value, wrongs: it.wrongs + 1 } }
-      return { ...it, value }
-    }))
+    const it = items[i]
+    if (it.done) return
+    const r = checkAnswerSE(value, PODER_QS[i].answer)
+    let next: PS = { ...it, value }
+    if (r === 'right' || (final && r === 'close')) {
+      next = { value, done: true, first: it.wrongs === 0, kind: r, wrongs: it.wrongs }
+      updateProgress(p => recordAnswer(p, `m1:poder:${PODER_QS[i].id}`, it.wrongs === 0))
+    } else if (final && value.trim()) {
+      next = { ...it, value, wrongs: it.wrongs + 1 }
+      setShake(i); setTimeout(() => setShake(null), 450)
+    }
+    setItems(prev => prev.map((x, j) => (j === i ? next : x)))
   }
 
   const doneCount = items.filter(it => it.done).length
   const allDone = doneCount === PODER_QS.length
   const score = items.filter(it => it.done && it.first).length
-  const CHEERS = ['¡Sí!', '¡Perfecto!', '¡Exacto!', '¡Muy bien!']
 
   return (
-    <div>
-      <div className="card" style={{ marginBottom: '1rem' }}>
+    <div className="gx">
+      <div className="card">
         <div className="lesson-header">
           <div className="lesson-tag" style={{ background: '#E8B84B', color: '#fff' }}>Gramática</div>
           <div>
             <div className="lesson-title">Poder + infinitivo</div>
-            <div className="lesson-aim">Fill in each gap with the correct form of <strong>poder</strong> + the verb. Right answers turn green at once.</div>
+            <div className="lesson-aim">One verb, three forms, and you can ask for almost anything at the counter. Tap a form to hear it.</div>
           </div>
         </div>
 
-        <ExplainVideoSE />
+        <div className="gx-top">
+          <div className="gx-pattern">
+            <div className="gx-eq" aria-label="poder plus infinitive">
+              <span className="gx-block gx-block--poder"><b>poder</b><small>puedo · puede · pueden</small></span>
+              <span className="gx-op">+</span>
+              <span className="gx-block gx-block--inf"><b>infinitivo</b><small>pagar · repetir · abrir</small></span>
+              <span className="gx-op">=</span>
+              <span className="gx-block gx-block--out"><b>¿Puedo pagar?</b><small>Can I pay?</small></span>
+            </div>
 
-        <div className="tip">
-          <strong>The pattern:</strong> poder (puedo / puede / pueden) + infinitive.
-          It works exactly like "can" in English: <em>¿Puedo pagar?</em> = Can I pay?
-          <em> ¿Puede repetir?</em> = Can you repeat?
+            <div className="gx-forms">
+              {PODER_FORMS.map(f => (
+                <button key={f.form} type="button" className="gx-form" onClick={() => playClip(f.audio)}>
+                  <span className="gx-form__icon"><Icon name={f.icon} size={40} /></span>
+                  <span className="gx-form__es">{f.form}</span>
+                  <span className="gx-form__who">{f.who}</span>
+                  <span className="gx-form__ex"><span className="gx-play" aria-hidden>▶</span>{f.ex}</span>
+                  <span className="gx-form__en">{f.en}</span>
+                </button>
+              ))}
+            </div>
+
+            <div className="gx-rules">
+              <p><span className="gx-rule-tag">No</span> goes in front: <em>No puedo abrir el archivo.</em></p>
+              <p><span className="gx-rule-tag">me</span> goes before puede: <em>¿Me puede ayudar?</em></p>
+            </div>
+          </div>
+          <ExplainVideoSE />
+        </div>
+      </div>
+
+      <div className="card">
+        <div className="gx-head">
+          <div>
+            <p className="gx-kicker">Your turn</p>
+            <p className="gx-head__title">Say it with poder</p>
+            <p className="gx-head__sub">Type <b>poder + verb</b> into each gap. It turns green the moment it&apos;s right.</p>
+          </div>
+          <div className="gx-score">
+            <div className="deck-dots">
+              {items.map((it, i) => (
+                <span key={i} className={`deck-dot ${it.done ? (it.first ? 'd-ok' : 'd-mid') : ''}`} />
+              ))}
+            </div>
+            <span className="deck-count">{doneCount} / {PODER_QS.length}</span>
+          </div>
         </div>
 
-        {PODER_QS.map((q, i) => {
-          const it = items[i]
-          return (
-            <div key={q.id} className={`poder-item${it.done && it.first ? ' poder-win' : ''}${shake === i ? ' poder-shake' : ''}`} style={{ marginBottom: '1.5rem' }}>
-              <p className="phrase-context">{q.context}</p>
-              <p className="phrase-translation" style={{ fontSize: '.82rem', color: '#999', fontWeight: 400 }}>
-                {q.translation}
-              </p>
-              <div className="poder-sentence">
-                {q.pre}
-                {it.done
-                  ? <b className={`poder-done${it.kind === 'close' ? ' poder-done--close' : ''}`}>{q.answer}</b>
-                  : (
-                    <span className={`poder-gap${it.wrongs ? ' poder-gap--bad' : ''}`}>
+        <div className="gx-grid">
+          {PODER_QS.map((q, i) => {
+            const it = items[i]
+            const win = it.done && it.first
+            return (
+              <article key={q.id} className={`gx-item${it.done ? ' gx-item--done' : ''}${win ? ' gx-item--win' : ''}${shake === i ? ' poder-shake' : ''}`}>
+                <div className="gx-item__top">
+                  <span className="gx-num">{i + 1}</span>
+                  <span className="gx-item__icon"><Icon name={PODER_ICON[q.id] ?? 'speak'} size={34} /></span>
+                  <div className="gx-item__text">
+                    <p className="gx-ctx">{q.context}</p>
+                    <p className="gx-en">&ldquo;{q.translation}&rdquo;</p>
+                  </div>
+                </div>
+                <div className="gx-sentence">
+                  {q.pre}
+                  {it.done
+                    ? <b className={`poder-done${it.kind === 'close' ? ' poder-done--close' : ''}`}>{q.answer.trim()}</b>
+                    : (
                       <input
-                        className="poder-gap"
+                        className={`gx-gap${it.wrongs ? ' gx-gap--bad' : ''}`}
                         value={it.value}
                         onChange={e => judge(i, e.target.value, false)}
                         onBlur={e => judge(i, e.target.value, true)}
                         onKeyDown={e => { if (e.key === 'Enter') judge(i, (e.target as HTMLInputElement).value, true) }}
-                        placeholder="poder + verbo…"
+                        placeholder="poder + verbo"
+                        aria-label={`Gap ${i + 1}: ${q.translation}`}
                         autoCapitalize="none" autoCorrect="off" spellCheck={false}
                       />
-                    </span>
-                  )}
-                {q.post}
-              </div>
-              {it.done && it.first && <p className="poder-cheer">✓ {CHEERS[i % CHEERS.length]}</p>}
-              {it.done && !it.first && <p className="poder-revise">Lo repasaremos más tarde</p>}
-              {it.done && it.kind === 'close' && <p className="poder-revise">Casi: la forma correcta es <b>{q.answer}</b></p>}
-            </div>
-          )
-        })}
-
-        <div style={{ textAlign: 'center', marginTop: '1.5rem' }}>
-          {!allDone ? (
-            <p style={{ color: '#888', fontSize: '.9rem' }}>{doneCount} / {PODER_QS.length}</p>
-          ) : (
-            <>
-              <p style={{ fontFamily: 'Georgia, serif', fontSize: '1.2rem', marginBottom: '1rem' }}>
-                {score} / {PODER_QS.length} a la primera
-              </p>
-              <button className="btn btn--terra" onClick={() => onDone(score)}>
-                Next: Diálogo →
-              </button>
-            </>
-          )}
+                    )}
+                  {q.post}
+                </div>
+                {it.wrongs > 0 && !it.done && <p className="gx-hint">Not yet. Check the form of poder, then the verb.</p>}
+                {it.done && (
+                  <div className="gx-result">
+                    {win && <span className="poder-cheer gx-cheer">✓ {CHEERS[i % CHEERS.length]}</span>}
+                    {!win && it.kind !== 'close' && <span className="poder-revise">Got it. We&apos;ll bring this one back later.</span>}
+                    {it.kind === 'close' && <span className="poder-revise">Nearly: check the spelling of <b>{q.answer.trim()}</b></span>}
+                    <button type="button" className="gx-listen" onClick={() => playClip(PODER_AUDIO[q.id])}>▶ Hear it</button>
+                  </div>
+                )}
+              </article>
+            )
+          })}
         </div>
+
+        {allDone && (
+          <div className="gx-done">
+            <Icon name={score >= 4 ? 'celebrate' : 'well-done'} size={48} />
+            <div>
+              <p className="gx-done__score">{score} / {PODER_QS.length} first time</p>
+              <p className="gx-done__sub">{score >= 4 ? 'You can ask for things at any counter now.' : 'The ones you missed will come back in Repaso.'}</p>
+            </div>
+            <button className="btn btn--terra" onClick={() => onDone(score)}>Next: Diálogo →</button>
+          </div>
+        )}
       </div>
     </div>
   )
 }
 
 // ─── Dialogue + comprehension ──────────────────────────────────────────────────
+// A chat you step through line by line. Phrases from the module light up as they
+// appear; the questions unlock at the end, and each right answer lights the line that proves it.
 
-function DialogueLesson({ onDone }: { onDone: (score: number) => void }) {
-  const [showFull, setShowFull] = useState(false)
-  const [qIdx, setQIdx] = useState(0)
-  const [qAnswers, setQAnswers] = useState<(string | null)[]>(Array(DIALOGUE_QS.length).fill(null))
-  const [phase, setPhase] = useState<'read' | 'quiz' | 'done'>('read')
-
-  function answerQ(idx: number, opt: string) {
-    if (qAnswers[idx] !== null) return
-    const next = [...qAnswers]
-    next[idx] = opt
-    setQAnswers(next)
-    if (idx + 1 < DIALOGUE_QS.length) {
-      setTimeout(() => setQIdx(idx + 1), 600)
-    } else {
-      setTimeout(() => setPhase('done'), 800)
+function markSpots(text: string, idx: number, spotted: boolean) {
+  const spots = DIALOGUE_SPOTS.filter(s => s.line === idx)
+  if (!spotted || !spots.length) return text
+  const out: ReactNode[] = [text]
+  spots.forEach((s, k) => {
+    for (let i = 0; i < out.length; i++) {
+      const part = out[i]
+      if (typeof part !== 'string') continue
+      const at = part.indexOf(s.text)
+      if (at < 0) continue
+      out.splice(i, 1, part.slice(0, at), <mark key={k} className="dl2-spot">{s.text}</mark>, part.slice(at + s.text.length))
+      break
     }
+  })
+  return out
+}
+
+const FIRST_LINES = 3
+
+// Step 3 of Diálogo: the scaffolded speaking stage. Same script, now the student speaks it.
+// (Hablar is the unscaffolded stage: no script.)
+function ReadAloudStage({ student, onNext }: { student: { name: string; code: string } | null; onNext: () => void }) {
+  return (
+    <div className="card ra-card">
+      <div className="ra-head">
+        <span className="ra-step">3</span>
+        <div>
+          <p className="gx-kicker">Now you speak it</p>
+          <p className="gx-head__title">Learn Sarah&apos;s part by heart</p>
+          <p className="gx-head__sub">Five rounds. First you read every word; then your words disappear little by little; in the last round there is no text at all, you just hear the clerks and answer.</p>
+        </div>
+      </div>
+      <DialogueReader lines={READER_LINES} lang={SPEAKING_ES} student={student} defaultRole="Sarah" place="Comisaría de Policía · Valencia" />
+      <div className="sp-foot">
+        <span className="sp-foot__note">Next comes speaking without a script.</span>
+        <button className="btn btn--terra" onClick={onNext}>Next: A hablar →</button>
+      </div>
+    </div>
+  )
+}
+
+function DialogueLesson({ student, onDone }: { student: { name: string; code: string } | null; onDone: (score: number) => void }) {
+  const total = DIALOGUE_M1.length
+  const [shown, setShown] = useState(FIRST_LINES)
+  const [qIdx, setQIdx] = useState(0)
+  const [tried, setTried] = useState<string[]>([])
+  const [right, setRight] = useState<string | null>(null)
+  const [firsts, setFirsts] = useState<boolean[]>([])
+  const [flash, setFlash] = useState<number | null>(null)
+  const chatRef = useRef<HTMLDivElement>(null)
+  const allShown = shown >= total
+  const done = firsts.length === DIALOGUE_QS.length
+  const score = firsts.filter(Boolean).length
+  const spotted = DIALOGUE_SPOTS.filter(s => s.line < shown).length
+
+  useEffect(() => {
+    const el = chatRef.current
+    if (el) el.scrollTo({ top: el.scrollHeight, behavior: 'smooth' })
+  }, [shown])
+
+  function showLine(i: number) {
+    const el = document.getElementById(`dl2-${i}`)
+    const box = chatRef.current
+    if (el && box) box.scrollTo({ top: el.offsetTop - box.clientHeight / 2 + el.clientHeight / 2, behavior: 'smooth' })
   }
 
-  const score = qAnswers.filter((a, i) => a === DIALOGUE_QS[i].a).length
+  function answer(opt: string) {
+    const q = DIALOGUE_QS[qIdx]
+    if (right || tried.includes(opt)) return
+    if (opt !== q.a) { setTried(t => [...t, opt]); return }
+    setRight(opt); setFlash(q.line); showLine(q.line)
+    setTimeout(() => {
+      setFirsts(f => [...f, tried.length === 0])
+      setRight(null); setTried([]); setFlash(null)
+      setQIdx(i => i + 1)
+    }, 1700)
+  }
+
+  const q = DIALOGUE_QS[Math.min(qIdx, DIALOGUE_QS.length - 1)]
 
   return (
     <div>
-      {/* Dialogue */}
-      <div className="card" style={{ marginBottom: '1.5rem' }}>
+      <div className="card" style={{ marginBottom: '1.2rem' }}>
         <div className="lesson-header">
           <div className="lesson-tag" style={{ background: '#9B4F35' }}>Diálogo</div>
           <div>
-            <div className="lesson-title">En la extranjería</div>
-            <div className="lesson-aim">Read the conversation, then answer four comprehension questions.</div>
+            <div className="lesson-title">En la comisaría</div>
+            <div className="lesson-aim">1 · Step through Sarah&apos;s NIE appointment line by line. 2 · Answer four questions. 3 · Read Sarah&apos;s part out loud.</div>
           </div>
         </div>
-        <div className="dialogue">
-          {(showFull ? DIALOGUE_M1 : DIALOGUE_M1.slice(0, 8)).map((line, i) => (
-            <div key={i} className="dl-line">
-              <span className={`dl-who dl-who--${line.who === 'You' ? 'you' : line.who === 'Narrator' ? 'narrator' : 'func'}`}>
-                {line.who === 'You' ? <><Icon name="speak" size={16} className="ico-inline" /> You</> : line.who}
-              </span>
-              <span className="dl-text">{line.line}</span>
+
+        <div className="dl2">
+          <div className="dl2-phone">
+            <div className="dl2-bar">
+              <span className="dl2-bar__icon"><Icon name="government" size={30} /></span>
+              <span className="dl2-bar__text"><strong>Comisaría de Policía</strong><small>Valencia · martes, 10:00</small></span>
+              <span className="dl2-bar__count">{Math.min(shown, total)} / {total}</span>
             </div>
-          ))}
-          {!showFull && (
-            <button
-              className="btn btn--outline"
-              style={{ marginTop: '.8rem', width: '100%', justifyContent: 'center' }}
-              onClick={() => setShowFull(true)}
-            >
-              Read full dialogue ↓
-            </button>
-          )}
-        </div>
-
-        <div className="vlc-note" style={{ marginTop: '1rem' }}>
-          The Oficina de Extranjería serving central Valencia is at Calle Colón. You cannot walk in — you must book a cita previa online first. The appointment availability is infamous: book 2–3 weeks ahead minimum.
-        </div>
-
-        {phase === 'read' && (
-          <div style={{ marginTop: '1.5rem', textAlign: 'center' }}>
-            <button className="btn btn--terra" onClick={() => { setShowFull(true); setPhase('quiz') }}>
-              Answer the questions →
-            </button>
+            <div className="dl2-chat" ref={chatRef} aria-live="polite">
+              {DIALOGUE_M1.slice(0, shown).map((l, i) => {
+                const lit = flash === i ? ' dl2-flash' : ''
+                if (l.who === 'Narrator') {
+                  return <p key={i} id={`dl2-${i}`} className={`dl2-scene${lit}`}><Icon name={i === 0 ? 'calendar' : 'clock'} size={18} className="ico-inline" /> {l.line}</p>
+                }
+                const you = l.who === 'You'
+                return (
+                  <div key={i} id={`dl2-${i}`} className={`dl2-msg ${you ? 'dl2-msg--you' : 'dl2-msg--them'}${lit}`}>
+                    {!you && <span className="dl2-avatar" aria-hidden>F</span>}
+                    <div className="dl2-bubble">
+                      <span className="dl2-who">{you ? 'Sarah (you)' : l.who}</span>
+                      <span className="dl2-text">{markSpots(l.line, i, true)}</span>
+                    </div>
+                    <button type="button" className="dl2-play" aria-label="Listen to this line" onClick={() => { const a = dialogueAudio(i); if (a) playClip(a) }}>▶</button>
+                  </div>
+                )
+              })}
+            </div>
+            <div className="dl2-controls">
+              {!allShown ? (
+                <>
+                  <button type="button" className="btn btn--terra dl2-next" onClick={() => setShown(s => Math.min(total, s + 1))}>Next line ▸</button>
+                  <button type="button" className="dl2-all" onClick={() => setShown(total)}>Show it all</button>
+                </>
+              ) : (
+                <span className="dl2-end"><Icon name="correct" size={18} className="ico-inline" /> Conversation complete</span>
+              )}
+            </div>
           </div>
-        )}
-      </div>
 
-      {/* Questions */}
-      {phase !== 'read' && (
-        <div className="card">
-          <p className="label">Comprehension — {DIALOGUE_QS.length} questions</p>
-          {DIALOGUE_QS.map((q, i) => {
-            if (i > qIdx && phase !== 'done') return null
-            const chosen = qAnswers[i]
-            return (
-              <div key={q.q} style={{ marginBottom: '1.5rem' }}>
-                <p className="mcq-q">{i + 1}. {q.q}</p>
-                <div className="mcq-options">
-                  {q.options.map(opt => {
-                    const isChosen = chosen === opt
-                    const isCorrect = opt === q.a
-                    const showResult = chosen !== null
-                    return (
-                      <button
-                        key={opt}
-                        className={`mcq-opt${showResult && isCorrect ? ' mcq-opt--right' : ''}${showResult && isChosen && !isCorrect ? ' mcq-opt--wrong' : ''}`}
-                        onClick={() => answerQ(i, opt)}
-                        disabled={chosen !== null}
-                      >
-                        {opt}
-                      </button>
-                    )
-                  })}
+          <div className="dl2-side">
+            <div className="dl2-card">
+              <p className="dl2-card__head">Phrases you know <span>{spotted} / {DIALOGUE_SPOTS.length}</span></p>
+              <ul className="dl2-spots">
+                {DIALOGUE_SPOTS.map(s => {
+                  const on = s.line < shown
+                  return (
+                    <li key={s.text} className={on ? 'on' : ''}>
+                      <span className="dl2-spots__es">{on ? s.text : '• • •'}</span>
+                      <span className="dl2-spots__en">{s.en}</span>
+                    </li>
+                  )
+                })}
+              </ul>
+            </div>
+
+            <div className="dl2-card dl2-quiz">
+              {!allShown ? (
+                <div className="dl2-locked">
+                  <Icon name="lock" size={40} />
+                  <p><strong>{DIALOGUE_QS.length} questions</strong> unlock when you reach the end of the conversation.</p>
                 </div>
-              </div>
-            )
-          })}
-
-          {phase === 'done' && (
-            <div style={{ textAlign: 'center', marginTop: '.5rem' }}>
-              <p style={{ fontFamily: 'Georgia, serif', fontSize: '1.2rem', marginBottom: '1rem' }}>
-                {score} / {DIALOGUE_QS.length} correct
-              </p>
-              <button className="btn btn--terra" onClick={() => onDone(score)}>
-                Next: A hablar →
-              </button>
+              ) : !done ? (
+                <>
+                  <div className="deck-top">
+                    <div className="deck-dots">
+                      {DIALOGUE_QS.map((_, i) => (
+                        <span key={i} className={`deck-dot ${i < firsts.length ? (firsts[i] ? 'd-ok' : 'd-mid') : i === qIdx ? 'd-now' : ''}`} />
+                      ))}
+                    </div>
+                    <span className="deck-count">{qIdx + 1} / {DIALOGUE_QS.length}</span>
+                  </div>
+                  <p className="dl2-q" key={qIdx}>{q.q}</p>
+                  <div className="dl2-opts">
+                    {q.options.map(opt => {
+                      const bad = tried.includes(opt)
+                      const ok = right === opt
+                      return (
+                        <button key={opt} type="button" disabled={bad || !!right}
+                          className={`mcq-opt dl2-opt${ok ? ' mcq-opt--right' : ''}${bad ? ' mcq-opt--wrong dl2-opt--bad' : ''}`}
+                          onClick={() => answer(opt)}>
+                          {opt}
+                        </button>
+                      )
+                    })}
+                  </div>
+                  <p className="dl2-fb" aria-live="polite">
+                    {right
+                      ? <><Icon name="correct" size={18} className="ico-inline" /> {tried.length === 0 ? '¡Exacto! Look, it lights up in the chat.' : 'That\'s it. It\'s lit up in the chat.'}</>
+                      : tried.length ? 'Not that one. Look back at the chat and try again.' : ''}
+                  </p>
+                </>
+              ) : (
+                <div className="dl2-done">
+                  <Icon name={score >= 3 ? 'celebrate' : 'well-done'} size={52} />
+                  <p className="gx-done__score">{score} / {DIALOGUE_QS.length} first time</p>
+                  <p className="dl2-fb">Step 3 is below: read it aloud ↓</p>
+                </div>
+              )}
             </div>
-          )}
+          </div>
         </div>
-      )}
+
+        <div className="vlc-note" style={{ marginTop: '1.2rem', marginBottom: 0 }}>
+          The NIE appointment is at a police station (comisaría), not the Oficina de Extranjería. You cannot walk in: book the cita previa online first, and check for new slots every day.
+        </div>
+      </div>
+      {done && <ReadAloudStage student={student} onNext={() => onDone(score)} />}
     </div>
   )
 }
 
 // ─── Speaking step ─────────────────────────────────────────────────────────────
+// The same speaking engine as the PET course, set to Spanish: speak, see every fix in
+// your own words, practise the words it misheard, hear a smoother version, say it again.
 
-function SpeakingStep({ onDone }: { onDone: () => void }) {
-  const PROMPTS = [
-    {
-      label: 'At the office — key phrases',
-      prompt: 'You arrive at the Oficina de Extranjería. The clerk looks up. Introduce yourself, give your appointment time, and ask for help if you don\'t understand something.',
-      hint: 'Use: Vengo a pedir el NIE / Tengo una cita a las… / ¿Me puede ayudar? / No entiendo del todo',
-    },
-    {
-      label: 'Describing your situation',
-      prompt: 'Tell someone — in Spanish — why you moved to Valencia, how long you\'ve been here, and what your most confusing bureaucratic experience has been so far.',
-      hint: 'Use: Llevo… meses aquí / Vine porque… / Lo más difícil fue…',
-    },
-    {
-      label: 'Phone call practice',
-      prompt: 'You\'re calling the Ayuntamiento to ask about the empadronamiento certificate. Introduce yourself and ask what documents you need to bring.',
-      hint: 'Use: Buenos días, llamo para… / ¿Qué documentos necesito? / Perdona, ¿puede repetir?',
-    },
-  ]
+const SPEAK_PROMPTS = [
+  'At the comisaría: greet the clerk, say you have an appointment and at what time, say why you have come, and ask them to repeat something.',
+  'A new neighbour asks about you: say why you moved to Valencia, how long you have been here and what paperwork has been hardest.',
+  'You phone the Ayuntamiento: say who you are, that you want to register on the padrón, and ask what documents you need.',
+]
 
-  const [chosen, setChosen] = useState<number | null>(null)
+const SPEAK_FRAMES = [
+  'Buenos días. Tengo una cita a las diez.',
+  'Me llamo Sarah y vengo a pedir el NIE.',
+  'Llevo tres meses en Valencia.',
+  'Vine a Valencia por trabajo.',
+  'Llamo para preguntar por el padrón.',
+]
 
+// The dialogue for reading aloud: Sarah is "You" in the data.
+const READER_LINES: ReaderLine[] = DIALOGUE_M1.map((l, i) => ({ who: l.who === 'You' ? 'Sarah' : l.who, text: l.line, audio: dialogueAudio(i) }))
+
+
+function SpeakingStep({ student, onDone, updateProgress }: { student: { name: string; code: string } | null; onDone: () => void; updateProgress: (fn: (p: Progress) => Progress) => void }) {
+  const [spoke, setSpoke] = useState(false)
+  const office = PHRASES_M1.map(p => p.answer)
   return (
-    <div>
-      <div className="card">
-        <div className="lesson-header">
-          <div className="lesson-tag" style={{ background: '#1D4E89' }}>A hablar</div>
-          <div>
-            <div className="lesson-title">A practicar</div>
-            <div className="lesson-aim">Choose a prompt and talk for 60–90 seconds. Out loud — not in your head.</div>
+    <div className="card sp-card">
+      <div className="lesson-header">
+        <div className="lesson-tag" style={{ background: '#1D4E89' }}>A hablar</div>
+        <div>
+          <div className="lesson-title">A practicar</div>
+          <div className="lesson-aim">No script this time. Pick a situation and say it your own way. You&apos;ll see every fix inside your own words, then say it again.</div>
+        </div>
+      </div>
+
+      <ol className="sp-steps">
+        <li><span>1</span>Pick a situation</li>
+        <li><span>2</span>Speak for 30 to 90 seconds</li>
+        <li><span>3</span>See your fixes and a smoother version</li>
+        <li><span>4</span>Say it again</li>
+      </ol>
+
+      <SpeakingStudio
+        lang={SPEAKING_ES}
+        questions={SPEAK_PROMPTS}
+        student={student}
+        onSpoken={() => setSpoke(true)}
+        onFixes={fixes => updateProgress(p => {
+          // Spoken mistakes go into Repaso too, next to the written ones.
+          const personal = { ...(p.personal ?? {}) }
+          let next: Progress = { ...p, personal }
+          for (const f of fixes) {
+            const [pre, ...rest] = f.sentence.split(f.original)
+            const id = 'own:s:' + shortHashSE(f.sentence + '|' + f.original)
+            personal[id] = { pre, seg: f.original, post: rest.join(f.original), fix: f.fix, why: f.why, at: Date.now() }
+            next = recordAnswer(next, id, false)
+          }
+          return next
+        })}
+        onSecondTry={() => setSpoke(true)}
+        aside={
+          <div className="sp-aside">
+            <div className="section-head">Useful Spanish · tap to hear</div>
+            <p className="sp-group">At the counter</p>
+            <div className="sp-chips">
+              {office.map(t => (
+                <button key={t} type="button" className="sp-chip" onClick={() => { const ph = PHRASES_M1.find(p => p.answer === t); if (ph) playClip(phraseAudio(ph.id)) }}><span aria-hidden>▶</span>{t}</button>
+              ))}
+            </div>
+            <p className="sp-group">About you</p>
+            <div className="sp-chips">
+              {SPEAK_FRAMES.map((t, k) => (
+                <button key={t} type="button" className="sp-chip sp-chip--frame" onClick={() => playClip(`${AUDIO}/m1/fr-${k + 1}.mp3`)}><span aria-hidden>▶</span>{t}</button>
+              ))}
+            </div>
+            <p className="sp-tip"><Icon name="tip" size={20} className="ico-inline" /> Short and clear beats long and broken. One idea per sentence.</p>
           </div>
-        </div>
+        }
+      />
 
-        <div className="tip">
-          <strong>Why speaking matters:</strong> You will freeze in the real office if you have only read Spanish, not spoken it. Sixty seconds now saves five minutes of panic later.
-        </div>
-
-        <p className="label" style={{ marginTop: '1rem' }}>Choose your prompt:</p>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '.6rem', marginBottom: '1.5rem' }}>
-          {PROMPTS.map((p, i) => (
-            <button
-              key={i}
-              onClick={() => setChosen(i)}
-              style={{
-                padding: '.75rem 1rem', borderRadius: '8px', textAlign: 'left',
-                border: `1.5px solid ${chosen === i ? '#C4694A' : '#ddd'}`,
-                background: chosen === i ? '#fdf3ef' : '#fff',
-                cursor: 'pointer', font: '600 .9rem system-ui',
-                transition: 'all .15s',
-              }}
-            >
-              {p.label}
-            </button>
-          ))}
-        </div>
-
-        {chosen !== null && (
-          <div className="speaking-prompt" style={{ marginBottom: '1.5rem' }}>
-            <p style={{ fontWeight: 600, marginBottom: '.4rem' }}>{PROMPTS[chosen].prompt}</p>
-            <p style={{ fontSize: '.82rem', color: '#2a4060', opacity: .75 }}>
-              <Icon name="tip" size={20} className="ico-inline" /> {PROMPTS[chosen].hint}
-            </p>
-          </div>
-        )}
-
-        <div style={{ textAlign: 'center' }}>
-          <button className="btn btn--terra" onClick={onDone}>
-            I spoke — next →
-          </button>
-        </div>
+      <div className="sp-foot">
+        <span className="sp-foot__note">{spoke ? '¡Bien hecho! Say it again as often as you like.' : 'No microphone right now? Practise out loud anyway, then carry on.'}</span>
+        <button className="btn btn--terra" onClick={onDone}>{spoke ? 'See my results →' : 'I practised out loud →'}</button>
       </div>
     </div>
   )
@@ -998,7 +1201,7 @@ function ResultStep({
       <div className="card">
         <p className="label">What next?</p>
         <ul className="goal-list">
-          <li>Come back tomorrow — the spaced repetition system will pick out the words you struggled with</li>
+          <li><Link href="/courses/spanish-expats/repaso">Repaso</Link>: your own mistakes from writing and speaking, plus the words that are due. Come back tomorrow and they will be waiting.</li>
           <li>Module 2: Healthcare — tarjeta SIP, CAP, booking appointments (Valencia-specific)</li>
           <li>Module 3: Daily life — bars, shops, the menú del día, the Valencia register</li>
         </ul>
@@ -1281,7 +1484,7 @@ function RutaStep({ onDone }: { onDone: () => void }) {
 }
 
 export default function SpanishExpatsPage() {
-  const { progress, update } = useProgress(COURSE_ID)
+  const { progress, update, student } = useProgress(COURSE_ID)
 
   const [step, setStep] = useState(0)
 
@@ -1334,6 +1537,7 @@ export default function SpanishExpatsPage() {
             <SomersetLogo variant="white" />
           </Link>
           <span className="unit-label">Spanish for Expats · Module 1</span>
+          <Link href="/courses/spanish-expats/repaso" className="corner-link">Repaso</Link>
           <Link href="/student" className="corner-link">My area</Link>
         </div>
         <nav className="lesson-nav" aria-label="Module lessons">
@@ -1410,6 +1614,7 @@ export default function SpanishExpatsPage() {
                       <li>8 key phrases for any government office</li>
                       <li>The <em>poder + infinitive</em> structure that covers half your bureaucracy Spanish</li>
                       <li>A real dialogue: Sarah gets her NIE in Valencia</li>
+                      <li>Speaking practice that checks your Spanish and shows every fix</li>
                     </ul>
                   </div>
 
@@ -1549,34 +1754,41 @@ export default function SpanishExpatsPage() {
                 <button className="btn btn--terra" onClick={() => setStep(6)}>Next: Diálogo →</button>
               </div>
             ) : (
-              <PoderExercise onDone={(score) => { setGrammarScore(score); setStep(6) }} />
+              <PoderExercise onDone={(score) => { setGrammarScore(score); setStep(6) }} updateProgress={update} />
             )
           )}
 
           {/* Step 5: Dialogue */}
           {step === 6 && (
             dialogueScore !== undefined ? (
+              <div>
               <div className="card" style={{ textAlign: 'center' }}>
                 <p style={{ fontFamily: 'Georgia, serif', fontSize: '1.4rem', marginBottom: '.5rem' }}>
                   {dialogueScore} / {DIALOGUE_QS.length} correct
                 </p>
-                <button className="btn btn--terra" onClick={() => setStep(7)}>Next: A hablar →</button>
+              </div>
+              <ReadAloudStage student={student} onNext={() => setStep(7)} />
               </div>
             ) : (
-              <DialogueLesson onDone={(score) => { setDialogueScore(score); setStep(7) }} />
+              <DialogueLesson student={student} onDone={(score) => { setDialogueScore(score); setStep(7) }} />
             )
           )}
 
           {/* Step 6: Speaking */}
           {step === 7 && (
-            <SpeakingStep onDone={() => {
+            <SpeakingStep student={student} updateProgress={update} onDone={() => {
               update(p => markActive(p))
               setStep(8)
             }} />
           )}
 
-          {/* Step 7: Result */}
+          {/* Step 8: Writing */}
           {step === 8 && (
+            <WritingStep student={student} savedText={progress.writing} updateProgress={update} onDone={() => setStep(9)} />
+          )}
+
+          {/* Step 9: Result */}
+          {step === 9 && (
             <ResultStep
               scores={{
                 vocab: vocabScore ?? 0,

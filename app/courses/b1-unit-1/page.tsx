@@ -125,17 +125,9 @@ export default function B1Unit1Course() {
 
   const [persResults, setPersResults] = useState<DeckResult[] | null>(null)
 
-  const [gAns, setGAns] = useState<string[]>(Array(20).fill(''))
-  const [gChecked, setGChecked] = useState(false)
-  const [stativeAns, setStativeAns] = useState<boolean[]>(Array(7).fill(false))
-  const [stativeChecked, setStativeChecked] = useState(false)
-
-  const [readAns, setReadAns] = useState<string[]>(Array(4).fill(''))
-  const [readChecked, setReadChecked] = useState(false)
-
-  const [l1Ans, setL1Ans] = useState<string[]>(Array(3).fill(''))
-  const [l2Ans, setL2Ans] = useState<string[]>(Array(6).fill(''))
-  const [listenChecked, setListenChecked] = useState(false)
+  // Instant feedback: every answer is judged as it is given (see monday-young-adults/Exercise.tsx).
+  const [inst, setInst] = useState<Record<string, { wrong: string[]; done: boolean; first: boolean }>>({})
+  const [shakeKey, setShakeKey] = useState<string | null>(null)
 
   const [speakingDone, setSpeakingDone] = useState(false)
 
@@ -225,20 +217,22 @@ export default function B1Unit1Course() {
   const jobScore = jobResults ? Math.round(jobResults.reduce((a, r) => a + r.points, 0) / JOB_QS.length * 100) : saved('jobs')
   const persScore = persResults ? Math.round(persResults.reduce((a, r) => a + r.points, 0) / PERS_QS.length * 100) : saved('personality')
 
-  const gFlat: string[] = []
-  const gCorrect: string[] = []
-  GRAMMAR_QS.forEach((q, qi) => q.answers.forEach((a, bi) => {
-    gFlat.push(gAns[qi * 2 + bi] || '')
-    gCorrect.push(a)
-  }))
-  const grammarScore = gChecked ? scoreAnswers(gFlat, gCorrect) : saved('grammar')
-
-  const stativeScore = stativeChecked
-    ? Math.round(STATIVE_QS.filter((q, i) => stativeAns[i] === q.isWrong).length / 7 * 100)
-    : saved('stative')
-
-  const readingScore = readChecked ? scoreAnswers(readAns, READING_QS.map(q => q.a)) : saved('reading')
-  const listeningScore = listenChecked ? scoreAnswers([...l1Ans, ...l2Ans], [...L1_ANS, ...L2_QS.map(q => q.a)]) : saved('listening')
+  const GRAM_TOTAL = GRAMMAR_QS.reduce((n, g) => n + g.answers.length, 0)
+  const cnt = (prefix: string, total: number) => {
+    let done = 0, first = 0
+    for (const k in inst) if (k.startsWith(prefix) && inst[k].done) { done++; if (inst[k].first) first++ }
+    return { done, first, total, all: done === total }
+  }
+  const GR = { prefix: 'g:', lesson: 'grammar', total: GRAM_TOTAL }
+  const ST = { prefix: 's:', lesson: 'stative', total: STATIVE_QS.length }
+  const RD = { prefix: 'r:', lesson: 'reading', total: READING_QS.length }
+  const LS = { prefix: 'l', lesson: 'listening', total: L1_ANS.length + L2_QS.length }
+  const gC = cnt(GR.prefix, GR.total), sC = cnt(ST.prefix, ST.total), rC = cnt(RD.prefix, RD.total), lC = cnt(LS.prefix, LS.total)
+  const pctOf = (c: { first: number; total: number }) => Math.round(c.first / c.total * 100)
+  const grammarScore = gC.all ? pctOf(gC) : saved('grammar')
+  const stativeScore = sC.all ? pctOf(sC) : saved('stative')
+  const readingScore = rC.all ? pctOf(rC) : saved('reading')
+  const listeningScore = lC.all ? pctOf(lC) : saved('listening')
   const spokeDone = speakingDone || saved('speaking') !== null
   const wroteDone = writingSubmitted || saved('writing') !== null
 
@@ -268,25 +262,44 @@ export default function B1Unit1Course() {
       return { ...markActive(next), lessons: { ...next.lessons, [lesson]: { score, at: Date.now() } } }
     })
   }
-  function checkGrammar() {
-    setGChecked(true)
-    const pairs: [string, boolean][] = []
-    GRAMMAR_QS.forEach((g, qi) => g.answers.forEach((a, bi) => pairs.push([`gram:${qi}:${bi}`, gAns[qi * 2 + bi] === a])))
-    record(pairs, 'grammar', Math.round(pairs.filter(x => x[1]).length / pairs.length * 100))
+  type Grp = { prefix: string; lesson: string; total: number }
+  const CHEERS = ['Yes!', 'Perfect!', 'Spot on!', 'Great!', 'Nice one!', 'Correct!']
+  function pick(key: string, value: string, correct: string, g: Grp, recId?: string) {
+    const cur = inst[key] ?? { wrong: [], done: false, first: false }
+    if (cur.done || cur.wrong.includes(value)) return
+    const ok = value === correct
+    const firstTry = cur.wrong.length === 0
+    const all = { ...inst, [key]: ok ? { wrong: cur.wrong, done: true, first: firstTry } : { wrong: [...cur.wrong, value], done: false, first: false } }
+    setInst(all)
+    if (!ok) { setShakeKey(key); setTimeout(() => setShakeKey(null), 450) }
+    const fresh = saved(g.lesson) === null
+    if (fresh && firstTry && recId) update(p => recordAnswer(p, recId, ok))
+    if (ok && fresh) {
+      let done = 0, first = 0
+      for (const k in all) if (k.startsWith(g.prefix) && all[k].done) { done++; if (all[k].first) first++ }
+      if (done === g.total) update(p => ({ ...markActive(p), lessons: { ...p.lessons, [g.lesson]: { score: Math.round(first / g.total * 100), at: Date.now() } } }))
+    }
   }
-  function checkStative() {
-    setStativeChecked(true)
-    const pairs = STATIVE_QS.map((q, i): [string, boolean] => [`stat:${i}`, stativeAns[i] === q.isWrong])
-    record(pairs, 'stative', Math.round(pairs.filter(x => x[1]).length / pairs.length * 100))
+  // Answer buttons: a wrong one turns red and stays locked; the right one closes the item.
+  const renderOpts = (k: string, options: string[], correct: string, g: Grp, recId?: string, letters = false, inline = false) => {
+    const s = inst[k]
+    if (s?.done) return null
+    return (
+      <span className={inline ? 'blank-opts' : 'opts opts--row'} style={inline ? undefined : { display: 'flex' }}>
+        {options.map((opt, oi) => {
+          const wrong = !!s?.wrong.includes(opt)
+          return (
+            <button key={opt} type="button" className={`opt${wrong ? ' bad' : ''}`} disabled={wrong} onClick={() => pick(k, opt, correct, g, recId)}>
+              <span>{letters && <b className="opt-letter">{'ABC'[oi]}</b>}{opt}</span>
+            </button>
+          )
+        })}
+      </span>
+    )
   }
-  function checkReading() {
-    setReadChecked(true)
-    record([], 'reading', scoreAnswers(readAns, READING_QS.map(q => q.a)))
-  }
-  function checkListening() {
-    setListenChecked(true)
-    record([], 'listening', scoreAnswers([...l1Ans, ...l2Ans], [...L1_ANS, ...L2_QS.map(q => q.a)]))
-  }
+  const done1 = (k: string) => inst[k]?.done && inst[k].first
+  const celebrate = (n: number) => <><span className="ex-burst" aria-hidden>✓</span><span className="ex-cheer">{CHEERS[n % CHEERS.length]}</span></>
+  const progressNote = (c: { done: number; total: number }) => <span className="match-count">{c.done} / {c.total} done</span>
   function savePlanAndStart() {
     update(p => markActive({ ...p, plan: { days: studyDays, hours: studyHours, goal: studyGoal, at: Date.now() } }))
     setStep(1)
@@ -527,61 +540,62 @@ export default function B1Unit1Course() {
                   {GRAMMAR_QS.map((item, qi) => {
                     let blankIdx = 0
                     const parts = item.text.split(/(\[\d+\])/)
+                    const keys = item.answers.map((_, bi) => `g:${qi}:${bi}`)
+                    const rowWin = keys.every(k => done1(k))
+                    const rowDone = keys.every(k => inst[k]?.done)
                     return (
-                      <div key={qi} className="task-row">
+                      <div key={qi} className={`task-row ex-row${rowWin ? ' ex-win' : ''}${rowDone && !rowWin ? ' ex-redo' : ''}${keys.some(k => shakeKey === k) ? ' bad' : ''}`}>
                         <span className="num">{qi + 1}</span>
                         <span className="task-text task-text--flow">
                           {parts.map((part, pi) => {
                             if (!/^\[\d+\]$/.test(part)) return <span key={pi}>{part}</span>
                             const bi = blankIdx++
-                            const idx = qi * 2 + bi
-                            const state = rowState(gChecked, gAns[idx], item.answers[bi])
-                            return (
-                              <span key={pi} className={`blank-wrap ${state}`}>
-                                <select className="sel sel--inline" value={gAns[idx]} disabled={gChecked} onChange={e => { const v = [...gAns]; v[idx] = e.target.value; setGAns(v) }}>
-                                  <option value="">______</option>
-                                  {item.options[bi].map(o => <option key={o} value={o}>{o}</option>)}
-                                </select>
-                                <Mark state={state} answer={item.answers[bi]} inline />
-                              </span>
-                            )
+                            const k = keys[bi]
+                            return inst[k]?.done
+                              ? <b key={pi} className="ex-word">{item.answers[bi]}</b>
+                              : <span key={pi}>{renderOpts(k, item.options[bi], item.answers[bi], GR, `gram:${qi}:${bi}`, false, true)}</span>
                           })}
+                          {rowDone && !rowWin && <span className="ex-revise">added to your revision</span>}
                         </span>
+                        {rowWin && celebrate(qi)}
                       </div>
                     )
                   })}
                 </div>
                 <Row>
-                  {!gChecked
-                    ? <Btn disabled={gFlat.some(a => !a)} onClick={checkGrammar}>Check answers</Btn>
-                    : <ScoreBadge score={grammarScore!} />}
+                  {!gC.all ? progressNote(gC) : <ScoreBadge score={grammarScore!} />}
                 </Row>
               </section>
 
               <section className="card">
-                <LessonHead tag="D · Grammar" title="Stative verbs: find the mistakes" aim="Five of these sentences use a stative verb in the continuous. Tick the wrong ones." extra={<ExplainVideo video={VIDEOS.stative} />} />
+                <LessonHead tag="D · Grammar" title="Stative verbs: find the mistakes" aim="Some of these sentences use a stative verb in the continuous. Is each sentence right or wrong?" extra={<ExplainVideo video={VIDEOS.stative} />} />
                 <div className="tip-box">
                   <strong>Language tip</strong>
                   <p>Verbs of thinking, feeling, owning and the senses (<em>know, believe, want, own, taste, smell</em>) describe states, not actions. They stay in the present simple even when we mean &ldquo;now&rdquo;.</p>
                 </div>
                 <div className="task-list">
                   {STATIVE_QS.map((item, i) => {
-                    const state = !stativeChecked ? '' : stativeAns[i] === item.isWrong ? 'ok' : 'bad'
+                    const k = `s:${i}`
+                    const st = inst[k]
+                    const win = done1(k)
                     return (
-                      <label key={i} className={`task-row task-row--check ${state}${stativeAns[i] ? ' ticked' : ''}`}>
-                        <input type="checkbox" checked={stativeAns[i]} disabled={stativeChecked} onChange={() => { const v = [...stativeAns]; v[i] = !v[i]; setStativeAns(v) }} />
+                      <div key={i} className={`task-row ex-row${win ? ' ex-win' : ''}${st?.done && !st.first ? ' ex-redo' : ''}${shakeKey === k ? ' bad' : ''}`}>
+                        <span className="num">{i + 1}</span>
                         <span className="task-text">
-                          <span className={stativeChecked && item.isWrong ? 'struck' : ''}>{stativeSentence(item)}</span>
-                          {stativeChecked && item.isWrong && <span className="fix">{stativeCorrection(item)}</span>}
+                          <span className={st?.done && item.isWrong ? 'struck' : ''}>{stativeSentence(item)}</span>
+                          {st?.done && item.isWrong && <span className="fix">{stativeCorrection(item)}</span>}
+                          {st?.done && !item.isWrong && <b className="ex-word" style={{ marginLeft: '.5rem' }}>correct as it is</b>}
+                          {st?.done && !st.first && <span className="ex-revise">added to your revision</span>}
+                          {!st?.done && <div style={{ marginTop: '.5rem' }}>{renderOpts(k, ['Right', 'Wrong'], item.isWrong ? 'Wrong' : 'Right', ST, `stat:${i}`)}</div>}
                         </span>
-                        {stativeChecked && <span className={`mark ${state}`}>{state === 'ok' ? '✓' : '✗'}</span>}
-                      </label>
+                        {win && celebrate(i)}
+                      </div>
                     )
                   })}
                 </div>
                 <Row>
-                  {!stativeChecked
-                    ? <Btn onClick={checkStative}>Check answers</Btn>
+                  {!sC.all
+                    ? progressNote(sC)
                     : <><ScoreBadge score={stativeScore!} /><Btn onClick={() => setStep(4)}>Next: Reading →</Btn></>}
                 </Row>
               </section>
@@ -602,29 +616,20 @@ export default function B1Unit1Course() {
                   ))}
                 </article>
                 <div className="q-stack">
-                  {READING_QS.map((item, i) => (
-                    <div key={i} className="q-block">
-                      <div className="q-title"><span className="num">{i + 1}</span>{item.q}</div>
-                      <div className="opts">
-                        {item.options.map(opt => {
-                          const isCorrect = readChecked && opt === item.a
-                          const isWrong = readChecked && opt === readAns[i] && opt !== item.a
-                          const picked = readAns[i] === opt
-                          return (
-                            <label key={opt} className={`opt${picked ? ' picked' : ''}${isCorrect ? ' ok' : ''}${isWrong ? ' bad' : ''}`}>
-                              <input type="radio" name={`rq${i}`} value={opt} checked={picked} disabled={readChecked} onChange={() => { const v = [...readAns]; v[i] = opt; setReadAns(v) }} />
-                              <span>{opt}</span>
-                              {isCorrect && <span className="mark ok">✓</span>}
-                              {isWrong && <span className="mark bad">✗</span>}
-                            </label>
-                          )
-                        })}
+                  {READING_QS.map((item, i) => {
+                    const k = `r:${i}`
+                    return (
+                      <div key={i} className={`q-block${done1(k) ? ' ex-win' : ''}${inst[k]?.done && !inst[k].first ? ' ex-redo' : ''}`}>
+                        <div className="q-title"><span className="num">{i + 1}</span>{item.q}</div>
+                        {inst[k]?.done
+                          ? <p className="ex-ans"><b className="ex-word">{item.a}</b>{done1(k) ? celebrate(i) : <span className="ex-revise">added to your revision</span>}</p>
+                          : renderOpts(k, item.options, item.a, RD)}
                       </div>
-                    </div>
-                  ))}
+                    )
+                  })}
                   <Row>
-                    {!readChecked
-                      ? <Btn disabled={readAns.some(a => !a)} onClick={checkReading}>Check answers</Btn>
+                    {!rC.all
+                      ? progressNote(rC)
                       : <><ScoreBadge score={readingScore!} /><Btn onClick={() => setStep(5)}>Next: Listening →</Btn></>}
                   </Row>
                 </div>
@@ -644,16 +649,18 @@ export default function B1Unit1Course() {
                 <WordBank words={L1_JOBS} />
                 <div className="task-list">
                   {L1_ANS.map((ans, i) => {
-                    const state = rowState(listenChecked, l1Ans[i], ans)
+                    const k = `l1:${i}`
                     return (
-                      <div key={i} className={`task-row task-row--inline ${state}`}>
+                      <div key={i} className={`task-row ex-row${done1(k) ? ' ex-win' : ''}${inst[k]?.done && !inst[k].first ? ' ex-redo' : ''}${shakeKey === k ? ' bad' : ''}`}>
                         <span className="num">{i + 1}</span>
-                        <span className="task-text">Speaker {i + 1}</span>
-                        <select className="sel" value={l1Ans[i]} disabled={listenChecked} onChange={e => { const v = [...l1Ans]; v[i] = e.target.value; setL1Ans(v) }}>
-                          <option value="">choose…</option>
-                          {L1_JOBS.map(j => <option key={j} value={j}>{j}</option>)}
-                        </select>
-                        <Mark state={state} answer={ans} />
+                        <span className="task-text">
+                          Speaker {i + 1}{' '}
+                          {inst[k]?.done
+                            ? <b className="ex-word">{ans}</b>
+                            : <div style={{ marginTop: '.5rem' }}>{renderOpts(k, L1_JOBS, ans, LS)}</div>}
+                          {inst[k]?.done && !inst[k].first && <span className="ex-revise">added to your revision</span>}
+                        </span>
+                        {done1(k) && celebrate(i)}
                       </div>
                     )
                   })}
@@ -667,31 +674,22 @@ export default function B1Unit1Course() {
               <section className="card">
                 <LessonHead tag="Listening Part 1" title="Six short conversations" aim="For each question, choose the correct answer. In the real exam the options are pictures." />
                 <div className="q-stack">
-                  {L2_QS.map((item, i) => (
-                    <div key={i} className="q-block">
-                      <div className="q-title"><span className="num">{i + 1}</span>{item.q}</div>
-                      <audio className="q-audio" controls preload="none" src={`/courses/b1-unit-1/audio/${item.track}.mp3`} />
-                      <div className="opts opts--row">
-                        {item.options.map((opt, oi) => {
-                          const isCorrect = listenChecked && opt === item.a
-                          const isWrong = listenChecked && opt === l2Ans[i] && opt !== item.a
-                          const picked = l2Ans[i] === opt
-                          return (
-                            <label key={opt} className={`opt${picked ? ' picked' : ''}${isCorrect ? ' ok' : ''}${isWrong ? ' bad' : ''}`}>
-                              <input type="radio" name={`lq${i}`} value={opt} checked={picked} disabled={listenChecked} onChange={() => { const v = [...l2Ans]; v[i] = opt; setL2Ans(v) }} />
-                              <span><b className="opt-letter">{'ABC'[oi]}</b>{opt}</span>
-                              {isCorrect && <span className="mark ok">✓</span>}
-                              {isWrong && <span className="mark bad">✗</span>}
-                            </label>
-                          )
-                        })}
+                  {L2_QS.map((item, i) => {
+                    const k = `l2:${i}`
+                    return (
+                      <div key={i} className={`q-block${done1(k) ? ' ex-win' : ''}${inst[k]?.done && !inst[k].first ? ' ex-redo' : ''}`}>
+                        <div className="q-title"><span className="num">{i + 1}</span>{item.q}</div>
+                        <audio className="q-audio" controls preload="none" src={`/courses/b1-unit-1/audio/${item.track}.mp3`} />
+                        {inst[k]?.done
+                          ? <p className="ex-ans"><b className="ex-word">{item.a}</b>{done1(k) ? celebrate(i + 3) : <span className="ex-revise">added to your revision</span>}</p>
+                          : renderOpts(k, item.options, item.a, LS, undefined, true)}
                       </div>
-                    </div>
-                  ))}
+                    )
+                  })}
                 </div>
                 <Row>
-                  {!listenChecked
-                    ? <Btn disabled={l1Ans.some(a => !a) || l2Ans.some(a => !a)} onClick={checkListening}>Check answers</Btn>
+                  {!lC.all
+                    ? progressNote(lC)
                     : <><ScoreBadge score={listeningScore!} /><Btn onClick={() => setStep(6)}>Next: Speaking →</Btn></>}
                 </Row>
               </section>

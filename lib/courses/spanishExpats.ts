@@ -205,28 +205,46 @@ export const DIALOGUE_M1: { who: string; line: string; isYou?: boolean }[] = [
   { who: 'Funcionaria', line: 'De nada. ¡Buena suerte!' },
 ]
 
-export type DialogueQ = { q: string; options: string[]; a: string }
+// line = index in DIALOGUE_M1 of the line that proves the answer (lit up when they get it right).
+export type DialogueQ = { q: string; options: string[]; a: string; line: number }
 export const DIALOGUE_QS: DialogueQ[] = [
   {
     q: 'What does the first funcionario ask for straight away?',
     options: ['Your passport', 'Your reference number', 'Your NIE form', 'Your appointment time'],
     a: 'Your reference number',
+    line: 3,
   },
   {
     q: 'Why does Sarah ask the second official to speak more slowly?',
     options: ["She doesn't know the vocabulary", "She doesn't understand completely", 'The office is too noisy', 'She forgot her Spanish'],
     a: "She doesn't understand completely",
+    line: 8,
   },
   {
     q: 'How did Sarah pay the tasa?',
     options: ['Cash at the window', 'By card at the window', 'In advance, at the bank', "She didn't need to pay"],
     a: 'In advance, at the bank',
+    line: 14,
   },
   {
     q: 'If everything is correct, when does Sarah get her NIE certificate?',
     options: ['The same day', '3–5 working days', '10–15 working days', 'A month later, by post'],
     a: 'The same day',
+    line: 17,
   },
+]
+
+// Phrases from this module that appear in the dialogue. They light up as the student
+// reaches them. "text" must appear exactly inside DIALOGUE_M1[line].line.
+export const DIALOGUE_SPOTS: { text: string; line: number; en: string }[] = [
+  { text: 'Tengo una cita', line: 2, en: 'I have an appointment' },
+  { text: 'número de referencia', line: 3, en: 'reference number' },
+  { text: 'no entiendo del todo', line: 8, en: "I don't quite understand" },
+  { text: '¿Puede repetir más despacio?', line: 8, en: 'Can you repeat more slowly?' },
+  { text: 'Vengo a pedir el NIE', line: 10, en: "I've come to apply for the NIE" },
+  { text: '¿Puedo pagar la tasa con tarjeta?', line: 12, en: 'Can I pay the fee by card?' },
+  { text: 'justificante', line: 13, en: 'proof of payment' },
+  { text: '¿Cuánto tiempo tarda', line: 16, en: 'How long does it take?' },
 ]
 
 // ─── Level check ──────────────────────────────────────────────────────────────
@@ -362,4 +380,40 @@ export function checkAnswerSE(given: string, answer: string): 'right' | 'close' 
   if (g === a) return 'right'
   const dist = levenshtein(g, a)
   return dist <= (a.length >= 7 ? 2 : 1) ? 'close' : 'wrong'
+}
+
+// ─── Writing: one short real message (Module 1, step "Escribir") ─────────────
+// Item ids are stored in progress.writing as `m1:<id>`; never rename an existing id.
+
+export type WritingTaskSE = {
+  id: string; icon: IconName; title: string; to: string; channel: 'email' | 'whatsapp'
+  situation: string; include: string[]; phrases: string[]
+}
+
+export const WRITING_TASKS_M1: WritingTaskSE[] = [
+  {
+    id: 'w-gestoria', icon: 'documents', title: 'Ask a gestoría for help', to: 'A gestoría near your flat', channel: 'email',
+    situation: 'You want a gestoría to help you with your NIE. Write a short email.',
+    include: ['Say hello and who you are', 'Say what you need help with', 'Ask what documents you need', 'Ask how much it costs'],
+    phrases: ['Buenos días:', 'Me llamo… y soy de…', 'Necesito ayuda con el NIE.', '¿Qué documentos necesito?', '¿Cuánto cuesta?', 'Muchas gracias. Un saludo,'],
+  },
+  {
+    id: 'w-ayto', icon: 'government', title: 'Ask the town hall for a padrón appointment', to: 'The padrón office, Ayuntamiento de València', channel: 'email',
+    situation: 'You have just moved to a new flat in Valencia and need to register on the padrón. Write a short email.',
+    include: ['Say hello and who you are', 'Say you have a new address in Valencia', 'Ask for a cita previa for the padrón', 'Ask what you need to bring'],
+    phrases: ['Buenos días:', 'Vivo en un piso nuevo en…', 'Quiero empadronarme.', '¿Puedo pedir una cita previa?', '¿Qué tengo que llevar?', 'Un saludo,'],
+  },
+  {
+    id: 'w-casero', icon: 'phone', title: 'Message your landlord', to: 'Your landlord, Vicente', channel: 'whatsapp',
+    situation: 'The padrón office needs a copy of your rental contract. Send your landlord a short WhatsApp.',
+    include: ['Say hello', 'Say why you need the contract', 'Ask if he can send it to you', 'Say thank you'],
+    phrases: ['Hola, Vicente:', 'Necesito el contrato de alquiler', 'para el padrón.', '¿Me lo puede enviar por email?', 'Muchas gracias.'],
+  },
+]
+
+// Short stable id for a student's own mistake (stored in progress.personal).
+export function shortHashSE(s: string) {
+  let h = 5381
+  for (let i = 0; i < s.length; i++) h = ((h << 5) + h + s.charCodeAt(i)) >>> 0
+  return h.toString(36)
 }

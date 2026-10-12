@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>GEN01 — Paper 1: Reading and Use of English</title>
+<style>
+* { box-sizing: border-box; }
+body {
+  font-family: "Liberation Sans", Arial, Helvetica, sans-serif;
+  color: #1A1A1A; font-size: 12pt; line-height: 1.42;
+}
+@page cover {
+  margin: 0;
+  @bottom-left { content: none; } @bottom-center { content: none; } @bottom-right { content: none; }
+  @left-top { content: none; } @left-bottom { content: none; }
+  @right-top { content: none; } @right-bottom { content: none; }
+}
+.cover-page { page: cover; page-break-after: always; }
+
+/* ---- Logo (CSS flexbox text lockup, per reference_somerset_logo.md canonical standard) ---- */
+.logo { display: flex; align-items: flex-end; gap: 11px; }
+.logo .word { font-weight: 800; font-size: 33pt; letter-spacing: -1.2px; line-height: .9; }
+.logo .lc { font-weight: 700; font-size: 8.5pt; letter-spacing: 2.5px; line-height: 1.18; padding-bottom: 4px; }
+.logo.on-white .word { color: #6BAE2E; } .logo.on-white .lc { color: #666; }
+.logo.on-green .word { color: #ffffff; } .logo.on-green .lc { color: #e8f3da; }
+
+/* ---- Cover page ---- */
+.cover-bar { background: #6BAE2E; color: #fff; padding: 24px 40px 20px; }
+.cover-kicker { font-size: 11.5pt; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #e8f3da; margin: 13px 0 3px; }
+.cover-title { font-size: 24pt; font-weight: 800; letter-spacing: -.3px; margin: 0; }
+.cover-body { padding: 18px 40px 0; }
+.cover-fields { display: table; width: 100%; border-collapse: collapse; margin-bottom: 12px; }
+.cover-fields .row { display: table-row; }
+.cover-fields .cell { display: table-cell; padding: 6px 0; border-bottom: 1px solid #d8ded1; font-size: 12pt; }
+.cover-fields .label { width: 34%; font-weight: 700; color: #3f3f3f; }
+.cover-panel {
+  background: #F2F7EC; border: 1px solid #cfe2ba; border-left: 5px solid #6BAE2E;
+  border-radius: 3px; padding: 11px 18px; margin-bottom: 11px;
+}
+.cover-panel h3 { margin: 0 0 6px; font-size: 12pt; letter-spacing: .04em; color: #1E4227; text-transform: uppercase; }
+.cover-panel ul { margin: 0; padding-left: 20px; }
+.cover-panel li { margin-bottom: 4px; font-size: 12pt; }
+.cover-parts-table { width: 100%; border-collapse: collapse; font-size: 12pt; }
+.cover-parts-table th, .cover-parts-table td { text-align: left; padding: 3px 8px; border-bottom: 1px solid #e2e8da; }
+.cover-parts-table th { color: #3f3f3f; font-size: 11pt; text-transform: uppercase; letter-spacing: .05em; }
+.draft-banner {
+  border: 1.5px solid #B23A2E; background: #FBEDEB; color: #7a281f; border-radius: 3px;
+  padding: 10px 16px; font-size: 11.5pt; line-height: 1.4; margin: 12px 0 0;
+}
+.draft-banner strong { display: block; font-size: 12pt; margin-bottom: 3px; letter-spacing: .03em; text-transform: uppercase; }
+.teacher-banner {
+  border: 1.5px solid #1E4227; background: #eef3ea; color: #1E4227; border-radius: 3px;
+  padding: 10px 16px; font-size: 11.5pt; line-height: 1.4; margin: 12px 0 0;
+}
+.teacher-banner strong { display: block; font-size: 12pt; margin-bottom: 3px; letter-spacing: .03em; text-transform: uppercase; }
+
+/* ---- Body pages: dark "Part N" badge (copies the source's compact tag, not the
+   old green rectangle), plain unboxed instructions ---- */
+.part { break-before: page; }
+.part:first-of-type { break-before: auto; }
+.part-head { break-after: avoid; page-break-after: avoid; margin-bottom: 6px; }
+.part-head .label { display: inline-block; background: #2b2b2b; color: #fff; font-weight: 800;
+  font-size: 13pt; letter-spacing: .02em; padding: 5px 18px; border-radius: 3px 12px 3px 3px; }
+.part-title { font-size: 15pt; font-weight: 800; color: #1E4227; margin: 8px 0 4px; }
+.instructions {
+  font-size: 12pt; margin: 8px 0 4px; line-height: 1.45;
+  break-inside: avoid; page-break-inside: avoid;
+}
+.exam-note { font-size: 12pt; font-weight: 700; margin: 2px 0 14px; }
+.section-rule { border: none; border-top: 1px solid #999; margin: 10px 0 16px; }
+
+.passage-title { font-size: 16pt; font-weight: 800; margin: 6px 0 10px; text-align: center; }
+.passage p { font-size: 14pt; line-height: 1.55; margin: 0 0 12px; text-align: justify; }
+.passage.two-col { columns: 2; column-gap: 26px; }
+.passage.two-col p { text-align: justify; }
+.gapnum { font-weight: 800; color: #1E4227; }
+
+/* ---- Example graphics: literal answer-sheet-style boxes, not an inline highlight ---- */
+.example-block { margin: 2px 0 16px; font-size: 12pt; break-inside: avoid; page-break-inside: avoid; }
+.example-label { font-weight: 700; margin-right: 12px; }
+.bubble-row { display: inline-flex; align-items: center; gap: 7px; border: 1px solid #999;
+  border-radius: 4px; padding: 5px 12px; vertical-align: middle; }
+.bubble-row .bubble-num { font-weight: 800; margin-right: 4px; }
+.bubble { display: inline-flex; align-items: center; justify-content: center; width: 19px; height: 19px;
+  border: 1.4px solid #333; border-radius: 50%; font-size: 10.5pt; font-weight: 700; }
+.bubble.shaded { background: #1E4227; color: #fff; border-color: #1E4227; }
+.letterbox-row { display: inline-flex; align-items: center; gap: 2px; vertical-align: middle; }
+.letterbox-row .letterbox-num { font-weight: 800; margin-right: 10px; }
+.letterbox { display: inline-flex; align-items: center; justify-content: center; width: 17px; height: 21px;
+  border: 1.4px solid #333; font-weight: 700; font-size: 11pt; text-transform: uppercase; }
+
+.mcq-block { break-inside: avoid; page-break-inside: avoid; margin: 0 0 16px; }
+.mcq-q { font-size: 12pt; font-weight: 700; margin-bottom: 3px; }
+.mcq-context { font-size: 12pt; font-style: italic; color: #444; margin-bottom: 2px; }
+.mcq-options { display: flex; flex-wrap: wrap; gap: 4px 18px; margin: 5px 0 0 14px; }
+.mcq-options.stacked { display: block; margin-left: 14px; }
+.mcq-options.stacked .opt { display: block; margin-bottom: 3px; }
+.opt { font-size: 12pt; white-space: nowrap; }
+.opt b { display: inline-block; width: 15px; }
+
+.gap-list { columns: 2; column-gap: 28px; margin-top: 4px; }
+.gap-item { break-inside: avoid; page-break-inside: avoid; font-size: 12pt; margin-bottom: 9px; }
+
+/* Word-formation stems: plain bold text, no box (copies the source's unboxed
+   right-margin stems as closely as a reflowed layout allows) */
+.stems-list { columns: 2; column-gap: 24px; margin: 10px 0 14px; break-inside: avoid; page-break-inside: avoid; }
+.stems-list .stem-item { font-size: 12pt; margin-bottom: 6px; }
+.stems-list .stem-item b { color: #1A1A1A; letter-spacing: .02em; }
+
+.transform-item { break-inside: avoid; page-break-inside: avoid; margin: 0 0 18px; }
+.transform-item .q1 { font-size: 12pt; margin-bottom: 3px; }
+.transform-item .kw { font-weight: 800; letter-spacing: .04em; display: block; margin: 3px 0; }
+.transform-item .gapped { font-size: 12pt; }
+
+.kwt-example { margin: 4px 0 18px; font-size: 12pt; break-inside: avoid; page-break-inside: avoid; }
+.kwt-example .kw { font-weight: 800; letter-spacing: .04em; display: block; margin: 3px 0; }
+.answer-sheet-box { display: inline-block; border: 1.3px solid #333; border-radius: 2px; padding: 3px 14px;
+  font-family: "Liberation Serif", "Times New Roman", serif; font-style: italic; font-size: 12.5pt; margin-top: 4px; }
+
+.gap-review-list { margin: 10px 0 0 18px; }
+.gap-review-list li { font-size: 12pt; margin-bottom: 4px; }
+
+/* Answer slot: shaded number + blank box, the recurring "answer sheet" motif
+   used for gapped-text numbers and multiple-matching answers */
+.answer-slot { display: inline-flex; border: 1.3px solid #333; border-radius: 2px; overflow: hidden;
+  font-weight: 800; font-size: 11.5pt; vertical-align: middle; }
+.answer-slot .num { background: #d9d9d9; padding: 2px 8px; }
+.answer-slot .blank { padding: 2px 20px; background: #fff; }
+.answer-slot.inline { margin: 0 2px; }
+
+.gaptext-options { border: 1px solid #333; border-radius: 3px; padding: 14px 20px; margin: 8px 0 4px;
+  columns: 2; column-gap: 26px; break-inside: avoid; page-break-inside: avoid; }
+.gaptext-options .opt-item { font-size: 12pt; margin: 0 0 14px; break-inside: avoid; page-break-inside: avoid; }
+.gaptext-options .opt-item b { margin-right: 8px; }
+
+.mm-text { break-inside: avoid; page-break-inside: avoid; margin: 0 0 16px; }
+.mm-text .who { font-weight: 800; font-size: 13pt; margin: 0 0 3px; }
+.mm-text p { font-size: 12pt; line-height: 1.5; margin: 4px 0 0; text-align: justify; }
+.mm-texts-box { border: 1px solid #333; border-radius: 3px; padding: 14px 20px; margin: 8px 0 16px;
+  columns: 2; column-gap: 26px; }
+
+.mm-questions { margin-top: 6px; }
+.mm-q { break-inside: avoid; page-break-inside: avoid; font-size: 12pt; margin: 0 0 14px;
+  display: flex; justify-content: space-between; align-items: center; gap: 14px; }
+.mm-q .qtext { flex: 1; }
+
+.answer-line { display: inline-block; border-bottom: 1px solid #999; width: 26px; text-align: center; }
+
+/* ---- Writing tasks ---- */
+.wtask-block { margin: 0 0 20px; }
+.wtask-block .wprompt { font-size: 12.5pt; margin: 0 0 10px; }
+.compulsory-tag { display: inline-block; background: #1E4227; color: #fff; font-size: 10.5pt; font-weight: 700;
+  letter-spacing: .05em; padding: 2px 9px; border-radius: 2px; margin-left: 8px; vertical-align: middle; }
+.choice-tag { display: inline-block; background: #888; color: #fff; font-size: 10.5pt; font-weight: 700;
+  letter-spacing: .05em; padding: 2px 9px; border-radius: 2px; margin-left: 8px; vertical-align: middle; }
+.write-cue { font-weight: 700; margin-top: 10px; }
+
+/* Notebook graphic for the Part 1 essay notes, copying the source's spiral-pad box */
+.notebook { border: 1px solid #999; border-radius: 5px; margin: 14px 20px 18px; break-inside: avoid; page-break-inside: avoid; }
+.notebook-spiral { background: #e6e6e6; border-bottom: 1px solid #999; border-radius: 5px 5px 0 0;
+  padding: 5px 10px; font-size: 15pt; letter-spacing: 1px; color: #9a9a9a; text-align: center;
+  overflow: hidden; white-space: nowrap; line-height: 1; }
+.notebook-body { padding: 16px 26px 18px; }
+.notebook-title { font-size: 14pt; font-weight: 700; text-align: center; margin: 0 0 10px; }
+.notebook hr { border: none; border-top: 1px solid #999; margin: 8px 0; }
+.notebook-label { font-weight: 800; margin: 10px 0 2px; }
+.notebook ol { margin: 8px 0 0 20px; }
+.notebook ol li { font-size: 12.5pt; margin-bottom: 4px; }
+
+/* Magazine-announcement box (bordered, green rule) for review/article tasks */
+.notice-box { border: 1.5px solid #6BAE2E; border-radius: 3px; padding: 14px 22px; margin: 10px 20px 16px;
+  break-inside: avoid; page-break-inside: avoid; }
+.notice-box .notice-title { font-size: 15pt; font-weight: 800; margin: 0 0 8px; }
+.notice-box .notice-body { font-size: 12.5pt; }
+
+/* Email box for the email task */
+.email-box { border: 1px solid #999; border-radius: 4px; margin: 10px 20px 16px; overflow: hidden;
+  break-inside: avoid; page-break-inside: avoid; }
+.email-header { background: #e6e6e6; padding: 7px 14px; font-size: 11pt; color: #666; }
+.email-body { background: #fff; padding: 14px 20px; font-size: 12.5pt; }
+.email-body p { margin: 0 0 8px; }
+
+/* ---- Listening ---- */
+.lsent-list { margin-top: 6px; }
+.lsent-item { break-inside: avoid; page-break-inside: avoid; font-size: 12pt; margin-bottom: 13px; }
+.lsent-item .num { font-weight: 800; margin-right: 4px; }
+
+.speaker-list { columns: 2; column-gap: 26px; margin: 6px 0 16px; break-inside: avoid; page-break-inside: avoid; }
+.speaker-list .opt-item { font-size: 12pt; margin: 0 0 16px; break-inside: avoid; page-break-inside: avoid; }
+.speaker-list .opt-item b { margin-right: 8px; }
+.speaker-answers { margin-top: 4px; }
+.speaker-answers .mm-q { margin: 0 0 16px; }
+
+.script-block { background: #fbfcf9; border: 1px solid #e2e8da; border-radius: 3px; padding: 12px 16px;
+  margin: 0 0 16px; font-size: 12pt; line-height: 1.55; }
+.script-block.short { break-inside: avoid; page-break-inside: avoid; }
+.script-block .spk { font-weight: 800; color: #1E4227; }
+.script-label { font-size: 11pt; font-weight: 800; text-transform: uppercase; letter-spacing: .05em;
+  color: #1E4227; margin: 0 0 4px; }
+.key-tag { display: inline-block; background: #1E4227; color: #fff; font-weight: 800; font-size: 11pt;
+  padding: 1px 9px; border-radius: 2px; margin-left: 8px; }
+
+/* ---- Answer key tables ---- */
+.ak-table { width: 100%; border-collapse: collapse; margin: 6px 0 18px; break-inside: avoid; page-break-inside: avoid; }
+.ak-table th, .ak-table td { border: 1px solid #d8ecc4; padding: 5px 9px; font-size: 12pt; text-align: left; }
+.ak-table th { background: #F2F7EC; color: #1E4227; }
+.bs-note { font-size: 11.5pt; color: #444; margin: 4px 0 18px; padding-left: 4px; border-left: 3px solid #cfd; }
+
+@page {
+  size: A4;
+  margin: 1.9cm 1.8cm 1.55cm 1.8cm;
+  @bottom-left {
+    content: "SOMERSET LANGUAGE CENTRE \00B7 VALENCIA \00B7 B2 EXAM PRACTICE \00B7 GEN01 (DRAFT)";
+    font-family: "Liberation Sans", Arial, sans-serif; font-size: 8pt; letter-spacing: .09em;
+    color: #8a8a7a; white-space: nowrap; border-top: 1px solid #dcdcd4; padding-top: 7px; vertical-align: top;
+  }
+  @bottom-center { content: " "; width: 100%; border-top: 1px solid #dcdcd4; }
+  @bottom-right {
+    content: counter(page);
+    font-family: "Liberation Sans", Arial, sans-serif; font-size: 11.5pt; font-weight: bold;
+    color: #fff; background: #1E4227; white-space: nowrap; padding: 2px 10px; border-radius: 2px;
+    vertical-align: top; margin-top: 2px;
+  }
+}
+</style></head><body>
+
+<section class="cover-page">
+  <div class="cover-bar">
+    <div class="logo on-green"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+    <div class="cover-kicker">Somerset Language Centre &middot; B2-level exam practice &middot; Cambridge format</div>
+    <p class="cover-title">Reading and Use of English</p>
+  </div>
+  <div class="cover-body">
+    <div class="cover-fields"><div class="row"><div class="cell label">Candidate Name</div><div class="cell"></div></div><div class="row"><div class="cell label">Candidate Number</div><div class="cell"></div></div><div class="row"><div class="cell label">Centre</div><div class="cell"></div></div><div class="row"><div class="cell label">Date</div><div class="cell"></div></div></div>
+    <div class="cover-panel">
+      <h3>Time allowed</h3>
+      <p style="margin:0;font-size:13pt;">1 hour 15 minutes</p>
+    </div>
+    <div class="cover-panel">
+      <h3>Instructions to candidates</h3>
+      <ul><li>This paper contains seven parts, with 52 questions.</li>
+      <li>Write your answers on the question paper. There is no separate answer sheet in this practice edition.</li>
+      <li>You must use a pencil.</li>
+      <li>Read the instructions for each part carefully.</li></ul>
+    </div>
+    <div class="cover-panel">
+      <h3>Information for candidates</h3>
+      <table class="cover-parts-table"><tr><th>Part</th><th>Questions</th></tr><tr><td>Part 1</td><td>1–8</td></tr><tr><td>Part 2</td><td>9–16</td></tr><tr><td>Part 3</td><td>17–24</td></tr><tr><td>Part 4</td><td>25–30</td></tr><tr><td>Part 5</td><td>31–36</td></tr><tr><td>Part 6</td><td>37–42</td></tr><tr><td>Part 7</td><td>43–52</td></tr></table>
+    </div>
+    <div class="draft-banner"><strong>Draft — not for live use</strong>
+          Original Somerset content (GEN01), Cambridge B2-level format, laid out to match Somerset's
+          own reference practice paper. Every objectively-scored part has passed a blind-solve check,
+          but no teacher has reviewed this paper end to end yet. Do not administer this to a student
+          until Hugo or Sara has read it in full.</div>
+  </div>
+</section>
+
+<div class="part">
+  <div class="part-head"><span class="label">Part 1</span></div>
+  <p class="instructions">For questions 1–8, read the text below and decide which answer (A, B, C or D) best fits each gap. There is an example at the beginning (0).</p><p class="exam-note">In the exam, you mark your answers on a separate answer sheet.</p>
+  <p class="passage-title">The Corner Shop Comeback</p>
+  <div class="example-block"><span class="example-label">Example:</span><span class="bubble-row"><span class="bubble-num">0</span><span class="bubble">A</span><span class="bubble shaded">B</span><span class="bubble">C</span><span class="bubble">D</span></span></div>
+  <div class="passage"><p>For most of the last thirty years, small independent shops across Britain have (0) STRUGGLED to compete with big supermarkets. Many high streets lost their local grocer, baker and butcher one after another, as shoppers began doing their weekly shop at out-of-town superstores, where prices were lower and parking was free.</p>
+<p>Recently, however, this trend appears to be <span class="gapnum">(1) ......</span> . A growing number of small shops are opening in town centres, and some are already making a profit within their first year of business.</p>
+<p>Critics have long <span class="gapnum">(2) ......</span> out that supermarkets, for all their convenience, offer very little sense of community. A corner shop, by contrast, is often the one place in a neighbourhood where people still stop to chat.</p>
+<p>Part of the explanation for the comeback comes <span class="gapnum">(3) ......</span> to convenience. As more people work from home, few are willing to set <span class="gapnum">(4) ......</span> twenty minutes to drive to a supermarket for a single item.</p>
+<p>There is also a growing appetite for quality. Shoppers are increasingly willing to pay a little more for bread baked that same morning, rather than <span class="gapnum">(5) ......</span> up with whatever is cheapest and most convenient. Independent shop owners have been quick to take <span class="gapnum">(6) ......</span> of this shift, building loyal customers who value a friendly face over speed and low prices.</p>
+<p>None of this <span class="gapnum">(7) ......</span> away from the fact that supermarkets remain enormously dominant; their market share is still huge. But for the first time in decades, the corner shop is no <span class="gapnum">(8) ......</span> simply fighting a losing battle.</p></div>
+  <div style="margin-top:10px;"><div class="mcq-block"><div class="mcq-q">1</div><div class="mcq-options"><span class="opt"><b>A</b>inverting</span><span class="opt"><b>B</b>reversing</span><span class="opt"><b>C</b>opposing</span><span class="opt"><b>D</b>recovering</span></div></div><div class="mcq-block"><div class="mcq-q">2</div><div class="mcq-options"><span class="opt"><b>A</b>noted</span><span class="opt"><b>B</b>shown</span><span class="opt"><b>C</b>marked</span><span class="opt"><b>D</b>pointed</span></div></div><div class="mcq-block"><div class="mcq-q">3</div><div class="mcq-options"><span class="opt"><b>A</b>down</span><span class="opt"><b>B</b>along</span><span class="opt"><b>C</b>out</span><span class="opt"><b>D</b>up</span></div></div><div class="mcq-block"><div class="mcq-q">4</div><div class="mcq-options"><span class="opt"><b>A</b>apart</span><span class="opt"><b>B</b>off</span><span class="opt"><b>C</b>aside</span><span class="opt"><b>D</b>away</span></div></div><div class="mcq-block"><div class="mcq-q">5</div><div class="mcq-options"><span class="opt"><b>A</b>put</span><span class="opt"><b>B</b>get</span><span class="opt"><b>C</b>live</span><span class="opt"><b>D</b>go</span></div></div><div class="mcq-block"><div class="mcq-q">6</div><div class="mcq-options"><span class="opt"><b>A</b>profit</span><span class="opt"><b>B</b>use</span><span class="opt"><b>C</b>benefit</span><span class="opt"><b>D</b>advantage</span></div></div><div class="mcq-block"><div class="mcq-q">7</div><div class="mcq-options"><span class="opt"><b>A</b>falls</span><span class="opt"><b>B</b>takes</span><span class="opt"><b>C</b>goes</span><span class="opt"><b>D</b>turns</span></div></div><div class="mcq-block"><div class="mcq-q">8</div><div class="mcq-options"><span class="opt"><b>A</b>more</span><span class="opt"><b>B</b>further</span><span class="opt"><b>C</b>longer</span><span class="opt"><b>D</b>most</span></div></div></div>
+</div>
+<div class="part">
+  <div class="part-head"><span class="label">Part 2</span></div>
+  <p class="instructions">For questions 9–16, read the text below and think of the word which best fits each gap. Use only one word in each gap. There is an example at the beginning (0).</p><p class="exam-note">In the exam, you write your answers on a separate answer sheet.</p>
+  <p class="passage-title">Why Do We Yawn?</p>
+  <div class="example-block"><span class="example-label">Example:</span><span class="letterbox-row"><span class="letterbox-num">0</span><span class="letterbox">a</span></span></div>
+  <div class="passage"><p>It is (0) A well-known fact that almost everyone yawns, <span class="gapnum">(9) ......</span> scientists still do not fully agree <span class="gapnum">(10) ......</span> why. For a long time, it was thought that yawning simply helped the body take <span class="gapnum">(11) ......</span> oxygen, but this theory has since been questioned. Several studies <span class="gapnum">(12) ......</span> shown that yawning happens even when oxygen levels in the blood are completely normal.</p>
+<p>One more recent idea is <span class="gapnum">(13) ......</span> yawning helps cool the brain down, rather like a tiny built-in fan. According to <span class="gapnum">(14) ......</span> theory, a yawn draws in cool air and increases blood flow to the face, which in turn lowers brain temperature. This might explain <span class="gapnum">(15) ......</span> we tend to yawn more when we are tired, since a warmer brain is thought to work less efficiently.</p>
+<p>What is perhaps strangest of all is that yawning is contagious: simply reading about it, <span class="gapnum">(16) ......</span> we are doing now, can be enough to trigger one.</p></div>
+  <div class="gap-list"><div class="gap-item">9. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;______________</div><div class="gap-item">10. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;______________</div><div class="gap-item">11. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;______________</div><div class="gap-item">12. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;______________</div><div class="gap-item">13. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;______________</div><div class="gap-item">14. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;______________</div><div class="gap-item">15. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;______________</div><div class="gap-item">16. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;______________</div></div>
+</div>
+<div class="part">
+  <div class="part-head"><span class="label">Part 3</span></div>
+  <p class="instructions">For questions 17–24, use the word given in capitals to form a word that fits in the gap. There is an example at the beginning (0).</p><p class="exam-note">In the exam, you write your answers on a separate answer sheet.</p>
+  <p class="passage-title">Street Art Goes Mainstream</p>
+  <div class="example-block"><span class="example-label">Example:</span><span class="letterbox-row"><span class="letterbox-num">0</span><span class="letterbox">R</span><span class="letterbox">E</span><span class="letterbox">B</span><span class="letterbox">E</span><span class="letterbox">L</span><span class="letterbox">L</span><span class="letterbox">I</span><span class="letterbox">O</span><span class="letterbox">N</span></span></div>
+  <div class="passage"><p>Street art was once seen as an act of pure (0) REBELLION — illegal, temporary, and deliberately <span class="gapnum">(17) ......</span> .</p>
+<p>Today, though, attitudes have shifted dramatically. Cities around the world now commission murals from artists whose work would once have been removed within hours. Local councils have realised that colourful, <span class="gapnum">(18) ......</span> street art can make a neighbourhood far more <span class="gapnum">(19) ......</span> to visitors, and several cities have seen a genuine <span class="gapnum">(20) ......</span> boost as a result, with cafés and shops opening nearby.</p>
+<p>Not everyone is <span class="gapnum">(21) ......</span> about the change. Some original street artists argue that as soon as a piece gains official <span class="gapnum">(22) ......</span> , it loses the very qualities of <span class="gapnum">(23) ......</span> and risk that made it interesting in the first place. Others simply see it as a matter of <span class="gapnum">(24) ......</span> — once something proves popular enough, the mainstream eventually catches up with it.</p></div>
+  <p style="font-size:12pt;font-weight:700;margin:10px 0 2px;">Words to use:</p>
+  <div class="stems-list"><div class="stem-item">17 &nbsp; <b>PROVOKE</b></div><div class="stem-item">18 &nbsp; <b>IMAGINE</b></div><div class="stem-item">19 &nbsp; <b>ATTRACT</b></div><div class="stem-item">20 &nbsp; <b>ECONOMY</b></div><div class="stem-item">21 &nbsp; <b>ENTHUSIASM</b></div><div class="stem-item">22 &nbsp; <b>RECOGNISE</b></div><div class="stem-item">23 &nbsp; <b>SPONTANEOUS</b></div><div class="stem-item">24 &nbsp; <b>INEVITABLE</b></div></div>
+</div>
+<div class="part">
+  <div class="part-head"><span class="label">Part 4</span></div>
+  <p class="instructions">For questions 25–30, complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between two and five words, including the word given. There is an example at the beginning (0).</p><p class="exam-note">In the exam, you write your answers IN CAPITAL LETTERS on a separate answer sheet.</p>
+  <div class="kwt-example"><b>0</b> &nbsp; It's more than three years since I last saw Rachel.
+      <span class="kw">SEEN</span>
+      I ……………………… Rachel for more than three years.
+      <div class="answer-sheet-box">haven't seen</div></div>
+  <div class="transform-item">
+          <div class="q1"><b>25</b> &nbsp; Tom stopped smoking two years ago and has never smoked since.</div>
+          <span class="kw">UP</span>
+          <div class="gapped">Tom ……………………… two years ago and has never smoked since.</div>
+        </div><div class="transform-item">
+          <div class="q1"><b>26</b> &nbsp; I regret not telling her the truth at the time.</div>
+          <span class="kw">WISH</span>
+          <div class="gapped">I ……………………… her the truth at the time.</div>
+        </div><div class="transform-item">
+          <div class="q1"><b>27</b> &nbsp; If Sarah hadn't missed the flight, she would be in New York now.</div>
+          <span class="kw">HAD</span>
+          <div class="gapped">……………………… missed the flight, she would be in New York now.</div>
+        </div><div class="transform-item">
+          <div class="q1"><b>28</b> &nbsp; Nobody in the office works harder than Priya.</div>
+          <span class="kw">HARDEST</span>
+          <div class="gapped">Priya ……………………… in the office.</div>
+        </div><div class="transform-item">
+          <div class="q1"><b>29</b> &nbsp; The company rejected his job application without giving a reason.</div>
+          <span class="kw">DOWN</span>
+          <div class="gapped">The company ……………………… his job application without giving a reason.</div>
+        </div><div class="transform-item">
+          <div class="q1"><b>30</b> &nbsp; I'm sure someone left the window open — that's why it's so cold in here.</div>
+          <span class="kw">BEEN</span>
+          <div class="gapped">The window ……………………… open — that's why it's so cold in here.</div>
+        </div>
+</div>
+<div class="part">
+  <div class="part-head"><span class="label">Part 5</span></div>
+  <p class="instructions">You are going to read an extract from a short story. For questions 31–36, choose the answer (A, B, C or D) which you think fits best according to the text.</p><p class="exam-note">In the exam, you mark your answers on a separate answer sheet.</p>
+  <p class="passage-title">The Notebook</p>
+  <div class="passage"><p>My grandmother's apartment smelled exactly as it always had — beeswax polish, old paper, and the faint sweetness of the orange trees outside her window in Valencia. I had flown from London the moment my mother called to say that Nana wasn't managing on her own any more, and that the flat would need to be cleared before the new tenants moved in. I had expected the job to take a weekend. I was wrong.</p>
+<p>It wasn't the furniture that slowed me down — my cousin Marta had already arranged for most of that to go to a charity near the Turia gardens. It was the boxes. Nana, it turned out, had never thrown anything away in sixty years of living in that flat, and somewhere between the third and fourth box of yellowing letters, I found the notebook.</p>
+<p>It was small, bound in cracked green leather, and so ordinary-looking that I nearly set it aside with a pile of old recipe cards. What stopped me was the handwriting on the first page: not my grandmother's careful, rounded script, but something sharper and more hurried, dated 1962. I sat down on the floor, surrounded by half-packed boxes, and began to read.</p>
+<p>The entries were brief, sometimes just a line or two, written by my grandmother's older sister, Pilar — a woman I had heard mentioned perhaps twice in my entire childhood, always followed by an awkward silence and a swift change of subject. I had always assumed, without ever being told directly, that she had died young. The notebook told a different story. Pilar, it seemed, had left for Argentina at twenty-two, against the wishes of her family, and had written these pages in the weeks before she went, as though trying to convince herself the decision was the right one.</p>
+<p>I read for almost two hours, forgetting entirely about the boxes still waiting to be sorted. There was no drama in the notebook, no single dramatic revelation — just the ordinary doubts of a young woman about to do something irreversible, recorded in a hand that grew steadier with every entry. By the final page, she sounded almost calm.</p>
+<p>When Marta found me still sitting on the floor, the light outside had turned orange with evening, and I hadn't packed a single further box. I showed her the notebook, half expecting her to already know the story. She didn't. She read the first few pages in silence, then looked up at me with an expression I couldn't quite place — not shock, exactly, but something closer to recognition, as though a shape she had always sensed in the family's silences had finally been given an outline.</p>
+<p>‘We should ask Nana about this,’ Marta said eventually, ‘while we still can.’ I agreed, though privately I wondered whether the version of events my grandmother might now be willing to share, at ninety-one, would be the same as the one Pilar had written for no one but herself, sixty years before. Perhaps that no longer mattered. What the notebook had given me wasn't really an answer. It was simply the fact that there had been a question at all — one that had sat, unspoken, in every silence I had failed to notice for my whole life.</p>
+<p>I put the notebook carefully in my bag, not the charity boxes, and went back to packing the rest of the flat with, for the first time that day, no real interest in what any of it contained.</p></div>
+  <div style="margin-top:10px;"><div class="mcq-block">
+          <div class="mcq-q">31 &nbsp; Why did clearing the flat take longer than the narrator expected?</div>
+          <div class="mcq-options stacked"><span class="opt">A &nbsp; The furniture needed to be sold rather than donated.</span><span class="opt">B &nbsp; There were far more boxes to go through than anticipated.</span><span class="opt">C &nbsp; Marta was not available to help until later.</span><span class="opt">D &nbsp; The new tenants had not yet finalised moving dates.</span></div>
+        </div><div class="mcq-block">
+          <div class="mcq-q">32 &nbsp; What was it that made the narrator stop and look at the notebook, rather than setting it aside?</div>
+          <div class="mcq-options stacked"><span class="opt">A &nbsp; Its unusual leather binding.</span><span class="opt">B &nbsp; The date written on the first page.</span><span class="opt">C &nbsp; The handwriting, which was not her grandmother's.</span><span class="opt">D &nbsp; A photograph tucked between the pages.</span></div>
+        </div><div class="mcq-block">
+          <div class="mcq-q">33 &nbsp; What can we infer about how Pilar was regarded within the family before the narrator found the notebook?</div>
+          <div class="mcq-options stacked"><span class="opt">A &nbsp; She was remembered fondly as someone who had emigrated successfully.</span><span class="opt">B &nbsp; She was a source of discomfort that the family avoided discussing.</span><span class="opt">C &nbsp; She was believed to have caused a serious financial problem for the family.</span><span class="opt">D &nbsp; She was thought never to have existed at all.</span></div>
+        </div><div class="mcq-block">
+          <div class="mcq-q">34 &nbsp; How did Marta react on reading the notebook?</div>
+          <div class="mcq-options stacked"><span class="opt">A &nbsp; She was shocked because she had never heard of Pilar before.</span><span class="opt">B &nbsp; She reacted calmly because she had always known the full story.</span><span class="opt">C &nbsp; She seemed to recognise something she had previously only sensed.</span><span class="opt">D &nbsp; She refused to believe what she had read.</span></div>
+        </div><div class="mcq-block">
+          <div class="mcq-q">35 &nbsp; At the end of the extract, what does the narrator seem to feel about the notebook's significance?</div>
+          <div class="mcq-options stacked"><span class="opt">A &nbsp; Disappointed that it failed to explain why Pilar left.</span><span class="opt">B &nbsp; Determined to confront her grandmother about her dishonesty.</span><span class="opt">C &nbsp; Content that it confirmed a question existed, even without a full answer.</span><span class="opt">D &nbsp; Anxious that the family's reputation might now be damaged.</span></div>
+        </div><div class="mcq-block">
+          <div class="mcq-q">36 &nbsp; What does the final paragraph suggest about the narrator's state of mind as she resumes packing?</div>
+          <div class="mcq-options stacked"><span class="opt">A &nbsp; She is relieved that the difficult task is finally almost finished.</span><span class="opt">B &nbsp; She is now indifferent to the belongings she is packing.</span><span class="opt">C &nbsp; She is anxious about what Marta might tell their grandmother.</span><span class="opt">D &nbsp; She is eager to find more information about Pilar hidden in the flat.</span></div>
+        </div></div>
+</div>
+<div class="part">
+  <div class="part-head"><span class="label">Part 6</span></div>
+  <p class="instructions">You are going to read an article about a long-distance swimmer. Six sentences have been removed from the article. Choose from the sentences A–G the one which fits each gap (37–42). There is one extra sentence you do not need to use.</p><p class="exam-note">In the exam, you mark your answers on a separate answer sheet.</p>
+  <p class="passage-title">The Woman Who Wouldn't Stop</p>
+  <div class="passage two-col"><p>Lena Kowalski was forty-six years old when she decided to swim across the English Channel. She had never swum competitively, had taken up open-water swimming only two years earlier, and, by her own admission, disliked cold water intensely.</p>
+<p><span class="answer-slot inline"><span class="num">37</span><span class="blank">&nbsp;&nbsp;</span></span></p>
+<p>Her coach, a retired long-distance swimmer named Robert Hale, was skeptical at first. He had trained channel swimmers for over twenty years and had turned away far more capable athletes for attempting the crossing too soon.</p>
+<p><span class="answer-slot inline"><span class="num">38</span><span class="blank">&nbsp;&nbsp;</span></span></p>
+<p>Training began in earnest that October, in the sea off the coast of Kent, where the water rarely rose above twelve degrees. Lena swam for an hour every morning before work, then again in the evenings on weekends, gradually extending her sessions until she could manage six hours without stopping.</p>
+<p><span class="answer-slot inline"><span class="num">39</span><span class="blank">&nbsp;&nbsp;</span></span></p>
+<p>Not everything went smoothly. In March, a shoulder injury kept her out of the water for three weeks, and she later admitted to Hale that she had seriously considered giving up the attempt altogether.</p>
+<p><span class="answer-slot inline"><span class="num">40</span><span class="blank">&nbsp;&nbsp;</span></span></p>
+<p>By June, however, she was back to full training, and Hale finally agreed that she was ready. A date was set for late July, when tides and weather conditions in the Channel are typically most favourable for a crossing.</p>
+<p><span class="answer-slot inline"><span class="num">41</span><span class="blank">&nbsp;&nbsp;</span></span></p>
+<p>The swim itself took just over fourteen hours. Lena later said that the final two hours, in darkness, were the hardest of her life — not because of exhaustion, but because of the sheer monotony of not being able to see land in any direction.</p>
+<p><span class="answer-slot inline"><span class="num">42</span><span class="blank">&nbsp;&nbsp;</span></span></p>
+<p>Today, Hale uses Lena's story as an example for every new swimmer who tells him they are starting too late, or that they will never be fast enough. Age and speed, he tells them, were never the point.</p></div>
+  <div class="gaptext-options"><div class="opt-item"><b>A</b>It was this single-mindedness, more than any natural talent in the water, that eventually persuaded him to take her on.</div><div class="opt-item"><b>B</b>She had made the decision, she later explained, after watching a television documentary about a woman half her age completing the same swim, and had not changed her mind once in the eighteen months since.</div><div class="opt-item"><b>C</b>By January, six hours had become eight, and Hale started to talk, cautiously, about a possible attempt the following summer.</div><div class="opt-item"><b>D</b>What changed her mind, in the end, was a phone call from Hale, who told her bluntly that an injury was not the same thing as a reason to quit, and that she still had time.</div><div class="opt-item"><b>E</b>On the morning of the crossing, Lena later admitted, she very nearly did not get into the water at all.</div><div class="opt-item"><b>F</b>When she finally touched the rocks on the French side, just after dawn, there was no crowd waiting, no fanfare — only Hale, who had followed the whole way in the support boat, and who says it remains the proudest moment of his coaching career.</div><div class="opt-item"><b>G</b>The English Channel has been swum by well over two thousand people since Captain Matthew Webb first completed the crossing in 1875, though fewer than ten percent of those who attempt it succeed on their first try.</div></div>
+</div>
+<div class="part">
+  <div class="part-head"><span class="label">Part 7</span></div>
+  <p class="instructions">You are going to read four people's accounts of taking up a new hobby. For questions 43–52, choose from the people (A–D). The people may be chosen more than once.</p><p class="exam-note">In the exam, you mark your answers on a separate answer sheet.</p>
+  <p class="passage-title">Slow Hobbies</p>
+  <p style="font-size:12pt;font-weight:700;margin:6px 0 8px;">Which person&hellip;</p>
+  <div class="mm-questions"><div class="mm-q"><span class="qtext">was encouraged to try their hobby by someone who spoke to them very directly?</span><span class="answer-slot"><span class="num">43</span><span class="blank">&nbsp;&nbsp;</span></span></div><div class="mm-q"><span class="qtext">found that their hobby required more ongoing attention than they had expected?</span><span class="answer-slot"><span class="num">44</span><span class="blank">&nbsp;&nbsp;</span></span></div><div class="mm-q"><span class="qtext">admits that persistence, rather than actual enjoyment, was what kept them going at first?</span><span class="answer-slot"><span class="num">45</span><span class="blank">&nbsp;&nbsp;</span></span></div><div class="mm-q"><span class="qtext">says their hobby has changed how they plan the rest of their time?</span><span class="answer-slot"><span class="num">46</span><span class="blank">&nbsp;&nbsp;</span></span></div><div class="mm-q"><span class="qtext">took up their hobby after a suggestion from someone living nearby?</span><span class="answer-slot"><span class="num">47</span><span class="blank">&nbsp;&nbsp;</span></span></div><div class="mm-q"><span class="qtext">discovered that their hobby forces them to think more carefully before acting?</span><span class="answer-slot"><span class="num">48</span><span class="blank">&nbsp;&nbsp;</span></span></div><div class="mm-q"><span class="qtext">had assumed, before starting, that their hobby was only suited to a different kind of person?</span><span class="answer-slot"><span class="num">49</span><span class="blank">&nbsp;&nbsp;</span></span></div><div class="mm-q"><span class="qtext">has kept up their hobby for longer than they originally expected to?</span><span class="answer-slot"><span class="num">50</span><span class="blank">&nbsp;&nbsp;</span></span></div><div class="mm-q"><span class="qtext">says it took time before they could fully let go of a particular habit while doing their hobby?</span><span class="answer-slot"><span class="num">51</span><span class="blank">&nbsp;&nbsp;</span></span></div><div class="mm-q"><span class="qtext">only understood the appeal of their hobby after completing something?</span><span class="answer-slot"><span class="num">52</span><span class="blank">&nbsp;&nbsp;</span></span></div></div>
+  <div class="mm-texts-box"><div class="mm-text"><p class="who">A &nbsp; Marcus</p><p>I started baking sourdough bread during a particularly stressful year at work, mostly because a colleague mentioned it helped her switch off in the evenings. She was right, though not in the way I expected — it wasn't relaxing exactly, since a sourdough starter demands real attention and can't simply be ignored for a week. What I found instead was that the process forced me to slow down in a way nothing else in my week did; you cannot rush dough. These days I bake twice a week, and I've noticed I plan the rest of my weekend around it rather than the other way round, which still surprises me a little.</p></div><div class="mm-text"><p class="who">B &nbsp; Priya</p><p>My neighbour lent me a pair of binoculars almost by accident, after I mentioned I'd been feeling restless since I started working from home. I hadn't expected birdwatching to suit me at all — I'd always thought of it as something for much older, more patient people than me. The truth is it did take a while before I stopped feeling the urge to check my phone every few minutes while sitting in the park. Now, though, I look forward to those early mornings more than almost anything else in my week, and I've started keeping a small notebook of what I've spotted, which has become oddly satisfying in itself.</p></div><div class="mm-text"><p class="who">C &nbsp; Sofia</p><p>A friend who works with wood suggested I try it after I complained, more than once, about never finishing anything I started. She wasn't wrong to be blunt about it. My first few attempts at simple woodworking projects were genuinely frustrating, and I nearly gave up twice in the first month alone. What kept me going wasn't enjoyment, if I'm honest, but stubbornness — I refused to let a piece of wood defeat me. It was only once I'd actually completed a small shelf, months later, that I understood what people meant when they talked about the satisfaction of working with your hands.</p></div><div class="mm-text"><p class="who">D &nbsp; Tomasz</p><p>I began writing letters by hand again after realising I couldn't remember the last time I'd received anything in the post that wasn't a bill. A cousin abroad and I agreed to write to each other monthly instead of messaging, purely as an experiment neither of us expected to last. Two years later, we're still doing it. What I didn't anticipate was how much longer it takes to think clearly when writing by hand rather than typing — there's no deleting and starting again, so you're forced to actually decide what you mean before you commit it to the page.</p></div></div>
+</div>
+</body></html>

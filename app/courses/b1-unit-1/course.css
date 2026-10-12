@@ -764,3 +764,29 @@
 /* ── Goal button: text only (no icon span needed now) ── */
 .wc-goal-btn span{display:none}
 .wc-goal-btn::after{content:' \2699';opacity:.6}
+
+/* Instant feedback (shared with the other digital courses) */
+.mag button.opt{font:inherit;font-size:.9rem;text-align:left;color:var(--ink);width:auto}
+.mag button.opt:disabled{cursor:default}
+.mag .opt.bad{background:#fdf1ee;border-color:#ea9b8c;color:#a4402d;text-decoration:line-through}
+.mag .blank-opts{display:inline-flex;flex-wrap:wrap;gap:.3rem;vertical-align:middle;margin:.15rem .2rem}
+.mag .blank-opts .opt{padding:.2rem .7rem;font-size:.9rem}
+.mag .match-count{font-size:.85rem;color:#666;margin:0}
+.mag .ex-row{position:relative}
+.mag .ex-word{color:#2f7d12;background:#dff1c8;padding:.05rem .5rem;border-radius:7px;font-weight:700}
+.mag .ex-ans{margin:.2rem 0 0;display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
+.mag .ex-win{background:#f3faeb;border-color:#8fc85a;animation:exWin .55s cubic-bezier(.22,1,.36,1)}
+.mag .ex-redo{background:#f7fbf1;border-color:#cfe6b4}
+.mag .ex-revise{display:inline-block;margin-left:.6rem;font:600 .75rem var(--sans);color:#8a6d1d;background:#fff4d6;border-radius:20px;padding:.1rem .6rem}
+.mag .ex-burst{flex:none;width:2rem;height:2rem;border-radius:50%;background:#6BAE2E;color:#fff;display:inline-grid;place-items:center;font-weight:800;font-size:1.1rem;animation:exPop .6s cubic-bezier(.34,1.56,.64,1)}
+.mag .ex-cheer{font:700 .95rem var(--sans);color:#2f7d12;animation:exPop .6s .1s both}
+@keyframes exWin{0%{transform:scale(.98);box-shadow:0 0 0 0 rgba(107,174,46,.5)}60%{box-shadow:0 0 0 12px rgba(107,174,46,0)}100%{transform:none}}
+@keyframes exPop{0%{transform:scale(0)}100%{transform:scale(1)}}
+@media (prefers-reduced-motion:reduce){.mag .ex-win,.mag .ex-burst,.mag .ex-cheer{animation:none}}
+/* Right answer typed: locks in at once, big and green, one pulse (standing rule for all digital courses) */
+.deck-word--win{color:#2f7d12;font-size:2.2rem;animation:typeWin .75s cubic-bezier(.34,1.56,.64,1)}
+.xw-ok{animation:typeWinCell .6s cubic-bezier(.34,1.56,.64,1)}
+.studio-gap--win{color:#2f7d12;font-weight:700;border-bottom-color:#5a9a2c!important;background:#e8f6db;animation:typeWin .6s cubic-bezier(.34,1.56,.64,1)}
+@keyframes typeWin{0%{transform:scale(.9)}35%{transform:scale(1.4)}100%{transform:scale(1)}}
+@keyframes typeWinCell{0%{transform:scale(1)}40%{transform:scale(1.18)}100%{transform:scale(1)}}
+@media (prefers-reduced-motion:reduce){.deck-word--win,.xw-ok,.studio-gap--win{animation:none}}

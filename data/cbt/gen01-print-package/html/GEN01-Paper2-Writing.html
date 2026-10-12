@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>GEN01 — Paper 2: Writing</title>
+<style>
+* { box-sizing: border-box; }
+body {
+  font-family: "Liberation Sans", Arial, Helvetica, sans-serif;
+  color: #1A1A1A; font-size: 12pt; line-height: 1.42;
+}
+@page cover {
+  margin: 0;
+  @bottom-left { content: none; } @bottom-center { content: none; } @bottom-right { content: none; }
+  @left-top { content: none; } @left-bottom { content: none; }
+  @right-top { content: none; } @right-bottom { content: none; }
+}
+.cover-page { page: cover; page-break-after: always; }
+
+/* ---- Logo (CSS flexbox text lockup, per reference_somerset_logo.md canonical standard) ---- */
+.logo { display: flex; align-items: flex-end; gap: 11px; }
+.logo .word { font-weight: 800; font-size: 33pt; letter-spacing: -1.2px; line-height: .9; }
+.logo .lc { font-weight: 700; font-size: 8.5pt; letter-spacing: 2.5px; line-height: 1.18; padding-bottom: 4px; }
+.logo.on-white .word { color: #6BAE2E; } .logo.on-white .lc { color: #666; }
+.logo.on-green .word { color: #ffffff; } .logo.on-green .lc { color: #e8f3da; }
+
+/* ---- Cover page ---- */
+.cover-bar { background: #6BAE2E; color: #fff; padding: 24px 40px 20px; }
+.cover-kicker { font-size: 11.5pt; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #e8f3da; margin: 13px 0 3px; }
+.cover-title { font-size: 24pt; font-weight: 800; letter-spacing: -.3px; margin: 0; }
+.cover-body { padding: 18px 40px 0; }
+.cover-fields { display: table; width: 100%; border-collapse: collapse; margin-bottom: 12px; }
+.cover-fields .row { display: table-row; }
+.cover-fields .cell { display: table-cell; padding: 6px 0; border-bottom: 1px solid #d8ded1; font-size: 12pt; }
+.cover-fields .label { width: 34%; font-weight: 700; color: #3f3f3f; }
+.cover-panel {
+  background: #F2F7EC; border: 1px solid #cfe2ba; border-left: 5px solid #6BAE2E;
+  border-radius: 3px; padding: 11px 18px; margin-bottom: 11px;
+}
+.cover-panel h3 { margin: 0 0 6px; font-size: 12pt; letter-spacing: .04em; color: #1E4227; text-transform: uppercase; }
+.cover-panel ul { margin: 0; padding-left: 20px; }
+.cover-panel li { margin-bottom: 4px; font-size: 12pt; }
+.cover-parts-table { width: 100%; border-collapse: collapse; font-size: 12pt; }
+.cover-parts-table th, .cover-parts-table td { text-align: left; padding: 3px 8px; border-bottom: 1px solid #e2e8da; }
+.cover-parts-table th { color: #3f3f3f; font-size: 11pt; text-transform: uppercase; letter-spacing: .05em; }
+.draft-banner {
+  border: 1.5px solid #B23A2E; background: #FBEDEB; color: #7a281f; border-radius: 3px;
+  padding: 10px 16px; font-size: 11.5pt; line-height: 1.4; margin: 12px 0 0;
+}
+.draft-banner strong { display: block; font-size: 12pt; margin-bottom: 3px; letter-spacing: .03em; text-transform: uppercase; }
+.teacher-banner {
+  border: 1.5px solid #1E4227; background: #eef3ea; color: #1E4227; border-radius: 3px;
+  padding: 10px 16px; font-size: 11.5pt; line-height: 1.4; margin: 12px 0 0;
+}
+.teacher-banner strong { display: block; font-size: 12pt; margin-bottom: 3px; letter-spacing: .03em; text-transform: uppercase; }
+
+/* ---- Body pages: dark "Part N" badge (copies the source's compact tag, not the
+   old green rectangle), plain unboxed instructions ---- */
+.part { break-before: page; }
+.part:first-of-type { break-before: auto; }
+.part-head { break-after: avoid; page-break-after: avoid; margin-bottom: 6px; }
+.part-head .label { display: inline-block; background: #2b2b2b; color: #fff; font-weight: 800;
+  font-size: 13pt; letter-spacing: .02em; padding: 5px 18px; border-radius: 3px 12px 3px 3px; }
+.part-title { font-size: 15pt; font-weight: 800; color: #1E4227; margin: 8px 0 4px; }
+.instructions {
+  font-size: 12pt; margin: 8px 0 4px; line-height: 1.45;
+  break-inside: avoid; page-break-inside: avoid;
+}
+.exam-note { font-size: 12pt; font-weight: 700; margin: 2px 0 14px; }
+.section-rule { border: none; border-top: 1px solid #999; margin: 10px 0 16px; }
+
+.passage-title { font-size: 16pt; font-weight: 800; margin: 6px 0 10px; text-align: center; }
+.passage p { font-size: 14pt; line-height: 1.55; margin: 0 0 12px; text-align: justify; }
+.passage.two-col { columns: 2; column-gap: 26px; }
+.passage.two-col p { text-align: justify; }
+.gapnum { font-weight: 800; color: #1E4227; }
+
+/* ---- Example graphics: literal answer-sheet-style boxes, not an inline highlight ---- */
+.example-block { margin: 2px 0 16px; font-size: 12pt; break-inside: avoid; page-break-inside: avoid; }
+.example-label { font-weight: 700; margin-right: 12px; }
+.bubble-row { display: inline-flex; align-items: center; gap: 7px; border: 1px solid #999;
+  border-radius: 4px; padding: 5px 12px; vertical-align: middle; }
+.bubble-row .bubble-num { font-weight: 800; margin-right: 4px; }
+.bubble { display: inline-flex; align-items: center; justify-content: center; width: 19px; height: 19px;
+  border: 1.4px solid #333; border-radius: 50%; font-size: 10.5pt; font-weight: 700; }
+.bubble.shaded { background: #1E4227; color: #fff; border-color: #1E4227; }
+.letterbox-row { display: inline-flex; align-items: center; gap: 2px; vertical-align: middle; }
+.letterbox-row .letterbox-num { font-weight: 800; margin-right: 10px; }
+.letterbox { display: inline-flex; align-items: center; justify-content: center; width: 17px; height: 21px;
+  border: 1.4px solid #333; font-weight: 700; font-size: 11pt; text-transform: uppercase; }
+
+.mcq-block { break-inside: avoid; page-break-inside: avoid; margin: 0 0 16px; }
+.mcq-q { font-size: 12pt; font-weight: 700; margin-bottom: 3px; }
+.mcq-context { font-size: 12pt; font-style: italic; color: #444; margin-bottom: 2px; }
+.mcq-options { display: flex; flex-wrap: wrap; gap: 4px 18px; margin: 5px 0 0 14px; }
+.mcq-options.stacked { display: block; margin-left: 14px; }
+.mcq-options.stacked .opt { display: block; margin-bottom: 3px; }
+.opt { font-size: 12pt; white-space: nowrap; }
+.opt b { display: inline-block; width: 15px; }
+
+.gap-list { columns: 2; column-gap: 28px; margin-top: 4px; }
+.gap-item { break-inside: avoid; page-break-inside: avoid; font-size: 12pt; margin-bottom: 9px; }
+
+/* Word-formation stems: plain bold text, no box (copies the source's unboxed
+   right-margin stems as closely as a reflowed layout allows) */
+.stems-list { columns: 2; column-gap: 24px; margin: 10px 0 14px; break-inside: avoid; page-break-inside: avoid; }
+.stems-list .stem-item { font-size: 12pt; margin-bottom: 6px; }
+.stems-list .stem-item b { color: #1A1A1A; letter-spacing: .02em; }
+
+.transform-item { break-inside: avoid; page-break-inside: avoid; margin: 0 0 18px; }
+.transform-item .q1 { font-size: 12pt; margin-bottom: 3px; }
+.transform-item .kw { font-weight: 800; letter-spacing: .04em; display: block; margin: 3px 0; }
+.transform-item .gapped { font-size: 12pt; }
+
+.kwt-example { margin: 4px 0 18px; font-size: 12pt; break-inside: avoid; page-break-inside: avoid; }
+.kwt-example .kw { font-weight: 800; letter-spacing: .04em; display: block; margin: 3px 0; }
+.answer-sheet-box { display: inline-block; border: 1.3px solid #333; border-radius: 2px; padding: 3px 14px;
+  font-family: "Liberation Serif", "Times New Roman", serif; font-style: italic; font-size: 12.5pt; margin-top: 4px; }
+
+.gap-review-list { margin: 10px 0 0 18px; }
+.gap-review-list li { font-size: 12pt; margin-bottom: 4px; }
+
+/* Answer slot: shaded number + blank box, the recurring "answer sheet" motif
+   used for gapped-text numbers and multiple-matching answers */
+.answer-slot { display: inline-flex; border: 1.3px solid #333; border-radius: 2px; overflow: hidden;
+  font-weight: 800; font-size: 11.5pt; vertical-align: middle; }
+.answer-slot .num { background: #d9d9d9; padding: 2px 8px; }
+.answer-slot .blank { padding: 2px 20px; background: #fff; }
+.answer-slot.inline { margin: 0 2px; }
+
+.gaptext-options { border: 1px solid #333; border-radius: 3px; padding: 14px 20px; margin: 8px 0 4px;
+  columns: 2; column-gap: 26px; break-inside: avoid; page-break-inside: avoid; }
+.gaptext-options .opt-item { font-size: 12pt; margin: 0 0 14px; break-inside: avoid; page-break-inside: avoid; }
+.gaptext-options .opt-item b { margin-right: 8px; }
+
+.mm-text { break-inside: avoid; page-break-inside: avoid; margin: 0 0 16px; }
+.mm-text .who { font-weight: 800; font-size: 13pt; margin: 0 0 3px; }
+.mm-text p { font-size: 12pt; line-height: 1.5; margin: 4px 0 0; text-align: justify; }
+.mm-texts-box { border: 1px solid #333; border-radius: 3px; padding: 14px 20px; margin: 8px 0 16px;
+  columns: 2; column-gap: 26px; }
+
+.mm-questions { margin-top: 6px; }
+.mm-q { break-inside: avoid; page-break-inside: avoid; font-size: 12pt; margin: 0 0 14px;
+  display: flex; justify-content: space-between; align-items: center; gap: 14px; }
+.mm-q .qtext { flex: 1; }
+
+.answer-line { display: inline-block; border-bottom: 1px solid #999; width: 26px; text-align: center; }
+
+/* ---- Writing tasks ---- */
+.wtask-block { margin: 0 0 20px; }
+.wtask-block .wprompt { font-size: 12.5pt; margin: 0 0 10px; }
+.compulsory-tag { display: inline-block; background: #1E4227; color: #fff; font-size: 10.5pt; font-weight: 700;
+  letter-spacing: .05em; padding: 2px 9px; border-radius: 2px; margin-left: 8px; vertical-align: middle; }
+.choice-tag { display: inline-block; background: #888; color: #fff; font-size: 10.5pt; font-weight: 700;
+  letter-spacing: .05em; padding: 2px 9px; border-radius: 2px; margin-left: 8px; vertical-align: middle; }
+.write-cue { font-weight: 700; margin-top: 10px; }
+
+/* Notebook graphic for the Part 1 essay notes, copying the source's spiral-pad box */
+.notebook { border: 1px solid #999; border-radius: 5px; margin: 14px 20px 18px; break-inside: avoid; page-break-inside: avoid; }
+.notebook-spiral { background: #e6e6e6; border-bottom: 1px solid #999; border-radius: 5px 5px 0 0;
+  padding: 5px 10px; font-size: 15pt; letter-spacing: 1px; color: #9a9a9a; text-align: center;
+  overflow: hidden; white-space: nowrap; line-height: 1; }
+.notebook-body { padding: 16px 26px 18px; }
+.notebook-title { font-size: 14pt; font-weight: 700; text-align: center; margin: 0 0 10px; }
+.notebook hr { border: none; border-top: 1px solid #999; margin: 8px 0; }
+.notebook-label { font-weight: 800; margin: 10px 0 2px; }
+.notebook ol { margin: 8px 0 0 20px; }
+.notebook ol li { font-size: 12.5pt; margin-bottom: 4px; }
+
+/* Magazine-announcement box (bordered, green rule) for review/article tasks */
+.notice-box { border: 1.5px solid #6BAE2E; border-radius: 3px; padding: 14px 22px; margin: 10px 20px 16px;
+  break-inside: avoid; page-break-inside: avoid; }
+.notice-box .notice-title { font-size: 15pt; font-weight: 800; margin: 0 0 8px; }
+.notice-box .notice-body { font-size: 12.5pt; }
+
+/* Email box for the email task */
+.email-box { border: 1px solid #999; border-radius: 4px; margin: 10px 20px 16px; overflow: hidden;
+  break-inside: avoid; page-break-inside: avoid; }
+.email-header { background: #e6e6e6; padding: 7px 14px; font-size: 11pt; color: #666; }
+.email-body { background: #fff; padding: 14px 20px; font-size: 12.5pt; }
+.email-body p { margin: 0 0 8px; }
+
+/* ---- Listening ---- */
+.lsent-list { margin-top: 6px; }
+.lsent-item { break-inside: avoid; page-break-inside: avoid; font-size: 12pt; margin-bottom: 13px; }
+.lsent-item .num { font-weight: 800; margin-right: 4px; }
+
+.speaker-list { columns: 2; column-gap: 26px; margin: 6px 0 16px; break-inside: avoid; page-break-inside: avoid; }
+.speaker-list .opt-item { font-size: 12pt; margin: 0 0 16px; break-inside: avoid; page-break-inside: avoid; }
+.speaker-list .opt-item b { margin-right: 8px; }
+.speaker-answers { margin-top: 4px; }
+.speaker-answers .mm-q { margin: 0 0 16px; }
+
+.script-block { background: #fbfcf9; border: 1px solid #e2e8da; border-radius: 3px; padding: 12px 16px;
+  margin: 0 0 16px; font-size: 12pt; line-height: 1.55; }
+.script-block.short { break-inside: avoid; page-break-inside: avoid; }
+.script-block .spk { font-weight: 800; color: #1E4227; }
+.script-label { font-size: 11pt; font-weight: 800; text-transform: uppercase; letter-spacing: .05em;
+  color: #1E4227; margin: 0 0 4px; }
+.key-tag { display: inline-block; background: #1E4227; color: #fff; font-weight: 800; font-size: 11pt;
+  padding: 1px 9px; border-radius: 2px; margin-left: 8px; }
+
+/* ---- Answer key tables ---- */
+.ak-table { width: 100%; border-collapse: collapse; margin: 6px 0 18px; break-inside: avoid; page-break-inside: avoid; }
+.ak-table th, .ak-table td { border: 1px solid #d8ecc4; padding: 5px 9px; font-size: 12pt; text-align: left; }
+.ak-table th { background: #F2F7EC; color: #1E4227; }
+.bs-note { font-size: 11.5pt; color: #444; margin: 4px 0 18px; padding-left: 4px; border-left: 3px solid #cfd; }
+
+@page {
+  size: A4;
+  margin: 1.9cm 1.8cm 1.55cm 1.8cm;
+  @bottom-left {
+    content: "SOMERSET LANGUAGE CENTRE \00B7 VALENCIA \00B7 B2 EXAM PRACTICE \00B7 GEN01 (DRAFT)";
+    font-family: "Liberation Sans", Arial, sans-serif; font-size: 8pt; letter-spacing: .09em;
+    color: #8a8a7a; white-space: nowrap; border-top: 1px solid #dcdcd4; padding-top: 7px; vertical-align: top;
+  }
+  @bottom-center { content: " "; width: 100%; border-top: 1px solid #dcdcd4; }
+  @bottom-right {
+    content: counter(page);
+    font-family: "Liberation Sans", Arial, sans-serif; font-size: 11.5pt; font-weight: bold;
+    color: #fff; background: #1E4227; white-space: nowrap; padding: 2px 10px; border-radius: 2px;
+    vertical-align: top; margin-top: 2px;
+  }
+}
+</style></head><body>
+
+<section class="cover-page">
+  <div class="cover-bar">
+    <div class="logo on-green"><span class="word">Somerset</span><span class="lc">LANGUAGE<br>CENTRE</span></div>
+    <div class="cover-kicker">Somerset Language Centre &middot; B2-level exam practice &middot; Cambridge format</div>
+    <p class="cover-title">Writing</p>
+  </div>
+  <div class="cover-body">
+    <div class="cover-fields"><div class="row"><div class="cell label">Candidate Name</div><div class="cell"></div></div><div class="row"><div class="cell label">Candidate Number</div><div class="cell"></div></div><div class="row"><div class="cell label">Centre</div><div class="cell"></div></div><div class="row"><div class="cell label">Date</div><div class="cell"></div></div></div>
+    <div class="cover-panel">
+      <h3>Time allowed</h3>
+      <p style="margin:0;font-size:13pt;">1 hour 20 minutes</p>
+    </div>
+    <div class="cover-panel">
+      <h3>Instructions to candidates</h3>
+      <ul><li>This paper contains two parts.</li>
+      <li>You must answer Question 1 in Part 1. This question is compulsory.</li>
+      <li>Write one more answer from Part 2 (Questions 2–4). Choose ONE only.</li>
+      <li>Write between 140 and 190 words for each answer, in an appropriate style.</li></ul>
+    </div>
+    <div class="cover-panel">
+      <h3>Information for candidates</h3>
+      <table class="cover-parts-table"><tr><th>Part</th><th>Questions</th></tr><tr><td>Part 1</td><td>1 (compulsory)</td></tr><tr><td>Part 2</td><td>Choose ONE of 3</td></tr></table>
+    </div>
+    <div class="draft-banner"><strong>Draft — not for live use</strong>
+          Original Somerset content (GEN01), Cambridge B2-level format, laid out to match Somerset's
+          own reference practice paper. Every objectively-scored part has passed a blind-solve check,
+          but no teacher has reviewed this paper end to end yet. Do not administer this to a student
+          until Hugo or Sara has read it in full.</div>
+  </div>
+</section>
+<div class="part">
+      <div class="part-head"><span class="label">Part 1</span></div>
+      <p class="instructions">You <b>must</b> answer this question. Write your answer in 140–190 words in an appropriate style.</p>
+      <div class="wtask-block">
+        <p class="wprompt">In your English class you have been talking about technology. Now your English teacher has asked you to write an essay. Write an essay using ALL the notes and giving reasons for your point of view. Write 140–190 words in an appropriate style.</p>
+        <div class="notebook">
+          <div class="notebook-spiral">&#9702;&nbsp;&#9702;&nbsp;&#9702;&nbsp;&#9702;&nbsp;&#9702;&nbsp;&#9702;&nbsp;&#9702;&nbsp;&#9702;&nbsp;&#9702;&nbsp;&#9702;&nbsp;&#9702;&nbsp;&#9702;&nbsp;&#9702;&nbsp;&#9702;&nbsp;&#9702;&nbsp;&#9702;</div>
+          <div class="notebook-body">
+            <p class="notebook-title">Is technology making people less sociable?</p>
+            <hr>
+            <p class="notebook-label">Notes</p>
+            <p>Write about:</p>
+            <hr>
+            <ol><li>socialising in person</li><li>online communication</li><li>…………………… (your own idea)</li></ol>
+          </div>
+        </div>
+        <p class="write-cue">Write your essay.</p>
+      </div>
+    </div><div class="part">
+      <div class="part-head"><span class="label">Part 2</span></div>
+      <p class="instructions">Write an answer to <b>one</b> of the questions 2–4 in this part.
+      Write your answer in 140–190 words in an appropriate style.</p>
+      <div class="wtask-block"><p><b>2</b></p><p class="wprompt">You see this notice on an English-language website. Write your review in 140–190 words in an appropriate style.</p>
+              <div class="notice-box"><p class="notice-title">Reviews wanted!</p>
+              <p class="notice-body">Tell us about a café or restaurant you have visited recently. What made it special, and would you recommend it to other readers?</p></div>
+              <p class="write-cue">Write your review.</p></div><div class="wtask-block"><p><b>3</b></p><div class="email-box"><div class="email-header">&#9993; &nbsp; You recently stayed at a hotel during a trip abroad. Read the extract from the hotel manager's email below, then write your email of reply in 140–190 words in an appropriate style.</div>
+              <div class="email-body"><p>“Thank you for staying with us. We would love to hear about your experience — was there anything in particular you enjoyed, and is there anything we could improve?”</p></div></div>
+              <p class="write-cue">Write your email.</p></div><div class="wtask-block"><p><b>4</b></p><p class="wprompt">You see this notice on an English-language magazine website. Write your article in 140–190 words in an appropriate style.</p>
+              <div class="notice-box"><p class="notice-title">Articles wanted!</p>
+              <p class="notice-body">Tell us about a skill you would like to learn, and why. The best articles will be published next month.</p></div>
+              <p class="write-cue">Write your article.</p></div>
+    </div>
+</body></html>

@@ -98,6 +98,54 @@ function dataCell(text: string, width: number, fill = 'FFFFFF', color = DARK, it
   })
 }
 
+// Annotated student text: original wording with each audited error struck through in red,
+// followed by the fix in bold green (same look as the PDF report). Built in code from the
+// audit list, so the AI cannot alter the student's text. Errors whose wording cannot be found
+// in the text are skipped here (they still appear in the Corrections table).
+function annotatedText(studentText: string, errors: { you_wrote: string; better_version: string }[]): Paragraph[] {
+  const lower = studentText.toLowerCase()
+  const ranges: { start: number; end: number; fix: string }[] = []
+  const overlaps = (a: number, b: number) => ranges.some(r => a < r.end && b > r.start)
+
+  for (const e of errors) {
+    const needle = (e.you_wrote || '').trim().toLowerCase()
+    if (!needle) continue
+    let from = 0
+    while (true) {
+      const i = lower.indexOf(needle, from)
+      if (i === -1) break
+      if (!overlaps(i, i + needle.length)) {
+        ranges.push({ start: i, end: i + needle.length, fix: (e.better_version || '').trim() })
+        break
+      }
+      from = i + 1
+    }
+  }
+  ranges.sort((a, b) => a.start - b.start)
+
+  const base = { size: 22, font: 'Arial', color: DARK }
+  type Run = TextRun
+  const lines: Run[][] = [[]]
+  const push = (text: string, opts: Record<string, unknown> = {}) => {
+    const parts = text.split('\n')
+    parts.forEach((part, idx) => {
+      if (idx > 0) lines.push([])
+      if (part) lines[lines.length - 1].push(new TextRun({ ...base, ...opts, text: part }))
+    })
+  }
+
+  let pos = 0
+  for (const r of ranges) {
+    push(studentText.slice(pos, r.start))
+    push(studentText.slice(r.start, r.end), { strike: true, color: RED_TEXT, shading: { type: ShadingType.CLEAR, fill: 'FDECEA' } })
+    if (r.fix) push(' ' + r.fix, { bold: true, color: GREEN_TEXT, shading: { type: ShadingType.CLEAR, fill: LIGHT_GREEN } })
+    pos = r.end
+  }
+  push(studentText.slice(pos))
+
+  return lines.map(runs => new Paragraph({ children: runs, spacing: { after: 120, line: 420 } }))
+}
+
 export async function POST(req: NextRequest) {
   if (!(await requireSessionOrCode(req))) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
@@ -121,7 +169,7 @@ export async function POST(req: NextRequest) {
     const message = await client.messages.create({
       model: 'claude-sonnet-5',
       max_tokens: 4096,
-      temperature: 0,
+      // No temperature: Sonnet 5.x rejects non-default sampling params (HTTP 400).
       system: REPORT_SYSTEM_PROMPT,
       messages: [{
         role: 'user',
@@ -285,6 +333,19 @@ Return the JSON.`,
           // Improvements
           heading('Main Points to Improve'),
           body(report.improvements),
+
+          // Annotated student text (original + corrections in colour, editable)
+          heading('Annotated Text'),
+          new Paragraph({
+            children: [
+              new TextRun({ text: 'Key: ', size: 18, font: 'Arial', color: '777777' }),
+              new TextRun({ text: 'what the student wrote', size: 18, font: 'Arial', strike: true, color: RED_TEXT }),
+              new TextRun({ text: '  →  ', size: 18, font: 'Arial', color: '777777' }),
+              new TextRun({ text: 'correction', size: 18, font: 'Arial', bold: true, color: GREEN_TEXT }),
+            ],
+            spacing: { after: 100 },
+          }),
+          ...annotatedText(studentText, audit.errors),
 
           // Corrections table
           heading(`Corrections (${audit.errors.length})`),

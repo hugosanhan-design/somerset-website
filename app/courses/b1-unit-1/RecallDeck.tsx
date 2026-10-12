@@ -50,9 +50,9 @@ export default function RecallDeck({
     setHelped(false); setHint(false); setPeek(false); setCloseUsed(false); setMissed(false)
   }
 
-  function submit() {
+  function submit(value = input) {
     if (status === 'right' || status === 'revealed') { advance(); return }
-    const verdict = checkAnswer(input, [item.answer])
+    const verdict = checkAnswer(value, [item.answer])
     if (verdict === 'right') {
       setStatus('right')
       finishCard(helped || missed || closeUsed ? 0.5 : 1)
@@ -95,14 +95,19 @@ export default function RecallDeck({
         {answered ? (
           <div className="deck-answer">
             {item.emoji && <span className="deck-emoji">{item.emoji}</span>}
-            <span className="deck-word">{item.answer}</span>
+            <span className={`deck-word${status === 'right' ? ' deck-word--win' : ''}`}>{item.answer}</span>
             <span className={`deck-verdict ${status}`}>
               {status === 'right' ? (lastPoints === 1 ? '✓ First time!' : '✓ Got it') : 'Learn this one: it comes back in Revise'}
             </span>
           </div>
         ) : (
           <form className="deck-form" onSubmit={e => { e.preventDefault(); submit() }}>
-            <input ref={inputRef} className="deck-input" value={input} onChange={e => setInput(e.target.value)}
+            <input ref={inputRef} className="deck-input" value={input} onChange={e => {
+              const v = e.target.value
+              setInput(v)
+              // Right answers lock in the moment they are typed: no Check needed.
+              if (checkAnswer(v, [item.answer]) === 'right') submit(v)
+            }}
               placeholder={placeholder} autoComplete="off" autoCapitalize="none" autoCorrect="off" spellCheck={false} />
             <button type="submit" className="btn" disabled={!input.trim()}>Check</button>
           </form>

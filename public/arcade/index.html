@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Somerset Arcade</title>
+<link rel="icon" type="image/png" sizes="32x32" href="icons/arcade-32.png">
+<link rel="apple-touch-icon" href="icons/arcade-180.png">
+<link rel="manifest" href="arcade.webmanifest">
+<meta name="theme-color" content="#6BAE2E">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600..900&family=Instrument+Sans:wght@400..700&family=Fraunces:opsz,wght@9..144,400..900&display=swap" rel="stylesheet">
 <style>
 /* ==================================================================
@@ -158,6 +162,28 @@ button{font-family:inherit;cursor:pointer;border:0}
 .ov .a{font-family:var(--sans);font-weight:700;font-size:clamp(22px,3.2vw,46px);color:var(--dark);
   background:var(--green);padding:.28em .7em;display:none}
 .ov .a.on{display:block;animation:splat .34s cubic-bezier(.2,1.8,.4,1)}
+/* multiple-choice options for Somerset Trivial (7 Oct 2026). Upright English, no skew. */
+.mc{display:grid;grid-template-columns:1fr;gap:12px;width:min(900px,94%);margin:14px auto 6px}
+.mcopt{display:flex;align-items:center;gap:14px;text-align:left;font-family:var(--sans);font-weight:600;
+  font-size:clamp(17px,2.3vw,30px);line-height:1.2;padding:14px 18px;background:rgba(255,255,255,.1);
+  color:#fff;border:3px solid #fff;border-radius:12px;cursor:pointer}
+.mcopt i{flex:0 0 auto;font-style:normal;font-family:var(--cond);font-weight:900;font-size:1.1em;
+  background:var(--gold);color:var(--dark);border-radius:8px;min-width:1.7em;text-align:center;padding:.1em .3em}
+.mcopt:hover{background:rgba(255,255,255,.22)}
+.mcopt.pick{border-color:var(--gold);background:rgba(232,160,32,.28)}
+.mcopt.right{background:var(--green);border-color:#fff;color:#fff}
+.mcopt.dim{opacity:.35}
+.ov.hasmc .q{font-size:clamp(22px,3vw,40px);line-height:1.15}
+.ov.hasmc .mcopt{font-size:clamp(16px,1.9vw,26px);padding:10px 14px}
+.ov.hasmc .mc{margin:8px auto 4px;gap:10px}
+.ov.hasmc .a{font-size:clamp(15px,1.8vw,24px);margin-top:6px}
+.ov.hasmc .mcopt span{flex:1;text-align:center}
+.ov.hasmc .mcopt i{align-self:center}
+/* short answers (<=22 characters): big and centred, readable from the back row */
+.ov.mcbig .mcopt{font-size:clamp(28px,4.4vw,68px);font-weight:800;padding:12px 20px}
+.ov.hasmc .mcopt i{font-size:clamp(18px,2.4vw,36px)}
+.ov.mcbig .mc{gap:12px}
+.ov.mcbig .q{font-size:clamp(22px,2.9vw,40px)}
 @keyframes splat{0%{transform:scale(.5) rotate(-4deg);opacity:0}60%{transform:scale(1.08) rotate(1deg)}}
 .ov .row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:4px}
 .btn{background:#fff;color:var(--dark);font-family:var(--cond);font-weight:800;text-transform:uppercase;
@@ -498,6 +524,167 @@ button{font-family:inherit;cursor:pointer;border:0}
 .hmkey.miss{background:transparent;color:#5a534d;border-color:#3a352f}
 .hmkey:disabled{cursor:default}
 @media (max-width:780px){.hmkeys{grid-template-columns:repeat(7,1fr)}}
+
+/* ---------- bingo ---------- */
+.bgset{display:flex;flex-direction:column;gap:14px;margin:6px 0 16px;max-width:1100px}
+.bgrow{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.bglab{font-family:var(--cond);font-weight:800;text-transform:uppercase;letter-spacing:.1em;font-size:13px;min-width:190px;color:var(--paper)}
+.bgnote{font:500 15px var(--sans);color:rgba(255,255,255,.8)}
+.bgopt{background:var(--dark2);color:#fff;border:2px solid #fff;padding:8px 18px;font:700 16px var(--sans);transform:skewX(var(--skew))}
+.bgopt>span{display:inline-block;transform:skewX(calc(-1*var(--skew)))}
+.bgopt.sel{background:var(--green);color:var(--dark);border-color:var(--green)}
+.bgbank{display:flex;flex-wrap:wrap;gap:8px}
+.bgw{font:600 16px var(--sans);padding:7px 13px;background:var(--dark2);color:var(--paper);border:2px solid var(--green)}
+.bgw:not(.on){opacity:.4;border-color:#4a443e;text-decoration:line-through}
+.bgwarn{font:600 15px var(--sans);color:var(--gold)}
+.bgcall{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;text-align:center}
+.bgclue{font:700 clamp(44px,9vw,140px)/1.05 var(--sans);color:var(--paper)}
+.bgans{font:700 clamp(32px,6vw,90px)/1.1 var(--sans);color:var(--gold);animation:splat .34s cubic-bezier(.2,1.8,.4,1)}
+.bgbig{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.bgbig div{background:var(--dark2);border:3px solid #fff;padding:12px 16px}
+.bgbig b{display:block;font:700 clamp(22px,2.4vw,34px) var(--sans);color:var(--paper)}
+.bgbig small{font:500 clamp(14px,1.3vw,18px) var(--sans);color:var(--gold)}
+.bgcalled{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:900px;margin:8px 0}
+.bgcalled span{font:600 20px var(--sans);background:var(--dark2);border:2px solid var(--green);padding:6px 14px;color:#fff}
+.bgconf{position:fixed;inset:0;pointer-events:none;z-index:99;overflow:hidden}
+.bgconf i{position:absolute;top:-4vh;width:10px;height:16px;animation:bgfall linear forwards}
+@keyframes bgfall{to{transform:translateY(110vh) rotate(540deg)}}
+
+/* ---------- double vision ---------- */
+.dvchips{display:flex;flex-wrap:wrap;gap:8px}
+.dvchip{display:flex;align-items:center;gap:8px;background:var(--dark2);color:var(--paper);border:2px solid var(--green);padding:4px 12px 4px 4px;font:600 15px var(--sans)}
+.dvchip img{width:38px;height:38px;object-fit:cover;border-radius:50%}
+.dvchip:not(.on){opacity:.4;border-color:#4a443e}
+.dvchip:not(.on) span{text-decoration:line-through}
+.dvboard{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;gap:clamp(16px,4vw,60px);flex-wrap:wrap}
+.dvdisc{position:relative;width:min(44vw,calc(100dvh - 340px));min-width:240px;aspect-ratio:1/1;border-radius:50%;
+  background:radial-gradient(circle,#fff 0%,var(--paper) 100%);border:10px solid var(--green);box-shadow:0 8px 0 rgba(0,0,0,.4)}
+.dvdisc.B{border-color:var(--gold)}
+.dvt{position:absolute;transform:translate(-50%,-50%) rotate(var(--rot,0deg));border-radius:50%;overflow:hidden;
+  border:4px solid #fff;background:#fff;padding:0;box-shadow:0 3px 0 rgba(0,0,0,.35);transition:filter .12s,opacity .2s}
+.dvt img{width:100%;height:100%;object-fit:cover;display:block}
+.dvt.word{background:var(--paper);color:var(--dark);display:flex;align-items:center;justify-content:center;text-align:center;padding:6%;line-height:1.1;border-color:var(--dark)}
+.dvt.word span{font:700 clamp(15px,2.3vmin,30px) var(--sans)}
+.dvt:hover{filter:brightness(1.1)}
+.dvt.no{opacity:.22;pointer-events:none;filter:grayscale(1)}
+.dvt.hit{border-color:var(--gold);box-shadow:0 0 0 6px var(--gold),0 0 28px var(--gold);animation:dvpulse .7s infinite alternate}
+@keyframes dvpulse{to{box-shadow:0 0 0 10px var(--hot),0 0 40px var(--hot)}}
+.dvhint{min-height:30px;text-align:center;font:700 clamp(18px,2vw,28px) var(--sans);color:var(--gold)}
+.dvwin{width:clamp(120px,24vmin,260px);height:clamp(120px,24vmin,260px);border-radius:50%;object-fit:cover;border:6px solid #fff;margin:6px auto}
+/* ---------- boxes ---------- */
+.legend button.chip{color:#fff;cursor:pointer}
+.bxwrap{flex:1;min-height:0;display:flex;gap:clamp(14px,3vw,40px);align-items:center;justify-content:center;flex-wrap:wrap}
+.bxboard{width:min(38vw,calc(100dvh - 300px));min-width:260px;aspect-ratio:1/1}
+.bxsvg{width:100%;height:100%;display:block;background:var(--dark2);border:6px solid #fff;box-shadow:0 8px 0 rgba(0,0,0,.4)}
+.bxln{stroke:rgba(255,255,255,.3);stroke-width:4;stroke-linecap:round}
+.bxln.own{stroke-width:12}
+.bxhit{stroke:rgba(255,255,255,0);stroke-width:36;cursor:pointer;pointer-events:stroke}
+.bxhit:hover{stroke:rgba(232,160,32,.6)}
+.bxdot{fill:var(--paper);pointer-events:none}
+.bxl{font:800 52px var(--cond);fill:#fff;text-anchor:middle;dominant-baseline:central;pointer-events:none}
+.bxpanel{width:min(56vw,680px);min-width:260px;display:flex;flex-direction:column;gap:8px;align-items:center;text-align:center}
+.bxturn{font:700 clamp(20px,2.4vw,32px) var(--sans);color:#fff;border-bottom:6px solid var(--tc);padding:2px 14px}
+.bxturn b{font-family:var(--cond);color:var(--tc);margin-right:6px}
+.bxsay{font-family:var(--cond);font-weight:800;text-transform:uppercase;letter-spacing:.1em;font-size:14px;color:var(--gold)}
+.bxpic{width:clamp(190px,47vh,540px);height:clamp(190px,47vh,540px);max-width:100%;object-fit:cover;border:8px solid #fff;border-radius:22px}
+.bxpic.sm{width:clamp(150px,32vh,320px);height:clamp(150px,32vh,320px)}
+.bxpanel .btn{font-size:17px;padding:8px 18px}
+.bxword{margin-top:0}
+.bxclue{font:700 clamp(52px,9vw,130px)/1.05 var(--sans);color:var(--paper)}
+.bxword{min-height:34px;font:700 clamp(22px,2.6vw,36px) var(--sans);color:var(--gold)}
+.bxmsg{font:600 clamp(16px,1.8vw,22px) var(--sans);color:var(--paper)}
+.bxlast{font:500 15px var(--sans);color:rgba(255,255,255,.75)}
+/* ---------- guess-eroo ---------- */
+.geboard{--s:min(calc((100vw - 90px)/var(--c) - 12px),calc((100dvh - 445px)/var(--r) - 12px));display:grid;grid-template-columns:repeat(var(--c),var(--s));gap:12px;justify-content:center;margin:8px 0}
+.gecard{position:relative;width:var(--s);height:var(--s);padding:0;border:5px solid #fff;border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 5px 0 rgba(0,0,0,.4);cursor:pointer;transition:filter .15s,opacity .15s,transform .15s}
+.gecard img{width:100%;height:100%;object-fit:cover;display:block}
+.gecard.pick{border-color:var(--gold);animation:dvpulse .7s infinite alternate}
+.gecard.out{filter:grayscale(1) brightness(.4);opacity:.45;transform:scale(.94)}
+.gecard.out::after{content:"✕";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:800 calc(var(--s)*.6) var(--cond);color:#fff}
+.gew{position:absolute;left:0;right:0;bottom:0;background:rgba(17,15,13,.85);color:#fff;font:700 clamp(14px,1.5vw,22px) var(--sans);padding:3px 4px}
+.gebar{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;position:relative}
+.geturn{font:600 clamp(18px,2vw,26px) var(--sans);color:#fff}
+.geturn b{color:var(--gold)}
+.geq{font:700 clamp(26px,3.4vw,48px) var(--sans);color:var(--paper)}
+.gelast{font:500 18px var(--sans);color:rgba(255,255,255,.8)}
+.gechips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:1100px}
+.gechip{background:var(--dark2);color:#fff;border:2px solid var(--green);padding:3px 10px;font:600 clamp(14px,1.25vw,18px) var(--sans)}
+.gechip.sel{background:var(--green);color:var(--dark)}
+.gesecret{display:none;position:absolute;right:0;bottom:100%;background:var(--paper);color:var(--dark);border:5px solid var(--gold);padding:8px;font:700 18px var(--sans)}
+.gesecret.on{display:flex;flex-direction:column;align-items:center;gap:4px}
+.gesecret img{width:min(24vw,240px);height:min(24vw,240px);object-fit:cover}
+/* ---------- pairs ---------- */
+.prboard{--s:min(calc((100vw - 90px)/var(--c) - 12px),calc((100dvh - 350px)/var(--r) - 12px));display:grid;grid-template-columns:repeat(var(--c),calc(var(--s)*1.3));grid-auto-rows:var(--s);gap:12px;justify-content:center;margin:8px 0}
+.prcard{position:relative;display:flex;align-items:center;justify-content:center;padding:0;border:5px solid #fff;border-radius:14px;overflow:hidden;background:var(--green);box-shadow:0 5px 0 rgba(0,0,0,.4);cursor:pointer}
+.prcard.up{background:#fff;cursor:default}
+.prcard.word.up{background:var(--paper)}
+.prcard img{width:100%;height:100%;object-fit:cover;display:block}
+.prq{font:800 calc(var(--s)*.5) var(--cond);color:var(--dark)}
+.prw{font:700 calc(var(--s)*.2)/1.1 var(--sans);overflow-wrap:normal;hyphens:none;color:var(--dark);text-align:center;padding:6px}
+.prown{position:absolute;right:6px;top:6px;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font:800 18px var(--cond);color:#fff;font-style:normal}
+.ppic{width:clamp(160px,41vh,440px);height:clamp(160px,41vh,440px);object-fit:cover;border:6px solid #fff;border-radius:20px;margin:4px auto}
+
+/* ---------- somerset trivial (round board) ---------- */
+.tvpad{padding-top:6px;padding-bottom:6px}
+.tvwrap{display:flex;gap:clamp(12px,2vw,28px);align-items:center;justify-content:center;flex-wrap:wrap}
+.tvboard{--tvb:min(calc(100dvh - 120px),calc(100vw - 500px));width:var(--tvb);height:var(--tvb);min-width:300px;min-height:300px;flex:none}
+:fullscreen .tvboard{--tvb:min(calc(100dvh - 24px),calc(100vw - 470px))}
+:fullscreen body:has(.tvboard) .bar{display:none}
+.tvsvg{width:100%;height:100%;display:block;border-radius:50%;box-shadow:0 0 40px rgba(79,208,255,.35),0 8px 0 rgba(0,0,0,.4)}
+.tvr{stroke:rgba(255,255,255,.55);stroke-width:2}
+.tvc{filter:drop-shadow(0 0 3px rgba(255,255,255,.25))}
+.tvc.hq .tvr{stroke:#fff;stroke-width:5}
+.tvi{font-size:34px;text-anchor:middle;dominant-baseline:central;pointer-events:none}
+.tvi.sm{font-size:24px}
+.tvc.dest{cursor:pointer;animation:tvpulse .6s infinite alternate}
+.tvc.dest .tvr{stroke:#fff;stroke-width:6}
+@keyframes tvpulse{from{filter:drop-shadow(0 0 4px #fff)}to{filter:drop-shadow(0 0 16px #ffd93b) brightness(1.35)}}
+.tvhub.dest{cursor:pointer;animation:tvpulse .6s infinite alternate}
+.tvtl{font:800 18px var(--cond);fill:#150f3a;text-anchor:middle;dominant-baseline:central;pointer-events:none}
+.tvtok.me circle{stroke:#ffd93b;stroke-width:5}
+.tvhud{width:clamp(280px,30vw,420px);display:flex;flex-direction:column;gap:10px}
+.tvteams{display:flex;flex-direction:column;gap:6px}
+.tvteam{display:flex;align-items:center;gap:8px;background:var(--dark2);border:3px solid #fff;padding:4px 10px;color:#fff}
+.tvteam.on{background:#fff;color:var(--dark)}
+.tvtk{font:800 22px var(--cond);width:30px;height:30px;border-radius:50%;background:var(--green);color:var(--dark);display:flex;align-items:center;justify-content:center;flex:none}
+.tvnm{font:700 clamp(15px,1.5vw,20px) var(--sans);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tvsc{font:800 26px var(--cond)}
+.tvwheel{width:44px;height:44px;flex:none}
+.tvlegend{display:grid;grid-template-columns:1fr 1fr;gap:4px 8px}
+.tvleg{display:flex;align-items:center;gap:6px;font:700 clamp(13px,1.2vw,16px) var(--sans);color:#fff;opacity:.6}
+.tvleg.got{opacity:1}
+.tvleg.got::after{content:"✔";color:var(--gold)}
+.tvleg i{width:14px;height:14px;border-radius:3px;flex:none;border:2px solid #fff}
+.tvleg small{font-weight:500;opacity:.8;margin-left:2px}
+.tvmsg{min-height:44px;font:600 clamp(15px,1.5vw,20px) var(--sans);color:var(--paper)}
+.tvact{display:flex;align-items:center;gap:12px}
+.tvdieBig{font-size:64px;line-height:1;color:#fff}
+.tvhint{font:700 18px var(--sans);color:var(--gold)}
+.tvbtns{display:flex;gap:8px;flex-wrap:wrap}
+.tvbtns .btn{font-size:15px;padding:6px 14px}
+.tvpick{flex-wrap:wrap}
+.tile.trivial{background:#241552;border-color:#fff}
+.tile.trivial p{color:rgba(255,255,255,.9)}
+.tile.trivial:hover{background:var(--gold);border-color:var(--dark)}
+.tile.trivial:hover p,.tile.trivial:hover h3{color:var(--dark)}
+
+#printArea{display:none}
+@media print{
+  @page{size:A4;margin:12mm 12mm 18mm;
+    @bottom-left{content:"SOMERSET LANGUAGE CENTRE · VALENCIA";font:12pt Arial,sans-serif;color:#000}
+    @bottom-right{content:counter(page);font:12pt Arial,sans-serif;color:#000}}
+  html,body{height:auto!important;overflow:visible!important;background:#fff!important;color:#000!important}
+  body>*:not(#printArea){display:none!important}
+  #printArea{display:block!important;background:#fff;color:#000;font-family:Arial,'Liberation Sans',sans-serif}
+  .bgpage{display:grid;grid-template-columns:1fr;gap:4mm;break-after:page;page-break-after:always;break-inside:avoid}
+  .bgpage:last-child{break-after:auto;page-break-after:auto}
+  .bgcard{break-inside:avoid;page-break-inside:avoid;border:1.5pt solid #000;padding:4mm;background:#fff}
+  .bgcard h4{font:700 14pt Arial,sans-serif;margin:0 0 1mm}
+  .bgcard .bgmeta,.bgcard .bgname{font:400 12pt Arial,sans-serif;margin:0 0 3mm}
+  .bgcard table{width:100%;border-collapse:collapse;table-layout:fixed}
+  .bgcard td{border:1.2pt solid #000;text-align:center;vertical-align:middle;font:700 16pt/1.15 Arial,sans-serif;height:18mm;padding:1mm;overflow-wrap:normal;word-break:normal;hyphens:none}
+  #printArea.p4 .bgcard td{height:23mm}
+}
 #tmr.low{background:var(--hot);color:#fff}
 #tmr.out{background:var(--hot);color:#fff;animation:slam .3s cubic-bezier(.2,1.5,.4,1)}
 .tmrbtn{font-family:var(--cond);font-weight:900;letter-spacing:.1em;text-transform:uppercase;
@@ -548,6 +735,273 @@ button:disabled{opacity:.4;cursor:not-allowed}
 .rd-vcard p{font-size:clamp(13px,1.2vw,16px);opacity:.9;margin-top:2px;line-height:1.25}
 .rd-vc{display:flex;align-items:center;gap:10px;flex-shrink:0}
 .rd-n{font-family:var(--cond);font-weight:900;font-size:clamp(24px,2.6vw,36px);min-width:1.4em;text-align:center}
+
+/* ==================================================================
+   FILL THE SCREEN — brighter, bigger (7 Oct 2026, Hugo)
+   Everything below scales with the viewport (vw / vh) so a classroom
+   TV at 1920x1080 is filled, while a 1280x720 laptop still fits.
+   min(Xvw, Yvh) keeps text from overflowing short screens.
+   ================================================================== */
+:root{--dark2:#2B2622;--paper:#FFFDF4}
+.halftone{opacity:.09}
+.wrap::before{opacity:1;width:70vw;height:72vh}
+.wrap::after{opacity:1;width:64vw;height:68vh}
+
+/* ---- top bar ---- */
+.bar{padding:clamp(10px,1.3vh,20px) clamp(18px,2vw,40px);gap:clamp(12px,1.2vw,24px);background:rgba(20,17,16,.72)}
+.logo{font-size:clamp(22px,2.6vw,52px)}
+.logo small{font-size:clamp(10px,.8vw,16px)}
+.bar .unit{font-size:clamp(12px,1.2vw,22px);color:#fff}
+.bar .auto{font-size:clamp(12px,1.05vw,20px)}
+.bar select{font-size:clamp(13px,1.15vw,22px);padding:.5em .8em}
+.bar button{font-size:clamp(13px,1.15vw,22px);padding:.55em 1.1em}
+
+/* ---- launcher tiles fill the stage ---- */
+.pad{padding:clamp(14px,2.6vh,40px) clamp(16px,2.4vw,52px)}
+.h1{font-size:clamp(38px,6vw,120px);margin-bottom:.1em}
+.sub{font-size:clamp(13px,1.5vw,28px);margin-bottom:clamp(14px,2.6vh,36px);color:#fff}
+div.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(clamp(230px,21vw,420px),1fr));
+  grid-auto-rows:minmax(clamp(130px,17vh,260px),1fr);gap:clamp(10px,1.4vw,26px);align-content:stretch;flex:1}
+.tile{min-height:0;padding:clamp(14px,1.6vw,34px) clamp(16px,1.8vw,38px);border-width:clamp(3px,.25vw,5px)}
+.tile .ic{font-size:clamp(34px,4.2vw,96px)}
+.tile h3{font-size:clamp(20px,2.5vw,52px);margin:.3em 0 .2em}
+.tile p{font-size:clamp(14px,1.35vw,26px);color:rgba(255,255,255,.95);line-height:1.35}
+button.tile:not(.case):not(.pursuit):not(.trivial):not(.rounds):not(.q123){background:#3E8A22}
+button.tile:not(.case):not(.pursuit):not(.trivial):not(.rounds):not(.q123):nth-child(even){background:#2F6B1A}
+button.tile:not(.case):not(.pursuit):not(.trivial):not(.rounds):not(.q123):hover{background:var(--gold)}
+button.tile:not(.case):not(.pursuit):not(.trivial):not(.rounds):not(.q123):hover h3,button.tile:not(.case):not(.pursuit):not(.trivial):not(.rounds):not(.q123):hover p{color:var(--dark)}
+.tile.trivial{background:#4B2FB0}
+.tile.pursuit{background:#2563C9}
+.tile.rounds{background:#9A4FC4}
+
+/* ---- team bar ---- */
+.teams{gap:clamp(10px,1vw,20px);margin-bottom:clamp(10px,1.4vh,22px)}
+.team{padding:clamp(10px,1.4vh,22px) clamp(14px,1.4vw,28px);gap:clamp(10px,1vw,20px);flex-basis:clamp(160px,14vw,300px)}
+.team .nm{font-size:clamp(14px,1.6vw,32px)}
+.team .sc{font-size:clamp(30px,4vw,80px)}
+.team .pm button{width:clamp(27px,2.4vw,50px);height:clamp(27px,2.4vw,50px);font-size:clamp(15px,1.4vw,28px)}
+.winbtn{font-size:clamp(20px,2.2vw,44px);padding:0 clamp(14px,1.4vw,28px)}
+.weekly-bar{gap:clamp(12px,1.2vw,24px)}
+.wlbl,.wt-slot{font-size:clamp(11px,1vw,20px)}
+.wt-bar{width:clamp(50px,5vw,100px);height:clamp(4px,.5vh,8px)}
+
+/* ---- point grab: vivid, big tiles ---- */
+.grid{gap:clamp(8px,1.1vw,22px)}
+.cell{font-size:clamp(28px,min(6vw,11vh),150px);border-width:clamp(3px,.25vw,5px)}
+.cell:nth-child(4n+1){background:#4FA01C}
+.cell:nth-child(4n+2){background:#E2542C}
+.cell:nth-child(4n+3){background:#E8A020;color:var(--dark)}
+.cell:nth-child(4n){background:#2B7FC0}
+.cell:hover{background:#fff;color:var(--dark)}
+.cell .pts{font-size:clamp(11px,1.2vw,24px);bottom:.3em;right:.6em}
+.cell.done{background:transparent;color:rgba(255,255,255,.22);border-color:rgba(255,255,255,.22)}
+.cell.done .pts{color:rgba(255,255,255,.4)}
+
+/* ---- question overlay: use the whole screen ---- */
+.ov{background:rgba(22,19,18,.96);padding:4vh 5vw;gap:clamp(14px,2.6vh,40px)}
+.ov::before{opacity:.34;width:92vw;height:90vh}
+.ov .badge{font-size:clamp(13px,1.3vw,26px);padding:.4em 1em}
+.ov .worth{font-size:clamp(16px,1.9vw,38px);padding:.3em 1em}
+.ov .q{font-size:clamp(32px,min(5.4vw,9.5vh),120px);max-width:min(30ch,94vw);font-weight:700}
+.ov .a{font-size:clamp(26px,min(4vw,7.5vh),90px);color:var(--dark);background:#7FD13A;max-width:94vw}
+.btn{font-size:clamp(15px,1.7vw,34px)}
+.mc{width:min(1700px,94%);gap:clamp(10px,1.6vh,22px)}
+.mcopt{font-size:clamp(20px,min(2.8vw,5.2vh),56px);padding:clamp(10px,1.6vh,24px) clamp(16px,1.6vw,34px);border-radius:16px;background:rgba(255,255,255,.16)}
+.ov.hasmc .q{font-size:clamp(24px,min(3.7vw,6.4vh),76px)}
+.ov.hasmc .mcopt{font-size:clamp(20px,min(2.8vw,5.2vh),56px);padding:clamp(10px,1.6vh,24px) clamp(16px,1.6vw,34px)}
+.ov.hasmc .mc{gap:clamp(10px,1.6vh,22px);margin:clamp(6px,1vh,16px) auto 4px}
+.ov.hasmc .a{font-size:clamp(18px,min(2.4vw,4.4vh),52px)}
+.ov.mcbig .mcopt{font-size:clamp(32px,min(5.6vw,8.6vh),130px);padding:clamp(10px,1.8vh,30px) clamp(18px,2vw,40px)}
+.ov.mcbig .q{font-size:clamp(24px,min(3.5vw,6vh),72px)}
+.ov.hasmc .mcopt i,.ov.mcbig .mcopt i{font-size:clamp(20px,min(2.8vw,5vh),64px);border-radius:12px}
+.mcopt.right{background:#4FA01C}
+
+/* ---- somerset trivial: bigger board + HUD ---- */
+.tvwrap{--hud:clamp(300px,34vw,780px);gap:clamp(14px,2vw,44px);flex-wrap:nowrap;height:100%}
+.tvboard{--tvb:min(calc(100dvh - 120px),calc(100vw - var(--hud) - 130px))}
+:fullscreen .tvboard{--tvb:min(calc(100dvh - 28px),calc(100vw - var(--hud) - 110px))}
+.tvhud{width:var(--hud);gap:clamp(10px,1.6vh,24px)}
+.tvteams{gap:clamp(6px,1vh,14px)}
+.tvteam{padding:clamp(4px,.8vh,12px) clamp(10px,1vw,22px);gap:clamp(8px,.8vw,16px)}
+.tvtk{font-size:clamp(20px,2vw,42px);width:clamp(30px,2.8vw,60px);height:clamp(30px,2.8vw,60px)}
+.tvnm{font-size:clamp(16px,1.9vw,38px)}
+.tvsc{font-size:clamp(24px,2.6vw,54px)}
+.tvwheel{width:clamp(44px,4.2vw,88px);height:clamp(44px,4.2vw,88px)}
+.tvlegend{gap:clamp(4px,.7vh,12px) clamp(8px,1vw,20px)}
+.tvleg{font-size:clamp(13px,1.35vw,28px);opacity:.85}
+.tvleg i{width:clamp(14px,1.3vw,28px);height:clamp(14px,1.3vw,28px)}
+.tvmsg{font-size:clamp(16px,1.8vw,36px);min-height:2.4em}
+.tvdieBig{font-size:clamp(64px,5.6vw,120px)}
+.tvhint{font-size:clamp(18px,1.7vw,34px)}
+.tvbtns{gap:clamp(8px,.8vw,16px)}
+.tvbtns .btn{font-size:clamp(15px,1.4vw,28px);padding:.5em 1em}
+.tvsvg{box-shadow:0 0 60px rgba(79,208,255,.5),0 8px 0 rgba(0,0,0,.4)}
+
+/* ---- team setup, rounds, 1-2-3 ---- */
+.setup{max-width:min(1700px,100%)}
+.setup h2{font-size:clamp(16px,1.7vw,34px);margin-bottom:.5em}
+.setup section{margin-bottom:clamp(16px,2.6vh,40px)}
+.count button{font-size:clamp(22px,2.4vw,48px);width:clamp(62px,5.4vw,110px);height:clamp(52px,5.4vh,100px)}
+#roster{max-width:min(1000px,100%);min-height:clamp(96px,16vh,260px);font-size:clamp(16px,1.6vw,32px)}
+.hint{font-size:clamp(14px,1.35vw,26px);max-width:80ch}
+.hcap{font-size:clamp(15px,1.5vw,30px)}
+.hcap input{width:clamp(19px,1.6vw,32px);height:clamp(19px,1.6vw,32px)}
+.pteam{padding:clamp(12px,1.4vh,22px) clamp(15px,1.4vw,28px)}
+.pteam h5{font-size:clamp(16px,1.6vw,32px)}
+.pteam ul{font-size:clamp(14.5px,1.4vw,28px)}
+.pmsg{font-size:clamp(16px,1.9vw,38px)}
+.rd-in{font-size:clamp(20px,1.9vw,38px);width:min(clamp(250px,20vw,420px),100%)}
+.rd-num{width:clamp(110px,8vw,170px)}
+.rd-qs{max-width:min(1700px,100%)}
+.rd-qs li{font-size:clamp(16px,2vw,40px)}
+.rd-who{font-size:clamp(30px,6vw,140px)}
+.rd-vote{max-width:min(1700px,100%)}
+.rd-vcard h3{font-size:clamp(20px,2.4vw,48px)}
+.rd-vcard p{font-size:clamp(13px,1.35vw,26px)}
+.rd-n{font-size:clamp(24px,2.8vw,56px)}
+/* fill-the-screen layout for sparse "one message + one button" screens (7 Oct 2026):
+   the message block takes all the room under the scoreboard, centred, and scales with the window */
+.pad.focus{justify-content:flex-start}
+.fbody{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:clamp(12px,2.6vh,40px);min-height:0;padding-bottom:clamp(8px,4vh,60px)}
+.fbody .h1{font-size:clamp(46px,min(11vw,18vh),230px);margin:0;line-height:.95}
+.fbody .sub{font-size:clamp(16px,min(2.2vw,3.6vh),46px);margin:0}
+.fbody .pmsg{font-size:clamp(22px,min(3.2vw,5.2vh),76px);margin:0;max-width:min(1600px,94%);line-height:1.2}
+.fbody .vrow{justify-content:center;gap:clamp(12px,1.6vw,32px)}
+.fbody .btn{font-size:clamp(24px,min(3vw,5.2vh),68px);padding:.55em 1.5em}
+.fbody.setup .h1{font-size:clamp(40px,min(6.5vw,11vh),140px)}
+.fbody.setup .rd-names{width:min(1800px,100%);justify-content:center;margin:0}
+.fbody.setup .rd-tcard{flex:1 1 clamp(300px,34vw,760px);text-align:left;padding:clamp(14px,2vh,36px)}
+.fbody.setup .rd-in{font-size:clamp(20px,min(2.4vw,4vh),48px)}
+.fbody .btn.hot{box-shadow:0 0 0 clamp(3px,.35vw,7px) #fff}
+.fbody .vrow .btn{min-width:clamp(90px,10vw,220px);text-align:center}
+/* long words never clip inside a tile (e.g. GEOGRAFÍA on a narrow window) */
+.tile h3,.tile p{overflow-wrap:break-word;min-width:0}
+/* short windows: rows shrink to fit instead of running off the bottom */
+div.tiles{grid-auto-rows:minmax(0,1fr) !important;min-height:0}
+/* class picker: just the group name, big, no icon, no description (7 Oct 2026) */
+div.tiles.groups>.tile .ic,div.tiles.groups>.tile p{display:none !important}
+div.tiles.groups>.tile{justify-content:center;align-items:center;text-align:center}
+div.tiles.groups{grid-template-columns:repeat(auto-fit,minmax(clamp(300px,30vw,760px),1fr)) !important}
+div.tiles.groups>.tile>div{width:100%}
+div.tiles.groups>.tile{padding:3% 7%}
+div.tiles.groups>.tile h3{font-size:clamp(20px,min(calc(var(--tw,300px)*.108),calc(var(--th,300px)*.3)),150px);line-height:1.02;margin:0;text-align:center;overflow-wrap:normal;word-break:normal;hyphens:none}
+/* unit picker: no "?" here, so the book/month line shows on the tile */
+div.tiles.units>.tile p{display:block !important}
+.pad:has(>div.tiles) .h1{font-size:clamp(24px,min(4.4vw,6.5vh),88px)}
+.tile>div{min-width:0;max-width:100%}
+
+/* ---- the other games (non-adult groups) ---- */
+.locks{max-width:min(1700px,100%)}
+.lock h4{font-size:clamp(17px,2.2vw,44px)}
+.lock p.pr,.clues{font-size:clamp(15px,1.8vw,36px)}
+.opt,.mw{font-size:clamp(14px,1.7vw,34px)}
+.chip{font-size:clamp(14px,1.25vw,24px)}
+.hmfig{width:clamp(150px,22vw,460px)}
+.hmslot{font-size:clamp(26px,4.6vw,110px);min-width:clamp(24px,3.8vw,90px)}
+.hmclueword{font-size:clamp(20px,2.9vw,64px)}
+.hmkey{font-size:clamp(15px,2vw,42px)}
+.hmlives{font-size:clamp(16px,2vw,40px)}
+.bgclue{font-size:clamp(44px,10vw,220px)}
+.bgans{font-size:clamp(32px,6.6vw,150px)}
+.bgbig b{font-size:clamp(22px,2.6vw,52px)}
+.bxclue{font-size:clamp(52px,10vw,220px)}
+.bxturn{font-size:clamp(20px,2.7vw,54px)}
+.geq{font-size:clamp(26px,3.8vw,80px)}
+.geturn{font-size:clamp(18px,2.2vw,44px)}
+.dvhint{font-size:clamp(18px,2.2vw,44px)}
+.pc .back{font-size:clamp(20px,3vw,72px)}
+/* ---- fill-screen pass 2: trim what overflowed ---- */
+.bar{flex-wrap:nowrap}
+.bar button,.bar select,.bar .unit,.bar .auto{white-space:nowrap}
+.bar .unit{min-width:0;overflow:hidden;text-overflow:ellipsis}
+.logo{font-size:clamp(22px,2.1vw,42px);flex-shrink:0}
+.logo small{display:block;width:max-content}
+.h1{font-size:clamp(34px,4.4vw,88px);line-height:1}
+.sub{font-size:clamp(13px,1.3vw,24px)}
+.tile .ic{font-size:clamp(48px,6.2vw,150px)}
+.tvwrap{--hud:clamp(300px,31vw,700px)}
+.tvhud{gap:clamp(8px,1.2vh,18px);max-height:calc(100dvh - 90px)}
+.tvteam{padding:clamp(3px,.5vh,8px) clamp(10px,.9vw,20px)}
+.tvtk{font-size:clamp(18px,1.6vw,34px);width:clamp(28px,2.3vw,48px);height:clamp(28px,2.3vw,48px)}
+.tvnm{font-size:clamp(16px,1.55vw,32px)}
+.tvsc{font-size:clamp(22px,2.1vw,44px)}
+.tvwheel{width:clamp(40px,3.4vw,70px);height:clamp(40px,3.4vw,70px)}
+.tvleg{font-size:clamp(12px,1.05vw,22px)}
+.tvleg i{width:clamp(13px,1vw,22px);height:clamp(13px,1vw,22px)}
+.tvmsg{font-size:clamp(16px,1.5vw,30px);min-height:2.2em}
+.tvdieBig{font-size:clamp(56px,4.4vw,96px)}
+.tvbtns .btn{font-size:clamp(14px,1.05vw,22px);padding:.45em .9em;letter-spacing:.04em}
+.rd-names{gap:clamp(12px,1.4vw,28px)}
+.rd-tcard{flex:1 1 clamp(300px,30vw,640px);padding:clamp(12px,1.4vw,28px);gap:clamp(8px,1vh,16px)}
+.rd-in{width:100%;font-size:clamp(20px,1.8vw,36px)}
+.rd-lbl{font-size:clamp(13px,1.2vw,24px)}
+.rd-num{width:clamp(110px,9vw,200px)}
+/* ---- fill-screen pass 3: bigger tile content ---- */
+.tile .ic{font-size:clamp(48px,min(7vw,13vh),170px)}
+.tile h3{font-size:clamp(20px,min(3vw,5.4vh),70px)}
+.tile p{font-size:clamp(14px,min(1.8vw,3.2vh),36px)}
+/* ---- fill-screen pass 4: menus fit the window, always (7 Oct 2026) ----
+   Any screen whose content is a grid of tiles is pinned to the stage
+   (no scrolling, no overflow). Each tile is a size container, so its text
+   and icon scale to the tile's own size: 3 tiles = huge, 17 tiles = compact,
+   and resizing the window re-fits everything. */
+.pad:has(>div.tiles){position:absolute;inset:0;min-height:0;overflow:hidden}
+.pad:has(>div.tiles) .h1{font-size:clamp(26px,min(4.4vw,8vh),88px);flex-shrink:0;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.pad:has(>div.tiles) .sub{flex-shrink:0;margin-bottom:clamp(8px,1.6vh,30px);font-size:clamp(11px,min(1.3vw,2.4vh),24px)}
+div.tiles{min-height:0;grid-template-columns:repeat(auto-fit,minmax(clamp(170px,15vw,420px),1fr));
+  grid-auto-rows:minmax(0,1fr);gap:clamp(8px,min(1.2vw,2vh),26px)}
+.tile{container-type:size;min-width:0;overflow:hidden;
+  padding:clamp(8px,min(7cqw,9cqh),34px) clamp(10px,min(8cqw,10cqh),38px)}
+.tile .ic{font-size:clamp(24px,min(22cqw,26cqh),170px)}
+.tile h3{font-size:clamp(13px,min(10.5cqw,15cqh),60px);margin:.25em 0 .15em;
+  display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.tile p{font-size:clamp(12px,min(5.4cqw,8.6cqh),32px);line-height:1.3;
+  display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+@container (max-height:150px){.tile p{display:none}}
+@container (max-height:110px){.tile .ic{display:none}}
+/* ---- fill-screen pass 5: tile content sized from the REAL tile size (JS sets --tw/--th) ---- */
+.tile{container-type:normal;--tw:300px;--th:300px;justify-content:flex-start;gap:0}
+.tile .ic{font-size:clamp(28px,min(calc(var(--tw)*.46),calc(var(--th)*.34)),300px);line-height:1;margin-bottom:auto}
+.tile h3{font-size:clamp(14px,min(calc(var(--tw)*.085),calc(var(--th)*.11)),84px);margin:.3em 0 .12em;overflow-wrap:break-word;hyphens:none}
+.tile p{font-size:clamp(12px,min(calc(var(--tw)*.07),calc(var(--th)*.055)),40px)}
+.tile p{-webkit-line-clamp:unset !important}
+.tile.tiny p{display:none}
+.tile.tiny .ic{display:none}
+.tile.small .ic{font-size:clamp(24px,min(calc(var(--tw)*.2),calc(var(--th)*.18)),90px)}
+.tile.small p{-webkit-line-clamp:2}
+.tile.tiny h3{font-size:clamp(14px,min(calc(var(--tw)*.085),calc(var(--th)*.2)),40px);margin:0}
+
+/* ---- tile "?" : the description lives behind a question-mark button, not on the tile (7 Oct 2026) ---- */
+div.tiles>.tile p{display:none !important}
+div.tiles>.tile{position:relative;padding:calc(var(--th,300px)*.09) calc(var(--tw,300px)*.09)}
+div.tiles>.tile .ic{font-size:clamp(24px,min(calc(var(--tw,300px)*.3),calc(var(--th,300px)*.4)),200px);margin-bottom:auto}
+div.tiles>.tile h3{font-size:clamp(14px,min(calc(var(--tw,300px)*.1),calc(var(--th,300px)*.15)),84px);margin:.2em 0 0;-webkit-line-clamp:unset}
+.tile .qm{position:absolute;top:calc(var(--th,300px)*.05);right:calc(var(--tw,300px)*.05);
+  width:clamp(24px,calc(var(--th,300px)*.17),64px);height:clamp(24px,calc(var(--th,300px)*.17),64px);border-radius:50%;
+  background:#fff;color:#1b3a0c;font:900 clamp(15px,calc(var(--th,300px)*.11),42px)/1 var(--cond,Arial);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:3;
+  box-shadow:0 2px 0 rgba(0,0,0,.35);transition:transform .12s}
+.tile .qm:hover{transform:scale(1.15);background:var(--gold,#ffd93b)}
+.qmov{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.72);display:flex;align-items:center;justify-content:center;padding:4vmin}
+.qmov>div{background:#fff;color:#14230c;border:6px solid #6BAE2E;border-radius:18px;max-width:min(900px,92vw);max-height:88vh;overflow:auto;
+  padding:clamp(18px,3vmin,40px);font-family:var(--sans,Arial)}
+.qmov h2{margin:0 0 .4em;font-family:var(--cond,Arial);font-weight:900;text-transform:uppercase;font-size:clamp(24px,4vmin,54px)}
+.qmov p{margin:0;font-size:clamp(18px,2.8vmin,36px);line-height:1.4}
+.qmov small{display:block;margin-top:1em;opacity:.6;font-size:clamp(13px,1.8vmin,22px)}
+
+/* Memory (and any board screen): everything on one screen, no scrolling (7 Oct 2026).
+   The page is pinned to the stage; the board takes whatever height is left and its cards stretch to fill it,
+   so the prompt bar and buttons under it can never be pushed off the bottom. */
+.pad.pr{height:100%;min-height:0;overflow:hidden}
+.pad.pr .legend{margin-bottom:clamp(4px,.8vh,10px)}
+.pad.pr .prboard{flex:1 1 0;min-height:0;display:grid;grid-template-columns:repeat(var(--c),minmax(0,1fr));grid-template-rows:repeat(var(--r),minmax(0,1fr));grid-auto-rows:unset;gap:clamp(6px,1.3vh,14px);justify-content:stretch;margin:clamp(4px,.8vh,10px) 0;
+  --s:min(calc((100vw - 90px)/var(--c)/1.35),calc((100dvh - 330px)/var(--r)))}
+.pad.pr .prcard{min-height:0;min-width:0}
+.pad.pr .gebar{flex:0 0 auto;gap:clamp(2px,.6vh,6px)}
+.pad.pr .geturn{font-size:clamp(16px,3vh,34px);line-height:1.1}
+.pad.pr .bxword{min-height:0;font-size:clamp(18px,3.4vh,40px);line-height:1.1}
+.pad.pr .gebar .btn{font-size:clamp(14px,2.4vh,28px);padding:.3em 1em}
 </style>
 </head>
 <body>
@@ -663,19 +1117,20 @@ button:disabled{opacity:.4;cursor:not-allowed}
 <script src="units/b2a-u06-l07.js"></script>
 <script src="units/b2a-u06-l08.js"></script>
 <script src="units/b2a-u06-l09.js"></script>
+<script src="units/b2conv-cowboy.js"></script>
+<script src="units/b2conv-paella.js"></script>
+<script src="units/b2conv-siesta.js"></script>
+<script src="units/b2conv-sport.js"></script>
+<script src="units/b2conv-u00.js"></script>
+<script src="units/b2conv-u01.js"></script>
+<script src="units/b2conv-weekend.js"></script>
+<script src="units/trivia-options.js"></script>
 <script src="units/fce1-u01.js"></script>
 <script src="units/fce1-u01b.js"></script>
 <script src="units/fce1-u01c.js"></script>
 <script src="units/friday-b2-u01.js"></script>
 <script src="units/friday-b2-u01b.js"></script>
 <script src="units/pet1-u01.js"></script>
-<script src="units/b2conv-u00.js"></script>
-<script src="units/b2conv-u01.js"></script>
-<script src="units/b2conv-cowboy.js"></script>
-<script src="units/b2conv-weekend.js"></script>
-<script src="units/b2conv-paella.js"></script>
-<script src="units/b2conv-sport.js"></script>
-<script src="units/b2conv-siesta.js"></script>
 <script src="units/unit-01.js"></script>
 <script src="units/unit-02.js"></script>
 <script src="units/unit-03.js"></script>
@@ -689,6 +1144,7 @@ button:disabled{opacity:.4;cursor:not-allowed}
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
 const stage = $('#stage'), ov = $('#ov');
+const ADULT_GROUPS=['adults-b12','b2-conv','b1-seniors'];
 const shuffle = a => { a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]];} return a; };
 const esc = s => String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
 
@@ -1068,6 +1524,16 @@ const Game = {
     this.load(id);
     const names={pointGrab:'Point Grab',memory:'Turn Two',guessWho:'Guess Who',speed:'Speed Round',flash:'Word Flash',hangman:'Hangman',theCase:'The Case'};
     const g=params.get('game')||params.get('play'), t=(params.get('topic')||'').replace(/'/g,'');
+    if(g==='rounds'&&this.unit.rounds){ const rn=parseInt(params.get('round')||'1',10); this.rounds(); if(rn>1&&this.unit.rounds.rounds[rn-1]) this.roundsStart(rn-1); return true; }
+    if(g==='vote'&&this.unit.rounds&&this.unit.rounds.vote){ this.rounds(); this.roundsVote(); return true; }
+    if((g==='q123'||g==='123')&&this.unit.quiz123){ this.t123(); return true; }
+    if(g==='bingo'){ this.bingo(); return true; }
+    if(g==='doubleVision'){ this.doubleVision(); return true; }
+    if(g==='boxes'){ this.boxes(); return true; }
+    if(g==='pairs'||g==='memory'){ this.pairs(); return true; }
+    if(g==='guessEroo'){ this.guessEroo(); return true; }
+    if(g==='trivial'&&this.unit.trivial){ this.trivial(); return true; }
+    if((g==='pursuit'||g==='trivial')&&this.unit.pursuit){ this.pursuit(); return true; }
     if(g&&names[g]){
       const fn = (g==='pointGrab'&&t) ? `Game.pointGrab('${t}')` : `Game.${g}()`;
       this.versions(fn, names[g]+(g==='pointGrab'&&t?' · '+t[0].toUpperCase()+t.slice(1):''));
@@ -1086,7 +1552,7 @@ const Game = {
     stage.innerHTML = `<div class="pad">
       <h1 class="h1">Somerset Arcade</h1>
       <p class="sub">Which class are you teaching?</p>
-      <div class="tiles">${groups.map((g,i)=>{
+      <div class="tiles groups">${groups.map((g,i)=>{
         const lbl=(TIMETABLE.find(t=>t.group===g)||{}).label || g;
         const n=this._ids.filter(id=>window.SOMERSET_UNITS[id].group===g).length;
         return tile(GROUP_ICON[g]||'🏫', lbl, n+' unit'+(n>1?'s':'')+' ready', `Game.pickClass('${esc(g)}')`, i);
@@ -1098,7 +1564,7 @@ const Game = {
     stage.innerHTML = `<div class="pad">
       <h1 class="h1">${esc(lbl)}</h1>
       <p class="sub">Which unit?</p>
-      <div class="tiles">${units.map((id,i)=>{
+      <div class="tiles units">${units.map((id,i)=>{
         const u=window.SOMERSET_UNITS[id];
         return tile('📘', u.title, u.book+' · '+u.month, `Game.load('${esc(id)}')`, i);
       }).join('')}${tile('◀','Back','Choose a different class.','Game.intro()',units.length)}</div></div>`;
@@ -1109,6 +1575,9 @@ const Game = {
   home(){ if(!this.unit){ this.intro(); return; }
     stopTimer(); ov.classList.remove('on'); this._memSelected=[];
     const u=this.unit;
+    /* Adult groups show only Point Grab, Somerset Trivial and Somerset 1-2-3 for now (7 Oct 2026):
+       the other games are not properly made yet. To bring a game back for adults, remove its `show?(...):''` guard in home(). */
+    const show=!ADULT_GROUPS.includes(u.group);
     const topics=[...new Set((u.questions||[]).map(q=>q.topic).filter(Boolean))];
     stage.innerHTML = `<div class="pad">
       <h1 class="h1">${esc(u.title)}</h1>
@@ -1119,19 +1588,24 @@ const Game = {
           ...topics.map(t=>tile('🌞','Point Grab · '+t[0].toUpperCase()+t.slice(1),
             'Same game, questions from the "'+t+'" set only — nothing they have not met yet.',
             `Game.pointGrab('${esc(t)}')`,i++)),
-          tile('🧠','Turn Two','Flip any two faces. Say a true comparative about them.','Game.memory()',i++),
-          tile('🕵️','Guess Who','Yes/no questions. Cross the faces off the board.','Game.guessWho()',i++),
-          tile('⚡','Speed Round','Sixty seconds. How many can the class shout out?','Game.speed()',i++),
-          tile('🔤','Word Flash','Big word on the board. Say it, use it, next.','Game.flash()',i++),
-          tile('🪢','Hangman','Guess the word letter by letter. The clue is in Spanish. Six wrong letters and it is gone.','Game.hangman()',i++),
-          tile('🎾','Pilota','Win the strike, win the rally. Quinze, trenta, val, joc.','Game.pilota()',i++),
-          tile('🥘','La Paella','Claim the right ingredients. Touch the chorizo and you lose.','Game.paella()',i++),
-          tile('🧺','El Mercat','Answer to earn an ingredient, then buy it. Build the pan they asked for — or Valencia will have something to say.','Game.mercat()',i++),
-          tile('🦶','Sambori','Valencian hopscotch. Hop to CEL before the others.','Game.sambori()',i++),
-          tile('🔥','La Falla','Build the monument piece by piece, then burn it.','Game.falla()',i++),
-          u.case?tileCase(u,i++):'',
-          u.pursuit?tilePursuit(u,i++):'',
-          u.rounds?tileRounds(u,i++):'',
+          show?(this.bxItems().length>=8?tile('🃏','Memory','Turn over two cards. Find a picture and its word. Say it in English and keep the pair.','Game.pairs()',i++):''):'',
+          show?(tile('🕵️','Guess Who','Yes/no questions. Cross the faces off the board.','Game.guessWho()',i++)):'',
+          show?(tile('⚡','Speed Round','Sixty seconds. How many can the class shout out?','Game.speed()',i++)):'',
+          show?(tile('🔤','Word Flash','Big word on the board. Say it, use it, next.','Game.flash()',i++)):'',
+          show?(tile('🪢','Hangman','Guess the word letter by letter. The clue is in Spanish. Six wrong letters and it is gone.','Game.hangman()',i++)):'',
+          show?(tile('🎱','Bingo','Every child has their own card. You call, they cover. Print the cards, then call from the board.','Game.bingo()',i++)):'',
+          show?(u.pics&&u.pics.length>=9?tile('👀','Double Vision','Two discs of pictures. One picture is on both. First to spot it and say it in English wins the round.','Game.doubleVision()',i++):''):'',
+          show?(this.bxItems().length>=6?tile('📦','Boxes','Dots and boxes. Say the word in English to draw a line. Close a box and it is yours, and you go again.','Game.boxes()',i++):''):'',
+          show?(u.pics&&u.pics.length>=9?tile('🔍','Guess-eroo','One secret picture. Teams ask yes/no questions in English and flip over the cards that cannot be it. First to guess it wins.','Game.guessEroo()',i++):''):'',
+          show?(tile('🎾','Pilota','Win the strike, win the rally. Quinze, trenta, val, joc.','Game.pilota()',i++)):'',
+          show?(tile('🥘','La Paella','Claim the right ingredients. Touch the chorizo and you lose.','Game.paella()',i++)):'',
+          show?(tile('🧺','El Mercat','Answer to earn an ingredient, then buy it. Build the pan they asked for — or Valencia will have something to say.','Game.mercat()',i++)):'',
+          show?(tile('🦶','Sambori','Valencian hopscotch. Hop to CEL before the others.','Game.sambori()',i++)):'',
+          show?(tile('🔥','La Falla','Build the monument piece by piece, then burn it.','Game.falla()',i++)):'',
+          show?(u.case?tileCase(u,i++):''):'',
+          show?(u.pursuit?tilePursuit(u,i++):''):'',
+          (u.trivial&&((u.trivial.categories&&u.trivial.categories.length===6)||u.trivial.compose))?tileTrivial(u,i++):'',
+          show?(u.rounds?tileRounds(u,i++):''):'',
           u.quiz123?tile123(u,i++):''
         ].join(''); })()}
       </div></div>`;
@@ -1586,6 +2060,879 @@ const Game = {
   hangmanAfter(){ ov.classList.remove('on'); Teams.next(); this.hangmanDeal(); },
 
   /* ================================================================
+     BINGO (added 6 Oct 2026)
+     Modelled on Baamboozle's Bingo, which is not a board game at all:
+     it is a CALLER. Every child holds their own paper card, the board
+     shows one clue at a time in random order, and everybody plays at
+     once. That is the whole design, and it is why it works with
+     children: nobody waits for a turn, nobody is put on the spot, and
+     the card decides how hard it is (find the word you can read).
+
+     Somerset changes, all deliberate:
+       - cards are PRINTED here, one different card per child, black
+         and white, so nobody has to copy nine words first;
+         "word bank on the board" keeps Baamboozle's write-your-own
+         version for a writing minute;
+       - the clue is the Spanish by default, so it is recall;
+       - the board never decides a winner. A child shouts Bingo, the
+         teacher checks the called list. Same rule as every game here:
+         the Arcade does not mark anything.
+     Reads only the unit's `vocab` array, so every unit gets it free. */
+  bingoWords(){
+    const seen=new Set();
+    return (this.unit.vocab||[]).map(v=>({
+      w:String(v.w).split('/')[0].replace(/\([^)]*\)/g,'').replace(/^to\s+/i,'').replace(/\s+/g,' ').trim(),
+      t:String(v.t||'').trim()
+    })).filter(v=>v.w&&v.t&&v.w.length<=20&&!seen.has(v.w.toLowerCase())&&seen.add(v.w.toLowerCase()));
+  },
+  bingoOn(){ return this._bg.pool.filter(p=>p.on); },
+  bingoWinLabel(){ return {line:'one line',corners:'four corners',full:'the full card'}[this._bg.win]; },
+  bingo(){
+    this._bg={pool:this.bingoWords().map(v=>({...v,on:true})),size:3,clue:'es',win:'line',cards:12,order:[],i:0,shown:false};
+    this.bingoSetup();
+  },
+  bingoSet(k,v){ this._bg[k]=v; this.bingoSetup(); },
+  bingoToggle(i){ const p=this._bg.pool[i]; p.on=!p.on; this.bingoSetup(); },
+  bingoCards(d){ const b=this._bg; b.cards=Math.max(1,Math.min(40,b.cards+d)); this.bingoSetup(); },
+  bingoSetup(){
+    stopTimer(); ov.classList.remove('on');
+    const b=this._bg, n=b.size*b.size, on=this.bingoOn().length;
+    const opt=(label,cur,val,fn)=>`<button class="bgopt${cur===val?' sel':''}" onclick="${fn}"><span>${label}</span></button>`;
+    const msg = on<n ? `Pick at least ${n} words for a ${b.size} by ${b.size} card.`
+              : on<n+3 ? `${on} words selected. Few words means many cards will look alike. Add more if you can.`
+              : `${on} words selected.`;
+    stage.innerHTML=`<div class="pad"><h1 class="h1">Bingo</h1>
+      <p class="sub">Everyone plays at once. Each child has their own card. You call, they cover.</p>
+      <div class="bgset">
+        <div class="bgrow"><span class="bglab">Card</span>${opt('3 by 3',b.size,3,"Game.bingoSet('size',3)")}${opt('4 by 4',b.size,4,"Game.bingoSet('size',4)")}</div>
+        <div class="bgrow"><span class="bglab">Clue on the board</span>${opt('Spanish',b.clue,'es',"Game.bingoSet('clue','es')")}${opt('English',b.clue,'en',"Game.bingoSet('clue','en')")}</div>
+        <div class="bgrow"><span class="bglab">Win with</span>${opt('One line',b.win,'line',"Game.bingoSet('win','line')")}${opt('Four corners',b.win,'corners',"Game.bingoSet('win','corners')")}${opt('Full card',b.win,'full',"Game.bingoSet('win','full')")}</div>
+        <div class="bgrow"><span class="bglab">Word bank</span><span class="bgnote">Tap a word to take it out.</span></div>
+        <div class="bgbank">${b.pool.map((p,i)=>`<button class="bgw${p.on?' on':''}" onclick="Game.bingoToggle(${i})">${esc(p.w)}</button>`).join('')}</div>
+        <p class="bgwarn">${esc(msg)}</p>
+      </div>
+      <div class="row" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:6px">
+        <button class="btn ghost" onclick="Game.bingoCards(-1)"><span>−</span></button>
+        <span class="chip"><span><b>${b.cards}</b> cards</span></span>
+        <button class="btn ghost" onclick="Game.bingoCards(1)"><span>+</span></button>
+        <button class="btn" ${on<n?'disabled':''} onclick="Game.bingoPrint(false)"><span>🖨 Print cards</span></button>
+        <button class="btn ghost" onclick="Game.bingoPrint(true)"><span>Print blank cards</span></button>
+        <button class="btn ghost" ${on<n?'disabled':''} onclick="Game.bingoBank()"><span>Word bank on the board</span></button>
+        <button class="btn hot" ${on<n?'disabled':''} onclick="Game.bingoStart()"><span>Start calling ▶</span></button>
+        <button class="btn ghost" onclick="Game.home()"><span>Menu</span></button>
+      </div></div>`;
+  },
+  /* the Baamboozle way: put the words on the board, the children write
+     their own card. Costs five minutes, buys a writing task. */
+  bingoBank(){
+    const b=this._bg, on=this.bingoOn();
+    stage.innerHTML=`<div class="pad"><h1 class="h1">Choose ${b.size*b.size} words</h1>
+      <p class="sub">Copy ${b.size*b.size} of these onto your card. Any ${b.size*b.size} you like.</p>
+      <div class="bgbig">${on.map(p=>`<div><b>${esc(p.w)}</b><small>${esc(p.t)}</small></div>`).join('')}</div>
+      <div class="row" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:16px">
+        <button class="btn ghost" onclick="Game.bingoSetup()"><span>Back</span></button>
+        <button class="btn hot" onclick="Game.bingoStart()"><span>Start calling ▶</span></button></div></div>`;
+  },
+  bingoCardHTML(words,size,blank){
+    const rows=[]; for(let r=0;r<size;r++){
+      rows.push('<tr>'+words.slice(r*size,r*size+size).map(w=>`<td>${blank?'':esc(w)}</td>`).join('')+'</tr>'); }
+    return `<section class="bgcard"><h4>Somerset Language Centre · Bingo</h4>
+      <p class="bgmeta">${esc(this.unit.title)} · win with ${this.bingoWinLabel()}</p>
+      <p class="bgname">Name: ______________________</p>
+      <table>${rows.join('')}</table></section>`;
+  },
+  /* prints through a hidden #printArea (no popup, works from file://).
+     Black and white, outlines only, nothing that needs colour. */
+  bingoPrint(blank){
+    const b=this._bg, n=b.size*b.size, sel=this.bingoOn();
+    if(!blank&&sel.length<n) return;
+    let pa=document.getElementById('printArea');
+    if(!pa){ pa=document.createElement('div'); pa.id='printArea'; document.body.appendChild(pa); }
+    const cards=[]; for(let k=0;k<b.cards;k++){
+      const words=blank?Array(n).fill(''):shuffle(sel.slice()).slice(0,n).map(p=>p.w);
+      cards.push(this.bingoCardHTML(words,b.size,blank)); }
+    const per=b.size===3?3:2, pages=[];
+    for(let i=0;i<cards.length;i+=per) pages.push(`<div class="bgpage">${cards.slice(i,i+per).join('')}</div>`);
+    pa.className='p'+b.size; pa.innerHTML=pages.join('');
+    setTimeout(()=>window.print(),60);
+  },
+  bingoStart(){
+    const b=this._bg, on=this.bingoOn(); if(on.length<b.size*b.size) return;
+    b.order=shuffle(on.slice()); b.i=0; b.shown=false; this.bingoDraw();
+  },
+  bingoDraw(){
+    ov.classList.remove('on');
+    const b=this._bg, cur=b.order[b.i], total=b.order.length;
+    const clue=b.clue==='es'?cur.t:cur.w, ans=b.clue==='es'?cur.w:cur.t;
+    stage.innerHTML=`<div class="pad"><div class="legend">
+        <span class="chip"><span>Call <b>${b.i+1}</b> of ${total}</span></span>
+        <span class="chip"><span>Win with <b>${this.bingoWinLabel()}</b></span></span></div>
+      <div class="bgcall"><div class="bgclue">${esc(clue)}</div>
+        ${b.shown?`<div class="bgans">${esc(ans)}</div>`
+                 :`<button class="btn hot" onclick="Game.bingoReveal()"><span>Show the answer (R)</span></button>`}</div>
+      <div class="row" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:14px">
+        <button class="btn ghost" ${b.i===0?'disabled':''} onclick="Game.bingoStep(-1)"><span>◀ Previous</span></button>
+        <button class="btn" onclick="Game.bingoStep(1)"><span>${b.i+1>=total?'Last word done':'Next call ▶'}</span></button>
+        <button class="btn ghost" onclick="Game.bingoCheck()"><span>✔ Check a Bingo (B)</span></button>
+        <button class="btn ghost" onclick="Game.bingoSetup()"><span>Setup</span></button></div></div>`;
+  },
+  bingoReveal(){ const b=this._bg; if(!b||b.shown) return; b.shown=true; this.bingoDraw(); },
+  bingoStep(d){
+    const b=this._bg, j=b.i+d; if(j<0) return;
+    if(j>=b.order.length){ this.bingoEnd('all'); return; }
+    b.i=j; b.shown=false; this.bingoDraw();
+  },
+  /* a child shouts Bingo: the teacher checks the card against what has
+     actually been called. The board never decides. */
+  bingoCheck(){
+    const b=this._bg, called=b.order.slice(0,b.i+1);
+    ov.className='ov on';
+    ov.innerHTML=`<div class="badge">Check the card</div>
+      <div class="worth">${called.length} called so far</div>
+      <p class="sub">Win with ${this.bingoWinLabel()}. Every word on that line must be here.</p>
+      <div class="bgcalled">${called.map(p=>`<span>${esc(p.w)}</span>`).join('')}</div>
+      <div class="row"><button class="btn" onclick="Game.bingoEnd('win')"><span>✔ Bingo</span></button>
+        <button class="btn hot" onclick="ov.classList.remove('on')"><span>✘ Not yet, keep going</span></button></div>`;
+  },
+  bingoEnd(kind){
+    const win=kind==='win';
+    ov.className='ov on';
+    ov.innerHTML=`<div class="badge">${win?'Bingo':'Every word called'}</div>
+      <div class="worth ${win?'':'steal'}">${win?'Well played':'No more words'}</div>
+      <p class="sub">${win?'Check the card, then play another round.':'Shuffle and go again, or change the words.'}</p>
+      <div class="row"><button class="btn" onclick="Game.bingoStart()"><span>Play again ▶</span></button>
+        <button class="btn ghost" onclick="Game.bingoSetup()"><span>Change words</span></button>
+        <button class="btn ghost" onclick="Game.home()"><span>Menu</span></button></div>`;
+    if(win) this.bingoConfetti();
+  },
+  bingoConfetti(){
+    const c=document.createElement('div'); c.className='bgconf'; const cols=['#6BAE2E','#E2542C','#E8A020','#ffffff'];
+    c.innerHTML=Array.from({length:48},(_,k)=>`<i style="left:${Math.random()*100}%;background:${cols[k%4]};animation-delay:${Math.random()*.6}s;animation-duration:${1.8+Math.random()*1.4}s"></i>`).join('');
+    document.body.appendChild(c); setTimeout(()=>c.remove(),3600);
+  },
+
+  /* ================================================================
+     DOUBLE VISION (added 6 Oct 2026)
+     Baamboozle's Double Vision is Dobble on a projector: two discs of
+     pictures, exactly one picture is on both, the whole class races to
+     spot it. Hugo asked for it as THE revision game for any exercise
+     that has images (the October vegetables first).
+
+     What carries over: the two-disc race, the "knobs" (pictures per
+     disc, pictures or words on the second disc), a points target, the
+     teacher clicking the tile the winner points at.
+     Somerset changes, all deliberate:
+       - the winner must SAY it in English before the point is given:
+         the picture race becomes a speaking task, not just a look;
+       - the teacher decides the point (same rule as every game here,
+         nothing scores by itself). Clicking the right tile only
+         confirms the match; the +1 is a team button you press;
+       - the match rotates through every selected picture before any
+         repeats, so a revision round covers the whole set evenly;
+       - look-alike pictures never share a round (a `clash` tag on the
+         picture), otherwise a child "finds" a match that is not one;
+       - words on the second disc are never rotated or skewed.
+     Reads the unit's `pics` array: [{id,w,t,img,clash?}]. A unit with
+     fewer than nine pictures does not show the tile. */
+  dvPics(){ return (this.unit.pics||[]).map((p,i)=>({...p,id:p.id||('p'+i)})); },
+  doubleVision(){
+    this._dv={pool:this.dvPics().map(p=>({...p,on:true})),n:4,mode:'pics',spin:false,target:5,
+      pts:[],queue:[],cur:null,locked:false};
+    this.dvSetup();
+  },
+  dvOn(){ return this._dv.pool.filter(p=>p.on); },
+  dvSet(k,v){ this._dv[k]=v; this.dvSetup(); },
+  dvToggle(i){ const p=this._dv.pool[i]; p.on=!p.on; this.dvSetup(); },
+  dvSetup(){
+    stopTimer(); ov.classList.remove('on');
+    const d=this._dv, need=2*d.n-1, on=this.dvOn().length;
+    const opt=(label,cur,val,fn)=>`<button class="bgopt${cur===val?' sel':''}" onclick="${fn}"><span>${label}</span></button>`;
+    const msg=on<need?`Pick at least ${need} pictures for ${d.n} on a disc.`:`${on} pictures selected.`;
+    stage.innerHTML=`<div class="pad"><h1 class="h1">Double Vision</h1>
+      <p class="sub">Two discs. One picture is on both. First to spot it and say it in English wins the round.</p>
+      <div class="bgset">
+        <div class="bgrow"><span class="bglab">On each disc</span>${[3,4,5,6].map(n=>opt(n+' pictures',d.n,n,`Game.dvSet('n',${n})`)).join('')}</div>
+        <div class="bgrow"><span class="bglab">Second disc</span>${opt('Pictures',d.mode,'pics',"Game.dvSet('mode','pics')")}${opt('Words',d.mode,'words',"Game.dvSet('mode','words')")}</div>
+        <div class="bgrow"><span class="bglab">Pictures spin</span>${opt('Off',d.spin,false,"Game.dvSet('spin',false)")}${opt('On',d.spin,true,"Game.dvSet('spin',true)")}</div>
+        <div class="bgrow"><span class="bglab">First to</span>${[3,5,8].map(n=>opt(n+' points',d.target,n,`Game.dvSet('target',${n})`)).join('')}${opt('No limit',d.target,0,"Game.dvSet('target',0)")}</div>
+        <div class="bgrow"><span class="bglab">Pictures in play</span><span class="bgnote">Tap one to take it out.</span></div>
+        <div class="dvchips">${d.pool.map((p,i)=>`<button class="dvchip${p.on?' on':''}" onclick="Game.dvToggle(${i})"><img src="${esc(p.img)}" alt=""><span>${esc(p.w)}</span></button>`).join('')}</div>
+        <p class="bgwarn">${esc(msg)}</p>
+      </div>
+      <div class="row" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:6px">
+        <button class="btn hot" ${on<need?'disabled':''} onclick="Game.dvStart()"><span>Start ▶</span></button>
+        <button class="btn ghost" onclick="Game.home()"><span>Menu</span></button></div></div>`;
+  },
+  dvStart(){
+    const d=this._dv; if(this.dvOn().length<2*d.n-1) return;
+    Teams.init(2); d.pts=Teams.list.map(()=>0); d.queue=[]; this.dvDeal();
+  },
+  /* one round: A and B share exactly one picture. At most one picture
+     per clash tag in the whole round. The match walks through every
+     selected picture before it repeats. */
+  dvBuild(){
+    const d=this._dv, n=d.n, sel=this.dvOn();
+    if(!d.queue.length) d.queue=shuffle(sel.map(p=>p.id));
+    const mid=d.queue.pop(), match=sel.find(p=>p.id===mid);
+    const used=new Set(match.clash?[match.clash]:[]), picked=[], rest=shuffle(sel.filter(p=>p.id!==mid));
+    for(const p of rest){ if(picked.length>=2*(n-1)) break;
+      if(p.clash){ if(used.has(p.clash)) continue; used.add(p.clash); } picked.push(p); }
+    for(const p of rest){ if(picked.length>=2*(n-1)) break; if(!picked.includes(p)) picked.push(p); }
+    return {match, A:shuffle([match,...picked.slice(0,n-1)]), B:shuffle([match,...picked.slice(n-1,2*(n-1))])};
+  },
+  dvLayout(n){
+    const out=[], off=Math.random()*Math.PI*2, ring=n>=5?n-1:n, rr=n>=5?0.33:0.28;
+    const t=n>=5?Math.min(0.30,2*rr*Math.sin(Math.PI/ring)*0.92):Math.min(0.40,2*rr*Math.sin(Math.PI/ring)*0.95);
+    if(n>=5) out.push({x:.5,y:.5,s:.30});
+    for(let k=0;k<ring;k++){ const a=off+k*2*Math.PI/ring; out.push({x:.5+rr*Math.cos(a),y:.5+rr*Math.sin(a),s:t}); }
+    return shuffle(out);
+  },
+  dvDisc(side,items,kind){
+    const d=this._dv, lay=this.dvLayout(items.length);
+    return `<div class="dvdisc ${side}">${items.map((it,i)=>{
+      const L=lay[i], rot=(kind==='pic'&&d.spin)?Math.floor(Math.random()*360):0;
+      return `<button class="dvt ${kind}" data-side="${side}" data-id="${esc(it.id)}"
+        style="left:${(L.x*100).toFixed(1)}%;top:${(L.y*100).toFixed(1)}%;width:${(L.s*100).toFixed(1)}%;height:${(L.s*100).toFixed(1)}%;--rot:${rot}deg"
+        onclick="Game.dvPick('${side}','${esc(it.id)}')">${kind==='pic'?`<img src="${esc(it.img)}" alt="">`:`<span>${esc(it.w)}</span>`}</button>`;
+    }).join('')}</div>`;
+  },
+  dvDeal(){
+    ov.classList.remove('on');
+    const d=this._dv; d.locked=false; d.cur=this.dvBuild();
+    stage.innerHTML=`<div class="pad"><div id="teamsBox">${Teams.html()}</div>
+      <div class="legend"><span class="chip"><span>First to <b>${d.target||'no limit'}</b></span></span>
+        <span class="chip"><span>${d.pts.map((p,i)=>esc(Teams.list[i].name)+' <b>'+p+'</b>').join(' · ')}</span></span></div>
+      <div class="dvboard">${this.dvDisc('A',d.cur.A,'pic')}${this.dvDisc('B',d.cur.B,d.mode==='words'?'word':'pic')}</div>
+      <div id="dvhint" class="dvhint"></div>
+      <div class="row" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:8px">
+        <button class="btn ghost" onclick="Game.dvKnob('n',-1)"><span>− Fewer</span></button>
+        <button class="btn ghost" onclick="Game.dvKnob('n',1)"><span>More +</span></button>
+        <button class="btn ghost" onclick="Game.dvKnob('mode')"><span>${d.mode==='words'?'Pictures on both':'Words on the right'}</span></button>
+        <button class="btn" onclick="Game.dvReveal()"><span>Show the match (R)</span></button>
+        <button class="btn hot" onclick="Game.dvDeal()"><span>New round ▶</span></button>
+        <button class="btn ghost" onclick="Game.dvSetup()"><span>Setup</span></button></div></div>`;
+  },
+  dvKnob(k,delta){
+    const d=this._dv;
+    if(k==='n'){ const n=Math.max(3,Math.min(6,d.n+delta));
+      if(this.dvOn().length<2*n-1){ toast('Not enough pictures for '+n+' on a disc.'); return; }
+      d.n=n; d.queue=[]; }
+    else d.mode=d.mode==='words'?'pics':'words';
+    this.dvDeal();
+  },
+  /* the teacher taps the tile the child points at. Right tile = the
+     match is confirmed; wrong tile = it greys out and play carries on. */
+  dvPick(side,id){
+    const d=this._dv; if(!d||!d.cur||d.locked) return;
+    if(id===d.cur.match.id){ this.dvFound(); return; }
+    const el=stage.querySelector(`.dvt[data-side="${side}"][data-id="${id}"]`); if(el) el.classList.add('no');
+  },
+  dvHilite(){ stage.querySelectorAll(`.dvt[data-id="${this._dv.cur.match.id}"]`).forEach(e=>e.classList.add('hit')); },
+  dvReveal(){
+    const d=this._dv; if(!d||!d.cur||d.locked) return;
+    this.dvHilite(); const h=$('#dvhint'); if(h) h.textContent='The match: '+d.cur.match.w+' · '+d.cur.match.t;
+  },
+  dvFound(){
+    const d=this._dv, m=d.cur.match; d.locked=true; this.dvHilite();
+    ov.className='ov on';
+    ov.innerHTML=`<div class="badge">Found it</div>
+      <img class="dvwin" src="${esc(m.img)}" alt="">
+      <div class="worth">Say it in English</div>
+      <div class="q">${esc(m.w)}</div><div class="a on">${esc(m.t)}</div>
+      <p class="sub">Who spotted it first? You decide if the word was said.</p>
+      <div class="row">${Teams.list.map((t,i)=>`<button class="btn" onclick="Game.dvAward(${i})"><span>${esc(t.name)} +1</span></button>`).join('')}
+        <button class="btn ghost" onclick="Game.dvAward(-1)"><span>Nobody</span></button></div>`;
+  },
+  dvAward(i){
+    const d=this._dv; ov.classList.remove('on');
+    if(i>=0){ d.pts[i]++; Teams.turn=i; Teams.add(1);
+      if(d.target&&d.pts[i]>=d.target){ this.dvWin(i); return; } }
+    this.dvDeal();
+  },
+  dvWin(i){
+    ov.className='ov on';
+    ov.innerHTML=`<div class="badge">Round over</div><div class="worth">${esc(Teams.list[i].name)} win</div>
+      <p class="sub">First to ${this._dv.target}. Play another match, or change the pictures.</p>
+      <div class="row"><button class="btn" onclick="Game.dvStart()"><span>Play again ▶</span></button>
+        <button class="btn ghost" onclick="Game.dvSetup()"><span>Setup</span></button>
+        <button class="btn ghost" onclick="Game.home()"><span>Menu</span></button></div>`;
+    this.bingoConfetti();
+  },
+
+  /* ================================================================
+     BOXES: Baamboozle's Boxes mode, which is dots and boxes.
+     Teams take turns. Say the word in English and you may draw one
+     line. Close the fourth side of a box and it is yours, and you go
+     again. Whoever owns most boxes wins. The teacher presses
+     "Said it" or "Not yet"; nothing is scored by the screen.
+     Works with pictures (unit.pics) or with the Spanish clue (vocab).
+     ================================================================ */
+  bxItems(){
+    const seen=new Map();
+    (this.unit.vocab||[]).forEach(v=>{ if(v&&v.w) seen.set(v.w.toLowerCase(),{id:'v'+seen.size,w:v.w,t:v.t||''}); });
+    this.dvPics().forEach(p=>{ const k=String(p.w).toLowerCase(), cur=seen.get(k);
+      if(cur) cur.img=p.img; else seen.set(k,{id:'v'+seen.size,w:p.w,t:p.t||'',img:p.img}); });
+    return [...seen.values()];
+  },
+  boxes(){
+    const pool=this.bxItems().map(x=>({...x,on:true})), pics=pool.filter(x=>x.img).length>=6;
+    this._bx={pool,size:3,mode:pics?'pic':'es',hasPics:pics,queue:[],last:null,cur:null,hist:[]};
+    this.bxSetup();
+  },
+  bxOn(){ const d=this._bx; return d.pool.filter(x=>x.on&&(d.mode!=='pic'||x.img)); },
+  bxSet(k,v){ this._bx[k]=v; this.bxSetup(); },
+  bxToggle(i){ const p=this._bx.pool[i]; p.on=!p.on; this.bxSetup(); },
+  bxSetup(){
+    stopTimer(); ov.classList.remove('on');
+    const d=this._bx, on=this.bxOn().length;
+    const opt=(label,cur,val,fn)=>`<button class="bgopt${cur===val?' sel':''}" onclick="${fn}"><span>${label}</span></button>`;
+    const chips=d.pool.map((p,i)=>({p,i})).filter(x=>d.mode!=='pic'||x.p.img);
+    stage.innerHTML=`<div class="pad"><h1 class="h1">Boxes</h1>
+      <p class="sub">Say the word in English to draw a line. Close a box and it is yours, and you go again. Most boxes wins.</p>
+      <div class="bgset">
+        <div class="bgrow"><span class="bglab">Board</span>${opt('3 × 3 boxes · quick',d.size,3,"Game.bxSet('size',3)")}${opt('4 × 4 boxes · longer',d.size,4,"Game.bxSet('size',4)")}</div>
+        <div class="bgrow"><span class="bglab">The clue is</span>${d.hasPics?opt('A picture',d.mode,'pic',"Game.bxSet('mode','pic')"):''}${opt('The Spanish word',d.mode,'es',"Game.bxSet('mode','es')")}</div>
+        <div class="bgrow"><span class="bglab">Words in play</span><span class="bgnote">Tap one to take it out.</span></div>
+        <div class="dvchips">${chips.map(x=>`<button class="dvchip${x.p.on?' on':''}" onclick="Game.bxToggle(${x.i})">${x.p.img&&d.mode==='pic'?`<img src="${esc(x.p.img)}" alt="">`:''}<span>${esc(x.p.w)}</span></button>`).join('')}</div>
+        <p class="bgwarn">${on<6?'Pick at least 6 words.':on+' words selected. Every word comes up before any repeats.'}</p>
+      </div>
+      <div class="row" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:6px">
+        <button class="btn hot" ${on<6?'disabled':''} onclick="Game.bxStart()"><span>Start ▶</span></button>
+        <button class="btn ghost" onclick="Game.home()"><span>Menu</span></button></div></div>`;
+  },
+  bxStart(){
+    const d=this._bx; if(this.bxOn().length<6) return;
+    Teams.init(3); const n=Math.min(Teams.list.length,6), R=d.size;
+    Object.assign(d,{R,C:R,n,t:0,phase:'ask',h:Array((R+1)*R).fill(-1),v:Array(R*(R+1)).fill(-1),
+      box:Array(R*R).fill(-1),pts:Array(n).fill(0),queue:[],last:null,hist:[],msg:''});
+    this.bxNext(); this.bxDraw();
+  },
+  bxNext(){
+    const d=this._bx;
+    if(!d.queue.length){ d.queue=shuffle(this.bxOn().map(x=>x.id));
+      if(d.queue.length>1&&d.cur&&d.queue[d.queue.length-1]===d.cur.id) d.queue.unshift(d.queue.pop()); }
+    const id=d.queue.pop(); d.cur=this.bxOn().find(x=>x.id===id);
+  },
+  bxCols(){ return ['#6BAE2E','#E2542C','#E8A020','#3A8FA3','#B07CC6','#F7F3EA']; },
+  bxLetter(i){ return 'ABCDEF'[i]; },
+  bxSvg(){
+    const d=this._bx, R=d.R, C=d.C, S=100, P=44, W=C*S+2*P, H=R*S+2*P, cols=this.bxCols();
+    let s=`<svg viewBox="0 0 ${W} ${H}" class="bxsvg" role="img" aria-label="Dots and boxes board">`;
+    for(let i=0;i<R;i++) for(let j=0;j<C;j++){ const o=d.box[i*C+j]; if(o<0) continue;
+      const x=P+j*S, y=P+i*S;
+      s+=`<rect x="${x}" y="${y}" width="${S}" height="${S}" fill="${cols[o]}" opacity=".4"/><text x="${x+S/2}" y="${y+S/2}" class="bxl">${this.bxLetter(o)}</text>`; }
+    const line=(t,i,j)=>{
+      const own=t==='h'?d.h[i*C+j]:d.v[i*(C+1)+j], x1=P+j*S, y1=P+i*S, x2=t==='h'?x1+S:x1, y2=t==='h'?y1:y1+S;
+      const a=`x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}"`;
+      return `<line ${a} class="bxln${own>=0?' own':''}"${own>=0?` style="stroke:${cols[own]}"`:''}/>`
+        +((d.phase==='draw'&&own<0)?`<line ${a} class="bxhit" data-k="${t}${i}-${j}" onclick="Game.bxLine('${t}',${i},${j})"/>`:''); };
+    for(let i=0;i<=R;i++) for(let j=0;j<C;j++) s+=line('h',i,j);
+    for(let i=0;i<R;i++) for(let j=0;j<=C;j++) s+=line('v',i,j);
+    for(let i=0;i<=R;i++) for(let j=0;j<=C;j++) s+=`<circle class="bxdot" cx="${P+j*S}" cy="${P+i*S}" r="9"/>`;
+    return s+'</svg>';
+  },
+  bxDraw(){
+    ov.classList.remove('on');
+    const d=this._bx, cols=this.bxCols(), cur=d.cur, name=Teams.list[d.t].name;
+    Teams.turn=d.t;
+    const clue = d.mode==='pic'
+      ? `<img class="bxpic" src="${esc(cur.img)}" alt="">`
+      : `<div class="bxclue">${esc(cur.t)}</div>`;
+    let panel;
+    if(d.phase==='ask'){
+      panel=`<div class="bxturn" style="--tc:${cols[d.t]}"><b>${this.bxLetter(d.t)}</b> ${esc(name)}</div>
+        ${d.msg?`<div class="bxmsg">${esc(d.msg)}</div>`:''}
+        <div class="bxsay">Say it in English</div>${clue}
+        <div class="bxword" id="bxword"></div>
+        <div class="row" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+          <button class="btn" onclick="Game.bxSaid()"><span>✔ Said it</span></button>
+          <button class="btn hot" onclick="Game.bxMiss()"><span>✘ Not yet</span></button>
+          <button class="btn ghost" onclick="Game.bxReveal()"><span>Show the word</span></button></div>`;
+    } else {
+      panel=`<div class="bxturn" style="--tc:${cols[d.t]}"><b>${this.bxLetter(d.t)}</b> ${esc(name)}</div>
+        ${d.mode==='pic'?`<img class="bxpic sm" src="${esc(cur.img)}" alt="">`:''}
+        <div class="bxword on">${esc(cur.w)} · ${esc(cur.t)}</div>
+        <div class="bxmsg">Draw one line. Tap a gap between two dots.</div>
+        ${d.hist.length?`<button class="btn ghost" onclick="Game.bxUndo()"><span>Undo last line (U)</span></button>`:''}`;
+    }
+    const left=d.box.filter(x=>x<0).length;
+    stage.innerHTML=`<div class="pad"><div id="teamsBox">${Teams.html()}</div>
+      <div class="legend">${d.pts.map((p,i)=>`<span class="chip"><span style="color:${cols[i]}"><b>${this.bxLetter(i)}</b></span> <span>${esc(Teams.list[i].name)} <b>${p}</b></span></span>`).join('')}
+        <span class="chip"><span>${left} box${left===1?'':'es'} left</span></span>
+        <button class="chip" onclick="Game.bxSetup()"><span>Setup</span></button>
+        <button class="chip" onclick="Game.boxes()"><span>New board</span></button></div>
+      <div class="bxwrap"><div class="bxboard">${this.bxSvg()}</div><div class="bxpanel">${panel}
+        ${d.last?`<div class="bxlast">Last word: ${esc(d.last.w)} · ${esc(d.last.t)}</div>`:''}</div></div>
+      </div>`;
+  },
+  bxReveal(){ const d=this._bx, el=$('#bxword'); if(!d||d.phase!=='ask'||!el) return; el.textContent=d.cur.w+' · '+d.cur.t; el.classList.add('on'); },
+  bxSaid(){ const d=this._bx; if(!d||d.phase!=='ask') return; d.phase='draw'; this.bxDraw(); },
+  bxMiss(){
+    const d=this._bx; if(!d||d.phase!=='ask') return;
+    d.last=d.cur; d.t=(d.t+1)%d.n; d.msg=''; this.bxNext(); this.bxDraw();
+  },
+  bxLine(t,i,j){
+    const d=this._bx; if(!d||d.phase!=='draw') return;
+    const R=d.R, C=d.C, arr=t==='h'?d.h:d.v, k=t==='h'?i*C+j:i*(C+1)+j; if(arr[k]>=0) return;
+    d.hist.push(JSON.parse(JSON.stringify({h:d.h,v:d.v,box:d.box,pts:d.pts,t:d.t,phase:d.phase,cur:d.cur,last:d.last,msg:d.msg,queue:d.queue})));
+    arr[k]=d.t;
+    const full=(a,b)=>d.h[a*C+b]>=0&&d.h[(a+1)*C+b]>=0&&d.v[a*(C+1)+b]>=0&&d.v[a*(C+1)+b+1]>=0;
+    const cand=t==='h'?[[i-1,j],[i,j]]:[[i,j-1],[i,j]];
+    let got=0;
+    cand.forEach(([a,b])=>{ if(a>=0&&a<R&&b>=0&&b<C&&d.box[a*C+b]<0&&full(a,b)){ d.box[a*C+b]=d.t; d.pts[d.t]++; got++; } });
+    d.last=d.cur;
+    if(!d.box.some(x=>x<0)){ this.bxDraw(); this.bxEnd(); return; }
+    if(got){ d.msg=(got>1?got+' boxes! ':'Box! ')+'Go again.'; }
+    else { d.t=(d.t+1)%d.n; d.msg=''; }
+    d.phase='ask'; this.bxNext(); this.bxDraw();
+  },
+  bxUndo(){
+    const d=this._bx; if(!d||!d.hist.length) return;
+    Object.assign(d,d.hist.pop()); this.bxDraw();
+  },
+  bxEnd(){
+    const d=this._bx, max=Math.max(...d.pts), win=d.pts.map((p,i)=>p===max?i:-1).filter(i=>i>=0);
+    d.pts.forEach((p,i)=>{ if(p>0){ Teams.turn=i; Teams.add(p); } });
+    ov.className='ov on';
+    ov.innerHTML=`<div class="badge">All boxes taken</div>
+      <div class="worth">${win.map(i=>esc(Teams.list[i].name)).join(' & ')} ${win.length>1?'tie':'win'}</div>
+      <p class="sub">${d.pts.map((p,i)=>esc(Teams.list[i].name)+' '+p).join(' · ')}. Each box counts as a point on the scoreboard.</p>
+      <div class="row"><button class="btn" onclick="Game.bxStart()"><span>Play again ▶</span></button>
+        <button class="btn ghost" onclick="Game.bxSetup()"><span>Setup</span></button>
+        <button class="btn ghost" onclick="Game.home()"><span>Menu</span></button></div>`;
+    this.bingoConfetti();
+  },
+
+  /* ================================================================
+     GUESS-EROO: Baamboozle's Guess-eroo is Guess Who played with the
+     quiz's own cards. One secret picture. Teams take turns asking a
+     yes/no question; the teacher peeks, answers, and the class flips
+     the cards that cannot be it. A team may stop and make a guess:
+     right wins the round, wrong flips that card and passes the turn.
+     Nothing is judged by the screen: the teacher peeks and answers.
+     Needs unit.pics. Question chips are optional scaffolding.
+     ================================================================ */
+  geQs(){ return this.unit.guessQs||['Is it green?','Is it red?','Is it purple?','Is it orange?','Is it long?','Is it round?','Is it a vegetable?','Is it an action?']; },
+  guessEroo(){
+    this._ge={pool:this.dvPics().map(p=>({...p,on:true})),labels:false,helper:true,queue:[],secret:null,
+      t:0,out:new Set(),log:[],guessing:false,done:false};
+    this.geSetup();
+  },
+  geOn(){ return this._ge.pool.filter(p=>p.on); },
+  geSet(k,v){ this._ge[k]=v; this.geSetup(); },
+  geToggle(i){ const p=this._ge.pool[i]; p.on=!p.on; this.geSetup(); },
+  geSetup(){
+    stopTimer(); ov.classList.remove('on');
+    const d=this._ge, on=this.geOn().length;
+    const opt=(label,cur,val,fn)=>`<button class="bgopt${cur===val?' sel':''}" onclick="${fn}"><span>${label}</span></button>`;
+    stage.innerHTML=`<div class="pad"><h1 class="h1">Guess-eroo</h1>
+      <p class="sub">One secret picture. Teams ask yes/no questions in English and flip over the cards that cannot be it.</p>
+      <div class="bgset">
+        <div class="bgrow"><span class="bglab">Words under cards</span>${opt('Hidden',d.labels,false,"Game.geSet('labels',false)")}${opt('Shown',d.labels,true,"Game.geSet('labels',true)")}</div>
+        <div class="bgrow"><span class="bglab">Question helper</span>${opt('On',d.helper,true,"Game.geSet('helper',true)")}${opt('Off',d.helper,false,"Game.geSet('helper',false)")}</div>
+        <div class="bgrow"><span class="bglab">Cards in play</span><span class="bgnote">Tap one to take it out. Fewer cards means a shorter round.</span></div>
+        <div class="dvchips">${d.pool.map((p,i)=>`<button class="dvchip${p.on?' on':''}" onclick="Game.geToggle(${i})"><img src="${esc(p.img)}" alt=""><span>${esc(p.w)}</span></button>`).join('')}</div>
+        <p class="bgwarn">${on<6?'Pick at least 6 cards.':on+' cards in play.'}</p>
+      </div>
+      <div class="row" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:6px">
+        <button class="btn hot" ${on<6?'disabled':''} onclick="Game.geStart()"><span>Start ▶</span></button>
+        <button class="btn ghost" onclick="Game.home()"><span>Menu</span></button></div></div>`;
+  },
+  geStart(){
+    const d=this._ge, on=this.geOn(); if(on.length<6) return;
+    Teams.init(3);
+    if(!d.queue.length) d.queue=shuffle(on.map(p=>p.id));
+    let id=d.queue.pop(); if(!on.find(p=>p.id===id)) id=on[0].id;
+    d.secret=on.find(p=>p.id===id); d.out=new Set(); d.log=[]; d.guessing=false; d.done=false; d.q='';
+    d.t=Teams.turn%Teams.list.length; this.geDraw();
+  },
+  geDraw(){
+    ov.classList.remove('on');
+    const d=this._ge, cards=this.geOn(), n=cards.length, c=n<=8?4:(n<=12?6:7), r=Math.ceil(n/c), name=Teams.list[d.t].name;
+    Teams.turn=d.t;
+    const chips=d.helper?this.geQs().map(q=>`<button class="gechip${d.q===q?' sel':''}" onclick="Game.geAsk(this.textContent)">${esc(q)}</button>`).join(''):'';
+    const last=d.log.slice(-1)[0];
+    stage.innerHTML=`<div class="pad"><div id="teamsBox">${Teams.html()}</div>
+      <div class="geboard" style="--c:${c};--r:${r}">${cards.map(p=>`<button class="gecard${d.out.has(p.id)?' out':''}${d.guessing?' pick':''}" onclick="Game.geClick('${esc(p.id)}')" aria-label="${esc(p.w)}"><img src="${esc(p.img)}" alt="">${d.labels?`<span class="gew">${esc(p.w)}</span>`:''}</button>`).join('')}</div>
+      <div class="gebar">
+        <div class="geturn"><b>${esc(name)}</b>${d.guessing?' · tap the picture you think it is':' · ask a yes/no question'}</div>
+        ${d.q?`<div class="geq">${esc(d.q)}</div>`:''}
+        ${last&&!d.q?`<div class="gelast">Last: ${esc(last.q)} <b>${esc(last.a)}</b></div>`:''}
+        ${chips?`<div class="gechips">${chips}</div>`:''}
+        <div class="row" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+          <button class="btn" onclick="Game.geAnswer('Yes')"><span>Yes</span></button>
+          <button class="btn hot" onclick="Game.geAnswer('No')"><span>No</span></button>
+          <button class="btn ghost" onclick="Game.geNext()"><span>Next team (Space)</span></button>
+          <button class="btn ${d.guessing?'hot':'ghost'}" onclick="Game.geGuessMode()"><span>${d.guessing?'Cancel guess':'Make a guess'}</span></button>
+          <button class="btn ghost" id="gepeek"><span>Hold to peek (P)</span></button>
+          <button class="btn ghost" onclick="Game.geSetup()"><span>Setup</span></button></div>
+        <div id="gesecret" class="gesecret"></div></div></div>`;
+    const pk=$('#gepeek'); if(pk){ const on=()=>this.gePeek(true), off=()=>this.gePeek(false);
+      pk.addEventListener('mousedown',on); pk.addEventListener('touchstart',on,{passive:true});
+      ['mouseup','mouseleave','touchend','touchcancel'].forEach(e=>pk.addEventListener(e,off)); }
+  },
+  geAsk(q){ const d=this._ge; if(!d||d.done) return; d.q=q; this.geDraw(); },
+  geAnswer(a){
+    const d=this._ge; if(!d||d.done) return;
+    d.log.push({q:d.q||'(question asked aloud)',a}); d.q=''; this.geDraw();
+  },
+  geNext(){ const d=this._ge; if(!d||d.done) return; d.t=(d.t+1)%Teams.list.length; d.q=''; d.guessing=false; this.geDraw(); },
+  geClick(id){
+    const d=this._ge; if(!d||d.done) return;
+    if(!d.guessing){ d.out.has(id)?d.out.delete(id):d.out.add(id); this.geDraw(); return; }
+    d.guessing=false;
+    if(id===d.secret.id){ this.geWin(); return; }
+    d.out.add(id); d.t=(d.t+1)%Teams.list.length; d.q='';
+    const p=this._ge.pool.find(x=>x.id===id); toast('Not '+p.w+'. Next team.'); this.geDraw();
+  },
+  geGuessMode(){ const d=this._ge; if(!d||d.done) return; d.guessing=!d.guessing; this.geDraw(); },
+  gePeek(on){
+    const d=this._ge, el=$('#gesecret'); if(!d||!el||d.done) return;
+    el.innerHTML=on?`<img src="${esc(d.secret.img)}" alt=""><span>${esc(d.secret.w)} · ${esc(d.secret.t)}</span>`:'';
+    el.classList.toggle('on',!!on);
+  },
+  geAward(ok){ const d=this._ge; if(ok&&d.done&&!d.paid){ d.paid=true; Teams.turn=d.t; Teams.add(3); } d.paid=false; this.geStart(); },
+  geWin(){
+    const d=this._ge, i=d.t, s=d.secret; d.done=true;
+    ov.className='ov on';
+    ov.innerHTML=`<div class="badge">Found it</div>
+      <img class="dvwin" src="${esc(s.img)}" alt="">
+      <div class="worth">Say it in English</div>
+      <div class="q">${esc(s.w)}</div><div class="a on">${esc(s.t)}</div>
+      <p class="sub">${esc(Teams.list[i].name)} found it after ${d.log.length} question${d.log.length===1?'':'s'}. You decide if the word was said.</p>
+      <div class="row"><button class="btn" onclick="Game.geAward(true)"><span>✔ Said it · ${esc(Teams.list[i].name)} +3</span></button>
+        <button class="btn hot" onclick="Game.geAward(false)"><span>No points</span></button>
+        <button class="btn ghost" onclick="Game.geStart()"><span>Next secret ▶</span></button>
+        <button class="btn ghost" onclick="Game.geSetup()"><span>Setup</span></button>
+        <button class="btn ghost" onclick="Game.home()"><span>Menu</span></button></div>`;
+    this.bingoConfetti();
+  },
+
+  /* ================================================================
+     PAIRS: Baamboozle's Memory mode is the classic pairs game with
+     the quiz's own cards. Two cards up per turn. A pair is a picture
+     and its word (or, with no pictures, the English word and its
+     Spanish clue). A found pair is kept only after the team says the
+     word and the teacher presses "Said it"; the screen never decides.
+     ================================================================ */
+  pairs(){
+    const pool=this.bxItems().map(x=>({...x,on:true})), pics=pool.filter(x=>x.img).length>=6;
+    this._pr={pool,n:6,mode:pics?'pw':'ew',hasPics:pics,queue:[]};
+    this.prSetup();
+  },
+  prOn(){ const d=this._pr; return d.pool.filter(x=>x.on&&(d.mode!=='pw'||x.img)); },
+  prSet(k,v){ this._pr[k]=v; this.prSetup(); },
+  prToggle(i){ const p=this._pr.pool[i]; p.on=!p.on; this.prSetup(); },
+  prSetup(){
+    stopTimer(); ov.classList.remove('on');
+    const d=this._pr, on=this.prOn().length, need=d.n;
+    const opt=(label,cur,val,fn)=>`<button class="bgopt${cur===val?' sel':''}" onclick="${fn}"><span>${label}</span></button>`;
+    const chips=d.pool.map((p,i)=>({p,i})).filter(x=>d.mode!=='pw'||x.p.img);
+    stage.innerHTML=`<div class="pad"><h1 class="h1">Memory</h1>
+      <p class="sub">Turn over two cards. Find a picture and its word, say the word in English, and keep the pair.</p>
+      <div class="bgset">
+        <div class="bgrow"><span class="bglab">Pairs on the table</span>${opt('6 pairs · 12 cards',d.n,6,"Game.prSet('n',6)")}${opt('8 pairs · 16 cards',d.n,8,"Game.prSet('n',8)")}</div>
+        <div class="bgrow"><span class="bglab">A pair is</span>${d.hasPics?opt('Picture + English word',d.mode,'pw',"Game.prSet('mode','pw')"):''}${opt('English word + Spanish word',d.mode,'ew',"Game.prSet('mode','ew')")}</div>
+        <div class="bgrow"><span class="bglab">Words in play</span><span class="bgnote">Tap one to take it out. Each game picks ${d.n} of them at random.</span></div>
+        <div class="dvchips">${chips.map(x=>`<button class="dvchip${x.p.on?' on':''}" onclick="Game.prToggle(${x.i})">${x.p.img&&d.mode==='pw'?`<img src="${esc(x.p.img)}" alt="">`:''}<span>${esc(x.p.w)}</span></button>`).join('')}</div>
+        <p class="bgwarn">${on<need?'Pick at least '+need+' words for '+need+' pairs.':on+' words selected.'}</p>
+      </div>
+      <div class="row" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:6px">
+        <button class="btn hot" ${on<need?'disabled':''} onclick="Game.prStart()"><span>Start ▶</span></button>
+        <button class="btn ghost" onclick="Game.home()"><span>Menu</span></button></div></div>`;
+  },
+  prStart(){
+    const d=this._pr; if(this.prOn().length<d.n) return;
+    Teams.init(3); const n=Math.min(Teams.list.length,6);
+    if(d.queue.length<d.n) d.queue=shuffle(this.prOn().map(x=>x.id));
+    const ids=d.queue.splice(-d.n), items=ids.map(id=>this.prOn().find(x=>x.id===id));
+    d.cards=shuffle(items.flatMap(it=>[{k:'a',it,o:-1},{k:'b',it,o:-1}]));
+    Object.assign(d,{n_t:n,t:0,pts:Array(n).fill(0),up:[],phase:'pick',msg:''});
+    this.prDraw();
+  },
+  prFace(c){
+    const d=this._pr;
+    if(c.k==='a') return d.mode==='pw'?`<img src="${esc(c.it.img)}" alt="">`:`<span class="prw">${esc(c.it.w)}</span>`;
+    return `<span class="prw">${esc(d.mode==='pw'?c.it.w:c.it.t)}</span>`;
+  },
+  prDraw(){
+    ov.classList.remove('on');
+    const d=this._pr, cols=this.bxCols(), N=d.cards.length, c=4, r=Math.ceil(N/c), name=Teams.list[d.t].name;
+    Teams.turn=d.t;
+    const done=d.cards.filter(x=>x.o>=0).length/2;
+    let bar;
+    if(d.phase==='pick') bar=`<div class="geturn"><b>${esc(name)}</b> · ${d.msg?esc(d.msg):'turn over two cards'}</div>`;
+    else if(d.phase==='match') bar=`<div class="geturn"><b>${esc(name)}</b> · a pair! Say it in English.</div>
+      <div class="bxword on">${esc(d.up[0].it.w)} · ${esc(d.up[0].it.t)}</div>
+      <div class="row" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+        <button class="btn" onclick="Game.prSaid()"><span>✔ Said it (Space)</span></button>
+        <button class="btn hot" onclick="Game.prNo()"><span>✘ Not yet</span></button></div>`;
+    else bar=`<div class="geturn"><b>${esc(name)}</b> · not a pair.</div>
+      <div class="row" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+        <button class="btn" onclick="Game.prCover()"><span>Cover them, next team (Space)</span></button></div>`;
+    stage.innerHTML=`<div class="pad pr"><div id="teamsBox">${Teams.html()}</div>
+      <div class="legend">${d.pts.map((p,i)=>`<span class="chip"><span style="color:${cols[i]}"><b>${this.bxLetter(i)}</b></span> <span>${esc(Teams.list[i].name)} <b>${p}</b></span></span>`).join('')}
+        <span class="chip"><span>${d.n-done} pair${d.n-done===1?'':'s'} left</span></span>
+        <button class="chip" onclick="Game.prSetup()"><span>Setup</span></button>
+        <button class="chip" onclick="Game.pairs()"><span>New game</span></button></div>
+      <div class="prboard" style="--c:${c};--r:${r}">${d.cards.map((x,i)=>{
+        const up=d.up.includes(x), own=x.o>=0;
+        return `<button class="prcard${up||own?' up':''}${x.k==='b'?' word':''}"${own?` style="border-color:${cols[x.o]}"`:''} onclick="Game.prFlip(${i})" aria-label="${up||own?esc(x.it.w):'card'}">${up||own?this.prFace(x):'<span class="prq">?</span>'}${own?`<i class="prown" style="background:${cols[x.o]}">${this.bxLetter(x.o)}</i>`:''}</button>`; }).join('')}</div>
+      <div class="gebar">${bar}</div></div>`;
+  },
+  prFlip(i){
+    const d=this._pr; if(!d||d.phase!=='pick') return;
+    const x=d.cards[i]; if(x.o>=0||d.up.includes(x)) return;
+    d.up.push(x); d.msg='';
+    if(d.up.length===2){ d.phase=(d.up[0].it===d.up[1].it)?'match':'miss'; }
+    this.prDraw();
+  },
+  prSaid(){
+    const d=this._pr; if(!d||d.phase!=='match') return;
+    d.up.forEach(x=>x.o=d.t); d.pts[d.t]++; d.up=[]; d.phase='pick'; d.msg='Pair! Go again.';
+    if(d.cards.every(x=>x.o>=0)){ this.prDraw(); this.prEnd(); return; }
+    this.prDraw();
+  },
+  prNo(){ const d=this._pr; if(!d||d.phase!=='match') return; this.prCover(); },
+  prCover(){
+    const d=this._pr; if(!d||(d.phase!=='miss'&&d.phase!=='match')) return;
+    d.up=[]; d.phase='pick'; d.t=(d.t+1)%d.n_t; d.msg=''; this.prDraw();
+  },
+  prEnd(){
+    const d=this._pr, max=Math.max(...d.pts), win=d.pts.map((p,i)=>p===max?i:-1).filter(i=>i>=0);
+    d.pts.forEach((p,i)=>{ if(p>0){ Teams.turn=i; Teams.add(p); } });
+    ov.className='ov on';
+    ov.innerHTML=`<div class="badge">All pairs found</div>
+      <div class="worth">${win.map(i=>esc(Teams.list[i].name)).join(' & ')} ${win.length>1?'tie':'win'}</div>
+      <p class="sub">${d.pts.map((p,i)=>esc(Teams.list[i].name)+' '+p).join(' · ')}. Each pair counts as a point on the scoreboard.</p>
+      <div class="row"><button class="btn" onclick="Game.prStart()"><span>Play again ▶</span></button>
+        <button class="btn ghost" onclick="Game.prSetup()"><span>Setup</span></button>
+        <button class="btn ghost" onclick="Game.home()"><span>Menu</span></button></div>`;
+    this.bingoConfetti();
+  },
+
+  /* ================================================================
+     SOMERSET TRIVIAL: a round, Trivial-Pursuit-style board.
+     A rim of 42 spaces, six spokes of five spaces, a hub. Each of the
+     six colours is a category and a cheese. Roll, choose where to
+     stop (any space exactly that many steps away), answer the colour
+     you land on. A right answer means roll again; a right answer on a
+     coloured HQ space at the end of a spoke wins that cheese slice.
+     With all six slices, go to the hub: the other teams choose the
+     colour of the final question. The teacher marks every answer.
+     Reads unit.trivial = {categories:[{id,label,short,colour,cheese,
+     questions:[{q,a,img?}]}]} with exactly six categories. */
+  /* A unit gives either `categories` (six, ready) or `compose`: the week's topic questions
+     (unit.questions, or compose.topicQs) + a "Fix it!" colour of error-correction sentences
+     + four genres from a pool unit. Colours and cheeses are fixed by slot. */
+  tvCats(){
+    const t=this.unit.trivial; if(t.categories) return t.categories;
+    if(this._tvC&&this._tvCU===this.unit.id) return this._tvC;
+    const c=t.compose, pool=window.SOMERSET_UNITS[c.pool]||{}, P=pool.trivial&&pool.trivial.categories||[], PP=pool.trivialPool||{};
+    const slots=[['#3da5ff','Somerset Cheddar'],['#ff4fa0','Stilton'],['#ffd93b','Wensleydale'],['#ff8a2b','Red Leicester'],['#38e07b','Double Gloucester'],['#a56bff','Cheshire']];
+    const topic={id:'topic',label:(c.topicLabel||'This week'),short:c.topicShort||'Topic',questions:(c.topicQs||this.unit.questions||[]).map(q=>({q:q.q,a:q.a,img:q.img}))};
+    const fix={id:'fixit',label:'Fix it!',short:'Fix it',questions:(c.errors||PP.errors||[]).map(e=>({q:e.q,a:e.a}))};
+    const gen=(c.genres||[]).map(id=>P.find(x=>x.id===id)).filter(Boolean).map(x=>({id:x.id,label:x.label,short:x.short,questions:x.questions}));
+    const all=[topic,fix,...gen].slice(0,6);
+    this._tvCU=this.unit.id; return this._tvC=all.map((x,i)=>Object.assign({},x,{colour:slots[i][0],cheese:slots[i][1]}));
+  },
+  tvWinAt(){ return Math.min(6,Math.max(1,this._tvWin||this.unit.trivial.winAt||6)); },
+  /* quick (3 cheeses) / full (6 cheeses) switch, chosen by the teacher on the board; resets with each new game */
+  tvToggleLen(){ const d=this._tv; if(!d) return; this._tvWin=this.tvWinAt()<6?6:3; this.tvDraw();
+    if(this.tvWinAt()<6){ const w=d.tiles.findIndex(s=>s.size>=this.tvWinAt()); if(w>=0) this.tvWin(w); } },
+  tvGraph(){
+    if(this._tvG) return this._tvG;
+    const R=42, adj={}, pos={}, C=500, pt=(r,a)=>[C+r*Math.cos(a),C+r*Math.sin(a)];
+    const add=(a,b)=>{ (adj[a]=adj[a]||[]).push(b); (adj[b]=adj[b]||[]).push(a); };
+    for(let i=0;i<R;i++){ add('r'+i,'r'+((i+1)%R)); const a=(-90+i*360/R)*Math.PI/180; pos['r'+i]={xy:pt(395,a),deg:-90+i*360/R+90}; }
+    for(let k=0;k<6;k++){
+      add('s'+k+'_4','r'+(7*k)); add('H','s'+k+'_0');
+      for(let j=0;j<4;j++) add('s'+k+'_'+j,'s'+k+'_'+(j+1));
+      const a=(-90+k*60)*Math.PI/180;
+      for(let j=0;j<5;j++) pos['s'+k+'_'+j]={xy:pt(118+j*52,a),deg:-90+k*60+90};
+    }
+    pos.H={xy:[C,C],deg:0};
+    return this._tvG={adj,pos,R};
+  },
+  tvInfo(n){
+    if(n==='H') return {kind:'hub'};
+    if(n[0]==='r'){ const i=+n.slice(1);
+      if(i%7===3) return {kind:'again'};
+      return {kind:'colour',c:i%6,hq:i%7===0}; }
+    const m=n.match(/^s(\d)_(\d)$/); return {kind:'colour',c:(+m[1]+ +m[2]+1)%6,hq:false};
+  },
+  /* every node exactly d steps away along a path that never revisits a node */
+  tvDest(from,d,canHub){
+    const {adj}=this.tvGraph(), out=new Set();
+    const go=(n,left,seen)=>{
+      if(left===0){ out.add(n); return; }
+      for(const m of adj[n]){ if(seen.has(m)) continue; if(m==='H'&&!canHub) continue;
+        seen.add(m); go(m,left-1,seen); seen.delete(m); }
+    };
+    go(from,d,new Set([from])); out.delete(from); return [...out];
+  },
+  trivial(){
+    this._tvC=null; this._tvWin=null; Teams.init(this.unit.trivial.teams||3); const n=Math.min(Teams.list.length,6);
+    this._tv={n,t:0,pos:Array(n).fill('H'),tiles:Array.from({length:n},()=>new Set()),
+      phase:'roll',roll:0,dests:[],q:{},msg:'Roll the die. Then tap a lit space to move.',cb:null};
+    Teams.turn=0; this.tvDraw();
+  },
+  tvHasAll(t){ return this._tv.tiles[t].size>=6; },
+  tvPie(cx,cy,r,k,fill,extra){
+    const a1=(-90+k*60-30)*Math.PI/180, a2=(-90+k*60+30)*Math.PI/180;
+    return `<path d="M${cx} ${cy} L${(cx+r*Math.cos(a1)).toFixed(1)} ${(cy+r*Math.sin(a1)).toFixed(1)} A${r} ${r} 0 0 1 ${(cx+r*Math.cos(a2)).toFixed(1)} ${(cy+r*Math.sin(a2)).toFixed(1)} Z" fill="${fill}" ${extra||''}/>`;
+  },
+  tvSvg(){
+    const d=this._tv, G=this.tvGraph(), cats=this.tvCats(), cols=cats.map(c=>c.colour), me=d.t;
+    let s=`<svg viewBox="0 0 1000 1000" class="tvsvg" role="img" aria-label="Round trivia board">
+      <defs><radialGradient id="tvbg" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#241552"/><stop offset="1" stop-color="#0d0a24"/></radialGradient>
+      <linearGradient id="tvrim" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff4fa0"/><stop offset=".5" stop-color="#4fd0ff"/><stop offset="1" stop-color="#ffd93b"/></linearGradient></defs>
+      <circle cx="500" cy="500" r="496" fill="url(#tvbg)"/><circle cx="500" cy="500" r="486" fill="none" stroke="url(#tvrim)" stroke-width="6"/>
+      <circle cx="500" cy="500" r="448" fill="none" stroke="url(#tvrim)" stroke-width="2" opacity=".7"/>`;
+    for(const n of Object.keys(G.pos)){
+      if(n==='H') continue;
+      const info=this.tvInfo(n), p=G.pos[n], dest=d.dests.includes(n)&&d.phase==='move';
+      const rim=n[0]==='r', w=info.hq?58:(rim?50:40), h=info.hq?68:(rim?60:44);
+      const fill=info.kind==='again'?'#150f3a':cols[info.c];
+      s+=`<g class="tvc${info.hq?' hq':''}${dest?' dest':''}" transform="translate(${p.xy[0].toFixed(1)} ${p.xy[1].toFixed(1)}) rotate(${p.deg.toFixed(1)})"${dest?` onclick="Game.tvMove('${n}')"`:''}>
+        <rect x="${-w/2}" y="${-h/2}" width="${w}" height="${h}" rx="8" fill="${fill}" class="tvr"/>
+        ${info.hq?`<text class="tvi" transform="rotate(${(-p.deg).toFixed(1)})" y="2">🧀</text>`:''}
+        ${info.kind==='again'?`<text class="tvi sm" transform="rotate(${(-p.deg).toFixed(1)})" y="2">🎲</text>`:''}</g>`;
+    }
+    // hub
+    const hubDest=d.dests.includes('H')&&d.phase==='move';
+    s+=`<g class="tvhub${hubDest?' dest':''}"${hubDest?` onclick="Game.tvMove('H')"`:''}><circle cx="500" cy="500" r="82" fill="#150f3a" stroke="#fff" stroke-width="4"/>`;
+    for(let k=0;k<6;k++) s+=this.tvPie(500,500,72,k,cols[k],'stroke="#150f3a" stroke-width="3"');
+    s+=`<circle cx="500" cy="500" r="22" fill="#150f3a"/></g>`;
+    // tokens
+    const here={}; d.pos.forEach((n,i)=>{ (here[n]=here[n]||[]).push(i); });
+    for(const n of Object.keys(here)){ const p=G.pos[n].xy, list=here[n];
+      list.forEach((i,j)=>{ const off=(j-(list.length-1)/2)*20;
+        s+=`<g class="tvtok${i===me?' me':''}"><circle cx="${(p[0]+off).toFixed(1)}" cy="${(p[1]+(n==='H'?off*0:0)).toFixed(1)}" r="${n==='H'?13:15}" fill="#fff" stroke="#150f3a" stroke-width="3"/>
+          <text x="${(p[0]+off).toFixed(1)}" y="${(p[1]+1).toFixed(1)}" class="tvtl">${this.bxLetter(i)}</text></g>`; });
+    }
+    return s+'</svg>';
+  },
+  tvWheel(i){
+    const cols=this.tvCats().map(c=>c.colour), own=this._tv.tiles[i];
+    return `<svg viewBox="0 0 100 100" class="tvwheel">${cols.map((c,k)=>this.tvPie(50,50,46,k,own.has(k)?c:'#2b2450','stroke="#fff" stroke-width="2"')).join('')}</svg>`;
+  },
+  tvDraw(){
+    ov.classList.remove('on');
+    const d=this._tv, cats=this.tvCats(), me=d.t;
+    Teams.turn=me;
+    const atHub=d.pos[me]==='H'&&this.tvHasAll(me);
+    const action = d.phase==='roll'
+      ? (atHub?`<button class="btn hot" onclick="Game.tvFinal()"><span>🏛 Final question</span></button>`
+              :`<button class="btn hot" id="tvRoll" onclick="Game.tvRoll()"><span id="tvdie">🎲 Roll (Space)</span></button>`)
+      : d.phase==='move'?`<div class="tvdieBig">${['⚀','⚁','⚂','⚃','⚄','⚅'][d.roll-1]||'🎲'}</div><div class="tvhint">Tap a lit space</div>`:'';
+    stage.innerHTML=`<div class="pad tvpad"><div class="tvwrap">
+      <div class="tvboard">${this.tvSvg()}</div>
+      <div class="tvhud">
+        <div class="tvteams">${Teams.list.slice(0,d.n).map((t,i)=>`
+          <div class="tvteam${i===me?' on':''}"><span class="tvtk">${this.bxLetter(i)}</span>
+            <span class="tvnm">${esc(t.name)}</span><span class="tvsc">${t.score}</span>${this.tvWheel(i)}</div>`).join('')}</div>
+        <div class="tvlegend">${cats.map((c,k)=>`<span class="tvleg${d.tiles[me].has(k)?' got':''}"><i style="background:${c.colour}"></i>${esc(c.cheese)}<small>${esc(c.short||c.label)}</small></span>`).join('')}</div>
+        <div class="tvmsg">${esc(d.msg)}</div>
+        <div class="tvact">${action}</div>
+        <div class="tvbtns"><button class="btn ghost" onclick="toggleFS()"><span>⛶ Full screen</span></button>
+          <button class="btn ghost" onclick="Game.tvToggleLen()"><span>🧀 ${this.tvWinAt()<6?'Quick: first to '+this.tvWinAt()+' · switch to full':'Full game: 6 cheeses · switch to quick'}</span></button>
+          <button class="btn ghost" onclick="Game.tvTimeUp()"><span>⏱ Time's up</span></button>
+          <button class="btn ghost" onclick="Game.trivial()"><span>↻ New game</span></button></div>
+      </div></div></div>`;
+  },
+  tvRoll(){
+    const d=this._tv; if(!d||d.phase!=='roll'||d._rolling) return;
+    d._rolling=true; const faces=['⚀','⚁','⚂','⚃','⚄','⚅'], el=$('#tvdie'); let n=0;
+    const spin=setInterval(()=>{ if(el) el.textContent=faces[Math.random()*6|0]; n++;
+      if(n>7){ clearInterval(spin); d._rolling=false; this.tvRolled(1+Math.floor(Math.random()*6)); } },70);
+  },
+  tvRolled(n){
+    const d=this._tv, t=d.t; d.roll=n;
+    d.dests=this.tvDest(d.pos[t],n,this.tvHasAll(t));
+    if(!d.dests.length){ d.msg=Teams.list[t].name+' rolled '+n+' but cannot move.'; d.t=(t+1)%d.n; d.phase='roll'; this.tvDraw(); return; }
+    d.phase='move'; d.msg=Teams.list[t].name+' rolled '+n+'. Choose where to stop.'; this.tvDraw();
+  },
+  tvMove(node){
+    const d=this._tv; if(!d||d.phase!=='move'||!d.dests.includes(node)) return;
+    const t=d.t, name=Teams.list[t].name, info=this.tvInfo(node);
+    d.pos[t]=node; d.dests=[]; d.phase='land';
+    if(node==='H'){ d.phase='roll'; d.msg=name+' reaches the hub! The other teams choose the colour.'; this.tvDraw(); this.tvFinal(); return; }
+    if(info.kind==='again'){ d.phase='roll'; d.msg=name+' lands on a roll-again space. Roll again!'; this.tvDraw(); return; }
+    const cat=this.tvCats()[info.c], wins=info.hq&&!d.tiles[t].has(info.c);
+    d.msg=name+' lands on '+cat.label+(wins?' · HQ: win the '+cat.cheese+' slice':'')+'.'; this.tvDraw();
+    this.tvAsk(info.c,ok=>{
+      if(ok){ Teams.turn=t; Teams.add(1);
+        if(wins){ d.tiles[t].add(info.c); d.msg=name+' wins a slice of '+cat.cheese+'! 🧀 Roll again.';
+          if(this.tvWinAt()<6&&d.tiles[t].size>=this.tvWinAt()){ d.phase='roll'; this.tvDraw(); this.tvWin(t); return; } }
+        else d.msg=name+' is right (+1). Roll again.';
+      } else { d.msg=name+' was wrong. '; d.t=(t+1)%d.n; d.msg+=Teams.list[d.t].name+'’s turn.'; }
+      d.phase='roll'; this.tvDraw();
+    },cat.label+(wins?' · '+cat.cheese+' slice':''));
+  },
+  tvAsk(idx,cb,badge){
+    const d=this._tv, cat=this.tvCats()[idx];
+    if(!d.q[idx]||!d.q[idx].length) d.q[idx]=shuffle(cat.questions.slice());
+    const q=d.q[idx].pop(); d.cb=cb;
+    ov.className='ov on';
+    const mc=(window.SOMERSET_MC||{})[q.q];
+    const opts=mc?shuffle([{t:mc.c,ok:1},...shuffle(mc.w).slice(0,2).map(t=>({t,ok:0}))]):null;
+    ov.innerHTML=`<div class="badge" style="--bc:${cat.colour}">${esc(badge||cat.label)}</div>
+      ${q.img?`<img class="ppic" src="${esc(q.img)}" alt="">`:''}<div class="q">${esc(q.q)}</div>
+      ${opts?`<div class="mc" id="mcBox">${opts.map((o,i)=>`<button class="mcopt" data-ok="${o.ok}" onclick="Game.mcPick(this)"><i>${'ABC'[i]}</i><span>${esc(o.t)}</span></button>`).join('')}</div>`:''}
+      ${opts&&mc.c===q.a?'':`<div class="a" id="ansBox">${esc(q.a)}</div>`}
+      <div class="row">
+        <button class="btn ghost" onclick="Game.mcShow()"><span>Show answer</span></button>
+        <button class="btn" onclick="Game.tvResolve(true)"><span>✔ Correct</span></button>
+        <button class="btn hot" onclick="Game.tvResolve(false)"><span>✘ Wrong</span></button></div>`;
+    ov.classList.toggle('hasmc',!!opts);
+    ov.classList.toggle('mcbig',!!opts&&opts.every(x=>x.t.length<=22));
+  },
+  /* multiple choice: tapping a letter only marks the team's pick; the teacher still reveals and marks. */
+  mcPick(el){ const b=el.parentNode; if(b.classList.contains('shown')) return;
+    [...b.children].forEach(x=>x.classList.toggle('pick',x===el&&!x.classList.contains('pick'))); },
+  mcShow(){ const b=$('#mcBox'); if(b){ b.classList.add('shown');
+      [...b.children].forEach(x=>{ if(x.dataset.ok==='1') x.classList.add('right'); else x.classList.add('dim'); }); }
+    const ab=$('#ansBox'); if(ab) ab.classList.add('on'); },
+  tvResolve(ok){ ov.classList.remove('on'); const d=this._tv, cb=d&&d.cb; if(d) d.cb=null; if(cb) cb(ok); },
+  tvFinal(){
+    const d=this._tv, cats=this.tvCats(); if(!d||!this.tvHasAll(d.t)) return;
+    ov.className='ov on';
+    ov.innerHTML=`<div class="badge">🏛 FINAL QUESTION</div>
+      <div class="q">The other teams choose the colour.</div>
+      <div class="row tvpick">${cats.map((c,k)=>`<button class="btn" style="background:${c.colour};color:#111" onclick="Game.tvFinalAsk(${k})"><span>${esc(c.label)}</span></button>`).join('')}</div>`;
+  },
+  tvFinalAsk(k){
+    const d=this._tv, t=d.t, name=Teams.list[t].name;
+    this.tvAsk(k,ok=>{
+      if(ok){ this.tvWin(t); return; }
+      d.t=(t+1)%d.n; d.msg=name+' missed the final question and stays in the hub. '+Teams.list[d.t].name+'’s turn.'; d.phase='roll'; this.tvDraw();
+    },'🏛 FINAL · '+this.tvCats()[k].label);
+  },
+  tvTimeUp(){
+    const d=this._tv; if(!d) return;
+    const rows=Teams.list.slice(0,d.n).map((t,i)=>({i,name:t.name,ch:d.tiles[i].size,sc:t.score})).sort((a,b)=>b.ch-a.ch||b.sc-a.sc);
+    const tie=rows.length>1&&rows[0].ch===rows[1].ch&&rows[0].sc===rows[1].sc;
+    ov.className='ov on';
+    ov.innerHTML=`<div class="badge">⏱ TIME'S UP</div>
+      <div class="q">${tie?'It is a tie. Ask one more question!':esc(rows[0].name)+' wins!'}</div>
+      <div class="q" style="font-size:clamp(18px,2.4vw,32px)">${rows.map(r=>esc(r.name)+': '+r.ch+' 🧀 · '+r.sc+' points').join('<br>')}</div>
+      <div class="row"><button class="btn ghost" onclick="ov.classList.remove('on')"><span>Keep playing</span></button>
+        <button class="btn" onclick="Game.trivial()"><span>New game</span></button></div>`;
+    if(!tie) this.bingoConfetti();
+  },
+  tvWin(t){
+    const d=this._tv; Teams.turn=t; Teams.add(5); this.tvDraw();
+    ov.className='ov on winner';
+    ov.innerHTML=`<div class="badge">🏆 ${esc((this.unit.trivial.title||'Somerset Trivial').toUpperCase())}</div>
+      <div class="q winnerName">${esc(Teams.list[t].name)}</div>
+      <div class="q" style="font-size:clamp(20px,3vw,40px);color:var(--gold)">${this.tvWinAt()<6?this.tvWinAt()+' cheeses first':'All six cheeses collected'}. Champions! 🧀</div>
+      <div class="row"><button class="btn" onclick="Game.trivial()"><span>Play again ▶</span></button>
+        <button class="btn ghost" onclick="Game.home()"><span>Menu</span></button></div>`;
+    this.bingoConfetti();
+  },
+
+  /* ================================================================
      THE VALENCIAN MODES
      Baamboozle's nineteen "games" are five mechanics in different art:
      a sport, a race, a territory grab, a build-and-reveal, and the
@@ -2022,7 +3369,7 @@ const Game = {
     const q=this._pQueue[catId].pop();
     ov.className='ov on';
     ov.innerHTML=`<div class="badge">${esc(badge||cat.label)}</div>
-      <div class="q">${esc(q.q)}</div>
+      ${q.img?`<img class="ppic" src="${esc(q.img)}" alt="">`:''}<div class="q">${esc(q.q)}</div>
       <div class="a" id="ansBox">${esc(q.a)}</div>
       <div class="row">
         <button class="btn ghost" onclick="$('#ansBox').classList.add('on')"><span>Show answer</span></button>
@@ -2033,11 +3380,11 @@ const Game = {
   },
   resolvePursuit(ok){ ov.classList.remove('on'); const cb=this._pCb; this._pCb=null; if(cb) cb(ok); },
   pursuitFinal(){
-    const all=this.pursuitCats().flatMap(c=>c.questions.map(q=>({q:q.q,a:q.a})));
+    const all=this.pursuitCats().flatMap(c=>c.questions.map(q=>({q:q.q,a:q.a,img:q.img})));
     const q=shuffle(all)[0];
     ov.className='ov on';
     ov.innerHTML=`<div class="badge">🏛 FINAL QUESTION · ANY CATEGORY</div>
-      <div class="q">${esc(q.q)}</div>
+      ${q.img?`<img class="ppic" src="${esc(q.img)}" alt="">`:''}<div class="q">${esc(q.q)}</div>
       <div class="a" id="ansBox">${esc(q.a)}</div>
       <div class="row">
         <button class="btn ghost" onclick="$('#ansBox').classList.add('on')"><span>Show answer</span></button>
@@ -2050,7 +3397,7 @@ const Game = {
     const name=Teams.list[Teams.turn].name;
     if(ok){
       ov.className='ov on winner';
-      ov.innerHTML=`<div class="badge">🏆 SOMERSET PURSUIT</div>
+      ov.innerHTML=`<div class="badge">🏆 ${esc((this.unit.pursuit.title||'Somerset Pursuit').toUpperCase())}</div>
         <div class="q winnerName">${esc(name)}</div>
         <div class="q" style="font-size:clamp(20px,3vw,40px);color:var(--gold)">All six tiles collected — champions! 🏺</div>
         <div class="row"><button class="btn" onclick="ov.classList.remove('on')"><span>Close</span></button></div>`;
@@ -2229,7 +3576,7 @@ const Game = {
   },
   t123Setup(fromSaved){
     const T=this._t;
-    stage.innerHTML=`<div class="pad rd"><h1 class="h1">Somerset 1-2-3</h1>
+    stage.innerHTML=`<div class="pad rd focus"><div class="fbody setup"><h1 class="h1">Somerset 1-2-3</h1>
       <p class="sub">${fromSaved?'Banks carried over from earlier this month. Change anything that is wrong.':'New month — everyone starts on '+this.T123_START+'.'}</p>
       <div class="rd-names">${T.teams.map((t,i)=>`<div class="rd-tcard">
         <input class="rd-in" id="t123n${i}" value="${attr(t.name)}" aria-label="Team ${i+1} name">
@@ -2241,7 +3588,7 @@ const Game = {
         <button class="btn ghost" onclick="Game.t123Teams(-1)"><span>− Team</span></button>
         <button class="btn ghost" onclick="Game.t123Reset()"><span>↺ Reset to ${this.T123_START}</span></button>
         <button class="btn ghost" onclick="Game.home()"><span>Back</span></button>
-      </div></div>`;
+      </div></div></div>`;
   },
   t123Read(){
     this._t.teams.forEach((t,i)=>{
@@ -2278,11 +3625,11 @@ const Game = {
   t123Quick(){
     const T=this._t, Q=T.order, n=Q.length;
     if(T.i>=n){ T.round=2; T.i=0; T.order=shuffle(this.unit.quiz123.bid.slice()); this.t123Intro(2); return; }
-    stage.innerHTML=`<div class="pad rd"><div id="teamsBox">${this.t123Board()}</div>
+    stage.innerHTML=`<div class="pad rd focus"><div id="teamsBox">${this.t123Board()}</div><div class="fbody">
       <h1 class="h1">1 · Quick-fire</h1>
       <p class="sub">Right answer +5 · wrong answer costs nothing</p>
       <p class="pmsg">Question ${T.i+1} of ${n} · ${esc(T.teams[T.turn].name)}</p>
-      <div class="vrow"><button class="btn hot" onclick="Game.t123AskQuick()"><span>Show the question ▶</span></button></div></div>`;
+      <div class="vrow"><button class="btn hot" onclick="Game.t123AskQuick()"><span>Show the question ▶</span></button></div></div></div>`;
   },
   t123AskQuick(){
     const T=this._t, q=T.order[T.i];
@@ -2302,19 +3649,19 @@ const Game = {
   t123Intro(r){
     const txt = r===2 ? ['2 · The Bid','Before you see the question, bid 10, 20, 30 or 40. Right: you win it. Wrong: you lose it (never below '+this.T123_FLOOR+').']
                       : ['3 · The Final','One question for everyone. Right answer +20 — doubled for the team that is behind.'];
-    stage.innerHTML=`<div class="pad rd"><div id="teamsBox">${this.t123Board()}</div>
+    stage.innerHTML=`<div class="pad rd focus"><div id="teamsBox">${this.t123Board()}</div><div class="fbody">
       <h1 class="h1">${txt[0]}</h1><p class="pmsg">${txt[1]}</p>
-      <div class="vrow"><button class="btn hot" onclick="Game.${r===2?'t123Bid':'t123Final'}()"><span>Go ▶</span></button></div></div>`;
+      <div class="vrow"><button class="btn hot" onclick="Game.${r===2?'t123Bid':'t123Final'}()"><span>Go ▶</span></button></div></div></div>`;
   },
   t123Bid(){
     const T=this._t, n=this.unit.quiz123.bid.length;
     if(T.i>=n){ T.round=3; this.t123Intro(3); return; }
     const q=T.order[T.i];
-    stage.innerHTML=`<div class="pad rd"><div id="teamsBox">${this.t123Board()}</div>
+    stage.innerHTML=`<div class="pad rd focus"><div id="teamsBox">${this.t123Board()}</div><div class="fbody">
       <h1 class="h1">2 · The Bid</h1>
       <p class="pmsg">Question ${T.i+1} of ${n} · ${esc(T.teams[T.turn].name)} · a clue before you bid: <b>${esc(q.hint||'none this time')}</b></p>
       <p class="sub">How much do you bid?</p>
-      <div class="vrow">${[10,20,30,40].map(b=>`<button class="btn hot" onclick="Game.t123Place(${b})"><span>${b}</span></button>`).join('')}</div></div>`;
+      <div class="vrow">${[10,20,30,40].map(b=>`<button class="btn hot" onclick="Game.t123Place(${b})"><span>${b}</span></button>`).join('')}</div></div></div>`;
   },
   t123Place(b){
     const T=this._t, q=T.order[T.i]; T.bid=b;
@@ -2347,11 +3694,11 @@ const Game = {
     T.teams.forEach((t,i)=>{ if(T.fin[i]) this.t123Apply(i,T.behind[i]?40:20); });
     ov.classList.remove('on'); T.round=4; this.t123Persist();
     const max=Math.max(...T.teams.map(t=>t.bank)), win=T.teams.filter(t=>t.bank===max);
-    stage.innerHTML=`<div class="pad rd"><div id="teamsBox">${this.t123Board()}</div>
+    stage.innerHTML=`<div class="pad rd focus"><div id="teamsBox">${this.t123Board()}</div><div class="fbody">
       <h1 class="h1">That’s the show</h1>
       <p class="pmsg">Today’s leader: <b>${win.map(w=>esc(w.name)).join(' & ')}</b> on ${max}. Banks are saved for the rest of this month. The team on top at the last class of the month wins the golden vote.</p>
       <div class="vrow"><button class="btn" onclick="Game.t123Setup(true)"><span>Edit banks</span></button>
-        <button class="btn ghost" onclick="Game.home()"><span>Back to games</span></button></div></div>`;
+        <button class="btn ghost" onclick="Game.home()"><span>Back to games</span></button></div></div></div>`;
   }
 
 };
@@ -2368,7 +3715,10 @@ function tileCase(u,i){ return `<button class="tile case" style="--i:${i}" oncli
    teacher-marked flow (see Game.pursuit()). Only appears when a unit
    declares a `pursuit` block, so no other group or unit is affected. */
 function tilePursuit(u,i){ return `<button class="tile pursuit" style="--i:${i}" onclick="Game.pursuit()"><span class="ic">🎲</span>
-  <div><h3>Somerset Pursuit</h3><p>Roll the die, answer a category question, win the azulejo tile. Collect all six and answer the centre question to win.</p></div></button>`; }
+  <div><h3>${esc((u.pursuit&&u.pursuit.title)||'Somerset Pursuit')}</h3><p>${esc((u.pursuit&&u.pursuit.blurb)||'Roll the die, answer a category question, win the azulejo tile. Collect all six and answer the centre question to win.')}</p></div></button>`; }
+
+function tileTrivial(u,i){ return `<button class="tile trivial" style="--i:${i}" onclick="Game.trivial()"><span class="ic">🧀</span>
+  <div><h3>${esc(u.trivial.title||'Somerset Trivial')}</h3><p>${esc(u.trivial.blurb||'Round board. Land on a colour, answer, win a cheese. Collect all six.')}</p></div></button>`; }
 
 /* Somerset Rounds and Somerset 1-2-3 (added 1 Oct 2026) follow the same
    additive pattern as Pursuit: own tile, called directly (no version
@@ -2377,7 +3727,7 @@ function tilePursuit(u,i){ return `<button class="tile pursuit" style="--i:${i}"
 function tileRounds(u,i){ return `<button class="tile rounds" style="--i:${i}" onclick="Game.rounds()"><span class="ic">🎲</span>
   <div><h3>Somerset Rounds</h3><p>Three rounds of questions. The app draws who asks whom — every question once. Then the class votes.</p></div></button>`; }
 function tile123(u,i){ return `<button class="tile q123" style="--i:${i}" onclick="Game.t123()"><span class="ic">🎬</span>
-  <div><h3>Somerset 1-2-3</h3><p>The closing quiz: Quick-fire, the Bid and the Final, on a monthly points bank.</p></div></button>`; }
+  <div><h3>Somerset <span style="white-space:nowrap">1-2-3</span></h3><p>The closing quiz: Quick-fire, the Bid and the Final, on a monthly points bank.</p></div></button>`; }
 
 document.addEventListener('keydown',e=>{
   if(e.key==='Escape'){ ov.classList.remove('on'); stopTimer(); }
@@ -2388,8 +3738,48 @@ document.addEventListener('keydown',e=>{
   if(hmLive && /^[a-zA-Z]$/.test(e.key) && !(e.metaKey||e.ctrlKey||e.altKey)){
     Game.hangmanGuess(e.key.toUpperCase()); return;
   }
+  /* Double Vision: space or N = new round, R = show the match */
+  const dvLive = !ov.classList.contains('on') && stage.querySelector('.dvboard');
+  if(dvLive && !(e.metaKey||e.ctrlKey||e.altKey)){
+    if(e.key===' '||e.key==='n'||e.key==='N'){ e.preventDefault(); Game.dvDeal(); return; }
+    if(e.key==='r'||e.key==='R'){ Game.dvReveal(); return; }
+  }
+  /* Boxes: space = said it, N = not yet, R = show word, U = undo */
+  const bxLive = !ov.classList.contains('on') && stage.querySelector('.bxboard');
+  if(bxLive && !(e.metaKey||e.ctrlKey||e.altKey)){
+    if(e.key===' '||e.key==='y'||e.key==='Y'){ e.preventDefault(); Game.bxSaid(); return; }
+    if(e.key==='n'||e.key==='N'){ Game.bxMiss(); return; }
+    if(e.key==='r'||e.key==='R'){ Game.bxReveal(); return; }
+    if(e.key==='u'||e.key==='U'){ Game.bxUndo(); return; }
+  }
+  /* Guess-eroo: space = next team, hold P = peek at the secret */
+  const geLive = !ov.classList.contains('on') && stage.querySelector('.geboard');
+  if(geLive && !(e.metaKey||e.ctrlKey||e.altKey)){
+    if(e.key===' '){ e.preventDefault(); Game.geNext(); return; }
+    if((e.key==='p'||e.key==='P')&&!e.repeat){ Game.gePeek(true); return; }
+  }
+  /* Trivial: space = roll */
+  const tvLive = !ov.classList.contains('on') && stage.querySelector('.tvboard');
+  if(tvLive && !(e.metaKey||e.ctrlKey||e.altKey) && e.key===' '){
+    e.preventDefault(); const b=document.getElementById('tvRoll'); if(b) b.click(); return;
+  }
+  /* Pairs: space = said it (a pair) or cover the cards (a miss) */
+  const prLive = !ov.classList.contains('on') && stage.querySelector('.prboard');
+  if(prLive && !(e.metaKey||e.ctrlKey||e.altKey) && e.key===' '){
+    e.preventDefault(); const ph=Game._pr&&Game._pr.phase;
+    if(ph==='match') Game.prSaid(); else if(ph==='miss') Game.prCover(); return;
+  }
+  /* Bingo caller: space / arrows to call, R reveals, B checks a Bingo */
+  const bgLive = !ov.classList.contains('on') && stage.querySelector('.bgcall');
+  if(bgLive && !(e.metaKey||e.ctrlKey||e.altKey)){
+    if(e.key===' '||e.key==='ArrowRight'){ e.preventDefault(); Game.bingoStep(1); return; }
+    if(e.key==='ArrowLeft'){ Game.bingoStep(-1); return; }
+    if(e.key==='r'||e.key==='R'){ Game.bingoReveal(); return; }
+    if(e.key==='b'||e.key==='B'){ Game.bingoCheck(); return; }
+  }
   if(e.key==='f'||e.key==='F') toggleFS();
 });
+document.addEventListener('keyup',e=>{ if((e.key==='p'||e.key==='P')&&Game._ge&&stage.querySelector('.geboard')) Game.gePeek(false); });
 /* Guess Who: shared, photo-checked starter set; worksheet uses these same IDs. */
 const GuessPhotos = {
   1:['Short dark hair; dark glasses; a bow tie and blue backpack straps.','A pale wall and green leaves.'],
@@ -2514,6 +3904,53 @@ const WeeklyScores = {
 };
 
 Game.boot();
+</script>
+<script>
+/* Tile menus: measure the real tile and size icon/title/text from it (7 Oct 2026). */
+(function(){
+  const st=document.getElementById('stage'); if(!st) return;
+  function qmOpen(t,d){ const o=document.createElement('div'); o.className='qmov';
+    o.innerHTML='<div><h2></h2><p></p><small>Click anywhere or press Esc to close</small></div>';
+    o.querySelector('h2').textContent=t; o.querySelector('p').textContent=d;
+    const close=()=>{ o.remove(); document.removeEventListener('keydown',kd,true); };
+    const kd=ev=>{ if(ev.key==='Escape'){ ev.stopPropagation(); close(); } };
+    o.addEventListener('click',close); document.addEventListener('keydown',kd,true); document.body.appendChild(o); }
+  let q=0;
+  function fit(){ q=0;
+    const tiles=st.querySelectorAll('div.tiles>.tile'); if(!tiles.length) return;
+    const t=tiles[0], w=t.offsetWidth, h=t.offsetHeight; if(!w||!h) return;
+    tiles.forEach(e=>{
+      if(!e.querySelector(':scope>.qm') && !e.closest('.tiles.groups,.tiles.units')){ const pp=e.querySelector(':scope p'), hh=e.querySelector('h3');
+        if(pp&&pp.textContent.trim()){ const b=document.createElement('span'); b.className='qm'; b.textContent='?'; b.setAttribute('role','button'); b.setAttribute('aria-label','What is this game?');
+          b.dataset.t=hh?hh.textContent.trim():''; b.dataset.d=pp.textContent.trim();
+          b.addEventListener('click',ev=>{ ev.stopPropagation(); ev.preventDefault(); qmOpen(b.dataset.t,b.dataset.d); });
+          e.appendChild(b); } }
+      e.classList.remove('small','tiny');
+      if(h<150||w<150) e.classList.add('tiny'); else if(h<260||w<230) e.classList.add('small');
+      /* shrink icon, title and text together until ALL of it sits inside the box:
+         nothing clipped at the top (icon), nothing cut with "..." (text). */
+      const ok=()=>{ const kids=[...e.children].filter(c=>c.offsetParent!==null&&!c.classList.contains('qm')&&c.tagName!=='P'); if(!kids.length) return true;
+        const r=e.getBoundingClientRect(), cs=getComputedStyle(e);
+        const pt=parseFloat(cs.paddingTop)||0, pb=parseFloat(cs.paddingBottom)||0;
+        const top=Math.min(...kids.map(c=>c.getBoundingClientRect().top)), bot=Math.max(...kids.map(c=>c.getBoundingClientRect().bottom));
+        const cut=false;
+        return top>=r.top+pt-1 && bot<=r.bottom-pb+1 && !cut; };
+      let k=1; e.style.setProperty('--tw',w+'px'); e.style.setProperty('--th',h+'px');
+      /* sizes come straight from the real tile (icon and title only; the text is behind the ? button), so no shrink loop: skewed children made ok() fail and collapsed every tile to tiny */
+    });
+    /* class picker: one common size, as big as the longest group name allows (nothing clipped, no mid-word breaks) */
+    const gt=st.querySelector('.tiles.groups');
+    if(gt){ const hs=[...gt.querySelectorAll('h3')];
+      let fs=Math.min(w*.2,h*.4,170);
+      const fits=()=>hs.every(x=>{ const tl=x.closest('.tile'); return x.scrollWidth<=x.clientWidth+1 && x.offsetHeight<=tl.clientHeight*.8; });
+      hs.forEach(x=>x.style.fontSize=fs+'px');
+      while(fs>14&&!fits()){ fs-=2; hs.forEach(x=>x.style.fontSize=fs+'px'); } }
+  }
+  const sched=()=>{ if(!q) q=requestAnimationFrame(fit); };
+  new ResizeObserver(sched).observe(st);
+  new MutationObserver(sched).observe(st,{childList:true,subtree:true});
+  window.addEventListener('resize',sched); sched();
+})();
 </script>
 </body>
 </html>

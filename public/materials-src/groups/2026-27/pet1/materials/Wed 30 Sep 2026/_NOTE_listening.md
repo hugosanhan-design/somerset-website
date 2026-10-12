@@ -2,7 +2,7 @@
 
 # Wed 23 Sep 2026: Listening added mid-plan
 
-**What.** Hugo asked this morning to move SB p10 listening up to today instead of 30 Sep. Run sheet already sat at 90/90 minutes with real content (not padding), verified against `UNIT1_PLAN.md` and `JOURNAL.md`'s 16 Sep entry before agreeing to change anything. Room found by moving Zoe's Level Ladder Part 1 to homework (10 min) and trimming the wrap-up (7 min), 17 min freed for a shortened listening block.
+**What.** Hugo asked this morning to move SB p10 listening up to today instead of 30 Sep. Run sheet already sat at 90/90 minutes with real content (not padding), verified against `UNIT1_PLAN.md` and `JOURNAL.md`'s 16 Sep entry before agreeing to change anything. Room found by moving a newcomer's Level Ladder Part 1 to homework (10 min) and trimming the wrap-up (7 min), 17 min freed for a shortened listening block.
 
 **Built.** `PETI_Unit1_Listening_23Sep2026.html` (+ PDF, student) and `_TEACHER.html` (+ PDF, answers). Skips SB p10 ex.1 (jobs from photos, redundant) and folds ex.4 (predict from pictures) into the exam-tip box. Covers ex.2 (track 1.2), ex.3 (track 1.3), the Exam Task (track 1.4).
 

@@ -10,7 +10,7 @@ export const runtime = 'nodejs'
 // Body: { name, code, course, data? }. Without `data` it loads; with `data` it merges and saves.
 // Always returns the merged copy, so a stale device can never wipe newer progress.
 
-const COURSES = new Set(['b1-unit-1'])
+const COURSES = new Set(['b1-unit-1', 'monday-young-adults', 'sound-tech-english'])
 const MAX_BYTES = 200_000
 
 function studentKey(name: string) {
