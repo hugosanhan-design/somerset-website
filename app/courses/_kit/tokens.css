@@ -31,6 +31,10 @@
   min-height:100vh;line-height:1.6;font-size:16px;
   -webkit-font-smoothing:antialiased;
 }
+/* Laptops and desktops read from further away than phones: scale the whole course up.
+   Everything is in rem, so this lifts passages, questions and options together. */
+@media(min-width:900px){.course{font-size:17.5px}}
+@media(min-width:1400px){.course{font-size:18.5px}}
 .course *{box-sizing:border-box}
 .course ::selection{background:var(--green);color:#fff}
 .course p{margin:0 0 .8rem}.course p:last-child{margin-bottom:0}

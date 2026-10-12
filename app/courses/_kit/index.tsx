@@ -266,7 +266,7 @@ export function ResultSummary({ score, max, title, sub, items, children }: {
 // choice: pick an option card. A blank written as ___ in `q` is highlighted and filled on success.
 // gap: type the answer (or tap a bank word when `bank` is given). Two misses reveal the answer.
 export type DeckItem =
-  | { id: string; kind: 'choice'; q: string; options: string[]; answer: number; icons?: (React.ReactNode | undefined)[]; gloss?: string; after?: React.ReactNode }
+  | { id: string; kind: 'choice'; q: string; options: string[]; answer: number; icons?: (React.ReactNode | undefined)[]; gloss?: string; after?: React.ReactNode; audio?: string }
   | { id: string; kind: 'gap'; before: string; after?: string; answers: string[]; bank?: string[]; gloss?: string }
 
 const BLANK_RE = /_{3,}/
@@ -359,6 +359,7 @@ export function Deck({
       <div className={`ck-card ck-deck__card${shake ? ' is-shake' : ''}`} key={it.id}>
         <p className="ck-deck__q">{question()}</p>
         {showGloss && it.gloss && <p className="ck-deck__gloss">{it.gloss}</p>}
+        {it.kind === 'choice' && it.audio && <audio className="ck-deck__audio" controls preload="none" src={it.audio} />}
 
         {!done && it.kind === 'choice' && (
           <ChoiceGrid cols={it.options.length <= 2 || it.options.join('').length > 60 ? 2 : 2}>

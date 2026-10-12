@@ -338,6 +338,17 @@ export default function B1Unit1Course() {
     icons: [<SomersetIcon key="r" name="correct" size={36} />, <SomersetIcon key="w" name="wrong" size={36} />],
     after: s.isWrong ? `✎ ${stativeCorrection(s)}` : 'Correct as it is.',
   }))
+  const readingDeck: DeckItem[] = READING_QS.map((r, i) => ({
+    id: `r:${i}`, kind: 'choice' as const, q: r.q, options: r.options, answer: Math.max(0, r.options.indexOf(r.a)),
+  }))
+  const l1Deck: DeckItem[] = L1_ANS.map((ans, i) => ({
+    id: `l1:${i}`, kind: 'choice' as const, q: `Speaker ${i + 1} is a…`, options: L1_JOBS, answer: L1_JOBS.indexOf(ans),
+  }))
+  const l2Deck: DeckItem[] = L2_QS.map((l, i) => ({
+    id: `l2:${i}`, kind: 'choice' as const, q: l.q, options: l.options, answer: Math.max(0, l.options.indexOf(l.a)), audio: `/courses/b1-unit-1/audio/${l.track}.mp3`,
+  }))
+  // Listening is one lesson score over both decks; count firsts across them.
+  const [l1Result, setL1Result] = useState<{ firsts: number; total: number } | null>(null)
   const deckAnswer = (lesson: string) => (item: DeckItem, ok: boolean, firstTry: boolean) => {
     if (firstTry && saved(lesson) === null) update(p => recordAnswer(p, item.id, ok))
   }
@@ -546,23 +557,9 @@ export default function B1Unit1Course() {
                     </p>
                   ))}
                 </article>
-                <div className="q-stack">
-                  {READING_QS.map((item, i) => {
-                    const k = `r:${i}`
-                    return (
-                      <div key={i} className={`q-block${done1(k) ? ' ex-win' : ''}${inst[k]?.done && !inst[k].first ? ' ex-redo' : ''}`}>
-                        <div className="q-title"><span className="num">{i + 1}</span>{item.q}</div>
-                        {inst[k]?.done
-                          ? <p className="ex-ans"><b className="ex-word">{item.a}</b>{done1(k) ? celebrate(i) : <span className="ex-revise">added to your revision</span>}</p>
-                          : renderOpts(k, item.options, item.a, RD)}
-                      </div>
-                    )
-                  })}
-                  <Row>
-                    {!rC.all
-                      ? progressNote(rC)
-                      : <><ScoreBadge score={readingScore!} /><Btn onClick={() => setStep(5)}>Next: Listening →</Btn></>}
-                  </Row>
+                <div>
+                  <Deck items={readingDeck} onAnswer={deckAnswer('reading')} onDone={deckDone('reading')} endTitle="Reading done" />
+                  {readingScore !== null && <Row><ScoreBadge score={readingScore} /><Btn onClick={() => setStep(5)}>Next: Listening →</Btn></Row>}
                 </div>
               </div>
             </section>
@@ -577,25 +574,7 @@ export default function B1Unit1Course() {
                   <div className="track-label"><span className="track-badge">🎧 Track L1</span><span className="track-title">Three speakers · plays twice</span></div>
                   <audio controls preload="none" src="/courses/b1-unit-1/audio/track-l1.mp3" />
                 </div>
-                <WordBank words={L1_JOBS} />
-                <div className="task-list">
-                  {L1_ANS.map((ans, i) => {
-                    const k = `l1:${i}`
-                    return (
-                      <div key={i} className={`task-row ex-row${done1(k) ? ' ex-win' : ''}${inst[k]?.done && !inst[k].first ? ' ex-redo' : ''}${shakeKey === k ? ' bad' : ''}`}>
-                        <span className="num">{i + 1}</span>
-                        <span className="task-text">
-                          Speaker {i + 1}{' '}
-                          {inst[k]?.done
-                            ? <b className="ex-word">{ans}</b>
-                            : <div style={{ marginTop: '.5rem' }}>{renderOpts(k, L1_JOBS, ans, LS)}</div>}
-                          {inst[k]?.done && !inst[k].first && <span className="ex-revise">added to your revision</span>}
-                        </span>
-                        {done1(k) && celebrate(i)}
-                      </div>
-                    )
-                  })}
-                </div>
+                <Deck items={l1Deck} onAnswer={deckAnswer('listening')} onDone={(f, t) => setL1Result({ firsts: f, total: t })} endTitle="Speakers matched" endSub="Now the six short conversations below." />
                 <div className="tip-box">
                   <strong>Exam tip</strong>
                   <p>Speakers often mention <em>other</em> jobs, other times and other places. They say something and then change it. Don&apos;t choose the first thing you hear; wait for the end of the sentence.</p>
@@ -604,25 +583,9 @@ export default function B1Unit1Course() {
 
               <section className="card">
                 <LessonHead tag="Listening Part 1" title="Six short conversations" aim="For each question, choose the correct answer. In the real exam the options are pictures." />
-                <div className="q-stack">
-                  {L2_QS.map((item, i) => {
-                    const k = `l2:${i}`
-                    return (
-                      <div key={i} className={`q-block${done1(k) ? ' ex-win' : ''}${inst[k]?.done && !inst[k].first ? ' ex-redo' : ''}`}>
-                        <div className="q-title"><span className="num">{i + 1}</span>{item.q}</div>
-                        <audio className="q-audio" controls preload="none" src={`/courses/b1-unit-1/audio/${item.track}.mp3`} />
-                        {inst[k]?.done
-                          ? <p className="ex-ans"><b className="ex-word">{item.a}</b>{done1(k) ? celebrate(i + 3) : <span className="ex-revise">added to your revision</span>}</p>
-                          : renderOpts(k, item.options, item.a, LS, undefined, true)}
-                      </div>
-                    )
-                  })}
-                </div>
-                <Row>
-                  {!lC.all
-                    ? progressNote(lC)
-                    : <><ScoreBadge score={listeningScore!} /><Btn onClick={() => setStep(6)}>Next: Speaking →</Btn></>}
-                </Row>
+                <Deck items={l2Deck} onAnswer={deckAnswer('listening')} endTitle="Listening done"
+                  onDone={(f, t) => deckDone('listening')(f + (l1Result?.firsts ?? 0), t + (l1Result?.total ?? L1_ANS.length))} />
+                {listeningScore !== null && <Row><ScoreBadge score={listeningScore} /><Btn onClick={() => setStep(6)}>Next: Speaking →</Btn></Row>}
               </section>
             </>
           )}
