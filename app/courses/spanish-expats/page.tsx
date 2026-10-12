@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef, useMemo, type ReactNode } from 'react'
 import { createPortal } from 'react-dom'
 import Link from 'next/link'
-import SomersetLogo from '@/components/SomersetLogo'
+import { CourseShell, ChoiceGrid, OptionCard, Feedback, Dots, Btn } from '../_kit'
 import { useProgress } from '@/lib/courses/useProgress'
 import { recordAnswer, markActive, type Progress } from '@/lib/courses/progress'
 import {
@@ -123,30 +123,16 @@ function LevelCheck({ onDone }: { onDone: (score: number) => void }) {
     }
   }
 
+  const LEVEL_ICONS: IconName[] = ['confused', 'almost', 'well-done', 'celebrate']
   return (
-    <div className="card" style={{ maxWidth: 600, margin: '0 auto' }}>
-      <div style={{ marginBottom: '1rem' }}>
-        <div className="progress-track">
-          <div className="progress-fill" style={{ width: `${pct(qi, LEVEL_QS.length)}%` }} />
-        </div>
-        <p style={{ fontSize: '.8rem', color: '#aaa', marginBottom: '1rem' }}>
-          Question {qi + 1} of {LEVEL_QS.length}
-        </p>
-        <p style={{ fontWeight: 600, fontSize: '1rem', lineHeight: 1.5, marginBottom: '1.2rem' }}>
-          {current.q}
-        </p>
-      </div>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '.5rem' }}>
+    <div className="ck-card" style={{ maxWidth: 600, margin: '0 auto' }}>
+      <Dots states={LEVEL_QS.map((_, i) => (i < qi ? 'ok' : null))} now={qi} count={`${qi + 1} / ${LEVEL_QS.length}`} />
+      <p className="ck-situation" style={{ marginBottom: '1.1rem' }}>{current.q}</p>
+      <ChoiceGrid cols={1}>
         {current.options.map((opt, i) => (
-          <button
-            key={i}
-            className="mcq-opt"
-            onClick={() => choose(opt.points)}
-          >
-            {opt.label}
-          </button>
+          <OptionCard key={`${qi}-${i}`} icon={<Icon name={LEVEL_ICONS[i] ?? 'speak'} size={36} />} text={opt.label} onPick={() => choose(opt.points)} />
         ))}
-      </div>
+      </ChoiceGrid>
     </div>
   )
 }
@@ -541,88 +527,65 @@ function MatchDragSE({ onDone, updateProgress }: {
 
   return (
     <div className="md" ref={root}>
-      <div className="deck-top">
-        <div className="deck-dots">
-          {MATCH_QS.map((item, i) => {
-            const r = results[i]
-            const cls = r ? (r.points === 1 ? 'd-ok' : r.points > 0 ? 'd-mid' : 'd-bad') : i === idx ? 'd-now' : ''
-            return <span key={item.id} className={`deck-dot ${cls}`} />
-          })}
-        </div>
-        <span className="deck-count">{idx + 1} / {MATCH_QS.length}</span>
-      </div>
+      <Dots
+        states={MATCH_QS.map((_, i) => { const r = results[i]; return r ? (r.points === 1 ? 'ok' : r.points > 0 ? 'mid' : 'bad') : null })}
+        now={idx} count={`${idx + 1} / ${MATCH_QS.length}`}
+      />
 
       <div
         ref={target}
         key={`c${idx}-${shake}`}
-        className={`md-card${over ? ' over' : ''}${shake && status === 'asking' && refused ? ' refuse' : ''}`}
+        className={`ck-card${over ? ' is-over' : ''}${shake && status === 'asking' && refused ? ' is-wrong' : ''}`}
+        style={over ? { borderColor: 'var(--green)', background: 'var(--green-lt)' } : undefined}
       >
-        <div className="md-scene">
-          <span className="md-scene__who"><Icon name="government" size={30} /> At the office · situation {idx + 1}</span>
-          <p className="md-situation">{q.situation}</p>
-        </div>
-        <div className={`md-slot${status !== 'asking' ? ' md-slot--filled' : ''}`}>
+        <span className="ck-head__tag" style={{ display: 'inline-flex', alignItems: 'center', gap: '.5rem' }}>
+          <Icon name="government" size={30} /> At the office · situation {idx + 1}
+        </span>
+        <p className="ck-situation">{q.situation}</p>
+        <div className={`ck-slot${status !== 'asking' ? ' is-filled' : ''}${over ? ' is-over' : ''}`}>
           {status === 'asking'
-            ? <span className="md-slot-empty">Drag the right phrase here — or tap it below</span>
-            : <span className="md-slot-phrase">{q.phrase}</span>
+            ? <span className="ck-slot__empty">Drag the right phrase here — or tap it below</span>
+            : <span className="ck-slot__phrase">{q.phrase}</span>
           }
         </div>
-        {refused && status === 'asking' && (
-          <p className="md-nope" key={`n${shake}`}><Icon name="wrong" size={18} className="ico-inline" /> not that one</p>
-        )}
-        {status === 'right' && (
-          <p className="deck-verdict right" style={{ textAlign: 'center', marginTop: '.75rem' }}>
-            <Icon name="correct" size={18} className="ico-inline" /> {lastPoints === 1 ? 'First time!' : 'Got it'}
-          </p>
-        )}
+        {refused && status === 'asking' && <Feedback key={`n${shake}`} kind="wrong" text="Not that one — try another." />}
+        {status === 'right' && <Feedback kind={lastPoints === 1 ? 'win' : 'quiet'} text={lastPoints === 1 ? 'First time!' : 'Got it.'} revise={lastPoints !== 1} n={idx} />}
         {status === 'revealed' && (
-          <div style={{ textAlign: 'center', marginTop: '.75rem' }}>
-            <button type="button" className="btn btn--terra" onClick={advance}>Next →</button>
+          <div className="ck-row" style={{ justifyContent: 'center' }}>
+            <Btn variant="accent" onClick={advance}>Next →</Btn>
           </div>
         )}
       </div>
 
-      <div className="pd-bag">
-        <div className="md-bag-head">
-          <div className="pd-bag-label"><Icon name="speak" size={18} className="ico-inline" /> Your phrases <small>Which one would you say? Tap ▶ to hear it.</small></div>
-          <label className="md-en-toggle"><input type="checkbox" checked={showEn} onChange={e => setShowEn(e.target.checked)} /> Show English</label>
-        </div>
-        <div className="md-grid">
-          {bag.map(phrase => {
-            const used = tried.includes(phrase) || (status !== 'asking' && phrase === q.phrase)
-            const isRight = status !== 'asking' && phrase === q.phrase
-            const ph = PHRASES_M1.find(p => p.answer === phrase)
-            return (
-              <div key={phrase} className={`md-pcard${used ? ' used' : ''}${isRight ? ' right' : ''}${drag?.phrase === phrase ? ' lifting' : ''}`}>
-                <button type="button" className="md-pcard__main"
-                  disabled={used || status !== 'asking'}
-                  onPointerDown={e => onDown(e, phrase)}
-                  onPointerMove={onMove}
-                  onPointerUp={onUp}
-                  onPointerCancel={() => { press.current = null; setDrag(null); setOver(false) }}
-                  onClick={e => { if (e.detail === 0) attempt(phrase) }}
-                >
-                  <Icon name={ph ? PHRASE_ICON[ph.id] ?? 'speak' : 'speak'} size={40} />
-                  <span className="md-pcard__text">
-                    <span className="md-pcard__es">{phrase}</span>
-                    {(showEn || used) && ph && <span className="md-pcard__en">{ph.translation}</span>}
-                  </span>
-                </button>
-                {ph && (
-                  <button type="button" className="md-pcard__play" aria-label={`Listen: ${phrase}`}
-                    onClick={() => { new Audio(`/courses/spanish-expats/audio/${ph.id}.mp3`).play().catch(() => {}) }}>▶</button>
-                )}
-              </div>
-            )
-          })}
-        </div>
-      </div>
+      <ChoiceGrid label="Your phrases" sub="Which one would you say? Tap ▶ to hear it." showEn={showEn} onToggleEn={setShowEn}>
+        {bag.map(phrase => {
+          const used = tried.includes(phrase) || (status !== 'asking' && phrase === q.phrase)
+          const isRight = status !== 'asking' && phrase === q.phrase
+          const ph = PHRASES_M1.find(p => p.answer === phrase)
+          const state = isRight ? 'right' : drag?.phrase === phrase ? 'lifting' : used ? 'used' : 'idle'
+          return (
+            <OptionCard key={phrase} drag
+              icon={<Icon name={ph ? PHRASE_ICON[ph.id] ?? 'speak' : 'speak'} size={40} />}
+              text={phrase} en={ph?.translation} showEn={showEn || used}
+              state={state} disabled={status !== 'asking'}
+              mainProps={{
+                onPointerDown: e => onDown(e, phrase),
+                onPointerMove: onMove,
+                onPointerUp: onUp,
+                onPointerCancel: () => { press.current = null; setDrag(null); setOver(false) },
+                onClick: e => { if (e.detail === 0) attempt(phrase) },
+              }}
+              onPlay={ph ? () => { new Audio(`/courses/spanish-expats/audio/${ph.id}.mp3`).play().catch(() => {}) } : undefined}
+            />
+          )
+        })}
+      </ChoiceGrid>
 
       {drag && createPortal(
-        <div className={`md-ghost${over ? ' over' : ''}`} style={{ left: drag.x, top: drag.y }}>
+        <div className={`ck-ghost${over ? ' is-over' : ''}`} style={{ left: drag.x, top: drag.y }}>
           {drag.phrase}
         </div>,
-        (root.current?.closest('.sexp') as HTMLElement | null) ?? document.body
+        (root.current?.closest('.course') as HTMLElement | null) ?? document.body
       )}
     </div>
   )
@@ -1524,76 +1487,25 @@ export default function SpanishExpatsPage() {
   const meta = STEPS[step]
   const accent = meta?.accent ?? ACCENT_DEFAULT
 
-  const cssVars = `.sexp { --accent: ${accent}; --accent-lt: ${accent}22; }`
+  const heroPhoto = photoSE(meta.photo)
 
   return (
-    <div className="sexp">
-      <style dangerouslySetInnerHTML={{ __html: cssVars }} />
+    <CourseShell
+      scope="sexp"
+      accent={accent} accentLt={`${accent}22`}
+      label="Spanish for Expats · Module 1"
+      links={[{ href: '/courses/spanish-expats/repaso', label: 'Repaso' }, { href: '/student', label: 'My area', brass: true }]}
+      steps={STEPS} step={step} onGo={goTo} canGo={i => i <= step + 1} isDone={i => i < step}
+      hero={{
+        src: heroPhoto.src, alt: heroPhoto.alt, focus: heroPhoto.focus,
+        credit: { author: heroPhoto.author, licence: heroPhoto.licence, page: heroPhoto.page },
+        tag: meta.tag, title: meta.title, aim: meta.aim,
+      }}
+      stripLeft={<><strong>Module 1</strong> — The First Month</>}
+      stripRight={<>{step} / {STEPS.length - 1} sections done</>}
+    >
+      <>
 
-      {/* Header */}
-      <header className="site-header">
-        <div className="site-header__top">
-          <Link href="/" className="corner-link" style={{ display: 'flex', alignItems: 'center', gap: '.5rem' }}>
-            <SomersetLogo variant="white" />
-          </Link>
-          <span className="unit-label">Spanish for Expats · Module 1</span>
-          <Link href="/courses/spanish-expats/repaso" className="corner-link">Repaso</Link>
-          <Link href="/student" className="corner-link">My area</Link>
-        </div>
-        <nav className="lesson-nav" aria-label="Module lessons">
-          {STEPS.map((s, i) => (
-            <button
-              key={s.nav}
-              className={`nav-btn${step === i ? ' active' : ''}${i < step ? ' done' : ''}`}
-              onClick={() => goTo(i)}
-              disabled={i > step + 1}
-            >
-              <span className={i < step ? 'nav-tick' : 'nav-num'}>{i < step ? '✓' : i + 1}</span>
-              {s.nav}
-            </button>
-          ))}
-        </nav>
-      </header>
-
-      {/* Progress strip */}
-      <div className="goals-strip">
-        <div className="goals-inner">
-          <div className="seg-bar">
-            {STEPS.map((_, i) => (
-              <div
-                key={i}
-                className={`seg${i < step ? ' seg--done' : ''}${i === step ? ' seg--now' : ''}`}
-              />
-            ))}
-          </div>
-          <div className="goals-row">
-            <span className="goal-text">
-              <strong>Module 1</strong> — The First Month
-            </span>
-            <span className="goal-text">{step} / {STEPS.length - 1} sections done</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Hero */}
-      <div className={`hero${step === 0 ? ' hero--cover' : ''}`}>
-        <img
-          className="hero-img"
-          src={photoSE(meta.photo).src}
-          alt={photoSE(meta.photo).alt}
-          style={{ objectPosition: photoSE(meta.photo).focus }}
-        />
-        <PhotoCreditSE k={meta.photo} />
-        <div className="hero-overlay">
-          <span className="hero-label">{meta.tag}</span>
-          <h1 className="hero-title">{meta.title}</h1>
-          <p className="hero-sub">{meta.aim}</p>
-        </div>
-      </div>
-
-      {/* Content */}
-      <main className="page-wrap">
-        <div className="lesson" key={step}>
 
           {/* Step 0: Welcome + level check */}
           {step === 0 && (
@@ -1801,8 +1713,7 @@ export default function SpanishExpatsPage() {
             />
           )}
 
-        </div>
-      </main>
-    </div>
+      </>
+    </CourseShell>
   )
 }
