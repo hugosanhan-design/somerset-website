@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import SomersetLogo from '@/components/SomersetLogo'
+import { CourseShell } from '../_kit'
 import RecallDeck, { type DeckResult } from './RecallDeck'
 import SpeakingStudio from './SpeakingStudio'
 import PersonalityDrag from './PersonalityDrag'
@@ -327,68 +327,29 @@ export default function B1Unit1Course() {
 
   const m = STEPS[step]
   const isCover = step === 0
-  const accentVars = { '--accent': m.accent, '--accent-lt': m.accentLt } as React.CSSProperties
+  const heroPhoto = photo(m.photo)
 
   return (
-    <div className="mag" style={accentVars}>
-
-      {/* ── Sticky header ── */}
-      <header className="site-header">
-        <div className="site-header__top">
-          <SomersetLogo variant="white" />
-          <span className="unit-label">B1 · Unit 1 · Online course</span>
-          <Link href="/courses/b1-unit-1/revise" className="revise-pill">⚡ Revise<span className="hide-sm"> in 5</span>{due > 0 && <span className="revise-due">{due}</span>}</Link>
-          <Link href="/student" className="corner-link" aria-label="Back to Student&apos;s Corner">←<span className="hide-sm"> Student&apos;s Corner</span></Link>
-        </div>
-        <nav className="lesson-nav" aria-label="Lessons">
-          {STEPS.map((s, i) => {
-            const reachable = i <= maxReachable
-            return (
-              <button key={s.nav} disabled={!reachable} onClick={() => reachable && setStep(i)}
-                className={`nav-btn${i === step ? ' active' : ''}${stepDone[i] ? ' done' : ''}`}
-                style={i === step ? { borderBottomColor: s.accent } : undefined}>
-                {stepDone[i] && i !== step ? <span className="nav-tick">✓</span> : <span className="nav-num">{i === 0 ? '◆' : i}</span>}
-                {s.nav}
-              </button>
-            )
-          })}
-        </nav>
-      </header>
-
-      {/* ── Hero ── */}
-      <section className={`hero${isCover ? ' hero--cover' : ''}`} key={`hero-${step}`}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={photo(m.photo).src} alt={photo(m.photo).alt} style={{ objectPosition: photo(m.photo).focus }} />
-        <PhotoCredit k={m.photo} />
-        <div className="hero-overlay">
-          <p className="hero-label" style={{ color: m.accent }}>Somerset B1 · {m.tag}</p>
-          <h1 className="hero-title">{m.title}</h1>
-          <p className="hero-sub">{m.aim}</p>
-          {m.device && m.device !== 'either' && <p className="hero-device">{m.device === 'phone' ? '📱 Great on your phone' : '💻 Best on a computer'}</p>}
-        </div>
-      </section>
-
-      {/* ── Progress strip ── */}
-      <div className="goals-strip">
-        <div className="goals-inner">
-          <div className="seg-bar" aria-label={`Step ${step + 1} of ${STEPS.length}`}>
-            {STEPS.map((s, i) => (
-              <span key={i} className={`seg${i < step || stepDone[i] ? ' seg--done' : ''}${i === step ? ' seg--now' : ''}`} style={i === step ? { background: s.accent } : undefined} />
-            ))}
-          </div>
-          <div className="goals-row">
-            <span className="goal-text">Step {step + 1} of {STEPS.length} · <strong>{m.nav}</strong></span>
-            {planDone && (
-              <span className="goal-text goal-text--right">
-                <PlantBadge stage={stage.index} percent={readiness} showPercent={stage.showPercent} /> Unit 1: {lessonsDone} of {unit1Lessons.length} lessons
-              </span>
-            )}
-          </div>
-        </div>
-      </div>
-
-      <main className="page-wrap">
-        <div className="lesson" key={`step-${step}`}>
+    <CourseShell
+      scope="mag"
+      accent={m.accent} accentLt={m.accentLt}
+      label="B1 · Unit 1 · Online course"
+      links={[
+        { href: '/courses/b1-unit-1/revise', label: <>Revise<span className="ck-hide-sm"> in 5</span></>, brass: true, badge: due },
+        { href: '/student', label: <>←<span className="ck-hide-sm"> Student&apos;s Corner</span></>, ariaLabel: "Back to Student's Corner" },
+      ]}
+      steps={STEPS} step={step} onGo={setStep} canGo={i => i <= maxReachable} isDone={i => stepDone[i]}
+      hero={{
+        src: heroPhoto.src, alt: heroPhoto.alt, focus: heroPhoto.focus,
+        credit: { author: heroPhoto.author, licence: heroPhoto.licence, page: heroPhoto.page },
+        tag: `Somerset B1 · ${m.tag}`, title: m.title, aim: m.aim,
+        note: m.device && m.device !== 'either' ? (m.device === 'phone' ? 'Great on your phone' : 'Best on a computer') : undefined,
+      }}
+      cover={isCover}
+      stripLeft={<>Step {step + 1} of {STEPS.length} · <strong>{m.nav}</strong></>}
+      stripRight={planDone ? <><PlantBadge stage={stage.index} percent={readiness} showPercent={stage.showPercent} /> Unit 1: {lessonsDone} of {unit1Lessons.length} lessons</> : undefined}
+      footer={<><span>Somerset Language Centre · Valencia</span><span>B1 · Unit 1 · Me &amp; My Day</span></>}
+    >
 
           {onPhone && m.device === 'computer' && !anyway[step] && (
             <section className="card device-note">
@@ -845,14 +806,7 @@ export default function B1Unit1Course() {
               <button onClick={() => setStep(s => s - 1)} className="btn btn--ghost">← Back</button>
             </div>
           )}
-        </div>
-      </main>
-
-      <footer className="mag-foot">
-        <span>Somerset Language Centre · Valencia</span>
-        <span>B1 · Unit 1 · Me &amp; My Day</span>
-      </footer>
-    </div>
+    </CourseShell>
   )
 }
 

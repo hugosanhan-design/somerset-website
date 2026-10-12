@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import SomersetLogo from '@/components/SomersetLogo'
+import { CourseShell, NavLink } from '../_kit'
 import Tour, { type TourStep } from './Tour'
 import ExerciseCardBase from './Exercise'
 import { useProgress } from '@/lib/courses/useProgress'
@@ -132,7 +132,6 @@ export default function MondayYoungAdultsPage() {
   const act = step > 0 && step <= ACTIVITIES.length ? ACTIVITIES[step - 1] : null
   const isResult = step === STEPS.length - 1
   const ph = photo(m.photo)
-  const vars = { '--accent': m.accent, '--accent-lt': m.accentLt } as React.CSSProperties
   const first = student?.name ? student.name.charAt(0).toUpperCase() + student.name.slice(1) : ''
 
   function go(i: number) {
@@ -141,59 +140,24 @@ export default function MondayYoungAdultsPage() {
   }
 
   return (
-    <div className="mag" style={vars}>
-      <header className="site-header">
-        <div className="site-header__top">
-          <SomersetLogo variant="white" />
-          <span className="unit-label">Monday Young Adults · Digital course</span>
-          <Link href="/student" className="corner-link" data-tour="corner" aria-label="Back to Student's Corner">←<span className="hide-sm"> Student&apos;s Corner</span></Link>
-        </div>
-        <nav className="lesson-nav" aria-label="Lessons" data-tour="tabs">
-          {STEPS.map((s, i) => (
-            <button key={s.nav} onClick={() => go(i)}
-              className={`nav-btn${i === step ? ' active' : ''}${i > 0 && done[i - 1] ? ' done' : ''}`}
-              style={i === step ? { borderBottomColor: s.accent } : undefined}>
-              {i > 0 && done[i - 1] && i !== step ? <span className="nav-tick">✓</span> : <span className="nav-num">{i === 0 ? '◆' : i}</span>}
-              {s.nav}
-            </button>
-          ))}
-          <Link href="/courses/monday-young-adults/revise" className="nav-btn nav-btn--revise" data-tour="revise">
-            Improve my mistakes{toImprove > 0 && <span className="nav-badge">{toImprove}</span>}
-          </Link>
-        </nav>
-      </header>
-
-      <section className={`hero${step === 0 ? ' hero--cover' : ''}`} key={`hero-${step}`}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={ph.src} alt={ph.alt} style={{ objectPosition: ph.focus }} />
-        <a className="photo-credit" href={ph.page} target="_blank" rel="noopener noreferrer">Photo: {ph.author} · {ph.licence}</a>
-        <div className="hero-overlay">
-          <p className="hero-label" style={{ color: m.accentLt }}>Somerset Young Adults · {m.tag}</p>
-          <h1 className="hero-title">{m.title}</h1>
-          <p className="hero-sub">{m.aim}</p>
-        </div>
-      </section>
-
-      <div className="goals-strip">
-        <div className="goals-inner">
-          <div className="seg-bar" aria-label={`Step ${step + 1} of ${STEPS.length}`}>
-            {STEPS.map((s, i) => (
-              <span key={i} className={`seg${i > 0 && done[i - 1] ? ' seg--done' : ''}${i === step ? ' seg--now' : ''}`}
-                style={i === step ? { background: s.accent } : undefined} />
-            ))}
-          </div>
-          <div className="goals-row">
-            <span className="goal-text">Step {step + 1} of {STEPS.length} · <strong>{m.nav}</strong></span>
-            <span className="goal-text goal-text--right">
-              {doneCount} of {ACTIVITIES.length} lessons done
-              {student ? ` · ${synced === 'saved' ? 'saved' : synced === 'saving' ? 'saving…' : synced === 'offline' ? 'saved on this device' : ''}` : ''}
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <main className="page-wrap">
-        <div className="lesson" key={`step-${step}`}>
+    <CourseShell
+      scope="mag"
+      accent={m.accent} accentLt={m.accentLt}
+      label="Monday Young Adults · Digital course"
+      links={[{ href: '/student', label: <>←<span className="ck-hide-sm"> Student&apos;s Corner</span></>, tour: 'corner', ariaLabel: "Back to Student's Corner" }]}
+      steps={STEPS} step={step} onGo={go} canGo={() => true} isDone={i => i > 0 && done[i - 1]}
+      navExtra={<NavLink href="/courses/monday-young-adults/revise" badge={toImprove} tour="revise">Improve my mistakes</NavLink>}
+      hero={{
+        src: ph.src, alt: ph.alt, focus: ph.focus,
+        credit: { author: ph.author, licence: ph.licence, page: ph.page },
+        tag: `Somerset Young Adults · ${m.tag}`, title: m.title, aim: m.aim,
+      }}
+      stripLeft={<>Step {step + 1} of {STEPS.length} · <strong>{m.nav}</strong></>}
+      stripRight={<>
+        {doneCount} of {ACTIVITIES.length} lessons done
+        {student ? ` · ${synced === 'saved' ? 'saved' : synced === 'saving' ? 'saving…' : synced === 'offline' ? 'saved on this device' : ''}` : ''}
+      </>}
+    >
           {step === 0 && (
             <>
               {!student && (
@@ -329,9 +293,7 @@ export default function MondayYoungAdultsPage() {
               </section>
             </>
           )}
-        </div>
-      </main>
       {tour && <Tour steps={TOUR} onGo={i => setStep(i)} onClose={() => { setTour(false); go(0) }} />}
-    </div>
+    </CourseShell>
   )
 }

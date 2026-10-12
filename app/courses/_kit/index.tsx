@@ -9,10 +9,11 @@ import './tokens.css'
 import './kit.css'
 
 // ───────── CourseShell: header · step nav · hero · progress strip ─────────
-export type ShellLink = { href: string; label: React.ReactNode; brass?: boolean; badge?: number }
+export type ShellLink = { href: string; label: React.ReactNode; brass?: boolean; badge?: number; tour?: string; ariaLabel?: string }
 export type ShellStep = { nav: string }
 export type ShellHero = {
-  src: string; alt: string; focus?: string
+  src?: string; alt?: string; focus?: string          // photo hero (the default)
+  background?: React.ReactNode; className?: string     // or a drawn hero (e.g. Sound Tech's wave)
   credit?: { author: string; licence: string; page: string }
   tag: string; title: React.ReactNode; aim: React.ReactNode; note?: React.ReactNode
 }
@@ -20,7 +21,7 @@ export type ShellHero = {
 export function CourseShell({
   scope, accent, accentLt, label, links = [], steps, step, onGo,
   canGo = i => i <= step + 1, isDone = i => i < step,
-  hero, cover = step === 0, stripLeft, stripRight, children,
+  headerExtra, navExtra, hero, heroKey, cover = step === 0, stripLeft, stripRight, footer, children,
 }: {
   scope: string                         // the course's own CSS scope class, e.g. 'sexp'
   accent?: string; accentLt?: string    // the ONE thing a course may change
@@ -28,8 +29,11 @@ export function CourseShell({
   links?: ShellLink[]
   steps: ShellStep[]; step: number; onGo: (i: number) => void
   canGo?: (i: number) => boolean; isDone?: (i: number) => boolean
-  hero: ShellHero; cover?: boolean
+  headerExtra?: React.ReactNode         // between the top bar and the step nav (e.g. week switch)
+  navExtra?: React.ReactNode            // appended to the step nav (e.g. "Improve my mistakes")
+  hero: ShellHero; heroKey?: string; cover?: boolean
   stripLeft: React.ReactNode; stripRight?: React.ReactNode
+  footer?: React.ReactNode
   children: React.ReactNode
 }) {
   const vars = { ['--accent' as string]: accent, ['--accent-lt' as string]: accentLt } as React.CSSProperties
@@ -42,28 +46,33 @@ export function CourseShell({
           </Link>
           <span className="ck-header__label">{label}</span>
           {links.map((l, i) => (
-            <Link key={i} href={l.href} className={`ck-header__link${l.brass ? ' ck-header__link--brass' : ''}`}>
+            <Link key={i} href={l.href} data-tour={l.tour} aria-label={l.ariaLabel} className={`ck-header__link${l.brass ? ' ck-header__link--brass' : ''}`}>
               {l.label}{l.badge ? <span className="ck-header__badge">{l.badge}</span> : null}
             </Link>
           ))}
         </div>
-        <nav className="ck-nav" aria-label="Lessons">
+        {headerExtra}
+        <nav className="ck-nav" aria-label="Lessons" data-tour="tabs">
           {steps.map((s, i) => {
             const done = isDone(i) && i !== step
             return (
-              <button key={s.nav} type="button" disabled={!canGo(i)} onClick={() => canGo(i) && onGo(i)}
+              <button key={`${s.nav}${i}`} type="button" disabled={!canGo(i)} onClick={() => canGo(i) && onGo(i)}
                 className={`ck-nav__btn${i === step ? ' is-active' : ''}${done ? ' is-done' : ''}`}>
                 {done ? <span className="ck-nav__tick">✓</span> : <span className="ck-nav__num">{i + 1}</span>}
                 {s.nav}
               </button>
             )
           })}
+          {navExtra}
         </nav>
       </header>
 
-      <section className={`ck-hero${cover ? ' ck-hero--cover' : ''}`} key={`hero-${step}`}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className="ck-hero__img" src={hero.src} alt={hero.alt} style={hero.focus ? { objectPosition: hero.focus } : undefined} />
+      <section className={`ck-hero${cover ? ' ck-hero--cover' : ''}${hero.className ? ` ${hero.className}` : ''}`} key={heroKey ?? `hero-${step}`}>
+        {hero.background}
+        {hero.src && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img className="ck-hero__img" src={hero.src} alt={hero.alt ?? ''} style={hero.focus ? { objectPosition: hero.focus } : undefined} />
+        )}
         {hero.credit && (
           <a className="ck-credit" href={hero.credit.page} target="_blank" rel="noopener noreferrer">
             Photo: {hero.credit.author} · {hero.credit.licence}
@@ -92,9 +101,19 @@ export function CourseShell({
       </div>
 
       <main className="ck-wrap">
-        <div className="ck-step" key={`step-${step}`}>{children}</div>
+        <div className="ck-step" key={heroKey ? `step-${heroKey}` : `step-${step}`}>{children}</div>
       </main>
+      {footer && <footer className="ck-foot">{footer}</footer>}
     </div>
+  )
+}
+
+// A nav-row link that sits after the step buttons (e.g. "Improve my mistakes" with a count).
+export function NavLink({ href, badge, tour, children }: { href: string; badge?: number; tour?: string; children: React.ReactNode }) {
+  return (
+    <Link href={href} className="ck-nav__link" data-tour={tour}>
+      {children}{badge ? <span className="ck-nav__badge">{badge}</span> : null}
+    </Link>
   )
 }
 

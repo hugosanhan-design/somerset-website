@@ -113,7 +113,7 @@ body.tour-open{padding-bottom:70vh}
 .nav-badge{display:inline-flex;align-items:center;justify-content:center;min-width:1.3rem;height:1.3rem;padding:0 .35rem;border-radius:99px;background:#E1614C;color:#fff;font-size:.72rem}
 
 /* English for Sound Technicians: wave hero (no photo), week switch, reading text */
-.mag .hero--wave{background:linear-gradient(135deg,#14171b 0%,#222a31 58%,color-mix(in srgb,var(--accent) 38%,#14171b) 130%)}
+.mag .ck-hero--wave{background:linear-gradient(135deg,#14171b 0%,#222a31 58%,color-mix(in srgb,var(--accent) 38%,#14171b) 130%)}
 .mag .wave{position:absolute;inset:0;display:flex;align-items:center;gap:5px;padding:0 1.6rem;opacity:.3}
 .mag .wave span{flex:1;min-width:2px;background:var(--accent);border-radius:3px}
 .mag .week-switch{display:flex;gap:.5rem;padding:.55rem 1.2rem 0;max-width:1180px;margin:0 auto;overflow-x:auto}

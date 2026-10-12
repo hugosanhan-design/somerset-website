@@ -1,7 +1,7 @@
 /* Shared styles for the B1 Unit 1 online course (lesson page + Revise in 5). Scoped under .mag */
-.mag{--green:#6BAE2E;--green-dk:#4d8520;--green-lt:#eaf4da;--amber:#E8A33D;--coral:#E1614C;--ink:#1A1A1A;--ink-lt:#f5f5f3;--white:#fff;
-  --serif:Georgia,'Times New Roman',serif;--sans:system-ui,-apple-system,Arial,sans-serif;--radius:10px;
-  font-family:var(--sans);color:var(--ink);background:#f9f8f5;min-height:100vh;line-height:1.6;font-size:16px}
+/* .mag is now only a scope. Colour, type, paper and radius come from the course kit
+   (app/courses/_kit/tokens.css); the shell is CourseShell. Old shell rules below are dead. */
+.mag{}
 .mag *{box-sizing:border-box}
 .mag p{margin:0 0 .8rem}.mag p:last-child{margin-bottom:0}
 .mag h1,.mag h2,.mag h3{margin:0}
@@ -778,7 +778,7 @@
 .mag .ex-win{background:#f3faeb;border-color:#8fc85a;animation:exWin .55s cubic-bezier(.22,1,.36,1)}
 .mag .ex-redo{background:#f7fbf1;border-color:#cfe6b4}
 .mag .ex-revise{display:inline-block;margin-left:.6rem;font:600 .75rem var(--sans);color:#8a6d1d;background:#fff4d6;border-radius:20px;padding:.1rem .6rem}
-.mag .ex-burst{flex:none;width:2rem;height:2rem;border-radius:50%;background:#6BAE2E;color:#fff;display:inline-grid;place-items:center;font-weight:800;font-size:1.1rem;animation:exPop .6s cubic-bezier(.34,1.56,.64,1)}
+.mag .ex-burst{flex:none;width:2rem;height:2rem;border-radius:50%;background:var(--green);color:#fff;display:inline-grid;place-items:center;font-weight:800;font-size:1.1rem;animation:exPop .6s cubic-bezier(.34,1.56,.64,1)}
 .mag .ex-cheer{font:700 .95rem var(--sans);color:#2f7d12;animation:exPop .6s .1s both}
 @keyframes exWin{0%{transform:scale(.98);box-shadow:0 0 0 0 rgba(107,174,46,.5)}60%{box-shadow:0 0 0 12px rgba(107,174,46,0)}100%{transform:none}}
 @keyframes exPop{0%{transform:scale(0)}100%{transform:scale(1)}}

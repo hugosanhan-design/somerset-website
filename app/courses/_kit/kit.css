@@ -21,6 +21,10 @@
 .ck-nav__num,.ck-nav__tick{display:inline-grid;place-items:center;width:17px;height:17px;border-radius:50%;font-size:.6rem;background:rgba(245,241,230,.14)}
 .ck-nav__tick{background:var(--brass);color:var(--ink)}
 .ck-nav__btn.is-active .ck-nav__num{background:var(--accent);color:#fff}
+.ck-nav__link{margin-left:auto;display:inline-flex;align-items:center;gap:.4rem;padding:.65rem .9rem;font:600 .76rem/1 var(--sans);color:var(--brass);text-decoration:none;white-space:nowrap;border-bottom:3px solid transparent}
+.ck-nav__link:hover{color:var(--paper)}
+.ck-nav__badge{display:inline-grid;place-items:center;min-width:1.1rem;height:1.1rem;padding:0 .3rem;border-radius:var(--pill);background:var(--brass);color:var(--ink);font-size:.64rem;font-weight:800}
+.ck-foot{max-width:1100px;margin:0 auto;padding:1.2rem 1.5rem 2.4rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:.4rem 1rem;font-size:.76rem;color:var(--muted);border-top:1px solid var(--line)}
 
 /* ───────── shell: hero ───────── */
 .ck-hero{position:relative;height:220px;overflow:hidden;background:var(--racing);animation:ckFade .6s ease both}
