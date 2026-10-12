@@ -134,7 +134,7 @@ function FreeCard({ act, task, progress, update }: {
 }
 
 function Wave({ seed }: { seed: number }) {
-  const bars = Array.from({ length: 84 }, (_, i) => 14 + Math.abs(Math.sin((i + seed) * 0.52) * Math.cos((i + seed) * 0.19)) * 78)
+  const bars = Array.from({ length: 84 }, (_, i) => Math.round((14 + Math.abs(Math.sin((i + seed) * 0.52) * Math.cos((i + seed) * 0.19)) * 78) * 100) / 100)
   return <div className="wave" aria-hidden>{bars.map((h, i) => <span key={i} style={{ height: `${h}%` }} />)}</div>
 }
 
