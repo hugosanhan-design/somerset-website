@@ -350,3 +350,35 @@ export const QUANT_QS: PlainChoice[] = [
   ch('qt:10', 'You only need to add ___ salt.', ['a bit of', 'a few', 'several'], 0, 'a bit of / a great deal of with uncountable nouns.'),
   ch('qt:11', 'There are ___ reasons to visit the Albufera.', ['plenty of', 'much', 'a little'], 0, 'plenty of / lots of / a lot of go with both.'),
 ]
+
+// ─── Reading Part 4 (gapped text), approved by Hugo 14 Oct 2026 ─────────────────────────────
+// B1 Preliminary Reading Part 4: one text, five sentences removed, eight options, three distractors.
+// Our own text (the syllabus of New Close-up B1 Unit 1: jobs, personality, present tenses).
+export const READING_PART4 = {
+  title: 'A new job at the Ciutat',
+  paragraphs: [
+    "Last month I saw an advert on the Ciutat de les Arts i les Ciències website: *Guides wanted for the Science Museum. Part-time, weekends. Candidates must speak Spanish and English.* I love science and I'm quite sociable, so I decided to apply. {1}",
+    'The interview was on a Tuesday morning. I’m usually very confident, but that day I was nervous. There were three candidates: me, a hairdresser from Ruzafa called Marina, and a man called Bruno who was carrying a large camera. “I’m filming the planetarium this week for another project,” he explained. {2}',
+    'The interviewer asked us about our jobs. Marina said she cuts hair every day but wants a change, because she talks to people all day and knows a lot about science. Bruno said he is a camera operator on Fridays and is quite shy at first, but reliable: he never misses a shift. {3} I said that I’m studying biology at the moment and that I demonstrate the space suits at the astronaut exhibit on Saturdays, so I already know the museum well.',
+    'Then she asked a difficult question: “What kind of person are you?” {4} In the end I said “patient”, because I spend hours explaining things to my little brother, and he never listens the first time.',
+    'At the end, the interviewer said, “Thank you all. I’m making my decision by Friday.” {5} On Friday afternoon my phone rang. It was the museum. I start next Saturday.',
+  ],
+  options: [
+    { id: 'A', text: "I thought about it for a long time, because I didn't want to say something that wasn't true." },
+    { id: 'B', text: 'Everyone laughed, and the interviewer told him to put it on the floor.' },
+    { id: 'C', text: 'The museum is open every day of the year except Christmas.' },
+    { id: 'D', text: 'I filled in the online form that evening and sent my CV.' },
+    { id: 'E', text: 'I went home and tried not to think about it, but I checked my phone constantly.' },
+    { id: 'F', text: 'He also said he enjoys working alone, which I thought was a strange thing to say for a guide.' },
+    { id: 'G', text: 'My brother is three years older than me and works in a bank.' },
+    { id: 'H', text: "The hairdresser's in Ruzafa closes at eight o'clock on Saturdays." },
+  ],
+  answers: ['D', 'B', 'F', 'A', 'E'],
+  why: [
+    'Sequence: "I decided to apply" is followed by "that evening" I filled in the form.',
+    '"him" and "it" point back to Bruno and his camera.',
+    '"He also said" continues Bruno’s answer; the next sentence starts a new speaker, "I said".',
+    '"A difficult question" is followed by "I thought about it"; "In the end I said" comes next.',
+    'Time link: "by Friday" then "I checked my phone constantly" then "On Friday afternoon my phone rang".',
+  ],
+}

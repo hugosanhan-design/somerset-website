@@ -790,3 +790,15 @@
 @keyframes typeWin{0%{transform:scale(.9)}35%{transform:scale(1.4)}100%{transform:scale(1)}}
 @keyframes typeWinCell{0%{transform:scale(1)}40%{transform:scale(1.18)}100%{transform:scale(1)}}
 @media (prefers-reduced-motion:reduce){.deck-word--win,.xw-ok,.studio-gap--win{animation:none}}
+
+/* Reading Part 4 gapped text (14 Oct 2026) */
+.gt .script{max-height:none;overflow:visible;font-size:1.15rem}
+.gt-gap{display:inline-grid;place-items:center;min-width:2.2em;height:1.7em;margin:0 .15em;padding:0 .5em;border:2px dashed var(--accent);border-radius:8px;background:var(--accent-lt);color:var(--accent);font:700 1rem var(--sans);cursor:pointer;vertical-align:baseline}
+.gt-gap.is-sel{border-style:solid;background:#fff;box-shadow:0 0 0 3px var(--accent-lt)}
+.gt-gap.is-bad{border-color:var(--cider);background:var(--cider-lt);color:var(--cider);animation:ckShake .3s ease}
+.gt-filled{display:inline;background:var(--green-lt);border-bottom:3px solid var(--green);border-radius:4px;padding:.05em .3em;color:var(--green-dk)}
+.gt-filled b{font:700 .8rem var(--sans);margin-right:.2em;color:var(--green-dk)}
+.gt-letter{display:inline-grid;place-items:center;width:2rem;height:2rem;border-radius:50%;border:2px solid var(--line);font:700 .95rem var(--sans);color:var(--ink);flex:none}
+.gt-side .ck-opt__es{font-size:1rem;line-height:1.35}
+@media(max-width:740px){.gt{display:block}.gt-side{margin-top:1.2rem}}
+.script-details{margin:0 0 1.2rem}.script-details summary{cursor:pointer;font:600 1rem var(--sans);color:var(--accent);padding:.3rem 0}

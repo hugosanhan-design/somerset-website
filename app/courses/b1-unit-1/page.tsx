@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { CourseShell, Deck, type DeckItem } from '../_kit'
+import GappedText from './GappedText'
 import { SomersetIcon } from '@/components/SomersetIcon'
 import RecallDeck, { type DeckResult } from './RecallDeck'
 import SpeakingStudio from './SpeakingStudio'
@@ -18,7 +19,7 @@ import GamesSection from './GamesSection'
 import { recordAnswer, markActive, dueCount, type Progress } from '@/lib/courses/progress'
 import {
   COURSE_ID, JOB_QS, PERS_QS, VIDEOS, GRAMMAR_QS, STATIVE_QS, WORD_ITEMS, ALL_ITEMS,
-  TENSE_USE_QS, FREQ_QS, SPELL_QS, STATIVE2_QS, HAVEGOT_QS, PERS2_QS, EMPLOY_QS, LIFE_QS, COUNT_QS, PLURAL_QS, QUANT_QS, type PlainDeckItem,
+  READING_PART4, TENSE_USE_QS, FREQ_QS, SPELL_QS, STATIVE2_QS, HAVEGOT_QS, PERS2_QS, EMPLOY_QS, LIFE_QS, COUNT_QS, PLURAL_QS, QUANT_QS, type PlainDeckItem,
   stativeSentence, stativeCorrection,
 } from '@/lib/courses/b1u1'
 
@@ -81,7 +82,7 @@ const STEPS: StepMeta[] = [
   { nav: 'Jobs', tag: 'Lesson A', title: 'Jobs', aim: 'Twelve jobs, twelve clues. Read each one and type the job from memory.', accent: '#3E8FB0', accentLt: '#e8f4f9', photo: 'fruit-stall', device: 'phone', why: 'Short cards, one at a time.', key: 'jobs' },
   { nav: 'Personality', tag: 'Lesson B', title: 'What kind of person are you?', aim: 'Twelve adjectives of personality, in sentences from everyday Valencia.', accent: '#E8A33D', accentLt: '#fef5e4', photo: 'fruit-stall', device: 'either', why: '', key: 'personality' },
   { nav: 'Grammar 1', tag: 'Lesson C', title: 'Usually… but this week', aim: 'Present simple and present continuous: every use, the spelling, the adverbs, and the stative verbs that change meaning.', accent: '#E1614C', accentLt: '#fdf0ed', photo: 'hemisferic', device: 'either', why: '', key: 'grammar' },
-  { nav: 'Reading', tag: 'Lesson D', title: 'The interview at the Ciutat', aim: 'Three candidates, one job. Read the dialogue and answer four questions.', accent: '#4d8520', accentLt: '#eaf4da', photo: 'hemisferic', device: 'computer', why: 'The text and the questions sit side by side on a wide screen.', key: 'reading' },
+  { nav: 'Reading', tag: 'Lesson D', title: 'A new job at the Ciutat', aim: 'Five sentences are missing from the text. Put them back in the right gaps, like Reading Part 4 of the exam.', accent: '#4d8520', accentLt: '#eaf4da', photo: 'hemisferic', device: 'computer', why: 'The text and the questions sit side by side on a wide screen.', key: 'reading' },
   { nav: 'Vocabulary', tag: 'Lesson E', title: 'Work and life events', aim: 'Employment words, and the phrasal verbs for the big moments: grow up, go out with, split up, get married.', accent: '#C9A24B', accentLt: '#f6eedb', photo: 'fruit-stall', device: 'phone', why: 'Short cards, one at a time.', key: 'vocab2' },
   { nav: 'Grammar 2', tag: 'Lesson F', title: 'How much? How many?', aim: 'Countable and uncountable nouns, irregular plurals, and the quantifiers that go with each.', accent: '#8C5E9C', accentLt: '#f1e9f4', photo: 'hemisferic', device: 'either', why: '', key: 'grammar2' },
   { nav: 'Listening', tag: 'Lesson G', title: 'Who is speaking?', aim: 'Three people talk about their jobs, then six short conversations. Each recording plays twice, like the exam.', accent: '#6A4C93', accentLt: '#efeaf6', photo: 'hemisferic', device: 'phone', why: 'Put your headphones on.', key: 'listening' },
@@ -357,7 +358,7 @@ export default function B1Unit1Course() {
   const vocab2Deck = plain([...EMPLOY_QS, ...LIFE_QS])
   const countDeck = plain([...COUNT_QS, ...PLURAL_QS])
   const quantDeck = plain(QUANT_QS)
-  const readingDeck: DeckItem[] = READING_QS.map((r, i) => ({
+  const interviewDeck: DeckItem[] = READING_QS.map((r, i) => ({
     id: `r:${i}`, kind: 'choice' as const, q: r.q, options: r.options, answer: Math.max(0, r.options.indexOf(r.a)),
   }))
   const l1Deck: DeckItem[] = L1_ANS.map((ans, i) => ({
@@ -598,24 +599,18 @@ export default function B1Unit1Course() {
             </>
           )}
 
-          {/* ── Step 4: Reading ── */}
+          {/* ── Step 4: Reading (Part 4, gapped text; approved by Hugo 14 Oct 2026) ── */}
           {step === 4 && (
             <section className="card">
-              <LessonHead tag="D · Reading" title="The interview at the Ciutat" aim="Read the dialogue, then answer the four questions." />
-              <div className="two-col-60">
-                <article className="script">
-                  {DIALOGUE.map((d, i) => (
-                    <p key={i} className={d.who === 'Narrator' ? 'script-narr' : 'script-line'}>
-                      {d.who !== 'Narrator' && <span className="who">{d.who}</span>}
-                      {d.line}
-                    </p>
-                  ))}
-                </article>
-                <div>
-                  <Deck items={readingDeck} onAnswer={deckAnswer('reading')} onDone={deckDone('reading')} endTitle="Reading done" />
-                  {readingScore !== null && <Row><ScoreBadge score={readingScore} /><Btn onClick={() => setStep(5)}>Next: Vocabulary →</Btn></Row>}
-                </div>
+              <LessonHead tag="D · Reading" title={READING_PART4.title} aim="Five sentences have been removed from the text. Choose from the sentences A to H the one which fits each gap. You do not need three of the sentences." />
+              <div className="tip-box">
+                <strong>Exam tip: Reading Part 4</strong>
+                <p>Read the whole text first. For each gap, look at the sentence before and after it. Pronouns (<em>he, it, them</em>), time words (<em>that evening, by Friday</em>) and the speaker tell you which sentence fits. Cross out the sentences as you use them.</p>
               </div>
+              <GappedText paragraphs={READING_PART4.paragraphs} options={READING_PART4.options} answers={READING_PART4.answers} why={READING_PART4.why}
+                onAttempt={(g, ok, first) => { if (first && saved('reading') === null) update(p => recordAnswer(p, `r4:${g}`, ok)) }}
+                onDone={deckDone('reading')} />
+              {readingScore !== null && <Row><ScoreBadge score={readingScore} /><Btn onClick={() => setStep(5)}>Next: Vocabulary →</Btn></Row>}
             </section>
           )}
 
@@ -685,6 +680,23 @@ export default function B1Unit1Course() {
                 <Deck items={l2Deck} onAnswer={deckAnswer('listening')} endTitle="Listening done"
                   onDone={(f, t) => deckDone('listening')(f + (l1Result?.firsts ?? 0), t + (l1Result?.total ?? L1_ANS.length))} />
                 {listeningScore !== null && <Row><ScoreBadge score={listeningScore} /><Btn onClick={() => setStep(8)}>Next: Speaking →</Btn></Row>}
+              </section>
+
+              <section className="card">
+                <LessonHead tag="Listening · extra" title="The interview at the Ciutat" aim="Three candidates, one job. Listen to the interview, then answer four questions." />
+                <MaybeAudio src="/courses/b1-unit-1/audio/interview.mp3" />
+                <details className="script-details">
+                  <summary>Show the script</summary>
+                  <article className="script">
+                    {DIALOGUE.map((d, i) => (
+                      <p key={i} className={d.who === 'Narrator' ? 'script-narr' : 'script-line'}>
+                        {d.who !== 'Narrator' && <span className="who">{d.who}</span>}
+                        {d.line}
+                      </p>
+                    ))}
+                  </article>
+                </details>
+                <Deck items={interviewDeck} onAnswer={deckAnswer('interview')} onDone={deckDone('interview')} endTitle="Interview done" />
               </section>
             </>
           )}
@@ -843,6 +855,14 @@ export default function B1Unit1Course() {
 }
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
+
+// Shows an <audio> player only when the recording exists; otherwise says it is coming.
+function MaybeAudio({ src }: { src: string }) {
+  const [ok, setOk] = useState<boolean | null>(null)
+  useEffect(() => { fetch(src, { method: 'HEAD' }).then(r => setOk(r.ok)).catch(() => setOk(false)) }, [src])
+  if (ok) return <div className="audio-block"><audio controls preload="none" src={src} /></div>
+  return <p className="tip-box" style={{ margin: '0 0 1rem' }}><strong>Audio coming.</strong> Until the recording is ready, open the script below and read it aloud with a friend.</p>
+}
 
 function rowState(checked: boolean, given: string, answer: string) {
   if (!checked) return ''
