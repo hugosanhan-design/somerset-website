@@ -17,7 +17,8 @@
           "had drunk"
         ],
         "answer": 0,
-        "why": "A longer action in progress (was drinking) is interrupted by a shorter one (rolled)."
+        "why": "A longer action in progress (was drinking) is interrupted by a shorter one (rolled).",
+        "explain": "past-continuous"
       },
       {
         "id": "st-b2-02",
@@ -28,7 +29,8 @@
           "already escaped"
         ],
         "answer": 0,
-        "why": "“By the time” points back to something that happened earlier: past perfect."
+        "why": "“By the time” points back to something that happened earlier: past perfect.",
+        "explain": "past-perfect"
       },
       {
         "id": "st-b2-03",
@@ -39,7 +41,8 @@
           "grows"
         ],
         "answer": 0,
-        "why": "The mould grew while he was away, before he found it: past perfect for the earlier event."
+        "why": "The mould grew while he was away, before he found it: past perfect for the earlier event.",
+        "explain": "past-perfect"
       },
       {
         "id": "st-b2-04",
@@ -50,7 +53,8 @@
           "studied"
         ],
         "answer": 0,
-        "why": "“While” + past continuous sets the background action."
+        "why": "“While” + past continuous sets the background action.",
+        "explain": "past-continuous"
       },
       {
         "id": "st-b2-05",
@@ -61,7 +65,8 @@
           "had saddled"
         ],
         "answer": 0,
-        "why": "A chain of finished actions told in order: past simple for each one."
+        "why": "A chain of finished actions told in order: past simple for each one.",
+        "explain": "past-simple"
       },
       {
         "id": "st-b2-06",
@@ -72,7 +77,8 @@
           "has snowed"
         ],
         "answer": 0,
-        "why": "The snow fell before they woke up, so it goes one step further back: past perfect."
+        "why": "The snow fell before they woke up, so it goes one step further back: past perfect.",
+        "explain": "past-perfect"
       },
       {
         "id": "st-b2-07",
@@ -83,7 +89,8 @@
           "has infected"
         ],
         "answer": 0,
-        "why": "A single finished event at a stated past date: past simple. The present perfect cannot go with “in 1796”."
+        "why": "A single finished event at a stated past date: past simple. The present perfect cannot go with “in 1796”.",
+        "explain": "past-simple"
       },
       {
         "id": "st-b2-08",
@@ -94,7 +101,8 @@
           "worked"
         ],
         "answer": 0,
-        "why": "Duration up to a moment in the past (“for hours … when”): past perfect continuous."
+        "why": "Duration up to a moment in the past (“for hours … when”): past perfect continuous.",
+        "explain": "past-perfect-continuous"
       },
       {
         "id": "st-b2-09",
@@ -105,7 +113,8 @@
           "crossed"
         ],
         "answer": 0,
-        "why": "The train was in the middle of crossing when the men jumped: past continuous for the background."
+        "why": "The train was in the middle of crossing when the men jumped: past continuous for the background.",
+        "explain": "past-continuous"
       },
       {
         "id": "st-b2-10",
@@ -116,7 +125,8 @@
           "heard"
         ],
         "answer": 0,
-        "why": "“Before 1928” looks back from a point in the past: past perfect."
+        "why": "“Before 1928” looks back from a point in the past: past perfect.",
+        "explain": "past-perfect"
       },
       {
         "id": "st-b2-11",
@@ -127,7 +137,8 @@
           "rode"
         ],
         "answer": 0,
-        "why": "A long activity that explains a past result (exhausted): past perfect continuous."
+        "why": "A long activity that explains a past result (exhausted): past perfect continuous.",
+        "explain": "past-perfect-continuous"
       },
       {
         "id": "st-b2-12",
@@ -138,7 +149,8 @@
           "has developed"
         ],
         "answer": 0,
-        "why": "A finished achievement at a stated past date: past simple."
+        "why": "A finished achievement at a stated past date: past simple.",
+        "explain": "past-simple"
       },
       {
         "id": "st-b2-13",
@@ -149,7 +161,8 @@
           "has left"
         ],
         "answer": 0,
-        "why": "Leaving the purse happened before the moment she tried to pay: past perfect, not the present perfect."
+        "why": "Leaving the purse happened before the moment she tried to pay: past perfect, not the present perfect.",
+        "explain": "past-perfect"
       },
       {
         "id": "st-b2-14",
@@ -160,7 +173,8 @@
           "moved on"
         ],
         "answer": 0,
-        "why": "“A month earlier”, seen from a past moment, needs the past perfect."
+        "why": "“A month earlier”, seen from a past moment, needs the past perfect.",
+        "explain": "past-perfect"
       }
     ],
     "B1": [
@@ -173,7 +187,8 @@
           "had cooked"
         ],
         "answer": 0,
-        "why": "An action in progress (was cooking) interrupted by a short one (rang)."
+        "why": "An action in progress (was cooking) interrupted by a short one (rang).",
+        "explain": "past-continuous"
       },
       {
         "id": "st-b1-02",
@@ -184,7 +199,8 @@
           "had gone"
         ],
         "answer": 0,
-        "why": "Finished actions in order, yesterday: past simple."
+        "why": "Finished actions in order, yesterday: past simple.",
+        "explain": "past-simple"
       },
       {
         "id": "st-b1-03",
@@ -195,7 +211,8 @@
           "already went"
         ],
         "answer": 0,
-        "why": "Ana left before I arrived: past perfect for the earlier action."
+        "why": "Ana left before I arrived: past perfect for the earlier action.",
+        "explain": "past-perfect"
       },
       {
         "id": "st-b1-04",
@@ -206,7 +223,8 @@
           "had rained"
         ],
         "answer": 0,
-        "why": "The rain was the background at that moment: past continuous."
+        "why": "The rain was the background at that moment: past continuous.",
+        "explain": "past-continuous"
       },
       {
         "id": "st-b1-05",
@@ -217,7 +235,8 @@
           "had cooked"
         ],
         "answer": 0,
-        "why": "“While” + past continuous for the longer background action."
+        "why": "“While” + past continuous for the longer background action.",
+        "explain": "past-continuous"
       },
       {
         "id": "st-b1-06",
@@ -228,7 +247,8 @@
           "had"
         ],
         "answer": 0,
-        "why": "A question about an action in progress at a past time: was/were + -ing."
+        "why": "A question about an action in progress at a past time: was/were + -ing.",
+        "explain": "past-continuous"
       },
       {
         "id": "st-b1-07",
@@ -239,7 +259,8 @@
           "grows"
         ],
         "answer": 0,
-        "why": "The beard grew before that meeting, and the meeting is already in the past: past perfect, had grown."
+        "why": "The beard grew before that meeting, and the meeting is already in the past: past perfect, had grown.",
+        "explain": "past-perfect"
       },
       {
         "id": "st-b1-08",
@@ -250,7 +271,8 @@
           "had broken"
         ],
         "answer": 0,
-        "why": "The short, sudden event that interrupts the longer one: past simple."
+        "why": "The short, sudden event that interrupts the longer one: past simple.",
+        "explain": "past-simple"
       },
       {
         "id": "st-b1-09",
@@ -261,7 +283,8 @@
           "saw"
         ],
         "answer": 0,
-        "why": "Seeing the film happened before choosing: past perfect."
+        "why": "Seeing the film happened before choosing: past perfect.",
+        "explain": "past-perfect"
       },
       {
         "id": "st-b1-10",
@@ -272,7 +295,8 @@
           "had shone"
         ],
         "answer": 0,
-        "why": "Background description during the walk: past continuous."
+        "why": "Background description during the walk: past continuous.",
+        "explain": "past-continuous"
       },
       {
         "id": "st-b1-11",
@@ -283,7 +307,8 @@
           "had arrived"
         ],
         "answer": 0,
-        "why": "A single finished event at a stated date: past simple."
+        "why": "A single finished event at a stated date: past simple.",
+        "explain": "past-simple"
       },
       {
         "id": "st-b1-12",
@@ -294,7 +319,8 @@
           "had given"
         ],
         "answer": 0,
-        "why": "Two finished actions in order: past simple, then past simple."
+        "why": "Two finished actions in order: past simple, then past simple.",
+        "explain": "past-simple"
       }
     ]
   }

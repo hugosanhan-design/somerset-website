@@ -15,7 +15,7 @@ export const LEVELS: Level[] = ['A2', 'B1', 'B2', 'C1']
 //          question, its partner plus 3 partners from other pairs are the options.
 export type Engine = 'choice' | 'pairs'
 
-export type ChoiceItem = { id: string; q: string; options: string[]; answer: number; why?: string }
+export type ChoiceItem = { id: string; q: string; options: string[]; answer: number; why?: string; explain?: string }
 export type PairItem = { id: string; left: string; right: string; why?: string }
 
 export type GameDef = {
@@ -25,6 +25,7 @@ export type GameDef = {
   engine: Engine
   intro: string
   source?: string                       // website file it was imported from, if any
+  explain?: string                      // default Explícamelo card (data/explainers.json) for items without their own
   draft?: boolean                       // a level has fewer than 10 items: kept out of the registry
   items: Partial<Record<Level, (ChoiceItem | PairItem)[]>>
 }

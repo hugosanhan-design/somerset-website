@@ -9,6 +9,7 @@ import type { ChoiceItem, GameDef, Level } from '@/lib/games/contract'
 import { buildSession, pickLevel } from '@/lib/games/session'
 import { readStudent, reportResult, type Student } from '@/lib/games/report'
 import { ChoiceEngine, type Outcome } from './engines/Choice'
+import { ExplainButton } from './Explain'
 import './games.css'
 
 type Phase = 'intro' | 'play' | 'end' | 'again'
@@ -75,14 +76,14 @@ export default function GamePlayer({ game, level: wanted }: { game: GameDef; lev
           <>
             <p className="gm-kicker gm-kicker--play">{game.title}</p>
             {game.engine === 'pairs' && <p className="gm-ask">Which one goes with it?</p>}
-            <ChoiceEngine key={`play-${round}`} items={items} onFinish={finish} />
+            <ChoiceEngine key={`play-${round}`} items={items} onFinish={finish} explain={game.explain} />
           </>
         )}
 
         {phase === 'again' && (
           <>
             <p className="gm-kicker gm-kicker--play">One more look</p>
-            <ChoiceEngine key={`again-${round}`} items={missed} onFinish={() => { setPractised(true); setPhase('end') }} />
+            <ChoiceEngine key={`again-${round}`} items={missed} onFinish={() => { setPractised(true); setPhase('end') }} explain={game.explain} />
           </>
         )}
 
@@ -104,6 +105,7 @@ export default function GamePlayer({ game, level: wanted }: { game: GameDef; lev
                   <li key={m.id}>
                     <p className="gm-review__q">{m.q.replace(/_{3,}/, `${m.options[m.answer]}`)}</p>
                     {m.why && <p className="gm-review__why">{m.why}</p>}
+                    <ExplainButton ids={[m.explain ?? game.explain]} variant="link" label="Explícamelo →" />
                   </li>
                 ))}
               </ul>

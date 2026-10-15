@@ -9,6 +9,7 @@ const dir = path.join(root, 'data/games')
 const tagSrc = fs.readFileSync(path.join(root, 'data/errorTags.ts'), 'utf8')
 const TAGS = [...tagSrc.matchAll(/key:\s*'([a-z-]+)'/g)].map(m => m[1])
 const LEVELS = ['A2', 'B1', 'B2', 'C1']
+const EXPLAIN = Object.keys(JSON.parse(fs.readFileSync(path.join(root, 'data/explainers.json'), 'utf8'))).filter(k => !k.startsWith('_'))
 const MIN_ITEMS = 10      // a session needs at least this many
 const FULL_ITEMS = 12     // the "Got 3 minutes?" target
 const ENGINES = { choice: ['q', 'options', 'answer'], pairs: ['left', 'right'] }
@@ -53,12 +54,14 @@ for (const f of files) {
         if (new Set(it.options).size !== it.options.length) errs.push(`${it.id}: the same option appears twice`)
       }
       if (!it.why) missingWhy++
+      if (it.explain && !EXPLAIN.includes(it.explain)) errs.push(`${it.id}: unknown Explícamelo card "${it.explain}"`)
     }
     if (g.engine === 'pairs') {
       const rights = list.map(i => i.right)
       if (new Set(rights).size !== rights.length) errs.push(`${lv}: two pairs share the same right-hand card`)
     }
   }
+  if (g.explain && !EXPLAIN.includes(g.explain)) errs.push(`unknown Explícamelo card "${g.explain}"`)
   if (missingWhy) warns.push(`${missingWhy} item(s) have no "why" yet (the game shows only the right answer)`)
   const text = JSON.stringify([g.title, g.intro, g.items])
   const us = [...new Set((text.match(US) || []).filter(w => !US_OK.test(w)))]
