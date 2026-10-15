@@ -6,29 +6,29 @@
    "n": 1,
    "pages": "3-6"
   },
-  "2026-10-07": {
+  "2026-10-14": {
    "n": 2,
    "pages": "7-9"
   },
-  "2026-10-14": {
+  "2026-10-19": {
    "n": 3,
    "pages": "10-12"
   },
-  "2026-10-19": {
+  "2026-10-21": {
    "n": 4,
    "pages": "13-15,18"
   },
-  "2026-10-21": {
-   "n": 5,
-   "pages": "19,25"
-  },
   "2026-10-26": {
+   "n": 5,
+   "pages": "play"
+  },
+  "2026-10-28": {
    "n": 6,
    "pages": "20-22"
   },
-  "2026-10-28": {
+  "2026-11-04": {
    "n": 7,
-   "pages": "22-24"
+   "pages": "23-24"
   }
  },
  "exercises": [
@@ -879,7 +879,7 @@
   {
    "id": "p8-a-circle-the-right-words",
    "page": 8,
-   "date": "2026-10-07",
+   "date": "2026-10-14",
    "title": "A · Circle the right words",
    "instruction": "Tap the words you circled.",
    "type": "mc",
@@ -964,7 +964,7 @@
   {
    "id": "p15-a-circle-the-right-word",
    "page": 15,
-   "date": "2026-10-19",
+   "date": "2026-10-21",
    "title": "A · Circle the right word",
    "instruction": "Tap the word you circled.",
    "type": "mc",
@@ -1034,7 +1034,7 @@
   {
    "id": "p11-match-the-two-halves",
    "page": 11,
-   "date": "2026-10-14",
+   "date": "2026-10-19",
    "title": "Match the two halves",
    "instruction": "Tap the letter you chose for each start.",
    "type": "match",
@@ -1136,7 +1136,7 @@
   {
    "id": "p12-a-read-and-write",
    "page": 12,
-   "date": "2026-10-14",
+   "date": "2026-10-19",
    "title": "A · Read and write the vegetable",
    "instruction": "Tap the vegetable you wrote.",
    "type": "bank",
@@ -1332,7 +1332,7 @@
   {
    "id": "p12-b-a-or-an",
    "page": 12,
-   "date": "2026-10-14",
+   "date": "2026-10-19",
    "title": "B · a or an?",
    "instruction": "Tap a or an for the word you wrote.",
    "type": "aan",
@@ -1462,7 +1462,7 @@
   {
    "id": "p12-c-sort-them",
    "page": 12,
-   "date": "2026-10-14",
+   "date": "2026-10-19",
    "title": "C · Sort them",
    "instruction": "Tap where you put each word.",
    "type": "sort",
@@ -1562,7 +1562,7 @@
   {
    "id": "p14-noras-week",
    "page": 14,
-   "date": "2026-10-19",
+   "date": "2026-10-21",
    "title": "Read the diary · Nora's week",
    "instruction": "Tap the words you wrote.",
    "type": "bank",
@@ -1653,7 +1653,7 @@
   {
    "id": "p21-farm-check",
    "page": 21,
-   "date": "2026-10-26",
+   "date": "2026-10-28",
    "title": "Farm check · page 20 · T or F",
    "instruction": "Tap T (true) or F (false) for the answer you circled.",
    "type": "tf",
@@ -1723,7 +1723,7 @@
   {
    "id": "p23-test-part1-listening",
    "page": 23,
-   "date": "2026-10-28",
+   "date": "2026-11-04",
    "title": "Unit 2 test · Part 1 · Listening",
    "instruction": "Tap a, b or c: the answer you circled while you listened.",
    "type": "mc",
@@ -1828,7 +1828,7 @@
   {
    "id": "p24-test-part3-vegetables",
    "page": 24,
-   "date": "2026-10-28",
+   "date": "2026-11-04",
    "title": "Unit 2 test · Part 3 · Vegetables",
    "instruction": "Tap the vegetable you wrote. Two words are extra.",
    "type": "bank",

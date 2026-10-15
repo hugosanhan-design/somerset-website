@@ -15,6 +15,7 @@ import { useState, useEffect } from 'react'
 import { useParams, useSearchParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { PORTAL } from '@/lib/portalTheme'
+import { parseImageUrls } from '@/lib/workImages'
 
 interface Entry {
   id: string
@@ -25,6 +26,8 @@ interface Entry {
   title: string
   date: string
   image_url: string
+  image_urls?: string
+  assessment_id?: string | null
   criteria?: string
 }
 
@@ -50,24 +53,43 @@ export default function CorrectEntry() {
   const [criteriaCheck, setCriteriaCheck] = useState<CriteriaCheck[]>([])
   const [saving, setSaving] = useState(false)
   const [analysed, setAnalysed] = useState(false)
+  const [test, setTest] = useState<{ title: string; key_confirmed: number; key_text: string } | null>(null)
+  const [tests, setTests] = useState<{ id: string; title: string; date: string; group_name: string | null }[]>([])
+  const [linkId, setLinkId] = useState('')
 
   useEffect(() => {
     if (!studentId) return
     fetch(`/api/students/${studentId}/entries/${entryId}`).then(r => r.json()).then((e: Entry) => {
       setEntry(e)
       setCriteria(e.criteria || '')
+      if (e.assessment_id) fetch(`/api/assessments/${e.assessment_id}`).then(r => (r.ok ? r.json() : null)).then(setTest).catch(() => {})
+      else fetch('/api/assessments').then(r => (r.ok ? r.json() : [])).then(list => { setTests(list); if (list[0]) setLinkId(list[0].id) }).catch(() => {})
     })
   }, [studentId, entryId])
+
+  // Link a scan that was saved before its test was registered (or without picking one).
+  async function linkTest() {
+    if (!entry || !linkId) return
+    const res = await fetch(`/api/students/${entry.student_id}/entries/${entry.id}`, {
+      method: 'PATCH', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ assessment_id: linkId }),
+    })
+    if (!res.ok) return
+    setEntry({ ...entry, assessment_id: linkId })
+    fetch(`/api/assessments/${linkId}`).then(r => (r.ok ? r.json() : null)).then(setTest)
+  }
 
   async function runAnalysis() {
     if (!entry) return
     setAnalysing(true)
     const fd = new FormData()
     fd.append('imageUrl', entry.image_url)
+    fd.append('imageUrls', JSON.stringify(parseImageUrls(entry)))
     fd.append('type', entry.type)
     fd.append('level', entry.student_level || 'B1')
     fd.append('title', entry.title)
     fd.append('criteria', criteria)
+    if (entry.assessment_id) fd.append('assessmentId', entry.assessment_id)
 
     const res = await fetch('/api/analyse-work', { method: 'POST', body: fd })
     const data = await res.json()
@@ -113,7 +135,38 @@ export default function CorrectEntry() {
           <div>
             <h1 style={s.h1}>{entry.student_name}</h1>
             <p style={s.sub}>{entry.title || entry.type} · {entry.date}</p>
-            <img src={entry.image_url} alt="Student work" style={s.image} />
+            {parseImageUrls(entry).map((u, i, all) => (
+              <div key={u} style={{ marginBottom: 12 }}>
+                {all.length > 1 && <div style={{ fontSize: 12, fontWeight: 700, color: PORTAL.muted, marginBottom: 4 }}>PAGE {i + 1} OF {all.length}</div>}
+                <img src={u} alt={`Student work, page ${i + 1}`} style={s.image} />
+              </div>
+            ))}
+
+            {!test && !entry.assessment_id && !analysed && (
+              <div style={{ ...s.hint, marginTop: 0, padding: '10px 12px', borderRadius: 8, background: PORTAL.panel, color: PORTAL.ink }}>
+                {tests.length > 0 ? (
+                  <>
+                    <b>Is this a test?</b> Link it to a registered test so it is marked against the answer key.
+                    <div style={{ display: 'flex', gap: 8, marginTop: 8, flexWrap: 'wrap' }}>
+                      <select value={linkId} onChange={e => setLinkId(e.target.value)} style={{ ...s.input, width: 'auto', flex: 1, minWidth: 180, marginBottom: 0 }}>
+                        {tests.map(t => <option key={t.id} value={t.id}>{t.title} · {t.group_name || 'no group'} · {t.date}</option>)}
+                      </select>
+                      <button onClick={linkTest} style={{ ...s.btnPrimary, padding: '9px 18px', fontSize: 14 }}>Link</button>
+                    </div>
+                  </>
+                ) : (
+                  <>No test is registered yet. <Link href="/assessments" style={{ color: PORTAL.greenDeep }}>Register the test and its key</Link>, then come back and link it.</>
+                )}
+              </div>
+            )}
+
+            {test && (
+              <p style={{ ...s.hint, marginTop: 0, padding: '8px 12px', borderRadius: 8, background: test.key_confirmed && test.key_text ? PORTAL.panel : PORTAL.amberBg, color: PORTAL.ink }}>
+                Marked against <b>{test.title}</b>.{' '}
+                {!test.key_text ? 'Its answer key has not been read yet, so this falls back to a general impression. ' : !test.key_confirmed ? 'Its answer key has not been confirmed: check it first. ' : ''}
+                <Link href="/assessments" style={{ color: PORTAL.greenDeep }}>Open tests</Link>
+              </p>
+            )}
 
             {!analysed && (
               <>

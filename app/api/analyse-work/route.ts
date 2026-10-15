@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import Anthropic from '@anthropic-ai/sdk'
 import { uploadWorkImage } from '@/lib/blob'
+import { parseImageUrls } from '@/lib/workImages'
+import { getDb } from '@/lib/db'
 
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
 
@@ -107,6 +109,34 @@ Respond in JSON only:
 If text is unreadable: {"score": null, "feedback": "Could not analyse — please check the upload.", "error_patterns": [], "criteria_check": []}`
 }
 
+// Marking a registered test: the model gets the paper (reference), the teacher-confirmed
+// answer key as text, and the student's transcription. Objective items are marked
+// strictly against the key, one criteria_check row per question.
+function buildTestPrompt(title: string, level: string, keyText: string, keyConfirmed: boolean, transcription: string): string {
+  return `You are an experienced English language teacher at Somerset Language Centre, Valencia, Spain, marking the end-of-unit test "${title}". The student's approximate CEFR level is ${level}.
+
+The first images or documents are the TEST PAPER (reference only: the questions). The later images are the STUDENT'S ANSWER PAGES.
+
+OFFICIAL ANSWER KEY${keyConfirmed ? ' (confirmed by the teacher)' : ' (NOT yet confirmed by the teacher: say so in the feedback)'}:
+"""
+${keyText}
+"""
+
+STUDENT TRANSCRIPTION (exactly as written):
+"""
+${transcription || '(not available: read the answer pages)'}
+"""
+
+Rules:
+- Mark every objective question one by one against the key. Accept an alternative only if the key lists it. If spelling is clearly part of what is tested, a misspelt answer is wrong.
+- If the student's answer for an item cannot be read, mark it not met with evidence "unreadable". Never guess.
+- Do not give marks for Writing or Speaking unless the key states criteria; say in the feedback that those parts need the teacher.
+- Score = round(100 x marks earned / total objective marks).
+
+Respond in JSON only:
+{"score": <0-100>, "feedback": "<3-5 sentences to the teacher: which sections went well or badly and the pattern behind the mistakes>", "error_patterns": ["<p1>", ...], "criteria_check": [{"criterion": "<question number and section>", "met": <bool>, "evidence": "student: <answer> | key: <answer>"}]}`
+}
+
 // Two callers use this route:
 //  1. The old one-step upload (`/students/[id]/upload`) — sends a fresh `image` file,
 //     gets score+feedback+image_url back immediately.
@@ -126,22 +156,25 @@ export async function POST(req: NextRequest) {
   const formData = await req.formData()
   const imageFile = formData.get('image') as File | null
   const existingImageUrl = (formData.get('imageUrl') as string) || ''
+  // Multi-page scans: the queue sends every page, in order, as a JSON array.
+  const existingImageUrls = parseImageUrls({ image_url: existingImageUrl, image_urls: (formData.get('imageUrls') as string) || '[]' })
   const directText = (formData.get('text') as string) || ''
   const workType = (formData.get('type') as string) || 'class_exercise'
   const level = (formData.get('level') as string) || 'B1'
   const title = (formData.get('title') as string) || ''
   const criteriaRaw = (formData.get('criteria') as string) || ''
+  const assessmentId = (formData.get('assessmentId') as string) || ''
   const criteriaList = criteriaRaw
     .split('\n')
     .map(c => c.trim())
     .filter(Boolean)
 
-  if (!imageFile && !existingImageUrl && !directText) {
+  if (!imageFile && existingImageUrls.length === 0 && !directText) {
     return NextResponse.json({ error: 'No image or text provided' }, { status: 400 })
   }
 
   // Text-only path — teacher pasted the student's typed work; skip image upload and OCR.
-  if (directText && !imageFile && !existingImageUrl) {
+  if (directText && !imageFile && existingImageUrls.length === 0) {
     const transcription = directText
     const hasCriteria = criteriaList.length > 0
     const prompt = buildPrompt(workType, level, title, transcription, criteriaList, hasCriteria)
@@ -151,7 +184,7 @@ export async function POST(req: NextRequest) {
         max_tokens: 900,
         messages: [{ role: 'user', content: prompt }],
       })
-      const raw = response.content[0].type === 'text' ? response.content[0].text : ''
+      const raw = response.content.find(b => b.type === 'text')?.text ?? ''
       const jsonMatch = raw.match(/\{[\s\S]*\}/)
       const parsed = jsonMatch ? JSON.parse(jsonMatch[0]) : { score: null, feedback: raw, error_patterns: [], criteria_check: [] }
       const criteriaCheck: CriteriaCheck[] = parsed.criteria_check || []
@@ -165,54 +198,81 @@ export async function POST(req: NextRequest) {
     }
   }
 
+  // Collect every page as base64. A fresh upload is a single page; a queued scan can
+  // have many, and they are read in order so a 3-page exam is graded as one piece of work.
   let imageUrl: string
-  let buffer: Buffer
-  let mediaType: MediaType
+  const pages: { data: string; mediaType: MediaType }[] = []
 
   if (imageFile) {
     // Persist to Blob storage — never fs.writeFileSync (Vercel's filesystem doesn't
     // survive a redeploy or cold start; see lib/blob.ts).
     imageUrl = await uploadWorkImage(imageFile)
-    buffer = Buffer.from(await imageFile.arrayBuffer())
-    mediaType = mediaTypeFor(imageFile.name)
+    pages.push({ data: Buffer.from(await imageFile.arrayBuffer()).toString('base64'), mediaType: mediaTypeFor(imageFile.name) })
   } else {
-    imageUrl = existingImageUrl
-    const res = await fetch(existingImageUrl)
-    if (!res.ok) {
-      return NextResponse.json({ error: 'Could not fetch the stored image' }, { status: 502 })
+    imageUrl = existingImageUrls[0]
+    for (const url of existingImageUrls) {
+      const res = await fetch(url)
+      if (!res.ok) {
+        return NextResponse.json({ error: 'Could not fetch the stored image' }, { status: 502 })
+      }
+      pages.push({ data: Buffer.from(await res.arrayBuffer()).toString('base64'), mediaType: mediaTypeFor(url) })
     }
-    buffer = Buffer.from(await res.arrayBuffer())
-    mediaType = mediaTypeFor(existingImageUrl)
   }
 
-  const imageData = buffer.toString('base64')
-
+  // Transcribe each page as its own call, in parallel, then join with page markers.
   let transcription = ''
   try {
-    transcription = await transcribe(imageData, mediaType)
+    const texts = await Promise.all(pages.map(p => transcribe(p.data, p.mediaType)))
+    transcription = pages.length === 1
+      ? texts[0]
+      : texts.map((t, i) => `--- Page ${i + 1} ---\n${t}`).join('\n\n')
   } catch (err) {
     console.error('Transcription error:', err)
-    // Fall through with an empty transcription — grading still runs off the image
+    // Fall through with an empty transcription — grading still runs off the images
     // directly below, it just loses the "check the exact words" guarantee.
   }
 
-  const hasCriteria = criteriaList.length > 0
-  const prompt = buildPrompt(workType, level, title, transcription, criteriaList, hasCriteria)
+  // Registered test? Then mark against its key, with the paper shown as reference.
+  let prompt: string
+  let paperBlocks: Anthropic.ContentBlockParam[] = []
+  let testMode = false
+  const loaded = assessmentId
+    ? await (await getDb()).prepare('SELECT title, test_urls, key_text, key_confirmed FROM assessments WHERE id = ?').get(assessmentId) as
+        { title: string; test_urls: string; key_text: string; key_confirmed: number } | undefined
+    : undefined
+  if (loaded && loaded.key_text.trim()) {
+    testMode = true
+    prompt = buildTestPrompt(loaded.title, level, loaded.key_text, loaded.key_confirmed === 1, transcription)
+    try {
+      for (const url of JSON.parse(loaded.test_urls || '[]') as string[]) {
+        const r = await fetch(url)
+        if (!r.ok) continue
+        const data = Buffer.from(await r.arrayBuffer()).toString('base64')
+        const ext = (url.split('?')[0].split('.').pop() || '').toLowerCase()
+        if (ext === 'pdf') paperBlocks.push({ type: 'document', source: { type: 'base64', media_type: 'application/pdf', data } })
+        else paperBlocks.push({ type: 'image', source: { type: 'base64', media_type: ext === 'png' ? 'image/png' : 'image/jpeg', data } })
+      }
+    } catch { paperBlocks = [] }
+  } else {
+    const hasCriteria = criteriaList.length > 0
+    prompt = buildPrompt(workType, level, title, transcription, criteriaList, hasCriteria)
+  }
 
   try {
     const response = await client.messages.create({
       model: 'claude-opus-4-5-20251101',
-      max_tokens: 900,
+      max_tokens: testMode ? 3000 : 900,
       messages: [{
         role: 'user',
         content: [
-          { type: 'image', source: { type: 'base64', media_type: mediaType, data: imageData } },
-          { type: 'text', text: prompt }
+          ...paperBlocks,
+          ...pages.map(p => ({ type: 'image' as const, source: { type: 'base64' as const, media_type: p.mediaType, data: p.data } })),
+          { type: 'text' as const, text: prompt }
         ]
       }]
     })
 
-    const raw = response.content[0].type === 'text' ? response.content[0].text : ''
+    const raw = response.content.find(b => b.type === 'text')?.text ?? ''
     const jsonMatch = raw.match(/\{[\s\S]*\}/)
     const parsed = jsonMatch ? JSON.parse(jsonMatch[0]) : { score: null, feedback: raw, error_patterns: [], criteria_check: [] }
 
@@ -221,7 +281,7 @@ export async function POST(req: NextRequest) {
     const criteriaCheck: CriteriaCheck[] = parsed.criteria_check || []
     const anyCriterionFailed = criteriaCheck.some(c => c.met === false)
     let score = parsed.score
-    if (anyCriterionFailed && typeof score === 'number' && score > 50) {
+    if (!testMode && anyCriterionFailed && typeof score === 'number' && score > 50) {
       score = 50
     }
 
@@ -232,6 +292,7 @@ export async function POST(req: NextRequest) {
       criteria_check: criteriaCheck,
       transcription,
       image_url: imageUrl,
+      marked_against: testMode ? loaded!.title : null,
     })
   } catch (err) {
     console.error('Analysis error:', err)
