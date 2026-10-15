@@ -30,23 +30,23 @@
       },
       {
         "id": "make-or-do-a2-03",
-        "q": "___ your homework (complete it)",
+        "q": "___ the housework (clean and tidy the home)",
         "options": [
           "make",
           "do"
         ],
         "answer": 1,
-        "why": "Tasks and jobs take “do”: do your homework, do the ironing."
+        "why": "Housework is a set of tasks, and tasks take “do”: do the housework, do the ironing."
       },
       {
         "id": "make-or-do-a2-04",
-        "q": "___ a cake (bake it)",
+        "q": "___ a promise (say you will definitely do something)",
         "options": [
           "make",
           "do"
         ],
         "answer": 0,
-        "why": "“Make” is for creating something new: make a cake, make a paella."
+        "why": "You make a promise, and then you keep it or break it; never “do a promise”."
       },
       {
         "id": "make-or-do-a2-05",
@@ -110,13 +110,13 @@
       },
       {
         "id": "make-or-do-a2-11",
-        "q": "___ a cup of tea (prepare a drink)",
+        "q": "___ a wish (hope for something, eyes closed)",
         "options": [
           "make",
           "do"
         ],
         "answer": 0,
-        "why": "Preparing food and drink takes “make”: make a coffee, make lunch."
+        "why": "You make a wish when you blow out the candles; Spanish says “pedir un deseo”."
       },
       {
         "id": "make-or-do-a2-12",
@@ -172,13 +172,13 @@
       },
       {
         "id": "make-or-do-b1-05",
-        "q": "___ a call (telephone someone)",
+        "q": "___ a phone call (ring someone)",
         "options": [
           "make",
           "do"
         ],
         "answer": 0,
-        "why": "You make a call; “do a call” is wrong."
+        "why": "You make a phone call: “Excuse me, I need to make a quick call.”"
       },
       {
         "id": "make-or-do-b1-06",
@@ -284,13 +284,13 @@
       },
       {
         "id": "make-or-do-b2-04",
-        "q": "___ a good job (perform well)",
+        "q": "___ well (be successful)",
         "options": [
           "make",
           "do"
         ],
         "answer": 1,
-        "why": "Work you perform takes “do”: do a good job, do a job well."
+        "why": "Do well means be successful: their new restaurant in Ruzafa is doing very well."
       },
       {
         "id": "make-or-do-b2-05",
@@ -314,13 +314,13 @@
       },
       {
         "id": "make-or-do-b2-07",
-        "q": "___ an impression (affect how people see you)",
+        "q": "___ an exception (allow something you normally don’t)",
         "options": [
           "make",
           "do"
         ],
         "answer": 0,
-        "why": "You make an impression on someone: you change how they see you."
+        "why": "You make an exception when you break your own rule just once: we don’t open on Sundays, but we’ll make an exception."
       },
       {
         "id": "make-or-do-b2-08",
@@ -426,7 +426,7 @@
       },
       {
         "id": "make-or-do-c1-06",
-        "q": "___ one's duty (fulfil an obligation)",
+        "q": "___ your duty (fulfil an obligation)",
         "options": [
           "make",
           "do"
@@ -436,13 +436,13 @@
       },
       {
         "id": "make-or-do-c1-07",
-        "q": "___ a scene (cause a public fuss)",
+        "q": "___ ends meet (have just enough money to live on)",
         "options": [
           "make",
           "do"
         ],
         "answer": 0,
-        "why": "Make a scene = shout or cry in public; Spanish “montar un número”."
+        "why": "Make ends meet means manage on very little money: on a small pension it’s hard to make ends meet."
       },
       {
         "id": "make-or-do-c1-08",
@@ -466,13 +466,13 @@
       },
       {
         "id": "make-or-do-c1-10",
-        "q": "___ time (serve a prison sentence)",
+        "q": "___ the trick (solve the problem)",
         "options": [
           "make",
           "do"
         ],
         "answer": 1,
-        "why": "Informal: the outlaw did time in Yuma prison before going straight."
+        "why": "Do the trick means work or solve the problem: a strong coffee should do the trick."
       },
       {
         "id": "make-or-do-c1-11",

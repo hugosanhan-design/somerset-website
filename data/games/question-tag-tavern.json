@@ -45,20 +45,20 @@
       { "id": "question-tag-tavern-b2-09", "q": "She used to smoke, ___?", "options": ["didn't she","wasn't she","doesn't she"], "answer": 0, "why": "Used to works like a past simple verb: didn't she." },
       { "id": "question-tag-tavern-b2-10", "q": "This isn't right, ___?", "options": ["is it","isn't it","doesn't it"], "answer": 0, "why": "Negative sentence with this, so a positive tag with it: is it." },
       { "id": "question-tag-tavern-b2-11", "q": "Nobody's seen the outlaw, ___?", "options": ["have they","haven't they","has he"], "answer": 0, "why": "“Nobody's seen” = nobody has seen: positive tag with they and have." },
-      { "id": "question-tag-tavern-b2-12", "q": "There weren't any antibiotics before 1928, ___?", "options": ["were there","weren't there","was it"], "answer": 0, "why": "Negative “there were”, so the tag is positive and keeps there: were there." }
+      { "id": "question-tag-tavern-b2-12", "q": "There weren't any antibiotics in the 1800s, ___?", "options": ["were there","weren't there","was it"], "answer": 0, "why": "Negative “there were”, so the tag is positive and keeps there: were there." }
     ],
     "C1": [
       { "id": "question-tag-tavern-c1-01", "q": "Hardly anyone noticed, ___?", "options": ["did they","didn't they","have they"], "answer": 0, "why": "“Hardly” makes the sentence negative, so the tag is positive: did they." },
       { "id": "question-tag-tavern-c1-02", "q": "You'd have told me, ___?", "options": ["wouldn't you","hadn't you","didn't you"], "answer": 0, "why": "'d have + past participle is would have: wouldn't you." },
       { "id": "question-tag-tavern-c1-03", "q": "I don't suppose you'd help, ___?", "options": ["would you","wouldn't you","do you"], "answer": 0, "why": "With “I don't suppose”, the tag matches the second clause: would you." },
-      { "id": "question-tag-tavern-c1-04", "q": "Surely you're joking, ___?", "options": ["aren't you","don't you","isn't it"], "answer": 0, "why": "“You're” = you are: aren't you." },
+      { "id": "question-tag-tavern-c1-04", "q": "Neither of them came, ___?", "options": ["did they","didn't they","did he"], "answer": 0, "why": "“Neither” is negative, so the tag is positive, and it uses “they”: did they." },
       { "id": "question-tag-tavern-c1-05", "q": "He'd rather have stayed, ___?", "options": ["wouldn't he","hadn't he","didn't he"], "answer": 0, "why": "After “rather”, 'd is always would: wouldn't he." },
       { "id": "question-tag-tavern-c1-06", "q": "Scarcely anyone showed up, ___?", "options": ["did they","didn't they","have they"], "answer": 0, "why": "“Scarcely” makes the sentence negative, so the tag is positive: did they." },
       { "id": "question-tag-tavern-c1-07", "q": "You couldn't possibly know that, ___?", "options": ["could you","couldn't you","would you"], "answer": 0, "why": "Negative modal, so the same modal in a positive tag: could you." },
       { "id": "question-tag-tavern-c1-08", "q": "They'd never have guessed, ___?", "options": ["would they","wouldn't they","had they"], "answer": 0, "why": "“Never” is negative, and 'd have is would have: would they." },
       { "id": "question-tag-tavern-c1-09", "q": "It can't be true, ___?", "options": ["can it","can't it","could it"], "answer": 0, "why": "Negative modal, so the same modal in a positive tag: can it." },
       { "id": "question-tag-tavern-c1-10", "q": "You wouldn't mind, ___?", "options": ["would you","wouldn't you","do you"], "answer": 0, "why": "Negative modal, so the same modal in a positive tag: would you." },
-      { "id": "question-tag-tavern-c1-11", "q": "Few patients survived surgery before Lister, ___?", "options": ["did they","didn't they","had they"], "answer": 0, "why": "“Few” (not “a few”) is negative, so the tag is positive: did they." },
+      { "id": "question-tag-tavern-c1-11", "q": "Few surgeons used antiseptics before Lister, ___?", "options": ["did they","didn't they","had they"], "answer": 0, "why": "“Few” (not “a few”) is negative, so the tag is positive: did they." },
       { "id": "question-tag-tavern-c1-12", "q": "No one in Valencia would eat paella at night, ___?", "options": ["would they","wouldn't they","did they"], "answer": 0, "why": "“No one” is negative, so the tag is positive, with they: would they." }
     ]
   }

@@ -7,14 +7,14 @@
   "items": {
     "A2": [
       { "id": "reported-speech-relay-a2-01", "q": "Direct: \"I am tired.\" Reported: She said she ___ tired.", "options": ["was", "were", "been"], "answer": 0, "why": "“Am” moves back to “was” in reported speech, and “she” takes “was”." },
-      { "id": "reported-speech-relay-a2-02", "q": "Direct: \"I like pizza.\" Reported: He said he ___ pizza.", "options": ["liked", "like", "was liking"], "answer": 0, "why": "Present simple “like” moves back to past simple “liked”." },
+      { "id": "reported-speech-relay-a2-02", "q": "Direct: \"I like pizza.\" Reported: He said he ___ pizza.", "options": ["liked","like","was liking"], "answer": 0, "why": "After “said”, present simple usually moves back to past simple: “liked”." },
       { "id": "reported-speech-relay-a2-03", "q": "Direct: \"I have a car.\" Reported: She said she ___ a car.", "options": ["had", "have", "was having"], "answer": 0, "why": "“Have” (own) moves back to “had”; it is not used in the continuous here." },
       { "id": "reported-speech-relay-a2-04", "q": "Direct: \"I can swim.\" Reported: He said he ___ swim.", "options": ["could", "cans", "could to"], "answer": 0, "why": "“Can” moves back to “could”, followed by the verb with no “to”." },
       { "id": "reported-speech-relay-a2-05", "q": "Direct: \"I will call you.\" Reported: She said she ___ call me.", "options": ["would", "would to", "did"], "answer": 0, "why": "“Will” moves back to “would”, followed by the verb with no “to”." },
       { "id": "reported-speech-relay-a2-06", "q": "Direct: \"I am working.\" Reported: He said he ___ working.", "options": ["was", "were", "been"], "answer": 0, "why": "“Am working” moves back to “was working”; “she/he” takes “was”." },
       { "id": "reported-speech-relay-a2-07", "q": "Direct: \"I don't know.\" Reported: She said she ___ know.", "options": ["didn't", "don't", "wasn't"], "answer": 0, "why": "“Don’t know” moves back to “didn’t know”: the helper “did” does the work." },
       { "id": "reported-speech-relay-a2-08", "q": "Direct: \"I want to go.\" Reported: He said he ___ to go.", "options": ["wanted", "want", "wanting"], "answer": 0, "why": "Present simple “want” moves back to past simple “wanted”." },
-      { "id": "reported-speech-relay-a2-09", "q": "Direct: \"I live in Madrid.\" Reported: She said she ___ in Madrid.", "options": ["lived", "live", "living"], "answer": 0, "why": "Present simple “live” moves back to past simple “lived”." },
+      { "id": "reported-speech-relay-a2-09", "q": "Direct: \"I live in Madrid.\" Reported: She said she ___ in Madrid.", "options": ["lived","live","living"], "answer": 0, "why": "After “said”, present simple usually moves back: “lived” (if it is still true, “lives” is also possible)." },
       { "id": "reported-speech-relay-a2-10", "q": "Direct: \"I need help.\" Reported: He said he ___ help.", "options": ["needed", "need", "needing"], "answer": 0, "why": "Present simple “need” moves back to past simple “needed”." },
       { "id": "reported-speech-relay-a2-11", "q": "Direct: \"I love my horse.\" Reported: The cowboy said he loved ___ horse.", "options": ["his", "my", "your"], "answer": 0, "why": "In reported speech “my” changes to match the speaker: the cowboy’s horse is “his”." },
       { "id": "reported-speech-relay-a2-12", "q": "Direct: \"We are from Valencia.\" Reported: They said ___ were from Valencia.", "options": ["they", "we", "them"], "answer": 0, "why": "“We” becomes “they” when someone else reports it; “them” cannot be a subject." }
@@ -59,7 +59,7 @@
       { "id": "reported-speech-relay-c1-09", "q": "Direct: \"You must apply by Friday.\" Reported: They informed us that we ___ apply by Friday.", "options": ["had to", "must to", "should to"], "answer": 0, "why": "An obligation with “must” is reported as “had to”; “must” never takes “to”." },
       { "id": "reported-speech-relay-c1-10", "q": "Direct: \"I didn't take the money.\" Reported: He denied ___ the money.", "options": ["taking", "to take", "take"], "answer": 0, "why": "“Deny” is followed by the “-ing” form: “denied taking”." },
       { "id": "reported-speech-relay-c1-11", "q": "Direct: \"You stole my horse!\" Reported: The rancher accused him ___ his horse.", "options": ["of stealing", "to steal", "for stealing"], "answer": 0, "why": "“Accuse” takes “of” + “-ing”: “accused him of stealing”." },
-      { "id": "reported-speech-relay-c1-12", "q": "Direct: \"Wash your hands before every operation.\" Reported: Semmelweis insisted ___ doctors wash their hands before every operation.", "options": ["that", "to", "for"], "answer": 0, "why": "“Insist that” + person + base verb: “insisted that doctors wash”." }
+      { "id": "reported-speech-relay-c1-12", "q": "Direct: \"Wash your hands before you examine a patient.\" Reported: Semmelweis insisted ___ doctors wash their hands before examining patients.", "options": ["that","to","for"], "answer": 0, "why": "“Insist that” + person + base verb: “insisted that doctors wash”." }
     ]
   }
 }

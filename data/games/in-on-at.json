@@ -25,7 +25,7 @@
       {"id": "in-on-at-b1-03", "q": "She's ___ home this evening.", "options": ["at", "in", "on"], "answer": 0, "why": "Fixed phrase “at home”, never “in home”."},
       {"id": "in-on-at-b1-04", "q": "We're going ___ holiday next week.", "options": ["on", "in", "at"], "answer": 0, "why": "Fixed phrase “on holiday”, unlike Spanish “de vacaciones”."},
       {"id": "in-on-at-b1-05", "q": "He's good ___ maths.", "options": ["at", "in", "on"], "answer": 0, "why": "“Good at” a subject or skill."},
-      {"id": "in-on-at-b1-06", "q": "The meeting is ___ the morning.", "options": ["in", "on", "at"], "answer": 0, "why": "Parts of the day take “in”: in the morning, in the afternoon."},
+      {"id": "in-on-at-b1-06", "q": "Everyone cried ___ the end of the film.", "options": ["at", "in", "on"], "answer": 0, "why": "“At the end of” something is a point in time; “in the end” on its own means finally."},
       {"id": "in-on-at-b1-07", "q": "I read the news ___ the internet.", "options": ["on", "in", "at"], "answer": 0, "why": "“On the internet”, like “on the radio” and “on TV”."},
       {"id": "in-on-at-b1-08", "q": "They live ___ the countryside.", "options": ["in", "on", "at"], "answer": 0, "why": "“In the countryside”, as in “in the city”."},
       {"id": "in-on-at-b1-09", "q": "We arrived ___ the same time.", "options": ["at", "in", "on"], "answer": 0, "why": "Fixed phrase “at the same time”."},

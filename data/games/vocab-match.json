@@ -8,13 +8,13 @@
     "A2": [
       { "id": "vocab-match-a2-01", "left": "get up", "right": "get out of bed", "why": "You get up when you get out of bed. Waking up is opening your eyes." },
       { "id": "vocab-match-a2-02", "left": "look for", "right": "try to find", "why": "Look for means try to find: the sheriff looked for the stolen horse." },
-      { "id": "vocab-match-a2-03", "left": "turn on", "right": "start a machine", "why": "Turn on starts a machine or a light. Turn off stops it." },
+      { "id": "vocab-match-a2-03", "left": "turn on", "right": "switch on (a light or machine)", "why": "Turn on starts a machine or a light. Turn off stops it." },
       { "id": "vocab-match-a2-04", "left": "huge", "right": "very big", "why": "Huge is much stronger than big: a huge ranch." },
       { "id": "vocab-match-a2-05", "left": "tiny", "right": "very small", "why": "Tiny is much stronger than small: a tiny kitchen." },
       { "id": "vocab-match-a2-06", "left": "cheap", "right": "not expensive", "why": "Cheap means low in price. It can also sound negative: cheap and nasty." },
       { "id": "vocab-match-a2-07", "left": "begin", "right": "start", "why": "Begin and start mean the same: the film begins at eight." },
       { "id": "vocab-match-a2-08", "left": "furious", "right": "very angry", "why": "Furious is much stronger than angry." },
-      { "id": "vocab-match-a2-09", "left": "put on", "right": "dress in (clothes)", "why": "Put on is for clothes: the cowboy put on his hat." },
+      { "id": "vocab-match-a2-09", "left": "put on", "right": "start wearing (clothes)", "why": "Put on is for clothes: the cowboy put on his hat." },
       { "id": "vocab-match-a2-10", "left": "come back", "right": "return", "why": "Come back means return: we came back from Alicante on Sunday." },
       { "id": "vocab-match-a2-11", "left": "tired", "right": "needing rest or sleep", "why": "Tired means you need rest. Tiring describes the thing that makes you tired." },
       { "id": "vocab-match-a2-12", "left": "delicious", "right": "very tasty", "why": "Delicious means very tasty: a delicious paella." }
@@ -22,7 +22,7 @@
     "B1": [
       { "id": "vocab-match-b1-01", "left": "give up", "right": "stop trying", "why": "Give up means stop trying, or stop a habit: he gave up smoking." },
       { "id": "vocab-match-b1-02", "left": "find out", "right": "discover information", "why": "Find out means discover information: find out the train times." },
-      { "id": "vocab-match-b1-03", "left": "carry on", "right": "continue", "why": "Carry on means continue: carry on walking until the church." },
+      { "id": "vocab-match-b1-03", "left": "carry on", "right": "continue", "why": "Carry on means continue: carry on walking as far as the church." },
       { "id": "vocab-match-b1-04", "left": "put off", "right": "postpone", "why": "Put off means postpone: the match was put off because of the rain." },
       { "id": "vocab-match-b1-05", "left": "run out of", "right": "have none left", "why": "Run out of means have none left: we've run out of milk." },
       { "id": "vocab-match-b1-06", "left": "look after", "right": "take care of", "why": "Look after means take care of: she looks after her grandchildren." },

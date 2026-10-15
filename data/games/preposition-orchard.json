@@ -14,7 +14,7 @@
         "options": [
           "to",
           "at",
-          "from"
+          "of"
         ],
         "answer": 0,
         "why": "Spanish “escuchar música” has no preposition, but English needs “to” before what you hear."
@@ -24,8 +24,8 @@
         "q": "look ___ a picture",
         "options": [
           "at",
-          "for",
-          "about"
+          "of",
+          "with"
         ],
         "answer": 0,
         "why": "Spanish “mirar” takes nothing, so this “at” is easy to forget."
@@ -36,7 +36,7 @@
         "options": [
           "for",
           "of",
-          "in"
+          "to"
         ],
         "answer": 0,
         "why": "Wait FOR, never “wait the bus”: Spanish “esperar” hides the preposition."
@@ -46,8 +46,8 @@
         "q": "arrive ___ the station",
         "options": [
           "at",
-          "in",
-          "with"
+          "to",
+          "of"
         ],
         "answer": 0,
         "why": "Arrive AT a building or point, IN a city or country; never “arrive to”."
@@ -57,8 +57,8 @@
         "q": "good ___ football",
         "options": [
           "at",
-          "from",
-          "on"
+          "of",
+          "to"
         ],
         "answer": 0,
         "why": "Good AT a skill, not “good in”: “She’s good at maths.”"
@@ -68,7 +68,7 @@
         "q": "afraid ___ spiders",
         "options": [
           "of",
-          "about",
+          "from",
           "to"
         ],
         "answer": 0,
@@ -79,7 +79,7 @@
         "q": "interested ___ music",
         "options": [
           "in",
-          "to",
+          "on",
           "of"
         ],
         "answer": 0,
@@ -91,7 +91,7 @@
         "options": [
           "to",
           "with",
-          "on"
+          "of"
         ],
         "answer": 0,
         "why": "Married TO someone, not “married with”: Spanish “casado con” is the trap."
@@ -101,7 +101,7 @@
         "q": "belong ___ the sheriff",
         "options": [
           "to",
-          "at",
+          "of",
           "from"
         ],
         "answer": 0,
@@ -112,11 +112,11 @@
         "q": "think ___ the future",
         "options": [
           "about",
-          "to",
-          "of"
+          "at",
+          "from"
         ],
         "answer": 0,
-        "why": "Think ABOUT a topic, not “think in”: Spanish “pensar en” is the trap."
+        "why": "Think ABOUT a topic (or “think of”), never “think in”: Spanish “pensar en” is the trap."
       },
       {
         "id": "preposition-orchard-a2-11",
@@ -124,7 +124,7 @@
         "options": [
           "of",
           "with",
-          "in"
+          "at"
         ],
         "answer": 0,
         "why": "Proud OF someone, not “proud for”: here “orgulloso de” matches nicely."
@@ -134,8 +134,8 @@
         "q": "pay ___ the paella",
         "options": [
           "for",
-          "on",
-          "with"
+          "of",
+          "on"
         ],
         "answer": 0,
         "why": "Pay FOR the thing you buy: “We paid for the paella”, not “paid the paella”."
@@ -147,8 +147,8 @@
         "q": "depend ___ your parents",
         "options": [
           "on",
-          "at",
-          "from"
+          "of",
+          "in"
         ],
         "answer": 0,
         "why": "Depend ON, never “depend of”: Spanish “depender de” is the classic trap."
@@ -158,18 +158,18 @@
         "q": "apologise ___ a mistake",
         "options": [
           "for",
-          "to",
-          "about"
+          "of",
+          "to"
         ],
         "answer": 0,
-        "why": "Apologise TO a person FOR the thing you did."
+        "why": "Apologise TO a person FOR the thing you did, never “apologise of”."
       },
       {
         "id": "preposition-orchard-b1-03",
         "q": "believe ___ yourself",
         "options": [
           "in",
-          "of",
+          "at",
           "to"
         ],
         "answer": 0,
@@ -177,14 +177,14 @@
       },
       {
         "id": "preposition-orchard-b1-04",
-        "q": "worry ___ exams",
+        "q": "worry ___ money",
         "options": [
           "about",
-          "on",
-          "from"
+          "of",
+          "on"
         ],
         "answer": 0,
-        "why": "Worry ABOUT a problem; “preocuparse por” tempts Spanish speakers into “worry for”."
+        "why": "Worry ABOUT a problem: “We worry about money”, never “worry of” or “worry on”."
       },
       {
         "id": "preposition-orchard-b1-05",
@@ -192,7 +192,7 @@
         "options": [
           "about",
           "for",
-          "at"
+          "on"
         ],
         "answer": 0,
         "why": "Complain ABOUT the problem, and TO the person who can fix it."
@@ -202,15 +202,15 @@
         "q": "succeed ___ business",
         "options": [
           "in",
-          "about",
+          "of",
           "for"
         ],
         "answer": 0,
-        "why": "Succeed IN something, or IN doing it; never “succeed to do”."
+        "why": "Succeed IN something, or IN doing it; never “succeed of” or “succeed to do”."
       },
       {
         "id": "preposition-orchard-b1-07",
-        "q": "congratulate someone ___ success",
+        "q": "congratulate someone ___ their success",
         "options": [
           "on",
           "to",
@@ -224,8 +224,8 @@
         "q": "insist ___ paying",
         "options": [
           "on",
-          "with",
-          "in"
+          "in",
+          "to"
         ],
         "answer": 0,
         "why": "Insist ON + -ing: “He insisted on paying”, never “insisted to pay”."
@@ -246,8 +246,8 @@
         "q": "laugh ___ a joke",
         "options": [
           "at",
-          "for",
-          "about"
+          "of",
+          "for"
         ],
         "answer": 0,
         "why": "Laugh AT a joke or person, not “laugh of”: Spanish “reírse de” is the trap."
@@ -268,8 +268,8 @@
         "q": "search ___ gold",
         "options": [
           "for",
-          "on",
-          "with"
+          "at",
+          "to"
         ],
         "answer": 0,
         "why": "Search FOR what you want to find: prospectors searched for gold in California."
@@ -281,8 +281,8 @@
         "q": "rely ___ a friend",
         "options": [
           "on",
-          "at",
-          "from"
+          "in",
+          "of"
         ],
         "answer": 0,
         "why": "Rely ON someone, just like “depend on”; never “rely in”."
@@ -292,11 +292,11 @@
         "q": "consist ___ three parts",
         "options": [
           "of",
-          "to",
-          "about"
+          "on",
+          "to"
         ],
         "answer": 0,
-        "why": "Consist OF its parts; Spanish “consistir en” pulls you towards “in”."
+        "why": "Consist OF its parts; Spanish “consistir en” pulls you towards “consist on”."
       },
       {
         "id": "preposition-orchard-b2-03",
@@ -315,7 +315,7 @@
         "options": [
           "with",
           "on",
-          "from"
+          "of"
         ],
         "answer": 0,
         "why": "Deal WITH a problem means handle it; don’t drop the “with”."
@@ -325,7 +325,7 @@
         "q": "cope ___ stress",
         "options": [
           "with",
-          "for",
+          "of",
           "at"
         ],
         "answer": 0,
@@ -333,11 +333,11 @@
       },
       {
         "id": "preposition-orchard-b2-06",
-        "q": "benefit ___ experience",
+        "q": "benefit ___ regular exercise",
         "options": [
           "from",
-          "about",
-          "to"
+          "of",
+          "about"
         ],
         "answer": 0,
         "why": "Benefit FROM something: the help comes FROM it."
@@ -347,7 +347,7 @@
         "q": "react ___ news",
         "options": [
           "to",
-          "in",
+          "at",
           "of"
         ],
         "answer": 0,
@@ -358,8 +358,8 @@
         "q": "specialise ___ law",
         "options": [
           "in",
-          "with",
-          "on"
+          "of",
+          "at"
         ],
         "answer": 0,
         "why": "Specialise IN a field: “especializarse en” matches, so this one is friendly."
@@ -369,30 +369,30 @@
         "q": "object ___ the plan",
         "options": [
           "to",
-          "at",
-          "from"
+          "against",
+          "at"
         ],
         "answer": 0,
-        "why": "Object TO + noun or -ing: “The ranchers objected to the new railway.”"
+        "why": "Object TO + noun or -ing, never “object against”: “The ranchers objected to the new railway.”"
       },
       {
         "id": "preposition-orchard-b2-10",
         "q": "accuse someone ___ theft",
         "options": [
           "of",
-          "to",
-          "about"
+          "for",
+          "with"
         ],
         "answer": 0,
-        "why": "Accuse someone OF a crime, but charge them WITH it."
+        "why": "Accuse someone OF a crime, never “accuse for”; but charge them WITH it."
       },
       {
         "id": "preposition-orchard-b2-11",
         "q": "participate ___ the Fallas",
         "options": [
           "in",
-          "of",
-          "to"
+          "on",
+          "of"
         ],
         "answer": 0,
         "why": "Participate IN an event: “participar en” matches; never “participate on”."
@@ -402,11 +402,11 @@
         "q": "recover ___ surgery",
         "options": [
           "from",
-          "on",
-          "with"
+          "of",
+          "on"
         ],
         "answer": 0,
-        "why": "Recover FROM an illness or operation: you come back FROM it."
+        "why": "Recover FROM an illness or operation, never “recover of”: you come back FROM it."
       }
     ],
     "C1": [
@@ -415,22 +415,22 @@
         "q": "comply ___ regulations",
         "options": [
           "with",
-          "at",
-          "for"
+          "to",
+          "on"
         ],
         "answer": 0,
-        "why": "Comply WITH rules or orders; the noun keeps it too: “in compliance with”."
+        "why": "Comply WITH rules or orders, never “comply to”; the noun keeps it too: “in compliance with”."
       },
       {
         "id": "preposition-orchard-c1-02",
-        "q": "refrain ___ comment",
+        "q": "refrain ___ commenting",
         "options": [
           "from",
-          "to",
-          "about"
+          "of",
+          "to"
         ],
         "answer": 0,
-        "why": "Refrain FROM + noun or -ing: “Please refrain from smoking.”"
+        "why": "Refrain FROM + noun or -ing, never “refrain of”: “Please refrain from smoking.”"
       },
       {
         "id": "preposition-orchard-c1-03",
@@ -449,7 +449,7 @@
         "options": [
           "to",
           "on",
-          "with"
+          "at"
         ],
         "answer": 0,
         "why": "Adhere TO rules or a plan, like glue sticking TO a surface."
@@ -459,7 +459,7 @@
         "q": "capitalise ___ an opportunity",
         "options": [
           "on",
-          "from",
+          "of",
           "at"
         ],
         "answer": 0,
@@ -471,18 +471,18 @@
         "options": [
           "with",
           "about",
-          "to"
+          "of"
         ],
         "answer": 0,
         "why": "Grapple WITH a hard problem, like wrestling WITH it."
       },
       {
         "id": "preposition-orchard-c1-07",
-        "q": "stem ___ a root cause",
+        "q": "stem ___ a lack of funding",
         "options": [
           "from",
-          "in",
-          "of"
+          "of",
+          "in"
         ],
         "answer": 0,
         "why": "A problem stems FROM its cause, as a plant grows FROM its root."
@@ -492,8 +492,8 @@
         "q": "culminate ___ success",
         "options": [
           "in",
-          "with",
-          "on"
+          "to",
+          "of"
         ],
         "answer": 0,
         "why": "Culminate IN a final high point: “The campaign culminated in victory.”"
@@ -503,8 +503,8 @@
         "q": "abstain ___ voting",
         "options": [
           "from",
-          "at",
-          "for"
+          "of",
+          "to"
         ],
         "answer": 0,
         "why": "Abstain FROM voting or drinking; “abstenerse de” leads to the mistake “abstain of”."
@@ -514,11 +514,11 @@
         "q": "dispose ___ waste",
         "options": [
           "of",
-          "to",
-          "about"
+          "with",
+          "from"
         ],
         "answer": 0,
-        "why": "Dispose OF means get rid of: hospitals must dispose of used needles safely."
+        "why": "Dispose OF means get rid of (don’t confuse it with “dispense with”): hospitals must dispose of used needles safely."
       },
       {
         "id": "preposition-orchard-c1-11",
@@ -536,8 +536,8 @@
         "q": "dwell ___ the past",
         "options": [
           "on",
-          "in",
-          "with"
+          "of",
+          "to"
         ],
         "answer": 0,
         "why": "Dwell ON the past means keep thinking about it too much."

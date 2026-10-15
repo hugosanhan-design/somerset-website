@@ -19,7 +19,7 @@
       { "id": "wd-b2-11", "q": "It ___ that real cowboys spent far more time with cattle than with guns.", "options": ["is said", "says", "is saying"], "answer": 0, "why": "The impersonal pattern is “It is said that…”, never “It says that…” for general belief." },
       { "id": "wd-b2-12", "q": "The new hospital ___ when the epidemic reached the city.", "options": ["was being built", "was building", "had built"], "answer": 0, "why": "In progress at that moment and passive: was being + past participle." },
       { "id": "wd-b2-13", "q": "Florence Nightingale ___ as the founder of modern nursing.", "options": ["is often described", "often describes", "is often describing"], "answer": 0, "why": "Other people describe her: present passive, is + past participle." },
-      { "id": "wd-b2-14", "q": "Until John Snow's work in 1854, it ___ that cholera was spread by dirty water.", "options": ["was not known", "did not know", "was not knowing"], "answer": 0, "why": "Nobody is named as the knower: passive with “it”, was not known." }
+      { "id": "wd-b2-14", "q": "Before John Snow's work in 1854, it ___ that cholera was spread by bad air.", "options": ["was widely believed", "widely believed", "was widely believing"], "answer": 0, "why": "Nobody is named as the believer: passive with “it”, was believed." }
     ]
   }
 }

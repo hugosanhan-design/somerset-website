@@ -40,7 +40,7 @@
       { "id": "grammar-sprint-b2-04", "q": "The meeting ___ off until Friday.", "options": ["has been put", "has put", "was putting"], "answer": 0, "why": "Someone put the meeting off, not the meeting itself: passive, “has been put”." },
       { "id": "grammar-sprint-b2-05", "q": "He denied ___ the window.", "options": ["breaking", "to break", "break"], "answer": 0, "why": "“Deny” is followed by -ing: denied breaking." },
       { "id": "grammar-sprint-b2-06", "q": "___ he was exhausted, he kept working.", "options": ["Although", "Despite", "However"], "answer": 0, "why": "A full clause (“he was exhausted”) follows “although”; “despite” needs a noun or -ing." },
-      { "id": "grammar-sprint-b2-07", "q": "She suggested ___ to the beach.", "options": ["going", "to go", "that go"], "answer": 0, "why": "“Suggest” is followed by -ing, never “to” + verb." },
+      { "id": "grammar-sprint-b2-07", "q": "She suggested ___ to the beach.", "options": ["going","to go","that go"], "answer": 0, "why": "“Suggest” takes -ing (“suggested going”) or “that” + subject + verb (“suggested that we go”), never “to” + verb." },
       { "id": "grammar-sprint-b2-08", "q": "It's high time you ___ a decision.", "options": ["made", "make", "will make"], "answer": 0, "why": "“It’s high time” is followed by the past: “made”, though it means now." },
       { "id": "grammar-sprint-b2-09", "q": "The harder you work, ___ you learn.", "options": ["the more", "more", "the most"], "answer": 0, "why": "“The harder … the more”: both halves need “the” + comparative." },
       { "id": "grammar-sprint-b2-10", "q": "He must ___ the train — he's not here.", "options": ["have missed", "missed", "be missing"], "answer": 0, "why": "A confident guess about the past (“he’s not here”): must have + past participle." },
@@ -59,7 +59,7 @@
       { "id": "grammar-sprint-c1-09", "q": "The results fell short ___ expectations.", "options": ["of", "from", "to"], "answer": 0, "why": "Things fall short “of” expectations." },
       { "id": "grammar-sprint-c1-10", "q": "Little ___ know what awaited him.", "options": ["did he", "he did", "does he"], "answer": 0, "why": "“Little” at the start flips the word order: “did he know”." },
       { "id": "grammar-sprint-c1-11", "q": "It was only when I got home ___ I noticed.", "options": ["that", "when", "which"], "answer": 0, "why": "“It was only when … that …” is the fixed pattern for emphasis." },
-      { "id": "grammar-sprint-c1-12", "q": "They came up ___ a brilliant solution.", "options": ["with", "to", "against"], "answer": 0, "why": "To come up “with” an idea or solution is to think of it." }
+      { "id": "grammar-sprint-c1-12", "q": "The new evidence ___ serious doubt on his story.", "options": ["casts","makes","gives"], "answer": 0, "why": "The fixed collocation is “cast doubt on”: to make something seem less certain or true." }
     ]
   }
 }
