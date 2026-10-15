@@ -1,5 +1,7 @@
 'use client'
+import UnitEvaluations from '@/components/portal/UnitEvaluations'
 import { useState, useEffect } from 'react'
+import { parseImageUrls } from '@/lib/workImages'
 import Link from 'next/link'
 import { useParams, useRouter } from 'next/navigation'
 import SomersetLogo from '@/components/SomersetLogo'
@@ -25,6 +27,7 @@ interface WorkEntry {
   ai_error_patterns: string
   image_filename: string
   image_url: string
+  image_urls?: string
   teacher_notes: string
   by_skill: string | null
   cefr_estimate: string
@@ -154,7 +157,6 @@ export default function StudentFicha() {
               {/* Stats */}
               <div style={{ display: 'flex', gap: 24, marginTop: 16, flexWrap: 'wrap' }}>
                 <Stat label="Pieces of work" value={entries.length.toString()} />
-                {avgScore != null && <Stat label="Average score" value={`${avgScore}/100`} color={scoreColor(avgScore)} />}
                 {scoredEntries.length > 0 && (
                   <Stat label="Best score" value={`${Math.max(...scoredEntries.map(e => e.score ?? 0))}/100`} />
                 )}
@@ -280,6 +282,8 @@ export default function StudentFicha() {
             )}
           </div>
 
+          <UnitEvaluations studentId={id} card={card} sectionTitle={sectionTitle} />
+
           {/* Work history */}
           <div style={card}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
@@ -315,11 +319,14 @@ export default function StudentFicha() {
                       {expanded === entry.id && (
                         <div style={{ marginTop: 14, paddingTop: 14, borderTop: '1px solid #f3f4f6' }}>
                           {(entry.image_url || entry.image_filename) && (
-                            <img
-                              src={entry.image_url || `/uploads/${entry.image_filename}`}
-                              alt="Student work"
-                              style={{ maxWidth: '100%', maxHeight: 400, borderRadius: 6, marginBottom: 12, border: '1px solid #e5e7eb' }}
-                            />
+                            (parseImageUrls(entry).length ? parseImageUrls(entry) : [`/uploads/${entry.image_filename}`]).map((u, i) => (
+                              <img
+                                key={u}
+                                src={u}
+                                alt={`Student work, page ${i + 1}`}
+                                style={{ maxWidth: '100%', maxHeight: 400, borderRadius: 6, marginBottom: 12, marginRight: 8, border: '1px solid #e5e7eb' }}
+                              />
+                            ))
                           )}
                           {entry.ai_feedback && (
                             <div style={{ marginBottom: 10 }}>

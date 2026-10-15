@@ -37,7 +37,7 @@ export async function POST(req: NextRequest) {
       messages: [{ role: 'user', content: `${SCORING_PROMPT}\n\n${response}` }],
     })
 
-    const text = message.content[0].type === 'text' ? message.content[0].text.trim() : '{}'
+    const text = message.content.find(b => b.type === 'text')?.text.trim() ?? '{}'
     const score = JSON.parse(text)
     return NextResponse.json(score)
   } catch (err) {

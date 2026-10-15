@@ -26,6 +26,7 @@ const PRIMARY: { href: string; icon: IconName; label: string }[] = [
   { href: '/classroom', icon: 'hand', label: 'Student input' },
   { href: '/scan', icon: 'camera', label: 'Scan work' },
   { href: '/correct-queue', icon: 'correct', label: 'To correct' },
+  { href: '/assessments', icon: 'exam', label: 'Tests' },
   { href: '/correct', icon: 'write', label: 'Correct writing' },
   { href: '/catchup', icon: 'mailbox', label: 'Catch-up packs' },
 ]

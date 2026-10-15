@@ -316,6 +316,42 @@ async function initSchema(): Promise<void> {
   await addColumnIfMissing(pool, 'work_entries', 'by_skill', "TEXT DEFAULT NULL")
   await addColumnIfMissing(pool, 'work_entries', 'status', "TEXT NOT NULL DEFAULT 'corrected'")
   await addColumnIfMissing(pool, 'work_entries', 'image_url', "TEXT DEFAULT ''")
+  // All pages of one scanned document, as a JSON array of Blob URLs (in page order).
+  // image_url stays as page 1 so every older reader keeps working. Added 13 Oct 2026
+  // after Victor's exam uploaded as three separate entries (one photo per entry).
+  await addColumnIfMissing(pool, 'work_entries', 'image_urls', "TEXT DEFAULT '[]'")
+  await addColumnIfMissing(pool, 'work_entries', 'assessment_id', "TEXT DEFAULT NULL")
+  // A registered test (unit test, mock...) for one group on one date: the paper, its
+  // answer key, and the key transcribed to text. Scans link to it via
+  // work_entries.assessment_id so the correction knows what it is marking against.
+  await pool.query(`
+    CREATE TABLE IF NOT EXISTS assessments (
+      id            TEXT PRIMARY KEY,
+      group_id      TEXT REFERENCES groups(id) ON DELETE SET NULL,
+      date          TEXT NOT NULL,
+      title         TEXT NOT NULL,
+      test_urls     TEXT NOT NULL DEFAULT '[]',
+      key_urls      TEXT NOT NULL DEFAULT '[]',
+      key_text      TEXT NOT NULL DEFAULT '',
+      key_confirmed INTEGER NOT NULL DEFAULT 0,
+      created_at    TEXT DEFAULT (now()::text)
+    )
+  `)
+  // Unit evaluation: one row per (student, unit, part). Parts are never averaged.
+  await pool.query(`
+    CREATE TABLE IF NOT EXISTS unit_evaluations (
+      id         TEXT PRIMARY KEY,
+      student_id TEXT NOT NULL REFERENCES students(id) ON DELETE CASCADE,
+      unit       TEXT NOT NULL,
+      part       TEXT NOT NULL,
+      score      REAL NOT NULL,
+      max        REAL NOT NULL,
+      detail     TEXT NOT NULL DEFAULT '',
+      position   INTEGER NOT NULL DEFAULT 0,
+      updated_at TEXT DEFAULT (now()::text),
+      UNIQUE (student_id, unit, part)
+    )
+  `)
   await addColumnIfMissing(pool, 'work_entries', 'corrected_at', "TEXT DEFAULT NULL")
   await addColumnIfMissing(pool, 'work_entries', 'cefr_estimate', "TEXT DEFAULT ''")
   await addColumnIfMissing(pool, 'work_entries', 'criteria', "TEXT DEFAULT ''")

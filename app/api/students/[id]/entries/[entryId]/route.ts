@@ -31,7 +31,7 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
 
   const db = await getDb()
   const body = await req.json()
-  const { score, ai_feedback, ai_error_patterns, teacher_notes, status, criteria, transcribed_text, criteria_check } = body
+  const { score, ai_feedback, ai_error_patterns, teacher_notes, status, criteria, transcribed_text, criteria_check, assessment_id } = body
 
   await db.prepare(`
     UPDATE work_entries SET
@@ -43,6 +43,7 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
       criteria = COALESCE(?, criteria),
       transcribed_text = COALESCE(?, transcribed_text),
       criteria_check = COALESCE(?, criteria_check),
+      assessment_id = COALESCE(?, assessment_id),
       corrected_at = CASE WHEN ? = 'corrected' THEN now()::text ELSE corrected_at END
     WHERE id = ? AND student_id = ?
   `).run(
@@ -54,6 +55,7 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
     criteria ?? null,
     transcribed_text ?? null,
     criteria_check ? JSON.stringify(criteria_check) : null,
+    assessment_id ?? null,
     status ?? '',
     params.entryId, params.id
   )
