@@ -6,5 +6,6 @@ import passiveReportedConditionals from './passive-reported-conditionals.json'
 import modalsTags from './modals-tags.json'
 import articlesQuantityOrder from './articles-quantity-order.json'
 import linking from './linking.json'
+import grammarExtra from './grammar-extra.json'
 
-export const EXPLAINERS = { ...pastTenses, ...presentFuture, ...passiveReportedConditionals, ...modalsTags, ...articlesQuantityOrder, ...linking }
+export const EXPLAINERS = { ...pastTenses, ...presentFuture, ...passiveReportedConditionals, ...modalsTags, ...articlesQuantityOrder, ...linking, ...grammarExtra }

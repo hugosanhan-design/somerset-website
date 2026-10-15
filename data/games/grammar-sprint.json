@@ -19,7 +19,8 @@
           "going"
         ],
         "answer": 0,
-        "why": "“She” with a habit (“every day”) takes -s: goes."
+        "why": "“She” with a habit (“every day”) takes -s: goes.",
+        "explain": "present-simple"
       },
       {
         "id": "grammar-sprint-a2-02",
@@ -54,7 +55,8 @@
           "playing"
         ],
         "answer": 0,
-        "why": "“We” plus a habit (“on Saturdays”): present simple, no -s."
+        "why": "“We” plus a habit (“on Saturdays”): present simple, no -s.",
+        "explain": "present-simple"
       },
       {
         "id": "grammar-sprint-a2-05",
@@ -65,7 +67,8 @@
           "at"
         ],
         "answer": 0,
-        "why": "Interested “in”, not “on”, whatever Spanish does."
+        "why": "Interested “in”, not “on”, whatever Spanish does.",
+        "explain": "preposition-dependent"
       },
       {
         "id": "grammar-sprint-a2-06",
@@ -76,7 +79,8 @@
           "on"
         ],
         "answer": 0,
-        "why": "Clock times take “at”: at seven o’clock."
+        "why": "Clock times take “at”: at seven o’clock.",
+        "explain": "preposition-time"
       },
       {
         "id": "grammar-sprint-a2-07",
@@ -87,7 +91,8 @@
           "Are"
         ],
         "answer": 0,
-        "why": "“You” plus “like” makes the question with “do”."
+        "why": "“You” plus “like” makes the question with “do”.",
+        "explain": "present-simple"
       },
       {
         "id": "grammar-sprint-a2-08",
@@ -98,7 +103,8 @@
           "is"
         ],
         "answer": 0,
-        "why": "“She” goes with “has got”."
+        "why": "“She” goes with “has got”.",
+        "explain": "have-got-can"
       },
       {
         "id": "grammar-sprint-a2-09",
@@ -121,7 +127,8 @@
           "for"
         ],
         "answer": 0,
-        "why": "Good “at” something, not “in”."
+        "why": "Good “at” something, not “in”.",
+        "explain": "preposition-dependent"
       },
       {
         "id": "grammar-sprint-a2-11",
@@ -132,7 +139,8 @@
           "at"
         ],
         "answer": 0,
-        "why": "Months take “in”: in May."
+        "why": "Months take “in”: in May.",
+        "explain": "preposition-time"
       },
       {
         "id": "grammar-sprint-a2-12",
@@ -143,7 +151,8 @@
           "can to"
         ],
         "answer": 0,
-        "why": "“Can” never takes -s and is followed by the verb with no “to”."
+        "why": "“Can” never takes -s and is followed by the verb with no “to”.",
+        "explain": "have-got-can"
       }
     ],
     "B1": [
@@ -180,7 +189,8 @@
           "tallest"
         ],
         "answer": 0,
-        "why": "Short adjectives add -er, and “than” means comparative: taller."
+        "why": "Short adjectives add -er, and “than” means comparative: taller.",
+        "explain": "comparative"
       },
       {
         "id": "grammar-sprint-b1-04",
@@ -239,7 +249,8 @@
           "getting"
         ],
         "answer": 0,
-        "why": "In “be used to”, “to” is a preposition, so the verb takes -ing."
+        "why": "In “be used to”, “to” is a preposition, so the verb takes -ing.",
+        "explain": "used-to-be-used-to"
       },
       {
         "id": "grammar-sprint-b1-09",
@@ -274,7 +285,8 @@
           "be seeing"
         ],
         "answer": 0,
-        "why": "In “look forward to”, “to” is a preposition, so the verb takes -ing."
+        "why": "In “look forward to”, “to” is a preposition, so the verb takes -ing.",
+        "explain": "preposition-ing"
       },
       {
         "id": "grammar-sprint-b1-12",
@@ -323,7 +335,8 @@
           "would have"
         ],
         "answer": 0,
-        "why": "“I wish” about the present takes the past: “had”."
+        "why": "“I wish” about the present takes the past: “had”.",
+        "explain": "unreal-past"
       },
       {
         "id": "grammar-sprint-b2-04",
@@ -382,7 +395,8 @@
           "will make"
         ],
         "answer": 0,
-        "why": "“It’s high time” is followed by the past: “made”, though it means now."
+        "why": "“It’s high time” is followed by the past: “made”, though it means now.",
+        "explain": "unreal-past"
       },
       {
         "id": "grammar-sprint-b2-09",
@@ -393,7 +407,8 @@
           "the most"
         ],
         "answer": 0,
-        "why": "“The harder … the more”: both halves need “the” + comparative."
+        "why": "“The harder … the more”: both halves need “the” + comparative.",
+        "explain": "comparative"
       },
       {
         "id": "grammar-sprint-b2-10",
@@ -416,7 +431,8 @@
           "won't"
         ],
         "answer": 0,
-        "why": "“I’d rather you” plus the past (“didn’t”) for a polite request about now."
+        "why": "“I’d rather you” plus the past (“didn’t”) for a polite request about now.",
+        "explain": "unreal-past"
       },
       {
         "id": "grammar-sprint-b2-12",
@@ -427,7 +443,8 @@
           "he is"
         ],
         "answer": 0,
-        "why": "“Not only” at the start flips the word order: “was he”."
+        "why": "“Not only” at the start flips the word order: “was he”.",
+        "explain": "inversion-negative"
       }
     ],
     "C1": [
@@ -440,7 +457,8 @@
           "Scarcely"
         ],
         "answer": 0,
-        "why": "“Than” in the sentence pairs only with “No sooner”; “hardly” and “scarcely” take “when”."
+        "why": "“Than” in the sentence pairs only with “No sooner”; “hardly” and “scarcely” take “when”.",
+        "explain": "inversion-negative"
       },
       {
         "id": "grammar-sprint-c1-02",
@@ -451,7 +469,8 @@
           "should open you"
         ],
         "answer": 0,
-        "why": "“Under no circumstances” at the start flips the word order: “should you open”."
+        "why": "“Under no circumstances” at the start flips the word order: “should you open”.",
+        "explain": "inversion-negative"
       },
       {
         "id": "grammar-sprint-c1-03",
@@ -520,7 +539,8 @@
           "wouldn't"
         ],
         "answer": 0,
-        "why": "“I’d sooner you” takes the past (“didn’t”) for a request about now or later."
+        "why": "“I’d sooner you” takes the past (“didn’t”) for a request about now or later.",
+        "explain": "unreal-past"
       },
       {
         "id": "grammar-sprint-c1-09",
@@ -531,7 +551,8 @@
           "to"
         ],
         "answer": 0,
-        "why": "Things fall short “of” expectations."
+        "why": "Things fall short “of” expectations.",
+        "explain": "preposition-dependent"
       },
       {
         "id": "grammar-sprint-c1-10",
@@ -542,7 +563,8 @@
           "does he"
         ],
         "answer": 0,
-        "why": "“Little” at the start flips the word order: “did he know”."
+        "why": "“Little” at the start flips the word order: “did he know”.",
+        "explain": "inversion-negative"
       },
       {
         "id": "grammar-sprint-c1-11",
@@ -553,7 +575,8 @@
           "which"
         ],
         "answer": 0,
-        "why": "“It was only when … that …” is the fixed pattern for emphasis."
+        "why": "“It was only when … that …” is the fixed pattern for emphasis.",
+        "explain": "cleft-it-was-only-when"
       },
       {
         "id": "grammar-sprint-c1-12",

@@ -1,0 +1,171 @@
+{
+  "preposition-time": {
+    "title": "In, on, at: time",
+    "es": "En español decimos «a las siete», «el lunes», «en mayo». En inglés hay tres palabras: at para la hora, on para el día, in para periodos largos.",
+    "structure": [
+      "at + hora o momento · on + día o fecha · in + mes, año, estación o parte del día",
+      "at 7 o'clock, at night, at the weekend · on Monday, on 19 March · in May, in 1998, in the morning"
+    ],
+    "rule": "Piensa en tamaños: at es un punto, on es un día, in es un periodo (mes, año, estación) o una parte del día: in the morning. Ojo: on Saturday morning, pero at night y at the weekend.",
+    "example": {
+      "en": "The Fallas finish on 19 March, at midnight.",
+      "es": "Las Fallas terminan el 19 de marzo, a medianoche."
+    }
+  },
+  "preposition-place": {
+    "title": "In, on, at: place",
+    "es": "En español casi todo es «en»: en la mesa, en el bolso, en el aeropuerto. En inglés depende de cómo es el sitio.",
+    "structure": [
+      "at + un punto o lugar donde haces algo · on + superficie o planta · in + espacio cerrado, ciudad o país",
+      "at the airport, at home · on the table, on the ground floor · in my bag, in Madrid"
+    ],
+    "rule": "¿Dentro? In. ¿Encima, tocando? On. ¿Un punto en el mapa, donde quedas o haces algo? At. Y apréndete at home y in the countryside tal cual.",
+    "example": {
+      "en": "The keys are in my bag, on the kitchen table.",
+      "es": "Las llaves están en mi bolso, en la mesa de la cocina."
+    }
+  },
+  "preposition-fixed-phrases": {
+    "title": "Fixed phrases with in, on, at",
+    "es": "Son expresiones hechas, y la preposición rara vez coincide con la española: «a propósito» es on purpose; «de vacaciones», on holiday; «en riesgo», at risk.",
+    "structure": [
+      "at: risk, a loss, odds with, a standstill, the mercy of · on: purpose, holiday, duty, the run, the verge of, TV, the internet",
+      "in: charge of, the middle of, line with, the balance, your element, a crisis"
+    ],
+    "rule": "Aquí no hay lógica que valga: apréndelas como un bloque, preposición incluida. Una pista: in suele ir con estados y situaciones (in a crisis, in a downturn).",
+    "example": {
+      "en": "He broke the window on purpose.",
+      "es": "Rompió la ventana a propósito."
+    }
+  },
+  "preposition-dependent": {
+    "title": "Interested in · good at",
+    "es": "Muchos adjetivos y verbos llevan su propia preposición, y no siempre coincide con la española: «se me da bien» es good at; «interesado en» es interested in, nunca on.",
+    "structure": [
+      "adjetivo o verbo + su preposición + nombre o -ing",
+      "interested in · good at · afraid of · fall short of"
+    ],
+    "rule": "No hay regla lógica: apréndelos en pareja, como si fueran una sola palabra. Truco: anota siempre la preposición junto a la palabra: good at, interested in.",
+    "example": {
+      "en": "She's interested in art, but she isn't very good at drawing.",
+      "es": "Le interesa el arte, pero no se le da muy bien dibujar."
+    }
+  },
+  "present-simple": {
+    "title": "Present simple",
+    "es": "Es nuestro presente: «va», «jugamos». La trampa: con he, she e it el verbo lleva -s, y las preguntas necesitan do o does.",
+    "structure": [
+      "I / you / we / they + verbo · he / she / it + verbo-s · Do / Does + sujeto + verbo?",
+      "She goes · We play · Do you like pizza? · Does he work?"
+    ],
+    "rule": "Para costumbres y cosas que pasan siempre (every day, on Saturdays). Con he, she, it, añade -s. En la pregunta, la -s se va a does: Does she go?",
+    "example": {
+      "en": "She goes to school every day.",
+      "es": "Va al colegio todos los días."
+    }
+  },
+  "have-got-can": {
+    "title": "Have got · can",
+    "es": "Have got es «tener» cuando es poseer: I've got two brothers. Pero la edad, el hambre o el frío van con be: I'm 50, I'm hungry. Can es «poder» o «saber»: he can swim, sabe nadar.",
+    "structure": [
+      "I / you / we / they have got · he / she / it has got  ·  can + verbo, sin to",
+      "She has got two brothers · He can speak three languages"
+    ],
+    "rule": "Con he, she, it: has got. Can es igual para todos y el verbo va detrás sin to: nunca «cans» ni «can to speak».",
+    "example": {
+      "en": "He can speak three languages.",
+      "es": "Sabe hablar tres idiomas."
+    }
+  },
+  "comparative": {
+    "title": "Comparatives",
+    "es": "Es nuestro «más alto que». La trampa: los adjetivos cortos no llevan more (taller, no «more tall»), y «cuanto más…, más…» es the more…, the more.",
+    "structure": [
+      "adjetivo corto + -er · more + adjetivo largo · the + comparativo…, the + comparativo",
+      "taller than · much taller · more expensive · the harder you work, the more you learn"
+    ],
+    "rule": "Una sílaba, o dos acabadas en -y: -er (taller, easier). Largas: more (more expensive). Irregulares: good → better, bad → worse. Para reforzar: much taller. En «cuanto más…, más…», las dos mitades llevan the.",
+    "example": {
+      "en": "The more you practise, the easier it gets.",
+      "es": "Cuanto más practicas, más fácil resulta."
+    }
+  },
+  "used-to-be-used-to": {
+    "title": "Used to · be used to",
+    "es": "Used to + verbo es «solía»: I used to smoke, antes fumaba. Be used to + -ing es «estar acostumbrado a». Ojo: used to solo es pasado; «suelo ir» es I usually go, nunca «I use to go».",
+    "structure": [
+      "used to + verbo (antes sí, ahora no)  ·  be / get used to + verbo-ing (costumbre)",
+      "I used to live in Paris · I'm used to getting up early"
+    ],
+    "rule": "Be used to + -ing = estar acostumbrado; get used to + -ing = acostumbrarse (ese to es preposición). Sin be ni get, used to + verbo = «solía».",
+    "example": {
+      "en": "I'm used to getting up early.",
+      "es": "Estoy acostumbrado a madrugar."
+    }
+  },
+  "preposition-ing": {
+    "title": "Preposition + -ing",
+    "es": "En español, tras preposición va el infinitivo: «antes de salir», «tengo ganas de verte». En inglés va -ing: before leaving, look forward to seeing you.",
+    "structure": [
+      "preposición + verbo-ing",
+      "before leaving · interested in learning · look forward to seeing"
+    ],
+    "rule": "Detrás de una preposición, el verbo va en -ing. La trampa es to: en look forward to o be used to, to es preposición. Así que to seeing, no to see.",
+    "example": {
+      "en": "I look forward to seeing you soon.",
+      "es": "Tengo muchas ganas de verte pronto."
+    }
+  },
+  "unreal-past": {
+    "title": "Wish · high time · I'd rather",
+    "es": "En español usamos el subjuntivo: «ojalá tuviera», «ya es hora de que decidas», «preferiría que no fumaras». En inglés va el pasado, aunque hablemos de ahora.",
+    "structure": [
+      "I wish + pasado · It's high time + sujeto + pasado · I'd rather / I'd sooner + otra persona + pasado",
+      "I wish I had · It's high time you made · I'd rather you didn't"
+    ],
+    "rule": "Tras I wish, It's high time e I'd rather + otra persona, va el pasado aunque hables del presente. Si hablas de ti mismo, I'd rather + verbo: I'd rather stay.",
+    "example": {
+      "en": "I'd rather you didn't smoke inside.",
+      "es": "Preferiría que no fumaras dentro."
+    }
+  },
+  "inversion-negative": {
+    "title": "Not only · No sooner · Little",
+    "es": "En español el orden no cambia: «nunca había visto algo así». En inglés, si una expresión negativa o restrictiva (never, not only, little, only when, under no circumstances) abre la frase, el auxiliar va delante del sujeto.",
+    "structure": [
+      "expresión negativa + auxiliar + sujeto + verbo",
+      "Not only was he… · No sooner had I arrived than… · Under no circumstances should you… · Little did he know"
+    ],
+    "rule": "Negativo al principio = orden de pregunta: was he, had I, did he. Suena formal y enfático. Ojo: No sooner va con than; Hardly y Scarcely, con when.",
+    "example": {
+      "en": "Little did he know what awaited him.",
+      "es": "Poco se imaginaba lo que le esperaba."
+    }
+  },
+  "cleft-it-was-only-when": {
+    "title": "It was only when… that",
+    "es": "Es nuestro «no fue hasta que… cuando»: «No fue hasta que llegué a casa cuando me di cuenta».",
+    "structure": [
+      "It was only when / It was not until + momento + that + frase",
+      "It was only when I got home that I noticed · It was not until 1990 that…"
+    ],
+    "rule": "Para destacar el momento, lo metes entre It was … that. El segundo hueco es that, no when.",
+    "example": {
+      "en": "It was only when I got home that I noticed.",
+      "es": "No fue hasta que llegué a casa cuando me di cuenta."
+    }
+  },
+  "question-tag-i-dont-think": {
+    "title": "I don't think…, is he?",
+    "es": "Con «I don't think…» o «I don't suppose…», el tag no va con I, sino con la segunda frase.",
+    "structure": [
+      "I don't think / I don't suppose + frase, + tag de esa frase",
+      "I don't think he's coming, is he? · I don't suppose you'd help, would you?"
+    ],
+    "rule": "Mira la segunda frase: el tag sale de ella (he's → is he; you'd → would you). Como don't ya hace negativa toda la idea, el tag va en positivo.",
+    "example": {
+      "en": "I don't suppose you'd help me, would you?",
+      "es": "Supongo que no me echarías una mano, ¿verdad?"
+    }
+  }
+}
