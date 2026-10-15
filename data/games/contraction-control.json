@@ -1,0 +1,382 @@
+{
+  "id": "contraction-control",
+  "title": "Contraction Control",
+  "tags": [
+    "register",
+    "punctuation"
+  ],
+  "engine": "choice",
+  "intro": "I'm becomes I am. Can't becomes cannot. Knowing when NOT to contract in formal writing is its own skill.",
+  "source": "Game — Contraction Control.html",
+  "draft": true,
+  "items": {
+    "A2": [
+      {
+        "id": "contraction-control-a2-01",
+        "q": "Formal writing — which is correct?",
+        "options": [
+          "I am writing to apply for the position.",
+          "I'm writing to apply for the position.",
+          "I is writing to apply for the position."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "contraction-control-a2-02",
+        "q": "Formal writing — which is correct?",
+        "options": [
+          "We cannot attend the meeting.",
+          "We can't attend the meeting.",
+          "We not can attend the meeting."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "contraction-control-a2-03",
+        "q": "Formal writing — which is correct?",
+        "options": [
+          "It is important to arrive on time.",
+          "It's important to arrive on time.",
+          "Its important to arrive on time."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "contraction-control-a2-04",
+        "q": "Formal writing — which is correct?",
+        "options": [
+          "They do not agree with the proposal.",
+          "They don't agree with the proposal.",
+          "They not agree with the proposal."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "contraction-control-a2-05",
+        "q": "Formal writing — which is correct?",
+        "options": [
+          "She will not be attending the event.",
+          "She won't be attending the event.",
+          "She wont be attending the event."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "contraction-control-a2-06",
+        "q": "Formal writing — which is correct?",
+        "options": [
+          "I would like to request more information.",
+          "I'd like to request more information.",
+          "I like to request more information."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "contraction-control-a2-07",
+        "q": "Formal writing — which is correct?",
+        "options": [
+          "We are pleased to confirm your booking.",
+          "We're pleased to confirm your booking.",
+          "We pleased to confirm your booking."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "contraction-control-a2-08",
+        "q": "Formal writing — which is correct?",
+        "options": [
+          "He has not replied to my email yet.",
+          "He hasn't replied to my email yet.",
+          "He have not replied to my email yet."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "contraction-control-a2-09",
+        "q": "Formal writing — which is correct?",
+        "options": [
+          "I have attached the report for your review.",
+          "I've attached the report for your review.",
+          "I has attached the report for your review."
+        ],
+        "answer": 0
+      }
+    ],
+    "B1": [
+      {
+        "id": "contraction-control-b1-01",
+        "q": "Formal writing — which is correct?",
+        "options": [
+          "The company does not accept returns after 30 days.",
+          "The company doesn't accept returns after 30 days.",
+          "The company not accepts returns after 30 days."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "contraction-control-b1-02",
+        "q": "Formal writing — which is correct?",
+        "options": [
+          "We were unable to reach a decision.",
+          "We weren't able to reach a decision.",
+          "We was unable to reach a decision."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "contraction-control-b1-03",
+        "q": "Formal writing — which is correct?",
+        "options": [
+          "It would be appreciated if you could confirm.",
+          "It'd be appreciated if you could confirm.",
+          "It will be appreciated if you could confirm."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "contraction-control-b1-04",
+        "q": "Formal writing — which is correct?",
+        "options": [
+          "I am not able to attend due to a prior commitment.",
+          "I'm not able to attend due to a prior commitment.",
+          "I amn't able to attend due to a prior commitment."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "contraction-control-b1-05",
+        "q": "Formal writing — which is correct?",
+        "options": [
+          "The board has not yet reviewed the proposal.",
+          "The board hasn't yet reviewed the proposal.",
+          "The board have not yet reviewed the proposal."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "contraction-control-b1-06",
+        "q": "Formal writing — which is correct?",
+        "options": [
+          "We do not anticipate any further delays.",
+          "We don't anticipate any further delays.",
+          "We not anticipate any further delays."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "contraction-control-b1-07",
+        "q": "Formal writing — which is correct?",
+        "options": [
+          "She is not currently available for comment.",
+          "She isn't currently available for comment.",
+          "She not currently available for comment."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "contraction-control-b1-08",
+        "q": "Formal writing — which is correct?",
+        "options": [
+          "You will not be charged for this service.",
+          "You won't be charged for this service.",
+          "You not be charged for this service."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "contraction-control-b1-09",
+        "q": "Formal writing — which is correct?",
+        "options": [
+          "They cannot guarantee delivery by Friday.",
+          "They can't guarantee delivery by Friday.",
+          "They not can guarantee delivery by Friday."
+        ],
+        "answer": 0
+      }
+    ],
+    "B2": [
+      {
+        "id": "contraction-control-b2-01",
+        "q": "Formal writing — which is correct?",
+        "options": [
+          "The committee has not reached a consensus.",
+          "The committee hasn't reached a consensus.",
+          "The committee have not reached consensus."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "contraction-control-b2-02",
+        "q": "Formal writing — which is correct?",
+        "options": [
+          "It is not uncommon for delays to occur.",
+          "It's not uncommon for delays to occur.",
+          "It not uncommon for delays to occur."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "contraction-control-b2-03",
+        "q": "Formal writing — which is correct?",
+        "options": [
+          "We would not recommend proceeding without approval.",
+          "We wouldn't recommend proceeding without approval.",
+          "We not recommend proceeding without approval."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "contraction-control-b2-04",
+        "q": "Formal writing — which is correct?",
+        "options": [
+          "The findings do not support this conclusion.",
+          "The findings don't support this conclusion.",
+          "The findings not support this conclusion."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "contraction-control-b2-05",
+        "q": "Formal writing — which is correct?",
+        "options": [
+          "I cannot stress enough the importance of this matter.",
+          "I can't stress enough the importance of this matter.",
+          "I not can stress enough the importance."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "contraction-control-b2-06",
+        "q": "Formal writing — which is correct?",
+        "options": [
+          "The evidence is not sufficient to draw a conclusion.",
+          "The evidence isn't sufficient to draw a conclusion.",
+          "The evidence not sufficient to draw a conclusion."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "contraction-control-b2-07",
+        "q": "Formal writing — which is correct?",
+        "options": [
+          "They will not be able to attend the ceremony.",
+          "They won't be able to attend the ceremony.",
+          "They not will be able to attend."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "contraction-control-b2-08",
+        "q": "Formal writing — which is correct?",
+        "options": [
+          "We have not received confirmation of your order.",
+          "We haven't received confirmation of your order.",
+          "We not received confirmation of your order."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "contraction-control-b2-09",
+        "q": "Formal writing — which is correct?",
+        "options": [
+          "This policy does not apply to existing customers.",
+          "This policy doesn't apply to existing customers.",
+          "This policy not apply to existing customers."
+        ],
+        "answer": 0
+      }
+    ],
+    "C1": [
+      {
+        "id": "contraction-control-c1-01",
+        "q": "Formal writing — which is correct?",
+        "options": [
+          "It would not be appropriate to comment further.",
+          "It wouldn't be appropriate to comment further.",
+          "It not be appropriate to comment further."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "contraction-control-c1-02",
+        "q": "Formal writing — which is correct?",
+        "options": [
+          "The report does not, in our view, reflect the facts.",
+          "The report doesn't, in our view, reflect the facts.",
+          "The report not, in our view, reflect the facts."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "contraction-control-c1-03",
+        "q": "Formal writing — which is correct?",
+        "options": [
+          "We cannot, under any circumstances, approve this request.",
+          "We can't, under any circumstances, approve this request.",
+          "We not can, under any circumstances, approve this request."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "contraction-control-c1-04",
+        "q": "Formal writing — which is correct?",
+        "options": [
+          "The panel was not, at that stage, in a position to decide.",
+          "The panel wasn't, at that stage, in a position to decide.",
+          "The panel not, at that stage, in a position to decide."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "contraction-control-c1-05",
+        "q": "Formal writing — which is correct?",
+        "options": [
+          "This matter has not previously been brought to our attention.",
+          "This matter hasn't previously been brought to our attention.",
+          "This matter not previously been brought."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "contraction-control-c1-06",
+        "q": "Formal writing — which is correct?",
+        "options": [
+          "It is not, therefore, a straightforward decision.",
+          "It's not, therefore, a straightforward decision.",
+          "It not, therefore, a straightforward decision."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "contraction-control-c1-07",
+        "q": "Formal writing — which is correct?",
+        "options": [
+          "We are not, at this juncture, able to comment.",
+          "We're not, at this juncture, able to comment.",
+          "We not, at this juncture, able to comment."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "contraction-control-c1-08",
+        "q": "Formal writing — which is correct?",
+        "options": [
+          "The applicant did not meet the eligibility criteria.",
+          "The applicant didn't meet the eligibility criteria.",
+          "The applicant not meet the eligibility criteria."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "contraction-control-c1-09",
+        "q": "Formal writing — which is correct?",
+        "options": [
+          "The board will not, under the circumstances, reconsider.",
+          "The board won't, under the circumstances, reconsider.",
+          "The board not, under the circumstances, reconsider."
+        ],
+        "answer": 0
+      }
+    ]
+  }
+}

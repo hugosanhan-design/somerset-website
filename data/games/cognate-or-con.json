@@ -1,0 +1,341 @@
+{
+  "id": "cognate-or-con",
+  "title": "Cognate or Con?",
+  "tags": [
+    "vocabulary"
+  ],
+  "engine": "choice",
+  "intro": "Some words that look Spanish really do mean the same thing. Most don't. A speed round to sharpen your instinct for which is which.",
+  "source": "Game — Cognate or Con.html",
+  "draft": true,
+  "items": {
+    "A2": [
+      {
+        "id": "cognate-or-con-a2-01",
+        "q": "What does 'notice' mean in English?",
+        "options": [
+          "to observe something",
+          "a newspaper story",
+          "an advertisement"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "cognate-or-con-a2-02",
+        "q": "What does 'rope' mean in English?",
+        "options": [
+          "a thick cord",
+          "clothes",
+          "a type of dance"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "cognate-or-con-a2-03",
+        "q": "What does 'diary' mean in English?",
+        "options": [
+          "a personal journal",
+          "a newspaper",
+          "a type of food"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "cognate-or-con-a2-04",
+        "q": "What does 'parents' mean in English?",
+        "options": [
+          "mother and father",
+          "all your relatives",
+          "grandparents only"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "cognate-or-con-a2-05",
+        "q": "What does 'pie' mean in English?",
+        "options": [
+          "a baked dessert",
+          "your foot",
+          "a type of shoe"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "cognate-or-con-a2-06",
+        "q": "What does 'red' mean in English?",
+        "options": [
+          "a colour",
+          "a network",
+          "a type of net"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "cognate-or-con-a2-07",
+        "q": "What does 'important' mean in English?",
+        "options": [
+          "significant or serious",
+          "urgent only",
+          "expensive"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "cognate-or-con-a2-08",
+        "q": "What does 'attend' mean in English?",
+        "options": [
+          "to go to (an event)",
+          "to help someone",
+          "to wait for someone"
+        ],
+        "answer": 0
+      }
+    ],
+    "B1": [
+      {
+        "id": "cognate-or-con-b1-01",
+        "q": "What does 'advertise' mean in English?",
+        "options": [
+          "to promote a product publicly",
+          "to warn someone of danger",
+          "to give someone advice"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "cognate-or-con-b1-02",
+        "q": "What does 'warn' mean in English?",
+        "options": [
+          "to tell someone about a danger",
+          "to promote a product",
+          "to feel warm"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "cognate-or-con-b1-03",
+        "q": "What does 'billion' mean in English?",
+        "options": [
+          "a thousand million (1,000,000,000)",
+          "a million million, like Spanish billón",
+          "ten million"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "cognate-or-con-b1-04",
+        "q": "What does 'vase' mean in English?",
+        "options": [
+          "a container for flowers",
+          "a drinking glass",
+          "a type of plate"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "cognate-or-con-b1-05",
+        "q": "What does 'conductor' mean in English?",
+        "options": [
+          "someone who leads an orchestra, or a train official",
+          "a driver of a car",
+          "an electrician"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "cognate-or-con-b1-06",
+        "q": "What does 'recipient' mean in English?",
+        "options": [
+          "the person who receives something",
+          "a container",
+          "a recipe"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "cognate-or-con-b1-07",
+        "q": "What does 'discussion' mean in English?",
+        "options": [
+          "a calm conversation about a topic",
+          "a heated argument",
+          "a lecture"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "cognate-or-con-b1-08",
+        "q": "What does 'notice' mean as a noun?",
+        "options": [
+          "a written announcement",
+          "a piece of news",
+          "an opinion"
+        ],
+        "answer": 0
+      }
+    ],
+    "B2": [
+      {
+        "id": "cognate-or-con-b2-01",
+        "q": "What does 'disgrace' mean in English?",
+        "options": [
+          "shame or loss of reputation",
+          "a type of celebration",
+          "gratitude"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "cognate-or-con-b2-02",
+        "q": "What does 'petrol' mean in British English?",
+        "options": [
+          "fuel for cars (gasoline)",
+          "petroleum or crude oil",
+          "a type of plastic"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "cognate-or-con-b2-03",
+        "q": "What does 'candid' mean in English?",
+        "options": [
+          "honest and direct",
+          "naive or innocent, like Spanish cándido",
+          "shy or embarrassed"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "cognate-or-con-b2-04",
+        "q": "What does 'condescend' mean in English?",
+        "options": [
+          "to act as if you are superior to someone",
+          "to agree to do something, like Spanish condescender",
+          "to argue with someone"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "cognate-or-con-b2-05",
+        "q": "What does 'bizarre' mean in English?",
+        "options": [
+          "very strange or unusual",
+          "generous",
+          "colourful"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "cognate-or-con-b2-06",
+        "q": "What does 'exquisite' mean in English?",
+        "options": [
+          "extremely beautiful or delicate",
+          "exact or precise",
+          "expensive only"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "cognate-or-con-b2-07",
+        "q": "What does 'preservative' mean in English?",
+        "options": [
+          "a chemical added to food to keep it fresh",
+          "a type of insurance",
+          "a warning label"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "cognate-or-con-b2-08",
+        "q": "What does 'sympathy' mean in English?",
+        "options": [
+          "feeling sorry for someone's situation",
+          "friendliness or likeability, like Spanish simpatía",
+          "happiness"
+        ],
+        "answer": 0
+      }
+    ],
+    "C1": [
+      {
+        "id": "cognate-or-con-c1-01",
+        "q": "What does 'ostentatious' mean in English?",
+        "options": [
+          "showy, designed to impress",
+          "hidden or secret",
+          "modest"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "cognate-or-con-c1-02",
+        "q": "What does 'notorious' mean in English?",
+        "options": [
+          "famous for something bad",
+          "well-known in a good way",
+          "unknown"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "cognate-or-con-c1-03",
+        "q": "What does 'ingenious' mean in English?",
+        "options": [
+          "clever and original",
+          "naive, like Spanish ingenuo",
+          "honest"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "cognate-or-con-c1-04",
+        "q": "What does 'diversion' mean in British English?",
+        "options": [
+          "an alternative route, or entertainment",
+          "diversity",
+          "a type of argument"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "cognate-or-con-c1-05",
+        "q": "What does 'eventual' mean in English?",
+        "options": [
+          "happening at the end of a process",
+          "possible or maybe, like Spanish eventual",
+          "urgent"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "cognate-or-con-c1-06",
+        "q": "What does 'anticipate' mean in English?",
+        "options": [
+          "to expect something and prepare for it",
+          "to be excited about something",
+          "to be late"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "cognate-or-con-c1-07",
+        "q": "What does 'assume' mean in English?",
+        "options": [
+          "to believe something without proof",
+          "to take on a responsibility, like Spanish asumir",
+          "to argue"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "cognate-or-con-c1-08",
+        "q": "What does 'contest' mean in English, as a verb?",
+        "options": [
+          "to formally challenge or dispute",
+          "to answer, like Spanish contestar",
+          "to celebrate"
+        ],
+        "answer": 0
+      }
+    ]
+  }
+}

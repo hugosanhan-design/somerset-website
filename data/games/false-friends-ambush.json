@@ -1,0 +1,181 @@
+{
+  "id": "false-friends-ambush",
+  "title": "False Friends Ambush",
+  "tags": [
+    "vocabulary"
+  ],
+  "engine": "pairs",
+  "intro": "Embarazada isn’t embarrassed. Actualmente isn’t actually. The words that look Spanish and betray you every time — match each one to what it really means.",
+  "source": "Game — False Friends Ambush.html",
+  "draft": true,
+  "items": {
+    "A2": [
+      {
+        "id": "false-friends-ambush-a2-01",
+        "left": "embarrassed",
+        "right": "ashamed or awkward (not pregnant — that's 'embarazada' in Spanish)"
+      },
+      {
+        "id": "false-friends-ambush-a2-02",
+        "left": "library",
+        "right": "a place to borrow books (not a bookshop — that's 'librería' in Spanish)"
+      },
+      {
+        "id": "false-friends-ambush-a2-03",
+        "left": "carpet",
+        "right": "a floor covering (not a folder — that's 'carpeta' in Spanish)"
+      },
+      {
+        "id": "false-friends-ambush-a2-04",
+        "left": "exit",
+        "right": "the way out (not success — 'éxito' in Spanish means success)"
+      },
+      {
+        "id": "false-friends-ambush-a2-05",
+        "left": "large",
+        "right": "big in size (not long in time — 'largo' in Spanish means long)"
+      },
+      {
+        "id": "false-friends-ambush-a2-06",
+        "left": "pretend",
+        "right": "to fake something (not to expect or intend — 'pretender' in Spanish)"
+      },
+      {
+        "id": "false-friends-ambush-a2-07",
+        "left": "actually",
+        "right": "in fact, really (not 'currently' — that's 'actualmente' in Spanish)"
+      },
+      {
+        "id": "false-friends-ambush-a2-08",
+        "left": "realise",
+        "right": "to become aware of something (not to carry out — 'realizar' in Spanish)"
+      }
+    ],
+    "B1": [
+      {
+        "id": "false-friends-ambush-b1-01",
+        "left": "assist",
+        "right": "to help (not to attend an event — 'asistir' in Spanish means to attend)"
+      },
+      {
+        "id": "false-friends-ambush-b1-02",
+        "left": "sympathetic",
+        "right": "kind and understanding (not fun or likeable — 'simpático' in Spanish means friendly)"
+      },
+      {
+        "id": "false-friends-ambush-b1-03",
+        "left": "sensible",
+        "right": "practical and wise (not sensitive or emotional — 'sensible' in Spanish means sensitive)"
+      },
+      {
+        "id": "false-friends-ambush-b1-04",
+        "left": "constipated",
+        "right": "unable to empty your bowels (not having a cold — 'constipado' in Spanish means a cold)"
+      },
+      {
+        "id": "false-friends-ambush-b1-05",
+        "left": "argument",
+        "right": "a disagreement or quarrel (not a film's plot — 'argumento' in Spanish means plot)"
+      },
+      {
+        "id": "false-friends-ambush-b1-06",
+        "left": "career",
+        "right": "your working life (not a degree course — 'carrera' in Spanish often means degree)"
+      },
+      {
+        "id": "false-friends-ambush-b1-07",
+        "left": "actual",
+        "right": "real, as opposed to imagined (not 'current' — 'actual' in Spanish means present-day)"
+      },
+      {
+        "id": "false-friends-ambush-b1-08",
+        "left": "eventually",
+        "right": "in the end, finally (not 'possibly' — 'eventualmente' in Spanish means possibly)"
+      }
+    ],
+    "B2": [
+      {
+        "id": "false-friends-ambush-b2-01",
+        "left": "compromise",
+        "right": "a mutual concession (not a prior engagement — 'compromiso' in Spanish often means commitment)"
+      },
+      {
+        "id": "false-friends-ambush-b2-02",
+        "left": "disgust",
+        "right": "strong revulsion (not mild annoyance — 'disgusto' in Spanish can mean upset)"
+      },
+      {
+        "id": "false-friends-ambush-b2-03",
+        "left": "molest",
+        "right": "to abuse sexually — a serious word (not to bother — 'molestar' in Spanish is much milder)"
+      },
+      {
+        "id": "false-friends-ambush-b2-04",
+        "left": "lecture",
+        "right": "a formal talk or class (not reading — 'lectura' in Spanish means reading)"
+      },
+      {
+        "id": "false-friends-ambush-b2-05",
+        "left": "fabric",
+        "right": "cloth or textile (not a factory — 'fábrica' in Spanish means factory)"
+      },
+      {
+        "id": "false-friends-ambush-b2-06",
+        "left": "sane",
+        "right": "mentally healthy (not healthy in general — 'sano' in Spanish means healthy)"
+      },
+      {
+        "id": "false-friends-ambush-b2-07",
+        "left": "deception",
+        "right": "the act of deceiving or lying (not disappointment — 'decepción' in Spanish means disappointment)"
+      },
+      {
+        "id": "false-friends-ambush-b2-08",
+        "left": "educated",
+        "right": "having good schooling (not polite — 'educado' in Spanish means well-mannered)"
+      }
+    ],
+    "C1": [
+      {
+        "id": "false-friends-ambush-c1-01",
+        "left": "ultimately",
+        "right": "in the end, finally (not 'recently' — 'últimamente' in Spanish means lately)"
+      },
+      {
+        "id": "false-friends-ambush-c1-02",
+        "left": "idiom",
+        "right": "a fixed expression (not language in general — 'idioma' in Spanish means language)"
+      },
+      {
+        "id": "false-friends-ambush-c1-03",
+        "left": "terrific",
+        "right": "excellent, wonderful (not terrifying, despite the look of the word)"
+      },
+      {
+        "id": "false-friends-ambush-c1-04",
+        "left": "gracious",
+        "right": "polite and kind (not funny — 'gracioso' in Spanish means funny)"
+      },
+      {
+        "id": "false-friends-ambush-c1-05",
+        "left": "casualty",
+        "right": "a person injured or killed (not something informal — 'casual' in Spanish means by chance)"
+      },
+      {
+        "id": "false-friends-ambush-c1-06",
+        "left": "signature",
+        "right": "your handwritten name (not a firm or company — 'firma' in Spanish can mean company)"
+      },
+      {
+        "id": "false-friends-ambush-c1-07",
+        "left": "apology",
+        "right": "an expression of regret (not a defence — 'apología' in Spanish can mean a defence of something)"
+      },
+      {
+        "id": "false-friends-ambush-c1-08",
+        "left": "complexion",
+        "right": "the appearance of your skin (not a complicated situation — unrelated sense in Spanish)"
+      }
+    ]
+  }
+}

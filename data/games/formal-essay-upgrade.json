@@ -1,0 +1,181 @@
+{
+  "id": "formal-essay-upgrade",
+  "title": "Formal Essay Upgrade",
+  "tags": [
+    "register"
+  ],
+  "engine": "pairs",
+  "intro": "Also becomes moreover. But becomes however. A lot of becomes a great deal of. Essay polish for Cambridge Part 2 — swap the informal for its formal twin.",
+  "source": "Game — Formal Essay Upgrade.html",
+  "draft": true,
+  "items": {
+    "A2": [
+      {
+        "id": "formal-essay-upgrade-a2-01",
+        "left": "however",
+        "right": "a more formal way to say 'but'"
+      },
+      {
+        "id": "formal-essay-upgrade-a2-02",
+        "left": "in addition",
+        "right": "a more formal way to say 'also'"
+      },
+      {
+        "id": "formal-essay-upgrade-a2-03",
+        "left": "therefore",
+        "right": "a more formal way to say 'so'"
+      },
+      {
+        "id": "formal-essay-upgrade-a2-04",
+        "left": "purchase",
+        "right": "a more formal way to say 'buy'"
+      },
+      {
+        "id": "formal-essay-upgrade-a2-05",
+        "left": "commence",
+        "right": "a more formal way to say 'start'"
+      },
+      {
+        "id": "formal-essay-upgrade-a2-06",
+        "left": "obtain",
+        "right": "a more formal way to say 'get'"
+      },
+      {
+        "id": "formal-essay-upgrade-a2-07",
+        "left": "require",
+        "right": "a more formal way to say 'need'"
+      },
+      {
+        "id": "formal-essay-upgrade-a2-08",
+        "left": "assist",
+        "right": "a more formal way to say 'help'"
+      }
+    ],
+    "B1": [
+      {
+        "id": "formal-essay-upgrade-b1-01",
+        "left": "nevertheless",
+        "right": "a more formal way to say 'even so'"
+      },
+      {
+        "id": "formal-essay-upgrade-b1-02",
+        "left": "consequently",
+        "right": "a more formal way to say 'so' or 'as a result'"
+      },
+      {
+        "id": "formal-essay-upgrade-b1-03",
+        "left": "regarding",
+        "right": "a more formal way to say 'about'"
+      },
+      {
+        "id": "formal-essay-upgrade-b1-04",
+        "left": "sufficient",
+        "right": "a more formal way to say 'enough'"
+      },
+      {
+        "id": "formal-essay-upgrade-b1-05",
+        "left": "demonstrate",
+        "right": "a more formal way to say 'show'"
+      },
+      {
+        "id": "formal-essay-upgrade-b1-06",
+        "left": "additional",
+        "right": "a more formal way to say 'extra'"
+      },
+      {
+        "id": "formal-essay-upgrade-b1-07",
+        "left": "prior to",
+        "right": "a more formal way to say 'before'"
+      },
+      {
+        "id": "formal-essay-upgrade-b1-08",
+        "left": "subsequent to",
+        "right": "a more formal way to say 'after'"
+      }
+    ],
+    "B2": [
+      {
+        "id": "formal-essay-upgrade-b2-01",
+        "left": "moreover",
+        "right": "a more formal way to say 'also' — adding a stronger point"
+      },
+      {
+        "id": "formal-essay-upgrade-b2-02",
+        "left": "a great deal of",
+        "right": "a more formal way to say 'a lot of'"
+      },
+      {
+        "id": "formal-essay-upgrade-b2-03",
+        "left": "in contrast",
+        "right": "a more formal way to say 'but' — contrasting two ideas"
+      },
+      {
+        "id": "formal-essay-upgrade-b2-04",
+        "left": "endeavour",
+        "right": "a more formal way to say 'try'"
+      },
+      {
+        "id": "formal-essay-upgrade-b2-05",
+        "left": "facilitate",
+        "right": "a more formal way to say 'help make something easier'"
+      },
+      {
+        "id": "formal-essay-upgrade-b2-06",
+        "left": "utilise",
+        "right": "a more formal way to say 'use'"
+      },
+      {
+        "id": "formal-essay-upgrade-b2-07",
+        "left": "acquire",
+        "right": "a more formal way to say 'get' or 'obtain'"
+      },
+      {
+        "id": "formal-essay-upgrade-b2-08",
+        "left": "the majority of",
+        "right": "a more formal way to say 'most of'"
+      }
+    ],
+    "C1": [
+      {
+        "id": "formal-essay-upgrade-c1-01",
+        "left": "notwithstanding",
+        "right": "the most formal way to say 'despite'"
+      },
+      {
+        "id": "formal-essay-upgrade-c1-02",
+        "left": "with regard to",
+        "right": "the most formal way to say 'about'"
+      },
+      {
+        "id": "formal-essay-upgrade-c1-03",
+        "left": "it could be argued that",
+        "right": "the most formal way to introduce a debatable claim"
+      },
+      {
+        "id": "formal-essay-upgrade-c1-04",
+        "left": "in light of",
+        "right": "the most formal way to say 'because of' or 'given'"
+      },
+      {
+        "id": "formal-essay-upgrade-c1-05",
+        "left": "to a considerable extent",
+        "right": "the most formal way to say 'a lot'"
+      },
+      {
+        "id": "formal-essay-upgrade-c1-06",
+        "left": "aforementioned",
+        "right": "the most formal way to say 'mentioned before'"
+      },
+      {
+        "id": "formal-essay-upgrade-c1-07",
+        "left": "heretofore",
+        "right": "the most formal way to say 'until now'"
+      },
+      {
+        "id": "formal-essay-upgrade-c1-08",
+        "left": "in the interest of brevity",
+        "right": "the most formal way to say 'to keep this short'"
+      }
+    ]
+  }
+}

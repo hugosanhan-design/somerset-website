@@ -1,0 +1,181 @@
+{
+  "id": "idiom-orchard",
+  "title": "Idiom Orchard",
+  "tags": [
+    "vocabulary"
+  ],
+  "engine": "pairs",
+  "intro": "English is full of expressions that mean nothing literally — piece of cake, cost an arm and a leg, once in a blue moon. Match each one to its real meaning.",
+  "source": "Game — Idiom Orchard.html",
+  "draft": true,
+  "items": {
+    "A2": [
+      {
+        "id": "idiom-orchard-a2-01",
+        "left": "piece of cake",
+        "right": "very easy (The exam was a piece of cake.)"
+      },
+      {
+        "id": "idiom-orchard-a2-02",
+        "left": "raining cats and dogs",
+        "right": "raining very heavily"
+      },
+      {
+        "id": "idiom-orchard-a2-03",
+        "left": "under the weather",
+        "right": "feeling slightly ill"
+      },
+      {
+        "id": "idiom-orchard-a2-04",
+        "left": "break the ice",
+        "right": "start a conversation in an awkward situation"
+      },
+      {
+        "id": "idiom-orchard-a2-05",
+        "left": "cost an arm and a leg",
+        "right": "be very expensive"
+      },
+      {
+        "id": "idiom-orchard-a2-06",
+        "left": "once in a blue moon",
+        "right": "very rarely"
+      },
+      {
+        "id": "idiom-orchard-a2-07",
+        "left": "hit the books",
+        "right": "study hard"
+      },
+      {
+        "id": "idiom-orchard-a2-08",
+        "left": "on cloud nine",
+        "right": "extremely happy"
+      }
+    ],
+    "B1": [
+      {
+        "id": "idiom-orchard-b1-01",
+        "left": "bite the bullet",
+        "right": "decide to do something difficult or unpleasant"
+      },
+      {
+        "id": "idiom-orchard-b1-02",
+        "left": "let the cat out of the bag",
+        "right": "reveal a secret by accident"
+      },
+      {
+        "id": "idiom-orchard-b1-03",
+        "left": "the ball is in your court",
+        "right": "it's your decision or turn to act"
+      },
+      {
+        "id": "idiom-orchard-b1-04",
+        "left": "a blessing in disguise",
+        "right": "something that seems bad but turns out good"
+      },
+      {
+        "id": "idiom-orchard-b1-05",
+        "left": "get the ball rolling",
+        "right": "start something moving forward"
+      },
+      {
+        "id": "idiom-orchard-b1-06",
+        "left": "call it a day",
+        "right": "stop working for the day"
+      },
+      {
+        "id": "idiom-orchard-b1-07",
+        "left": "speak of the devil",
+        "right": "said when someone appears just as you're talking about them"
+      },
+      {
+        "id": "idiom-orchard-b1-08",
+        "left": "miss the boat",
+        "right": "lose the chance to do something"
+      }
+    ],
+    "B2": [
+      {
+        "id": "idiom-orchard-b2-01",
+        "left": "burn the midnight oil",
+        "right": "work late into the night"
+      },
+      {
+        "id": "idiom-orchard-b2-02",
+        "left": "cut corners",
+        "right": "do something badly to save time or money"
+      },
+      {
+        "id": "idiom-orchard-b2-03",
+        "left": "go the extra mile",
+        "right": "make more effort than expected"
+      },
+      {
+        "id": "idiom-orchard-b2-04",
+        "left": "jump on the bandwagon",
+        "right": "join something popular because others are doing it"
+      },
+      {
+        "id": "idiom-orchard-b2-05",
+        "left": "a storm in a teacup",
+        "right": "a lot of fuss about something unimportant"
+      },
+      {
+        "id": "idiom-orchard-b2-06",
+        "left": "beat around the bush",
+        "right": "avoid saying something directly"
+      },
+      {
+        "id": "idiom-orchard-b2-07",
+        "left": "throw in the towel",
+        "right": "give up"
+      },
+      {
+        "id": "idiom-orchard-b2-08",
+        "left": "read between the lines",
+        "right": "understand a hidden meaning"
+      }
+    ],
+    "C1": [
+      {
+        "id": "idiom-orchard-c1-01",
+        "left": "take something with a pinch of salt",
+        "right": "not fully believe something"
+      },
+      {
+        "id": "idiom-orchard-c1-02",
+        "left": "the elephant in the room",
+        "right": "an obvious problem nobody wants to mention"
+      },
+      {
+        "id": "idiom-orchard-c1-03",
+        "left": "cut to the chase",
+        "right": "get to the point without wasting time"
+      },
+      {
+        "id": "idiom-orchard-c1-04",
+        "left": "a wolf in sheep's clothing",
+        "right": "someone dangerous who seems harmless or friendly"
+      },
+      {
+        "id": "idiom-orchard-c1-05",
+        "left": "par for the course",
+        "right": "typical, to be expected"
+      },
+      {
+        "id": "idiom-orchard-c1-06",
+        "left": "the tip of the iceberg",
+        "right": "only a small visible part of a much bigger problem"
+      },
+      {
+        "id": "idiom-orchard-c1-07",
+        "left": "add fuel to the fire",
+        "right": "make a bad situation worse"
+      },
+      {
+        "id": "idiom-orchard-c1-08",
+        "left": "a leopard can't change its spots",
+        "right": "people don't fundamentally change their nature"
+      }
+    ]
+  }
+}

@@ -1,0 +1,382 @@
+{
+  "id": "particle-post",
+  "title": "Particle Post",
+  "tags": [
+    "preposition",
+    "vocabulary"
+  ],
+  "engine": "choice",
+  "intro": "Put up with, put off, put down — same verb, three different meanings.",
+  "source": "Game — Particle Post.html",
+  "draft": true,
+  "items": {
+    "A2": [
+      {
+        "id": "particle-post-a2-01",
+        "q": "Which phrasal verb means ‘stop the TV or lights’?",
+        "options": [
+          "turn off",
+          "turn up",
+          "turn down"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "particle-post-a2-02",
+        "q": "Which phrasal verb means ‘increase the volume’?",
+        "options": [
+          "turn up",
+          "turn off",
+          "turn on"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "particle-post-a2-03",
+        "q": "Which phrasal verb means ‘start a machine’?",
+        "options": [
+          "turn on",
+          "turn off",
+          "turn away"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "particle-post-a2-04",
+        "q": "Which phrasal verb means ‘continue’?",
+        "options": [
+          "go on",
+          "go in",
+          "go back"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "particle-post-a2-05",
+        "q": "Which phrasal verb means ‘enter a room’?",
+        "options": [
+          "go in",
+          "go on",
+          "go off"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "particle-post-a2-06",
+        "q": "Which phrasal verb means ‘remove your clothes’?",
+        "options": [
+          "take off",
+          "take up",
+          "take out"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "particle-post-a2-07",
+        "q": "Which phrasal verb means ‘start a new hobby’?",
+        "options": [
+          "take up",
+          "take off",
+          "take down"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "particle-post-a2-08",
+        "q": "Which phrasal verb means ‘wake up and leave bed’?",
+        "options": [
+          "get up",
+          "get off",
+          "get on"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "particle-post-a2-09",
+        "q": "Which phrasal verb means ‘leave a bus or train’?",
+        "options": [
+          "get off",
+          "get up",
+          "get in"
+        ],
+        "answer": 0
+      }
+    ],
+    "B1": [
+      {
+        "id": "particle-post-b1-01",
+        "q": "Which phrasal verb means ‘tolerate something unpleasant’?",
+        "options": [
+          "put up with",
+          "put off",
+          "put down"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "particle-post-b1-02",
+        "q": "Which phrasal verb means ‘postpone’?",
+        "options": [
+          "put off",
+          "put up with",
+          "put down"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "particle-post-b1-03",
+        "q": "Which phrasal verb means ‘write something on paper’?",
+        "options": [
+          "put down",
+          "put off",
+          "put up with"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "particle-post-b1-04",
+        "q": "Which phrasal verb means ‘stop trying’?",
+        "options": [
+          "give up",
+          "give in",
+          "give away"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "particle-post-b1-05",
+        "q": "Which phrasal verb means ‘finally agree after resisting’?",
+        "options": [
+          "give in",
+          "give up",
+          "give away"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "particle-post-b1-06",
+        "q": "Which phrasal verb means ‘donate something for free’?",
+        "options": [
+          "give away",
+          "give up",
+          "give in"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "particle-post-b1-07",
+        "q": "Which phrasal verb means ‘recover from an illness or shock’?",
+        "options": [
+          "get over",
+          "get up",
+          "get off"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "particle-post-b1-08",
+        "q": "Which phrasal verb means ‘leave a bus or train’?",
+        "options": [
+          "get off",
+          "get up",
+          "get over"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "particle-post-b1-09",
+        "q": "Which phrasal verb means ‘rise from bed’?",
+        "options": [
+          "get up",
+          "get off",
+          "get over"
+        ],
+        "answer": 0
+      }
+    ],
+    "B2": [
+      {
+        "id": "particle-post-b2-01",
+        "q": "Which phrasal verb means ‘solve a problem, or exercise’?",
+        "options": [
+          "work out",
+          "work on",
+          "work up"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "particle-post-b2-02",
+        "q": "Which phrasal verb means ‘try to improve something’?",
+        "options": [
+          "work on",
+          "work out",
+          "work up"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "particle-post-b2-03",
+        "q": "Which phrasal verb means ‘gradually develop an appetite or a sweat’?",
+        "options": [
+          "work up",
+          "work out",
+          "work on"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "particle-post-b2-04",
+        "q": "Which phrasal verb means ‘stop functioning, or become upset’?",
+        "options": [
+          "break down",
+          "break up",
+          "break out"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "particle-post-b2-05",
+        "q": "Which phrasal verb means ‘end a relationship’?",
+        "options": [
+          "break up",
+          "break down",
+          "break out"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "particle-post-b2-06",
+        "q": "Which phrasal verb means ‘escape, or suddenly start (a fire, a war)’?",
+        "options": [
+          "break out",
+          "break down",
+          "break up"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "particle-post-b2-07",
+        "q": "Which phrasal verb means ‘continue’?",
+        "options": [
+          "carry on",
+          "carry out",
+          "carry away"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "particle-post-b2-08",
+        "q": "Which phrasal verb means ‘perform or execute a plan’?",
+        "options": [
+          "carry out",
+          "carry on",
+          "carry away"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "particle-post-b2-09",
+        "q": "Which phrasal verb means ‘become overexcited’ (usually ‘get carried away’)?",
+        "options": [
+          "carry away",
+          "carry on",
+          "carry out"
+        ],
+        "answer": 0
+      }
+    ],
+    "C1": [
+      {
+        "id": "particle-post-c1-01",
+        "q": "Which phrasal verb means ‘invent an idea’?",
+        "options": [
+          "come up with",
+          "come across",
+          "come down with"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "particle-post-c1-02",
+        "q": "Which phrasal verb means ‘find something by chance’?",
+        "options": [
+          "come across",
+          "come up with",
+          "come down with"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "particle-post-c1-03",
+        "q": "Which phrasal verb means ‘become ill with’?",
+        "options": [
+          "come down with",
+          "come up with",
+          "come across"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "particle-post-c1-04",
+        "q": "Which phrasal verb means ‘reject an offer’?",
+        "options": [
+          "turn down",
+          "turn out",
+          "turn up"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "particle-post-c1-05",
+        "q": "Which phrasal verb means ‘result in a particular way’?",
+        "options": [
+          "turn out",
+          "turn down",
+          "turn up"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "particle-post-c1-06",
+        "q": "Which phrasal verb means ‘arrive, often unexpectedly’?",
+        "options": [
+          "turn up",
+          "turn down",
+          "turn out"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "particle-post-c1-07",
+        "q": "Which phrasal verb means ‘defend or support someone’?",
+        "options": [
+          "stand up for",
+          "stand by",
+          "stand out"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "particle-post-c1-08",
+        "q": "Which phrasal verb means ‘be ready to help if needed’?",
+        "options": [
+          "stand by",
+          "stand up for",
+          "stand out"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "particle-post-c1-09",
+        "q": "Which phrasal verb means ‘be noticeably different or better’?",
+        "options": [
+          "stand out",
+          "stand by",
+          "stand up for"
+        ],
+        "answer": 0
+      }
+    ]
+  }
+}

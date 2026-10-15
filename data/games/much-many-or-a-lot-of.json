@@ -1,0 +1,421 @@
+{
+  "id": "much-many-or-a-lot-of",
+  "title": "Much, Many or A Lot Of?",
+  "tags": [
+    "agreement",
+    "vocabulary"
+  ],
+  "engine": "choice",
+  "intro": "Much, many or a lot of? It depends on whether you can count the thing. Pick the one that fits.",
+  "source": "Game — Much Many or A Lot Of.html",
+  "items": {
+    "A2": [
+      {
+        "id": "much-many-or-a-lot-of-a2-01",
+        "q": "How ___ money do you have?",
+        "options": [
+          "much",
+          "many",
+          "a lot"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "much-many-or-a-lot-of-a2-02",
+        "q": "How ___ books did you buy?",
+        "options": [
+          "many",
+          "much",
+          "a lot of"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "much-many-or-a-lot-of-a2-03",
+        "q": "I don't have ___ time today.",
+        "options": [
+          "much",
+          "many",
+          "a lot"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "much-many-or-a-lot-of-a2-04",
+        "q": "There are ___ students in the class.",
+        "options": [
+          "many",
+          "much",
+          "a lot"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "much-many-or-a-lot-of-a2-05",
+        "q": "She drinks ___ water every day.",
+        "options": [
+          "a lot of",
+          "many",
+          "few"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "much-many-or-a-lot-of-a2-06",
+        "q": "We don't have ___ apples left.",
+        "options": [
+          "many",
+          "much",
+          "a lot"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "much-many-or-a-lot-of-a2-07",
+        "q": "He has ___ homework tonight.",
+        "options": [
+          "a lot of",
+          "many",
+          "few"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "much-many-or-a-lot-of-a2-08",
+        "q": "There isn't ___ sugar in the jar.",
+        "options": [
+          "much",
+          "many",
+          "a lot"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "much-many-or-a-lot-of-a2-09",
+        "q": "I met ___ people at the party.",
+        "options": [
+          "a lot of",
+          "much",
+          "little"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "much-many-or-a-lot-of-a2-10",
+        "q": "How ___ sisters do you have?",
+        "options": [
+          "many",
+          "much",
+          "a lot"
+        ],
+        "answer": 0
+      }
+    ],
+    "B1": [
+      {
+        "id": "much-many-or-a-lot-of-b1-01",
+        "q": "I have ___ friends here — just two or three.",
+        "options": [
+          "a few",
+          "few",
+          "a little"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "much-many-or-a-lot-of-b1-02",
+        "q": "She has ___ friends here — she feels lonely.",
+        "options": [
+          "few",
+          "a few",
+          "a little"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "much-many-or-a-lot-of-b1-03",
+        "q": "There's ___ milk left — enough for one coffee.",
+        "options": [
+          "a little",
+          "little",
+          "a few"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "much-many-or-a-lot-of-b1-04",
+        "q": "There's ___ hope of finding survivors.",
+        "options": [
+          "little",
+          "a little",
+          "few"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "much-many-or-a-lot-of-b1-05",
+        "q": "Could you give me ___ advice?",
+        "options": [
+          "a little",
+          "a few",
+          "few"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "much-many-or-a-lot-of-b1-06",
+        "q": "___ people showed up — the room was almost empty.",
+        "options": [
+          "Few",
+          "A few",
+          "Much"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "much-many-or-a-lot-of-b1-07",
+        "q": "We have ___ time before the train leaves — let's hurry.",
+        "options": [
+          "little",
+          "a little",
+          "many"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "much-many-or-a-lot-of-b1-08",
+        "q": "I'd like ___ sugar in my tea, please.",
+        "options": [
+          "a little",
+          "a few",
+          "little"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "much-many-or-a-lot-of-b1-09",
+        "q": "___ of the students passed the exam — most failed.",
+        "options": [
+          "Few",
+          "A few",
+          "Little"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "much-many-or-a-lot-of-b1-10",
+        "q": "Add ___ salt to the soup — just a pinch.",
+        "options": [
+          "a little",
+          "a few",
+          "much"
+        ],
+        "answer": 0
+      }
+    ],
+    "B2": [
+      {
+        "id": "much-many-or-a-lot-of-b2-01",
+        "q": "There's ___ time — no need to rush.",
+        "options": [
+          "plenty of",
+          "a great deal",
+          "a number"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "much-many-or-a-lot-of-b2-02",
+        "q": "A great ___ of research supports this theory.",
+        "options": [
+          "deal",
+          "number",
+          "plenty"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "much-many-or-a-lot-of-b2-03",
+        "q": "A ___ of complaints were received.",
+        "options": [
+          "number",
+          "great deal",
+          "plenty"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "much-many-or-a-lot-of-b2-04",
+        "q": "The project required a great ___ of patience.",
+        "options": [
+          "deal",
+          "number",
+          "plenty"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "much-many-or-a-lot-of-b2-05",
+        "q": "We have ___ of options to choose from.",
+        "options": [
+          "plenty",
+          "a great deal",
+          "a number"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "much-many-or-a-lot-of-b2-06",
+        "q": "A ___ of the votes went to the new candidate.",
+        "options": [
+          "majority",
+          "plenty",
+          "deal"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "much-many-or-a-lot-of-b2-07",
+        "q": "There's a ___ of evidence against him.",
+        "options": [
+          "great deal",
+          "plenty",
+          "number"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "much-many-or-a-lot-of-b2-08",
+        "q": "___ of people attended the rally.",
+        "options": [
+          "A number",
+          "A great deal",
+          "Plenty"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "much-many-or-a-lot-of-b2-09",
+        "q": "She spends a great deal ___ time reading.",
+        "options": [
+          "of",
+          "with",
+          "in"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "much-many-or-a-lot-of-b2-10",
+        "q": "A small ___ of students disagreed.",
+        "options": [
+          "number",
+          "deal",
+          "plenty"
+        ],
+        "answer": 0
+      }
+    ],
+    "C1": [
+      {
+        "id": "much-many-or-a-lot-of-c1-01",
+        "q": "The report offers ___ of information on the topic.",
+        "options": [
+          "a wealth",
+          "a dearth",
+          "a fraction"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "much-many-or-a-lot-of-c1-02",
+        "q": "There is ___ of reliable data on this issue.",
+        "options": [
+          "a dearth",
+          "a wealth",
+          "plenty"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "much-many-or-a-lot-of-c1-03",
+        "q": "He earns only ___ of what she does.",
+        "options": [
+          "a fraction",
+          "a wealth",
+          "a dearth"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "much-many-or-a-lot-of-c1-04",
+        "q": "The team produced ___ notes during the meeting.",
+        "options": [
+          "copious",
+          "ample",
+          "scarce"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "much-many-or-a-lot-of-c1-05",
+        "q": "There's ___ of talented candidates this year.",
+        "options": [
+          "no shortage",
+          "a dearth",
+          "a fraction"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "much-many-or-a-lot-of-c1-06",
+        "q": "The museum holds ___ of rare artefacts.",
+        "options": [
+          "an abundance",
+          "a dearth",
+          "a fraction"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "much-many-or-a-lot-of-c1-07",
+        "q": "___ evidence exists to support the claim.",
+        "options": [
+          "Ample",
+          "Scarce",
+          "Fractional"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "much-many-or-a-lot-of-c1-08",
+        "q": "Resources are ___ in this remote region.",
+        "options": [
+          "scarce",
+          "ample",
+          "copious"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "much-many-or-a-lot-of-c1-09",
+        "q": "The archive contains ___ historical documents.",
+        "options": [
+          "a wealth of",
+          "a dearth of",
+          "a fraction of"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "much-many-or-a-lot-of-c1-10",
+        "q": "Given the ___ of funding, the project was cancelled.",
+        "options": [
+          "dearth",
+          "wealth",
+          "abundance"
+        ],
+        "answer": 0
+      }
+    ]
+  }
+}

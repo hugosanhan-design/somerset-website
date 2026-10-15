@@ -9,7 +9,8 @@ const dir = path.join(root, 'data/games')
 const tagSrc = fs.readFileSync(path.join(root, 'data/errorTags.ts'), 'utf8')
 const TAGS = [...tagSrc.matchAll(/key:\s*'([a-z-]+)'/g)].map(m => m[1])
 const LEVELS = ['A2', 'B1', 'B2', 'C1']
-const MIN_ITEMS = 12
+const MIN_ITEMS = 10      // a session needs at least this many
+const FULL_ITEMS = 12     // the "Got 3 minutes?" target
 const ENGINES = { choice: ['q', 'options', 'answer'], pairs: ['left', 'right'] }
 // Student-facing text: British spelling, no emojis, never the word "test".
 const US = /\b\w+(?:ize|izes|ized|izing|ization|izations)\b|\b(?:color|colors|favorite|center|centers|behavior|neighbor|honor|labor|traveled|traveling|gray|mom|analyze|catalog)\b/gi
@@ -35,7 +36,8 @@ for (const f of files) {
     if (!LEVELS.includes(lv)) errs.push(`unknown level ${lv}`)
     const list = g.items[lv]
     if (!Array.isArray(list)) { errs.push(`${lv} is not a list`); continue }
-    if (list.length < MIN_ITEMS) errs.push(`${lv}: ${list.length} items, needs at least ${MIN_ITEMS}`)
+    if (list.length < MIN_ITEMS) (g.draft ? warns : errs).push(`${lv}: ${list.length} items, needs at least ${MIN_ITEMS}${g.draft ? ' (draft: kept out of the portal)' : ''}`)
+    else if (list.length < FULL_ITEMS) warns.push(`${lv}: ${list.length} items, so sessions are ${list.length} long (target ${FULL_ITEMS})`)
     const seen = new Set()
     for (const it of list) {
       if (!it.id) { errs.push(`${lv}: item without id`); continue }
@@ -64,7 +66,7 @@ for (const f of files) {
   if (EMOJI.test(text)) errs.push('contains an emoji')
   if (/\btests?\b/i.test(text)) errs.push('uses the word "test"')
   if (errs.length) { failed++; console.log(`✗ ${f}\n   - ${errs.join('\n   - ')}`) }
-  else console.log(`✓ ${f}  [${g.engine}] ${(g.tags || []).join(', ')} · ${levels.map(l => `${l}:${g.items[l].length}`).join(' ')}`)
+  else console.log(`${g.draft ? '·' : '✓'} ${f}  [${g.engine}] ${(g.tags || []).join(', ')} · ${levels.map(l => `${l}:${g.items[l].length}`).join(' ')}`)
   if (warns.length) { warned++; console.log(`   ! ${warns.join('\n   ! ')}`) }
 }
 console.log(`\n${files.length} games · ${files.length - failed} pass · ${failed} fail · ${warned} with warnings`)

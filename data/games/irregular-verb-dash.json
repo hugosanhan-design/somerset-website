@@ -1,0 +1,581 @@
+{
+  "id": "irregular-verb-dash",
+  "title": "Irregular Verb Dash",
+  "tags": [
+    "tense",
+    "spelling"
+  ],
+  "engine": "choice",
+  "intro": "Went, sought, forgotten: the past forms English expects you to know. Pick the right form for each sentence.",
+  "source": "Game — Irregular Verb Dash.html",
+  "items": {
+    "A2": [
+      {
+        "id": "irregular-verb-dash-a2-01",
+        "q": "The past simple of ‘go’ is ___.",
+        "options": [
+          "went",
+          "goed",
+          "gone"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-a2-02",
+        "q": "The past simple of ‘see’ is ___.",
+        "options": [
+          "saw",
+          "seed",
+          "seen"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-a2-03",
+        "q": "The past simple of ‘have’ is ___.",
+        "options": [
+          "had",
+          "haved",
+          "has"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-a2-04",
+        "q": "The past simple of ‘make’ is ___.",
+        "options": [
+          "made",
+          "maked",
+          "maden"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-a2-05",
+        "q": "The past simple of ‘take’ is ___.",
+        "options": [
+          "took",
+          "taked",
+          "taken"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-a2-06",
+        "q": "The past simple of ‘come’ is ___.",
+        "options": [
+          "came",
+          "comed",
+          "camed"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-a2-07",
+        "q": "The past simple of ‘eat’ is ___.",
+        "options": [
+          "ate",
+          "eated",
+          "eaten"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-a2-08",
+        "q": "The past simple of ‘drink’ is ___.",
+        "options": [
+          "drank",
+          "drinked",
+          "drunk"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-a2-09",
+        "q": "The past simple of ‘write’ is ___.",
+        "options": [
+          "wrote",
+          "writed",
+          "written"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-a2-10",
+        "q": "The past simple of ‘buy’ is ___.",
+        "options": [
+          "bought",
+          "buyed",
+          "brought"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-a2-11",
+        "q": "The past simple of ‘get’ is ___.",
+        "options": [
+          "got",
+          "getted",
+          "gat"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-a2-12",
+        "q": "The past simple of ‘do’ is ___.",
+        "options": [
+          "did",
+          "doed",
+          "done"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-a2-13",
+        "q": "The past simple of ‘say’ is ___.",
+        "options": [
+          "said",
+          "sayed",
+          "sais"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-a2-14",
+        "q": "The past simple of ‘give’ is ___.",
+        "options": [
+          "gave",
+          "gived",
+          "given"
+        ],
+        "answer": 0
+      }
+    ],
+    "B1": [
+      {
+        "id": "irregular-verb-dash-b1-01",
+        "q": "The past participle of ‘break’ is ___.",
+        "options": [
+          "broken",
+          "broke",
+          "breaked"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-b1-02",
+        "q": "The past participle of ‘choose’ is ___.",
+        "options": [
+          "chosen",
+          "chose",
+          "choosed"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-b1-03",
+        "q": "The past participle of ‘drive’ is ___.",
+        "options": [
+          "driven",
+          "drove",
+          "drived"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-b1-04",
+        "q": "The past participle of ‘fall’ is ___.",
+        "options": [
+          "fallen",
+          "fell",
+          "falled"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-b1-05",
+        "q": "The past participle of ‘forget’ is ___.",
+        "options": [
+          "forgotten",
+          "forgot",
+          "forgetted"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-b1-06",
+        "q": "The past participle of ‘speak’ is ___.",
+        "options": [
+          "spoken",
+          "spoke",
+          "speaked"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-b1-07",
+        "q": "The past participle of ‘steal’ is ___.",
+        "options": [
+          "stolen",
+          "stole",
+          "stealed"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-b1-08",
+        "q": "The past participle of ‘swim’ is ___.",
+        "options": [
+          "swum",
+          "swam",
+          "swimmed"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-b1-09",
+        "q": "The past participle of ‘throw’ is ___.",
+        "options": [
+          "thrown",
+          "threw",
+          "throwed"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-b1-10",
+        "q": "The past participle of ‘wear’ is ___.",
+        "options": [
+          "worn",
+          "wore",
+          "weared"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-b1-11",
+        "q": "The past participle of ‘wake’ is ___.",
+        "options": [
+          "woken",
+          "woke",
+          "waked"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-b1-12",
+        "q": "The past participle of ‘fly’ is ___.",
+        "options": [
+          "flown",
+          "flew",
+          "flied"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-b1-13",
+        "q": "The past participle of ‘draw’ is ___.",
+        "options": [
+          "drawn",
+          "drew",
+          "drawed"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-b1-14",
+        "q": "The past participle of ‘ride’ is ___.",
+        "options": [
+          "ridden",
+          "rode",
+          "rided"
+        ],
+        "answer": 0
+      }
+    ],
+    "B2": [
+      {
+        "id": "irregular-verb-dash-b2-01",
+        "q": "The past simple of ‘lie’ (lie down) is ___.",
+        "options": [
+          "lay",
+          "lied",
+          "lain"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-b2-02",
+        "q": "The past simple of ‘lay’ (lay the table) is ___.",
+        "options": [
+          "laid",
+          "layed",
+          "lain"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-b2-03",
+        "q": "The past simple of ‘rise’ is ___.",
+        "options": [
+          "rose",
+          "raised",
+          "risen"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-b2-04",
+        "q": "The past simple of ‘raise’ is ___.",
+        "options": [
+          "raised",
+          "rose",
+          "risen"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-b2-05",
+        "q": "The past participle of ‘bear’ (endure) is ___.",
+        "options": [
+          "borne",
+          "born",
+          "beared"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-b2-06",
+        "q": "The past simple of ‘seek’ is ___.",
+        "options": [
+          "sought",
+          "seeked",
+          "saught"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-b2-07",
+        "q": "The past participle of ‘deal’ is ___.",
+        "options": [
+          "dealt",
+          "dealed",
+          "delt"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-b2-08",
+        "q": "The past simple of ‘flee’ is ___.",
+        "options": [
+          "fled",
+          "fleed",
+          "flown"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-b2-09",
+        "q": "The past simple of ‘strike’ is ___.",
+        "options": [
+          "struck",
+          "striked",
+          "stroke"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-b2-10",
+        "q": "The past participle of ‘sew’ is ___.",
+        "options": [
+          "sewn",
+          "sowed",
+          "sawn"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-b2-11",
+        "q": "The past participle of ‘swear’ is ___.",
+        "options": [
+          "sworn",
+          "sweared",
+          "swore"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-b2-12",
+        "q": "The past participle of ‘tear’ is ___.",
+        "options": [
+          "torn",
+          "teared",
+          "tore"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-b2-13",
+        "q": "The past simple of ‘cost’ is ___.",
+        "options": [
+          "cost",
+          "costed",
+          "costen"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-b2-14",
+        "q": "The past simple of ‘burst’ is ___.",
+        "options": [
+          "burst",
+          "bursted",
+          "bursten"
+        ],
+        "answer": 0
+      }
+    ],
+    "C1": [
+      {
+        "id": "irregular-verb-dash-c1-01",
+        "q": "The past participle of ‘arise’ is ___.",
+        "options": [
+          "arisen",
+          "arose",
+          "arised"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-c1-02",
+        "q": "The past participle of ‘forsake’ is ___.",
+        "options": [
+          "forsaken",
+          "forsook",
+          "forsaked"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-c1-03",
+        "q": "The past simple of ‘wring’ is ___.",
+        "options": [
+          "wrung",
+          "wringed",
+          "wrang"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-c1-04",
+        "q": "The past simple of ‘weep’ is ___.",
+        "options": [
+          "wept",
+          "weeped",
+          "wope"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-c1-05",
+        "q": "The past simple of ‘fling’ is ___.",
+        "options": [
+          "flung",
+          "flinged",
+          "flang"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-c1-06",
+        "q": "The past participle of ‘cling’ is ___.",
+        "options": [
+          "clung",
+          "clinged",
+          "clang"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-c1-07",
+        "q": "The past simple of ‘sting’ is ___.",
+        "options": [
+          "stung",
+          "stinged",
+          "stang"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-c1-08",
+        "q": "The past participle of ‘stride’ is ___.",
+        "options": [
+          "stridden",
+          "strode",
+          "strided"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-c1-09",
+        "q": "The past participle of ‘smite’ is ___.",
+        "options": [
+          "smitten",
+          "smote",
+          "smited"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-c1-10",
+        "q": "The past simple of ‘grind’ is ___.",
+        "options": [
+          "ground",
+          "grinded",
+          "grount"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-c1-11",
+        "q": "The past participle of ‘withdraw’ is ___.",
+        "options": [
+          "withdrawn",
+          "withdrew",
+          "withdrawed"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-c1-12",
+        "q": "The past participle of ‘overthrow’ is ___.",
+        "options": [
+          "overthrown",
+          "overthrew",
+          "overthrowed"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-c1-13",
+        "q": "The past participle of ‘forgo’ is ___.",
+        "options": [
+          "forgone",
+          "forwent",
+          "forgoed"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "irregular-verb-dash-c1-14",
+        "q": "The past simple of ‘bid’ (bid farewell) is ___.",
+        "options": [
+          "bade",
+          "bidded",
+          "bod"
+        ],
+        "answer": 0
+      }
+    ]
+  }
+}

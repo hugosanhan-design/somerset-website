@@ -1,0 +1,181 @@
+{
+  "id": "email-etiquette",
+  "title": "Email Etiquette",
+  "tags": [
+    "register"
+  ],
+  "engine": "pairs",
+  "intro": "The right opening and closing for the right relationship — a friend, a boss, a stranger. Get it wrong and the whole email reads off.",
+  "source": "Game — Email Etiquette.html",
+  "draft": true,
+  "items": {
+    "A2": [
+      {
+        "id": "email-etiquette-a2-01",
+        "left": "Hi Mum,",
+        "right": "family — casual, warm opening"
+      },
+      {
+        "id": "email-etiquette-a2-02",
+        "left": "Dear Sir or Madam,",
+        "right": "a stranger — very formal, name unknown"
+      },
+      {
+        "id": "email-etiquette-a2-03",
+        "left": "Hey!",
+        "right": "a close friend — very casual opening"
+      },
+      {
+        "id": "email-etiquette-a2-04",
+        "left": "Love, Ana",
+        "right": "family or close friend — affectionate closing"
+      },
+      {
+        "id": "email-etiquette-a2-05",
+        "left": "Best wishes,",
+        "right": "a colleague — friendly but professional closing"
+      },
+      {
+        "id": "email-etiquette-a2-06",
+        "left": "Dear Mr Jones,",
+        "right": "a named stranger or new contact — formal opening"
+      },
+      {
+        "id": "email-etiquette-a2-07",
+        "left": "See you soon,",
+        "right": "a friend — casual closing"
+      },
+      {
+        "id": "email-etiquette-a2-08",
+        "left": "Kind regards,",
+        "right": "a boss or client — polite professional closing"
+      }
+    ],
+    "B1": [
+      {
+        "id": "email-etiquette-b1-01",
+        "left": "Dear Hiring Manager,",
+        "right": "a company you're applying to — formal, name unknown"
+      },
+      {
+        "id": "email-etiquette-b1-02",
+        "left": "Hi team,",
+        "right": "colleagues you know well — friendly, semi-formal opening"
+      },
+      {
+        "id": "email-etiquette-b1-03",
+        "left": "Hope you're doing well!",
+        "right": "a friend or familiar colleague — warm casual opening"
+      },
+      {
+        "id": "email-etiquette-b1-04",
+        "left": "Yours sincerely,",
+        "right": "a named formal contact — professional closing"
+      },
+      {
+        "id": "email-etiquette-b1-05",
+        "left": "Cheers,",
+        "right": "a friendly colleague — casual British closing"
+      },
+      {
+        "id": "email-etiquette-b1-06",
+        "left": "To Whom It May Concern,",
+        "right": "an unknown recipient at an organisation — very formal opening"
+      },
+      {
+        "id": "email-etiquette-b1-07",
+        "left": "Speak soon,",
+        "right": "a friend — casual closing before a call or meeting"
+      },
+      {
+        "id": "email-etiquette-b1-08",
+        "left": "Warm regards,",
+        "right": "a client you know well — friendly professional closing"
+      }
+    ],
+    "B2": [
+      {
+        "id": "email-etiquette-b2-01",
+        "left": "Dear Professor García,",
+        "right": "a university tutor — formal opening with title"
+      },
+      {
+        "id": "email-etiquette-b2-02",
+        "left": "Hiya,",
+        "right": "a very close friend — extremely casual opening"
+      },
+      {
+        "id": "email-etiquette-b2-03",
+        "left": "I hope this message finds you well.",
+        "right": "a professional contact — formal, slightly old-fashioned opening"
+      },
+      {
+        "id": "email-etiquette-b2-04",
+        "left": "Take care,",
+        "right": "a friend or supportive colleague — warm casual closing"
+      },
+      {
+        "id": "email-etiquette-b2-05",
+        "left": "Yours faithfully,",
+        "right": "an unnamed formal recipient — closing when you don't know their name"
+      },
+      {
+        "id": "email-etiquette-b2-06",
+        "left": "All the best,",
+        "right": "a semi-formal contact — friendly, safe closing"
+      },
+      {
+        "id": "email-etiquette-b2-07",
+        "left": "Just checking in —",
+        "right": "a colleague you know — casual professional opening"
+      },
+      {
+        "id": "email-etiquette-b2-08",
+        "left": "Many thanks,",
+        "right": "a colleague or client — brief, appreciative closing"
+      }
+    ],
+    "C1": [
+      {
+        "id": "email-etiquette-c1-01",
+        "left": "I am writing on behalf of the board.",
+        "right": "a formal representative context — professional, authoritative opening"
+      },
+      {
+        "id": "email-etiquette-c1-02",
+        "left": "Lovely to hear from you!",
+        "right": "an old friend reconnecting — warm, enthusiastic opening"
+      },
+      {
+        "id": "email-etiquette-c1-03",
+        "left": "Please accept my sincere apologies.",
+        "right": "a formal complaint or error context — professional, remorseful"
+      },
+      {
+        "id": "email-etiquette-c1-04",
+        "left": "I remain at your disposal.",
+        "right": "a very formal professional contact — polished, slightly old-fashioned closing"
+      },
+      {
+        "id": "email-etiquette-c1-05",
+        "left": "Do give my regards to the family.",
+        "right": "a family friend — warm, polite closing"
+      },
+      {
+        "id": "email-etiquette-c1-06",
+        "left": "I look forward to your prompt response.",
+        "right": "a formal business contact — professional closing with urgency"
+      },
+      {
+        "id": "email-etiquette-c1-07",
+        "left": "Catch up soon?",
+        "right": "a close friend — casual, informal closing"
+      },
+      {
+        "id": "email-etiquette-c1-08",
+        "left": "Respectfully,",
+        "right": "a senior formal contact — deferential professional closing"
+      }
+    ]
+  }
+}

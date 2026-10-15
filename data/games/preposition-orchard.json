@@ -1,0 +1,181 @@
+{
+  "id": "preposition-orchard",
+  "title": "Preposition Orchard",
+  "tags": [
+    "preposition"
+  ],
+  "engine": "pairs",
+  "intro": "Depend ON, listen TO, arrive AT — dependent prepositions that no rule explains, only memory. Six verbs, six prepositions, fewer mistakes for a better score.",
+  "source": "Game — Preposition Orchard.html",
+  "draft": true,
+  "items": {
+    "A2": [
+      {
+        "id": "preposition-orchard-a2-01",
+        "left": "listen",
+        "right": "to (listen TO music)"
+      },
+      {
+        "id": "preposition-orchard-a2-02",
+        "left": "look",
+        "right": "at (look AT a picture)"
+      },
+      {
+        "id": "preposition-orchard-a2-03",
+        "left": "wait",
+        "right": "for (wait FOR the bus)"
+      },
+      {
+        "id": "preposition-orchard-a2-04",
+        "left": "arrive",
+        "right": "at (arrive AT the station)"
+      },
+      {
+        "id": "preposition-orchard-a2-05",
+        "left": "good",
+        "right": "at (good AT football)"
+      },
+      {
+        "id": "preposition-orchard-a2-06",
+        "left": "afraid",
+        "right": "of (afraid OF spiders)"
+      },
+      {
+        "id": "preposition-orchard-a2-07",
+        "left": "interested",
+        "right": "in (interested IN music)"
+      },
+      {
+        "id": "preposition-orchard-a2-08",
+        "left": "married",
+        "right": "to (married TO someone)"
+      }
+    ],
+    "B1": [
+      {
+        "id": "preposition-orchard-b1-01",
+        "left": "depend",
+        "right": "on (depend ON your parents)"
+      },
+      {
+        "id": "preposition-orchard-b1-02",
+        "left": "apologise",
+        "right": "for (apologise FOR a mistake)"
+      },
+      {
+        "id": "preposition-orchard-b1-03",
+        "left": "believe",
+        "right": "in (believe IN yourself)"
+      },
+      {
+        "id": "preposition-orchard-b1-04",
+        "left": "worry",
+        "right": "about (worry ABOUT exams)"
+      },
+      {
+        "id": "preposition-orchard-b1-05",
+        "left": "complain",
+        "right": "about (complain ABOUT the service)"
+      },
+      {
+        "id": "preposition-orchard-b1-06",
+        "left": "succeed",
+        "right": "in (succeed IN business)"
+      },
+      {
+        "id": "preposition-orchard-b1-07",
+        "left": "congratulate",
+        "right": "on (congratulate someone ON success)"
+      },
+      {
+        "id": "preposition-orchard-b1-08",
+        "left": "insist",
+        "right": "on (insist ON paying)"
+      }
+    ],
+    "B2": [
+      {
+        "id": "preposition-orchard-b2-01",
+        "left": "rely",
+        "right": "on (rely ON a friend)"
+      },
+      {
+        "id": "preposition-orchard-b2-02",
+        "left": "consist",
+        "right": "of (consist OF three parts)"
+      },
+      {
+        "id": "preposition-orchard-b2-03",
+        "left": "blame",
+        "right": "for (blame someone FOR a mistake)"
+      },
+      {
+        "id": "preposition-orchard-b2-04",
+        "left": "deal",
+        "right": "with (deal WITH a problem)"
+      },
+      {
+        "id": "preposition-orchard-b2-05",
+        "left": "cope",
+        "right": "with (cope WITH stress)"
+      },
+      {
+        "id": "preposition-orchard-b2-06",
+        "left": "benefit",
+        "right": "from (benefit FROM experience)"
+      },
+      {
+        "id": "preposition-orchard-b2-07",
+        "left": "react",
+        "right": "to (react TO news)"
+      },
+      {
+        "id": "preposition-orchard-b2-08",
+        "left": "specialise",
+        "right": "in (specialise IN law)"
+      }
+    ],
+    "C1": [
+      {
+        "id": "preposition-orchard-c1-01",
+        "left": "comply",
+        "right": "with (comply WITH regulations)"
+      },
+      {
+        "id": "preposition-orchard-c1-02",
+        "left": "refrain",
+        "right": "from (refrain FROM comment)"
+      },
+      {
+        "id": "preposition-orchard-c1-03",
+        "left": "embark",
+        "right": "on (embark ON a journey)"
+      },
+      {
+        "id": "preposition-orchard-c1-04",
+        "left": "adhere",
+        "right": "to (adhere TO the rules)"
+      },
+      {
+        "id": "preposition-orchard-c1-05",
+        "left": "capitalise",
+        "right": "on (capitalise ON an opportunity)"
+      },
+      {
+        "id": "preposition-orchard-c1-06",
+        "left": "grapple",
+        "right": "with (grapple WITH a dilemma)"
+      },
+      {
+        "id": "preposition-orchard-c1-07",
+        "left": "stem",
+        "right": "from (stem FROM a root cause)"
+      },
+      {
+        "id": "preposition-orchard-c1-08",
+        "left": "culminate",
+        "right": "in (culminate IN success)"
+      }
+    ]
+  }
+}

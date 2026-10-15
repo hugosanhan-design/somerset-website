@@ -1,0 +1,381 @@
+{
+  "id": "naked-nouns",
+  "title": "Naked Nouns",
+  "tags": [
+    "article"
+  ],
+  "engine": "choice",
+  "intro": "Go to school. Have lunch. Love music. English drops the article completely for general statements, institutions and abstract nouns — the cases every rule-book skips past.",
+  "source": "Game — Naked Nouns.html",
+  "draft": true,
+  "items": {
+    "A2": [
+      {
+        "id": "naked-nouns-a2-01",
+        "q": "Which is correct?",
+        "options": [
+          "I go to school by bus.",
+          "I go to the school by bus.",
+          "I go to a school by bus."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "naked-nouns-a2-02",
+        "q": "Which is correct?",
+        "options": [
+          "We have lunch at home.",
+          "We have lunch at the home.",
+          "We have the lunch at home."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "naked-nouns-a2-03",
+        "q": "Which is correct?",
+        "options": [
+          "She likes music.",
+          "She likes the music.",
+          "She likes a music."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "naked-nouns-a2-04",
+        "q": "Which is correct?",
+        "options": [
+          "Dogs are loyal animals.",
+          "The dogs are loyal animals.",
+          "A dogs are loyal animals."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "naked-nouns-a2-05",
+        "q": "Which is correct?",
+        "options": [
+          "He goes to bed at ten.",
+          "He goes to the bed at ten.",
+          "He goes to a bed at ten."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "naked-nouns-a2-06",
+        "q": "Which is correct?",
+        "options": [
+          "I love chocolate.",
+          "I love the chocolate.",
+          "I love a chocolate."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "naked-nouns-a2-07",
+        "q": "Which is correct?",
+        "options": [
+          "Water is essential for life.",
+          "The water is essential for the life.",
+          "A water is essential for life."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "naked-nouns-a2-08",
+        "q": "Which is correct?",
+        "options": [
+          "Children need love and support.",
+          "The children need the love and support.",
+          "Children need a love and support."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "naked-nouns-a2-09",
+        "q": "Which is correct?",
+        "options": [
+          "We play football on Sundays.",
+          "We play the football on Sundays.",
+          "We play a football on Sundays."
+        ],
+        "answer": 0
+      }
+    ],
+    "B1": [
+      {
+        "id": "naked-nouns-b1-01",
+        "q": "Which is correct?",
+        "options": [
+          "He was sent to prison for fraud.",
+          "He was sent to the prison for fraud.",
+          "He was sent to a prison for fraud."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "naked-nouns-b1-02",
+        "q": "Which is correct?",
+        "options": [
+          "She's studying medicine at university.",
+          "She's studying the medicine at the university.",
+          "She's studying a medicine at university."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "naked-nouns-b1-03",
+        "q": "Which is correct?",
+        "options": [
+          "They travelled by train.",
+          "They travelled by the train.",
+          "They travelled by a train."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "naked-nouns-b1-04",
+        "q": "Which is correct?",
+        "options": [
+          "Information is power.",
+          "The information is the power.",
+          "An information is power."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "naked-nouns-b1-05",
+        "q": "Which is correct?",
+        "options": [
+          "We need more information about the flight.",
+          "We need more an information about the flight.",
+          "We need more the information about the flight."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "naked-nouns-b1-06",
+        "q": "Which is correct?",
+        "options": [
+          "She gave me good advice.",
+          "She gave me a good advice.",
+          "She gave me the good advice."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "naked-nouns-b1-07",
+        "q": "Which is correct?",
+        "options": [
+          "Furniture in this shop is expensive.",
+          "The furnitures in this shop are expensive.",
+          "A furniture in this shop is expensive."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "naked-nouns-b1-08",
+        "q": "Which is correct?",
+        "options": [
+          "He's afraid of spiders.",
+          "He's afraid of the spiders.",
+          "He's afraid of a spiders."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "naked-nouns-b1-09",
+        "q": "Which is correct?",
+        "options": [
+          "Life isn't always fair.",
+          "The life isn't always fair.",
+          "A life isn't always fair."
+        ],
+        "answer": 0
+      }
+    ],
+    "B2": [
+      {
+        "id": "naked-nouns-b2-01",
+        "q": "Which is correct?",
+        "options": [
+          "He was taken to hospital after the crash.",
+          "He was taken to the hospital after the crash (as a visitor, not a patient).",
+          "He was taken to a hospital after the crash."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "naked-nouns-b2-02",
+        "q": "Which is correct?",
+        "options": [
+          "I visited him in hospital yesterday.",
+          "I visited him in the hospital yesterday (BrE, as a patient).",
+          "I visited him in a hospital yesterday."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "naked-nouns-b2-03",
+        "q": "Which is correct?",
+        "options": [
+          "Crime has fallen sharply this year.",
+          "The crime has fallen sharply this year.",
+          "A crime has fallen sharply this year."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "naked-nouns-b2-04",
+        "q": "Which is correct?",
+        "options": [
+          "Unemployment rose last quarter.",
+          "The unemployment rose last quarter.",
+          "An unemployment rose last quarter."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "naked-nouns-b2-05",
+        "q": "Which is correct?",
+        "options": [
+          "She plays tennis every weekend.",
+          "She plays the tennis every weekend.",
+          "She plays a tennis every weekend."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "naked-nouns-b2-06",
+        "q": "Which is correct?",
+        "options": [
+          "Honesty is the best policy.",
+          "The honesty is the best policy.",
+          "An honesty is the best policy."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "naked-nouns-b2-07",
+        "q": "Which is correct?",
+        "options": [
+          "He has luggage to check in.",
+          "He has a luggage to check in.",
+          "He has the luggages to check in."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "naked-nouns-b2-08",
+        "q": "Which is correct?",
+        "options": [
+          "Knowledge is valuable.",
+          "The knowledge is valuable.",
+          "A knowledge is valuable."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "naked-nouns-b2-09",
+        "q": "Which is correct?",
+        "options": [
+          "They played chess by candlelight.",
+          "They played chess by the candlelight.",
+          "They played chess by a candlelight."
+        ],
+        "answer": 0
+      }
+    ],
+    "C1": [
+      {
+        "id": "naked-nouns-c1-01",
+        "q": "Which is correct?",
+        "options": [
+          "Patience is a virtue.",
+          "The patience is a virtue.",
+          "A patience is a virtue."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "naked-nouns-c1-02",
+        "q": "Which is correct?",
+        "options": [
+          "Justice must be seen to be done.",
+          "The justice must be seen to be done.",
+          "A justice must be seen to be done."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "naked-nouns-c1-03",
+        "q": "Which is correct?",
+        "options": [
+          "Poverty remains a global challenge.",
+          "The poverty remains a global challenge.",
+          "A poverty remains a global challenge."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "naked-nouns-c1-04",
+        "q": "Which is correct?",
+        "options": [
+          "Time heals all wounds.",
+          "The time heals all wounds.",
+          "A time heals all wounds."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "naked-nouns-c1-05",
+        "q": "Which is correct?",
+        "options": [
+          "He was charged with theft.",
+          "He was charged with the theft.",
+          "He was charged with a theft."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "naked-nouns-c1-06",
+        "q": "Which is correct?",
+        "options": [
+          "Democracy depends on an informed public.",
+          "The democracy depends on an informed public.",
+          "A democracy depends on an informed public (as a general concept)."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "naked-nouns-c1-07",
+        "q": "Which is correct?",
+        "options": [
+          "Silence fell over the room.",
+          "The silence fell over the room.",
+          "A silence fell over the room."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "naked-nouns-c1-08",
+        "q": "Which is correct?",
+        "options": [
+          "Research suggests otherwise.",
+          "The research suggests otherwise.",
+          "A research suggests otherwise."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "naked-nouns-c1-09",
+        "q": "Which is correct?",
+        "options": [
+          "Freedom of speech is a fundamental right.",
+          "The freedom of speech is a fundamental right.",
+          "A freedom of speech is a fundamental right."
+        ],
+        "answer": 0
+      }
+    ]
+  }
+}

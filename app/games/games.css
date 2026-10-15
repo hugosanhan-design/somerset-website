@@ -23,3 +23,5 @@
 .gm .ck-opt__main{min-height:56px}
 @media(max-width:620px){.gm-title{font-size:1.65rem}.gm-card{padding:1.5rem 1.1rem}.gm .ck-deck__q{font-size:1.35rem}}
 .gm a.ck-btn{text-decoration:none}
+.gm-draft{text-align:center;font:600 .85rem var(--sans);color:#7a5a12;background:var(--brass-lt);border-radius:var(--pill);padding:.4rem .9rem;margin:0 auto 1rem;width:max-content;max-width:100%}
+.gm-ask{text-align:center;font-size:1rem;color:var(--muted);margin:-.4rem 0 .9rem}

@@ -1,0 +1,420 @@
+{
+  "id": "article-allotment",
+  "title": "Article Allotment",
+  "tags": [
+    "article"
+  ],
+  "engine": "choice",
+  "intro": "A, an, the, or nothing at all. Pick the article each sentence really needs.",
+  "source": "Game — Article Allotment.html",
+  "items": {
+    "A2": [
+      {
+        "id": "article-allotment-a2-01",
+        "q": "I have ___ dog.",
+        "options": [
+          "a",
+          "an",
+          "the"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "article-allotment-a2-02",
+        "q": "She's eating ___ apple.",
+        "options": [
+          "an",
+          "a",
+          "the"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "article-allotment-a2-03",
+        "q": "___ sun is very hot today.",
+        "options": [
+          "The",
+          "A",
+          "An"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "article-allotment-a2-04",
+        "q": "He's ___ doctor.",
+        "options": [
+          "a",
+          "an",
+          "the"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "article-allotment-a2-05",
+        "q": "I saw ___ elephant at the zoo.",
+        "options": [
+          "an",
+          "a",
+          "the"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "article-allotment-a2-06",
+        "q": "Can you close ___ door, please?",
+        "options": [
+          "the",
+          "a",
+          "an"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "article-allotment-a2-07",
+        "q": "We live in ___ small flat.",
+        "options": [
+          "a",
+          "an",
+          "the"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "article-allotment-a2-08",
+        "q": "___ Earth goes round the sun.",
+        "options": [
+          "The",
+          "A",
+          "An"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "article-allotment-a2-09",
+        "q": "She wants to be ___ engineer.",
+        "options": [
+          "an",
+          "a",
+          "the"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "article-allotment-a2-10",
+        "q": "Where is ___ bathroom?",
+        "options": [
+          "the",
+          "a",
+          "an"
+        ],
+        "answer": 0
+      }
+    ],
+    "B1": [
+      {
+        "id": "article-allotment-b1-01",
+        "q": "I love ___ music.",
+        "options": [
+          "—",
+          "a",
+          "the"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "article-allotment-b1-02",
+        "q": "___ dogs are loyal animals.",
+        "options": [
+          "—",
+          "The",
+          "A"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "article-allotment-b1-03",
+        "q": "She gave me ___ good advice.",
+        "options": [
+          "—",
+          "a",
+          "the"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "article-allotment-b1-04",
+        "q": "He goes to ___ school every day by bus.",
+        "options": [
+          "—",
+          "the",
+          "a"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "article-allotment-b1-05",
+        "q": "We need ___ information about the flight.",
+        "options": [
+          "—",
+          "an",
+          "the"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "article-allotment-b1-06",
+        "q": "I bought ___ new car last week.",
+        "options": [
+          "a",
+          "an",
+          "the"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "article-allotment-b1-07",
+        "q": "___ book on the table is mine.",
+        "options": [
+          "The",
+          "A",
+          "—"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "article-allotment-b1-08",
+        "q": "They live in ___ United States.",
+        "options": [
+          "the",
+          "a",
+          "—"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "article-allotment-b1-09",
+        "q": "She's afraid of ___ spiders.",
+        "options": [
+          "—",
+          "the",
+          "a"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "article-allotment-b1-10",
+        "q": "I need ___ umbrella — it's raining.",
+        "options": [
+          "an",
+          "a",
+          "the"
+        ],
+        "answer": 0
+      }
+    ],
+    "B2": [
+      {
+        "id": "article-allotment-b2-01",
+        "q": "He went to ___ prison for three years.",
+        "options": [
+          "—",
+          "the",
+          "a"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "article-allotment-b2-02",
+        "q": "I visited him in ___ prison — he works there.",
+        "options": [
+          "the",
+          "—",
+          "a"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "article-allotment-b2-03",
+        "q": "She's ___ best student in the class.",
+        "options": [
+          "the",
+          "a",
+          "—"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "article-allotment-b2-04",
+        "q": "We watched ___ moon rise over the hills.",
+        "options": [
+          "the",
+          "a",
+          "—"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "article-allotment-b2-05",
+        "q": "___ life is full of surprises.",
+        "options": [
+          "—",
+          "The",
+          "A"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "article-allotment-b2-06",
+        "q": "He plays ___ guitar beautifully.",
+        "options": [
+          "the",
+          "a",
+          "—"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "article-allotment-b2-07",
+        "q": "I go to ___ bed at eleven.",
+        "options": [
+          "—",
+          "the",
+          "a"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "article-allotment-b2-08",
+        "q": "They stayed at ___ hotel near the beach.",
+        "options": [
+          "a",
+          "an",
+          "the"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "article-allotment-b2-09",
+        "q": "___ history of Spain is fascinating.",
+        "options": [
+          "The",
+          "A",
+          "—"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "article-allotment-b2-10",
+        "q": "She's studying to become ___ MP.",
+        "options": [
+          "an",
+          "a",
+          "the"
+        ],
+        "answer": 0
+      }
+    ],
+    "C1": [
+      {
+        "id": "article-allotment-c1-01",
+        "q": "___ patience is a virtue.",
+        "options": [
+          "—",
+          "The",
+          "A"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "article-allotment-c1-02",
+        "q": "He has ___ patience of a saint.",
+        "options": [
+          "the",
+          "a",
+          "—"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "article-allotment-c1-03",
+        "q": "___ unemployment rose sharply last year.",
+        "options": [
+          "—",
+          "The",
+          "An"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "article-allotment-c1-04",
+        "q": "She has ___ eye for detail.",
+        "options": [
+          "an",
+          "a",
+          "the"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "article-allotment-c1-05",
+        "q": "They played chess by ___ candlelight.",
+        "options": [
+          "—",
+          "the",
+          "a"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "article-allotment-c1-06",
+        "q": "___ rich should help ___ poor.",
+        "options": [
+          "The",
+          "A",
+          "—"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "article-allotment-c1-07",
+        "q": "He was taken to ___ hospital after the accident.",
+        "options": [
+          "—",
+          "the",
+          "a"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "article-allotment-c1-08",
+        "q": "I visited him in ___ hospital yesterday.",
+        "options": [
+          "the",
+          "—",
+          "a"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "article-allotment-c1-09",
+        "q": "On ___ whole, the trip was a success.",
+        "options": [
+          "the",
+          "a",
+          "—"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "article-allotment-c1-10",
+        "q": "She made ___ point of thanking everyone.",
+        "options": [
+          "a",
+          "an",
+          "the"
+        ],
+        "answer": 0
+      }
+    ]
+  }
+}

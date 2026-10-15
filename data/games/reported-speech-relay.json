@@ -1,0 +1,420 @@
+{
+  "id": "reported-speech-relay",
+  "title": "Reported Speech Relay",
+  "tags": [
+    "tense"
+  ],
+  "engine": "choice",
+  "intro": "“I’m tired” becomes “she said she was tired”. Practise how verbs move back when you report what someone said.",
+  "source": "Game — Reported Speech Relay.html",
+  "items": {
+    "A2": [
+      {
+        "id": "reported-speech-relay-a2-01",
+        "q": "Direct: \"I am tired.\" Reported: She said she ___ tired.",
+        "options": [
+          "was",
+          "is",
+          "were"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "reported-speech-relay-a2-02",
+        "q": "Direct: \"I like pizza.\" Reported: He said he ___ pizza.",
+        "options": [
+          "liked",
+          "likes",
+          "was liking"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "reported-speech-relay-a2-03",
+        "q": "Direct: \"I have a car.\" Reported: She said she ___ a car.",
+        "options": [
+          "had",
+          "has",
+          "have"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "reported-speech-relay-a2-04",
+        "q": "Direct: \"I can swim.\" Reported: He said he ___ swim.",
+        "options": [
+          "could",
+          "can",
+          "cans"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "reported-speech-relay-a2-05",
+        "q": "Direct: \"I will call you.\" Reported: She said she ___ call me.",
+        "options": [
+          "would",
+          "will",
+          "can"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "reported-speech-relay-a2-06",
+        "q": "Direct: \"I am working.\" Reported: He said he ___ working.",
+        "options": [
+          "was",
+          "is",
+          "were"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "reported-speech-relay-a2-07",
+        "q": "Direct: \"I don't know.\" Reported: She said she ___ know.",
+        "options": [
+          "didn't",
+          "doesn't",
+          "don't"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "reported-speech-relay-a2-08",
+        "q": "Direct: \"I want to go.\" Reported: He said he ___ to go.",
+        "options": [
+          "wanted",
+          "wants",
+          "want"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "reported-speech-relay-a2-09",
+        "q": "Direct: \"I live in Madrid.\" Reported: She said she ___ in Madrid.",
+        "options": [
+          "lived",
+          "lives",
+          "live"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "reported-speech-relay-a2-10",
+        "q": "Direct: \"I need help.\" Reported: He said he ___ help.",
+        "options": [
+          "needed",
+          "needs",
+          "need"
+        ],
+        "answer": 0
+      }
+    ],
+    "B1": [
+      {
+        "id": "reported-speech-relay-b1-01",
+        "q": "Direct: \"I saw her yesterday.\" Reported: He said he ___ her the day before.",
+        "options": [
+          "had seen",
+          "saw",
+          "has seen"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "reported-speech-relay-b1-02",
+        "q": "Direct: \"I'll finish it tomorrow.\" Reported: She said she ___ finish it the next day.",
+        "options": [
+          "would",
+          "will",
+          "can"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "reported-speech-relay-b1-03",
+        "q": "Direct: \"I bought this here.\" Reported: He said he ___ it there.",
+        "options": [
+          "had bought",
+          "bought",
+          "has bought"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "reported-speech-relay-b1-04",
+        "q": "Direct: \"We are leaving now.\" Reported: They said they ___ leaving then.",
+        "options": [
+          "were",
+          "are",
+          "was"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "reported-speech-relay-b1-05",
+        "q": "Direct: \"I have finished my homework.\" Reported: She said she ___ finished her homework.",
+        "options": [
+          "had",
+          "has",
+          "have"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "reported-speech-relay-b1-06",
+        "q": "Direct: \"I went there last week.\" Reported: He said he ___ there the week before.",
+        "options": [
+          "had gone",
+          "went",
+          "has gone"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "reported-speech-relay-b1-07",
+        "q": "Direct: \"I must leave soon.\" Reported: She said she ___ leave soon.",
+        "options": [
+          "had to",
+          "must",
+          "has to"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "reported-speech-relay-b1-08",
+        "q": "Direct: \"This is my book.\" Reported: He said ___ was his book.",
+        "options": [
+          "that",
+          "this",
+          "it was"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "reported-speech-relay-b1-09",
+        "q": "Direct: \"I'll see you tomorrow.\" Reported: She said she would see me the ___ day.",
+        "options": [
+          "next",
+          "tomorrow",
+          "following"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "reported-speech-relay-b1-10",
+        "q": "Direct: \"I came here yesterday.\" Reported: He said he ___ come there the day before.",
+        "options": [
+          "had",
+          "has",
+          "did"
+        ],
+        "answer": 0
+      }
+    ],
+    "B2": [
+      {
+        "id": "reported-speech-relay-b2-01",
+        "q": "Direct: \"Where do you live?\" Reported: She asked me where I ___.",
+        "options": [
+          "lived",
+          "live",
+          "did live"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "reported-speech-relay-b2-02",
+        "q": "Direct: \"Can you help me?\" Reported: He asked if I ___ help him.",
+        "options": [
+          "could",
+          "can",
+          "would"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "reported-speech-relay-b2-03",
+        "q": "Direct: \"Close the door.\" Reported: She told me ___ the door.",
+        "options": [
+          "to close",
+          "close",
+          "closing"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "reported-speech-relay-b2-04",
+        "q": "Direct: \"Don't touch that.\" Reported: He told me ___ touch that.",
+        "options": [
+          "not to",
+          "to not",
+          "don't"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "reported-speech-relay-b2-05",
+        "q": "Direct: \"What time is it?\" Reported: She asked what time ___.",
+        "options": [
+          "it was",
+          "was it",
+          "is it"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "reported-speech-relay-b2-06",
+        "q": "Direct: \"Have you finished?\" Reported: He asked if I ___ finished.",
+        "options": [
+          "had",
+          "have",
+          "was"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "reported-speech-relay-b2-07",
+        "q": "Direct: \"I may be late.\" Reported: She said she ___ be late.",
+        "options": [
+          "might",
+          "may",
+          "can"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "reported-speech-relay-b2-08",
+        "q": "Direct: \"Are you coming?\" Reported: He asked if I ___ coming.",
+        "options": [
+          "was",
+          "am",
+          "were"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "reported-speech-relay-b2-09",
+        "q": "Direct: \"Please wait here.\" Reported: She asked me ___ wait there.",
+        "options": [
+          "to",
+          "that I",
+          "for"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "reported-speech-relay-b2-10",
+        "q": "Direct: \"Why are you crying?\" Reported: He asked me why I ___ crying.",
+        "options": [
+          "was",
+          "am",
+          "were"
+        ],
+        "answer": 0
+      }
+    ],
+    "C1": [
+      {
+        "id": "reported-speech-relay-c1-01",
+        "q": "Direct: \"The Earth orbits the Sun.\" Reported: The teacher explained that the Earth ___ the Sun.",
+        "options": [
+          "orbits",
+          "orbited",
+          "had orbited"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "reported-speech-relay-c1-02",
+        "q": "Direct: \"I'll help if I can.\" Reported: She promised she ___ help if she could.",
+        "options": [
+          "would",
+          "will",
+          "can"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "reported-speech-relay-c1-03",
+        "q": "Direct: \"I broke the vase.\" Reported: He admitted ___ the vase.",
+        "options": [
+          "breaking",
+          "to break",
+          "broke"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "reported-speech-relay-c1-04",
+        "q": "Direct: \"You should see a doctor.\" Reported: She advised me ___ a doctor.",
+        "options": [
+          "to see",
+          "seeing",
+          "see"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "reported-speech-relay-c1-05",
+        "q": "Direct: \"I won't do it again.\" Reported: He promised ___ do it again.",
+        "options": [
+          "not to",
+          "to not",
+          "won't"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "reported-speech-relay-c1-06",
+        "q": "Direct: \"It was my fault.\" Reported: She admitted that it ___ her fault.",
+        "options": [
+          "had been",
+          "was",
+          "is"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "reported-speech-relay-c1-07",
+        "q": "Direct: \"Let's go to the cinema.\" Reported: He suggested ___ to the cinema.",
+        "options": [
+          "going",
+          "to go",
+          "go"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "reported-speech-relay-c1-08",
+        "q": "Direct: \"I'm sorry I lied.\" Reported: She apologised for ___.",
+        "options": [
+          "lying",
+          "lie",
+          "to lie"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "reported-speech-relay-c1-09",
+        "q": "Direct: \"You must apply by Friday.\" Reported: They informed us that we ___ apply by Friday.",
+        "options": [
+          "had to",
+          "must",
+          "have to"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "reported-speech-relay-c1-10",
+        "q": "Direct: \"I didn't take the money.\" Reported: He denied ___ the money.",
+        "options": [
+          "taking",
+          "to take",
+          "take"
+        ],
+        "answer": 0
+      }
+    ]
+  }
+}

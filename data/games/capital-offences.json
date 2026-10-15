@@ -1,0 +1,381 @@
+{
+  "id": "capital-offences",
+  "title": "Capital Offences",
+  "tags": [
+    "punctuation"
+  ],
+  "engine": "choice",
+  "intro": "lunes, inglés, marzo — all lowercase in Spanish, all capitalised in English. The one rule that runs backwards from what you'd expect.",
+  "source": "Game — Capital Offences.html",
+  "draft": true,
+  "items": {
+    "A2": [
+      {
+        "id": "capital-offences-a2-01",
+        "q": "Days — which is correct?",
+        "options": [
+          "I have English class on Monday.",
+          "I have English class on monday.",
+          "I have english class on Monday."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "capital-offences-a2-02",
+        "q": "Months — which is correct?",
+        "options": [
+          "My birthday is in March.",
+          "My birthday is in march.",
+          "My birthday is in the March."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "capital-offences-a2-03",
+        "q": "Nationalities — which is correct?",
+        "options": [
+          "She is Spanish.",
+          "She is spanish.",
+          "She is a Spanish."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "capital-offences-a2-04",
+        "q": "Languages — which is correct?",
+        "options": [
+          "He speaks English and French.",
+          "He speaks english and french.",
+          "He speaks English and french."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "capital-offences-a2-05",
+        "q": "The word 'I' — which is correct?",
+        "options": [
+          "My friend and I went to the cinema.",
+          "My friend and i went to the cinema.",
+          "Me and I went to the cinema."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "capital-offences-a2-06",
+        "q": "Countries — which is correct?",
+        "options": [
+          "I live in Spain.",
+          "I live in spain.",
+          "I live in the Spain."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "capital-offences-a2-07",
+        "q": "Titles — which is correct?",
+        "options": [
+          "Doctor Smith is here.",
+          "doctor Smith is here.",
+          "Doctor smith is here."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "capital-offences-a2-08",
+        "q": "Days — which is correct?",
+        "options": [
+          "We don't have school on Saturday.",
+          "We don't have school on saturday.",
+          "we don't have school on Saturday."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "capital-offences-a2-09",
+        "q": "Nationalities — which is correct?",
+        "options": [
+          "They are British.",
+          "They are british.",
+          "They are a British."
+        ],
+        "answer": 0
+      }
+    ],
+    "B1": [
+      {
+        "id": "capital-offences-b1-01",
+        "q": "Nationalities as nouns — which is correct?",
+        "options": [
+          "Many Spaniards travel abroad in August.",
+          "Many spaniards travel abroad in August.",
+          "Many Spaniards travel abroad in august."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "capital-offences-b1-02",
+        "q": "Book titles — which is correct?",
+        "options": [
+          "I just read The Great Gatsby.",
+          "I just read the great gatsby.",
+          "I just read The great Gatsby."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "capital-offences-b1-03",
+        "q": "Days in a list — which is correct?",
+        "options": [
+          "The shop is open Monday, Wednesday and Friday.",
+          "The shop is open monday, wednesday and friday.",
+          "The shop is open Monday, wednesday and Friday."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "capital-offences-b1-04",
+        "q": "Religions — which is correct?",
+        "options": [
+          "He studies Buddhism at university.",
+          "He studies buddhism at university.",
+          "He studies Buddhism at University."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "capital-offences-b1-05",
+        "q": "Regions — which is correct?",
+        "options": [
+          "She grew up in the South of Spain.",
+          "She grew up in the south of spain.",
+          "She grew up in the South of spain."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "capital-offences-b1-06",
+        "q": "Brand names — which is correct?",
+        "options": [
+          "I bought it at Zara.",
+          "I bought it at zara.",
+          "I bought it at the Zara."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "capital-offences-b1-07",
+        "q": "Dates — which is correct?",
+        "options": [
+          "The meeting is on 3 April.",
+          "The meeting is on 3 april.",
+          "The meeting is on the 3rd of april."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "capital-offences-b1-08",
+        "q": "Historical periods — which is correct?",
+        "options": [
+          "We studied the Renaissance last year.",
+          "We studied the renaissance last year.",
+          "We studied The renaissance last year."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "capital-offences-b1-09",
+        "q": "Nationalities as adjectives — which is correct?",
+        "options": [
+          "I love Italian food.",
+          "I love italian food.",
+          "I love Italian Food."
+        ],
+        "answer": 0
+      }
+    ],
+    "B2": [
+      {
+        "id": "capital-offences-b2-01",
+        "q": "Institutions — which is correct?",
+        "options": [
+          "She works for the United Nations.",
+          "She works for the united nations.",
+          "She works for the United nations."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "capital-offences-b2-02",
+        "q": "Directions as regions — which is correct?",
+        "options": [
+          "Investment is growing in the West.",
+          "Investment is growing in the west.",
+          "investment is growing in the West."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "capital-offences-b2-03",
+        "q": "Literal compass directions — which is correct?",
+        "options": [
+          "Turn west at the next junction.",
+          "Turn West at the next junction.",
+          "turn west at the next junction."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "capital-offences-b2-04",
+        "q": "Cultural groups — which is correct?",
+        "options": [
+          "The exhibition celebrates Maori culture.",
+          "The exhibition celebrates maori culture.",
+          "The exhibition celebrates Maori Culture."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "capital-offences-b2-05",
+        "q": "Job titles as generic nouns — which is correct?",
+        "options": [
+          "My father is a doctor.",
+          "My father is a Doctor.",
+          "my father is a doctor."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "capital-offences-b2-06",
+        "q": "Job titles before a name — which is correct?",
+        "options": [
+          "I spoke to Professor García.",
+          "I spoke to professor García.",
+          "I spoke to Professor garcía."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "capital-offences-b2-07",
+        "q": "Academic subjects — which is correct?",
+        "options": [
+          "I'm studying history and Spanish.",
+          "I'm studying History and Spanish.",
+          "I'm studying history and spanish."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "capital-offences-b2-08",
+        "q": "Planets — which is correct?",
+        "options": [
+          "Mars is the fourth planet from the Sun.",
+          "mars is the fourth planet from the sun.",
+          "Mars is the fourth Planet from the sun."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "capital-offences-b2-09",
+        "q": "Public holidays — which is correct?",
+        "options": [
+          "We don't work on Christmas Day.",
+          "We don't work on christmas day.",
+          "we don't work on Christmas day."
+        ],
+        "answer": 0
+      }
+    ],
+    "C1": [
+      {
+        "id": "capital-offences-c1-01",
+        "q": "Nouns from proper adjectives — which is correct?",
+        "options": [
+          "The Anglicisation of the term is recent.",
+          "The anglicisation of the term is recent.",
+          "The Anglicisation Of The term is recent."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "capital-offences-c1-02",
+        "q": "Government bodies — which is correct?",
+        "options": [
+          "The bill was passed by Parliament.",
+          "The bill was passed by parliament.",
+          "The bill was passed by the parliament."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "capital-offences-c1-03",
+        "q": "Historical events — which is correct?",
+        "options": [
+          "The Industrial Revolution changed everything.",
+          "The industrial revolution changed everything.",
+          "The Industrial revolution changed everything."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "capital-offences-c1-04",
+        "q": "Religious texts — which is correct?",
+        "options": [
+          "The Bible has been translated into many languages.",
+          "The bible has been translated into many languages.",
+          "the Bible has been translated into many languages."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "capital-offences-c1-05",
+        "q": "Political movements — which is correct?",
+        "options": [
+          "She wrote a thesis on Marxism.",
+          "She wrote a thesis on marxism.",
+          "she wrote a thesis on Marxism."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "capital-offences-c1-06",
+        "q": "Star signs — which is correct?",
+        "options": [
+          "He's a Gemini.",
+          "He's a gemini.",
+          "he's a Gemini."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "capital-offences-c1-07",
+        "q": "Formal titles standing alone — which is correct?",
+        "options": [
+          "The Queen addressed the nation.",
+          "The queen addressed the nation.",
+          "the Queen addressed the nation."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "capital-offences-c1-08",
+        "q": "Compass-derived nouns — which is correct?",
+        "options": [
+          "Politics in the Middle East remain tense.",
+          "Politics in the middle east remain tense.",
+          "Politics in the Middle east remain tense."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "capital-offences-c1-09",
+        "q": "Trademarked generic terms — which is correct?",
+        "options": [
+          "He used a Kleenex to wipe the table.",
+          "He used a kleenex to wipe the table.",
+          "he used a Kleenex to wipe the table."
+        ],
+        "answer": 0
+      }
+    ]
+  }
+}

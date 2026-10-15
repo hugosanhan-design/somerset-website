@@ -1,0 +1,181 @@
+{
+  "id": "deduction-detective",
+  "title": "Deduction Detective",
+  "tags": [
+    "other"
+  ],
+  "engine": "pairs",
+  "intro": "Must be, might be, can't be — reading the clues to deduce, not just guess. How certain are you, really?",
+  "source": "Game — Deduction Detective.html",
+  "draft": true,
+  "items": {
+    "A2": [
+      {
+        "id": "deduction-detective-a2-01",
+        "left": "must be",
+        "right": "I'm almost certain — strong positive deduction"
+      },
+      {
+        "id": "deduction-detective-a2-02",
+        "left": "can't be",
+        "right": "I'm almost certain it's not true — strong negative deduction"
+      },
+      {
+        "id": "deduction-detective-a2-03",
+        "left": "might be",
+        "right": "it's possible, but I'm not sure"
+      },
+      {
+        "id": "deduction-detective-a2-04",
+        "left": "could be",
+        "right": "it's possible — similar to 'might be'"
+      },
+      {
+        "id": "deduction-detective-a2-05",
+        "left": "may be",
+        "right": "it's possible, slightly more formal than 'might be'"
+      },
+      {
+        "id": "deduction-detective-a2-06",
+        "left": "is probably",
+        "right": "likely, based on the evidence"
+      },
+      {
+        "id": "deduction-detective-a2-07",
+        "left": "is definitely",
+        "right": "certain, no doubt at all"
+      },
+      {
+        "id": "deduction-detective-a2-08",
+        "left": "isn't likely to be",
+        "right": "probably not true"
+      }
+    ],
+    "B1": [
+      {
+        "id": "deduction-detective-b1-01",
+        "left": "must have been",
+        "right": "I'm sure it happened — strong past deduction"
+      },
+      {
+        "id": "deduction-detective-b1-02",
+        "left": "can't have been",
+        "right": "I'm sure it didn't happen"
+      },
+      {
+        "id": "deduction-detective-b1-03",
+        "left": "might have been",
+        "right": "it's possible it happened, but I'm not sure"
+      },
+      {
+        "id": "deduction-detective-b1-04",
+        "left": "should be",
+        "right": "I expect it to be true, based on what I know"
+      },
+      {
+        "id": "deduction-detective-b1-05",
+        "left": "is bound to be",
+        "right": "almost certainly will be — a very confident prediction"
+      },
+      {
+        "id": "deduction-detective-b1-06",
+        "left": "seems to be",
+        "right": "the evidence suggests it is"
+      },
+      {
+        "id": "deduction-detective-b1-07",
+        "left": "appears to be",
+        "right": "it looks like it is, from what I can see"
+      },
+      {
+        "id": "deduction-detective-b1-08",
+        "left": "is unlikely to be",
+        "right": "probably not, based on the evidence"
+      }
+    ],
+    "B2": [
+      {
+        "id": "deduction-detective-b2-01",
+        "left": "must be lying",
+        "right": "the evidence strongly suggests deception"
+      },
+      {
+        "id": "deduction-detective-b2-02",
+        "left": "can't possibly be true",
+        "right": "it is completely impossible"
+      },
+      {
+        "id": "deduction-detective-b2-03",
+        "left": "could well be",
+        "right": "there's a good chance it's true"
+      },
+      {
+        "id": "deduction-detective-b2-04",
+        "left": "is highly likely to be",
+        "right": "the evidence strongly suggests it"
+      },
+      {
+        "id": "deduction-detective-b2-05",
+        "left": "is hardly likely to be",
+        "right": "very unlikely, given the evidence"
+      },
+      {
+        "id": "deduction-detective-b2-06",
+        "left": "must surely be",
+        "right": "an emphatic, confident deduction"
+      },
+      {
+        "id": "deduction-detective-b2-07",
+        "left": "may well have been",
+        "right": "there's a good chance it happened"
+      },
+      {
+        "id": "deduction-detective-b2-08",
+        "left": "cannot rule out",
+        "right": "cannot say for certain that something is false"
+      }
+    ],
+    "C1": [
+      {
+        "id": "deduction-detective-c1-01",
+        "left": "it stands to reason that",
+        "right": "it logically follows, based on the facts"
+      },
+      {
+        "id": "deduction-detective-c1-02",
+        "left": "in all probability",
+        "right": "almost certainly, statistically speaking"
+      },
+      {
+        "id": "deduction-detective-c1-03",
+        "left": "beyond reasonable doubt",
+        "right": "certain enough to be accepted as fact"
+      },
+      {
+        "id": "deduction-detective-c1-04",
+        "left": "there's every indication that",
+        "right": "the evidence strongly points to this"
+      },
+      {
+        "id": "deduction-detective-c1-05",
+        "left": "it defies belief that",
+        "right": "it's almost impossible to accept as true"
+      },
+      {
+        "id": "deduction-detective-c1-06",
+        "left": "one could be forgiven for assuming",
+        "right": "it would be an understandable, if wrong, conclusion"
+      },
+      {
+        "id": "deduction-detective-c1-07",
+        "left": "the evidence points to",
+        "right": "the clues suggest a particular conclusion"
+      },
+      {
+        "id": "deduction-detective-c1-08",
+        "left": "on the balance of probabilities",
+        "right": "more likely true than not, weighing the evidence"
+      }
+    ]
+  }
+}

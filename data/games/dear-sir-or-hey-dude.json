@@ -1,0 +1,181 @@
+{
+  "id": "dear-sir-or-hey-dude",
+  "title": "Dear Sir or Hey Dude?",
+  "tags": [
+    "register"
+  ],
+  "engine": "pairs",
+  "intro": "Formal, neutral, informal — the register of a single phrase can make or break an email before anyone reads past the greeting.",
+  "source": "Game — Dear Sir or Hey Dude.html",
+  "draft": true,
+  "items": {
+    "A2": [
+      {
+        "id": "dear-sir-or-hey-dude-a2-01",
+        "left": "Hi!",
+        "right": "informal — friends and family"
+      },
+      {
+        "id": "dear-sir-or-hey-dude-a2-02",
+        "left": "Dear Mr Smith,",
+        "right": "formal — a business letter to a named person"
+      },
+      {
+        "id": "dear-sir-or-hey-dude-a2-03",
+        "left": "See you soon!",
+        "right": "informal — casual closing"
+      },
+      {
+        "id": "dear-sir-or-hey-dude-a2-04",
+        "left": "Best regards,",
+        "right": "neutral-formal — a safe closing for most emails"
+      },
+      {
+        "id": "dear-sir-or-hey-dude-a2-05",
+        "left": "Hey!",
+        "right": "very informal — close friends only"
+      },
+      {
+        "id": "dear-sir-or-hey-dude-a2-06",
+        "left": "Thanks!",
+        "right": "informal — casual thanks"
+      },
+      {
+        "id": "dear-sir-or-hey-dude-a2-07",
+        "left": "Thank you very much.",
+        "right": "formal — polite, professional thanks"
+      },
+      {
+        "id": "dear-sir-or-hey-dude-a2-08",
+        "left": "Bye for now!",
+        "right": "informal — casual goodbye"
+      }
+    ],
+    "B1": [
+      {
+        "id": "dear-sir-or-hey-dude-b1-01",
+        "left": "I hope this email finds you well.",
+        "right": "formal — a common professional opening"
+      },
+      {
+        "id": "dear-sir-or-hey-dude-b1-02",
+        "left": "How's it going?",
+        "right": "informal — casual opening between friends"
+      },
+      {
+        "id": "dear-sir-or-hey-dude-b1-03",
+        "left": "Yours sincerely,",
+        "right": "formal — closing when you know the reader's name"
+      },
+      {
+        "id": "dear-sir-or-hey-dude-b1-04",
+        "left": "Yours faithfully,",
+        "right": "formal — closing when you don't know the reader's name"
+      },
+      {
+        "id": "dear-sir-or-hey-dude-b1-05",
+        "left": "Catch you later!",
+        "right": "informal — casual goodbye"
+      },
+      {
+        "id": "dear-sir-or-hey-dude-b1-06",
+        "left": "I look forward to hearing from you.",
+        "right": "formal — polite closing before a reply"
+      },
+      {
+        "id": "dear-sir-or-hey-dude-b1-07",
+        "left": "Just wanted to say...",
+        "right": "informal — casual way to introduce a message"
+      },
+      {
+        "id": "dear-sir-or-hey-dude-b1-08",
+        "left": "Please find attached...",
+        "right": "formal — introducing an attachment professionally"
+      }
+    ],
+    "B2": [
+      {
+        "id": "dear-sir-or-hey-dude-b2-01",
+        "left": "I am writing to enquire about...",
+        "right": "formal — a standard way to open a request"
+      },
+      {
+        "id": "dear-sir-or-hey-dude-b2-02",
+        "left": "Just a quick one —",
+        "right": "informal — casual way to flag a short message"
+      },
+      {
+        "id": "dear-sir-or-hey-dude-b2-03",
+        "left": "I would be grateful if you could...",
+        "right": "formal — a polite way to make a request"
+      },
+      {
+        "id": "dear-sir-or-hey-dude-b2-04",
+        "left": "No worries at all!",
+        "right": "informal — casual reassurance"
+      },
+      {
+        "id": "dear-sir-or-hey-dude-b2-05",
+        "left": "Please do not hesitate to contact me.",
+        "right": "formal — inviting further contact professionally"
+      },
+      {
+        "id": "dear-sir-or-hey-dude-b2-06",
+        "left": "Let me know if that works for you.",
+        "right": "neutral — polite but relaxed"
+      },
+      {
+        "id": "dear-sir-or-hey-dude-b2-07",
+        "left": "Cheers,",
+        "right": "informal-neutral — a casual closing common in British emails"
+      },
+      {
+        "id": "dear-sir-or-hey-dude-b2-08",
+        "left": "I trust this is satisfactory.",
+        "right": "formal — polite way to end after providing information"
+      }
+    ],
+    "C1": [
+      {
+        "id": "dear-sir-or-hey-dude-c1-01",
+        "left": "I am writing on behalf of...",
+        "right": "formal — introducing yourself as a representative"
+      },
+      {
+        "id": "dear-sir-or-hey-dude-c1-02",
+        "left": "Further to our conversation,",
+        "right": "formal — referring back to a previous discussion"
+      },
+      {
+        "id": "dear-sir-or-hey-dude-c1-03",
+        "left": "Should you require any further information,",
+        "right": "formal — offering further help, professionally"
+      },
+      {
+        "id": "dear-sir-or-hey-dude-c1-04",
+        "left": "I would like to draw your attention to...",
+        "right": "formal — formally highlighting a point"
+      },
+      {
+        "id": "dear-sir-or-hey-dude-c1-05",
+        "left": "Kindly be advised that...",
+        "right": "very formal — a slightly stiff way to inform someone"
+      },
+      {
+        "id": "dear-sir-or-hey-dude-c1-06",
+        "left": "Give me a shout if...",
+        "right": "informal — casual way to invite someone to reach out"
+      },
+      {
+        "id": "dear-sir-or-hey-dude-c1-07",
+        "left": "With reference to your email of...",
+        "right": "formal — precisely referring to a previous email"
+      },
+      {
+        "id": "dear-sir-or-hey-dude-c1-08",
+        "left": "I trust you are keeping well.",
+        "right": "formal — a polished professional opening"
+      }
+    ]
+  }
+}

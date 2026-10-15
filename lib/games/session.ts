@@ -21,19 +21,20 @@ export function pickLevel(game: GameDef, wanted: Level): Level {
   return LEVELS.find(has) ?? wanted
 }
 
-// Choice items come back with their options shuffled (answer index remapped), so the
-// right answer is not always the first card.
-export function buildChoiceSession(game: GameDef, level: Level, n = SESSION_ITEMS): ChoiceItem[] {
-  const bank = (game.items[level] ?? []) as ChoiceItem[]
-  return shuffle(bank).slice(0, n).map(it => {
+// One session of choice items for any engine. Options are shuffled (answer index remapped),
+// so the right answer is not always the first card.
+export function buildSession(game: GameDef, level: Level, n = SESSION_ITEMS): ChoiceItem[] {
+  const raw = game.engine === 'pairs' ? pairsAsChoice((game.items[level] ?? []) as PairItem[]) : (game.items[level] ?? []) as ChoiceItem[]
+  return shuffle(raw).slice(0, n).map(it => {
     const order = shuffle(it.options.map((_, i) => i))
     return { ...it, options: order.map(i => it.options[i]), answer: order.indexOf(it.answer) }
   })
 }
 
-// Pairs: 12 pairs split into two boards of 6.
-export function buildPairsSession(game: GameDef, level: Level, n = SESSION_ITEMS): PairItem[][] {
-  const bank = shuffle((game.items[level] ?? []) as PairItem[]).slice(0, n)
-  const half = Math.ceil(bank.length / 2)
-  return [bank.slice(0, half), bank.slice(half)].filter(b => b.length)
+// A pair becomes: question = the left card, options = its partner + 3 partners of other pairs.
+function pairsAsChoice(bank: PairItem[]): ChoiceItem[] {
+  return bank.map(p => {
+    const others = shuffle(bank.filter(o => o.right !== p.right)).slice(0, 3).map(o => o.right)
+    return { id: p.id, q: p.left, options: [p.right, ...others], answer: 0, why: p.why }
+  })
 }

@@ -1,0 +1,420 @@
+{
+  "id": "weather-idiom-almanac",
+  "title": "Weather Idiom Almanac",
+  "tags": [
+    "vocabulary"
+  ],
+  "engine": "choice",
+  "intro": "A bolt from the blue, steal someone’s thunder, weather the storm. Pick the weather idiom that fits each situation.",
+  "source": "Game — Weather Idiom Almanac.html",
+  "items": {
+    "A2": [
+      {
+        "id": "weather-idiom-almanac-a2-01",
+        "q": "My grandad walks the dog every morning, ___ .",
+        "options": [
+          "come rain or shine",
+          "in hot water",
+          "under a cloud"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "weather-idiom-almanac-a2-02",
+        "q": "Ana is a real ___ — she makes everyone in class smile.",
+        "options": [
+          "ray of sunshine",
+          "wet blanket",
+          "fair-weather friend"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "weather-idiom-almanac-a2-03",
+        "q": "I don't spend all my pocket money — I save some ___ .",
+        "options": [
+          "for a rainy day",
+          "in hot water",
+          "like greased lightning"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "weather-idiom-almanac-a2-04",
+        "q": "I was ill last week, but now I feel as ___ .",
+        "options": [
+          "right as rain",
+          "cold as ice",
+          "quick as lightning"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "weather-idiom-almanac-a2-05",
+        "q": "He wanted to ask her to dance, but he got ___ at the last minute.",
+        "options": [
+          "cold feet",
+          "hot air",
+          "a second wind"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "weather-idiom-almanac-a2-06",
+        "q": "I can't come out tonight — I'm completely ___ with homework.",
+        "options": [
+          "snowed under",
+          "out in the cold",
+          "out of the blue"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "weather-idiom-almanac-a2-07",
+        "q": "The exam was ___ — I finished it in twenty minutes.",
+        "options": [
+          "a breeze",
+          "a bolt from the blue",
+          "a windfall"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "weather-idiom-almanac-a2-08",
+        "q": "You'll be ___ if Mum finds out you broke her favourite mug.",
+        "options": [
+          "in hot water",
+          "right as rain",
+          "full of hot air"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "weather-idiom-almanac-a2-09",
+        "q": "Pay attention, Marco! You've had your ___ all morning.",
+        "options": [
+          "head in the clouds",
+          "feet on the ground",
+          "face like thunder"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "weather-idiom-almanac-a2-10",
+        "q": "He only calls me when he needs something — a real ___ .",
+        "options": [
+          "fair-weather friend",
+          "ray of sunshine",
+          "calm before the storm"
+        ],
+        "answer": 0
+      }
+    ],
+    "B1": [
+      {
+        "id": "weather-idiom-almanac-b1-01",
+        "q": "I'd love to come tonight, but I'm exhausted — can I take ___ ?",
+        "options": [
+          "a rain check",
+          "a cold shoulder",
+          "a second wind"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "weather-idiom-almanac-b1-02",
+        "q": "The company lost money all year, but somehow it managed to ___ .",
+        "options": [
+          "weather the storm",
+          "chase rainbows",
+          "shoot the breeze"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "weather-idiom-almanac-b1-03",
+        "q": "Everything is quiet now, but it feels like ___ — exams start on Monday.",
+        "options": [
+          "the calm before the storm",
+          "a bolt from the blue",
+          "a ray of sunshine"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "weather-idiom-almanac-b1-04",
+        "q": "Losing that job was hard, but every cloud has ___ — now I run my own business.",
+        "options": [
+          "a silver lining",
+          "a second wind",
+          "a cold snap"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "weather-idiom-almanac-b1-05",
+        "q": "It started as a discussion about money and turned into ___ .",
+        "options": [
+          "a heated argument",
+          "a frosty reception",
+          "a dry spell"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "weather-idiom-almanac-b1-06",
+        "q": "Ever since our argument, she's been giving me ___ .",
+        "options": [
+          "the cold shoulder",
+          "the silver lining",
+          "a second wind"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "weather-idiom-almanac-b1-07",
+        "q": "I hadn't heard from Marta in years — then yesterday, ___ , she phoned me.",
+        "options": [
+          "out of the blue",
+          "under a cloud",
+          "come rain or shine"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "weather-idiom-almanac-b1-08",
+        "q": "I passed the exam, so please don't ___ by mentioning the one question I got wrong.",
+        "options": [
+          "rain on my parade",
+          "get wind of it",
+          "save it for a rainy day"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "weather-idiom-almanac-b1-09",
+        "q": "Don't listen to his big promises — he's ___ .",
+        "options": [
+          "full of hot air",
+          "right as rain",
+          "snowed under"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "weather-idiom-almanac-b1-10",
+        "q": "You're already in trouble with the teacher — arrive late again and you'll be ___ .",
+        "options": [
+          "on thin ice",
+          "on a winning streak",
+          "as cold as ice"
+        ],
+        "answer": 0
+      }
+    ],
+    "B2": [
+      {
+        "id": "weather-idiom-almanac-b2-01",
+        "q": "I was about to announce my engagement when my sister announced hers first — she completely ___ .",
+        "options": [
+          "stole my thunder",
+          "weathered the storm",
+          "chased rainbows"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "weather-idiom-almanac-b2-02",
+        "q": "The news of his resignation came as ___ — nobody had suspected a thing.",
+        "options": [
+          "a bolt from the blue",
+          "a silver lining",
+          "a second wind"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "weather-idiom-almanac-b2-03",
+        "q": "Her first novel took the literary world ___ .",
+        "options": [
+          "by storm",
+          "under a cloud",
+          "out of the blue"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "weather-idiom-almanac-b2-04",
+        "q": "Somehow the journalists ___ of the merger before it was announced.",
+        "options": [
+          "got wind",
+          "got a windfall",
+          "made hay"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "weather-idiom-almanac-b2-05",
+        "q": "He ___ , quit his job, and bought a one-way ticket to Buenos Aires.",
+        "options": [
+          "threw caution to the wind",
+          "took the wind out of his sails",
+          "took a rain check"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "weather-idiom-almanac-b2-06",
+        "q": "The boss walked in with ___ — someone was clearly in trouble.",
+        "options": [
+          "a face like thunder",
+          "a spring in his step",
+          "his head in the clouds"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "weather-idiom-almanac-b2-07",
+        "q": "Stop ___ — you're forty, you're never going to be a rock star.",
+        "options": [
+          "chasing rainbows",
+          "weathering the storm",
+          "shooting the breeze"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "weather-idiom-almanac-b2-08",
+        "q": "Tourist season only lasts three months here, so local businesses have to make hay ___ .",
+        "options": [
+          "while the sun shines",
+          "before the storm",
+          "under a cloud"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "weather-idiom-almanac-b2-09",
+        "q": "His new colleagues barely spoke to him at lunch — ___ indeed.",
+        "options": [
+          "a frosty reception",
+          "a heated argument",
+          "a warm front"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "weather-idiom-almanac-b2-10",
+        "q": "After the scandal, his former allies left him ___ .",
+        "options": [
+          "out in the cold",
+          "under the sun",
+          "over the moon"
+        ],
+        "answer": 0
+      }
+    ],
+    "C1": [
+      {
+        "id": "weather-idiom-almanac-c1-01",
+        "q": "First the car broke down, then the boiler, then the roof — it never rains but it ___ .",
+        "options": [
+          "pours",
+          "snows",
+          "thunders"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "weather-idiom-almanac-c1-02",
+        "q": "She had prepared a triumphant speech, but the early press leak rather ___ .",
+        "options": [
+          "took the wind out of her sails",
+          "threw caution to the wind",
+          "got wind of her plans"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "weather-idiom-almanac-c1-03",
+        "q": "Declaring that income as 'a gift' to avoid tax is ___ , even if it's technically legal.",
+        "options": [
+          "sailing close to the wind",
+          "shooting the breeze",
+          "chasing rainbows"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "weather-idiom-almanac-c1-04",
+        "q": "The hostel was noisy and cramped, but it was 2 a.m. and we were exhausted — ___ .",
+        "options": [
+          "any port in a storm",
+          "a bolt from the blue",
+          "the calm before the storm"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "weather-idiom-almanac-c1-05",
+        "q": "I will finish this dissertation by Friday, ___ .",
+        "options": [
+          "come hell or high water",
+          "any port in a storm",
+          "out of the blue"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "weather-idiom-almanac-c1-06",
+        "q": "Since the fraud investigation began, the director has been ___ at work.",
+        "options": [
+          "under a cloud",
+          "under the sun",
+          "in his element"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "weather-idiom-almanac-c1-07",
+        "q": "The inheritance from a great-aunt she'd never met was quite ___ .",
+        "options": [
+          "a windfall",
+          "a whirlwind",
+          "a cold snap"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "weather-idiom-almanac-c1-08",
+        "q": "The factory closure was devastating, but the demolition firm did well out of it — it's an ill wind that blows nobody ___ .",
+        "options": [
+          "any good",
+          "any harm",
+          "a second wind"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "weather-idiom-almanac-c1-09",
+        "q": "The team looked exhausted at half-time, but they got ___ and scored three goals.",
+        "options": [
+          "a second wind",
+          "a fair wind",
+          "cold feet"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "weather-idiom-almanac-c1-10",
+        "q": "As the minister at the centre of the leak inquiry, she has spent the week in ___ .",
+        "options": [
+          "the eye of the storm",
+          "the calm before the storm",
+          "the dog days of summer"
+        ],
+        "answer": 0
+      }
+    ]
+  }
+}

@@ -1,0 +1,182 @@
+{
+  "id": "the-uncountable-larder",
+  "title": "The Uncountable Larder",
+  "tags": [
+    "agreement",
+    "vocabulary"
+  ],
+  "engine": "pairs",
+  "intro": "Un consejo, una información — perfectly countable in Spanish. Advice, information — stubbornly, permanently singular in English. Stock the larder correctly.",
+  "source": "Game — The Uncountable Larder.html",
+  "draft": true,
+  "items": {
+    "A2": [
+      {
+        "id": "the-uncountable-larder-a2-01",
+        "left": "advice",
+        "right": "helpful suggestions — never 'an advice' or 'advices'"
+      },
+      {
+        "id": "the-uncountable-larder-a2-02",
+        "left": "furniture",
+        "right": "tables, chairs, beds — never 'furnitures', say 'a piece of furniture'"
+      },
+      {
+        "id": "the-uncountable-larder-a2-03",
+        "left": "luggage",
+        "right": "suitcases and bags — never 'luggages', say 'a piece of luggage'"
+      },
+      {
+        "id": "the-uncountable-larder-a2-04",
+        "left": "information",
+        "right": "facts and details — never 'informations'"
+      },
+      {
+        "id": "the-uncountable-larder-a2-05",
+        "left": "money",
+        "right": "coins and notes together — never 'moneys'"
+      },
+      {
+        "id": "the-uncountable-larder-a2-06",
+        "left": "news",
+        "right": "reports of events — takes a singular verb: 'the news is good'"
+      },
+      {
+        "id": "the-uncountable-larder-a2-07",
+        "left": "homework",
+        "right": "school tasks to do at home — never 'homeworks'"
+      },
+      {
+        "id": "the-uncountable-larder-a2-08",
+        "left": "bread",
+        "right": "the food made from flour — say 'a loaf of bread', not 'a bread'"
+      }
+    ],
+    "B1": [
+      {
+        "id": "the-uncountable-larder-b1-01",
+        "left": "traffic",
+        "right": "vehicles on the road — never 'traffics'"
+      },
+      {
+        "id": "the-uncountable-larder-b1-02",
+        "left": "equipment",
+        "right": "tools or machines for a job — never 'equipments'"
+      },
+      {
+        "id": "the-uncountable-larder-b1-03",
+        "left": "progress",
+        "right": "improvement or forward movement — never 'progresses'"
+      },
+      {
+        "id": "the-uncountable-larder-b1-04",
+        "left": "weather",
+        "right": "rain, sun, wind, etc. — never 'a weather'"
+      },
+      {
+        "id": "the-uncountable-larder-b1-05",
+        "left": "research",
+        "right": "careful study of a subject — never 'a research'"
+      },
+      {
+        "id": "the-uncountable-larder-b1-06",
+        "left": "knowledge",
+        "right": "understanding gained over time — never 'knowledges'"
+      },
+      {
+        "id": "the-uncountable-larder-b1-07",
+        "left": "accommodation",
+        "right": "a place to live or stay — never 'accommodations' in British English"
+      },
+      {
+        "id": "the-uncountable-larder-b1-08",
+        "left": "scenery",
+        "right": "the natural landscape — never 'sceneries'"
+      }
+    ],
+    "B2": [
+      {
+        "id": "the-uncountable-larder-b2-01",
+        "left": "feedback",
+        "right": "comments on how well something was done — never 'feedbacks'"
+      },
+      {
+        "id": "the-uncountable-larder-b2-02",
+        "left": "software",
+        "right": "computer programs — never 'softwares'"
+      },
+      {
+        "id": "the-uncountable-larder-b2-03",
+        "left": "evidence",
+        "right": "proof that something is true — never 'evidences'"
+      },
+      {
+        "id": "the-uncountable-larder-b2-04",
+        "left": "machinery",
+        "right": "large machines collectively — never 'machineries'"
+      },
+      {
+        "id": "the-uncountable-larder-b2-05",
+        "left": "poetry",
+        "right": "poems as a genre — never 'poetries', say 'a poem'"
+      },
+      {
+        "id": "the-uncountable-larder-b2-06",
+        "left": "staff",
+        "right": "the people who work somewhere — never 'staffs' for people"
+      },
+      {
+        "id": "the-uncountable-larder-b2-07",
+        "left": "jewellery",
+        "right": "rings, necklaces and bracelets — never 'jewelleries'"
+      },
+      {
+        "id": "the-uncountable-larder-b2-08",
+        "left": "cutlery",
+        "right": "knives, forks and spoons — never 'cutleries'"
+      }
+    ],
+    "C1": [
+      {
+        "id": "the-uncountable-larder-c1-01",
+        "left": "expertise",
+        "right": "specialist skill or knowledge — never 'expertises'"
+      },
+      {
+        "id": "the-uncountable-larder-c1-02",
+        "left": "infrastructure",
+        "right": "the basic physical systems of a country — never 'infrastructures'"
+      },
+      {
+        "id": "the-uncountable-larder-c1-03",
+        "left": "legislation",
+        "right": "laws as a group — never 'legislations', say 'a law'"
+      },
+      {
+        "id": "the-uncountable-larder-c1-04",
+        "left": "footage",
+        "right": "recorded film or video material — never 'footages'"
+      },
+      {
+        "id": "the-uncountable-larder-c1-05",
+        "left": "correspondence",
+        "right": "letters or emails exchanged — never 'correspondences' in this sense"
+      },
+      {
+        "id": "the-uncountable-larder-c1-06",
+        "left": "merchandise",
+        "right": "goods for sale — never 'merchandises'"
+      },
+      {
+        "id": "the-uncountable-larder-c1-07",
+        "left": "foliage",
+        "right": "the leaves of plants collectively — never 'foliages'"
+      },
+      {
+        "id": "the-uncountable-larder-c1-08",
+        "left": "stationery",
+        "right": "pens, paper and office supplies — never 'stationeries'"
+      }
+    ]
+  }
+}

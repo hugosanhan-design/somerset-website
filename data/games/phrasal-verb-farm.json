@@ -1,0 +1,181 @@
+{
+  "id": "phrasal-verb-farm",
+  "title": "Phrasal Verb Farm",
+  "tags": [
+    "vocabulary"
+  ],
+  "engine": "pairs",
+  "intro": "Travel, work, relationships, money — four everyday paddocks, one phrasal verb from each. Round them up before your tries run out.",
+  "source": "Game — Phrasal Verb Farm.html",
+  "draft": true,
+  "items": {
+    "A2": [
+      {
+        "id": "phrasal-verb-farm-a2-01",
+        "left": "check in",
+        "right": "arrive and register at a hotel or airport"
+      },
+      {
+        "id": "phrasal-verb-farm-a2-02",
+        "left": "get on",
+        "right": "enter a bus, train or plane"
+      },
+      {
+        "id": "phrasal-verb-farm-a2-03",
+        "left": "turn up",
+        "right": "arrive somewhere"
+      },
+      {
+        "id": "phrasal-verb-farm-a2-04",
+        "left": "hand in",
+        "right": "give a finished piece of work to someone"
+      },
+      {
+        "id": "phrasal-verb-farm-a2-05",
+        "left": "make up",
+        "right": "become friends again after an argument"
+      },
+      {
+        "id": "phrasal-verb-farm-a2-06",
+        "left": "break up",
+        "right": "end a relationship"
+      },
+      {
+        "id": "phrasal-verb-farm-a2-07",
+        "left": "pay back",
+        "right": "return money you borrowed"
+      },
+      {
+        "id": "phrasal-verb-farm-a2-08",
+        "left": "save up",
+        "right": "keep money to buy something later"
+      }
+    ],
+    "B1": [
+      {
+        "id": "phrasal-verb-farm-b1-01",
+        "left": "fall out",
+        "right": "argue and stop being friends"
+      },
+      {
+        "id": "phrasal-verb-farm-b1-02",
+        "left": "look up to",
+        "right": "admire and respect someone"
+      },
+      {
+        "id": "phrasal-verb-farm-b1-03",
+        "left": "take on",
+        "right": "hire someone, or accept a responsibility"
+      },
+      {
+        "id": "phrasal-verb-farm-b1-04",
+        "left": "fill in for",
+        "right": "do someone's job temporarily"
+      },
+      {
+        "id": "phrasal-verb-farm-b1-05",
+        "left": "set off",
+        "right": "begin a journey"
+      },
+      {
+        "id": "phrasal-verb-farm-b1-06",
+        "left": "check out",
+        "right": "leave a hotel after paying"
+      },
+      {
+        "id": "phrasal-verb-farm-b1-07",
+        "left": "run out of",
+        "right": "have none left"
+      },
+      {
+        "id": "phrasal-verb-farm-b1-08",
+        "left": "put aside",
+        "right": "save money for a particular purpose"
+      }
+    ],
+    "B2": [
+      {
+        "id": "phrasal-verb-farm-b2-01",
+        "left": "look down on",
+        "right": "consider someone inferior"
+      },
+      {
+        "id": "phrasal-verb-farm-b2-02",
+        "left": "make up for",
+        "right": "compensate for something bad"
+      },
+      {
+        "id": "phrasal-verb-farm-b2-03",
+        "left": "lay off",
+        "right": "dismiss employees due to lack of work"
+      },
+      {
+        "id": "phrasal-verb-farm-b2-04",
+        "left": "carry out",
+        "right": "perform or complete a task"
+      },
+      {
+        "id": "phrasal-verb-farm-b2-05",
+        "left": "hold up",
+        "right": "delay something"
+      },
+      {
+        "id": "phrasal-verb-farm-b2-06",
+        "left": "get behind with",
+        "right": "fail to pay or finish on time"
+      },
+      {
+        "id": "phrasal-verb-farm-b2-07",
+        "left": "splash out",
+        "right": "spend a lot of money on something special"
+      },
+      {
+        "id": "phrasal-verb-farm-b2-08",
+        "left": "chip in",
+        "right": "contribute money along with others"
+      }
+    ],
+    "C1": [
+      {
+        "id": "phrasal-verb-farm-c1-01",
+        "left": "fall for",
+        "right": "begin to feel strongly attracted to someone"
+      },
+      {
+        "id": "phrasal-verb-farm-c1-02",
+        "left": "patch up",
+        "right": "repair a damaged relationship"
+      },
+      {
+        "id": "phrasal-verb-farm-c1-03",
+        "left": "farm out",
+        "right": "send work to be done by someone outside the company"
+      },
+      {
+        "id": "phrasal-verb-farm-c1-04",
+        "left": "branch out",
+        "right": "expand into a new area of business"
+      },
+      {
+        "id": "phrasal-verb-farm-c1-05",
+        "left": "set back",
+        "right": "cost someone a large amount of money"
+      },
+      {
+        "id": "phrasal-verb-farm-c1-06",
+        "left": "bail out",
+        "right": "rescue a person or company from financial trouble"
+      },
+      {
+        "id": "phrasal-verb-farm-c1-07",
+        "left": "veer off",
+        "right": "change direction suddenly, leaving the intended path"
+      },
+      {
+        "id": "phrasal-verb-farm-c1-08",
+        "left": "hit it off",
+        "right": "quickly form a good relationship with someone"
+      }
+    ]
+  }
+}

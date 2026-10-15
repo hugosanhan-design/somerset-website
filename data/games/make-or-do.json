@@ -1,0 +1,181 @@
+{
+  "id": "make-or-do",
+  "title": "Make or Do?",
+  "tags": [
+    "vocabulary"
+  ],
+  "engine": "pairs",
+  "intro": "Make a mistake, do your homework, make progress, do business — match each phrase to the verb it actually takes.",
+  "source": "Game — Make or Do.html",
+  "draft": true,
+  "items": {
+    "A2": [
+      {
+        "id": "make-or-do-a2-01",
+        "left": "the dishes",
+        "right": "do (do the dishes = wash them)"
+      },
+      {
+        "id": "make-or-do-a2-02",
+        "left": "a mistake",
+        "right": "make (make a mistake = get something wrong)"
+      },
+      {
+        "id": "make-or-do-a2-03",
+        "left": "your homework",
+        "right": "do (do your homework = complete it)"
+      },
+      {
+        "id": "make-or-do-a2-04",
+        "left": "a cake",
+        "right": "make (make a cake = bake it)"
+      },
+      {
+        "id": "make-or-do-a2-05",
+        "left": "a favour",
+        "right": "do (do someone a favour = help them)"
+      },
+      {
+        "id": "make-or-do-a2-06",
+        "left": "noise",
+        "right": "make (make noise = be loud)"
+      },
+      {
+        "id": "make-or-do-a2-07",
+        "left": "the shopping",
+        "right": "do (do the shopping = buy groceries)"
+      },
+      {
+        "id": "make-or-do-a2-08",
+        "left": "a decision",
+        "right": "make (make a decision = decide)"
+      }
+    ],
+    "B1": [
+      {
+        "id": "make-or-do-b1-01",
+        "left": "progress",
+        "right": "make (make progress = improve)"
+      },
+      {
+        "id": "make-or-do-b1-02",
+        "left": "an effort",
+        "right": "make (make an effort = try hard)"
+      },
+      {
+        "id": "make-or-do-b1-03",
+        "left": "business",
+        "right": "do (do business = trade or deal)"
+      },
+      {
+        "id": "make-or-do-b1-04",
+        "left": "your best",
+        "right": "do (do your best = try as hard as you can)"
+      },
+      {
+        "id": "make-or-do-b1-05",
+        "left": "a phone call",
+        "right": "make (make a call = telephone someone)"
+      },
+      {
+        "id": "make-or-do-b1-06",
+        "left": "research",
+        "right": "do (do research = investigate)"
+      },
+      {
+        "id": "make-or-do-b1-07",
+        "left": "money",
+        "right": "make (make money = earn)"
+      },
+      {
+        "id": "make-or-do-b1-08",
+        "left": "exercise",
+        "right": "do (do exercise = work out)"
+      }
+    ],
+    "B2": [
+      {
+        "id": "make-or-do-b2-01",
+        "left": "a difference",
+        "right": "make (make a difference = have an effect)"
+      },
+      {
+        "id": "make-or-do-b2-02",
+        "left": "damage",
+        "right": "do (do damage = cause harm)"
+      },
+      {
+        "id": "make-or-do-b2-03",
+        "left": "an appointment",
+        "right": "make (make an appointment = arrange a meeting)"
+      },
+      {
+        "id": "make-or-do-b2-04",
+        "left": "a good job",
+        "right": "do (do a good job = perform well)"
+      },
+      {
+        "id": "make-or-do-b2-05",
+        "left": "a profit",
+        "right": "make (make a profit = earn more than you spend)"
+      },
+      {
+        "id": "make-or-do-b2-06",
+        "left": "harm",
+        "right": "do (do harm = cause injury)"
+      },
+      {
+        "id": "make-or-do-b2-07",
+        "left": "an impression",
+        "right": "make (make an impression = affect how people see you)"
+      },
+      {
+        "id": "make-or-do-b2-08",
+        "left": "the washing up",
+        "right": "do (do the washing up = clean the dishes)"
+      }
+    ],
+    "C1": [
+      {
+        "id": "make-or-do-c1-01",
+        "left": "amends",
+        "right": "make (make amends = compensate for wrongdoing)"
+      },
+      {
+        "id": "make-or-do-c1-02",
+        "left": "justice",
+        "right": "do (do justice to something = represent it fairly)"
+      },
+      {
+        "id": "make-or-do-c1-03",
+        "left": "headway",
+        "right": "make (make headway = progress against difficulty)"
+      },
+      {
+        "id": "make-or-do-c1-04",
+        "left": "the honours",
+        "right": "do (do the honours = perform a ceremonial task)"
+      },
+      {
+        "id": "make-or-do-c1-05",
+        "left": "a fortune",
+        "right": "make (make a fortune = become very rich)"
+      },
+      {
+        "id": "make-or-do-c1-06",
+        "left": "one's duty",
+        "right": "do (do one's duty = fulfil an obligation)"
+      },
+      {
+        "id": "make-or-do-c1-07",
+        "left": "a scene",
+        "right": "make (make a scene = cause a public fuss)"
+      },
+      {
+        "id": "make-or-do-c1-08",
+        "left": "wonders",
+        "right": "do (do wonders for something = have a great positive effect)"
+      }
+    ]
+  }
+}

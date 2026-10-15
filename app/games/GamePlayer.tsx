@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { Btn } from '@/app/courses/_kit'
 import { SomersetIcon } from '@/components/SomersetIcon'
 import type { ChoiceItem, GameDef, Level } from '@/lib/games/contract'
-import { buildChoiceSession, pickLevel } from '@/lib/games/session'
+import { buildSession, pickLevel } from '@/lib/games/session'
 import { readStudent, reportResult, type Student } from '@/lib/games/report'
 import { ChoiceEngine, type Outcome } from './engines/Choice'
 import './games.css'
@@ -19,11 +19,11 @@ export default function GamePlayer({ game, level: wanted }: { game: GameDef; lev
   const [phase, setPhase] = useState<Phase>('intro')
   const [round, setRound] = useState(0)
   const [outcome, setOutcome] = useState<Outcome | null>(null)
-  const [saved, setSaved] = useState<'saving' | 'saved' | 'queued'>('saving')
+  const [saved, setSaved] = useState<'saving' | 'saved' | 'queued' | 'draft'>('saving')
   const [practised, setPractised] = useState(false)
 
   useEffect(() => { setStudent(readStudent()) }, [])
-  const items = useMemo(() => buildChoiceSession(game, level), [game, level, round])
+  const items = useMemo(() => buildSession(game, level), [game, level, round])
   const missed = useMemo(() => {
     if (!outcome) return [] as ChoiceItem[]
     const ids = new Set(outcome.wrong.map(w => w.itemId))
@@ -32,6 +32,7 @@ export default function GamePlayer({ game, level: wanted }: { game: GameDef; lev
 
   function finish(o: Outcome) {
     setOutcome(o); setPhase('end'); setSaved('saving'); setPractised(false)
+    if (game.draft) { setSaved('draft'); return }   // drafts are for review only: nothing is stored
     reportResult({ gameId: game.id, tags: game.tags, level, ...o }).then(setSaved)
   }
 
@@ -58,6 +59,7 @@ export default function GamePlayer({ game, level: wanted }: { game: GameDef; lev
     <div className="course gm">
       {header}
       <main className="gm-main">
+        {game.draft && <p className="gm-draft">Draft preview — not on any student&rsquo;s list yet</p>}
         {phase === 'intro' && (
           <div className="ck-card gm-card gm-center">
             <SomersetIcon name="game" size={84} />
@@ -72,6 +74,7 @@ export default function GamePlayer({ game, level: wanted }: { game: GameDef; lev
         {phase === 'play' && (
           <>
             <p className="gm-kicker gm-kicker--play">{game.title}</p>
+            {game.engine === 'pairs' && <p className="gm-ask">Which one goes with it?</p>}
             <ChoiceEngine key={`play-${round}`} items={items} onFinish={finish} />
           </>
         )}
@@ -111,7 +114,7 @@ export default function GamePlayer({ game, level: wanted }: { game: GameDef; lev
               <Link className="ck-btn ck-btn--ghost" href="/student">Back to my area</Link>
             </div>
             <p className="gm-saved" aria-live="polite">
-              {saved === 'saving' ? 'Saving…' : saved === 'saved' ? 'Saved to your area.' : 'Saved on this phone. It will reach your area next time you are online.'}
+              {saved === 'draft' ? 'Draft preview: nothing was saved.' : saved === 'saving' ? 'Saving…' : saved === 'saved' ? 'Saved to your area.' : 'Saved on this phone. It will reach your area next time you are online.'}
             </p>
           </div>
         )}

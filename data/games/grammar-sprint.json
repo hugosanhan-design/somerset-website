@@ -1,0 +1,502 @@
+{
+  "id": "grammar-sprint",
+  "title": "Grammar Sprint",
+  "tags": [
+    "tense",
+    "agreement",
+    "preposition"
+  ],
+  "engine": "choice",
+  "intro": "A mixed round: tenses, verb forms and the small words around them. Pick the one that completes the sentence.",
+  "source": "Game — Grammar Sprint.html",
+  "items": {
+    "A2": [
+      {
+        "id": "grammar-sprint-a2-01",
+        "q": "She ___ to school every day.",
+        "options": [
+          "goes",
+          "go",
+          "going"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "grammar-sprint-a2-02",
+        "q": "I ___ TV last night.",
+        "options": [
+          "watched",
+          "watch",
+          "watches"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "grammar-sprint-a2-03",
+        "q": "There ___ some milk in the fridge.",
+        "options": [
+          "is",
+          "are",
+          "be"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "grammar-sprint-a2-04",
+        "q": "We ___ football on Saturdays.",
+        "options": [
+          "play",
+          "plays",
+          "playing"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "grammar-sprint-a2-05",
+        "q": "He's interested ___ music.",
+        "options": [
+          "in",
+          "on",
+          "at"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "grammar-sprint-a2-06",
+        "q": "I get up ___ seven o'clock.",
+        "options": [
+          "at",
+          "in",
+          "on"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "grammar-sprint-a2-07",
+        "q": "___ you like pizza?",
+        "options": [
+          "Do",
+          "Does",
+          "Are"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "grammar-sprint-a2-08",
+        "q": "She ___ got two brothers.",
+        "options": [
+          "has",
+          "have",
+          "is"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "grammar-sprint-a2-09",
+        "q": "They ___ at home yesterday.",
+        "options": [
+          "were",
+          "was",
+          "are"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "grammar-sprint-a2-10",
+        "q": "I'm good ___ tennis.",
+        "options": [
+          "at",
+          "in",
+          "for"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "grammar-sprint-a2-11",
+        "q": "My birthday is ___ May.",
+        "options": [
+          "in",
+          "on",
+          "at"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "grammar-sprint-a2-12",
+        "q": "He ___ speak three languages.",
+        "options": [
+          "can",
+          "cans",
+          "can to"
+        ],
+        "answer": 0
+      }
+    ],
+    "B1": [
+      {
+        "id": "grammar-sprint-b1-01",
+        "q": "I ___ in Valencia since 2019.",
+        "options": [
+          "have lived",
+          "live",
+          "lived"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "grammar-sprint-b1-02",
+        "q": "If it rains, we ___ at home.",
+        "options": [
+          "will stay",
+          "would stay",
+          "stayed"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "grammar-sprint-b1-03",
+        "q": "She's much ___ than her sister.",
+        "options": [
+          "taller",
+          "more tall",
+          "tallest"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "grammar-sprint-b1-04",
+        "q": "I ___ dinner when you called.",
+        "options": [
+          "was making",
+          "made",
+          "am making"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "grammar-sprint-b1-05",
+        "q": "You ___ smoke here — it's forbidden.",
+        "options": [
+          "mustn't",
+          "don't have to",
+          "couldn't"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "grammar-sprint-b1-06",
+        "q": "Have you ___ been to London?",
+        "options": [
+          "ever",
+          "never",
+          "yet"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "grammar-sprint-b1-07",
+        "q": "This book was ___ by a local author.",
+        "options": [
+          "written",
+          "wrote",
+          "writing"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "grammar-sprint-b1-08",
+        "q": "I'm used ___ up early.",
+        "options": [
+          "to getting",
+          "to get",
+          "getting"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "grammar-sprint-b1-09",
+        "q": "If I ___ rich, I'd travel the world.",
+        "options": [
+          "were",
+          "am",
+          "would be"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "grammar-sprint-b1-10",
+        "q": "She asked me where ___ from.",
+        "options": [
+          "I was",
+          "was I",
+          "am I"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "grammar-sprint-b1-11",
+        "q": "I look forward to ___ you soon.",
+        "options": [
+          "seeing",
+          "see",
+          "be seeing"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "grammar-sprint-b1-12",
+        "q": "We've known each other ___ ten years.",
+        "options": [
+          "for",
+          "since",
+          "during"
+        ],
+        "answer": 0
+      }
+    ],
+    "B2": [
+      {
+        "id": "grammar-sprint-b2-01",
+        "q": "If I ___ harder, I would have passed.",
+        "options": [
+          "had studied",
+          "studied",
+          "would study"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "grammar-sprint-b2-02",
+        "q": "By next June, she ___ her degree.",
+        "options": [
+          "will have finished",
+          "will finish",
+          "has finished"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "grammar-sprint-b2-03",
+        "q": "I wish I ___ more time.",
+        "options": [
+          "had",
+          "have",
+          "would have"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "grammar-sprint-b2-04",
+        "q": "The meeting ___ off until Friday.",
+        "options": [
+          "has been put",
+          "has put",
+          "was putting"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "grammar-sprint-b2-05",
+        "q": "He denied ___ the window.",
+        "options": [
+          "breaking",
+          "to break",
+          "break"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "grammar-sprint-b2-06",
+        "q": "___ he was exhausted, he kept working.",
+        "options": [
+          "Although",
+          "Despite",
+          "However"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "grammar-sprint-b2-07",
+        "q": "She suggested ___ to the beach.",
+        "options": [
+          "going",
+          "to go",
+          "that go"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "grammar-sprint-b2-08",
+        "q": "It's high time you ___ a decision.",
+        "options": [
+          "made",
+          "make",
+          "will make"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "grammar-sprint-b2-09",
+        "q": "The harder you work, ___ you learn.",
+        "options": [
+          "the more",
+          "more",
+          "the most"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "grammar-sprint-b2-10",
+        "q": "He must ___ the train — he's not here.",
+        "options": [
+          "have missed",
+          "missed",
+          "be missing"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "grammar-sprint-b2-11",
+        "q": "I'd rather you ___ smoke inside.",
+        "options": [
+          "didn't",
+          "don't",
+          "won't"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "grammar-sprint-b2-12",
+        "q": "Not only ___ late, but he also forgot the keys.",
+        "options": [
+          "was he",
+          "he was",
+          "he is"
+        ],
+        "answer": 0
+      }
+    ],
+    "C1": [
+      {
+        "id": "grammar-sprint-c1-01",
+        "q": "___ had I arrived than the phone rang.",
+        "options": [
+          "No sooner",
+          "Hardly",
+          "Scarcely"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "grammar-sprint-c1-02",
+        "q": "Under no circumstances ___ the door.",
+        "options": [
+          "should you open",
+          "you should open",
+          "should open you"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "grammar-sprint-c1-03",
+        "q": "He speaks Valencian fluently, ___ never having taken a class.",
+        "options": [
+          "despite",
+          "although",
+          "however"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "grammar-sprint-c1-04",
+        "q": "If it ___ for your help, I'd have failed.",
+        "options": [
+          "hadn't been",
+          "wasn't",
+          "wouldn't be"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "grammar-sprint-c1-05",
+        "q": "The proposal was turned ___ by the board.",
+        "options": [
+          "down",
+          "off",
+          "away"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "grammar-sprint-c1-06",
+        "q": "She has a ___ knowledge of mediaeval history.",
+        "options": [
+          "profound",
+          "powerful",
+          "dense"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "grammar-sprint-c1-07",
+        "q": "___ the weather, the match went ahead.",
+        "options": [
+          "Notwithstanding",
+          "Despite of",
+          "Even"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "grammar-sprint-c1-08",
+        "q": "I'd sooner you ___ mention this to anyone.",
+        "options": [
+          "didn't",
+          "don't",
+          "wouldn't"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "grammar-sprint-c1-09",
+        "q": "The results fell short ___ expectations.",
+        "options": [
+          "of",
+          "from",
+          "to"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "grammar-sprint-c1-10",
+        "q": "Little ___ know what awaited him.",
+        "options": [
+          "did he",
+          "he did",
+          "does he"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "grammar-sprint-c1-11",
+        "q": "It was only when I got home ___ I noticed.",
+        "options": [
+          "that",
+          "when",
+          "which"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "grammar-sprint-c1-12",
+        "q": "They came up ___ a brilliant solution.",
+        "options": [
+          "with",
+          "to",
+          "against"
+        ],
+        "answer": 0
+      }
+    ]
+  }
+}

@@ -1,0 +1,182 @@
+{
+  "id": "same-verb-different-particle",
+  "title": "Same Verb, Different Particle",
+  "tags": [
+    "vocabulary",
+    "preposition"
+  ],
+  "engine": "pairs",
+  "intro": "Get, take, make, put — the exact confusion that makes phrasal verbs feel like chaos instead of pattern. One base verb, wildly different meanings.",
+  "source": "Game — Same Verb Different Particle.html",
+  "draft": true,
+  "items": {
+    "A2": [
+      {
+        "id": "same-verb-different-particle-a2-01",
+        "left": "get up",
+        "right": "rise from bed"
+      },
+      {
+        "id": "same-verb-different-particle-a2-02",
+        "left": "get on",
+        "right": "enter a bus, train or plane"
+      },
+      {
+        "id": "same-verb-different-particle-a2-03",
+        "left": "get off",
+        "right": "leave a bus, train or plane"
+      },
+      {
+        "id": "same-verb-different-particle-a2-04",
+        "left": "take off",
+        "right": "leave the ground (a plane)"
+      },
+      {
+        "id": "same-verb-different-particle-a2-05",
+        "left": "take away",
+        "right": "remove and carry with you"
+      },
+      {
+        "id": "same-verb-different-particle-a2-06",
+        "left": "put on",
+        "right": "dress in, wear"
+      },
+      {
+        "id": "same-verb-different-particle-a2-07",
+        "left": "put away",
+        "right": "return something to its proper place"
+      },
+      {
+        "id": "same-verb-different-particle-a2-08",
+        "left": "make up",
+        "right": "invent a story"
+      }
+    ],
+    "B1": [
+      {
+        "id": "same-verb-different-particle-b1-01",
+        "left": "get by",
+        "right": "manage with the little you have"
+      },
+      {
+        "id": "same-verb-different-particle-b1-02",
+        "left": "get over",
+        "right": "recover from an illness or shock"
+      },
+      {
+        "id": "same-verb-different-particle-b1-03",
+        "left": "take up",
+        "right": "start a new hobby"
+      },
+      {
+        "id": "same-verb-different-particle-b1-04",
+        "left": "take after",
+        "right": "resemble a parent or relative"
+      },
+      {
+        "id": "same-verb-different-particle-b1-05",
+        "left": "make out",
+        "right": "see or hear something with difficulty"
+      },
+      {
+        "id": "same-verb-different-particle-b1-06",
+        "left": "make for",
+        "right": "head toward"
+      },
+      {
+        "id": "same-verb-different-particle-b1-07",
+        "left": "put off",
+        "right": "postpone"
+      },
+      {
+        "id": "same-verb-different-particle-b1-08",
+        "left": "put back",
+        "right": "return something to where it was"
+      }
+    ],
+    "B2": [
+      {
+        "id": "same-verb-different-particle-b2-01",
+        "left": "get through",
+        "right": "successfully complete something difficult"
+      },
+      {
+        "id": "same-verb-different-particle-b2-02",
+        "left": "get across",
+        "right": "successfully communicate an idea"
+      },
+      {
+        "id": "same-verb-different-particle-b2-03",
+        "left": "take in",
+        "right": "fully understand, or deceive someone"
+      },
+      {
+        "id": "same-verb-different-particle-b2-04",
+        "left": "take back",
+        "right": "retract something you said"
+      },
+      {
+        "id": "same-verb-different-particle-b2-05",
+        "left": "make up for",
+        "right": "compensate for a loss or mistake"
+      },
+      {
+        "id": "same-verb-different-particle-b2-06",
+        "left": "make off with",
+        "right": "steal and run away with something"
+      },
+      {
+        "id": "same-verb-different-particle-b2-07",
+        "left": "put up with",
+        "right": "tolerate something unpleasant"
+      },
+      {
+        "id": "same-verb-different-particle-b2-08",
+        "left": "put down",
+        "right": "write something, or belittle someone"
+      }
+    ],
+    "C1": [
+      {
+        "id": "same-verb-different-particle-c1-01",
+        "left": "get around",
+        "right": "circumvent a rule, or travel to many places"
+      },
+      {
+        "id": "same-verb-different-particle-c1-02",
+        "left": "get at",
+        "right": "imply something indirectly, or criticise persistently"
+      },
+      {
+        "id": "same-verb-different-particle-c1-03",
+        "left": "take to",
+        "right": "start liking someone or something quickly"
+      },
+      {
+        "id": "same-verb-different-particle-c1-04",
+        "left": "take on",
+        "right": "accept a responsibility, or hire someone"
+      },
+      {
+        "id": "same-verb-different-particle-c1-05",
+        "left": "make do with",
+        "right": "manage with what's available, though not ideal"
+      },
+      {
+        "id": "same-verb-different-particle-c1-06",
+        "left": "make of",
+        "right": "form an opinion or interpretation about something"
+      },
+      {
+        "id": "same-verb-different-particle-c1-07",
+        "left": "put across",
+        "right": "communicate an idea clearly and convincingly"
+      },
+      {
+        "id": "same-verb-different-particle-c1-08",
+        "left": "put down to",
+        "right": "attribute something to a particular cause"
+      }
+    ]
+  }
+}

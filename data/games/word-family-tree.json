@@ -1,0 +1,181 @@
+{
+  "id": "word-family-tree",
+  "title": "Word Family Tree",
+  "tags": [
+    "vocabulary"
+  ],
+  "engine": "pairs",
+  "intro": "decide, decision, decisive, decisively — one root, four branches. Match each form to what it actually does in a sentence.",
+  "source": "Game — Word Family Tree.html",
+  "draft": true,
+  "items": {
+    "A2": [
+      {
+        "id": "word-family-tree-a2-01",
+        "left": "happy",
+        "right": "adjective (feeling good)"
+      },
+      {
+        "id": "word-family-tree-a2-02",
+        "left": "happiness",
+        "right": "noun (the feeling of being happy)"
+      },
+      {
+        "id": "word-family-tree-a2-03",
+        "left": "quick",
+        "right": "adjective (fast)"
+      },
+      {
+        "id": "word-family-tree-a2-04",
+        "left": "quickly",
+        "right": "adverb (in a fast way)"
+      },
+      {
+        "id": "word-family-tree-a2-05",
+        "left": "careful",
+        "right": "adjective (paying attention)"
+      },
+      {
+        "id": "word-family-tree-a2-06",
+        "left": "carefully",
+        "right": "adverb (in a careful way)"
+      },
+      {
+        "id": "word-family-tree-a2-07",
+        "left": "friend",
+        "right": "noun (a person you like)"
+      },
+      {
+        "id": "word-family-tree-a2-08",
+        "left": "friendly",
+        "right": "adjective (kind and pleasant)"
+      }
+    ],
+    "B1": [
+      {
+        "id": "word-family-tree-b1-01",
+        "left": "decide",
+        "right": "verb (to choose)"
+      },
+      {
+        "id": "word-family-tree-b1-02",
+        "left": "decision",
+        "right": "noun (a choice you make)"
+      },
+      {
+        "id": "word-family-tree-b1-03",
+        "left": "decisive",
+        "right": "adjective (able to decide quickly)"
+      },
+      {
+        "id": "word-family-tree-b1-04",
+        "left": "create",
+        "right": "verb (to make something new)"
+      },
+      {
+        "id": "word-family-tree-b1-05",
+        "left": "creative",
+        "right": "adjective (good at making new things)"
+      },
+      {
+        "id": "word-family-tree-b1-06",
+        "left": "creativity",
+        "right": "noun (the ability to create)"
+      },
+      {
+        "id": "word-family-tree-b1-07",
+        "left": "succeed",
+        "right": "verb (to achieve a goal)"
+      },
+      {
+        "id": "word-family-tree-b1-08",
+        "left": "success",
+        "right": "noun (achieving what you wanted)"
+      }
+    ],
+    "B2": [
+      {
+        "id": "word-family-tree-b2-01",
+        "left": "analyse",
+        "right": "verb (to examine in detail)"
+      },
+      {
+        "id": "word-family-tree-b2-02",
+        "left": "analysis",
+        "right": "noun (a detailed examination)"
+      },
+      {
+        "id": "word-family-tree-b2-03",
+        "left": "analytical",
+        "right": "adjective (good at analysing)"
+      },
+      {
+        "id": "word-family-tree-b2-04",
+        "left": "critic",
+        "right": "noun (a person who judges quality)"
+      },
+      {
+        "id": "word-family-tree-b2-05",
+        "left": "criticise",
+        "right": "verb (to point out faults)"
+      },
+      {
+        "id": "word-family-tree-b2-06",
+        "left": "critical",
+        "right": "adjective (finding fault, or very important)"
+      },
+      {
+        "id": "word-family-tree-b2-07",
+        "left": "economy",
+        "right": "noun (a country's system of trade and money)"
+      },
+      {
+        "id": "word-family-tree-b2-08",
+        "left": "economic",
+        "right": "adjective (relating to the economy)"
+      }
+    ],
+    "C1": [
+      {
+        "id": "word-family-tree-c1-01",
+        "left": "persuade",
+        "right": "verb (to convince someone)"
+      },
+      {
+        "id": "word-family-tree-c1-02",
+        "left": "persuasive",
+        "right": "adjective (convincing)"
+      },
+      {
+        "id": "word-family-tree-c1-03",
+        "left": "persuasion",
+        "right": "noun (the act of convincing)"
+      },
+      {
+        "id": "word-family-tree-c1-04",
+        "left": "ambiguous",
+        "right": "adjective (unclear, open to interpretation)"
+      },
+      {
+        "id": "word-family-tree-c1-05",
+        "left": "ambiguity",
+        "right": "noun (the quality of being unclear)"
+      },
+      {
+        "id": "word-family-tree-c1-06",
+        "left": "significant",
+        "right": "adjective (important, notable)"
+      },
+      {
+        "id": "word-family-tree-c1-07",
+        "left": "significance",
+        "right": "noun (importance)"
+      },
+      {
+        "id": "word-family-tree-c1-08",
+        "left": "signify",
+        "right": "verb (to mean or indicate)"
+      }
+    ]
+  }
+}

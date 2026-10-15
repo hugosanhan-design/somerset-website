@@ -1,0 +1,381 @@
+{
+  "id": "comma-cottage",
+  "title": "Comma Cottage",
+  "tags": [
+    "punctuation"
+  ],
+  "engine": "choice",
+  "intro": "The comma rules that quietly wreck a good sentence.",
+  "source": "Game — Comma Cottage.html",
+  "draft": true,
+  "items": {
+    "A2": [
+      {
+        "id": "comma-cottage-a2-01",
+        "q": "Lists — which is correct?",
+        "options": [
+          "I bought apples, bananas and milk.",
+          "I bought apples bananas and milk.",
+          "I bought, apples, bananas, and, milk."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "comma-cottage-a2-02",
+        "q": "Direct address — which is correct?",
+        "options": [
+          "Come here, John.",
+          "Come here John.",
+          "Come, here John."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "comma-cottage-a2-03",
+        "q": "Starting with ‘No’ — which is correct?",
+        "options": [
+          "No, I don't want any.",
+          "No I don't want any.",
+          "No, I don't, want any."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "comma-cottage-a2-04",
+        "q": "Joining two short ideas with ‘but’ — which is correct?",
+        "options": [
+          "I was tired, but I kept working.",
+          "I was tired but, I kept working.",
+          "I was tired, but I kept, working."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "comma-cottage-a2-05",
+        "q": "Starting with ‘Well’ — which is correct?",
+        "options": [
+          "Well, that's interesting.",
+          "Well that's interesting.",
+          "Well, that's, interesting."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "comma-cottage-a2-06",
+        "q": "Starting with ‘Also’ — which is correct?",
+        "options": [
+          "Also, I forgot my keys.",
+          "Also I forgot my keys.",
+          "Also, I, forgot my keys."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "comma-cottage-a2-07",
+        "q": "Thanking someone by name — which is correct?",
+        "options": [
+          "Thank you, Maria.",
+          "Thank you Maria.",
+          "Thank, you Maria."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "comma-cottage-a2-08",
+        "q": "Starting with ‘Firstly’ — which is correct?",
+        "options": [
+          "Firstly, let's discuss the budget.",
+          "Firstly let's discuss the budget.",
+          "Firstly, let's, discuss the budget."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "comma-cottage-a2-09",
+        "q": "A list of three adjectives — which is correct?",
+        "options": [
+          "She is kind, honest and generous.",
+          "She is kind honest and generous.",
+          "She is kind, honest, and, generous."
+        ],
+        "answer": 0
+      }
+    ],
+    "B1": [
+      {
+        "id": "comma-cottage-b1-01",
+        "q": "Long introductory clause — which is correct?",
+        "options": [
+          "After finishing his homework, he went outside to play.",
+          "After finishing his homework he went outside to play.",
+          "After finishing, his homework he went outside to play."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "comma-cottage-b1-02",
+        "q": "Comma splice — which is correct?",
+        "options": [
+          "I was tired, so I went to bed early.",
+          "I was tired, I went to bed early.",
+          "I was tired I went to bed, early."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "comma-cottage-b1-03",
+        "q": "Joining two full sentences — which is correct?",
+        "options": [
+          "She studied hard, and she passed the exam.",
+          "She studied hard she passed the exam.",
+          "She studied hard, she passed the exam."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "comma-cottage-b1-04",
+        "q": "Non-essential extra information — which is correct?",
+        "options": [
+          "My brother, who lives in London, is visiting next week.",
+          "My brother who lives in London is visiting next week.",
+          "My brother, who lives in London is visiting next week."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "comma-cottage-b1-05",
+        "q": "Comma splice — which is correct?",
+        "options": [
+          "It was raining, but we still went for a walk.",
+          "It was raining, we still went for a walk.",
+          "It was raining we still went, for a walk."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "comma-cottage-b1-06",
+        "q": "Introductory phrase — which is correct?",
+        "options": [
+          "In spite of the rain, the match continued.",
+          "In spite of the rain the match continued.",
+          "In spite, of the rain, the match continued."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "comma-cottage-b1-07",
+        "q": "Two independent clauses, no conjunction — which is correct?",
+        "options": [
+          "The shop was closed; we went home.",
+          "The shop was closed, we went home.",
+          "The shop was closed we went, home."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "comma-cottage-b1-08",
+        "q": "Sequencing words — which is correct?",
+        "options": [
+          "First, we checked in. Then, we found our seats.",
+          "First we checked in. Then we found our seats.",
+          "First, we, checked in. Then, we, found our seats."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "comma-cottage-b1-09",
+        "q": "Introducing a direct quotation — which is correct?",
+        "options": [
+          "She said, \"I'll be there at six.\"",
+          "She said \"I'll be there at six.\"",
+          "She said, \"I'll, be there at six.\""
+        ],
+        "answer": 0
+      }
+    ],
+    "B2": [
+      {
+        "id": "comma-cottage-b2-01",
+        "q": "A necessary Oxford comma — which avoids confusion about who the parents are?",
+        "options": [
+          "I'd like to thank my parents, Sara, and Hugo.",
+          "I'd like to thank my parents, Sara and Hugo.",
+          "I'd like to thank my parents Sara and Hugo."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "comma-cottage-b2-02",
+        "q": "Non-defining relative clause — which is correct?",
+        "options": [
+          "Valencia, which is on the Mediterranean coast, is famous for paella.",
+          "Valencia which is on the Mediterranean coast is famous for paella.",
+          "Valencia, which is on the Mediterranean coast is famous for paella."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "comma-cottage-b2-03",
+        "q": "Parenthetical comment — which is correct?",
+        "options": [
+          "The results, to be honest, were disappointing.",
+          "The results to be honest were disappointing.",
+          "The results, to be honest were disappointing."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "comma-cottage-b2-04",
+        "q": "Comma before a contrasting phrase — which is correct?",
+        "options": [
+          "The plan was ambitious, though ultimately unsuccessful.",
+          "The plan was ambitious though ultimately unsuccessful.",
+          "The plan was ambitious, though, ultimately unsuccessful."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "comma-cottage-b2-05",
+        "q": "Absolute phrase — which is correct?",
+        "options": [
+          "Her work finished, she left the office early.",
+          "Her work finished she left the office early.",
+          "Her work, finished, she left the office early."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "comma-cottage-b2-06",
+        "q": "Comma with a coordinating conjunction — which is correct?",
+        "options": [
+          "He wanted to travel, yet he never had the money.",
+          "He wanted to travel yet he never had the money.",
+          "He wanted to travel, yet, he never had the money."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "comma-cottage-b2-07",
+        "q": "Direct address mid-sentence — which is correct?",
+        "options": [
+          "I think, Maria, that you're right.",
+          "I think Maria that you're right.",
+          "I think, Maria that you're right."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "comma-cottage-b2-08",
+        "q": "Comma splice with a long clause — which is correct?",
+        "options": [
+          "The negotiations continued for hours; neither side would compromise.",
+          "The negotiations continued for hours, neither side would compromise.",
+          "The negotiations continued for hours neither side, would compromise."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "comma-cottage-b2-09",
+        "q": "Comma after a conditional clause — which is correct?",
+        "options": [
+          "If the weather improves, we'll go to the beach.",
+          "If the weather improves we'll go to the beach.",
+          "If the weather, improves, we'll go to the beach."
+        ],
+        "answer": 0
+      }
+    ],
+    "C1": [
+      {
+        "id": "comma-cottage-c1-01",
+        "q": "Identifying one specific report — which is correct?",
+        "options": [
+          "The report that was published last week caused controversy.",
+          "The report, that was published last week, caused controversy.",
+          "The report which was published last week, caused controversy."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "comma-cottage-c1-02",
+        "q": "Mid-sentence ‘however’ — which is correct?",
+        "options": [
+          "The results, however, tell a different story.",
+          "The results however tell a different story.",
+          "The results, however tell a different story."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "comma-cottage-c1-03",
+        "q": "A comma before ‘because’ is usually wrong — which is correct?",
+        "options": [
+          "She left early because she felt unwell.",
+          "She left early, because she felt unwell.",
+          "She left, early because she felt unwell."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "comma-cottage-c1-04",
+        "q": "Comma with an appositive — which is correct?",
+        "options": [
+          "Cervantes, the author of Don Quixote, was born in Alcalá de Henares.",
+          "Cervantes the author of Don Quixote was born in Alcalá de Henares.",
+          "Cervantes, the author of Don Quixote was born in Alcalá de Henares."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "comma-cottage-c1-05",
+        "q": "A series of independent clauses — which is correct?",
+        "options": [
+          "The board reviewed the proposal, debated its merits, and rejected it.",
+          "The board reviewed the proposal, debated its merits and, rejected it.",
+          "The board reviewed the proposal debated its merits and rejected it."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "comma-cottage-c1-06",
+        "q": "‘Not only… but also’ — which is correct?",
+        "options": [
+          "The policy was not only unpopular, but also unworkable.",
+          "The policy was not only unpopular but, also unworkable.",
+          "The policy was, not only unpopular but also unworkable."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "comma-cottage-c1-07",
+        "q": "Dashes instead of commas — which is correct?",
+        "options": [
+          "The proposal — controversial from the start — was eventually withdrawn.",
+          "The proposal, controversial from the start — was eventually withdrawn.",
+          "The proposal — controversial from the start, was eventually withdrawn."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "comma-cottage-c1-08",
+        "q": "Comma splice in formal writing — which is correct?",
+        "options": [
+          "The data was inconclusive; further research is required.",
+          "The data was inconclusive, further research is required.",
+          "The data was inconclusive further, research is required."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "comma-cottage-c1-09",
+        "q": "Comma after a long subordinate clause — which is correct?",
+        "options": [
+          "Although the committee had reservations about the budget, they approved the project.",
+          "Although the committee had reservations about the budget they approved the project.",
+          "Although the committee had reservations, about the budget, they approved the project."
+        ],
+        "answer": 0
+      }
+    ]
+  }
+}

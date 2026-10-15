@@ -1,0 +1,420 @@
+{
+  "id": "modal-meadow",
+  "title": "Modal Meadow",
+  "tags": [
+    "other"
+  ],
+  "engine": "choice",
+  "intro": "Must, have to, should, might. Pick the modal that says what the sentence means: obligation, advice or possibility.",
+  "source": "Game — Modal Meadow.html",
+  "items": {
+    "A2": [
+      {
+        "id": "modal-meadow-a2-01",
+        "q": "You ___ wear a seatbelt in the car. It's the law.",
+        "options": [
+          "must",
+          "should",
+          "might"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "modal-meadow-a2-02",
+        "q": "I ___ finish this report by Friday.",
+        "options": [
+          "have to",
+          "should",
+          "might"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "modal-meadow-a2-03",
+        "q": "You ___ study more if you want to pass.",
+        "options": [
+          "should",
+          "must",
+          "might"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "modal-meadow-a2-04",
+        "q": "It ___ rain later — take an umbrella just in case.",
+        "options": [
+          "might",
+          "must",
+          "should"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "modal-meadow-a2-05",
+        "q": "Students ___ arrive on time for class.",
+        "options": [
+          "must",
+          "might",
+          "could"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "modal-meadow-a2-06",
+        "q": "You ___ see a doctor about that cough.",
+        "options": [
+          "should",
+          "must",
+          "might"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "modal-meadow-a2-07",
+        "q": "We ___ leave now or we'll miss the train.",
+        "options": [
+          "have to",
+          "might",
+          "should"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "modal-meadow-a2-08",
+        "q": "She ___ be at home — I'm not sure.",
+        "options": [
+          "might",
+          "must",
+          "have to"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "modal-meadow-a2-09",
+        "q": "You ___ eat vegetables — they're good for you.",
+        "options": [
+          "should",
+          "must",
+          "might"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "modal-meadow-a2-10",
+        "q": "Passengers ___ show their passports at the gate.",
+        "options": [
+          "must",
+          "should",
+          "might"
+        ],
+        "answer": 0
+      }
+    ],
+    "B1": [
+      {
+        "id": "modal-meadow-b1-01",
+        "q": "You ___ smoke in here — it's forbidden.",
+        "options": [
+          "mustn't",
+          "don't have to",
+          "might not"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "modal-meadow-b1-02",
+        "q": "You ___ come if you don't want to — it's optional.",
+        "options": [
+          "don't have to",
+          "mustn't",
+          "shouldn't"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "modal-meadow-b1-03",
+        "q": "It ___ be him — his car isn't outside.",
+        "options": [
+          "can't",
+          "mustn't",
+          "shouldn't"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "modal-meadow-b1-04",
+        "q": "We ___ book in advance, but it's a good idea.",
+        "options": [
+          "don't have to",
+          "mustn't",
+          "can't"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "modal-meadow-b1-05",
+        "q": "You ___ be joking!",
+        "options": [
+          "must",
+          "should",
+          "might"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "modal-meadow-b1-06",
+        "q": "They ___ arrive by 9, but I'm not certain.",
+        "options": [
+          "could",
+          "mustn't",
+          "should"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "modal-meadow-b1-07",
+        "q": "You really ___ apologise to her.",
+        "options": [
+          "should",
+          "might",
+          "could"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "modal-meadow-b1-08",
+        "q": "Visitors ___ touch the exhibits.",
+        "options": [
+          "mustn't",
+          "don't have to",
+          "might not"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "modal-meadow-b1-09",
+        "q": "He ___ have left already — his coat's still here.",
+        "options": [
+          "can't",
+          "mustn't",
+          "shouldn't"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "modal-meadow-b1-10",
+        "q": "You ___ need a visa — check the requirements.",
+        "options": [
+          "might",
+          "must",
+          "should"
+        ],
+        "answer": 0
+      }
+    ],
+    "B2": [
+      {
+        "id": "modal-meadow-b2-01",
+        "q": "You ___ have worried — everything was fine.",
+        "options": [
+          "needn't",
+          "mustn't",
+          "shouldn't"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "modal-meadow-b2-02",
+        "q": "The meeting ___ start at 10, but it's often late.",
+        "options": [
+          "is supposed to",
+          "must",
+          "can't"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "modal-meadow-b2-03",
+        "q": "You ___ to apologise for that — it was rude.",
+        "options": [
+          "ought",
+          "should to",
+          "must to"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "modal-meadow-b2-04",
+        "q": "Prices are ___ to rise after the announcement.",
+        "options": [
+          "bound",
+          "supposed",
+          "ought"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "modal-meadow-b2-05",
+        "q": "You ___ have told me — I would have helped.",
+        "options": [
+          "should",
+          "must",
+          "might"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "modal-meadow-b2-06",
+        "q": "He ___ know the answer — he studied this yesterday.",
+        "options": [
+          "ought to",
+          "mustn't",
+          "needn't"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "modal-meadow-b2-07",
+        "q": "You ___ have finished it already — there was no rush.",
+        "options": [
+          "needn't",
+          "mustn't",
+          "couldn't"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "modal-meadow-b2-08",
+        "q": "It's getting late — we ___ to leave soon.",
+        "options": [
+          "ought",
+          "must to",
+          "should to"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "modal-meadow-b2-09",
+        "q": "The train ___ to arrive at six, according to the timetable.",
+        "options": [
+          "is supposed",
+          "is bound",
+          "is ought"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "modal-meadow-b2-10",
+        "q": "Given the forecast, it's ___ to rain this weekend.",
+        "options": [
+          "bound",
+          "ought",
+          "supposed"
+        ],
+        "answer": 0
+      }
+    ],
+    "C1": [
+      {
+        "id": "modal-meadow-c1-01",
+        "q": "She ___ have missed the train — she's not answering her phone.",
+        "options": [
+          "must",
+          "can't",
+          "needn't"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "modal-meadow-c1-02",
+        "q": "He ___ have seen the email — he replied within minutes.",
+        "options": [
+          "must",
+          "needn't",
+          "shouldn't"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "modal-meadow-c1-03",
+        "q": "You ___ have told him — now he's upset.",
+        "options": [
+          "shouldn't",
+          "needn't",
+          "can't"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "modal-meadow-c1-04",
+        "q": "They ___ have left already — their car's still here.",
+        "options": [
+          "can't",
+          "must",
+          "should"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "modal-meadow-c1-05",
+        "q": "I ___ have bought so much food — half of it went to waste.",
+        "options": [
+          "needn't",
+          "mustn't",
+          "can't"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "modal-meadow-c1-06",
+        "q": "It ___ have been a difficult decision for her.",
+        "options": [
+          "must",
+          "can't",
+          "needn't"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "modal-meadow-c1-07",
+        "q": "You ___ have worried — I was perfectly safe.",
+        "options": [
+          "needn't",
+          "mustn't",
+          "can't"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "modal-meadow-c1-08",
+        "q": "He ___ have known the risks before investing.",
+        "options": [
+          "should",
+          "needn't",
+          "can't"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "modal-meadow-c1-09",
+        "q": "She ___ have forgotten — she never forgets birthdays.",
+        "options": [
+          "can't",
+          "must",
+          "should"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "modal-meadow-c1-10",
+        "q": "We ___ have left earlier — the traffic was terrible.",
+        "options": [
+          "should",
+          "needn't",
+          "can't"
+        ],
+        "answer": 0
+      }
+    ]
+  }
+}

@@ -10,8 +10,8 @@ export async function generateMetadata({ params }: { params: { gameId: string } 
   return { title: g ? `${g.title} · Somerset` : 'Somerset Games' }
 }
 
-export default function GamePage({ params, searchParams }: { params: { gameId: string }; searchParams: { level?: string } }) {
-  const game = getGame(params.gameId)
+export default function GamePage({ params, searchParams }: { params: { gameId: string }; searchParams: { level?: string; preview?: string } }) {
+  const game = getGame(params.gameId, { drafts: searchParams.preview === '1' })
   if (!game) notFound()
   const level = (LEVELS as string[]).includes(String(searchParams.level)) ? (searchParams.level as Level) : 'B2'
   return <GamePlayer game={game} level={level} />

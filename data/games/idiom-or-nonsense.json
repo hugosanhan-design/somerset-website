@@ -1,0 +1,420 @@
+{
+  "id": "idiom-or-nonsense",
+  "title": "Idiom or Nonsense?",
+  "tags": [
+    "vocabulary"
+  ],
+  "engine": "choice",
+  "intro": "Some of these are real English idioms and some are invented. Decide which is which.",
+  "source": "Game — Idiom or Nonsense.html",
+  "items": {
+    "A2": [
+      {
+        "id": "idiom-or-nonsense-a2-01",
+        "q": "'It's a piece of cake.'",
+        "options": [
+          "Real idiom",
+          "Invented decoy",
+          "Both are used"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "idiom-or-nonsense-a2-02",
+        "q": "'It's a piece of pie.'",
+        "options": [
+          "Invented decoy",
+          "Real idiom",
+          "Both are used"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "idiom-or-nonsense-a2-03",
+        "q": "'Let's break the ice.'",
+        "options": [
+          "Real idiom",
+          "Invented decoy",
+          "Both are used"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "idiom-or-nonsense-a2-04",
+        "q": "'Let's break the glass.'",
+        "options": [
+          "Invented decoy",
+          "Real idiom",
+          "Both are used"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "idiom-or-nonsense-a2-05",
+        "q": "'I'm feeling under the weather.'",
+        "options": [
+          "Real idiom",
+          "Invented decoy",
+          "Both are used"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "idiom-or-nonsense-a2-06",
+        "q": "'I'm feeling under the clouds.'",
+        "options": [
+          "Invented decoy",
+          "Real idiom",
+          "Both are used"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "idiom-or-nonsense-a2-07",
+        "q": "'That car cost an arm and a leg.'",
+        "options": [
+          "Real idiom",
+          "Invented decoy",
+          "Both are used"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "idiom-or-nonsense-a2-08",
+        "q": "'That car cost a hand and a foot.'",
+        "options": [
+          "Invented decoy",
+          "Real idiom",
+          "Both are used"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "idiom-or-nonsense-a2-09",
+        "q": "'I need to hit the books tonight.'",
+        "options": [
+          "Real idiom",
+          "Invented decoy",
+          "Both are used"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "idiom-or-nonsense-a2-10",
+        "q": "'I need to hit the pages tonight.'",
+        "options": [
+          "Invented decoy",
+          "Real idiom",
+          "Both are used"
+        ],
+        "answer": 0
+      }
+    ],
+    "B1": [
+      {
+        "id": "idiom-or-nonsense-b1-01",
+        "q": "'Don't spill the beans about the surprise party.'",
+        "options": [
+          "Real idiom",
+          "Invented decoy",
+          "Both are used"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "idiom-or-nonsense-b1-02",
+        "q": "'Don't spill the peas about the surprise party.'",
+        "options": [
+          "Invented decoy",
+          "Real idiom",
+          "Both are used"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "idiom-or-nonsense-b1-03",
+        "q": "'She let the cat out of the bag.'",
+        "options": [
+          "Real idiom",
+          "Invented decoy",
+          "Both are used"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "idiom-or-nonsense-b1-04",
+        "q": "'She let the dog out of the bag.'",
+        "options": [
+          "Invented decoy",
+          "Real idiom",
+          "Both are used"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "idiom-or-nonsense-b1-05",
+        "q": "'We only meet once in a blue moon.'",
+        "options": [
+          "Real idiom",
+          "Invented decoy",
+          "Both are used"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "idiom-or-nonsense-b1-06",
+        "q": "'We only meet once in a red moon.'",
+        "options": [
+          "Invented decoy",
+          "Real idiom",
+          "Both are used"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "idiom-or-nonsense-b1-07",
+        "q": "'He's really on the ball today.'",
+        "options": [
+          "Real idiom",
+          "Invented decoy",
+          "Both are used"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "idiom-or-nonsense-b1-08",
+        "q": "'He's really on the wheel today.'",
+        "options": [
+          "Invented decoy",
+          "Real idiom",
+          "Both are used"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "idiom-or-nonsense-b1-09",
+        "q": "'Let's call it a day and finish tomorrow.'",
+        "options": [
+          "Real idiom",
+          "Invented decoy",
+          "Both are used"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "idiom-or-nonsense-b1-10",
+        "q": "'Let's call it an hour and finish tomorrow.'",
+        "options": [
+          "Invented decoy",
+          "Real idiom",
+          "Both are used"
+        ],
+        "answer": 0
+      }
+    ],
+    "B2": [
+      {
+        "id": "idiom-or-nonsense-b2-01",
+        "q": "'You just have to bite the bullet and tell her.'",
+        "options": [
+          "Real idiom",
+          "Invented decoy",
+          "Both are used"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "idiom-or-nonsense-b2-02",
+        "q": "'You just have to bite the sword and tell her.'",
+        "options": [
+          "Invented decoy",
+          "Real idiom",
+          "Both are used"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "idiom-or-nonsense-b2-03",
+        "q": "'I've been burning the midnight oil all week.'",
+        "options": [
+          "Real idiom",
+          "Invented decoy",
+          "Both are used"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "idiom-or-nonsense-b2-04",
+        "q": "'I've been burning the midnight candle all week.'",
+        "options": [
+          "Invented decoy",
+          "Real idiom",
+          "Both are used"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "idiom-or-nonsense-b2-05",
+        "q": "'Everyone's jumping on the bandwagon now.'",
+        "options": [
+          "Real idiom",
+          "Invented decoy",
+          "Both are used"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "idiom-or-nonsense-b2-06",
+        "q": "'Everyone's jumping on the wagon wheel now.'",
+        "options": [
+          "Invented decoy",
+          "Real idiom",
+          "Both are used"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "idiom-or-nonsense-b2-07",
+        "q": "'The ball is in your court now.'",
+        "options": [
+          "Real idiom",
+          "Invented decoy",
+          "Both are used"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "idiom-or-nonsense-b2-08",
+        "q": "'The ball is in your yard now.'",
+        "options": [
+          "Invented decoy",
+          "Real idiom",
+          "Both are used"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "idiom-or-nonsense-b2-09",
+        "q": "'Stop beating around the bush and just tell me.'",
+        "options": [
+          "Real idiom",
+          "Invented decoy",
+          "Both are used"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "idiom-or-nonsense-b2-10",
+        "q": "'Stop beating around the tree and just tell me.'",
+        "options": [
+          "Invented decoy",
+          "Real idiom",
+          "Both are used"
+        ],
+        "answer": 0
+      }
+    ],
+    "C1": [
+      {
+        "id": "idiom-or-nonsense-c1-01",
+        "q": "'The company cut corners on safety.'",
+        "options": [
+          "Real idiom",
+          "Invented decoy",
+          "Both are used"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "idiom-or-nonsense-c1-02",
+        "q": "'The company cut edges on safety.'",
+        "options": [
+          "Invented decoy",
+          "Real idiom",
+          "Both are used"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "idiom-or-nonsense-c1-03",
+        "q": "'After the third defeat, he threw in the towel.'",
+        "options": [
+          "Real idiom",
+          "Invented decoy",
+          "Both are used"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "idiom-or-nonsense-c1-04",
+        "q": "'After the third defeat, he threw in the flag.'",
+        "options": [
+          "Invented decoy",
+          "Real idiom",
+          "Both are used"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "idiom-or-nonsense-c1-05",
+        "q": "'You need to read between the lines here.'",
+        "options": [
+          "Real idiom",
+          "Invented decoy",
+          "Both are used"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "idiom-or-nonsense-c1-06",
+        "q": "'You need to read between the words here.'",
+        "options": [
+          "Invented decoy",
+          "Real idiom",
+          "Both are used"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "idiom-or-nonsense-c1-07",
+        "q": "'Losing that job was a blessing in disguise.'",
+        "options": [
+          "Real idiom",
+          "Invented decoy",
+          "Both are used"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "idiom-or-nonsense-c1-08",
+        "q": "'Losing that job was a gift in disguise.'",
+        "options": [
+          "Invented decoy",
+          "Real idiom",
+          "Both are used"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "idiom-or-nonsense-c1-09",
+        "q": "'It's time you got your act together.'",
+        "options": [
+          "Real idiom",
+          "Invented decoy",
+          "Both are used"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "idiom-or-nonsense-c1-10",
+        "q": "'It's time you got your show together.'",
+        "options": [
+          "Invented decoy",
+          "Real idiom",
+          "Both are used"
+        ],
+        "answer": 0
+      }
+    ]
+  }
+}

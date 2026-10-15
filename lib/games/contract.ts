@@ -11,7 +11,8 @@ export type Level = 'A2' | 'B1' | 'B2' | 'C1'
 export const LEVELS: Level[] = ['A2', 'B1', 'B2', 'C1']
 
 // choice = one sentence, pick the right option (website SPRINT + REPAIR games)
-// pairs  = match each left card to its partner (website MATCH games)
+// pairs  = a word and its partner (website MATCH games). Played as a choice: the word is the
+//          question, its partner plus 3 partners from other pairs are the options.
 export type Engine = 'choice' | 'pairs'
 
 export type ChoiceItem = { id: string; q: string; options: string[]; answer: number; why?: string }
@@ -24,6 +25,7 @@ export type GameDef = {
   engine: Engine
   intro: string
   source?: string                       // website file it was imported from, if any
+  draft?: boolean                       // a level has fewer than 10 items: kept out of the registry
   items: Partial<Record<Level, (ChoiceItem | PairItem)[]>>
 }
 

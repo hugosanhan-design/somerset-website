@@ -1,0 +1,181 @@
+{
+  "id": "vocab-match",
+  "title": "Vocab Match",
+  "tags": [
+    "vocabulary"
+  ],
+  "engine": "pairs",
+  "intro": "Six words, six meanings, all face up — but only you know which belongs to which. Fewer mistakes, better score. Somerset's word-hoard, one match at a time.",
+  "source": "Game — Vocab Match.html",
+  "draft": true,
+  "items": {
+    "A2": [
+      {
+        "id": "vocab-match-a2-01",
+        "left": "get up",
+        "right": "get out of bed"
+      },
+      {
+        "id": "vocab-match-a2-02",
+        "left": "look for",
+        "right": "try to find"
+      },
+      {
+        "id": "vocab-match-a2-03",
+        "left": "turn on",
+        "right": "start a machine"
+      },
+      {
+        "id": "vocab-match-a2-04",
+        "left": "huge",
+        "right": "very big"
+      },
+      {
+        "id": "vocab-match-a2-05",
+        "left": "tiny",
+        "right": "very small"
+      },
+      {
+        "id": "vocab-match-a2-06",
+        "left": "cheap",
+        "right": "not expensive"
+      },
+      {
+        "id": "vocab-match-a2-07",
+        "left": "begin",
+        "right": "start"
+      },
+      {
+        "id": "vocab-match-a2-08",
+        "left": "furious",
+        "right": "very angry"
+      }
+    ],
+    "B1": [
+      {
+        "id": "vocab-match-b1-01",
+        "left": "give up",
+        "right": "stop trying"
+      },
+      {
+        "id": "vocab-match-b1-02",
+        "left": "find out",
+        "right": "discover information"
+      },
+      {
+        "id": "vocab-match-b1-03",
+        "left": "carry on",
+        "right": "continue"
+      },
+      {
+        "id": "vocab-match-b1-04",
+        "left": "put off",
+        "right": "postpone"
+      },
+      {
+        "id": "vocab-match-b1-05",
+        "left": "run out of",
+        "right": "have none left"
+      },
+      {
+        "id": "vocab-match-b1-06",
+        "left": "look after",
+        "right": "take care of"
+      },
+      {
+        "id": "vocab-match-b1-07",
+        "left": "set off",
+        "right": "begin a journey"
+      },
+      {
+        "id": "vocab-match-b1-08",
+        "left": "turn down",
+        "right": "refuse an offer"
+      }
+    ],
+    "B2": [
+      {
+        "id": "vocab-match-b2-01",
+        "left": "come up with",
+        "right": "think of (an idea)"
+      },
+      {
+        "id": "vocab-match-b2-02",
+        "left": "get away with",
+        "right": "escape punishment for"
+      },
+      {
+        "id": "vocab-match-b2-03",
+        "left": "look up to",
+        "right": "admire and respect"
+      },
+      {
+        "id": "vocab-match-b2-04",
+        "left": "put up with",
+        "right": "tolerate"
+      },
+      {
+        "id": "vocab-match-b2-05",
+        "left": "break down",
+        "right": "stop working (machine)"
+      },
+      {
+        "id": "vocab-match-b2-06",
+        "left": "bring up",
+        "right": "raise (a child)"
+      },
+      {
+        "id": "vocab-match-b2-07",
+        "left": "take over",
+        "right": "gain control of"
+      },
+      {
+        "id": "vocab-match-b2-08",
+        "left": "fall through",
+        "right": "fail to happen (a plan)"
+      }
+    ],
+    "C1": [
+      {
+        "id": "vocab-match-c1-01",
+        "left": "dwindle",
+        "right": "shrink gradually"
+      },
+      {
+        "id": "vocab-match-c1-02",
+        "left": "meticulous",
+        "right": "extremely careful"
+      },
+      {
+        "id": "vocab-match-c1-03",
+        "left": "ubiquitous",
+        "right": "found everywhere"
+      },
+      {
+        "id": "vocab-match-c1-04",
+        "left": "candid",
+        "right": "honest and direct"
+      },
+      {
+        "id": "vocab-match-c1-05",
+        "left": "feasible",
+        "right": "realistically possible"
+      },
+      {
+        "id": "vocab-match-c1-06",
+        "left": "scrutinise",
+        "right": "examine very closely"
+      },
+      {
+        "id": "vocab-match-c1-07",
+        "left": "reluctant",
+        "right": "unwilling"
+      },
+      {
+        "id": "vocab-match-c1-08",
+        "left": "pivotal",
+        "right": "critically important"
+      }
+    ]
+  }
+}

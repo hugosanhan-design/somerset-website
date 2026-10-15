@@ -1,0 +1,182 @@
+{
+  "id": "ladder-of-nice",
+  "title": "Ladder of Nice",
+  "tags": [
+    "vocabulary",
+    "register"
+  ],
+  "engine": "pairs",
+  "intro": "Nice, good, bad — the three words that do all the work and none of the precision. Climb the ladder to the word that actually fits.",
+  "source": "Game — Ladder of Nice.html",
+  "draft": true,
+  "items": {
+    "A2": [
+      {
+        "id": "ladder-of-nice-a2-01",
+        "left": "delicious",
+        "right": "a stronger way to say 'good' about food"
+      },
+      {
+        "id": "ladder-of-nice-a2-02",
+        "left": "generous",
+        "right": "a stronger way to say 'nice' about a person who gives a lot"
+      },
+      {
+        "id": "ladder-of-nice-a2-03",
+        "left": "awful",
+        "right": "a stronger way to say 'bad' about weather or a situation"
+      },
+      {
+        "id": "ladder-of-nice-a2-04",
+        "left": "beautiful",
+        "right": "a stronger way to say 'nice' about how something looks"
+      },
+      {
+        "id": "ladder-of-nice-a2-05",
+        "left": "friendly",
+        "right": "a stronger way to say 'nice' about someone's personality"
+      },
+      {
+        "id": "ladder-of-nice-a2-06",
+        "left": "terrible",
+        "right": "a stronger way to say 'bad' about a mistake or experience"
+      },
+      {
+        "id": "ladder-of-nice-a2-07",
+        "left": "talented",
+        "right": "a stronger way to say 'good' at doing something"
+      },
+      {
+        "id": "ladder-of-nice-a2-08",
+        "left": "comfortable",
+        "right": "a stronger way to say 'nice' about a place to sit or sleep"
+      }
+    ],
+    "B1": [
+      {
+        "id": "ladder-of-nice-b1-01",
+        "left": "pleasant",
+        "right": "a more precise way to say 'nice' about an experience"
+      },
+      {
+        "id": "ladder-of-nice-b1-02",
+        "left": "considerate",
+        "right": "a more precise way to say 'nice' about someone who thinks of others"
+      },
+      {
+        "id": "ladder-of-nice-b1-03",
+        "left": "dreadful",
+        "right": "a more precise way to say 'bad' — quite strong"
+      },
+      {
+        "id": "ladder-of-nice-b1-04",
+        "left": "gorgeous",
+        "right": "a more precise way to say 'nice' about someone's appearance"
+      },
+      {
+        "id": "ladder-of-nice-b1-05",
+        "left": "outstanding",
+        "right": "a more precise way to say 'good' — exceptionally so"
+      },
+      {
+        "id": "ladder-of-nice-b1-06",
+        "left": "unpleasant",
+        "right": "a more precise way to say 'bad' about an experience"
+      },
+      {
+        "id": "ladder-of-nice-b1-07",
+        "left": "charming",
+        "right": "a more precise way to say 'nice' about someone's manner"
+      },
+      {
+        "id": "ladder-of-nice-b1-08",
+        "left": "impressive",
+        "right": "a more precise way to say 'good' — makes a strong impression"
+      }
+    ],
+    "B2": [
+      {
+        "id": "ladder-of-nice-b2-01",
+        "left": "delightful",
+        "right": "an even stronger, more vivid 'nice' — genuinely pleasing"
+      },
+      {
+        "id": "ladder-of-nice-b2-02",
+        "left": "appalling",
+        "right": "an even stronger 'bad' — shocking or disgraceful"
+      },
+      {
+        "id": "ladder-of-nice-b2-03",
+        "left": "exquisite",
+        "right": "an even stronger 'nice' — extremely beautiful or refined"
+      },
+      {
+        "id": "ladder-of-nice-b2-04",
+        "left": "atrocious",
+        "right": "an even stronger 'bad' — extremely poor quality or behaviour"
+      },
+      {
+        "id": "ladder-of-nice-b2-05",
+        "left": "hospitable",
+        "right": "an even more precise 'nice' — welcoming to guests"
+      },
+      {
+        "id": "ladder-of-nice-b2-06",
+        "left": "meticulous",
+        "right": "an even more precise 'good' — extremely careful with detail"
+      },
+      {
+        "id": "ladder-of-nice-b2-07",
+        "left": "abysmal",
+        "right": "an even stronger 'bad' — extremely low quality"
+      },
+      {
+        "id": "ladder-of-nice-b2-08",
+        "left": "captivating",
+        "right": "an even stronger 'nice' — holds your attention completely"
+      }
+    ],
+    "C1": [
+      {
+        "id": "ladder-of-nice-c1-01",
+        "left": "sublime",
+        "right": "the most elevated 'nice' — a beauty beyond ordinary description"
+      },
+      {
+        "id": "ladder-of-nice-c1-02",
+        "left": "deplorable",
+        "right": "the strongest 'bad' — morally shocking or shameful"
+      },
+      {
+        "id": "ladder-of-nice-c1-03",
+        "left": "impeccable",
+        "right": "the strongest 'good' — flawless, without a single fault"
+      },
+      {
+        "id": "ladder-of-nice-c1-04",
+        "left": "reprehensible",
+        "right": "the strongest 'bad' — deserving strong moral condemnation"
+      },
+      {
+        "id": "ladder-of-nice-c1-05",
+        "left": "magnanimous",
+        "right": "the strongest 'nice' — generous and forgiving on a grand scale"
+      },
+      {
+        "id": "ladder-of-nice-c1-06",
+        "left": "exemplary",
+        "right": "the strongest 'good' — a model that others should follow"
+      },
+      {
+        "id": "ladder-of-nice-c1-07",
+        "left": "egregious",
+        "right": "the strongest 'bad' — outstandingly and shockingly bad"
+      },
+      {
+        "id": "ladder-of-nice-c1-08",
+        "left": "convivial",
+        "right": "a refined 'nice' — friendly, warm and sociable in atmosphere"
+      }
+    ]
+  }
+}

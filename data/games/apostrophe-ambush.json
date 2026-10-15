@@ -1,0 +1,382 @@
+{
+  "id": "apostrophe-ambush",
+  "title": "Apostrophe Ambush",
+  "tags": [
+    "punctuation",
+    "spelling"
+  ],
+  "engine": "choice",
+  "intro": "its or it's, whose or who's, plural or possessive — the tiny mark that gives away a rushed writer.",
+  "source": "Game — Apostrophe Ambush.html",
+  "draft": true,
+  "items": {
+    "A2": [
+      {
+        "id": "apostrophe-ambush-a2-01",
+        "q": "Which is correct?",
+        "options": [
+          "It's Monday.",
+          "Its Monday.",
+          "Its' Monday."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "apostrophe-ambush-a2-02",
+        "q": "Which is correct?",
+        "options": [
+          "That's my book.",
+          "Thats my book.",
+          "That is' my book."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "apostrophe-ambush-a2-03",
+        "q": "Which is correct?",
+        "options": [
+          "She's my sister.",
+          "Shes my sister.",
+          "She' is my sister."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "apostrophe-ambush-a2-04",
+        "q": "Which is correct?",
+        "options": [
+          "I don't like coffee.",
+          "I dont like coffee.",
+          "I don't' like coffee."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "apostrophe-ambush-a2-05",
+        "q": "Which is correct?",
+        "options": [
+          "This is Tom's car.",
+          "This is Toms car.",
+          "This is Tom's' car."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "apostrophe-ambush-a2-06",
+        "q": "Which is correct?",
+        "options": [
+          "We're going home.",
+          "Were going home.",
+          "We'are going home."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "apostrophe-ambush-a2-07",
+        "q": "Which is correct?",
+        "options": [
+          "It's raining.",
+          "Its raining.",
+          "It' is raining."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "apostrophe-ambush-a2-08",
+        "q": "Which is correct?",
+        "options": [
+          "Can't you come?",
+          "Cant you come?",
+          "Ca'nt you come?"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "apostrophe-ambush-a2-09",
+        "q": "Which is correct?",
+        "options": [
+          "They're my friends.",
+          "Their my friends.",
+          "Theyre my friends."
+        ],
+        "answer": 0
+      }
+    ],
+    "B1": [
+      {
+        "id": "apostrophe-ambush-b1-01",
+        "q": "Which is correct?",
+        "options": [
+          "The dog's bone is under the sofa.",
+          "The dogs bone is under the sofa.",
+          "The dog's' bone is under the sofa."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "apostrophe-ambush-b1-02",
+        "q": "Which is correct?",
+        "options": [
+          "The children's toys are everywhere.",
+          "The childrens toys are everywhere.",
+          "The childrens' toys are everywhere."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "apostrophe-ambush-b1-03",
+        "q": "Which is correct?",
+        "options": [
+          "Whose bag is this?",
+          "Who's bag is this?",
+          "Whos bag is this?"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "apostrophe-ambush-b1-04",
+        "q": "Which is correct?",
+        "options": [
+          "It's been a long day.",
+          "Its been a long day.",
+          "It's' been a long day."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "apostrophe-ambush-b1-05",
+        "q": "Which is correct?",
+        "options": [
+          "The students' results were excellent.",
+          "The student's results were excellent (many students).",
+          "The students results were excellent."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "apostrophe-ambush-b1-06",
+        "q": "Which is correct?",
+        "options": [
+          "My parents' house is huge.",
+          "My parent's house is huge (both parents).",
+          "My parents house is huge."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "apostrophe-ambush-b1-07",
+        "q": "Which is correct?",
+        "options": [
+          "You're going to love this.",
+          "Your going to love this.",
+          "Youre going to love this."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "apostrophe-ambush-b1-08",
+        "q": "Which is correct?",
+        "options": [
+          "James's car broke down.",
+          "James' car broke down (less standard).",
+          "Jame's car broke down."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "apostrophe-ambush-b1-09",
+        "q": "Which is correct?",
+        "options": [
+          "I've never seen that before.",
+          "Ive never seen that before.",
+          "I'have never seen that before."
+        ],
+        "answer": 0
+      }
+    ],
+    "B2": [
+      {
+        "id": "apostrophe-ambush-b2-01",
+        "q": "Which is correct?",
+        "options": [
+          "The company's profits rose sharply.",
+          "The companys profits rose sharply.",
+          "The company's' profits rose sharply."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "apostrophe-ambush-b2-02",
+        "q": "Which is correct?",
+        "options": [
+          "It's clear that its meaning changed.",
+          "Its clear that it's meaning changed.",
+          "It's clear that its' meaning changed."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "apostrophe-ambush-b2-03",
+        "q": "Which is correct?",
+        "options": [
+          "The 1990s were a decade of change.",
+          "The 1990's were a decade of change.",
+          "The 1990s' were a decade of change."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "apostrophe-ambush-b2-04",
+        "q": "Which is correct?",
+        "options": [
+          "Whose idea was it to leave early?",
+          "Who's idea was it to leave early?",
+          "Whos idea was it to leave early?"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "apostrophe-ambush-b2-05",
+        "q": "Which is correct?",
+        "options": [
+          "The boss's decision was final.",
+          "The bosses decision was final.",
+          "The boss' decision was final (less standard)."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "apostrophe-ambush-b2-06",
+        "q": "Which is correct?",
+        "options": [
+          "Two weeks' notice is required.",
+          "Two week's notice is required.",
+          "Two weeks notice is required."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "apostrophe-ambush-b2-07",
+        "q": "Which is correct?",
+        "options": [
+          "The team's morale improved.",
+          "The teams morale improved.",
+          "The team's' morale improved."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "apostrophe-ambush-b2-08",
+        "q": "Which is correct?",
+        "options": [
+          "Everybody's welcome to attend.",
+          "Everybodys welcome to attend.",
+          "Everybody's' welcome to attend."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "apostrophe-ambush-b2-09",
+        "q": "Which is correct?",
+        "options": [
+          "There's no doubt about it.",
+          "Theres no doubt about it.",
+          "There' is no doubt about it."
+        ],
+        "answer": 0
+      }
+    ],
+    "C1": [
+      {
+        "id": "apostrophe-ambush-c1-01",
+        "q": "Which is correct?",
+        "options": [
+          "The witnesses' accounts differed slightly.",
+          "The witness's accounts differed slightly (only one witness).",
+          "The witnesses accounts differed slightly."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "apostrophe-ambush-c1-02",
+        "q": "Which is correct?",
+        "options": [
+          "It's often its own worst enemy.",
+          "Its often it's own worst enemy.",
+          "Its often its' own worst enemy."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "apostrophe-ambush-c1-03",
+        "q": "Which is correct?",
+        "options": [
+          "A day's work deserves a day's pay.",
+          "A days work deserves a days pay.",
+          "A day's work deserves a days' pay."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "apostrophe-ambush-c1-04",
+        "q": "Which is correct?",
+        "options": [
+          "The government's policy shifted overnight.",
+          "The governments policy shifted overnight.",
+          "The government's' policy shifted overnight."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "apostrophe-ambush-c1-05",
+        "q": "Which is correct?",
+        "options": [
+          "For goodness' sake, hurry up!",
+          "For goodness sake, hurry up!",
+          "For goodness's sake, hurry up!"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "apostrophe-ambush-c1-06",
+        "q": "Which is correct?",
+        "options": [
+          "The Joneses' garden is beautiful.",
+          "The Jones' garden is beautiful.",
+          "The Joneses garden is beautiful."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "apostrophe-ambush-c1-07",
+        "q": "Which is correct?",
+        "options": [
+          "He questioned its validity, not theirs.",
+          "He questioned it's validity, not their's.",
+          "He questioned its' validity, not theirs'."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "apostrophe-ambush-c1-08",
+        "q": "Which is correct?",
+        "options": [
+          "A moment's thought would have helped.",
+          "A moments thought would have helped.",
+          "A moments' thought would have helped."
+        ],
+        "answer": 0
+      },
+      {
+        "id": "apostrophe-ambush-c1-09",
+        "q": "Which is correct?",
+        "options": [
+          "The committee's decision stands.",
+          "The committees decision stands.",
+          "The committee's' decision stands."
+        ],
+        "answer": 0
+      }
+    ]
+  }
+}

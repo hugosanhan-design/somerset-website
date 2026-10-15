@@ -1,0 +1,420 @@
+{
+  "id": "because-so-or-although",
+  "title": "Because, So or Although?",
+  "tags": [
+    "other"
+  ],
+  "engine": "choice",
+  "intro": "Cause, result or contrast? Pick the linking word that fits what the sentence is doing.",
+  "source": "Game — Because So or Although.html",
+  "items": {
+    "A2": [
+      {
+        "id": "because-so-or-although-a2-01",
+        "q": "I stayed home ___ I was ill.",
+        "options": [
+          "because",
+          "so",
+          "although"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "because-so-or-although-a2-02",
+        "q": "It was raining, ___ we took an umbrella.",
+        "options": [
+          "so",
+          "because",
+          "although"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "because-so-or-although-a2-03",
+        "q": "___ it was cold, we went for a walk.",
+        "options": [
+          "Although",
+          "Because",
+          "So"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "because-so-or-although-a2-04",
+        "q": "She was tired ___ she had worked all day.",
+        "options": [
+          "because",
+          "so",
+          "but"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "because-so-or-although-a2-05",
+        "q": "He studied hard, ___ he passed the exam.",
+        "options": [
+          "so",
+          "because",
+          "although"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "because-so-or-although-a2-06",
+        "q": "___ she was busy, she helped me.",
+        "options": [
+          "Although",
+          "Because",
+          "So"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "because-so-or-although-a2-07",
+        "q": "I was hungry, ___ I made a sandwich.",
+        "options": [
+          "so",
+          "because",
+          "although"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "because-so-or-although-a2-08",
+        "q": "We stayed inside ___ it was snowing.",
+        "options": [
+          "because",
+          "so",
+          "although"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "because-so-or-although-a2-09",
+        "q": "___ he was late, he missed the bus.",
+        "options": [
+          "Because",
+          "Although",
+          "So"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "because-so-or-although-a2-10",
+        "q": "It was expensive, ___ we bought it anyway.",
+        "options": [
+          "but",
+          "because",
+          "so"
+        ],
+        "answer": 0
+      }
+    ],
+    "B1": [
+      {
+        "id": "because-so-or-although-b1-01",
+        "q": "___ the traffic, we arrived on time.",
+        "options": [
+          "Despite",
+          "Because",
+          "Although"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "because-so-or-although-b1-02",
+        "q": "___ he trained every day, he didn't win.",
+        "options": [
+          "Even though",
+          "Because",
+          "So"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "because-so-or-although-b1-03",
+        "q": "She left early ___ she had a meeting.",
+        "options": [
+          "since",
+          "although",
+          "despite"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "because-so-or-although-b1-04",
+        "q": "___ being tired, she finished the report.",
+        "options": [
+          "Despite",
+          "Because of",
+          "So"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "because-so-or-although-b1-05",
+        "q": "___ it was late, we decided to leave.",
+        "options": [
+          "As",
+          "Despite",
+          "Even"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "because-so-or-although-b1-06",
+        "q": "He passed the exam ___ he barely studied.",
+        "options": [
+          "even though",
+          "because",
+          "so that"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "because-so-or-although-b1-07",
+        "q": "___ the bad weather, the match continued.",
+        "options": [
+          "In spite of",
+          "Although",
+          "Because"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "because-so-or-although-b1-08",
+        "q": "I couldn't sleep ___ the noise outside.",
+        "options": [
+          "because of",
+          "although",
+          "despite of"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "because-so-or-although-b1-09",
+        "q": "___ she apologised, he was still angry.",
+        "options": [
+          "Although",
+          "Despite",
+          "Because of"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "because-so-or-although-b1-10",
+        "q": "We took a taxi ___ we were in a hurry.",
+        "options": [
+          "since",
+          "despite",
+          "even though"
+        ],
+        "answer": 0
+      }
+    ],
+    "B2": [
+      {
+        "id": "because-so-or-although-b2-01",
+        "q": "The flight was delayed ___ bad weather.",
+        "options": [
+          "due to",
+          "although",
+          "whereas"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "because-so-or-although-b2-02",
+        "q": "___ his lack of experience, he got the job.",
+        "options": [
+          "Despite",
+          "Because of",
+          "Given"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "because-so-or-although-b2-03",
+        "q": "He is quiet, ___ his brother is very outgoing.",
+        "options": [
+          "whereas",
+          "so",
+          "because"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "because-so-or-although-b2-04",
+        "q": "The show was cancelled ___ low ticket sales.",
+        "options": [
+          "owing to",
+          "whereas",
+          "even though"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "because-so-or-although-b2-05",
+        "q": "___ she disagreed, she signed the contract.",
+        "options": [
+          "Although",
+          "Due to",
+          "Owing to"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "because-so-or-although-b2-06",
+        "q": "He failed the exam; ___, he didn't give up.",
+        "options": [
+          "nevertheless",
+          "because",
+          "due to"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "because-so-or-although-b2-07",
+        "q": "___ that the roads were icy, they cancelled the trip.",
+        "options": [
+          "Given",
+          "Whereas",
+          "Nevertheless"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "because-so-or-although-b2-08",
+        "q": "Sales rose in Asia, ___ they fell in Europe.",
+        "options": [
+          "whereas",
+          "so",
+          "given that"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "because-so-or-although-b2-09",
+        "q": "The project failed ___ poor planning.",
+        "options": [
+          "due to",
+          "although",
+          "whereas"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "because-so-or-although-b2-10",
+        "q": "The bill passed, ___ narrowly.",
+        "options": [
+          "albeit",
+          "whereas",
+          "despite"
+        ],
+        "answer": 0
+      }
+    ],
+    "C1": [
+      {
+        "id": "because-so-or-although-c1-01",
+        "q": "The event went ahead ___ the storm.",
+        "options": [
+          "notwithstanding",
+          "due to",
+          "whereas"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "because-so-or-although-c1-02",
+        "q": "He accepted the offer, ___ reluctantly.",
+        "options": [
+          "albeit",
+          "although",
+          "whereas"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "because-so-or-although-c1-03",
+        "q": "___ his objections, the plan was approved.",
+        "options": [
+          "Notwithstanding",
+          "Given that",
+          "Insofar as"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "because-so-or-although-c1-04",
+        "q": "The rule applies ___ it doesn't conflict with local law.",
+        "options": [
+          "insofar as",
+          "notwithstanding",
+          "albeit"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "because-so-or-although-c1-05",
+        "q": "She resigned ___ growing pressure from the board.",
+        "options": [
+          "on account of",
+          "whereas",
+          "albeit"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "because-so-or-although-c1-06",
+        "q": "It was a small victory, ___ an important one.",
+        "options": [
+          "albeit",
+          "notwithstanding",
+          "due to"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "because-so-or-although-c1-07",
+        "q": "___ the risks, the board approved the merger.",
+        "options": [
+          "Notwithstanding",
+          "Insofar as",
+          "On account of"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "because-so-or-although-c1-08",
+        "q": "The strategy worked, ___ only in the short term.",
+        "options": [
+          "albeit",
+          "notwithstanding",
+          "whereas"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "because-so-or-although-c1-09",
+        "q": "He was promoted ___ his outstanding results.",
+        "options": [
+          "on account of",
+          "albeit",
+          "whereas"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "because-so-or-although-c1-10",
+        "q": "The theory holds true ___ conditions remain stable.",
+        "options": [
+          "insofar as",
+          "albeit",
+          "notwithstanding"
+        ],
+        "answer": 0
+      }
+    ]
+  }
+}

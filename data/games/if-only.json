@@ -1,0 +1,420 @@
+{
+  "id": "if-only",
+  "title": "If Only…",
+  "tags": [
+    "tense"
+  ],
+  "engine": "choice",
+  "intro": "Zero, first, second, third and mixed conditionals. Pick the verb form that makes the “if” sentence work.",
+  "source": "Game — If Only.html",
+  "items": {
+    "A2": [
+      {
+        "id": "if-only-a2-01",
+        "q": "If it ___ tomorrow, we'll stay home.",
+        "options": [
+          "rains",
+          "will rain",
+          "rained"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "if-only-a2-02",
+        "q": "If you heat water to 100°C, it ___.",
+        "options": [
+          "boils",
+          "will boil",
+          "boiled"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "if-only-a2-03",
+        "q": "If I ___ time, I'll help you.",
+        "options": [
+          "have",
+          "will have",
+          "had"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "if-only-a2-04",
+        "q": "If she studies hard, she ___ the exam.",
+        "options": [
+          "will pass",
+          "passes",
+          "passed"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "if-only-a2-05",
+        "q": "Ice ___ if you leave it in the sun.",
+        "options": [
+          "melts",
+          "will melt",
+          "melted"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "if-only-a2-06",
+        "q": "If we don't hurry, we ___ the bus.",
+        "options": [
+          "will miss",
+          "miss",
+          "missed"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "if-only-a2-07",
+        "q": "If you touch fire, it ___ you.",
+        "options": [
+          "burns",
+          "will burn",
+          "burned"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "if-only-a2-08",
+        "q": "If he ___ late, call me.",
+        "options": [
+          "is",
+          "will be",
+          "was"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "if-only-a2-09",
+        "q": "Plants ___ if you don't water them.",
+        "options": [
+          "die",
+          "will die",
+          "died"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "if-only-a2-10",
+        "q": "If it's sunny tomorrow, we ___ to the beach.",
+        "options": [
+          "will go",
+          "go",
+          "went"
+        ],
+        "answer": 0
+      }
+    ],
+    "B1": [
+      {
+        "id": "if-only-b1-01",
+        "q": "If I ___ rich, I would travel the world.",
+        "options": [
+          "were",
+          "am",
+          "was"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "if-only-b1-02",
+        "q": "If she had more time, she ___ learn Italian.",
+        "options": [
+          "would",
+          "will",
+          "can"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "if-only-b1-03",
+        "q": "What would you do if you ___ a lottery ticket?",
+        "options": [
+          "won",
+          "win",
+          "would win"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "if-only-b1-04",
+        "q": "If I ___ you, I would apologise.",
+        "options": [
+          "were",
+          "am",
+          "was"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "if-only-b1-05",
+        "q": "If he asked me, I ___ help him.",
+        "options": [
+          "would",
+          "will",
+          "can"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "if-only-b1-06",
+        "q": "They would move house if they ___ more money.",
+        "options": [
+          "had",
+          "have",
+          "would have"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "if-only-b1-07",
+        "q": "If it weren't so cold, we ___ go for a walk.",
+        "options": [
+          "would",
+          "will",
+          "can"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "if-only-b1-08",
+        "q": "She would be happier if she ___ a new job.",
+        "options": [
+          "got",
+          "gets",
+          "would get"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "if-only-b1-09",
+        "q": "If you ___ me, what would you do?",
+        "options": [
+          "were",
+          "are",
+          "was"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "if-only-b1-10",
+        "q": "We would visit more often if we ___ nearer.",
+        "options": [
+          "lived",
+          "live",
+          "would live"
+        ],
+        "answer": 0
+      }
+    ],
+    "B2": [
+      {
+        "id": "if-only-b2-01",
+        "q": "If I had studied harder, I ___ passed the exam.",
+        "options": [
+          "would have",
+          "would",
+          "will have"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "if-only-b2-02",
+        "q": "She wouldn't have missed the flight if she ___ earlier.",
+        "options": [
+          "had left",
+          "left",
+          "would leave"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "if-only-b2-03",
+        "q": "If they had known about the traffic, they ___ left earlier.",
+        "options": [
+          "would have",
+          "would",
+          "had"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "if-only-b2-04",
+        "q": "I wouldn't have called you if it ___ urgent.",
+        "options": [
+          "hadn't been",
+          "wasn't",
+          "isn't"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "if-only-b2-05",
+        "q": "If he ___ the map, we wouldn't have got lost.",
+        "options": [
+          "had checked",
+          "checked",
+          "would check"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "if-only-b2-06",
+        "q": "We would have arrived on time if the train ___ delayed.",
+        "options": [
+          "hadn't been",
+          "wasn't",
+          "isn't"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "if-only-b2-07",
+        "q": "If she had told me, I ___ come earlier.",
+        "options": [
+          "would have",
+          "would",
+          "will have"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "if-only-b2-08",
+        "q": "They wouldn't have won if the referee ___ that mistake.",
+        "options": [
+          "hadn't made",
+          "didn't make",
+          "doesn't make"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "if-only-b2-09",
+        "q": "If I ___ you, I would have said something.",
+        "options": [
+          "had been",
+          "were",
+          "was"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "if-only-b2-10",
+        "q": "You wouldn't have been late if you ___ up earlier.",
+        "options": [
+          "had got",
+          "got",
+          "would get"
+        ],
+        "answer": 0
+      }
+    ],
+    "C1": [
+      {
+        "id": "if-only-c1-01",
+        "q": "If she ___ harder at university, she would have a better job now.",
+        "options": [
+          "had worked",
+          "worked",
+          "would work"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "if-only-c1-02",
+        "q": "Were I in your position, I ___ accept the offer.",
+        "options": [
+          "would",
+          "will",
+          "had"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "if-only-c1-03",
+        "q": "Had they invested earlier, they ___ much richer today.",
+        "options": [
+          "would be",
+          "would have been",
+          "will be"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "if-only-c1-04",
+        "q": "If I hadn't missed that train, I ___ living in Paris now.",
+        "options": [
+          "would be",
+          "would have been",
+          "will be"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "if-only-c1-05",
+        "q": "Should you need anything, ___ hesitate to call.",
+        "options": [
+          "don't",
+          "not",
+          "won't"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "if-only-c1-06",
+        "q": "If it hadn't been for your help, I ___ never have finished.",
+        "options": [
+          "would",
+          "will",
+          "had"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "if-only-c1-07",
+        "q": "Were it not for the rain, the match ___ have been cancelled.",
+        "options": [
+          "wouldn't",
+          "won't",
+          "didn't"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "if-only-c1-08",
+        "q": "If she weren't so stubborn, she ___ have listened to advice.",
+        "options": [
+          "would",
+          "will",
+          "had"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "if-only-c1-09",
+        "q": "Had I known the truth then, I ___ act differently now.",
+        "options": [
+          "would",
+          "will",
+          "had"
+        ],
+        "answer": 0
+      },
+      {
+        "id": "if-only-c1-10",
+        "q": "If only I ___ that mistake — I regret it deeply.",
+        "options": [
+          "hadn't made",
+          "didn't make",
+          "haven't made"
+        ],
+        "answer": 0
+      }
+    ]
+  }
+}

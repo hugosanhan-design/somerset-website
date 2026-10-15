@@ -1,0 +1,181 @@
+{
+  "id": "very-plus-adjective-killer",
+  "title": "Very + Adjective Killer",
+  "tags": [
+    "vocabulary"
+  ],
+  "engine": "pairs",
+  "intro": "Very tired becomes exhausted. Very scared becomes terrified. One strong word instead of two weak ones — straight out of the Cambridge writing mark scheme.",
+  "source": "Game — Very Plus Adjective Killer.html",
+  "draft": true,
+  "items": {
+    "A2": [
+      {
+        "id": "very-plus-adjective-killer-a2-01",
+        "left": "starving",
+        "right": "a stronger way to say 'very hungry'"
+      },
+      {
+        "id": "very-plus-adjective-killer-a2-02",
+        "left": "freezing",
+        "right": "a stronger way to say 'very cold'"
+      },
+      {
+        "id": "very-plus-adjective-killer-a2-03",
+        "left": "boiling",
+        "right": "a stronger way to say 'very hot'"
+      },
+      {
+        "id": "very-plus-adjective-killer-a2-04",
+        "left": "tiny",
+        "right": "a stronger way to say 'very small'"
+      },
+      {
+        "id": "very-plus-adjective-killer-a2-05",
+        "left": "huge",
+        "right": "a stronger way to say 'very big'"
+      },
+      {
+        "id": "very-plus-adjective-killer-a2-06",
+        "left": "exhausted",
+        "right": "a stronger way to say 'very tired'"
+      },
+      {
+        "id": "very-plus-adjective-killer-a2-07",
+        "left": "delighted",
+        "right": "a stronger way to say 'very happy'"
+      },
+      {
+        "id": "very-plus-adjective-killer-a2-08",
+        "left": "furious",
+        "right": "a stronger way to say 'very angry'"
+      }
+    ],
+    "B1": [
+      {
+        "id": "very-plus-adjective-killer-b1-01",
+        "left": "terrified",
+        "right": "a stronger way to say 'very frightened'"
+      },
+      {
+        "id": "very-plus-adjective-killer-b1-02",
+        "left": "filthy",
+        "right": "a stronger way to say 'very dirty'"
+      },
+      {
+        "id": "very-plus-adjective-killer-b1-03",
+        "left": "spotless",
+        "right": "a stronger way to say 'very clean'"
+      },
+      {
+        "id": "very-plus-adjective-killer-b1-04",
+        "left": "ancient",
+        "right": "a stronger way to say 'very old'"
+      },
+      {
+        "id": "very-plus-adjective-killer-b1-05",
+        "left": "brand new",
+        "right": "a stronger way to say 'very new'"
+      },
+      {
+        "id": "very-plus-adjective-killer-b1-06",
+        "left": "gorgeous",
+        "right": "a stronger way to say 'very beautiful'"
+      },
+      {
+        "id": "very-plus-adjective-killer-b1-07",
+        "left": "hideous",
+        "right": "a stronger way to say 'very ugly'"
+      },
+      {
+        "id": "very-plus-adjective-killer-b1-08",
+        "left": "exhausting",
+        "right": "a stronger way to say 'very tiring'"
+      }
+    ],
+    "B2": [
+      {
+        "id": "very-plus-adjective-killer-b2-01",
+        "left": "petrified",
+        "right": "an even stronger way to say 'very frightened' — frozen with fear"
+      },
+      {
+        "id": "very-plus-adjective-killer-b2-02",
+        "left": "livid",
+        "right": "an even stronger way to say 'very angry'"
+      },
+      {
+        "id": "very-plus-adjective-killer-b2-03",
+        "left": "ecstatic",
+        "right": "an even stronger way to say 'very happy'"
+      },
+      {
+        "id": "very-plus-adjective-killer-b2-04",
+        "left": "devastated",
+        "right": "an even stronger way to say 'very upset'"
+      },
+      {
+        "id": "very-plus-adjective-killer-b2-05",
+        "left": "immaculate",
+        "right": "an even stronger way to say 'very clean or tidy'"
+      },
+      {
+        "id": "very-plus-adjective-killer-b2-06",
+        "left": "colossal",
+        "right": "an even stronger way to say 'very big'"
+      },
+      {
+        "id": "very-plus-adjective-killer-b2-07",
+        "left": "minuscule",
+        "right": "an even stronger way to say 'very small'"
+      },
+      {
+        "id": "very-plus-adjective-killer-b2-08",
+        "left": "ravenous",
+        "right": "an even stronger way to say 'very hungry'"
+      }
+    ],
+    "C1": [
+      {
+        "id": "very-plus-adjective-killer-c1-01",
+        "left": "irate",
+        "right": "the strongest way to say 'very angry' — formal register"
+      },
+      {
+        "id": "very-plus-adjective-killer-c1-02",
+        "left": "elated",
+        "right": "the strongest way to say 'very happy' — a moment of triumph"
+      },
+      {
+        "id": "very-plus-adjective-killer-c1-03",
+        "left": "destitute",
+        "right": "the strongest way to say 'very poor' — with nothing left"
+      },
+      {
+        "id": "very-plus-adjective-killer-c1-04",
+        "left": "impoverished",
+        "right": "the strongest way to say 'very poor' — used more formally"
+      },
+      {
+        "id": "very-plus-adjective-killer-c1-05",
+        "left": "inconsolable",
+        "right": "the strongest way to say 'very upset' — cannot be comforted"
+      },
+      {
+        "id": "very-plus-adjective-killer-c1-06",
+        "left": "exorbitant",
+        "right": "the strongest way to say 'very expensive'"
+      },
+      {
+        "id": "very-plus-adjective-killer-c1-07",
+        "left": "meagre",
+        "right": "the strongest way to say 'very small' — used for an amount"
+      },
+      {
+        "id": "very-plus-adjective-killer-c1-08",
+        "left": "monumental",
+        "right": "the strongest way to say 'very important or large in scale'"
+      }
+    ]
+  }
+}
