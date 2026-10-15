@@ -1,65 +1,499 @@
 {
   "id": "make-or-do",
   "title": "Make or Do?",
-  "tags": ["vocabulary"],
-  "engine": "pairs",
-  "intro": "Make a mistake, do your homework, make progress, do business — match each phrase to the verb it actually takes.",
+  "tags": [
+    "vocabulary"
+  ],
+  "engine": "choice",
+  "intro": "Make or do? Pick the verb English really uses with each phrase.",
   "items": {
     "A2": [
-      {"id": "make-or-do-a2-01", "left": "the dishes", "right": "do (do the dishes = wash them)", "why": "Household chores usually take “do”: do the dishes, do the cleaning."},
-      {"id": "make-or-do-a2-02", "left": "a mistake", "right": "make (make a mistake = get something wrong)", "why": "Spanish says “cometer un error”; English always says make a mistake, never “do”."},
-      {"id": "make-or-do-a2-03", "left": "your homework", "right": "do (do your homework = complete it)", "why": "Tasks and jobs take “do”: do your homework, do the ironing."},
-      {"id": "make-or-do-a2-04", "left": "a cake", "right": "make (make a cake = bake it)", "why": "“Make” is for creating something new: make a cake, make a paella."},
-      {"id": "make-or-do-a2-05", "left": "a favour", "right": "do (do someone a favour = help them)", "why": "Fixed phrase: “Could you do me a favour?” = please help me."},
-      {"id": "make-or-do-a2-06", "left": "noise", "right": "make (make noise = be loud)", "why": "Sounds you produce take “make”: make a noise, make a sound."},
-      {"id": "make-or-do-a2-07", "left": "the shopping", "right": "do (do the shopping = buy groceries)", "why": "Chores take “do”: do the shopping, do the cooking."},
-      {"id": "make-or-do-a2-08", "left": "a decision", "right": "make (make a decision = decide)", "why": "English says make a decision (or “take” in British English), never “do a decision”."},
-      {"id": "make-or-do-a2-09", "left": "the bed", "right": "make (make the bed = tidy the sheets)", "why": "Spanish “hacer la cama”, and English agrees: make the bed."},
-      {"id": "make-or-do-a2-10", "left": "the ironing", "right": "do (do the ironing = press the clothes)", "why": "Another household chore, so “do”: do the ironing, do the washing."},
-      {"id": "make-or-do-a2-11", "left": "a cup of tea", "right": "make (make a cup of tea = prepare a drink)", "why": "Preparing food and drink takes “make”: make a coffee, make lunch."},
-      {"id": "make-or-do-a2-12", "left": "the cleaning", "right": "do (do the cleaning = clean the house)", "why": "Chores ending in -ing usually take “do”: do the cleaning, do the shopping."}
+      {
+        "id": "make-or-do-a2-01",
+        "q": "___ the dishes (wash them)",
+        "options": [
+          "make",
+          "do"
+        ],
+        "answer": 1,
+        "why": "Household chores usually take “do”: do the dishes, do the cleaning."
+      },
+      {
+        "id": "make-or-do-a2-02",
+        "q": "___ a mistake (get something wrong)",
+        "options": [
+          "make",
+          "do"
+        ],
+        "answer": 0,
+        "why": "Spanish says “cometer un error”; English always says make a mistake, never “do”."
+      },
+      {
+        "id": "make-or-do-a2-03",
+        "q": "___ your homework (complete it)",
+        "options": [
+          "make",
+          "do"
+        ],
+        "answer": 1,
+        "why": "Tasks and jobs take “do”: do your homework, do the ironing."
+      },
+      {
+        "id": "make-or-do-a2-04",
+        "q": "___ a cake (bake it)",
+        "options": [
+          "make",
+          "do"
+        ],
+        "answer": 0,
+        "why": "“Make” is for creating something new: make a cake, make a paella."
+      },
+      {
+        "id": "make-or-do-a2-05",
+        "q": "___ someone a favour (help them)",
+        "options": [
+          "make",
+          "do"
+        ],
+        "answer": 1,
+        "why": "Fixed phrase: “Could you do me a favour?” = please help me."
+      },
+      {
+        "id": "make-or-do-a2-06",
+        "q": "___ noise (be loud)",
+        "options": [
+          "make",
+          "do"
+        ],
+        "answer": 0,
+        "why": "Sounds you produce take “make”: make a noise, make a sound."
+      },
+      {
+        "id": "make-or-do-a2-07",
+        "q": "___ the shopping (buy groceries)",
+        "options": [
+          "make",
+          "do"
+        ],
+        "answer": 1,
+        "why": "Chores take “do”: do the shopping, do the cooking."
+      },
+      {
+        "id": "make-or-do-a2-08",
+        "q": "___ a decision (decide)",
+        "options": [
+          "make",
+          "do"
+        ],
+        "answer": 0,
+        "why": "English says make a decision (or “take” in British English), never “do a decision”."
+      },
+      {
+        "id": "make-or-do-a2-09",
+        "q": "___ the bed (tidy the sheets)",
+        "options": [
+          "make",
+          "do"
+        ],
+        "answer": 0,
+        "why": "Spanish “hacer la cama”, and English agrees: make the bed."
+      },
+      {
+        "id": "make-or-do-a2-10",
+        "q": "___ the ironing (press the clothes)",
+        "options": [
+          "make",
+          "do"
+        ],
+        "answer": 1,
+        "why": "Another household chore, so “do”: do the ironing, do the washing."
+      },
+      {
+        "id": "make-or-do-a2-11",
+        "q": "___ a cup of tea (prepare a drink)",
+        "options": [
+          "make",
+          "do"
+        ],
+        "answer": 0,
+        "why": "Preparing food and drink takes “make”: make a coffee, make lunch."
+      },
+      {
+        "id": "make-or-do-a2-12",
+        "q": "___ the cleaning (clean the house)",
+        "options": [
+          "make",
+          "do"
+        ],
+        "answer": 1,
+        "why": "Chores ending in -ing usually take “do”: do the cleaning, do the shopping."
+      }
     ],
     "B1": [
-      {"id": "make-or-do-b1-01", "left": "progress", "right": "make (make progress = improve)", "why": "Spanish “hacer progresos” becomes make progress, never “do progress”."},
-      {"id": "make-or-do-b1-02", "left": "an effort", "right": "make (make an effort = try hard)", "why": "Spanish “hacer un esfuerzo” becomes make an effort."},
-      {"id": "make-or-do-b1-03", "left": "business", "right": "do (do business = trade or deal)", "why": "You do business with a company: buy, sell and make deals."},
-      {"id": "make-or-do-b1-04", "left": "your best", "right": "do (do your best = try as hard as you can)", "why": "Fixed phrase: do your best. “Make your best” is a common mistake."},
-      {"id": "make-or-do-b1-05", "left": "a phone call", "right": "make (make a call = telephone someone)", "why": "You make a call; “do a call” is wrong."},
-      {"id": "make-or-do-b1-06", "left": "research", "right": "do (do research = investigate)", "why": "Activities of investigation take “do”: do research, never “make research”."},
-      {"id": "make-or-do-b1-07", "left": "money", "right": "make (make money = earn)", "why": "Spanish says “ganar dinero”, but English says make money."},
-      {"id": "make-or-do-b1-08", "left": "exercise", "right": "do (do exercise = work out)", "why": "Activities take “do”: do exercise, do yoga. Not “make exercise”."},
-      {"id": "make-or-do-b1-09", "left": "a complaint", "right": "make (make a complaint = say formally you are unhappy)", "why": "Things you say take “make”: make a complaint, make a suggestion."},
-      {"id": "make-or-do-b1-10", "left": "a course", "right": "do (do a course = study a subject)", "why": "Spanish “hacer un curso” works the same in English: do an English course."},
-      {"id": "make-or-do-b1-11", "left": "friends", "right": "make (make friends = start new friendships)", "why": "Like Spanish “hacer amigos”: make friends, never “do friends”."},
-      {"id": "make-or-do-b1-12", "left": "the paperwork", "right": "do (do the paperwork = deal with the forms)", "why": "Office tasks take “do”: do the paperwork, do the accounts."}
+      {
+        "id": "make-or-do-b1-01",
+        "q": "___ progress (improve)",
+        "options": [
+          "make",
+          "do"
+        ],
+        "answer": 0,
+        "why": "Spanish “hacer progresos” becomes make progress, never “do progress”."
+      },
+      {
+        "id": "make-or-do-b1-02",
+        "q": "___ an effort (try hard)",
+        "options": [
+          "make",
+          "do"
+        ],
+        "answer": 0,
+        "why": "Spanish “hacer un esfuerzo” becomes make an effort."
+      },
+      {
+        "id": "make-or-do-b1-03",
+        "q": "___ business (trade or deal)",
+        "options": [
+          "make",
+          "do"
+        ],
+        "answer": 1,
+        "why": "You do business with a company: buy, sell and make deals."
+      },
+      {
+        "id": "make-or-do-b1-04",
+        "q": "___ your best (try as hard as you can)",
+        "options": [
+          "make",
+          "do"
+        ],
+        "answer": 1,
+        "why": "Fixed phrase: do your best. “Make your best” is a common mistake."
+      },
+      {
+        "id": "make-or-do-b1-05",
+        "q": "___ a call (telephone someone)",
+        "options": [
+          "make",
+          "do"
+        ],
+        "answer": 0,
+        "why": "You make a call; “do a call” is wrong."
+      },
+      {
+        "id": "make-or-do-b1-06",
+        "q": "___ research (investigate)",
+        "options": [
+          "make",
+          "do"
+        ],
+        "answer": 1,
+        "why": "Activities of investigation take “do”: do research, never “make research”."
+      },
+      {
+        "id": "make-or-do-b1-07",
+        "q": "___ money (earn)",
+        "options": [
+          "make",
+          "do"
+        ],
+        "answer": 0,
+        "why": "Spanish says “ganar dinero”, but English says make money."
+      },
+      {
+        "id": "make-or-do-b1-08",
+        "q": "___ exercise (work out)",
+        "options": [
+          "make",
+          "do"
+        ],
+        "answer": 1,
+        "why": "Activities take “do”: do exercise, do yoga. Not “make exercise”."
+      },
+      {
+        "id": "make-or-do-b1-09",
+        "q": "___ a complaint (say formally you are unhappy)",
+        "options": [
+          "make",
+          "do"
+        ],
+        "answer": 0,
+        "why": "Things you say take “make”: make a complaint, make a suggestion."
+      },
+      {
+        "id": "make-or-do-b1-10",
+        "q": "___ a course (study a subject)",
+        "options": [
+          "make",
+          "do"
+        ],
+        "answer": 1,
+        "why": "Spanish “hacer un curso” works the same in English: do an English course."
+      },
+      {
+        "id": "make-or-do-b1-11",
+        "q": "___ friends (start new friendships)",
+        "options": [
+          "make",
+          "do"
+        ],
+        "answer": 0,
+        "why": "Like Spanish “hacer amigos”: make friends, never “do friends”."
+      },
+      {
+        "id": "make-or-do-b1-12",
+        "q": "___ the paperwork (deal with the forms)",
+        "options": [
+          "make",
+          "do"
+        ],
+        "answer": 1,
+        "why": "Office tasks take “do”: do the paperwork, do the accounts."
+      }
     ],
     "B2": [
-      {"id": "make-or-do-b2-01", "left": "a difference", "right": "make (make a difference = have an effect)", "why": "Spanish “marcar la diferencia” becomes make a difference."},
-      {"id": "make-or-do-b2-02", "left": "damage", "right": "do (do damage = break or spoil something)", "why": "Do damage = cause damage; “make damage” is a typical Spanish-speaker mistake."},
-      {"id": "make-or-do-b2-03", "left": "an appointment", "right": "make (make an appointment = arrange a meeting)", "why": "You make an appointment with the doctor: you arrange it. Spanish “pedir cita”."},
-      {"id": "make-or-do-b2-04", "left": "a good job", "right": "do (do a good job = perform well)", "why": "Work you perform takes “do”: do a good job, do a job well."},
-      {"id": "make-or-do-b2-05", "left": "a profit", "right": "make (make a profit = earn more than you spend)", "why": "Like make money: make a profit, make a loss."},
-      {"id": "make-or-do-b2-06", "left": "harm", "right": "do (do harm = cause injury)", "why": "Same pattern as damage: do harm, never “make harm”. “It does no harm to ask.”"},
-      {"id": "make-or-do-b2-07", "left": "an impression", "right": "make (make an impression = affect how people see you)", "why": "You make an impression on someone: you change how they see you."},
-      {"id": "make-or-do-b2-08", "left": "the washing up", "right": "do (do the washing up = clean the dishes)", "why": "British English for washing the dishes after a meal: do the washing up."},
-      {"id": "make-or-do-b2-09", "left": "an excuse", "right": "make (make an excuse = give a reason to avoid something)", "why": "Things you say take “make”: he made an excuse not to come."},
-      {"id": "make-or-do-b2-10", "left": "someone good", "right": "do (do someone good = be good for their health)", "why": "A week by the sea in Dénia will do you good."},
-      {"id": "make-or-do-b2-11", "left": "arrangements", "right": "make (make arrangements = organise the details)", "why": "Plans you organise take “make”: make arrangements, make plans."},
-      {"id": "make-or-do-b2-12", "left": "your hair", "right": "do (do your hair = style it)", "why": "Work on your appearance takes “do”: do your hair, do your make-up."}
+      {
+        "id": "make-or-do-b2-01",
+        "q": "___ a difference (have an effect)",
+        "options": [
+          "make",
+          "do"
+        ],
+        "answer": 0,
+        "why": "Spanish “marcar la diferencia” becomes make a difference."
+      },
+      {
+        "id": "make-or-do-b2-02",
+        "q": "___ damage (break or spoil something)",
+        "options": [
+          "make",
+          "do"
+        ],
+        "answer": 1,
+        "why": "Do damage = cause damage; “make damage” is a typical Spanish-speaker mistake."
+      },
+      {
+        "id": "make-or-do-b2-03",
+        "q": "___ an appointment (arrange a meeting)",
+        "options": [
+          "make",
+          "do"
+        ],
+        "answer": 0,
+        "why": "You make an appointment with the doctor: you arrange it. Spanish “pedir cita”."
+      },
+      {
+        "id": "make-or-do-b2-04",
+        "q": "___ a good job (perform well)",
+        "options": [
+          "make",
+          "do"
+        ],
+        "answer": 1,
+        "why": "Work you perform takes “do”: do a good job, do a job well."
+      },
+      {
+        "id": "make-or-do-b2-05",
+        "q": "___ a profit (earn more than you spend)",
+        "options": [
+          "make",
+          "do"
+        ],
+        "answer": 0,
+        "why": "Like make money: make a profit, make a loss."
+      },
+      {
+        "id": "make-or-do-b2-06",
+        "q": "___ harm (cause injury)",
+        "options": [
+          "make",
+          "do"
+        ],
+        "answer": 1,
+        "why": "Same pattern as damage: do harm, never “make harm”. “It does no harm to ask.”"
+      },
+      {
+        "id": "make-or-do-b2-07",
+        "q": "___ an impression (affect how people see you)",
+        "options": [
+          "make",
+          "do"
+        ],
+        "answer": 0,
+        "why": "You make an impression on someone: you change how they see you."
+      },
+      {
+        "id": "make-or-do-b2-08",
+        "q": "___ the washing up (clean the dishes)",
+        "options": [
+          "make",
+          "do"
+        ],
+        "answer": 1,
+        "why": "British English for washing the dishes after a meal: do the washing up."
+      },
+      {
+        "id": "make-or-do-b2-09",
+        "q": "___ an excuse (give a reason to avoid something)",
+        "options": [
+          "make",
+          "do"
+        ],
+        "answer": 0,
+        "why": "Things you say take “make”: he made an excuse not to come."
+      },
+      {
+        "id": "make-or-do-b2-10",
+        "q": "___ someone good (be good for their health)",
+        "options": [
+          "make",
+          "do"
+        ],
+        "answer": 1,
+        "why": "A week by the sea in Dénia will do you good."
+      },
+      {
+        "id": "make-or-do-b2-11",
+        "q": "___ arrangements (organise the details)",
+        "options": [
+          "make",
+          "do"
+        ],
+        "answer": 0,
+        "why": "Plans you organise take “make”: make arrangements, make plans."
+      },
+      {
+        "id": "make-or-do-b2-12",
+        "q": "___ your hair (style it)",
+        "options": [
+          "make",
+          "do"
+        ],
+        "answer": 1,
+        "why": "Work on your appearance takes “do”: do your hair, do your make-up."
+      }
     ],
     "C1": [
-      {"id": "make-or-do-c1-01", "left": "amends", "right": "make (make amends = compensate for wrongdoing)", "why": "Always plural: make amends = do something to repair a wrong."},
-      {"id": "make-or-do-c1-02", "left": "justice", "right": "do (do justice to something = represent it fairly)", "why": "“The photo doesn't do justice to the Albufera” = the real place is more beautiful."},
-      {"id": "make-or-do-c1-03", "left": "headway", "right": "make (make headway = progress against difficulty)", "why": "Like make progress, but slowly and against difficulty: we're making headway."},
-      {"id": "make-or-do-c1-04", "left": "the honours", "right": "do (do the honours = perform a ceremonial task)", "why": "Said when someone pours the drinks or cuts the cake: “Will you do the honours?”"},
-      {"id": "make-or-do-c1-05", "left": "a fortune", "right": "make (make a fortune = become very rich)", "why": "Like make money, but much more: some prospectors made a fortune in the gold rush."},
-      {"id": "make-or-do-c1-06", "left": "one's duty", "right": "do (do one's duty = fulfil an obligation)", "why": "Obligations take “do”: the sheriff did his duty and arrested his own brother."},
-      {"id": "make-or-do-c1-07", "left": "a scene", "right": "make (make a scene = cause a public fuss)", "why": "Make a scene = shout or cry in public; Spanish “montar un número”."},
-      {"id": "make-or-do-c1-08", "left": "wonders", "right": "do (do wonders for something = have a great positive effect)", "why": "“Do wonders for” = have a very good effect: sea air does wonders for your health."},
-      {"id": "make-or-do-c1-09", "left": "a killing", "right": "make (make a killing = earn a lot of money quickly)", "why": "Informal and nothing violent: “He made a killing on the property market.”"},
-      {"id": "make-or-do-c1-10", "left": "time", "right": "do (do time = serve a prison sentence)", "why": "Informal: the outlaw did time in Yuma prison before going straight."},
-      {"id": "make-or-do-c1-11", "left": "a beeline for", "right": "make (make a beeline for = go straight towards)", "why": "Like a bee flying straight home: at parties he makes a beeline for the food."},
-      {"id": "make-or-do-c1-12", "left": "without", "right": "do (do without = manage with nothing)", "why": "If there's no sugar, we'll do without: we'll manage without it."}
+      {
+        "id": "make-or-do-c1-01",
+        "q": "___ amends (compensate for wrongdoing)",
+        "options": [
+          "make",
+          "do"
+        ],
+        "answer": 0,
+        "why": "Always plural: make amends = do something to repair a wrong."
+      },
+      {
+        "id": "make-or-do-c1-02",
+        "q": "___ justice to something (represent it fairly)",
+        "options": [
+          "make",
+          "do"
+        ],
+        "answer": 1,
+        "why": "“The photo doesn't do justice to the Albufera” = the real place is more beautiful."
+      },
+      {
+        "id": "make-or-do-c1-03",
+        "q": "___ headway (progress against difficulty)",
+        "options": [
+          "make",
+          "do"
+        ],
+        "answer": 0,
+        "why": "Like make progress, but slowly and against difficulty: we're making headway."
+      },
+      {
+        "id": "make-or-do-c1-04",
+        "q": "___ the honours (perform a ceremonial task)",
+        "options": [
+          "make",
+          "do"
+        ],
+        "answer": 1,
+        "why": "Said when someone pours the drinks or cuts the cake: “Will you do the honours?”"
+      },
+      {
+        "id": "make-or-do-c1-05",
+        "q": "___ a fortune (become very rich)",
+        "options": [
+          "make",
+          "do"
+        ],
+        "answer": 0,
+        "why": "Like make money, but much more: some prospectors made a fortune in the gold rush."
+      },
+      {
+        "id": "make-or-do-c1-06",
+        "q": "___ one's duty (fulfil an obligation)",
+        "options": [
+          "make",
+          "do"
+        ],
+        "answer": 1,
+        "why": "Obligations take “do”: the sheriff did his duty and arrested his own brother."
+      },
+      {
+        "id": "make-or-do-c1-07",
+        "q": "___ a scene (cause a public fuss)",
+        "options": [
+          "make",
+          "do"
+        ],
+        "answer": 0,
+        "why": "Make a scene = shout or cry in public; Spanish “montar un número”."
+      },
+      {
+        "id": "make-or-do-c1-08",
+        "q": "___ wonders for something (have a great positive effect)",
+        "options": [
+          "make",
+          "do"
+        ],
+        "answer": 1,
+        "why": "“Do wonders for” = have a very good effect: sea air does wonders for your health."
+      },
+      {
+        "id": "make-or-do-c1-09",
+        "q": "___ a killing (earn a lot of money quickly)",
+        "options": [
+          "make",
+          "do"
+        ],
+        "answer": 0,
+        "why": "Informal and nothing violent: “He made a killing on the property market.”"
+      },
+      {
+        "id": "make-or-do-c1-10",
+        "q": "___ time (serve a prison sentence)",
+        "options": [
+          "make",
+          "do"
+        ],
+        "answer": 1,
+        "why": "Informal: the outlaw did time in Yuma prison before going straight."
+      },
+      {
+        "id": "make-or-do-c1-11",
+        "q": "___ a beeline for (go straight towards)",
+        "options": [
+          "make",
+          "do"
+        ],
+        "answer": 0,
+        "why": "Like a bee flying straight home: at parties he makes a beeline for the food."
+      },
+      {
+        "id": "make-or-do-c1-12",
+        "q": "___ without (manage with nothing)",
+        "options": [
+          "make",
+          "do"
+        ],
+        "answer": 1,
+        "why": "If there's no sugar, we'll do without: we'll manage without it."
+      }
     ]
   }
 }
