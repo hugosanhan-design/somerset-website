@@ -75,7 +75,7 @@ export function recommendGames(progress: Progress): GameRec[] {
       id: 'vocab-match',
       title: 'Vocab Match',
       why,
-      href: '/games/vocab-match.html',
+      href: '/games/vocab-match?level=B1',
       accent: '#6BAE2E',
       time: '1 min',
       icon: '🃏',

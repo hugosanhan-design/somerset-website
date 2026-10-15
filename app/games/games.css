@@ -56,3 +56,17 @@
 .gm-tab{border:1.5px solid var(--line);background:#fff;border-radius:var(--pill);padding:.4rem .8rem;font:600 .9rem var(--sans);color:var(--muted);cursor:pointer}
 .gm-tab.is-on{background:var(--racing);border-color:var(--racing);color:#fff}
 .gm-sheet__rule svg,.gm-explain-btn svg{flex:none}
+/* Games page */
+.gm-hub{width:min(980px,100%)}
+.gm-levelbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.45rem;margin:.4rem 0 1.6rem}
+.gm-levelbar span{font:600 .9rem var(--sans);color:var(--muted);margin-right:.3rem}
+.gm-hub__group{margin:0 0 2rem}
+.gm-hub__head{display:flex;align-items:center;gap:.6rem;font-size:1.45rem;margin:0 0 .8rem}
+.gm-hub__head svg{flex:none}
+.gm-hub__grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.8rem}
+.gm-hub__card{display:flex;flex-direction:column;gap:.35rem;padding:1rem 1.1rem;background:#fff;border:1.5px solid var(--line);border-radius:var(--radius-sm);text-decoration:none;color:var(--ink);transition:transform .15s,box-shadow .15s,border-color .15s;min-height:56px}
+.gm-hub__card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lift);border-color:var(--leaf)}
+.gm-hub__title{font-family:var(--serif);font-size:1.25rem}
+.gm-hub__intro{font-size:.98rem;color:var(--muted);line-height:1.45}
+.gm-hub__meta{display:flex;align-items:center;justify-content:space-between;gap:.5rem;margin-top:auto;padding-top:.3rem;font:600 .82rem var(--sans);color:var(--muted)}
+.gm-hub__es{background:var(--brass-lt);color:#6b4f12;border-radius:var(--pill);padding:.15rem .6rem}

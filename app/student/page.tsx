@@ -18,7 +18,7 @@ const TOOLS: Tool[] = [
   { icon: 'resume', title: 'Continue an exam', desc: 'Started a mock and got cut off? Enter your resume code and carry on from where you left off, on any computer.', href: '/cbt', accent: '#2C4A6E', accentLt: '#eaeff6', tag: 'Exam' },
   { icon: 'register', title: 'Placement quiz', desc: 'A quick adaptive quiz to find your level. For new students.', href: '/intake', accent: '#3E8FB0', accentLt: '#e8f4f9', tag: 'Level' },
   { icon: 'test', title: 'Placement test', desc: 'The longer level test, A1 to C1. Your result goes straight to the centre.', href: '/placement/index.html', accent: '#E8A33D', accentLt: '#fef5e4', tag: 'Level' },
-  { icon: 'game', title: 'English games', desc: 'Grammar sprint, irregular verbs, vocabulary and more. Practise for fun.', href: '/games/index.html', accent: '#4d8520', accentLt: '#eaf4da', tag: 'Practice' },
+  { icon: 'game', title: 'English games', desc: '43 short games: tenses, articles, prepositions, vocabulary and more. About 3 minutes each.', href: '/games', accent: '#4d8520', accentLt: '#eaf4da', tag: 'Practice' },
 ]
 
 // "Your area" links come from the server with an emoji; show the matching Somerset icon.
