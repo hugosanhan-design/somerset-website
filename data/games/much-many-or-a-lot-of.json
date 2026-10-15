@@ -1,421 +1,65 @@
 {
   "id": "much-many-or-a-lot-of",
   "title": "Much, Many or A Lot Of?",
-  "tags": [
-    "agreement",
-    "vocabulary"
-  ],
+  "tags": ["agreement", "vocabulary"],
   "engine": "choice",
   "intro": "Much, many or a lot of? It depends on whether you can count the thing. Pick the one that fits.",
-  "source": "Game — Much Many or A Lot Of.html",
   "items": {
     "A2": [
-      {
-        "id": "much-many-or-a-lot-of-a2-01",
-        "q": "How ___ money do you have?",
-        "options": [
-          "much",
-          "many",
-          "a lot"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "much-many-or-a-lot-of-a2-02",
-        "q": "How ___ books did you buy?",
-        "options": [
-          "many",
-          "much",
-          "a lot of"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "much-many-or-a-lot-of-a2-03",
-        "q": "I don't have ___ time today.",
-        "options": [
-          "much",
-          "many",
-          "a lot"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "much-many-or-a-lot-of-a2-04",
-        "q": "There are ___ students in the class.",
-        "options": [
-          "many",
-          "much",
-          "a lot"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "much-many-or-a-lot-of-a2-05",
-        "q": "She drinks ___ water every day.",
-        "options": [
-          "a lot of",
-          "many",
-          "few"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "much-many-or-a-lot-of-a2-06",
-        "q": "We don't have ___ apples left.",
-        "options": [
-          "many",
-          "much",
-          "a lot"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "much-many-or-a-lot-of-a2-07",
-        "q": "He has ___ homework tonight.",
-        "options": [
-          "a lot of",
-          "many",
-          "few"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "much-many-or-a-lot-of-a2-08",
-        "q": "There isn't ___ sugar in the jar.",
-        "options": [
-          "much",
-          "many",
-          "a lot"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "much-many-or-a-lot-of-a2-09",
-        "q": "I met ___ people at the party.",
-        "options": [
-          "a lot of",
-          "much",
-          "little"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "much-many-or-a-lot-of-a2-10",
-        "q": "How ___ sisters do you have?",
-        "options": [
-          "many",
-          "much",
-          "a lot"
-        ],
-        "answer": 0
-      }
+      {"id": "much-many-or-a-lot-of-a2-01", "q": "How ___ money do you have?", "options": ["much", "many", "a lot"], "answer": 0, "why": "“Money” is uncountable, so questions use “how much”."},
+      {"id": "much-many-or-a-lot-of-a2-02", "q": "How ___ books did you buy?", "options": ["many", "much", "a lot of"], "answer": 0, "why": "“Books” are countable, so questions use “how many”."},
+      {"id": "much-many-or-a-lot-of-a2-03", "q": "I don't have ___ time today.", "options": ["much", "many", "a lot"], "answer": 0, "why": "Uncountable “time” in a negative: “much”. “A lot” would need “of”."},
+      {"id": "much-many-or-a-lot-of-a2-04", "q": "There are ___ students in the class.", "options": ["many", "much", "a lot"], "answer": 0, "why": "Countable plural “students”: “many”. “A lot” would need “of”."},
+      {"id": "much-many-or-a-lot-of-a2-05", "q": "She drinks ___ water every day.", "options": ["a lot of", "many", "few"], "answer": 0, "why": "Uncountable “water” in a positive sentence: “a lot of”."},
+      {"id": "much-many-or-a-lot-of-a2-06", "q": "We don't have ___ apples left.", "options": ["many", "much", "a lot"], "answer": 0, "why": "Countable “apples” in a negative: “many”."},
+      {"id": "much-many-or-a-lot-of-a2-07", "q": "He has ___ homework tonight.", "options": ["a lot of", "many", "few"], "answer": 0, "why": "“Homework” is uncountable, so “a lot of”, not “many”."},
+      {"id": "much-many-or-a-lot-of-a2-08", "q": "There isn't ___ sugar in the jar.", "options": ["much", "many", "a lot"], "answer": 0, "why": "Uncountable “sugar” in a negative: “much”."},
+      {"id": "much-many-or-a-lot-of-a2-09", "q": "I met ___ people at the party.", "options": ["a lot of", "much", "little"], "answer": 0, "why": "“People” is countable plural; in a positive sentence “a lot of” sounds natural."},
+      {"id": "much-many-or-a-lot-of-a2-10", "q": "How ___ sisters do you have?", "options": ["many", "much", "a lot"], "answer": 0, "why": "“Sisters” are countable: “how many”."},
+      {"id": "much-many-or-a-lot-of-a2-11", "q": "How ___ oranges would you like?", "options": ["many", "much", "a lot"], "answer": 0, "why": "“Oranges” are countable: “how many”."},
+      {"id": "much-many-or-a-lot-of-a2-12", "q": "The cowboys didn't have ___ water in the desert.", "options": ["much", "many", "a lot"], "answer": 0, "why": "Uncountable “water” in a negative: “much”."}
     ],
     "B1": [
-      {
-        "id": "much-many-or-a-lot-of-b1-01",
-        "q": "I have ___ friends here — just two or three.",
-        "options": [
-          "a few",
-          "few",
-          "a little"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "much-many-or-a-lot-of-b1-02",
-        "q": "She has ___ friends here — she feels lonely.",
-        "options": [
-          "few",
-          "a few",
-          "a little"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "much-many-or-a-lot-of-b1-03",
-        "q": "There's ___ milk left — enough for one coffee.",
-        "options": [
-          "a little",
-          "little",
-          "a few"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "much-many-or-a-lot-of-b1-04",
-        "q": "There's ___ hope of finding survivors.",
-        "options": [
-          "little",
-          "a little",
-          "few"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "much-many-or-a-lot-of-b1-05",
-        "q": "Could you give me ___ advice?",
-        "options": [
-          "a little",
-          "a few",
-          "few"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "much-many-or-a-lot-of-b1-06",
-        "q": "___ people showed up — the room was almost empty.",
-        "options": [
-          "Few",
-          "A few",
-          "Much"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "much-many-or-a-lot-of-b1-07",
-        "q": "We have ___ time before the train leaves — let's hurry.",
-        "options": [
-          "little",
-          "a little",
-          "many"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "much-many-or-a-lot-of-b1-08",
-        "q": "I'd like ___ sugar in my tea, please.",
-        "options": [
-          "a little",
-          "a few",
-          "little"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "much-many-or-a-lot-of-b1-09",
-        "q": "___ of the students passed the exam — most failed.",
-        "options": [
-          "Few",
-          "A few",
-          "Little"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "much-many-or-a-lot-of-b1-10",
-        "q": "Add ___ salt to the soup — just a pinch.",
-        "options": [
-          "a little",
-          "a few",
-          "much"
-        ],
-        "answer": 0
-      }
+      {"id": "much-many-or-a-lot-of-b1-01", "q": "I have ___ friends here — just two or three.", "options": ["a few", "few", "a little"], "answer": 0, "why": "“Just two or three” is a small but positive number: “a few”."},
+      {"id": "much-many-or-a-lot-of-b1-02", "q": "She has ___ friends here — she feels lonely.", "options": ["few", "a few", "a little"], "answer": 0, "why": "“Lonely” is the clue: “few” means not enough."},
+      {"id": "much-many-or-a-lot-of-b1-03", "q": "There's ___ milk left — enough for one coffee.", "options": ["a little", "little", "a few"], "answer": 0, "why": "Uncountable and “enough” is the clue: “a little” is positive."},
+      {"id": "much-many-or-a-lot-of-b1-04", "q": "There's ___ hope of finding survivors now — it's been ten days.", "options": ["little", "a little", "few"], "answer": 0, "why": "“Ten days” makes it sad news: “little” means almost none."},
+      {"id": "much-many-or-a-lot-of-b1-05", "q": "Could you give me ___ advice?", "options": ["a little", "a few", "few"], "answer": 0, "why": "“Advice” is uncountable, and you want some: “a little”."},
+      {"id": "much-many-or-a-lot-of-b1-06", "q": "___ people showed up — the room was almost empty.", "options": ["Few", "A few", "Much"], "answer": 0, "why": "“Almost empty” is the clue: “few” means hardly any."},
+      {"id": "much-many-or-a-lot-of-b1-07", "q": "We have ___ time before the train leaves — let's hurry.", "options": ["little", "a little", "many"], "answer": 0, "why": "“Let's hurry” is the clue: “little” means not enough."},
+      {"id": "much-many-or-a-lot-of-b1-08", "q": "I'd like ___ sugar in my tea, please.", "options": ["a little", "a few", "little"], "answer": 0, "why": "Uncountable “sugar”, and you want some: “a little”."},
+      {"id": "much-many-or-a-lot-of-b1-09", "q": "___ of the students passed the exam — most failed.", "options": ["Few", "A few", "Little"], "answer": 0, "why": "“Most failed” is the clue: “few” means hardly any."},
+      {"id": "much-many-or-a-lot-of-b1-10", "q": "Add ___ salt to the soup — just a pinch.", "options": ["a little", "a few", "much"], "answer": 0, "why": "Uncountable “salt”, a small amount: “a little”."},
+      {"id": "much-many-or-a-lot-of-b1-11", "q": "There were ___ doctors in the Wild West, so people often treated themselves.", "options": ["few", "a few", "little"], "answer": 0, "why": "“So people treated themselves” shows there weren't enough: “few”."},
+      {"id": "much-many-or-a-lot-of-b1-12", "q": "I've got ___ euros left — enough for a coffee.", "options": ["a few", "a little", "few"], "answer": 0, "why": "Countable “euros” and “enough” is the clue: “a few”."}
     ],
     "B2": [
-      {
-        "id": "much-many-or-a-lot-of-b2-01",
-        "q": "There's ___ time — no need to rush.",
-        "options": [
-          "plenty of",
-          "a great deal",
-          "a number"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "much-many-or-a-lot-of-b2-02",
-        "q": "A great ___ of research supports this theory.",
-        "options": [
-          "deal",
-          "number",
-          "plenty"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "much-many-or-a-lot-of-b2-03",
-        "q": "A ___ of complaints were received.",
-        "options": [
-          "number",
-          "great deal",
-          "plenty"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "much-many-or-a-lot-of-b2-04",
-        "q": "The project required a great ___ of patience.",
-        "options": [
-          "deal",
-          "number",
-          "plenty"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "much-many-or-a-lot-of-b2-05",
-        "q": "We have ___ of options to choose from.",
-        "options": [
-          "plenty",
-          "a great deal",
-          "a number"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "much-many-or-a-lot-of-b2-06",
-        "q": "A ___ of the votes went to the new candidate.",
-        "options": [
-          "majority",
-          "plenty",
-          "deal"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "much-many-or-a-lot-of-b2-07",
-        "q": "There's a ___ of evidence against him.",
-        "options": [
-          "great deal",
-          "plenty",
-          "number"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "much-many-or-a-lot-of-b2-08",
-        "q": "___ of people attended the rally.",
-        "options": [
-          "A number",
-          "A great deal",
-          "Plenty"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "much-many-or-a-lot-of-b2-09",
-        "q": "She spends a great deal ___ time reading.",
-        "options": [
-          "of",
-          "with",
-          "in"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "much-many-or-a-lot-of-b2-10",
-        "q": "A small ___ of students disagreed.",
-        "options": [
-          "number",
-          "deal",
-          "plenty"
-        ],
-        "answer": 0
-      }
+      {"id": "much-many-or-a-lot-of-b2-01", "q": "There's ___ time — no need to rush.", "options": ["plenty of", "a great deal", "a number"], "answer": 0, "why": "“No need to rush” means more than enough: “plenty of”."},
+      {"id": "much-many-or-a-lot-of-b2-02", "q": "A great ___ of research supports this theory.", "options": ["deal", "number", "plenty"], "answer": 0, "why": "Uncountable “research” takes “a great deal of”."},
+      {"id": "much-many-or-a-lot-of-b2-03", "q": "A ___ of complaints were received.", "options": ["number", "great deal", "plenty"], "answer": 0, "why": "Countable “complaints” takes “a number of”, with a plural verb."},
+      {"id": "much-many-or-a-lot-of-b2-04", "q": "The project required a great ___ of patience.", "options": ["deal", "number", "plenty"], "answer": 0, "why": "Uncountable “patience” takes “a great deal of”."},
+      {"id": "much-many-or-a-lot-of-b2-05", "q": "We have ___ of options to choose from.", "options": ["plenty", "a great deal", "a number"], "answer": 0, "why": "“Plenty of” works with countable and uncountable nouns; the others need “a”."},
+      {"id": "much-many-or-a-lot-of-b2-06", "q": "A ___ of the votes went to the new candidate.", "options": ["majority", "plenty", "deal"], "answer": 0, "why": "“A majority of” means more than half."},
+      {"id": "much-many-or-a-lot-of-b2-07", "q": "There's a ___ of evidence against him.", "options": ["great deal", "plenty", "number"], "answer": 0, "why": "Uncountable “evidence” takes “a great deal of”."},
+      {"id": "much-many-or-a-lot-of-b2-08", "q": "___ of people attended the rally.", "options": ["A number", "A great deal", "Much"], "answer": 0, "why": "Countable “people” takes “a number of”; “a great deal” is for uncountables."},
+      {"id": "much-many-or-a-lot-of-b2-09", "q": "She spends a great deal ___ time reading.", "options": ["of", "with", "in"], "answer": 0, "why": "The phrase is always “a great deal of”."},
+      {"id": "much-many-or-a-lot-of-b2-10", "q": "A small ___ of students disagreed.", "options": ["number", "deal", "plenty"], "answer": 0, "why": "Countable “students”: “a small number of”."},
+      {"id": "much-many-or-a-lot-of-b2-11", "q": "There's been a great ___ of rain in Valencia this autumn.", "options": ["deal", "number", "plenty"], "answer": 0, "why": "Uncountable “rain” takes “a great deal of”."},
+      {"id": "much-many-or-a-lot-of-b2-12", "q": "A large ___ of cattle were driven north from Texas.", "options": ["number", "deal", "plenty"], "answer": 0, "why": "“Cattle” is a plural noun, so “a large number of”."}
     ],
     "C1": [
-      {
-        "id": "much-many-or-a-lot-of-c1-01",
-        "q": "The report offers ___ of information on the topic.",
-        "options": [
-          "a wealth",
-          "a dearth",
-          "a fraction"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "much-many-or-a-lot-of-c1-02",
-        "q": "There is ___ of reliable data on this issue.",
-        "options": [
-          "a dearth",
-          "a wealth",
-          "plenty"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "much-many-or-a-lot-of-c1-03",
-        "q": "He earns only ___ of what she does.",
-        "options": [
-          "a fraction",
-          "a wealth",
-          "a dearth"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "much-many-or-a-lot-of-c1-04",
-        "q": "The team produced ___ notes during the meeting.",
-        "options": [
-          "copious",
-          "ample",
-          "scarce"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "much-many-or-a-lot-of-c1-05",
-        "q": "There's ___ of talented candidates this year.",
-        "options": [
-          "no shortage",
-          "a dearth",
-          "a fraction"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "much-many-or-a-lot-of-c1-06",
-        "q": "The museum holds ___ of rare artefacts.",
-        "options": [
-          "an abundance",
-          "a dearth",
-          "a fraction"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "much-many-or-a-lot-of-c1-07",
-        "q": "___ evidence exists to support the claim.",
-        "options": [
-          "Ample",
-          "Scarce",
-          "Fractional"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "much-many-or-a-lot-of-c1-08",
-        "q": "Resources are ___ in this remote region.",
-        "options": [
-          "scarce",
-          "ample",
-          "copious"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "much-many-or-a-lot-of-c1-09",
-        "q": "The archive contains ___ historical documents.",
-        "options": [
-          "a wealth of",
-          "a dearth of",
-          "a fraction of"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "much-many-or-a-lot-of-c1-10",
-        "q": "Given the ___ of funding, the project was cancelled.",
-        "options": [
-          "dearth",
-          "wealth",
-          "abundance"
-        ],
-        "answer": 0
-      }
+      {"id": "much-many-or-a-lot-of-c1-01", "q": "The report offers ___ of information on the topic.", "options": ["a wealth", "a dearth", "a fraction"], "answer": 0, "why": "“Offers” is positive: “a wealth of” means a large, rich amount."},
+      {"id": "much-many-or-a-lot-of-c1-02", "q": "There is ___ of reliable data on this issue.", "options": ["a dearth", "a wealth", "plenty"], "answer": 0, "why": "“There is plenty of” has no “a”, so only “a dearth of” (a lack) fits."},
+      {"id": "much-many-or-a-lot-of-c1-03", "q": "He earns only ___ of what she does.", "options": ["a fraction", "a wealth", "a dearth"], "answer": 0, "why": "“Only” is the clue: “a fraction of” means a small part."},
+      {"id": "much-many-or-a-lot-of-c1-04", "q": "The team produced ___ notes during the meeting.", "options": ["copious", "ample", "scarce"], "answer": 0, "why": "“Copious notes” is the natural collocation: a lot of them."},
+      {"id": "much-many-or-a-lot-of-c1-05", "q": "There's ___ of talented candidates this year.", "options": ["no shortage", "a dearth", "a fraction"], "answer": 0, "why": "“No shortage of” means plenty; “talented” keeps the tone positive."},
+      {"id": "much-many-or-a-lot-of-c1-06", "q": "The museum holds ___ of rare artefacts.", "options": ["an abundance", "a dearth", "a fraction"], "answer": 0, "why": "A museum “holds” a lot: “an abundance of”."},
+      {"id": "much-many-or-a-lot-of-c1-07", "q": "___ evidence exists to support the claim, so the court accepted it.", "options": ["Ample", "Scarce", "Fractional"], "answer": 0, "why": "“The court accepted it” shows there was enough: “ample”."},
+      {"id": "much-many-or-a-lot-of-c1-08", "q": "Resources are ___ in this remote region.", "options": ["scarce", "ample", "copious"], "answer": 0, "why": "“Remote” is the clue: “scarce” means hard to find."},
+      {"id": "much-many-or-a-lot-of-c1-09", "q": "The archive contains ___ historical documents.", "options": ["a wealth of", "a dearth of", "a fraction of"], "answer": 0, "why": "An archive “contains” many documents: “a wealth of”."},
+      {"id": "much-many-or-a-lot-of-c1-10", "q": "Given the ___ of funding, the project was cancelled.", "options": ["dearth", "wealth", "abundance"], "answer": 0, "why": "“Cancelled” shows money was missing: “dearth” means a lack."},
+      {"id": "much-many-or-a-lot-of-c1-11", "q": "Valencia enjoys ___ of sunshine all year round.", "options": ["an abundance", "a dearth", "a fraction"], "answer": 0, "why": "“Enjoys” is positive: “an abundance of” sunshine."},
+      {"id": "much-many-or-a-lot-of-c1-12", "q": "Early surgeons worked with only a ___ of the tools doctors have today.", "options": ["fraction", "wealth", "dearth"], "answer": 0, "why": "“Only” is the clue: “a fraction of” means a small part."}
     ]
   }
 }

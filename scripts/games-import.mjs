@@ -77,6 +77,10 @@ const SKIP = new Set([
   'idiom-orchard', 'ladder-of-nice', 'make-or-do', 'phrasal-verb-farm', 'preposition-orchard',
   'same-verb-different-particle', 'strong-collocations', 'the-uncountable-larder', 'very-plus-adjective-killer',
   'vocab-match', 'word-family-tree',
+  // The 15 quick-fire games, taken over the same way (15 Oct 2026).
+  'article-allotment', 'because-so-or-although', 'future-forms-fair', 'grammar-sprint', 'idiom-or-nonsense',
+  'if-only', 'in-on-at', 'irregular-verb-dash', 'modal-meadow', 'much-many-or-a-lot-of',
+  'prefix-and-suffix-workshop', 'question-tag-tavern', 'reported-speech-relay', 'time-traveller', 'weather-idiom-almanac',
 ])
 
 // Portal intros: one or two calm sentences that say what the student practises.

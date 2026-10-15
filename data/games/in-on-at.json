@@ -1,420 +1,65 @@
 {
   "id": "in-on-at",
   "title": "In, On or At?",
-  "tags": [
-    "preposition"
-  ],
+  "tags": ["preposition"],
   "engine": "choice",
   "intro": "At seven, on Monday, in May. Pick the preposition of time or place each sentence needs.",
-  "source": "Game — In On At.html",
   "items": {
     "A2": [
-      {
-        "id": "in-on-at-a2-01",
-        "q": "I wake up ___ 7 o'clock.",
-        "options": [
-          "at",
-          "in",
-          "on"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "in-on-at-a2-02",
-        "q": "My birthday is ___ May.",
-        "options": [
-          "in",
-          "on",
-          "at"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "in-on-at-a2-03",
-        "q": "We meet ___ Mondays.",
-        "options": [
-          "on",
-          "in",
-          "at"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "in-on-at-a2-04",
-        "q": "She lives ___ Madrid.",
-        "options": [
-          "in",
-          "on",
-          "at"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "in-on-at-a2-05",
-        "q": "The book is ___ the table.",
-        "options": [
-          "on",
-          "in",
-          "at"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "in-on-at-a2-06",
-        "q": "He works ___ night.",
-        "options": [
-          "at",
-          "in",
-          "on"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "in-on-at-a2-07",
-        "q": "I was born ___ 1998.",
-        "options": [
-          "in",
-          "on",
-          "at"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "in-on-at-a2-08",
-        "q": "We arrived ___ the airport.",
-        "options": [
-          "at",
-          "in",
-          "on"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "in-on-at-a2-09",
-        "q": "The keys are ___ my bag.",
-        "options": [
-          "in",
-          "on",
-          "at"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "in-on-at-a2-10",
-        "q": "See you ___ the weekend!",
-        "options": [
-          "at",
-          "in",
-          "on"
-        ],
-        "answer": 0
-      }
+      {"id": "in-on-at-a2-01", "q": "I wake up ___ 7 o'clock.", "options": ["at", "in", "on"], "answer": 0, "why": "Clock times take “at”."},
+      {"id": "in-on-at-a2-02", "q": "My birthday is ___ May.", "options": ["in", "on", "at"], "answer": 0, "why": "Months take “in”."},
+      {"id": "in-on-at-a2-03", "q": "We meet ___ Mondays.", "options": ["on", "in", "at"], "answer": 0, "why": "Days of the week take “on”."},
+      {"id": "in-on-at-a2-04", "q": "She lives ___ Madrid.", "options": ["in", "on", "at"], "answer": 0, "why": "Cities and countries take “in”."},
+      {"id": "in-on-at-a2-05", "q": "The book is ___ the table.", "options": ["on", "in", "at"], "answer": 0, "why": "Touching a surface: “on”."},
+      {"id": "in-on-at-a2-06", "q": "He works ___ night.", "options": ["at", "in", "on"], "answer": 0, "why": "Fixed phrase “at night”, but “in the morning”."},
+      {"id": "in-on-at-a2-07", "q": "I was born ___ 1998.", "options": ["in", "on", "at"], "answer": 0, "why": "Years take “in”."},
+      {"id": "in-on-at-a2-08", "q": "We arrived ___ the airport.", "options": ["at", "in", "on"], "answer": 0, "why": "“Arrive at” a building or point like an airport or station."},
+      {"id": "in-on-at-a2-09", "q": "The keys are ___ my bag.", "options": ["in", "on", "at"], "answer": 0, "why": "Inside a container: “in”."},
+      {"id": "in-on-at-a2-10", "q": "See you ___ Saturday morning!", "options": ["on", "in", "at"], "answer": 0, "why": "A day, even with morning added, takes “on”: on Saturday morning."},
+      {"id": "in-on-at-a2-11", "q": "The cowboys sat round the fire ___ sunset.", "options": ["at", "in", "on"], "answer": 0, "why": "A point in the day like sunset, noon or midnight takes “at”."},
+      {"id": "in-on-at-a2-12", "q": "The Fallas finish ___ 19 March.", "options": ["on", "in", "at"], "answer": 0, "why": "Dates take “on”, but a month alone takes “in”."}
     ],
     "B1": [
-      {
-        "id": "in-on-at-b1-01",
-        "q": "I'll see you ___ Christmas Day.",
-        "options": [
-          "on",
-          "in",
-          "at"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "in-on-at-b1-02",
-        "q": "The shop is ___ the corner of the street.",
-        "options": [
-          "on",
-          "in",
-          "at"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "in-on-at-b1-03",
-        "q": "She's ___ home this evening.",
-        "options": [
-          "at",
-          "in",
-          "on"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "in-on-at-b1-04",
-        "q": "We're going ___ holiday next week.",
-        "options": [
-          "on",
-          "in",
-          "at"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "in-on-at-b1-05",
-        "q": "He's good ___ maths.",
-        "options": [
-          "at",
-          "in",
-          "on"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "in-on-at-b1-06",
-        "q": "The meeting is ___ the morning.",
-        "options": [
-          "in",
-          "on",
-          "at"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "in-on-at-b1-07",
-        "q": "I read the news ___ the internet.",
-        "options": [
-          "on",
-          "in",
-          "at"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "in-on-at-b1-08",
-        "q": "They live ___ the countryside.",
-        "options": [
-          "in",
-          "on",
-          "at"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "in-on-at-b1-09",
-        "q": "We arrived ___ the same time.",
-        "options": [
-          "at",
-          "in",
-          "on"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "in-on-at-b1-10",
-        "q": "She's interested ___ art.",
-        "options": [
-          "in",
-          "on",
-          "at"
-        ],
-        "answer": 0
-      }
+      {"id": "in-on-at-b1-01", "q": "I'll see you ___ Christmas Day.", "options": ["on", "in", "at"], "answer": 0, "why": "A single day takes “on”, while the season is “at Christmas”."},
+      {"id": "in-on-at-b1-02", "q": "The shop is ___ the ground floor.", "options": ["on", "in", "at"], "answer": 0, "why": "Floors of a building take “on”."},
+      {"id": "in-on-at-b1-03", "q": "She's ___ home this evening.", "options": ["at", "in", "on"], "answer": 0, "why": "Fixed phrase “at home”, never “in home”."},
+      {"id": "in-on-at-b1-04", "q": "We're going ___ holiday next week.", "options": ["on", "in", "at"], "answer": 0, "why": "Fixed phrase “on holiday”, unlike Spanish “de vacaciones”."},
+      {"id": "in-on-at-b1-05", "q": "He's good ___ maths.", "options": ["at", "in", "on"], "answer": 0, "why": "“Good at” a subject or skill."},
+      {"id": "in-on-at-b1-06", "q": "The meeting is ___ the morning.", "options": ["in", "on", "at"], "answer": 0, "why": "Parts of the day take “in”: in the morning, in the afternoon."},
+      {"id": "in-on-at-b1-07", "q": "I read the news ___ the internet.", "options": ["on", "in", "at"], "answer": 0, "why": "“On the internet”, like “on the radio” and “on TV”."},
+      {"id": "in-on-at-b1-08", "q": "They live ___ the countryside.", "options": ["in", "on", "at"], "answer": 0, "why": "“In the countryside”, as in “in the city”."},
+      {"id": "in-on-at-b1-09", "q": "We arrived ___ the same time.", "options": ["at", "in", "on"], "answer": 0, "why": "Fixed phrase “at the same time”."},
+      {"id": "in-on-at-b1-10", "q": "She's interested ___ art.", "options": ["in", "on", "at"], "answer": 0, "why": "“Interested in” something, never “interested on”."},
+      {"id": "in-on-at-b1-11", "q": "Many shops close ___ lunchtime in Valencia.", "options": ["at", "in", "on"], "answer": 0, "why": "Mealtimes as points in the day take “at”: at lunchtime."},
+      {"id": "in-on-at-b1-12", "q": "John Snow mapped the cholera outbreak ___ 1854.", "options": ["in", "on", "at"], "answer": 0, "why": "Years take “in”."}
     ],
     "B2": [
-      {
-        "id": "in-on-at-b2-01",
-        "q": "He's ___ the verge of a breakthrough.",
-        "options": [
-          "on",
-          "in",
-          "at"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "in-on-at-b2-02",
-        "q": "The company is ___ the process of restructuring.",
-        "options": [
-          "in",
-          "on",
-          "at"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "in-on-at-b2-03",
-        "q": "She's ___ risk of losing her job.",
-        "options": [
-          "at",
-          "in",
-          "on"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "in-on-at-b2-04",
-        "q": "We're ___ the middle of a meeting.",
-        "options": [
-          "in",
-          "on",
-          "at"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "in-on-at-b2-05",
-        "q": "The book is ___ demand at the library.",
-        "options": [
-          "in",
-          "on",
-          "at"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "in-on-at-b2-06",
-        "q": "He's ___ duty this weekend.",
-        "options": [
-          "on",
-          "in",
-          "at"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "in-on-at-b2-07",
-        "q": "They're ___ good terms with the neighbours.",
-        "options": [
-          "on",
-          "in",
-          "at"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "in-on-at-b2-08",
-        "q": "She's ___ charge of the whole department.",
-        "options": [
-          "in",
-          "on",
-          "at"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "in-on-at-b2-09",
-        "q": "We're ___ a loss for words.",
-        "options": [
-          "at",
-          "in",
-          "on"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "in-on-at-b2-10",
-        "q": "He's ___ the point of giving up.",
-        "options": [
-          "on",
-          "in",
-          "at"
-        ],
-        "answer": 0
-      }
+      {"id": "in-on-at-b2-01", "q": "He's ___ the verge of a breakthrough.", "options": ["on", "in", "at"], "answer": 0, "why": "Fixed phrase “on the verge of”: very close to."},
+      {"id": "in-on-at-b2-02", "q": "The company is ___ the process of restructuring.", "options": ["in", "on", "at"], "answer": 0, "why": "Fixed phrase “in the process of” doing something."},
+      {"id": "in-on-at-b2-03", "q": "She's ___ risk of losing her job.", "options": ["at", "in", "on"], "answer": 0, "why": "Fixed phrase “at risk of” something bad."},
+      {"id": "in-on-at-b2-04", "q": "We're ___ the middle of a meeting.", "options": ["in", "on", "at"], "answer": 0, "why": "Fixed phrase “in the middle of”."},
+      {"id": "in-on-at-b2-05", "q": "The book is ___ great demand at the library.", "options": ["in", "on", "at"], "answer": 0, "why": "“In demand” means many people want it."},
+      {"id": "in-on-at-b2-06", "q": "He's ___ duty this weekend.", "options": ["on", "in", "at"], "answer": 0, "why": "Fixed phrase “on duty”: working at your post."},
+      {"id": "in-on-at-b2-07", "q": "They're ___ good terms with the neighbours.", "options": ["on", "in", "at"], "answer": 0, "why": "Fixed phrase “on good terms with” someone."},
+      {"id": "in-on-at-b2-08", "q": "She's ___ charge of the whole department.", "options": ["in", "on", "at"], "answer": 0, "why": "Fixed phrase “in charge of”: responsible for."},
+      {"id": "in-on-at-b2-09", "q": "We're ___ a loss for words.", "options": ["at", "in", "on"], "answer": 0, "why": "Fixed phrase “at a loss for words”: we don't know what to say."},
+      {"id": "in-on-at-b2-10", "q": "He broke the window ___ purpose.", "options": ["on", "in", "at"], "answer": 0, "why": "Fixed phrase “on purpose”: deliberately."},
+      {"id": "in-on-at-b2-11", "q": "The sheriff arrived ___ the nick of time.", "options": ["in", "on", "at"], "answer": 0, "why": "Fixed phrase “in the nick of time”: just before it was too late."},
+      {"id": "in-on-at-b2-12", "q": "The outlaw was ___ the run for six months.", "options": ["on", "in", "at"], "answer": 0, "why": "Fixed phrase “on the run”: escaping from the law."}
     ],
     "C1": [
-      {
-        "id": "in-on-at-c1-01",
-        "q": "The negotiations are ___ a standstill.",
-        "options": [
-          "at",
-          "in",
-          "on"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "in-on-at-c1-02",
-        "q": "She's ___ the forefront of the research.",
-        "options": [
-          "at",
-          "in",
-          "on"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "in-on-at-c1-03",
-        "q": "The economy is ___ a downturn.",
-        "options": [
-          "in",
-          "on",
-          "at"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "in-on-at-c1-04",
-        "q": "He's ___ odds with his colleagues.",
-        "options": [
-          "at",
-          "in",
-          "on"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "in-on-at-c1-05",
-        "q": "The proposal is ___ line with our objectives.",
-        "options": [
-          "in",
-          "on",
-          "at"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "in-on-at-c1-06",
-        "q": "We're ___ the brink of a major discovery.",
-        "options": [
-          "on",
-          "in",
-          "at"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "in-on-at-c1-07",
-        "q": "She's ___ the helm of the company.",
-        "options": [
-          "at",
-          "in",
-          "on"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "in-on-at-c1-08",
-        "q": "The decision is ___ the balance.",
-        "options": [
-          "in",
-          "on",
-          "at"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "in-on-at-c1-09",
-        "q": "He remained silent ___ principle.",
-        "options": [
-          "on",
-          "in",
-          "at"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "in-on-at-c1-10",
-        "q": "The team is ___ full strength this season.",
-        "options": [
-          "at",
-          "in",
-          "on"
-        ],
-        "answer": 0
-      }
+      {"id": "in-on-at-c1-01", "q": "The negotiations are ___ a standstill.", "options": ["at", "in", "on"], "answer": 0, "why": "Fixed phrase “at a standstill”: not moving at all."},
+      {"id": "in-on-at-c1-02", "q": "After weeks of noise, she was ___ her wits' end.", "options": ["at", "in", "on"], "answer": 0, "why": "Fixed phrase “at your wits' end”: so worried you don't know what to do."},
+      {"id": "in-on-at-c1-03", "q": "The economy is ___ a downturn.", "options": ["in", "on", "at"], "answer": 0, "why": "A state or situation takes “in”: in a downturn, in a crisis."},
+      {"id": "in-on-at-c1-04", "q": "He's ___ odds with his colleagues.", "options": ["at", "in", "on"], "answer": 0, "why": "Fixed phrase “at odds with”: in disagreement."},
+      {"id": "in-on-at-c1-05", "q": "The proposal is ___ line with our objectives.", "options": ["in", "on", "at"], "answer": 0, "why": "Fixed phrase “in line with”: matching."},
+      {"id": "in-on-at-c1-06", "q": "We're ___ the brink of a major discovery.", "options": ["on", "in", "at"], "answer": 0, "why": "Fixed phrase “on the brink of”: about to happen."},
+      {"id": "in-on-at-c1-07", "q": "She's ___ the helm of the company.", "options": ["at", "in", "on"], "answer": 0, "why": "Fixed phrase “at the helm”: in control, like a ship's captain."},
+      {"id": "in-on-at-c1-08", "q": "The decision is ___ the balance.", "options": ["in", "on", "at"], "answer": 0, "why": "Fixed phrase “in the balance”: not yet decided."},
+      {"id": "in-on-at-c1-09", "q": "He remained silent ___ principle.", "options": ["on", "in", "at"], "answer": 0, "why": "“On principle” means because of your beliefs; “in principle” means in theory."},
+      {"id": "in-on-at-c1-10", "q": "The team is ___ full strength this season.", "options": ["at", "in", "on"], "answer": 0, "why": "Fixed phrase “at full strength”: with all its players."},
+      {"id": "in-on-at-c1-11", "q": "The old surgeon was ___ his element in the operating theatre.", "options": ["in", "on", "at"], "answer": 0, "why": "Fixed phrase “in your element”: doing what you do best."},
+      {"id": "in-on-at-c1-12", "q": "The town was ___ the mercy of the outlaws.", "options": ["at", "in", "on"], "answer": 0, "why": "Fixed phrase “at the mercy of”: with no protection from."}
     ]
   }
 }
