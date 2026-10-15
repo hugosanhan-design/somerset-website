@@ -1,381 +1,65 @@
 {
   "id": "punctuation-repair",
   "title": "Punctuation Repair",
-  "tags": [
-    "punctuation"
-  ],
+  "tags": ["punctuation"],
   "engine": "choice",
   "intro": "Commas, apostrophes and capitals: the details Cambridge examiners actually mark.",
-  "source": "Game — Punctuation Repair.html",
-  "draft": true,
   "items": {
     "A2": [
-      {
-        "id": "punctuation-repair-a2-01",
-        "q": "Capitals and commas — which is correct?",
-        "options": [
-          "My name is Ana, and I live in Valencia.",
-          "my name is Ana and i live in valencia",
-          "My name is Ana and, I live in Valencia."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "punctuation-repair-a2-02",
-        "q": "Apostrophes — which is correct?",
-        "options": [
-          "It's Monday.",
-          "Its Monday.",
-          "its monday."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "punctuation-repair-a2-03",
-        "q": "Lists — which is correct?",
-        "options": [
-          "I like apples, oranges and bananas.",
-          "I like apples oranges and bananas.",
-          "I like, apples, oranges and bananas."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "punctuation-repair-a2-04",
-        "q": "Questions — which is correct?",
-        "options": [
-          "Where are you from?",
-          "Where are you from.",
-          "where are you from?"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "punctuation-repair-a2-05",
-        "q": "Apostrophes — which is correct?",
-        "options": [
-          "She doesn't like coffee.",
-          "She doesnt like coffee.",
-          "She dose'nt like coffee."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "punctuation-repair-a2-06",
-        "q": "Capitals — which is correct?",
-        "options": [
-          "We went to Madrid in April.",
-          "we went to madrid in april.",
-          "We went to madrid in April."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "punctuation-repair-a2-07",
-        "q": "Possessives — which is correct?",
-        "options": [
-          "My brother's car is red.",
-          "My brothers car is red.",
-          "My brothers' car is red. (one brother)"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "punctuation-repair-a2-08",
-        "q": "Short answers — which is correct?",
-        "options": [
-          "Yes, I do.",
-          "Yes I do",
-          "yes, I do."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "punctuation-repair-a2-09",
-        "q": "they're / their / there — which is correct?",
-        "options": [
-          "They're at home.",
-          "Their at home.",
-          "There at home."
-        ],
-        "answer": 0
-      }
+      { "id": "punctuation-repair-a2-01", "q": "Capitals and commas — which is correct?", "options": ["My name is Ana, and I live in Valencia.", "my name is Ana and i live in valencia", "My name is Ana and, I live in Valencia."], "answer": 0, "why": "Names, places and the sentence start need capitals; a comma before “and” joins the two ideas." },
+      { "id": "punctuation-repair-a2-02", "q": "Apostrophes — which is correct?", "options": ["It's Monday.", "Its Monday.", "its monday."], "answer": 0, "why": "“It's” = “it is”, and days of the week always start with a capital." },
+      { "id": "punctuation-repair-a2-03", "q": "Lists — which is correct?", "options": ["I like apples, oranges and bananas.", "I like apples oranges and bananas.", "I like, apples, oranges and bananas."], "answer": 0, "why": "Commas between the items, “and” before the last one, and no comma after the verb." },
+      { "id": "punctuation-repair-a2-04", "q": "Questions — which is correct?", "options": ["Where are you from?", "Where are you from.", "where are you from?"], "answer": 0, "why": "A question starts with a capital and ends with a question mark." },
+      { "id": "punctuation-repair-a2-05", "q": "Apostrophes — which is correct?", "options": ["She doesn't like coffee.", "She doesnt like coffee.", "She dose'nt like coffee."], "answer": 0, "why": "“Doesn't” = “does not”: the apostrophe replaces the “o”." },
+      { "id": "punctuation-repair-a2-06", "q": "Capitals — which is correct?", "options": ["We went to Madrid in April.", "we went to madrid in april.", "We went to madrid in April."], "answer": 0, "why": "Cities and months take capitals in English, unlike Spanish." },
+      { "id": "punctuation-repair-a2-07", "q": "Possessives (one brother) — which is correct?", "options": ["My brother's car is red.", "My brothers car is red.", "My brothers' car is red."], "answer": 0, "why": "One brother owns the car: brother + 's." },
+      { "id": "punctuation-repair-a2-08", "q": "Short answers — which is correct?", "options": ["Yes, I do.", "Yes I do", "yes, I do."], "answer": 0, "why": "A capital at the start, a comma after “Yes”, and a full stop at the end." },
+      { "id": "punctuation-repair-a2-09", "q": "they're / their / there — which is correct?", "options": ["They're at home.", "Their at home.", "There at home."], "answer": 0, "why": "“They're” = “they are”. “Their” shows ownership; “there” is a place." },
+      { "id": "punctuation-repair-a2-10", "q": "Capitals — which is correct?", "options": ["My doctor is from Seville.", "my doctor is from seville.", "My doctor is from seville."], "answer": 0, "why": "Start the sentence with a capital; city names always take one too." },
+      { "id": "punctuation-repair-a2-11", "q": "Questions — which is correct?", "options": ["Is the sheriff in town?", "Is the sheriff in town.", "is the sheriff in town?"], "answer": 0, "why": "A question starts with a capital and ends with a question mark." },
+      { "id": "punctuation-repair-a2-12", "q": "Apostrophes — which is correct?", "options": ["We aren't hungry.", "We arent hungry.", "We are'nt hungry."], "answer": 0, "why": "“Aren't” = “are not”; the apostrophe goes where the “o” was." }
     ],
     "B1": [
-      {
-        "id": "punctuation-repair-b1-01",
-        "q": "Conditionals — which is correct?",
-        "options": [
-          "If it rains, we'll stay in.",
-          "If it rains we'll stay in.",
-          "If it rains, well stay in."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "punctuation-repair-b1-02",
-        "q": "Relative clauses — which is correct?",
-        "options": [
-          "London, which is huge, is expensive.",
-          "London which is huge is expensive.",
-          "London, which is huge is expensive."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "punctuation-repair-b1-03",
-        "q": "Direct speech — which is correct?",
-        "options": [
-          "“I'm tired,” she said.",
-          "“I'm tired” she said.",
-          "“Im tired,” she said."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "punctuation-repair-b1-04",
-        "q": "it's / its — which is correct?",
-        "options": [
-          "It's been years since we met.",
-          "Its been years since we met.",
-          "It's been year's since we met."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "punctuation-repair-b1-05",
-        "q": "Possessives — which is correct?",
-        "options": [
-          "The children's toys are everywhere.",
-          "The childrens' toys are everywhere.",
-          "The childrens toys are everywhere."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "punctuation-repair-b1-06",
-        "q": "Linking words — which is correct?",
-        "options": [
-          "However, I disagree.",
-          "However I disagree.",
-          "However; I disagree."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "punctuation-repair-b1-07",
-        "q": "Lists — which is correct?",
-        "options": [
-          "She likes cooking, reading and swimming.",
-          "She likes cooking reading and swimming.",
-          "She likes, cooking, reading and swimming."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "punctuation-repair-b1-08",
-        "q": "whose / who's — which is correct?",
-        "options": [
-          "Whose bag is this?",
-          "Who's bag is this?",
-          "Whose bag is this."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "punctuation-repair-b1-09",
-        "q": "Joining sentences — which is correct?",
-        "options": [
-          "I can't come; I'm working late.",
-          "I can't come, I'm working late.",
-          "I cant come; I'm working late."
-        ],
-        "answer": 0
-      }
+      { "id": "punctuation-repair-b1-01", "q": "Conditionals — which is correct?", "options": ["If it rains, we'll stay in.", "If it rains we'll stay in.", "If it rains, well stay in."], "answer": 0, "why": "A comma after the “if” clause, and “we'll” = “we will” needs its apostrophe." },
+      { "id": "punctuation-repair-b1-02", "q": "Relative clauses — which is correct?", "options": ["London, which is huge, is expensive.", "London which is huge is expensive.", "London, which is huge is expensive."], "answer": 0, "why": "Extra information about London goes between two commas." },
+      { "id": "punctuation-repair-b1-03", "q": "Direct speech — which is correct?", "options": ["“I'm tired,” she said.", "“I'm tired” she said.", "“Im tired,” she said."], "answer": 0, "why": "In direct speech the comma goes inside the quotation marks, and “I'm” needs its apostrophe." },
+      { "id": "punctuation-repair-b1-04", "q": "it's / its — which is correct?", "options": ["It's been years since we met.", "Its been years since we met.", "It's been year's since we met."], "answer": 0, "why": "“It's been” = “it has been”; “years” is a simple plural, with no apostrophe." },
+      { "id": "punctuation-repair-b1-05", "q": "Possessives — which is correct?", "options": ["The children's toys are everywhere.", "The childrens' toys are everywhere.", "The childrens toys are everywhere."], "answer": 0, "why": "“Children” is already plural, so just add 's." },
+      { "id": "punctuation-repair-b1-06", "q": "Linking words — which is correct?", "options": ["However, I disagree.", "However I disagree.", "However; I disagree."], "answer": 0, "why": "“However” at the start of a sentence is followed by a comma." },
+      { "id": "punctuation-repair-b1-07", "q": "Lists — which is correct?", "options": ["She likes cooking, reading and swimming.", "She likes cooking reading and swimming.", "She likes, cooking, reading and swimming."], "answer": 0, "why": "Commas separate the list items; no comma straight after the verb." },
+      { "id": "punctuation-repair-b1-08", "q": "whose / who's — which is correct?", "options": ["Whose bag is this?", "Who's bag is this?", "Whose bag is this."], "answer": 0, "why": "“Whose” asks who owns it, and a question needs a question mark." },
+      { "id": "punctuation-repair-b1-09", "q": "Joining sentences — which is correct?", "options": ["I can't come; I'm working late.", "I can't come, I'm working late.", "I cant come; I'm working late."], "answer": 0, "why": "Two full sentences with no linking word: a semicolon, not a comma." },
+      { "id": "punctuation-repair-b1-10", "q": "Direct speech — which is correct?", "options": ["“Hands up,” shouted the sheriff.", "“Hands up” shouted the sheriff.", "“Hands up,” shouted the Sheriff."], "answer": 0, "why": "The comma goes inside the closing quotation mark; “sheriff” here is just a job, so lowercase." },
+      { "id": "punctuation-repair-b1-11", "q": "Linking words — which is correct?", "options": ["Therefore, we stayed at home.", "Therefore, we stayed, at home.", "Therefore; we stayed at home."], "answer": 0, "why": "“Therefore” at the start of a sentence is followed by a comma." },
+      { "id": "punctuation-repair-b1-12", "q": "Possessives — which is correct?", "options": ["Semmelweis's idea was simple: wash your hands.", "Semmelweis idea was simple: wash your hands.", "Semmelweis's idea was simple, wash your hands."], "answer": 0, "why": "Name + 's shows possession, and a colon introduces what the idea was." }
     ],
     "B2": [
-      {
-        "id": "punctuation-repair-b2-01",
-        "q": "Non-defining clauses — which is correct?",
-        "options": [
-          "The report, which took weeks, was ignored.",
-          "The report which took weeks was ignored.",
-          "The report, which took weeks was ignored."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "punctuation-repair-b2-02",
-        "q": "Semicolons — which is correct?",
-        "options": [
-          "It's the company's policy; everyone must comply.",
-          "It's the company's policy, everyone must comply.",
-          "Its the company's policy; everyone must comply."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "punctuation-repair-b2-03",
-        "q": "Participle clauses — which is correct?",
-        "options": [
-          "Having finished the exam, the students left.",
-          "Having finished the exam the students left.",
-          "Having finished the exam, the students', left."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "punctuation-repair-b2-04",
-        "q": "Dashes — which is correct?",
-        "options": [
-          "He said he'd call — he never did.",
-          "He said he'd call he never did.",
-          "He said hed call — he never did."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "punctuation-repair-b2-05",
-        "q": "Decades — which is correct?",
-        "options": [
-          "The 1990s were transformative.",
-          "The 1990's were transformative.",
-          "The 1990s' were transformative."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "punctuation-repair-b2-06",
-        "q": "Colons — which is correct?",
-        "options": [
-          "Everyone's invited: students, parents and teachers.",
-          "Everyones invited: students, parents and teachers.",
-          "Everyone's invited, students, parents and teachers."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "punctuation-repair-b2-07",
-        "q": "Subject clauses — which is correct?",
-        "options": [
-          "Whoever arrives first gets the seats.",
-          "Whoever arrives first, gets the seats.",
-          "Whoever, arrives first, gets the seats."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "punctuation-repair-b2-08",
-        "q": "Hyphens — which is correct?",
-        "options": [
-          "It was a well-known problem.",
-          "It was a well known problem.",
-          "It was a well-known-problem."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "punctuation-repair-b2-09",
-        "q": "Indirect questions — which is correct?",
-        "options": [
-          "She asked whether we'd finished.",
-          "She asked whether we'd finished?",
-          "She asked wether we'd finished."
-        ],
-        "answer": 0
-      }
+      { "id": "punctuation-repair-b2-01", "q": "Non-defining clauses — which is correct?", "options": ["The report, which took weeks, was ignored.", "The report which took weeks was ignored.", "The report, which took weeks was ignored."], "answer": 0, "why": "Extra information gets a comma at both ends." },
+      { "id": "punctuation-repair-b2-02", "q": "Semicolons — which is correct?", "options": ["It's the company's policy; everyone must comply.", "It's the company's policy, everyone must comply.", "Its the company's policy; everyone must comply."], "answer": 0, "why": "Two closely linked full sentences: a semicolon, not a comma. “It's” = “it is”." },
+      { "id": "punctuation-repair-b2-03", "q": "Participle clauses — which is correct?", "options": ["Having finished the exam, the students left.", "Having finished the exam the students left.", "Having finished the exam, the students', left."], "answer": 0, "why": "A comma closes the participle clause before the main subject." },
+      { "id": "punctuation-repair-b2-04", "q": "Dashes — which is correct?", "options": ["He said he'd call — he never did.", "He said he'd call he never did.", "He said hed call — he never did."], "answer": 0, "why": "A dash adds a sharp, surprising follow-up; “he'd” = “he would”." },
+      { "id": "punctuation-repair-b2-05", "q": "Decades — which is correct?", "options": ["The 1990s were transformative.", "The 1990's were transformative.", "The 1990s' were transformative."], "answer": 0, "why": "Decades are simple plurals: no apostrophe." },
+      { "id": "punctuation-repair-b2-06", "q": "Colons — which is correct?", "options": ["Everyone's invited: students, parents and teachers.", "Everyones invited: students, parents and teachers.", "Everyone's invited, students, parents and teachers."], "answer": 0, "why": "A colon introduces the list that explains “everyone”." },
+      { "id": "punctuation-repair-b2-07", "q": "Subject clauses — which is correct?", "options": ["Whoever arrives first gets the seats.", "Whoever arrives first, gets the seats.", "Whoever, arrives first, gets the seats."], "answer": 0, "why": "Never put a comma between a subject (Whoever arrives first) and its verb." },
+      { "id": "punctuation-repair-b2-08", "q": "Hyphens — which is correct?", "options": ["It was a well-known problem.", "It was a well known problem.", "It was a well-known-problem."], "answer": 0, "why": "Before a noun, a compound adjective like “well-known” takes a hyphen." },
+      { "id": "punctuation-repair-b2-09", "q": "Indirect questions — which is correct?", "options": ["She asked whether we'd finished.", "She asked whether we'd finished?", "She asked wether we'd finished."], "answer": 0, "why": "An indirect question is a statement, so it ends with a full stop." },
+      { "id": "punctuation-repair-b2-10", "q": "Colons — which is correct?", "options": ["The posse had one aim: to catch the outlaws.", "The posse had: one aim to catch the outlaws.", "The posse had one aim; to catch the outlaws."], "answer": 0, "why": "A colon introduces what the aim is; a semicolon needs a full sentence after it." },
+      { "id": "punctuation-repair-b2-11", "q": "Hyphens — which is correct?", "options": ["She was a forty-year-old surgeon.", "She was a forty year old surgeon.", "She was a forty-years-old surgeon."], "answer": 0, "why": "An age before a noun is hyphenated, and “year” stays singular." },
+      { "id": "punctuation-repair-b2-12", "q": "Non-defining clauses — which is correct?", "options": ["The Lonja, which was built in the 15th century, is a World Heritage Site.", "The Lonja which was built in the 15th century is a World Heritage Site.", "The Lonja, which was built in the 15th century is a World Heritage Site."], "answer": 0, "why": "Extra information about a named building: a comma at both ends." }
     ],
     "C1": [
-      {
-        "id": "punctuation-repair-c1-01",
-        "q": "Dashes — which is correct?",
-        "options": [
-          "The data — startling as it was — went unpublished.",
-          "The data — startling as it was, went unpublished.",
-          "The data startling as it was — went unpublished."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "punctuation-repair-c1-02",
-        "q": "whose / who's — which is correct?",
-        "options": [
-          "He's the author whose novel won.",
-          "He's the author who's novel won.",
-          "Hes the author whose novel won."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "punctuation-repair-c1-03",
-        "q": "its / it's — which is correct?",
-        "options": [
-          "Its impact, however, remains unclear.",
-          "It's impact, however, remains unclear.",
-          "Its impact however remains unclear."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "punctuation-repair-c1-04",
-        "q": "Possessives of time — which is correct?",
-        "options": [
-          "A decade's worth of research was lost.",
-          "A decades worth of research was lost.",
-          "A decades' worth of research was lost."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "punctuation-repair-c1-05",
-        "q": "Semicolons — which is correct?",
-        "options": [
-          "The committee agreed; the directors, however, did not.",
-          "The committee agreed, the directors, however, did not.",
-          "The committee agreed; the directors however did not,"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "punctuation-repair-c1-06",
-        "q": "Direct speech — which is correct?",
-        "options": [
-          "“Stop,” he whispered, “before it's too late.”",
-          "“Stop” he whispered “before it's too late.”",
-          "“Stop,” he whispered, “before its too late.”"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "punctuation-repair-c1-07",
-        "q": "Compound adjectives — which is correct?",
-        "options": [
-          "Twenty-first-century readers expect brevity.",
-          "Twenty first century readers expect brevity.",
-          "Twenty-first century readers expect brevity."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "punctuation-repair-c1-08",
-        "q": "Parenthetical dashes — which is correct?",
-        "options": [
-          "The team — engineers, designers and writers — shipped early.",
-          "The team — engineers, designers and writers shipped early.",
-          "The team, engineers, designers and writers — shipped early."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "punctuation-repair-c1-09",
-        "q": "Inversion — which is correct?",
-        "options": [
-          "Had I known, I wouldn't have asked.",
-          "Had I known I wouldn't have asked.",
-          "Had I known, I wouldn't of asked."
-        ],
-        "answer": 0
-      }
+      { "id": "punctuation-repair-c1-01", "q": "Dashes — which is correct?", "options": ["The data — startling as it was — went unpublished.", "The data — startling as it was, went unpublished.", "The data startling as it was — went unpublished."], "answer": 0, "why": "Paired dashes work like brackets: one opens the aside, one closes it." },
+      { "id": "punctuation-repair-c1-02", "q": "whose / who's — which is correct?", "options": ["He's the author whose novel won.", "He's the author who's novel won.", "Hes the author whose novel won."], "answer": 0, "why": "“Whose” shows possession (his novel); “who's” = “who is”." },
+      { "id": "punctuation-repair-c1-03", "q": "its / it's — which is correct?", "options": ["Its impact, however, remains unclear.", "It's impact, however, remains unclear.", "Its impact however remains unclear."], "answer": 0, "why": "“Its” is possessive, and mid-sentence “however” takes commas on both sides." },
+      { "id": "punctuation-repair-c1-04", "q": "Possessives of time — which is correct?", "options": ["A decade's worth of research was lost.", "A decades worth of research was lost.", "A decades' worth of research was lost."], "answer": 0, "why": "One decade's worth: one decade, so 's." },
+      { "id": "punctuation-repair-c1-05", "q": "Semicolons — which is correct?", "options": ["The committee agreed; the directors, however, did not.", "The committee agreed, the directors, however, did not.", "The committee agreed; the directors however did not,"], "answer": 0, "why": "A semicolon joins the two clauses; “however” inside the second takes commas." },
+      { "id": "punctuation-repair-c1-06", "q": "Direct speech — which is correct?", "options": ["“Stop,” he whispered, “before it's too late.”", "“Stop” he whispered “before it's too late.”", "“Stop,” he whispered, “before its too late.”"], "answer": 0, "why": "“He whispered” breaks the speech: commas on both sides, and “it's” = “it is”." },
+      { "id": "punctuation-repair-c1-07", "q": "Compound adjectives — which is correct?", "options": ["Twenty-first-century readers expect brevity.", "Twenty first century readers expect brevity.", "Twenty first-century readers expect brevity."], "answer": 0, "why": "A compound adjective before a noun is hyphenated all the way through." },
+      { "id": "punctuation-repair-c1-08", "q": "Parenthetical dashes — which is correct?", "options": ["The team — engineers, designers and writers — shipped early.", "The team — engineers, designers and writers shipped early.", "The team, engineers, designers and writers — shipped early."], "answer": 0, "why": "Paired dashes enclose the list; leaving one out breaks the sentence." },
+      { "id": "punctuation-repair-c1-09", "q": "Inversion — which is correct?", "options": ["Had I known, I wouldn't have asked.", "Had I known I wouldn't have asked.", "Had I known, I wouldn't of asked."], "answer": 0, "why": "A comma after “Had I known”, and always “wouldn't have”, never “wouldn't of”." },
+      { "id": "punctuation-repair-c1-10", "q": "Semicolons in a list — which is correct?", "options": ["The posse came from Tombstone, Arizona; Dodge City, Kansas; and Abilene, Texas.", "The posse came from Tombstone, Arizona, Dodge City, Kansas, and Abilene, Texas.", "The posse came from Tombstone; Arizona, Dodge City; Kansas, and Abilene; Texas."], "answer": 0, "why": "When list items already contain commas, semicolons separate the items." },
+      { "id": "punctuation-repair-c1-11", "q": "Possessives — which is correct?", "options": ["Hippocrates' ideas shaped medicine for centuries.", "Hippocrate's ideas shaped medicine for centuries.", "Hippocrates ideas shaped medicine for centuries."], "answer": 0, "why": "Classical names ending in -es usually take just an apostrophe: Hippocrates'." },
+      { "id": "punctuation-repair-c1-12", "q": "Quotation marks — which is correct?", "options": ["Did he really say “Valencia never sleeps”?", "Did he really say “Valencia never sleeps?”", "Did he really say, “valencia never sleeps”?"], "answer": 0, "why": "The whole sentence is the question, so the question mark goes outside the quotation marks." }
     ]
   }
 }

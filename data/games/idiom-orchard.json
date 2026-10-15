@@ -1,181 +1,65 @@
 {
   "id": "idiom-orchard",
   "title": "Idiom Orchard",
-  "tags": [
-    "vocabulary"
-  ],
+  "tags": ["vocabulary"],
   "engine": "pairs",
   "intro": "English is full of expressions that mean nothing literally — piece of cake, cost an arm and a leg, once in a blue moon. Match each one to its real meaning.",
-  "source": "Game — Idiom Orchard.html",
-  "draft": true,
   "items": {
     "A2": [
-      {
-        "id": "idiom-orchard-a2-01",
-        "left": "piece of cake",
-        "right": "very easy (The exam was a piece of cake.)"
-      },
-      {
-        "id": "idiom-orchard-a2-02",
-        "left": "raining cats and dogs",
-        "right": "raining very heavily"
-      },
-      {
-        "id": "idiom-orchard-a2-03",
-        "left": "under the weather",
-        "right": "feeling slightly ill"
-      },
-      {
-        "id": "idiom-orchard-a2-04",
-        "left": "break the ice",
-        "right": "start a conversation in an awkward situation"
-      },
-      {
-        "id": "idiom-orchard-a2-05",
-        "left": "cost an arm and a leg",
-        "right": "be very expensive"
-      },
-      {
-        "id": "idiom-orchard-a2-06",
-        "left": "once in a blue moon",
-        "right": "very rarely"
-      },
-      {
-        "id": "idiom-orchard-a2-07",
-        "left": "hit the books",
-        "right": "study hard"
-      },
-      {
-        "id": "idiom-orchard-a2-08",
-        "left": "on cloud nine",
-        "right": "extremely happy"
-      }
+      {"id": "idiom-orchard-a2-01", "left": "piece of cake", "right": "very easy (The exam was a piece of cake.)", "why": "Cake is easy to eat, so a “piece of cake” is something very easy."},
+      {"id": "idiom-orchard-a2-02", "left": "raining cats and dogs", "right": "raining very heavily", "why": "Just a picture of very heavy rain, like Spanish “llover a cántaros”."},
+      {"id": "idiom-orchard-a2-03", "left": "under the weather", "right": "feeling slightly ill", "why": "It means a bit unwell, like a cold or a headache, not seriously ill."},
+      {"id": "idiom-orchard-a2-04", "left": "break the ice", "right": "start a conversation in an awkward situation", "why": "Ships broke the ice to open a path; you “break the ice” to get people talking."},
+      {"id": "idiom-orchard-a2-05", "left": "cost an arm and a leg", "right": "be very expensive", "why": "Like Spanish “costar un ojo de la cara”: you pay with a part of your body."},
+      {"id": "idiom-orchard-a2-06", "left": "once in a blue moon", "right": "very rarely", "why": "A “blue moon” is a rare extra full moon, so it means almost never."},
+      {"id": "idiom-orchard-a2-07", "left": "hit the books", "right": "study hard", "why": "Informal: you “hit the books” when you start studying seriously, often before an exam."},
+      {"id": "idiom-orchard-a2-08", "left": "on cloud nine", "right": "extremely happy", "why": "Not like “estar en las nubes” (daydreaming): on cloud nine means extremely happy."},
+      {"id": "idiom-orchard-a2-09", "left": "feel blue", "right": "feel sad", "why": "Blue is the colour of sadness in English, as in “the blues”."},
+      {"id": "idiom-orchard-a2-10", "left": "a couch potato", "right": "a lazy person who watches a lot of TV", "why": "Someone who sits on the sofa all day, as still as a potato."},
+      {"id": "idiom-orchard-a2-11", "left": "by heart", "right": "from memory, without looking", "why": "Like Spanish “de memoria”: she learnt the poem by heart."},
+      {"id": "idiom-orchard-a2-12", "left": "keep an eye on", "right": "watch or look after something", "why": "Keep an eye on the paella while I answer the door: watch it so it doesn't burn."}
     ],
     "B1": [
-      {
-        "id": "idiom-orchard-b1-01",
-        "left": "bite the bullet",
-        "right": "decide to do something difficult or unpleasant"
-      },
-      {
-        "id": "idiom-orchard-b1-02",
-        "left": "let the cat out of the bag",
-        "right": "reveal a secret by accident"
-      },
-      {
-        "id": "idiom-orchard-b1-03",
-        "left": "the ball is in your court",
-        "right": "it's your decision or turn to act"
-      },
-      {
-        "id": "idiom-orchard-b1-04",
-        "left": "a blessing in disguise",
-        "right": "something that seems bad but turns out good"
-      },
-      {
-        "id": "idiom-orchard-b1-05",
-        "left": "get the ball rolling",
-        "right": "start something moving forward"
-      },
-      {
-        "id": "idiom-orchard-b1-06",
-        "left": "call it a day",
-        "right": "stop working for the day"
-      },
-      {
-        "id": "idiom-orchard-b1-07",
-        "left": "speak of the devil",
-        "right": "said when someone appears just as you're talking about them"
-      },
-      {
-        "id": "idiom-orchard-b1-08",
-        "left": "miss the boat",
-        "right": "lose the chance to do something"
-      }
+      {"id": "idiom-orchard-b1-01", "left": "bite the bullet", "right": "decide to do something difficult or unpleasant", "why": "Legend says soldiers bit a bullet during surgery without anaesthetic: you accept the pain and do it."},
+      {"id": "idiom-orchard-b1-02", "left": "let the cat out of the bag", "right": "reveal a secret by accident", "why": "The secret escapes like a cat from a sack; Spanish says “irse de la lengua”."},
+      {"id": "idiom-orchard-b1-03", "left": "the ball is in your court", "right": "it's your decision or turn to act", "why": "From tennis: the ball is on your side of the court, so now you must act."},
+      {"id": "idiom-orchard-b1-04", "left": "a blessing in disguise", "right": "something that seems bad but turns out good", "why": "It looks like bad luck at first, but it is really a “blessing” (una bendición)."},
+      {"id": "idiom-orchard-b1-05", "left": "get the ball rolling", "right": "start something moving forward", "why": "Once a ball starts rolling, it keeps going: you start the activity."},
+      {"id": "idiom-orchard-b1-06", "left": "call it a day", "right": "stop working for the day", "why": "You decide the working day is over: “Let's call it a day and go home.”"},
+      {"id": "idiom-orchard-b1-07", "left": "speak of the devil", "right": "said when someone appears just as you're talking about them", "why": "Short for “speak of the devil and he will appear”; Spanish says “hablando del rey de Roma”."},
+      {"id": "idiom-orchard-b1-08", "left": "miss the boat", "right": "lose the chance to do something", "why": "If you arrive late, the boat has already gone: the chance is lost."},
+      {"id": "idiom-orchard-b1-09", "left": "hold your horses", "right": "slow down and don't rush", "why": "A cowboy pulls on the reins to stop his horses: slow down, wait a moment."},
+      {"id": "idiom-orchard-b1-10", "left": "keep your fingers crossed", "right": "hope for good luck", "why": "Spanish “cruzar los dedos” is exactly the same gesture and idea."},
+      {"id": "idiom-orchard-b1-11", "left": "in hot water", "right": "in trouble", "why": "Hot water burns, so if you're “in hot water” someone is angry with you."},
+      {"id": "idiom-orchard-b1-12", "left": "sleep on it", "right": "wait until tomorrow before deciding", "why": "Sleep first and decide in the morning, like Spanish “consultarlo con la almohada”."}
     ],
     "B2": [
-      {
-        "id": "idiom-orchard-b2-01",
-        "left": "burn the midnight oil",
-        "right": "work late into the night"
-      },
-      {
-        "id": "idiom-orchard-b2-02",
-        "left": "cut corners",
-        "right": "do something badly to save time or money"
-      },
-      {
-        "id": "idiom-orchard-b2-03",
-        "left": "go the extra mile",
-        "right": "make more effort than expected"
-      },
-      {
-        "id": "idiom-orchard-b2-04",
-        "left": "jump on the bandwagon",
-        "right": "join something popular because others are doing it"
-      },
-      {
-        "id": "idiom-orchard-b2-05",
-        "left": "a storm in a teacup",
-        "right": "a lot of fuss about something unimportant"
-      },
-      {
-        "id": "idiom-orchard-b2-06",
-        "left": "beat around the bush",
-        "right": "avoid saying something directly"
-      },
-      {
-        "id": "idiom-orchard-b2-07",
-        "left": "throw in the towel",
-        "right": "give up"
-      },
-      {
-        "id": "idiom-orchard-b2-08",
-        "left": "read between the lines",
-        "right": "understand a hidden meaning"
-      }
+      {"id": "idiom-orchard-b2-01", "left": "burn the midnight oil", "right": "work late into the night", "why": "Before electricity, working late meant burning oil in a lamp at midnight."},
+      {"id": "idiom-orchard-b2-02", "left": "cut corners", "right": "do something badly to save time or money", "why": "Cutting across a corner saves distance but skips steps, so the result is poor."},
+      {"id": "idiom-orchard-b2-03", "left": "go the extra mile", "right": "make more effort than expected", "why": "You go further than the journey requires: more effort than anyone asked for."},
+      {"id": "idiom-orchard-b2-04", "left": "jump on the bandwagon", "right": "join something popular because others are doing it", "why": "In 19th-century America politicians climbed onto the band's wagon at parades to look popular."},
+      {"id": "idiom-orchard-b2-05", "left": "a storm in a teacup", "right": "a lot of fuss about something unimportant", "why": "A storm too small to matter; Spanish says “una tormenta en un vaso de agua”."},
+      {"id": "idiom-orchard-b2-06", "left": "beat around the bush", "right": "avoid saying something directly", "why": "Spanish says “andarse por las ramas”; British English also says “beat about the bush”."},
+      {"id": "idiom-orchard-b2-07", "left": "throw in the towel", "right": "give up", "why": "From boxing: the trainer throws the towel into the ring to stop the fight. Spanish “tirar la toalla”."},
+      {"id": "idiom-orchard-b2-08", "left": "read between the lines", "right": "understand a hidden meaning", "why": "You find the meaning that isn't written directly, just like Spanish “leer entre líneas”."},
+      {"id": "idiom-orchard-b2-09", "left": "bite off more than you can chew", "right": "try to do more than you can manage", "why": "Take too big a bite and you can't chew it: too many jobs at once."},
+      {"id": "idiom-orchard-b2-10", "left": "the last straw", "right": "the final problem that makes you lose patience", "why": "From “the straw that broke the camel's back”; Spanish says “la gota que colma el vaso”."},
+      {"id": "idiom-orchard-b2-11", "left": "a shot in the dark", "right": "a guess made with little information", "why": "Like firing a gun at night: you hope to hit something, but you're guessing."},
+      {"id": "idiom-orchard-b2-12", "left": "turn a blind eye", "right": "pretend not to notice something wrong", "why": "Nelson put his telescope to his blind eye to ignore an order: deliberately not seeing."}
     ],
     "C1": [
-      {
-        "id": "idiom-orchard-c1-01",
-        "left": "take something with a pinch of salt",
-        "right": "not fully believe something"
-      },
-      {
-        "id": "idiom-orchard-c1-02",
-        "left": "the elephant in the room",
-        "right": "an obvious problem nobody wants to mention"
-      },
-      {
-        "id": "idiom-orchard-c1-03",
-        "left": "cut to the chase",
-        "right": "get to the point without wasting time"
-      },
-      {
-        "id": "idiom-orchard-c1-04",
-        "left": "a wolf in sheep's clothing",
-        "right": "someone dangerous who seems harmless or friendly"
-      },
-      {
-        "id": "idiom-orchard-c1-05",
-        "left": "par for the course",
-        "right": "typical, to be expected"
-      },
-      {
-        "id": "idiom-orchard-c1-06",
-        "left": "the tip of the iceberg",
-        "right": "only a small visible part of a much bigger problem"
-      },
-      {
-        "id": "idiom-orchard-c1-07",
-        "left": "add fuel to the fire",
-        "right": "make a bad situation worse"
-      },
-      {
-        "id": "idiom-orchard-c1-08",
-        "left": "a leopard can't change its spots",
-        "right": "people don't fundamentally change their nature"
-      }
+      {"id": "idiom-orchard-c1-01", "left": "take something with a pinch of salt", "right": "not fully believe something", "why": "A doubtful story is easier to swallow with a little salt; Spanish says “cogerlo con pinzas”."},
+      {"id": "idiom-orchard-c1-02", "left": "the elephant in the room", "right": "an obvious problem nobody wants to mention", "why": "Something as big as an elephant, yet everyone acts as if they can't see it."},
+      {"id": "idiom-orchard-c1-03", "left": "cut to the chase", "right": "get to the point without wasting time", "why": "From old films: skip the boring scenes and go straight to the chase."},
+      {"id": "idiom-orchard-c1-04", "left": "a wolf in sheep's clothing", "right": "someone dangerous who seems harmless or friendly", "why": "From Aesop's fables: danger hidden behind a gentle look. Spanish “lobo con piel de cordero”."},
+      {"id": "idiom-orchard-c1-05", "left": "par for the course", "right": "typical, to be expected", "why": "In golf, “par” is the normal score: nothing unusual, sadly expected."},
+      {"id": "idiom-orchard-c1-06", "left": "the tip of the iceberg", "right": "only a small visible part of a much bigger problem", "why": "Most of an iceberg is under water; you only see a small part of the problem."},
+      {"id": "idiom-orchard-c1-07", "left": "add fuel to the fire", "right": "make a bad situation worse", "why": "Like Spanish “echar leña al fuego”: you make the anger or the problem bigger."},
+      {"id": "idiom-orchard-c1-08", "left": "a leopard can't change its spots", "right": "people don't fundamentally change their nature", "why": "A leopard keeps its spots for life, just as people keep their character."},
+      {"id": "idiom-orchard-c1-09", "left": "a red herring", "right": "a false clue that distracts attention", "why": "A strong-smelling smoked fish was said to pull hunting dogs off the trail: a misleading clue."},
+      {"id": "idiom-orchard-c1-10", "left": "steal someone's thunder", "right": "take the attention or praise someone else expected", "why": "An 18th-century playwright invented a stage thunder effect; a rival used it, and he said his thunder was stolen."},
+      {"id": "idiom-orchard-c1-11", "left": "bite the hand that feeds you", "right": "harm someone who helps or supports you", "why": "Like a dog biting its owner: you hurt the very person who looks after you."},
+      {"id": "idiom-orchard-c1-12", "left": "a taste of your own medicine", "right": "the same bad treatment you give to others", "why": "The doctor must swallow the bitter medicine he gives his patients."}
     ]
   }
 }

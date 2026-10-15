@@ -68,6 +68,17 @@ const FIXES = [
 const fix = v => typeof v === 'string' ? FIXES.reduce((t, [a, b]) => t.replaceAll(a, b), v) : v
 const MIN = 10   // below this a level cannot make a session; the game is imported as a draft
 
+// Taken over by hand (15 Oct 2026): filled to 12 items a level with a "why" on every item.
+// Re-imports leave these files alone; edit them directly in data/games/.
+const SKIP = new Set([
+  'apostrophe-ambush', 'capital-offences', 'cognate-or-con', 'comma-cottage', 'contraction-control',
+  'indirect-question-inn', 'linking-words-loom', 'naked-nouns', 'particle-post', 'punctuation-repair',
+  'dear-sir-or-hey-dude', 'deduction-detective', 'email-etiquette', 'false-friends-ambush', 'formal-essay-upgrade',
+  'idiom-orchard', 'ladder-of-nice', 'make-or-do', 'phrasal-verb-farm', 'preposition-orchard',
+  'same-verb-different-particle', 'strong-collocations', 'the-uncountable-larder', 'very-plus-adjective-killer',
+  'vocab-match', 'word-family-tree',
+])
+
 // Portal intros: one or two calm sentences that say what the student practises.
 // (The website intros talk about clocks, scores and website-only features.)
 const INTROS = {
@@ -105,6 +116,7 @@ const calm = s => decode(s).split(/(?<=[.!?])\s+/).filter(x => !/second|minute|c
 
 const report = []
 for (const [slug, [tags, eng]] of Object.entries(GAMES)) {
+  if (SKIP.has(slug)) { report.push(`= ${slug}: taken over by hand, skipped`); continue }
   const file = fileOf[slug]
   if (!file) { report.push(`✗ ${slug}: not in regen_site_html.py`); continue }
   const html = fs.readFileSync(path.join(site, file), 'utf8')

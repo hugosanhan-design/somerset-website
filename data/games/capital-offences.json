@@ -1,381 +1,65 @@
 {
   "id": "capital-offences",
   "title": "Capital Offences",
-  "tags": [
-    "punctuation"
-  ],
+  "tags": ["punctuation"],
   "engine": "choice",
   "intro": "lunes, inglés, marzo — all lowercase in Spanish, all capitalised in English. The one rule that runs backwards from what you'd expect.",
-  "source": "Game — Capital Offences.html",
-  "draft": true,
   "items": {
     "A2": [
-      {
-        "id": "capital-offences-a2-01",
-        "q": "Days — which is correct?",
-        "options": [
-          "I have English class on Monday.",
-          "I have English class on monday.",
-          "I have english class on Monday."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "capital-offences-a2-02",
-        "q": "Months — which is correct?",
-        "options": [
-          "My birthday is in March.",
-          "My birthday is in march.",
-          "My birthday is in the March."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "capital-offences-a2-03",
-        "q": "Nationalities — which is correct?",
-        "options": [
-          "She is Spanish.",
-          "She is spanish.",
-          "She is a Spanish."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "capital-offences-a2-04",
-        "q": "Languages — which is correct?",
-        "options": [
-          "He speaks English and French.",
-          "He speaks english and french.",
-          "He speaks English and french."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "capital-offences-a2-05",
-        "q": "The word 'I' — which is correct?",
-        "options": [
-          "My friend and I went to the cinema.",
-          "My friend and i went to the cinema.",
-          "Me and I went to the cinema."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "capital-offences-a2-06",
-        "q": "Countries — which is correct?",
-        "options": [
-          "I live in Spain.",
-          "I live in spain.",
-          "I live in the Spain."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "capital-offences-a2-07",
-        "q": "Titles — which is correct?",
-        "options": [
-          "Doctor Smith is here.",
-          "doctor Smith is here.",
-          "Doctor smith is here."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "capital-offences-a2-08",
-        "q": "Days — which is correct?",
-        "options": [
-          "We don't have school on Saturday.",
-          "We don't have school on saturday.",
-          "we don't have school on Saturday."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "capital-offences-a2-09",
-        "q": "Nationalities — which is correct?",
-        "options": [
-          "They are British.",
-          "They are british.",
-          "They are a British."
-        ],
-        "answer": 0
-      }
+      { "id": "capital-offences-a2-01", "q": "Days — which is correct?", "options": ["I have English class on Monday.", "I have English class on monday.", "I have english class on Monday."], "answer": 0, "why": "Days of the week and languages always take a capital in English." },
+      { "id": "capital-offences-a2-02", "q": "Months — which is correct?", "options": ["My birthday is in March.", "My birthday is in march.", "My birthday is in the March."], "answer": 0, "why": "Months take a capital in English, unlike “marzo” in Spanish." },
+      { "id": "capital-offences-a2-03", "q": "Nationalities — which is correct?", "options": ["She is Spanish.", "She is spanish.", "She is a Spanish."], "answer": 0, "why": "Nationality adjectives take a capital, with no “a” before them." },
+      { "id": "capital-offences-a2-04", "q": "Languages — which is correct?", "options": ["He speaks English and French.", "He speaks english and french.", "He speaks English and french."], "answer": 0, "why": "Every language name takes a capital: English, French." },
+      { "id": "capital-offences-a2-05", "q": "The word “I” — which is correct?", "options": ["My friend and I went to the cinema.", "My friend and i went to the cinema.", "Me and I went to the cinema."], "answer": 0, "why": "“I” is always a capital, wherever it appears in the sentence." },
+      { "id": "capital-offences-a2-06", "q": "Countries — which is correct?", "options": ["I live in Spain.", "I live in spain.", "I live in the Spain."], "answer": 0, "why": "Countries take a capital and, like Spain, usually no “the”." },
+      { "id": "capital-offences-a2-07", "q": "Titles — which is correct?", "options": ["Doctor Smith is here.", "doctor Smith is here.", "Doctor smith is here."], "answer": 0, "why": "A title before a name, and the name itself, both take capitals." },
+      { "id": "capital-offences-a2-08", "q": "Days — which is correct?", "options": ["We don't have school on Saturday.", "We don't have school on saturday.", "we don't have school on Saturday."], "answer": 0, "why": "The first word of a sentence takes a capital, and so do days of the week." },
+      { "id": "capital-offences-a2-09", "q": "Nationalities — which is correct?", "options": ["They are British.", "They are british.", "They are a British."], "answer": 0, "why": "Nationality adjectives take a capital, with no “a” before them." },
+      { "id": "capital-offences-a2-10", "q": "Cities — which is correct?", "options": ["The sheriff lives in Dallas.", "The sheriff lives in dallas.", "The Sheriff lives in dallas."], "answer": 0, "why": "City names always take a capital; a job like “sheriff” doesn't." },
+      { "id": "capital-offences-a2-11", "q": "Months — which is correct?", "options": ["We celebrate Fallas in March.", "We celebrate Fallas in march.", "We celebrate fallas in march."], "answer": 0, "why": "Months and festivals take capitals in English." },
+      { "id": "capital-offences-a2-12", "q": "Languages — which is correct?", "options": ["My grandmother speaks Valencian.", "My grandmother speaks valencian.", "my grandmother speaks Valencian."], "answer": 0, "why": "Language names take a capital: Valencian, Spanish, English." }
     ],
     "B1": [
-      {
-        "id": "capital-offences-b1-01",
-        "q": "Nationalities as nouns — which is correct?",
-        "options": [
-          "Many Spaniards travel abroad in August.",
-          "Many spaniards travel abroad in August.",
-          "Many Spaniards travel abroad in august."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "capital-offences-b1-02",
-        "q": "Book titles — which is correct?",
-        "options": [
-          "I just read The Great Gatsby.",
-          "I just read the great gatsby.",
-          "I just read The great Gatsby."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "capital-offences-b1-03",
-        "q": "Days in a list — which is correct?",
-        "options": [
-          "The shop is open Monday, Wednesday and Friday.",
-          "The shop is open monday, wednesday and friday.",
-          "The shop is open Monday, wednesday and Friday."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "capital-offences-b1-04",
-        "q": "Religions — which is correct?",
-        "options": [
-          "He studies Buddhism at university.",
-          "He studies buddhism at university.",
-          "He studies Buddhism at University."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "capital-offences-b1-05",
-        "q": "Regions — which is correct?",
-        "options": [
-          "She grew up in the South of Spain.",
-          "She grew up in the south of spain.",
-          "She grew up in the South of spain."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "capital-offences-b1-06",
-        "q": "Brand names — which is correct?",
-        "options": [
-          "I bought it at Zara.",
-          "I bought it at zara.",
-          "I bought it at the Zara."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "capital-offences-b1-07",
-        "q": "Dates — which is correct?",
-        "options": [
-          "The meeting is on 3 April.",
-          "The meeting is on 3 april.",
-          "The meeting is on the 3rd of april."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "capital-offences-b1-08",
-        "q": "Historical periods — which is correct?",
-        "options": [
-          "We studied the Renaissance last year.",
-          "We studied the renaissance last year.",
-          "We studied The renaissance last year."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "capital-offences-b1-09",
-        "q": "Nationalities as adjectives — which is correct?",
-        "options": [
-          "I love Italian food.",
-          "I love italian food.",
-          "I love Italian Food."
-        ],
-        "answer": 0
-      }
+      { "id": "capital-offences-b1-01", "q": "Nationalities as nouns — which is correct?", "options": ["Many Spaniards travel abroad in August.", "Many spaniards travel abroad in August.", "Many Spaniards travel abroad in august."], "answer": 0, "why": "Nationality nouns (Spaniards) and months (August) both take capitals." },
+      { "id": "capital-offences-b1-02", "q": "Book titles — which is correct?", "options": ["I've just read The Great Gatsby.", "I've just read the great gatsby.", "I've just read The great Gatsby."], "answer": 0, "why": "In titles, the main words take capitals; “the” only when it comes first." },
+      { "id": "capital-offences-b1-03", "q": "Days in a list — which is correct?", "options": ["The shop is open Monday, Wednesday and Friday.", "The shop is open monday, wednesday and friday.", "The shop is open Monday, wednesday and Friday."], "answer": 0, "why": "Every day of the week takes a capital, even in a list." },
+      { "id": "capital-offences-b1-04", "q": "Religions — which is correct?", "options": ["He studies Buddhism at university.", "He studies buddhism at university.", "He studies Buddhism at University."], "answer": 0, "why": "Religions take a capital; “university” as a general word doesn't." },
+      { "id": "capital-offences-b1-05", "q": "Regions — which is correct?", "options": ["She grew up in the south of Spain.", "She grew up in the south of spain.", "She grew up in the South of spain."], "answer": 0, "why": "“The south of Spain” is just a direction, so lowercase; Spain always takes a capital." },
+      { "id": "capital-offences-b1-06", "q": "Brand names — which is correct?", "options": ["I bought it at Zara.", "I bought it at zara.", "I bought it at the Zara."], "answer": 0, "why": "Brand names take a capital, and a shop name like Zara needs no “the”." },
+      { "id": "capital-offences-b1-07", "q": "Dates — which is correct?", "options": ["The meeting is on 3 April.", "The meeting is on 3 april.", "The meeting is on the 3rd of april."], "answer": 0, "why": "Months keep their capital in dates too: 3 April." },
+      { "id": "capital-offences-b1-08", "q": "Historical periods — which is correct?", "options": ["We studied the Renaissance last year.", "We studied the renaissance last year.", "We studied The renaissance last year."], "answer": 0, "why": "Named historical periods take a capital: the Renaissance." },
+      { "id": "capital-offences-b1-09", "q": "Nationalities as adjectives — which is correct?", "options": ["I love Italian food.", "I love italian food.", "I love Italian Food."], "answer": 0, "why": "Nationality adjectives take a capital; ordinary nouns like “food” don't." },
+      { "id": "capital-offences-b1-10", "q": "Historical periods — which is correct?", "options": ["Cowboys were part of the Wild West.", "Cowboys were part of the wild west.", "Cowboys were part of the Wild west."], "answer": 0, "why": "“The Wild West” is a name, so both words take capitals." },
+      { "id": "capital-offences-b1-11", "q": "Streets — which is correct?", "options": ["The chemist's is on Colón Street.", "The chemist's is on colón street.", "The chemist's is on Colón street."], "answer": 0, "why": "A street name is a proper name: every word takes a capital." },
+      { "id": "capital-offences-b1-12", "q": "Festivals — which is correct?", "options": ["We always go home for Easter.", "We always go home for easter.", "We always go Home for Easter."], "answer": 0, "why": "Festivals like Easter take a capital; ordinary nouns like “home” don't." }
     ],
     "B2": [
-      {
-        "id": "capital-offences-b2-01",
-        "q": "Institutions — which is correct?",
-        "options": [
-          "She works for the United Nations.",
-          "She works for the united nations.",
-          "She works for the United nations."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "capital-offences-b2-02",
-        "q": "Directions as regions — which is correct?",
-        "options": [
-          "Investment is growing in the West.",
-          "Investment is growing in the west.",
-          "investment is growing in the West."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "capital-offences-b2-03",
-        "q": "Literal compass directions — which is correct?",
-        "options": [
-          "Turn west at the next junction.",
-          "Turn West at the next junction.",
-          "turn west at the next junction."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "capital-offences-b2-04",
-        "q": "Cultural groups — which is correct?",
-        "options": [
-          "The exhibition celebrates Maori culture.",
-          "The exhibition celebrates maori culture.",
-          "The exhibition celebrates Maori Culture."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "capital-offences-b2-05",
-        "q": "Job titles as generic nouns — which is correct?",
-        "options": [
-          "My father is a doctor.",
-          "My father is a Doctor.",
-          "my father is a doctor."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "capital-offences-b2-06",
-        "q": "Job titles before a name — which is correct?",
-        "options": [
-          "I spoke to Professor García.",
-          "I spoke to professor García.",
-          "I spoke to Professor garcía."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "capital-offences-b2-07",
-        "q": "Academic subjects — which is correct?",
-        "options": [
-          "I'm studying history and Spanish.",
-          "I'm studying History and Spanish.",
-          "I'm studying history and spanish."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "capital-offences-b2-08",
-        "q": "Planets — which is correct?",
-        "options": [
-          "Mars is the fourth planet from the Sun.",
-          "mars is the fourth planet from the sun.",
-          "Mars is the fourth Planet from the sun."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "capital-offences-b2-09",
-        "q": "Public holidays — which is correct?",
-        "options": [
-          "We don't work on Christmas Day.",
-          "We don't work on christmas day.",
-          "we don't work on Christmas day."
-        ],
-        "answer": 0
-      }
+      { "id": "capital-offences-b2-01", "q": "Institutions — which is correct?", "options": ["She works for the United Nations.", "She works for the united nations.", "She works for the United nations."], "answer": 0, "why": "Each main word in an institution's name takes a capital." },
+      { "id": "capital-offences-b2-02", "q": "Directions as regions — which is correct?", "options": ["Investment is growing in the West.", "Investment is growing in the west.", "investment is growing in the West."], "answer": 0, "why": "“The West” as a political region is a name, so it takes a capital." },
+      { "id": "capital-offences-b2-03", "q": "Literal compass directions — which is correct?", "options": ["Turn west at the next junction.", "Turn West at the next junction.", "turn west at the next junction."], "answer": 0, "why": "As a simple direction on the road, “west” is lowercase." },
+      { "id": "capital-offences-b2-04", "q": "Cultural groups — which is correct?", "options": ["The exhibition celebrates Maori culture.", "The exhibition celebrates maori culture.", "The exhibition celebrates Maori Culture."], "answer": 0, "why": "Names of peoples take a capital; “culture” itself doesn't." },
+      { "id": "capital-offences-b2-05", "q": "Job titles as generic nouns — which is correct?", "options": ["My father is a doctor.", "My father is a Doctor.", "my father is a doctor."], "answer": 0, "why": "A job used as a general noun stays lowercase: a doctor." },
+      { "id": "capital-offences-b2-06", "q": "Job titles before a name — which is correct?", "options": ["I spoke to Professor García.", "I spoke to professor García.", "I spoke to Professor garcía."], "answer": 0, "why": "A title directly before a name takes a capital: Professor García." },
+      { "id": "capital-offences-b2-07", "q": "Academic subjects — which is correct?", "options": ["I'm studying history and Spanish.", "I'm studying History and Spanish.", "I'm studying history and spanish."], "answer": 0, "why": "School subjects are lowercase, except languages, which always take capitals." },
+      { "id": "capital-offences-b2-08", "q": "Planets — which is correct?", "options": ["Mars is the fourth planet from the Sun.", "mars is the fourth planet from the sun.", "Mars is the fourth Planet from the sun."], "answer": 0, "why": "Planets take a capital, and so does the Sun as a named star; “planet” doesn't." },
+      { "id": "capital-offences-b2-09", "q": "Public holidays — which is correct?", "options": ["We don't work on Christmas Day.", "We don't work on christmas day.", "we don't work on Christmas day."], "answer": 0, "why": "Public holidays take a capital on each main word: Christmas Day." },
+      { "id": "capital-offences-b2-10", "q": "Job titles before a name — which is correct?", "options": ["Everyone in town feared Marshal Dillon.", "Everyone in town feared marshal Dillon.", "Everyone in town feared Marshal dillon."], "answer": 0, "why": "A title directly before a name takes a capital, like the name itself." },
+      { "id": "capital-offences-b2-11", "q": "Job titles as generic nouns — which is correct?", "options": ["John Snow worked as a surgeon in London.", "John Snow worked as a Surgeon in London.", "John Snow worked as a surgeon in london."], "answer": 0, "why": "A job used as a general noun stays lowercase; London always takes a capital." },
+      { "id": "capital-offences-b2-12", "q": "Buildings — which is correct?", "options": ["We visited the Silk Exchange in Valencia.", "We visited the silk exchange in Valencia.", "We visited the Silk exchange in Valencia."], "answer": 0, "why": "A building's official name takes a capital on each main word." }
     ],
     "C1": [
-      {
-        "id": "capital-offences-c1-01",
-        "q": "Nouns from proper adjectives — which is correct?",
-        "options": [
-          "The Anglicisation of the term is recent.",
-          "The anglicisation of the term is recent.",
-          "The Anglicisation Of The term is recent."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "capital-offences-c1-02",
-        "q": "Government bodies — which is correct?",
-        "options": [
-          "The bill was passed by Parliament.",
-          "The bill was passed by parliament.",
-          "The bill was passed by the parliament."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "capital-offences-c1-03",
-        "q": "Historical events — which is correct?",
-        "options": [
-          "The Industrial Revolution changed everything.",
-          "The industrial revolution changed everything.",
-          "The Industrial revolution changed everything."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "capital-offences-c1-04",
-        "q": "Religious texts — which is correct?",
-        "options": [
-          "The Bible has been translated into many languages.",
-          "The bible has been translated into many languages.",
-          "the Bible has been translated into many languages."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "capital-offences-c1-05",
-        "q": "Political movements — which is correct?",
-        "options": [
-          "She wrote a thesis on Marxism.",
-          "She wrote a thesis on marxism.",
-          "she wrote a thesis on Marxism."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "capital-offences-c1-06",
-        "q": "Star signs — which is correct?",
-        "options": [
-          "He's a Gemini.",
-          "He's a gemini.",
-          "he's a Gemini."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "capital-offences-c1-07",
-        "q": "Formal titles standing alone — which is correct?",
-        "options": [
-          "The Queen addressed the nation.",
-          "The queen addressed the nation.",
-          "the Queen addressed the nation."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "capital-offences-c1-08",
-        "q": "Compass-derived nouns — which is correct?",
-        "options": [
-          "Politics in the Middle East remain tense.",
-          "Politics in the middle east remain tense.",
-          "Politics in the Middle east remain tense."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "capital-offences-c1-09",
-        "q": "Trademarked generic terms — which is correct?",
-        "options": [
-          "He used a Kleenex to wipe the table.",
-          "He used a kleenex to wipe the table.",
-          "he used a Kleenex to wipe the table."
-        ],
-        "answer": 0
-      }
+      { "id": "capital-offences-c1-01", "q": "Nouns from proper adjectives — which is correct?", "options": ["The Americanisation of Spanish television is recent.", "The americanisation of Spanish television is recent.", "The Americanisation Of Spanish Television is recent."], "answer": 0, "why": "Words formed from a place name, like America, keep the capital." },
+      { "id": "capital-offences-c1-02", "q": "Government bodies — which is correct?", "options": ["The bill was passed by Parliament.", "The bill was passed by parliament.", "The bill was passed by the parliament."], "answer": 0, "why": "Parliament, as the name of the UK body, takes a capital." },
+      { "id": "capital-offences-c1-03", "q": "Historical events — which is correct?", "options": ["The Industrial Revolution changed everything.", "The industrial revolution changed everything.", "The Industrial revolution changed everything."], "answer": 0, "why": "Named historical events take a capital on each main word." },
+      { "id": "capital-offences-c1-04", "q": "Religious texts — which is correct?", "options": ["The Bible has been translated into many languages.", "The bible has been translated into many languages.", "the Bible has been translated into many languages."], "answer": 0, "why": "The Bible is the title of a sacred text, so it takes a capital." },
+      { "id": "capital-offences-c1-05", "q": "Political movements — which is correct?", "options": ["She wrote a thesis on Marxism.", "She wrote a thesis on marxism.", "she wrote a thesis on Marxism."], "answer": 0, "why": "Movements named after a person (Marx) keep the capital." },
+      { "id": "capital-offences-c1-06", "q": "Star signs — which is correct?", "options": ["He's a Gemini.", "He's a gemini.", "he's a Gemini."], "answer": 0, "why": "Star signs are names, so they take a capital." },
+      { "id": "capital-offences-c1-07", "q": "Formal titles standing alone — which is correct?", "options": ["The Queen addressed the nation.", "The queen addressed the nation.", "the Queen addressed the nation."], "answer": 0, "why": "“The Queen” refers to one specific person, so the title takes a capital." },
+      { "id": "capital-offences-c1-08", "q": "Compass-derived nouns — which is correct?", "options": ["Politics in the Middle East remain tense.", "Politics in the middle east remain tense.", "Politics in the Middle east remain tense."], "answer": 0, "why": "The Middle East is the name of a region: capitals on both words." },
+      { "id": "capital-offences-c1-09", "q": "Trademarked generic terms — which is correct?", "options": ["He used a Kleenex to wipe the table.", "He used a kleenex to wipe the table.", "he used a Kleenex to wipe the table."], "answer": 0, "why": "Kleenex is a brand name, so it keeps its capital even when used generally." },
+      { "id": "capital-offences-c1-10", "q": "Historical events — which is correct?", "options": ["The Black Death reached Valencia in 1348.", "The black death reached Valencia in 1348.", "The Black death reached Valencia in 1348."], "answer": 0, "why": "Named historical events take a capital on each main word." },
+      { "id": "capital-offences-c1-11", "q": "Seasons — which is correct?", "options": ["We moved to Valencia in the spring of 1975.", "We moved to Valencia in the Spring of 1975.", "We moved to valencia in the spring of 1975."], "answer": 0, "why": "Seasons stay lowercase in English, unlike days and months." },
+      { "id": "capital-offences-c1-12", "q": "Wars — which is correct?", "options": ["The Spanish Civil War began in 1936.", "The Spanish civil war began in 1936.", "The spanish Civil War began in 1936."], "answer": 0, "why": "A named war takes capitals, and so does the nationality: Spanish." }
     ]
   }
 }

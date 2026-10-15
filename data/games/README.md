@@ -36,4 +36,4 @@ Run `node scripts/games-validate.mjs` after any edit. It fails on:
 ## Where the files come from
 
 - `story-time.json` and `who-did-it.json` were written for the Wednesday B2 course.
-- Every file with `"source"` was copied from the website by `scripts/games-import.mjs`. Re-running that script overwrites those files, so put lasting edits in the script's `FIXES` or `INTROS` list, or remove `"source"` from the file to take it over by hand.
+- Every file with `"source"` was copied from the website by `scripts/games-import.mjs`. Re-running that script overwrites those files, so put lasting edits in the script's `FIXES` or `INTROS` list, or remove `"source"` from the file to take it over by hand. When you take a file over, also add its slug to the script's `SKIP` list, so a re-import cannot recreate it from the website.

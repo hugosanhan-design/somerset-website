@@ -1,382 +1,65 @@
 {
   "id": "contraction-control",
   "title": "Contraction Control",
-  "tags": [
-    "register",
-    "punctuation"
-  ],
+  "tags": ["register", "punctuation"],
   "engine": "choice",
   "intro": "I'm becomes I am. Can't becomes cannot. Knowing when NOT to contract in formal writing is its own skill.",
-  "source": "Game — Contraction Control.html",
-  "draft": true,
   "items": {
     "A2": [
-      {
-        "id": "contraction-control-a2-01",
-        "q": "Formal writing — which is correct?",
-        "options": [
-          "I am writing to apply for the position.",
-          "I'm writing to apply for the position.",
-          "I is writing to apply for the position."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "contraction-control-a2-02",
-        "q": "Formal writing — which is correct?",
-        "options": [
-          "We cannot attend the meeting.",
-          "We can't attend the meeting.",
-          "We not can attend the meeting."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "contraction-control-a2-03",
-        "q": "Formal writing — which is correct?",
-        "options": [
-          "It is important to arrive on time.",
-          "It's important to arrive on time.",
-          "Its important to arrive on time."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "contraction-control-a2-04",
-        "q": "Formal writing — which is correct?",
-        "options": [
-          "They do not agree with the proposal.",
-          "They don't agree with the proposal.",
-          "They not agree with the proposal."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "contraction-control-a2-05",
-        "q": "Formal writing — which is correct?",
-        "options": [
-          "She will not be attending the event.",
-          "She won't be attending the event.",
-          "She wont be attending the event."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "contraction-control-a2-06",
-        "q": "Formal writing — which is correct?",
-        "options": [
-          "I would like to request more information.",
-          "I'd like to request more information.",
-          "I like to request more information."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "contraction-control-a2-07",
-        "q": "Formal writing — which is correct?",
-        "options": [
-          "We are pleased to confirm your booking.",
-          "We're pleased to confirm your booking.",
-          "We pleased to confirm your booking."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "contraction-control-a2-08",
-        "q": "Formal writing — which is correct?",
-        "options": [
-          "He has not replied to my email yet.",
-          "He hasn't replied to my email yet.",
-          "He have not replied to my email yet."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "contraction-control-a2-09",
-        "q": "Formal writing — which is correct?",
-        "options": [
-          "I have attached the report for your review.",
-          "I've attached the report for your review.",
-          "I has attached the report for your review."
-        ],
-        "answer": 0
-      }
+      { "id": "contraction-control-a2-01", "q": "Formal writing — which is correct?", "options": ["I am writing to apply for the position.", "I'm writing to apply for the position.", "I is writing to apply for the position."], "answer": 0, "why": "In a formal letter, write “I am” in full; “I'm” is for friends and chat." },
+      { "id": "contraction-control-a2-02", "q": "Formal writing — which is correct?", "options": ["We cannot attend the meeting.", "We can't attend the meeting.", "We not can attend the meeting."], "answer": 0, "why": "“Cannot” is one word in its full form; “can't” sounds too casual for formal writing." },
+      { "id": "contraction-control-a2-03", "q": "Formal writing — which is correct?", "options": ["It is important to arrive on time.", "It's important to arrive on time.", "Its important to arrive on time."], "answer": 0, "why": "Formal style keeps “it is” in full. And “its” without an apostrophe means “de ello”." },
+      { "id": "contraction-control-a2-04", "q": "Formal writing — which is correct?", "options": ["They do not agree with the proposal.", "They don't agree with the proposal.", "They not agree with the proposal."], "answer": 0, "why": "Formal writing uses “do not” in full; “don't” belongs in speech and casual messages." },
+      { "id": "contraction-control-a2-05", "q": "Formal writing — which is correct?", "options": ["She will not be attending the event.", "She won't be attending the event.", "She wont be attending the event."], "answer": 0, "why": "“Will not” is the full form of “won't”; “wont” with no apostrophe is a spelling mistake." },
+      { "id": "contraction-control-a2-06", "q": "Formal writing — which is correct?", "options": ["I would like to request more information.", "I'd like to request more information.", "I like to request more information."], "answer": 0, "why": "“I would like” is the polite, formal request; “I'd like” is the spoken version." },
+      { "id": "contraction-control-a2-07", "q": "Formal writing — which is correct?", "options": ["We are pleased to confirm your booking.", "We're pleased to confirm your booking.", "We pleased to confirm your booking."], "answer": 0, "why": "Business letters keep “we are” in full, and English never drops the verb “are”." },
+      { "id": "contraction-control-a2-08", "q": "Formal writing — which is correct?", "options": ["He has not replied to my email yet.", "He hasn't replied to my email yet.", "He have not replied to my email yet."], "answer": 0, "why": "“Has not” in full suits a formal email; “he have” is wrong because “he” takes “has”." },
+      { "id": "contraction-control-a2-09", "q": "Formal writing — which is correct?", "options": ["I have attached the report for your review.", "I've attached the report for your review.", "I has attached the report for your review."], "answer": 0, "why": "“I have attached” in full is standard in formal emails; “I has” breaks the verb." },
+      { "id": "contraction-control-a2-10", "q": "Formal writing — which is correct?", "options": ["The museum is not open on Mondays.", "The museum isn't open on Mondays.", "The museum not is open on Mondays."], "answer": 0, "why": "Formal notices write “is not” in full, and “not” goes after “is”, never before it." },
+      { "id": "contraction-control-a2-11", "q": "Formal writing — which is correct?", "options": ["I do not have a reservation for this evening.", "I don't have a reservation for this evening.", "I not have a reservation for this evening."], "answer": 0, "why": "Formal style: “do not” in full. English needs “do” to make “have” negative." },
+      { "id": "contraction-control-a2-12", "q": "Formal writing — which is correct?", "options": ["We are writing to thank you for your help.", "We're writing to thank you for your help.", "We writing to thank you for your help."], "answer": 0, "why": "“We are writing to…” is the classic formal opening, with the verb in full." }
     ],
     "B1": [
-      {
-        "id": "contraction-control-b1-01",
-        "q": "Formal writing — which is correct?",
-        "options": [
-          "The company does not accept returns after 30 days.",
-          "The company doesn't accept returns after 30 days.",
-          "The company not accepts returns after 30 days."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "contraction-control-b1-02",
-        "q": "Formal writing — which is correct?",
-        "options": [
-          "We were unable to reach a decision.",
-          "We weren't able to reach a decision.",
-          "We was unable to reach a decision."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "contraction-control-b1-03",
-        "q": "Formal writing — which is correct?",
-        "options": [
-          "It would be appreciated if you could confirm.",
-          "It'd be appreciated if you could confirm.",
-          "It will be appreciated if you could confirm."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "contraction-control-b1-04",
-        "q": "Formal writing — which is correct?",
-        "options": [
-          "I am not able to attend due to a prior commitment.",
-          "I'm not able to attend due to a prior commitment.",
-          "I amn't able to attend due to a prior commitment."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "contraction-control-b1-05",
-        "q": "Formal writing — which is correct?",
-        "options": [
-          "The board has not yet reviewed the proposal.",
-          "The board hasn't yet reviewed the proposal.",
-          "The board have not yet reviewed the proposal."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "contraction-control-b1-06",
-        "q": "Formal writing — which is correct?",
-        "options": [
-          "We do not anticipate any further delays.",
-          "We don't anticipate any further delays.",
-          "We not anticipate any further delays."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "contraction-control-b1-07",
-        "q": "Formal writing — which is correct?",
-        "options": [
-          "She is not currently available for comment.",
-          "She isn't currently available for comment.",
-          "She not currently available for comment."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "contraction-control-b1-08",
-        "q": "Formal writing — which is correct?",
-        "options": [
-          "You will not be charged for this service.",
-          "You won't be charged for this service.",
-          "You not be charged for this service."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "contraction-control-b1-09",
-        "q": "Formal writing — which is correct?",
-        "options": [
-          "They cannot guarantee delivery by Friday.",
-          "They can't guarantee delivery by Friday.",
-          "They not can guarantee delivery by Friday."
-        ],
-        "answer": 0
-      }
+      { "id": "contraction-control-b1-01", "q": "Formal writing — which is correct?", "options": ["The company does not accept returns after 30 days.", "The company doesn't accept returns after 30 days.", "The company not accepts returns after 30 days."], "answer": 0, "why": "Company rules use “does not” in full; the negative needs “does” before “accept”." },
+      { "id": "contraction-control-b1-02", "q": "Formal writing — which is correct?", "options": ["We were unable to reach a decision.", "We weren't able to reach a decision.", "We was unable to reach a decision."], "answer": 0, "why": "“We were unable” is formal and complete; “we was” breaks the subject and verb agreement." },
+      { "id": "contraction-control-b1-03", "q": "Formal writing — which is correct?", "options": ["It would be appreciated if you could confirm.", "It'd be appreciated if you could confirm.", "It would be appreciate if you could confirm."], "answer": 0, "why": "“It would be appreciated” is a fixed formal phrase, in full and with the past participle." },
+      { "id": "contraction-control-b1-04", "q": "Formal writing — which is correct?", "options": ["I am not able to attend due to a prior commitment.", "I'm not able to attend due to a prior commitment.", "I amn't able to attend due to a prior commitment."], "answer": 0, "why": "“I am not” in full; “amn't” does not exist in standard English." },
+      { "id": "contraction-control-b1-05", "q": "Formal writing — which is correct?", "options": ["The board has not yet reviewed the proposal.", "The board hasn't yet reviewed the proposal.", "The board not has yet reviewed the proposal."], "answer": 0, "why": "“Has not” in full for formal writing; “not” goes after the auxiliary, never before it." },
+      { "id": "contraction-control-b1-06", "q": "Formal writing — which is correct?", "options": ["We do not anticipate any further delays.", "We don't anticipate any further delays.", "We not anticipate any further delays."], "answer": 0, "why": "Formal writing keeps “do not” in full; English needs “do” before “not” with most verbs." },
+      { "id": "contraction-control-b1-07", "q": "Formal writing — which is correct?", "options": ["She is not currently available for comment.", "She isn't currently available for comment.", "She not currently available for comment."], "answer": 0, "why": "Press statements use “is not” in full; the verb “is” cannot be left out." },
+      { "id": "contraction-control-b1-08", "q": "Formal writing — which is correct?", "options": ["You will not be charged for this service.", "You won't be charged for this service.", "You not be charged for this service."], "answer": 0, "why": "Customer letters write “will not” in full; the future needs “will”." },
+      { "id": "contraction-control-b1-09", "q": "Formal writing — which is correct?", "options": ["They cannot guarantee delivery by Friday.", "They can't guarantee delivery by Friday.", "They not can guarantee delivery by Friday."], "answer": 0, "why": "“Cannot” in full is the formal choice; “not can” is the Spanish order, not English." },
+      { "id": "contraction-control-b1-10", "q": "Formal writing — which is correct?", "options": ["The clinic will not be open during Fallas.", "The clinic won't be open during Fallas.", "The clinic will not to be open during Fallas."], "answer": 0, "why": "“Will not” in full for an official notice; after “will”, the verb takes no “to”." },
+      { "id": "contraction-control-b1-11", "q": "Formal writing — which is correct?", "options": ["The hotel does not allow pets in the rooms.", "The hotel doesn't allow pets in the rooms.", "The hotel not allows pets in the rooms."], "answer": 0, "why": "Formal rules use “does not” in full; “not allows” skips the auxiliary “does”." },
+      { "id": "contraction-control-b1-12", "q": "Formal writing — which is correct?", "options": ["The sheriff's office is not responsible for lost property.", "The sheriff's office isn't responsible for lost property.", "The sheriff's office not is responsible for lost property."], "answer": 0, "why": "Official notices write “is not” in full, and “not” always follows “is”." }
     ],
     "B2": [
-      {
-        "id": "contraction-control-b2-01",
-        "q": "Formal writing — which is correct?",
-        "options": [
-          "The committee has not reached a consensus.",
-          "The committee hasn't reached a consensus.",
-          "The committee have not reached consensus."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "contraction-control-b2-02",
-        "q": "Formal writing — which is correct?",
-        "options": [
-          "It is not uncommon for delays to occur.",
-          "It's not uncommon for delays to occur.",
-          "It not uncommon for delays to occur."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "contraction-control-b2-03",
-        "q": "Formal writing — which is correct?",
-        "options": [
-          "We would not recommend proceeding without approval.",
-          "We wouldn't recommend proceeding without approval.",
-          "We not recommend proceeding without approval."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "contraction-control-b2-04",
-        "q": "Formal writing — which is correct?",
-        "options": [
-          "The findings do not support this conclusion.",
-          "The findings don't support this conclusion.",
-          "The findings not support this conclusion."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "contraction-control-b2-05",
-        "q": "Formal writing — which is correct?",
-        "options": [
-          "I cannot stress enough the importance of this matter.",
-          "I can't stress enough the importance of this matter.",
-          "I not can stress enough the importance."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "contraction-control-b2-06",
-        "q": "Formal writing — which is correct?",
-        "options": [
-          "The evidence is not sufficient to draw a conclusion.",
-          "The evidence isn't sufficient to draw a conclusion.",
-          "The evidence not sufficient to draw a conclusion."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "contraction-control-b2-07",
-        "q": "Formal writing — which is correct?",
-        "options": [
-          "They will not be able to attend the ceremony.",
-          "They won't be able to attend the ceremony.",
-          "They not will be able to attend."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "contraction-control-b2-08",
-        "q": "Formal writing — which is correct?",
-        "options": [
-          "We have not received confirmation of your order.",
-          "We haven't received confirmation of your order.",
-          "We not received confirmation of your order."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "contraction-control-b2-09",
-        "q": "Formal writing — which is correct?",
-        "options": [
-          "This policy does not apply to existing customers.",
-          "This policy doesn't apply to existing customers.",
-          "This policy not apply to existing customers."
-        ],
-        "answer": 0
-      }
+      { "id": "contraction-control-b2-01", "q": "Formal writing — which is correct?", "options": ["The committee has not reached a consensus.", "The committee hasn't reached a consensus.", "The committee not has reached a consensus."], "answer": 0, "why": "Formal reports use “has not” in full; “not” follows the auxiliary, never the other way round." },
+      { "id": "contraction-control-b2-02", "q": "Formal writing — which is correct?", "options": ["It is not uncommon for delays to occur.", "It's not uncommon for delays to occur.", "It not uncommon for delays to occur."], "answer": 0, "why": "“It is not uncommon” is formal and stays in full; it means “it happens quite often”." },
+      { "id": "contraction-control-b2-03", "q": "Formal writing — which is correct?", "options": ["We would not recommend proceeding without approval.", "We wouldn't recommend proceeding without approval.", "We not recommend proceeding without approval."], "answer": 0, "why": "Professional advice uses “would not” in full; “we not recommend” misses the auxiliary." },
+      { "id": "contraction-control-b2-04", "q": "Formal writing — which is correct?", "options": ["The findings do not support this conclusion.", "The findings don't support this conclusion.", "The findings not support this conclusion."], "answer": 0, "why": "Academic writing avoids “don't”: “do not support”, in full." },
+      { "id": "contraction-control-b2-05", "q": "Formal writing — which is correct?", "options": ["I cannot stress enough the importance of this matter.", "I can't stress enough the importance of this matter.", "I not can stress enough the importance."], "answer": 0, "why": "“I cannot stress enough” is a formal set phrase, written in full." },
+      { "id": "contraction-control-b2-06", "q": "Formal writing — which is correct?", "options": ["The evidence is not sufficient to draw a conclusion.", "The evidence isn't sufficient to draw a conclusion.", "The evidence not sufficient to draw a conclusion."], "answer": 0, "why": "In academic writing, “is not sufficient” stays in full, with the verb “is”." },
+      { "id": "contraction-control-b2-07", "q": "Formal writing — which is correct?", "options": ["They will not be able to attend the ceremony.", "They won't be able to attend the ceremony.", "They not will be able to attend."], "answer": 0, "why": "Formal announcements write “will not” in full; “not” comes after “will”." },
+      { "id": "contraction-control-b2-08", "q": "Formal writing — which is correct?", "options": ["We have not received confirmation of your order.", "We haven't received confirmation of your order.", "We not received confirmation of your order."], "answer": 0, "why": "Business emails use “have not received” in full; the auxiliary “have” cannot be dropped." },
+      { "id": "contraction-control-b2-09", "q": "Formal writing — which is correct?", "options": ["This policy does not apply to existing customers.", "This policy doesn't apply to existing customers.", "This policy not apply to existing customers."], "answer": 0, "why": "Formal terms use “does not apply” in full; “not apply” misses “does”." },
+      { "id": "contraction-control-b2-10", "q": "Formal writing — which is correct?", "options": ["Early surgeons did not understand the importance of clean hands.", "Early surgeons didn't understand the importance of clean hands.", "Early surgeons not understood the importance of clean hands."], "answer": 0, "why": "Written history avoids contractions: “did not understand”, with “did” carrying the past." },
+      { "id": "contraction-control-b2-11", "q": "Formal writing — which is correct?", "options": ["The railway company has not yet compensated the passengers.", "The railway company hasn't yet compensated the passengers.", "The railway company not has yet compensated the passengers."], "answer": 0, "why": "Formal replies keep “has not” in full, with “not” after “has”." },
+      { "id": "contraction-control-b2-12", "q": "Formal writing — which is correct?", "options": ["We regret that the paella course is not available this month.", "We regret that the paella course isn't available this month.", "We regret that the paella course not is available this month."], "answer": 0, "why": "Formal notices write “is not available” in full; “not is” is the wrong order." }
     ],
     "C1": [
-      {
-        "id": "contraction-control-c1-01",
-        "q": "Formal writing — which is correct?",
-        "options": [
-          "It would not be appropriate to comment further.",
-          "It wouldn't be appropriate to comment further.",
-          "It not be appropriate to comment further."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "contraction-control-c1-02",
-        "q": "Formal writing — which is correct?",
-        "options": [
-          "The report does not, in our view, reflect the facts.",
-          "The report doesn't, in our view, reflect the facts.",
-          "The report not, in our view, reflect the facts."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "contraction-control-c1-03",
-        "q": "Formal writing — which is correct?",
-        "options": [
-          "We cannot, under any circumstances, approve this request.",
-          "We can't, under any circumstances, approve this request.",
-          "We not can, under any circumstances, approve this request."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "contraction-control-c1-04",
-        "q": "Formal writing — which is correct?",
-        "options": [
-          "The panel was not, at that stage, in a position to decide.",
-          "The panel wasn't, at that stage, in a position to decide.",
-          "The panel not, at that stage, in a position to decide."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "contraction-control-c1-05",
-        "q": "Formal writing — which is correct?",
-        "options": [
-          "This matter has not previously been brought to our attention.",
-          "This matter hasn't previously been brought to our attention.",
-          "This matter not previously been brought."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "contraction-control-c1-06",
-        "q": "Formal writing — which is correct?",
-        "options": [
-          "It is not, therefore, a straightforward decision.",
-          "It's not, therefore, a straightforward decision.",
-          "It not, therefore, a straightforward decision."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "contraction-control-c1-07",
-        "q": "Formal writing — which is correct?",
-        "options": [
-          "We are not, at this juncture, able to comment.",
-          "We're not, at this juncture, able to comment.",
-          "We not, at this juncture, able to comment."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "contraction-control-c1-08",
-        "q": "Formal writing — which is correct?",
-        "options": [
-          "The applicant did not meet the eligibility criteria.",
-          "The applicant didn't meet the eligibility criteria.",
-          "The applicant not meet the eligibility criteria."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "contraction-control-c1-09",
-        "q": "Formal writing — which is correct?",
-        "options": [
-          "The board will not, under the circumstances, reconsider.",
-          "The board won't, under the circumstances, reconsider.",
-          "The board not, under the circumstances, reconsider."
-        ],
-        "answer": 0
-      }
+      { "id": "contraction-control-c1-01", "q": "Formal writing — which is correct?", "options": ["It would not be appropriate to comment further.", "It wouldn't be appropriate to comment further.", "It not be appropriate to comment further."], "answer": 0, "why": "Official statements write “would not” in full, especially in a polite refusal." },
+      { "id": "contraction-control-c1-02", "q": "Formal writing — which is correct?", "options": ["The report does not, in our view, reflect the facts.", "The report doesn't, in our view, reflect the facts.", "The report not, in our view, reflect the facts."], "answer": 0, "why": "With an aside like “in our view” in the middle, the full “does not” reads far more formally." },
+      { "id": "contraction-control-c1-03", "q": "Formal writing — which is correct?", "options": ["We cannot, under any circumstances, approve this request.", "We can't, under any circumstances, approve this request.", "We not can, under any circumstances, approve this request."], "answer": 0, "why": "“We cannot, under any circumstances” is a firm formal refusal; a contraction would soften it." },
+      { "id": "contraction-control-c1-04", "q": "Formal writing — which is correct?", "options": ["The panel was not, at that stage, in a position to decide.", "The panel wasn't, at that stage, in a position to decide.", "The panel not, at that stage, in a position to decide."], "answer": 0, "why": "Formal narrative keeps “was not” in full, even with a phrase inserted after “not”." },
+      { "id": "contraction-control-c1-05", "q": "Formal writing — which is correct?", "options": ["This matter has not previously been brought to our attention.", "This matter hasn't previously been brought to our attention.", "This matter not previously been brought."], "answer": 0, "why": "Official letters use “has not previously been” in full; every auxiliary must stay." },
+      { "id": "contraction-control-c1-06", "q": "Formal writing — which is correct?", "options": ["It is not, therefore, a straightforward decision.", "It's not, therefore, a straightforward decision.", "It not, therefore, a straightforward decision."], "answer": 0, "why": "“It is not, therefore,” in full; a contraction clashes with a formal linker like “therefore”." },
+      { "id": "contraction-control-c1-07", "q": "Formal writing — which is correct?", "options": ["We are not, at this juncture, able to comment.", "We're not, at this juncture, able to comment.", "We not, at this juncture, able to comment."], "answer": 0, "why": "“At this juncture” is very formal, so the verb stays in full: “We are not”." },
+      { "id": "contraction-control-c1-08", "q": "Formal writing — which is correct?", "options": ["The applicant did not meet the eligibility criteria.", "The applicant didn't meet the eligibility criteria.", "The applicant not meet the eligibility criteria."], "answer": 0, "why": "Official decisions use “did not meet” in full; the past needs “did” before “not”." },
+      { "id": "contraction-control-c1-09", "q": "Formal writing — which is correct?", "options": ["The board will not, under the circumstances, reconsider.", "The board won't, under the circumstances, reconsider.", "The board not, under the circumstances, reconsider."], "answer": 0, "why": "Formal decisions write “will not” in full, even when a phrase separates it from the verb." },
+      { "id": "contraction-control-c1-10", "q": "Formal writing — which is correct?", "options": ["Semmelweis's findings were not, at first, accepted by his colleagues.", "Semmelweis's findings weren't, at first, accepted by his colleagues.", "Semmelweis's findings not were, at first, accepted by his colleagues."], "answer": 0, "why": "Formal history writing: “were not” in full, with “not” after the verb “were”." },
+      { "id": "contraction-control-c1-11", "q": "Formal writing — which is correct?", "options": ["The town council could not, in good conscience, approve the plan.", "The town council couldn't, in good conscience, approve the plan.", "The town council not could, in good conscience, approve the plan."], "answer": 0, "why": "“Could not, in good conscience” is formal and full; “not could” is the Spanish order." },
+      { "id": "contraction-control-c1-12", "q": "Formal writing — which is correct?", "options": ["The territory had not, until then, been properly surveyed.", "The territory hadn't, until then, been properly surveyed.", "The territory not had, until then, been properly surveyed."], "answer": 0, "why": "Formal reports keep “had not” in full, with “not” after the auxiliary “had”." }
     ]
   }
 }

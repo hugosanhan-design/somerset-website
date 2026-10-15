@@ -1,182 +1,65 @@
 {
   "id": "the-uncountable-larder",
   "title": "The Uncountable Larder",
-  "tags": [
-    "agreement",
-    "vocabulary"
-  ],
+  "tags": ["agreement", "vocabulary"],
   "engine": "pairs",
   "intro": "Un consejo, una información — perfectly countable in Spanish. Advice, information — stubbornly, permanently singular in English. Stock the larder correctly.",
-  "source": "Game — The Uncountable Larder.html",
-  "draft": true,
   "items": {
     "A2": [
-      {
-        "id": "the-uncountable-larder-a2-01",
-        "left": "advice",
-        "right": "helpful suggestions — never 'an advice' or 'advices'"
-      },
-      {
-        "id": "the-uncountable-larder-a2-02",
-        "left": "furniture",
-        "right": "tables, chairs, beds — never 'furnitures', say 'a piece of furniture'"
-      },
-      {
-        "id": "the-uncountable-larder-a2-03",
-        "left": "luggage",
-        "right": "suitcases and bags — never 'luggages', say 'a piece of luggage'"
-      },
-      {
-        "id": "the-uncountable-larder-a2-04",
-        "left": "information",
-        "right": "facts and details — never 'informations'"
-      },
-      {
-        "id": "the-uncountable-larder-a2-05",
-        "left": "money",
-        "right": "coins and notes together — never 'moneys'"
-      },
-      {
-        "id": "the-uncountable-larder-a2-06",
-        "left": "news",
-        "right": "reports of events — takes a singular verb: 'the news is good'"
-      },
-      {
-        "id": "the-uncountable-larder-a2-07",
-        "left": "homework",
-        "right": "school tasks to do at home — never 'homeworks'"
-      },
-      {
-        "id": "the-uncountable-larder-a2-08",
-        "left": "bread",
-        "right": "the food made from flour — say 'a loaf of bread', not 'a bread'"
-      }
+      { "id": "the-uncountable-larder-a2-01", "left": "advice", "right": "helpful suggestions — never 'an advice' or 'advices'", "why": "Spanish “un consejo” is countable; English says “a piece of advice” or “some advice”." },
+      { "id": "the-uncountable-larder-a2-02", "left": "furniture", "right": "tables, chairs, beds — never 'furnitures', say 'a piece of furniture'", "why": "“Muebles” is plural, but furniture is one mass: “The furniture is new.”" },
+      { "id": "the-uncountable-larder-a2-03", "left": "luggage", "right": "suitcases and bags — never 'luggages', say 'a piece of luggage'", "why": "Count the bags, not the luggage: “three bags” or “three pieces of luggage”." },
+      { "id": "the-uncountable-larder-a2-04", "left": "information", "right": "facts and details — never 'informations'", "why": "Spanish has “informaciones”; English only has “information” or “a piece of information”." },
+      { "id": "the-uncountable-larder-a2-05", "left": "money", "right": "coins and notes together — never 'moneys'", "why": "Money takes a singular verb: “The money is on the table.”" },
+      { "id": "the-uncountable-larder-a2-06", "left": "news", "right": "reports of events — takes a singular verb: 'the news is good'", "why": "News ends in -s but is singular: “The news is good”, “a piece of news”." },
+      { "id": "the-uncountable-larder-a2-07", "left": "homework", "right": "school tasks to do at home — never 'homeworks'", "why": "“Deberes” is plural, but homework is uncountable: “I have a lot of homework.”" },
+      { "id": "the-uncountable-larder-a2-08", "left": "bread", "right": "the food made from flour — say 'a loaf of bread', not 'a bread'", "why": "Bread is a mass: “some bread”, “a loaf of bread” or “a slice of bread”." },
+      { "id": "the-uncountable-larder-a2-09", "left": "milk", "right": "the white drink from cows — say 'a glass of milk', not 'a milk'", "why": "Liquids are uncountable: “some milk”, “a glass of milk”." },
+      { "id": "the-uncountable-larder-a2-10", "left": "rice", "right": "the grain for a paella — never 'rices'", "why": "Rice is a mass of tiny grains: “The rice for the paella is ready.”" },
+      { "id": "the-uncountable-larder-a2-11", "left": "music", "right": "songs and tunes in general — never 'a music' or 'musics'", "why": "Count the songs, not the music: “a piece of music”, “three songs”." },
+      { "id": "the-uncountable-larder-a2-12", "left": "hair", "right": "what grows on your head — 'her hair is grey', not 'her hairs are'", "why": "Spanish “el pelo” is singular too: “Her hair is grey.” “A hair” is one single strand." }
     ],
     "B1": [
-      {
-        "id": "the-uncountable-larder-b1-01",
-        "left": "traffic",
-        "right": "vehicles on the road — never 'traffics'"
-      },
-      {
-        "id": "the-uncountable-larder-b1-02",
-        "left": "equipment",
-        "right": "tools or machines for a job — never 'equipments'"
-      },
-      {
-        "id": "the-uncountable-larder-b1-03",
-        "left": "progress",
-        "right": "improvement or forward movement — never 'progresses'"
-      },
-      {
-        "id": "the-uncountable-larder-b1-04",
-        "left": "weather",
-        "right": "rain, sun, wind, etc. — never 'a weather'"
-      },
-      {
-        "id": "the-uncountable-larder-b1-05",
-        "left": "research",
-        "right": "careful study of a subject — never 'a research'"
-      },
-      {
-        "id": "the-uncountable-larder-b1-06",
-        "left": "knowledge",
-        "right": "understanding gained over time — never 'knowledges'"
-      },
-      {
-        "id": "the-uncountable-larder-b1-07",
-        "left": "accommodation",
-        "right": "a place to live or stay — never 'accommodations' in British English"
-      },
-      {
-        "id": "the-uncountable-larder-b1-08",
-        "left": "scenery",
-        "right": "the natural landscape — never 'sceneries'"
-      }
+      { "id": "the-uncountable-larder-b1-01", "left": "traffic", "right": "vehicles on the road — never 'traffics'", "why": "Traffic is one mass of cars: “There was a lot of traffic on the way to Valencia.”" },
+      { "id": "the-uncountable-larder-b1-02", "left": "equipment", "right": "tools or machines for a job — never 'equipments'", "why": "Say “a piece of equipment”, never “an equipment”." },
+      { "id": "the-uncountable-larder-b1-03", "left": "progress", "right": "improvement or forward movement — never 'progresses'", "why": "Progress is singular: “The patient is making good progress.”" },
+      { "id": "the-uncountable-larder-b1-04", "left": "weather", "right": "rain, sun, wind, etc. — never 'a weather'", "why": "No “a” with weather: “What lovely weather!”, not “What a lovely weather!”" },
+      { "id": "the-uncountable-larder-b1-05", "left": "research", "right": "careful study of a subject — never 'a research'", "why": "Say “a piece of research” or “a study”, never “a research”." },
+      { "id": "the-uncountable-larder-b1-06", "left": "knowledge", "right": "understanding gained over time — never 'knowledges'", "why": "Knowledge has no plural, though “a good knowledge of Spanish” is fine." },
+      { "id": "the-uncountable-larder-b1-07", "left": "accommodation", "right": "a place to live or stay — never 'accommodations' in British English", "why": "In British English it is uncountable: “We found accommodation in Ruzafa.”" },
+      { "id": "the-uncountable-larder-b1-08", "left": "scenery", "right": "the natural landscape — never 'sceneries'", "why": "Scenery is the whole view: “The scenery around the Albufera is beautiful.”" },
+      { "id": "the-uncountable-larder-b1-09", "left": "luck", "right": "good or bad fortune — never 'a luck', say 'good luck'", "why": "No “a” with luck: “Good luck!”, “a bit of luck”." },
+      { "id": "the-uncountable-larder-b1-10", "left": "fun", "right": "enjoyment — never 'a fun' or 'funs'", "why": "Fun is uncountable: “We had a lot of fun at the Fallas.”" },
+      { "id": "the-uncountable-larder-b1-11", "left": "permission", "right": "being allowed to do something — never 'a permission'", "why": "Ask for permission, not “a permission”: Spanish “un permiso” is the trap." },
+      { "id": "the-uncountable-larder-b1-12", "left": "damage", "right": "harm caused to something — never 'damages' for harm", "why": "Damage has no plural for harm; “damages” is money a court orders you to pay." }
     ],
     "B2": [
-      {
-        "id": "the-uncountable-larder-b2-01",
-        "left": "feedback",
-        "right": "comments on how well something was done — never 'feedbacks'"
-      },
-      {
-        "id": "the-uncountable-larder-b2-02",
-        "left": "software",
-        "right": "computer programs — never 'softwares'"
-      },
-      {
-        "id": "the-uncountable-larder-b2-03",
-        "left": "evidence",
-        "right": "proof that something is true — never 'evidences'"
-      },
-      {
-        "id": "the-uncountable-larder-b2-04",
-        "left": "machinery",
-        "right": "large machines collectively — never 'machineries'"
-      },
-      {
-        "id": "the-uncountable-larder-b2-05",
-        "left": "poetry",
-        "right": "poems as a genre — never 'poetries', say 'a poem'"
-      },
-      {
-        "id": "the-uncountable-larder-b2-06",
-        "left": "staff",
-        "right": "the people who work somewhere — never 'staffs' for people"
-      },
-      {
-        "id": "the-uncountable-larder-b2-07",
-        "left": "jewellery",
-        "right": "rings, necklaces and bracelets — never 'jewelleries'"
-      },
-      {
-        "id": "the-uncountable-larder-b2-08",
-        "left": "cutlery",
-        "right": "knives, forks and spoons — never 'cutleries'"
-      }
+      { "id": "the-uncountable-larder-b2-01", "left": "feedback", "right": "comments on how well something was done — never 'feedbacks'", "why": "Feedback is uncountable: “some feedback”, “a piece of feedback”." },
+      { "id": "the-uncountable-larder-b2-02", "left": "software", "right": "computer programs — never 'softwares'", "why": "Count the programs, not the software: “a piece of software”, “two apps”." },
+      { "id": "the-uncountable-larder-b2-03", "left": "evidence", "right": "proof that something is true — never 'evidences'", "why": "Say “a piece of evidence”; Spanish “evidencias” is the trap." },
+      { "id": "the-uncountable-larder-b2-04", "left": "machinery", "right": "large machines collectively — never 'machineries'", "why": "Machinery is the mass; one is “a machine” or “a piece of machinery”." },
+      { "id": "the-uncountable-larder-b2-05", "left": "poetry", "right": "poems as a genre — never 'poetries', say 'a poem'", "why": "Poetry is the art; a single text is “a poem”." },
+      { "id": "the-uncountable-larder-b2-06", "left": "staff", "right": "the people who work somewhere — never 'staffs' for people", "why": "Staff is the whole group; for one person say “a member of staff”." },
+      { "id": "the-uncountable-larder-b2-07", "left": "jewellery", "right": "rings, necklaces and bracelets — never 'jewelleries'", "why": "Jewellery is the collection; one item is “a piece of jewellery”, or name it: a ring." },
+      { "id": "the-uncountable-larder-b2-08", "left": "cutlery", "right": "knives, forks and spoons — never 'cutleries'", "why": "Cutlery is uncountable: “Put the cutlery on the table.”" },
+      { "id": "the-uncountable-larder-b2-09", "left": "rubbish", "right": "things thrown away — never 'rubbishes'", "why": "Rubbish is uncountable in British English: “Take the rubbish out.”" },
+      { "id": "the-uncountable-larder-b2-10", "left": "livestock", "right": "farm animals such as cattle — never 'livestocks'", "why": "Livestock is the whole herd: “The ranch’s livestock was sold at auction.”" },
+      { "id": "the-uncountable-larder-b2-11", "left": "applause", "right": "clapping from an audience — never 'applauses'", "why": "Say “a round of applause”, never “an applause”." },
+      { "id": "the-uncountable-larder-b2-12", "left": "clothing", "right": "clothes in general — never 'clothings'", "why": "Clothing is uncountable, clothes is plural; one thing is “an item of clothing”." }
     ],
     "C1": [
-      {
-        "id": "the-uncountable-larder-c1-01",
-        "left": "expertise",
-        "right": "specialist skill or knowledge — never 'expertises'"
-      },
-      {
-        "id": "the-uncountable-larder-c1-02",
-        "left": "infrastructure",
-        "right": "the basic physical systems of a country — never 'infrastructures'"
-      },
-      {
-        "id": "the-uncountable-larder-c1-03",
-        "left": "legislation",
-        "right": "laws as a group — never 'legislations', say 'a law'"
-      },
-      {
-        "id": "the-uncountable-larder-c1-04",
-        "left": "footage",
-        "right": "recorded film or video material — never 'footages'"
-      },
-      {
-        "id": "the-uncountable-larder-c1-05",
-        "left": "correspondence",
-        "right": "letters or emails exchanged — never 'correspondences' in this sense"
-      },
-      {
-        "id": "the-uncountable-larder-c1-06",
-        "left": "merchandise",
-        "right": "goods for sale — never 'merchandises'"
-      },
-      {
-        "id": "the-uncountable-larder-c1-07",
-        "left": "foliage",
-        "right": "the leaves of plants collectively — never 'foliages'"
-      },
-      {
-        "id": "the-uncountable-larder-c1-08",
-        "left": "stationery",
-        "right": "pens, paper and office supplies — never 'stationeries'"
-      }
+      { "id": "the-uncountable-larder-c1-01", "left": "expertise", "right": "specialist skill or knowledge — never 'expertises'", "why": "Expertise is uncountable: “her expertise in surgery”, never “her expertises”." },
+      { "id": "the-uncountable-larder-c1-02", "left": "infrastructure", "right": "the basic physical systems of a country — never 'infrastructures'", "why": "Roads, railways and power together: one mass noun." },
+      { "id": "the-uncountable-larder-c1-03", "left": "legislation", "right": "laws as a group — never 'legislations', say 'a law'", "why": "Legislation is the body of laws; one is “a law” or “a piece of legislation”." },
+      { "id": "the-uncountable-larder-c1-04", "left": "footage", "right": "recorded film or video material — never 'footages'", "why": "Footage is uncountable: “some footage”; one short piece is “a clip”." },
+      { "id": "the-uncountable-larder-c1-05", "left": "correspondence", "right": "letters or emails exchanged — never 'correspondences' in this sense", "why": "All the letters together: “His correspondence was published after his death.”" },
+      { "id": "the-uncountable-larder-c1-06", "left": "merchandise", "right": "goods for sale — never 'merchandises'", "why": "Merchandise is the goods as a whole; one thing is “an item” or “a product”." },
+      { "id": "the-uncountable-larder-c1-07", "left": "foliage", "right": "the leaves of plants collectively — never 'foliages'", "why": "Foliage is all the leaves together; one is simply “a leaf”." },
+      { "id": "the-uncountable-larder-c1-08", "left": "stationery", "right": "pens, paper and office supplies — never 'stationeries'", "why": "Stationery with -ery is the supplies; “stationary” with -ary means not moving." },
+      { "id": "the-uncountable-larder-c1-09", "left": "ammunition", "right": "bullets and shells — never 'ammunitions'", "why": "“The cowboy ran out of ammunition”, never “ran out of ammunitions”." },
+      { "id": "the-uncountable-larder-c1-10", "left": "wildlife", "right": "wild animals and plants in their habitat — never 'wildlifes'", "why": "Wildlife is uncountable: “The Albufera’s wildlife is rich.”" },
+      { "id": "the-uncountable-larder-c1-11", "left": "paraphernalia", "right": "all the bits and pieces linked to an activity — never 'paraphernalias'", "why": "A mass noun: “all the paraphernalia of a country doctor’s bag”." },
+      { "id": "the-uncountable-larder-c1-12", "left": "hospitality", "right": "a warm welcome for guests — never 'hospitalities'", "why": "Hospitality is uncountable: “Thank you for your hospitality.”" }
     ]
   }
 }

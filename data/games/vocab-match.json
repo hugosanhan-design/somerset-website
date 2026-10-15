@@ -1,181 +1,65 @@
 {
   "id": "vocab-match",
   "title": "Vocab Match",
-  "tags": [
-    "vocabulary"
-  ],
+  "tags": ["vocabulary"],
   "engine": "pairs",
-  "intro": "Six words, six meanings, all face up — but only you know which belongs to which. Fewer mistakes, better score. Somerset's word-hoard, one match at a time.",
-  "source": "Game — Vocab Match.html",
-  "draft": true,
+  "intro": "Match each word or phrasal verb to its meaning. Everyday phrasal verbs and useful adjectives, one pair at a time.",
   "items": {
     "A2": [
-      {
-        "id": "vocab-match-a2-01",
-        "left": "get up",
-        "right": "get out of bed"
-      },
-      {
-        "id": "vocab-match-a2-02",
-        "left": "look for",
-        "right": "try to find"
-      },
-      {
-        "id": "vocab-match-a2-03",
-        "left": "turn on",
-        "right": "start a machine"
-      },
-      {
-        "id": "vocab-match-a2-04",
-        "left": "huge",
-        "right": "very big"
-      },
-      {
-        "id": "vocab-match-a2-05",
-        "left": "tiny",
-        "right": "very small"
-      },
-      {
-        "id": "vocab-match-a2-06",
-        "left": "cheap",
-        "right": "not expensive"
-      },
-      {
-        "id": "vocab-match-a2-07",
-        "left": "begin",
-        "right": "start"
-      },
-      {
-        "id": "vocab-match-a2-08",
-        "left": "furious",
-        "right": "very angry"
-      }
+      { "id": "vocab-match-a2-01", "left": "get up", "right": "get out of bed", "why": "You get up when you get out of bed. Waking up is opening your eyes." },
+      { "id": "vocab-match-a2-02", "left": "look for", "right": "try to find", "why": "Look for means try to find: the sheriff looked for the stolen horse." },
+      { "id": "vocab-match-a2-03", "left": "turn on", "right": "start a machine", "why": "Turn on starts a machine or a light. Turn off stops it." },
+      { "id": "vocab-match-a2-04", "left": "huge", "right": "very big", "why": "Huge is much stronger than big: a huge ranch." },
+      { "id": "vocab-match-a2-05", "left": "tiny", "right": "very small", "why": "Tiny is much stronger than small: a tiny kitchen." },
+      { "id": "vocab-match-a2-06", "left": "cheap", "right": "not expensive", "why": "Cheap means low in price. It can also sound negative: cheap and nasty." },
+      { "id": "vocab-match-a2-07", "left": "begin", "right": "start", "why": "Begin and start mean the same: the film begins at eight." },
+      { "id": "vocab-match-a2-08", "left": "furious", "right": "very angry", "why": "Furious is much stronger than angry." },
+      { "id": "vocab-match-a2-09", "left": "put on", "right": "dress in (clothes)", "why": "Put on is for clothes: the cowboy put on his hat." },
+      { "id": "vocab-match-a2-10", "left": "come back", "right": "return", "why": "Come back means return: we came back from Alicante on Sunday." },
+      { "id": "vocab-match-a2-11", "left": "tired", "right": "needing rest or sleep", "why": "Tired means you need rest. Tiring describes the thing that makes you tired." },
+      { "id": "vocab-match-a2-12", "left": "delicious", "right": "very tasty", "why": "Delicious means very tasty: a delicious paella." }
     ],
     "B1": [
-      {
-        "id": "vocab-match-b1-01",
-        "left": "give up",
-        "right": "stop trying"
-      },
-      {
-        "id": "vocab-match-b1-02",
-        "left": "find out",
-        "right": "discover information"
-      },
-      {
-        "id": "vocab-match-b1-03",
-        "left": "carry on",
-        "right": "continue"
-      },
-      {
-        "id": "vocab-match-b1-04",
-        "left": "put off",
-        "right": "postpone"
-      },
-      {
-        "id": "vocab-match-b1-05",
-        "left": "run out of",
-        "right": "have none left"
-      },
-      {
-        "id": "vocab-match-b1-06",
-        "left": "look after",
-        "right": "take care of"
-      },
-      {
-        "id": "vocab-match-b1-07",
-        "left": "set off",
-        "right": "begin a journey"
-      },
-      {
-        "id": "vocab-match-b1-08",
-        "left": "turn down",
-        "right": "refuse an offer"
-      }
+      { "id": "vocab-match-b1-01", "left": "give up", "right": "stop trying", "why": "Give up means stop trying, or stop a habit: he gave up smoking." },
+      { "id": "vocab-match-b1-02", "left": "find out", "right": "discover information", "why": "Find out means discover information: find out the train times." },
+      { "id": "vocab-match-b1-03", "left": "carry on", "right": "continue", "why": "Carry on means continue: carry on walking until the church." },
+      { "id": "vocab-match-b1-04", "left": "put off", "right": "postpone", "why": "Put off means postpone: the match was put off because of the rain." },
+      { "id": "vocab-match-b1-05", "left": "run out of", "right": "have none left", "why": "Run out of means have none left: we've run out of milk." },
+      { "id": "vocab-match-b1-06", "left": "look after", "right": "take care of", "why": "Look after means take care of: she looks after her grandchildren." },
+      { "id": "vocab-match-b1-07", "left": "set off", "right": "begin a journey", "why": "Set off means begin a journey: the wagons set off at dawn." },
+      { "id": "vocab-match-b1-08", "left": "turn down", "right": "refuse an offer", "why": "Turn down means refuse: he turned down the job in Madrid." },
+      { "id": "vocab-match-b1-09", "left": "get on with", "right": "have a good relationship with", "why": "Get on with someone means you like each other: I get on well with my neighbours." },
+      { "id": "vocab-match-b1-10", "left": "pick up", "right": "collect someone", "why": "Pick up means collect: I'll pick you up at the station." },
+      { "id": "vocab-match-b1-11", "left": "turn up", "right": "arrive, often unexpectedly", "why": "Turn up means appear or arrive: a stranger turned up at the saloon." },
+      { "id": "vocab-match-b1-12", "left": "make up", "right": "invent (a story)", "why": "Make up means invent: he made up an excuse." }
     ],
     "B2": [
-      {
-        "id": "vocab-match-b2-01",
-        "left": "come up with",
-        "right": "think of (an idea)"
-      },
-      {
-        "id": "vocab-match-b2-02",
-        "left": "get away with",
-        "right": "escape punishment for"
-      },
-      {
-        "id": "vocab-match-b2-03",
-        "left": "look up to",
-        "right": "admire and respect"
-      },
-      {
-        "id": "vocab-match-b2-04",
-        "left": "put up with",
-        "right": "tolerate"
-      },
-      {
-        "id": "vocab-match-b2-05",
-        "left": "break down",
-        "right": "stop working (machine)"
-      },
-      {
-        "id": "vocab-match-b2-06",
-        "left": "bring up",
-        "right": "raise (a child)"
-      },
-      {
-        "id": "vocab-match-b2-07",
-        "left": "take over",
-        "right": "gain control of"
-      },
-      {
-        "id": "vocab-match-b2-08",
-        "left": "fall through",
-        "right": "fail to happen (a plan)"
-      }
+      { "id": "vocab-match-b2-01", "left": "come up with", "right": "think of (an idea)", "why": "Come up with means think of: Jenner came up with the idea of vaccination." },
+      { "id": "vocab-match-b2-02", "left": "get away with", "right": "escape punishment for", "why": "Get away with means not be punished: the outlaws nearly got away with it." },
+      { "id": "vocab-match-b2-03", "left": "look up to", "right": "admire and respect", "why": "Look up to means admire: she looks up to her mother." },
+      { "id": "vocab-match-b2-04", "left": "put up with", "right": "tolerate", "why": "Put up with means tolerate: I can't put up with the noise during Fallas." },
+      { "id": "vocab-match-b2-05", "left": "break down", "right": "stop working (machine)", "why": "Break down is for machines and cars: the car broke down near Requena." },
+      { "id": "vocab-match-b2-06", "left": "bring up", "right": "raise (a child)", "why": "Bring up means raise a child: she was brought up in Valencia." },
+      { "id": "vocab-match-b2-07", "left": "take over", "right": "gain control of", "why": "Take over means gain control: the bank took over the company." },
+      { "id": "vocab-match-b2-08", "left": "fall through", "right": "fail to happen (a plan)", "why": "Fall through is for plans that don't happen: the sale fell through." },
+      { "id": "vocab-match-b2-09", "left": "make up for", "right": "compensate for", "why": "Make up for means compensate: a good dinner made up for the long wait." },
+      { "id": "vocab-match-b2-10", "left": "rule out", "right": "exclude as a possibility", "why": "Rule out means exclude: the doctor ruled out a broken bone." },
+      { "id": "vocab-match-b2-11", "left": "run into", "right": "meet by chance", "why": "Run into means meet by chance: I ran into an old friend at the market." },
+      { "id": "vocab-match-b2-12", "left": "look into", "right": "investigate", "why": "Look into means investigate: the marshal promised to look into the robbery." }
     ],
     "C1": [
-      {
-        "id": "vocab-match-c1-01",
-        "left": "dwindle",
-        "right": "shrink gradually"
-      },
-      {
-        "id": "vocab-match-c1-02",
-        "left": "meticulous",
-        "right": "extremely careful"
-      },
-      {
-        "id": "vocab-match-c1-03",
-        "left": "ubiquitous",
-        "right": "found everywhere"
-      },
-      {
-        "id": "vocab-match-c1-04",
-        "left": "candid",
-        "right": "honest and direct"
-      },
-      {
-        "id": "vocab-match-c1-05",
-        "left": "feasible",
-        "right": "realistically possible"
-      },
-      {
-        "id": "vocab-match-c1-06",
-        "left": "scrutinise",
-        "right": "examine very closely"
-      },
-      {
-        "id": "vocab-match-c1-07",
-        "left": "reluctant",
-        "right": "unwilling"
-      },
-      {
-        "id": "vocab-match-c1-08",
-        "left": "pivotal",
-        "right": "critically important"
-      }
+      { "id": "vocab-match-c1-01", "left": "dwindle", "right": "shrink gradually", "why": "Dwindle means slowly become smaller: the gold dwindled and the miners left." },
+      { "id": "vocab-match-c1-02", "left": "meticulous", "right": "extremely careful", "why": "Meticulous means extremely careful about detail: a meticulous surgeon." },
+      { "id": "vocab-match-c1-03", "left": "ubiquitous", "right": "found everywhere", "why": "Ubiquitous means found everywhere: mobile phones are ubiquitous." },
+      { "id": "vocab-match-c1-04", "left": "candid", "right": "honest and direct", "why": "Candid means frank and honest: a candid interview." },
+      { "id": "vocab-match-c1-05", "left": "feasible", "right": "realistically possible", "why": "Feasible means it can realistically be done: a feasible plan." },
+      { "id": "vocab-match-c1-06", "left": "scrutinise", "right": "examine very closely", "why": "Scrutinise means examine very closely: scrutinise the contract." },
+      { "id": "vocab-match-c1-07", "left": "reluctant", "right": "unwilling", "why": "Reluctant means unwilling: he was reluctant to see a doctor." },
+      { "id": "vocab-match-c1-08", "left": "pivotal", "right": "critically important", "why": "Pivotal means at the centre of things, critically important: a pivotal moment." },
+      { "id": "vocab-match-c1-09", "left": "elusive", "right": "hard to find or catch", "why": "Elusive means hard to catch: the elusive outlaw was never found." },
+      { "id": "vocab-match-c1-10", "left": "resilient", "right": "quick to recover from difficulty", "why": "Resilient means you recover quickly: Valencia is a resilient city." },
+      { "id": "vocab-match-c1-11", "left": "obsolete", "right": "no longer in use", "why": "Obsolete means out of use: bloodletting became an obsolete treatment." },
+      { "id": "vocab-match-c1-12", "left": "lucid", "right": "clear and easy to understand", "why": "Lucid means clear: a lucid explanation." }
     ]
   }
 }

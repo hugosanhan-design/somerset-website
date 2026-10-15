@@ -1,381 +1,65 @@
 {
   "id": "indirect-question-inn",
   "title": "Indirect Question Inn",
-  "tags": [
-    "word-order"
-  ],
+  "tags": ["word-order"],
   "engine": "choice",
   "intro": "“Could you tell me where is the station” — a question inside a question flips back to statement word order. The trap every level falls into.",
-  "source": "Game — Indirect Question Inn.html",
-  "draft": true,
   "items": {
     "A2": [
-      {
-        "id": "indirect-question-inn-a2-01",
-        "q": "Indirect questions — which is correct?",
-        "options": [
-          "Could you tell me where the station is?",
-          "Could you tell me where is the station?",
-          "Could you tell me the station is where?"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "indirect-question-inn-a2-02",
-        "q": "Indirect questions — which is correct?",
-        "options": [
-          "Do you know what time it is?",
-          "Do you know what time is it?",
-          "Do you know what is the time?"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "indirect-question-inn-a2-03",
-        "q": "Indirect questions — which is correct?",
-        "options": [
-          "I wonder what she wants.",
-          "I wonder what does she want.",
-          "I wonder what wants she."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "indirect-question-inn-a2-04",
-        "q": "Indirect questions — which is correct?",
-        "options": [
-          "Can you tell me how old you are?",
-          "Can you tell me how old are you?",
-          "Can you tell me how are you old?"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "indirect-question-inn-a2-05",
-        "q": "Indirect questions — which is correct?",
-        "options": [
-          "I don't know where he lives.",
-          "I don't know where does he live.",
-          "I don't know where lives he."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "indirect-question-inn-a2-06",
-        "q": "Indirect questions — which is correct?",
-        "options": [
-          "She asked me what my name was.",
-          "She asked me what was my name.",
-          "She asked me what my name is was."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "indirect-question-inn-a2-07",
-        "q": "Indirect questions — which is correct?",
-        "options": [
-          "Do you know if the shop is open?",
-          "Do you know is the shop open?",
-          "Do you know if is the shop open?"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "indirect-question-inn-a2-08",
-        "q": "Indirect questions — which is correct?",
-        "options": [
-          "I'd like to know why you were late.",
-          "I'd like to know why were you late.",
-          "I'd like to know why you late were."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "indirect-question-inn-a2-09",
-        "q": "Indirect questions — which is correct?",
-        "options": [
-          "Could you explain what this word means?",
-          "Could you explain what does this word mean?",
-          "Could you explain what means this word?"
-        ],
-        "answer": 0
-      }
+      { "id": "indirect-question-inn-a2-01", "q": "Indirect questions — which is correct?", "options": ["Could you tell me where the station is?", "Could you tell me where is the station?", "Could you tell me the station is where?"], "answer": 0, "why": "After “Could you tell me”, use statement order: “where the station is”, not “where is”." },
+      { "id": "indirect-question-inn-a2-02", "q": "Indirect questions — which is correct?", "options": ["Do you know what time it is?", "Do you know what time is it?", "Do you know what is the time?"], "answer": 0, "why": "Inside “Do you know…?”, the second part is a statement: “what time it is”." },
+      { "id": "indirect-question-inn-a2-03", "q": "Indirect questions — which is correct?", "options": ["I wonder what she wants.", "I wonder what does she want.", "I wonder what wants she."], "answer": 0, "why": "After “I wonder”, no “does”: just “what she wants”, like a normal sentence." },
+      { "id": "indirect-question-inn-a2-04", "q": "Indirect questions — which is correct?", "options": ["Can you tell me how old you are?", "Can you tell me how old are you?", "Can you tell me how are you old?"], "answer": 0, "why": "The question is “Can you…?”; the second part keeps statement order: “how old you are”." },
+      { "id": "indirect-question-inn-a2-05", "q": "Indirect questions — which is correct?", "options": ["I don't know where he lives.", "I don't know where does he live.", "I don't know where lives he."], "answer": 0, "why": "“I don't know” + statement order: “where he lives”. No “does” in the middle." },
+      { "id": "indirect-question-inn-a2-06", "q": "Indirect questions — which is correct?", "options": ["She asked me what my name was.", "She asked me what was my name.", "She asked me what my name is was."], "answer": 0, "why": "Reported questions use statement order: “what my name was”, not “what was my name”." },
+      { "id": "indirect-question-inn-a2-07", "q": "Indirect questions — which is correct?", "options": ["Do you know if the shop is open?", "Do you know is the shop open?", "Do you know if is the shop open?"], "answer": 0, "why": "A yes/no question inside a question takes “if” plus statement order: “if the shop is open”." },
+      { "id": "indirect-question-inn-a2-08", "q": "Indirect questions — which is correct?", "options": ["I'd like to know why you were late.", "I'd like to know why were you late.", "I'd like to know why you late were."], "answer": 0, "why": "After “I'd like to know”, keep statement order: “why you were late”." },
+      { "id": "indirect-question-inn-a2-09", "q": "Indirect questions — which is correct?", "options": ["Could you explain what this word means?", "Could you explain what does this word mean?", "Could you explain what means this word?"], "answer": 0, "why": "“What this word means”: no “does” after “explain”, and the verb takes -s." },
+      { "id": "indirect-question-inn-a2-10", "q": "Indirect questions — which is correct?", "options": ["Can you tell me where the chemist's is?", "Can you tell me where is the chemist's?", "Can you tell me where the chemist's is it?"], "answer": 0, "why": "Polite question, statement order inside: “where the chemist's is”, with the verb at the end." },
+      { "id": "indirect-question-inn-a2-11", "q": "Indirect questions — which is correct?", "options": ["Do you know when the market opens?", "Do you know when does the market open?", "Do you know when opens the market?"], "answer": 0, "why": "Inside “Do you know…?”, drop “does”: “when the market opens”, with -s on the verb." },
+      { "id": "indirect-question-inn-a2-12", "q": "Indirect questions — which is correct?", "options": ["I don't know who that cowboy is.", "I don't know who is that cowboy.", "I don't know who that cowboy is he."], "answer": 0, "why": "After “I don't know”, the verb goes last: “who that cowboy is”." }
     ],
     "B1": [
-      {
-        "id": "indirect-question-inn-b1-01",
-        "q": "Indirect questions — which is correct?",
-        "options": [
-          "I'm not sure how much it costs.",
-          "I'm not sure how much does it cost.",
-          "I'm not sure how much costs it."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "indirect-question-inn-b1-02",
-        "q": "Indirect questions — which is correct?",
-        "options": [
-          "He asked where I had been.",
-          "He asked where had I been.",
-          "He asked where I been had."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "indirect-question-inn-b1-03",
-        "q": "Indirect questions — which is correct?",
-        "options": [
-          "Do you have any idea what happened?",
-          "Do you have any idea what did happen?",
-          "Do you have any idea what happen did?"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "indirect-question-inn-b1-04",
-        "q": "Indirect questions — which is correct?",
-        "options": [
-          "I wonder if they will come.",
-          "I wonder will they come.",
-          "I wonder if will they come."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "indirect-question-inn-b1-05",
-        "q": "Indirect questions — which is correct?",
-        "options": [
-          "Could you tell me who is responsible?",
-          "Could you tell me who's is responsible?",
-          "Could you tell me who responsible is?"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "indirect-question-inn-b1-06",
-        "q": "Indirect questions — which is correct?",
-        "options": [
-          "She wanted to know when the train would arrive.",
-          "She wanted to know when would the train arrive.",
-          "She wanted to know when the train arrive would."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "indirect-question-inn-b1-07",
-        "q": "Indirect questions — which is correct?",
-        "options": [
-          "I'm curious about how it works.",
-          "I'm curious about how does it work.",
-          "I'm curious about how work it does."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "indirect-question-inn-b1-08",
-        "q": "Indirect questions — which is correct?",
-        "options": [
-          "Do you know whether he's coming?",
-          "Do you know is he coming whether?",
-          "Do you know whether is he coming?"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "indirect-question-inn-b1-09",
-        "q": "Indirect questions — which is correct?",
-        "options": [
-          "I asked her what she thought of the plan.",
-          "I asked her what did she think of the plan.",
-          "I asked her what thought she of the plan."
-        ],
-        "answer": 0
-      }
+      { "id": "indirect-question-inn-b1-01", "q": "Indirect questions — which is correct?", "options": ["I'm not sure how much it costs.", "I'm not sure how much does it cost.", "I'm not sure how much costs it."], "answer": 0, "why": "After “I'm not sure”, statement order with no “does”: “how much it costs”." },
+      { "id": "indirect-question-inn-b1-02", "q": "Indirect questions — which is correct?", "options": ["He asked where I had been.", "He asked where had I been.", "He asked where I been had."], "answer": 0, "why": "Reported questions don't invert: “where I had been”, subject before verb." },
+      { "id": "indirect-question-inn-b1-03", "q": "Indirect questions — which is correct?", "options": ["Do you have any idea what happened?", "Do you have any idea what did happen?", "Do you have any idea what happen did?"], "answer": 0, "why": "“What” is the subject here, so there's no “did”: just “what happened”." },
+      { "id": "indirect-question-inn-b1-04", "q": "Indirect questions — which is correct?", "options": ["I wonder if they will come.", "I wonder will they come.", "I wonder if will they come."], "answer": 0, "why": "“I wonder if” + statement order: “if they will come”, subject before “will”." },
+      { "id": "indirect-question-inn-b1-05", "q": "Indirect questions — which is correct?", "options": ["Could you tell me who is responsible?", "Could you tell me who's is responsible?", "Could you tell me who responsible is?"], "answer": 0, "why": "“Who” is the subject, so the order stays “who is responsible”, with only one “is”." },
+      { "id": "indirect-question-inn-b1-06", "q": "Indirect questions — which is correct?", "options": ["She wanted to know when the train would arrive.", "She wanted to know when would the train arrive.", "She wanted to know when the train arrive would."], "answer": 0, "why": "Reported question, statement order: “when the train would arrive”." },
+      { "id": "indirect-question-inn-b1-07", "q": "Indirect questions — which is correct?", "options": ["I'm curious about how it works.", "I'm curious about how does it work.", "I'm curious about how work it does."], "answer": 0, "why": "After “how”, an indirect question takes no “does”: “how it works”." },
+      { "id": "indirect-question-inn-b1-08", "q": "Indirect questions — which is correct?", "options": ["Do you know whether he's coming?", "Do you know is he coming whether?", "Do you know whether is he coming?"], "answer": 0, "why": "“Whether” + statement order: “whether he's coming”, subject before verb." },
+      { "id": "indirect-question-inn-b1-09", "q": "Indirect questions — which is correct?", "options": ["I asked her what she thought of the plan.", "I asked her what did she think of the plan.", "I asked her what thought she of the plan."], "answer": 0, "why": "Reported questions lose “did”: “what she thought”, with the verb in the past." },
+      { "id": "indirect-question-inn-b1-10", "q": "Indirect questions — which is correct?", "options": ["Could you tell me how far the next town is?", "Could you tell me how far is the next town?", "Could you tell me how far the next town it is?"], "answer": 0, "why": "Statement order after “Could you tell me”: “how far the next town is”." },
+      { "id": "indirect-question-inn-b1-11", "q": "Indirect questions — which is correct?", "options": ["The patient asked how long the operation would take.", "The patient asked how long would the operation take.", "The patient asked how long the operation take would."], "answer": 0, "why": "Reported question: subject first, then “would”: “how long the operation would take”." },
+      { "id": "indirect-question-inn-b1-12", "q": "Indirect questions — which is correct?", "options": ["Do you remember where we parked the car?", "Do you remember where did we park the car?", "Do you remember where parked we the car?"], "answer": 0, "why": "After “Do you remember”, no “did”: “where we parked”, past simple verb." }
     ],
     "B2": [
-      {
-        "id": "indirect-question-inn-b2-01",
-        "q": "Indirect questions — which is correct?",
-        "options": [
-          "I'd appreciate it if you could explain what went wrong.",
-          "I'd appreciate it if you could explain what did go wrong.",
-          "I'd appreciate it if you could explain what wrong went."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "indirect-question-inn-b2-02",
-        "q": "Indirect questions — which is correct?",
-        "options": [
-          "Nobody seems to know why the flight was delayed.",
-          "Nobody seems to know why was the flight delayed.",
-          "Nobody seems to know why delayed was the flight."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "indirect-question-inn-b2-03",
-        "q": "Indirect questions — which is correct?",
-        "options": [
-          "I couldn't work out what he meant by that remark.",
-          "I couldn't work out what did he mean by that remark.",
-          "I couldn't work out what meant he by that remark."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "indirect-question-inn-b2-04",
-        "q": "Indirect questions — which is correct?",
-        "options": [
-          "The report doesn't say when the changes will take effect.",
-          "The report doesn't say when will the changes take effect.",
-          "The report doesn't say when take effect will the changes."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "indirect-question-inn-b2-05",
-        "q": "Indirect questions — which is correct?",
-        "options": [
-          "I'm still unsure whether the offer stands.",
-          "I'm still unsure does the offer stand.",
-          "I'm still unsure whether stands the offer."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "indirect-question-inn-b2-06",
-        "q": "Indirect questions — which is correct?",
-        "options": [
-          "She asked whether the results had been published.",
-          "She asked had the results been published.",
-          "She asked whether had the results been published."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "indirect-question-inn-b2-07",
-        "q": "Indirect questions — which is correct?",
-        "options": [
-          "It's unclear what caused the malfunction.",
-          "It's unclear what did cause the malfunction.",
-          "It's unclear what caused did the malfunction."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "indirect-question-inn-b2-08",
-        "q": "Indirect questions — which is correct?",
-        "options": [
-          "I'd like to understand how this decision was reached.",
-          "I'd like to understand how was this decision reached.",
-          "I'd like to understand how reached was this decision."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "indirect-question-inn-b2-09",
-        "q": "Indirect questions — which is correct?",
-        "options": [
-          "Can you confirm whether the payment has gone through?",
-          "Can you confirm has the payment gone through?",
-          "Can you confirm whether has the payment gone through?"
-        ],
-        "answer": 0
-      }
+      { "id": "indirect-question-inn-b2-01", "q": "Indirect questions — which is correct?", "options": ["I'd appreciate it if you could explain what went wrong.", "I'd appreciate it if you could explain what did go wrong.", "I'd appreciate it if you could explain what wrong went."], "answer": 0, "why": "“What” is the subject of “went”, so there's no “did”: “what went wrong”." },
+      { "id": "indirect-question-inn-b2-02", "q": "Indirect questions — which is correct?", "options": ["Nobody seems to know why the flight was delayed.", "Nobody seems to know why was the flight delayed.", "Nobody seems to know why delayed was the flight."], "answer": 0, "why": "After “know why”, statement order: “why the flight was delayed”." },
+      { "id": "indirect-question-inn-b2-03", "q": "Indirect questions — which is correct?", "options": ["I couldn't work out what he meant by that remark.", "I couldn't work out what did he mean by that remark.", "I couldn't work out what meant he by that remark."], "answer": 0, "why": "Statement order after “work out”: “what he meant”, with no “did”." },
+      { "id": "indirect-question-inn-b2-04", "q": "Indirect questions — which is correct?", "options": ["The report doesn't say when the changes will take effect.", "The report doesn't say when will the changes take effect.", "The report doesn't say when take effect will the changes."], "answer": 0, "why": "Statement order: “when the changes will take effect”, subject before “will”." },
+      { "id": "indirect-question-inn-b2-05", "q": "Indirect questions — which is correct?", "options": ["I'm still unsure whether the offer stands.", "I'm still unsure does the offer stand.", "I'm still unsure whether stands the offer."], "answer": 0, "why": "A yes/no question inside a sentence needs “whether” (or “if”) plus statement order." },
+      { "id": "indirect-question-inn-b2-06", "q": "Indirect questions — which is correct?", "options": ["She asked whether the results had been published.", "She asked had the results been published.", "She asked whether had the results been published."], "answer": 0, "why": "Reported yes/no question: “whether” + statement order, “the results had been published”." },
+      { "id": "indirect-question-inn-b2-07", "q": "Indirect questions — which is correct?", "options": ["It's unclear what caused the malfunction.", "It's unclear what did cause the malfunction.", "It's unclear what caused did the malfunction."], "answer": 0, "why": "“What” is the subject of “caused”, so no “did” is needed." },
+      { "id": "indirect-question-inn-b2-08", "q": "Indirect questions — which is correct?", "options": ["I'd like to understand how this decision was reached.", "I'd like to understand how was this decision reached.", "I'd like to understand how reached was this decision."], "answer": 0, "why": "Statement order inside: “how this decision was reached”, subject before “was”." },
+      { "id": "indirect-question-inn-b2-09", "q": "Indirect questions — which is correct?", "options": ["Can you confirm whether the payment has gone through?", "Can you confirm has the payment gone through?", "Can you confirm whether has the payment gone through?"], "answer": 0, "why": "“Confirm whether” + statement order: “the payment has gone through”." },
+      { "id": "indirect-question-inn-b2-10", "q": "Indirect questions — which is correct?", "options": ["The sheriff wanted to know where the outlaws were hiding.", "The sheriff wanted to know where were the outlaws hiding.", "The sheriff wanted to know where the outlaws hiding were."], "answer": 0, "why": "Reported question: “where the outlaws were hiding”, subject before verb." },
+      { "id": "indirect-question-inn-b2-11", "q": "Indirect questions — which is correct?", "options": ["I've no idea how much a paella for six costs.", "I've no idea how much does a paella for six cost.", "I've no idea how much costs a paella for six."], "answer": 0, "why": "“I've no idea” + statement order, no “does”: “how much a paella for six costs”." },
+      { "id": "indirect-question-inn-b2-12", "q": "Indirect questions — which is correct?", "options": ["Historians still debate why the plague spread so quickly.", "Historians still debate why did the plague spread so quickly.", "Historians still debate why spread the plague so quickly."], "answer": 0, "why": "After “debate why”, statement order: “why the plague spread”, with no “did”." }
     ],
     "C1": [
-      {
-        "id": "indirect-question-inn-c1-01",
-        "q": "Indirect questions — which is correct?",
-        "options": [
-          "It remains to be seen whether the strategy will pay off.",
-          "It remains to be seen will the strategy pay off.",
-          "It remains to be seen whether will the strategy pay off."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "indirect-question-inn-c1-02",
-        "q": "Indirect questions — which is correct?",
-        "options": [
-          "Analysts are divided over what the announcement actually means.",
-          "Analysts are divided over what does the announcement actually mean.",
-          "Analysts are divided over what means the announcement actually."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "indirect-question-inn-c1-03",
-        "q": "Indirect questions — which is correct?",
-        "options": [
-          "The committee has yet to determine how the funds will be allocated.",
-          "The committee has yet to determine how will the funds be allocated.",
-          "The committee has yet to determine how be allocated will the funds."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "indirect-question-inn-c1-04",
-        "q": "Indirect questions — which is correct?",
-        "options": [
-          "It's worth asking why the proposal was rejected in the first place.",
-          "It's worth asking why was the proposal rejected in the first place.",
-          "It's worth asking why rejected was the proposal."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "indirect-question-inn-c1-05",
-        "q": "Indirect questions — which is correct?",
-        "options": [
-          "There is some debate as to whether the figures are accurate.",
-          "There is some debate as to are the figures accurate.",
-          "There is some debate as to whether are the figures accurate."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "indirect-question-inn-c1-06",
-        "q": "Indirect questions — which is correct?",
-        "options": [
-          "I'm not entirely certain what prompted the sudden change.",
-          "I'm not entirely certain what did prompt the sudden change.",
-          "I'm not entirely certain what prompted did the sudden change."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "indirect-question-inn-c1-07",
-        "q": "Indirect questions — which is correct?",
-        "options": [
-          "The inquiry will examine how the breach occurred.",
-          "The inquiry will examine how did the breach occur.",
-          "The inquiry will examine how occurred the breach."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "indirect-question-inn-c1-08",
-        "q": "Indirect questions — which is correct?",
-        "options": [
-          "It's difficult to say what the long-term impact will be.",
-          "It's difficult to say what will the long-term impact be.",
-          "It's difficult to say what be will the long-term impact."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "indirect-question-inn-c1-09",
-        "q": "Indirect questions — which is correct?",
-        "options": [
-          "She questioned whether the decision had been properly reviewed.",
-          "She questioned had the decision been properly reviewed.",
-          "She questioned whether had the decision been properly reviewed."
-        ],
-        "answer": 0
-      }
+      { "id": "indirect-question-inn-c1-01", "q": "Indirect questions — which is correct?", "options": ["It remains to be seen whether the strategy will pay off.", "It remains to be seen will the strategy pay off.", "It remains to be seen whether will the strategy pay off."], "answer": 0, "why": "“It remains to be seen whether” takes statement order: “the strategy will pay off”." },
+      { "id": "indirect-question-inn-c1-02", "q": "Indirect questions — which is correct?", "options": ["Analysts are divided over what the announcement actually means.", "Analysts are divided over what does the announcement actually mean.", "Analysts are divided over what means the announcement actually."], "answer": 0, "why": "After “over what”, statement order and no “does”: “what the announcement means”." },
+      { "id": "indirect-question-inn-c1-03", "q": "Indirect questions — which is correct?", "options": ["The committee has yet to determine how the funds will be allocated.", "The committee has yet to determine how will the funds be allocated.", "The committee has yet to determine how be allocated will the funds."], "answer": 0, "why": "Statement order after “determine how”: “the funds will be allocated”." },
+      { "id": "indirect-question-inn-c1-04", "q": "Indirect questions — which is correct?", "options": ["It's worth asking why the proposal was rejected in the first place.", "It's worth asking why was the proposal rejected in the first place.", "It's worth asking why rejected was the proposal."], "answer": 0, "why": "“Asking why” + statement order: “why the proposal was rejected”." },
+      { "id": "indirect-question-inn-c1-05", "q": "Indirect questions — which is correct?", "options": ["There is some debate as to whether the figures are accurate.", "There is some debate as to are the figures accurate.", "There is some debate as to whether are the figures accurate."], "answer": 0, "why": "“As to whether” is formal and takes statement order: “the figures are accurate”." },
+      { "id": "indirect-question-inn-c1-06", "q": "Indirect questions — which is correct?", "options": ["I'm not entirely certain what prompted the sudden change.", "I'm not entirely certain what did prompt the sudden change.", "I'm not entirely certain what prompted did the sudden change."], "answer": 0, "why": "“What” is the subject of “prompted”, so there's no “did”." },
+      { "id": "indirect-question-inn-c1-07", "q": "Indirect questions — which is correct?", "options": ["The inquiry will examine how the breach occurred.", "The inquiry will examine how did the breach occur.", "The inquiry will examine how occurred the breach."], "answer": 0, "why": "After “examine how”, statement order: “how the breach occurred”, with no “did”." },
+      { "id": "indirect-question-inn-c1-08", "q": "Indirect questions — which is correct?", "options": ["It's difficult to say what the long-term impact will be.", "It's difficult to say what will the long-term impact be.", "It's difficult to say what be will the long-term impact."], "answer": 0, "why": "Statement order, verb last: “what the long-term impact will be”." },
+      { "id": "indirect-question-inn-c1-09", "q": "Indirect questions — which is correct?", "options": ["She questioned whether the decision had been properly reviewed.", "She questioned had the decision been properly reviewed.", "She questioned whether had the decision been properly reviewed."], "answer": 0, "why": "“Questioned whether” + statement order: “the decision had been properly reviewed”." },
+      { "id": "indirect-question-inn-c1-10", "q": "Indirect questions — which is correct?", "options": ["Doctors at the time could not explain why some patients survived and others did not.", "Doctors at the time could not explain why did some patients survive and others did not.", "Doctors at the time could not explain why survived some patients and others did not."], "answer": 0, "why": "Inside “explain why”, statement order: “why some patients survived”, with no “did”." },
+      { "id": "indirect-question-inn-c1-11", "q": "Indirect questions — which is correct?", "options": ["Little is known about where the outlaw spent his final years.", "Little is known about where did the outlaw spend his final years.", "Little is known about where spent the outlaw his final years."], "answer": 0, "why": "“About where” + statement order: “where the outlaw spent”, with no “did”." },
+      { "id": "indirect-question-inn-c1-12", "q": "Indirect questions — which is correct?", "options": ["The guide explained how the Water Tribunal has settled disputes for centuries.", "The guide explained how has the Water Tribunal settled disputes for centuries.", "The guide explained how settled has the Water Tribunal disputes for centuries."], "answer": 0, "why": "“Explained how” + statement order: the subject, then “has settled”." }
     ]
   }
 }

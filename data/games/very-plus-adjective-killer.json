@@ -1,181 +1,65 @@
 {
   "id": "very-plus-adjective-killer",
   "title": "Very + Adjective Killer",
-  "tags": [
-    "vocabulary"
-  ],
+  "tags": ["vocabulary"],
   "engine": "pairs",
   "intro": "Very tired becomes exhausted. Very scared becomes terrified. One strong word instead of two weak ones — straight out of the Cambridge writing mark scheme.",
-  "source": "Game — Very Plus Adjective Killer.html",
-  "draft": true,
   "items": {
     "A2": [
-      {
-        "id": "very-plus-adjective-killer-a2-01",
-        "left": "starving",
-        "right": "a stronger way to say 'very hungry'"
-      },
-      {
-        "id": "very-plus-adjective-killer-a2-02",
-        "left": "freezing",
-        "right": "a stronger way to say 'very cold'"
-      },
-      {
-        "id": "very-plus-adjective-killer-a2-03",
-        "left": "boiling",
-        "right": "a stronger way to say 'very hot'"
-      },
-      {
-        "id": "very-plus-adjective-killer-a2-04",
-        "left": "tiny",
-        "right": "a stronger way to say 'very small'"
-      },
-      {
-        "id": "very-plus-adjective-killer-a2-05",
-        "left": "huge",
-        "right": "a stronger way to say 'very big'"
-      },
-      {
-        "id": "very-plus-adjective-killer-a2-06",
-        "left": "exhausted",
-        "right": "a stronger way to say 'very tired'"
-      },
-      {
-        "id": "very-plus-adjective-killer-a2-07",
-        "left": "delighted",
-        "right": "a stronger way to say 'very happy'"
-      },
-      {
-        "id": "very-plus-adjective-killer-a2-08",
-        "left": "furious",
-        "right": "a stronger way to say 'very angry'"
-      }
+      {"id": "very-plus-adjective-killer-a2-01", "left": "starving", "right": "a stronger way to say 'very hungry'", "why": "Everyday exaggeration: “I'm starving!” before lunch."},
+      {"id": "very-plus-adjective-killer-a2-02", "left": "freezing", "right": "a stronger way to say 'very cold'", "why": "“It's freezing!” Not literally ice, just very cold."},
+      {"id": "very-plus-adjective-killer-a2-03", "left": "boiling", "right": "a stronger way to say 'very hot'", "why": "Like boiling water: Valencia in August."},
+      {"id": "very-plus-adjective-killer-a2-04", "left": "tiny", "right": "a stronger way to say 'very small'", "why": "One word does the job of “very small”."},
+      {"id": "very-plus-adjective-killer-a2-05", "left": "huge", "right": "a stronger way to say 'very big'", "why": "Never “very huge”: huge already means very big."},
+      {"id": "very-plus-adjective-killer-a2-06", "left": "exhausted", "right": "a stronger way to say 'very tired'", "why": "Never “very exhausted”; use “absolutely exhausted”."},
+      {"id": "very-plus-adjective-killer-a2-07", "left": "delighted", "right": "a stronger way to say 'very happy'", "why": "“I'm delighted to meet you”: very happy and polite."},
+      {"id": "very-plus-adjective-killer-a2-08", "left": "furious", "right": "a stronger way to say 'very angry'", "why": "The sheriff was furious: very, very angry."},
+      {"id": "very-plus-adjective-killer-a2-09", "left": "soaked", "right": "a stronger way to say 'very wet'", "why": "Wet right through, like after a summer storm."},
+      {"id": "very-plus-adjective-killer-a2-10", "left": "awful", "right": "a stronger way to say 'very bad'", "why": "Use “absolutely”, not “very”, with it: “absolutely awful”."},
+      {"id": "very-plus-adjective-killer-a2-11", "left": "fascinating", "right": "a stronger way to say 'very interesting'", "why": "A fascinating museum keeps you there all day."},
+      {"id": "very-plus-adjective-killer-a2-12", "left": "packed", "right": "a stronger way to say 'very full' or 'very crowded'", "why": "The metro during Fallas is packed."}
     ],
     "B1": [
-      {
-        "id": "very-plus-adjective-killer-b1-01",
-        "left": "terrified",
-        "right": "a stronger way to say 'very frightened'"
-      },
-      {
-        "id": "very-plus-adjective-killer-b1-02",
-        "left": "filthy",
-        "right": "a stronger way to say 'very dirty'"
-      },
-      {
-        "id": "very-plus-adjective-killer-b1-03",
-        "left": "spotless",
-        "right": "a stronger way to say 'very clean'"
-      },
-      {
-        "id": "very-plus-adjective-killer-b1-04",
-        "left": "ancient",
-        "right": "a stronger way to say 'very old'"
-      },
-      {
-        "id": "very-plus-adjective-killer-b1-05",
-        "left": "brand new",
-        "right": "a stronger way to say 'very new'"
-      },
-      {
-        "id": "very-plus-adjective-killer-b1-06",
-        "left": "gorgeous",
-        "right": "a stronger way to say 'very beautiful'"
-      },
-      {
-        "id": "very-plus-adjective-killer-b1-07",
-        "left": "hideous",
-        "right": "a stronger way to say 'very ugly'"
-      },
-      {
-        "id": "very-plus-adjective-killer-b1-08",
-        "left": "exhausting",
-        "right": "a stronger way to say 'very tiring'"
-      }
+      {"id": "very-plus-adjective-killer-b1-01", "left": "terrified", "right": "a stronger way to say 'very frightened'", "why": "Extreme fear: terrified of snakes."},
+      {"id": "very-plus-adjective-killer-b1-02", "left": "filthy", "right": "a stronger way to say 'very dirty'", "why": "Filthy boots after a day on the ranch."},
+      {"id": "very-plus-adjective-killer-b1-03", "left": "spotless", "right": "a stronger way to say 'very clean'", "why": "Not a single spot: a spotless hospital ward."},
+      {"id": "very-plus-adjective-killer-b1-04", "left": "ancient", "right": "a stronger way to say 'very old'", "why": "Ancient Rome, ancient walls: very, very old."},
+      {"id": "very-plus-adjective-killer-b1-05", "left": "brand new", "right": "a stronger way to say 'very new'", "why": "Just out of the box, never used."},
+      {"id": "very-plus-adjective-killer-b1-06", "left": "gorgeous", "right": "a stronger way to say 'very beautiful'", "why": "Enthusiastic and informal: a gorgeous sunset."},
+      {"id": "very-plus-adjective-killer-b1-07", "left": "hideous", "right": "a stronger way to say 'very ugly'", "why": "So ugly it's almost frightening."},
+      {"id": "very-plus-adjective-killer-b1-08", "left": "exhausting", "right": "a stronger way to say 'very tiring'", "why": "-ing describes the thing (an exhausting day); -ed describes you."},
+      {"id": "very-plus-adjective-killer-b1-09", "left": "hilarious", "right": "a stronger way to say 'very funny'", "why": "So funny you can't stop laughing."},
+      {"id": "very-plus-adjective-killer-b1-10", "left": "deafening", "right": "a stronger way to say 'very loud'", "why": "So loud you can't hear: the mascletà is deafening."},
+      {"id": "very-plus-adjective-killer-b1-11", "left": "priceless", "right": "a stronger way to say 'very valuable'", "why": "Spanish trap: priceless means worth a fortune, not “sin precio” or worthless."},
+      {"id": "very-plus-adjective-killer-b1-12", "left": "parched", "right": "a stronger way to say 'very thirsty'", "why": "Dry like the desert after a long ride."}
     ],
     "B2": [
-      {
-        "id": "very-plus-adjective-killer-b2-01",
-        "left": "petrified",
-        "right": "an even stronger way to say 'very frightened' — frozen with fear"
-      },
-      {
-        "id": "very-plus-adjective-killer-b2-02",
-        "left": "livid",
-        "right": "an even stronger way to say 'very angry'"
-      },
-      {
-        "id": "very-plus-adjective-killer-b2-03",
-        "left": "ecstatic",
-        "right": "an even stronger way to say 'very happy'"
-      },
-      {
-        "id": "very-plus-adjective-killer-b2-04",
-        "left": "devastated",
-        "right": "an even stronger way to say 'very upset'"
-      },
-      {
-        "id": "very-plus-adjective-killer-b2-05",
-        "left": "immaculate",
-        "right": "an even stronger way to say 'very clean or tidy'"
-      },
-      {
-        "id": "very-plus-adjective-killer-b2-06",
-        "left": "colossal",
-        "right": "an even stronger way to say 'very big'"
-      },
-      {
-        "id": "very-plus-adjective-killer-b2-07",
-        "left": "minuscule",
-        "right": "an even stronger way to say 'very small'"
-      },
-      {
-        "id": "very-plus-adjective-killer-b2-08",
-        "left": "ravenous",
-        "right": "an even stronger way to say 'very hungry'"
-      }
+      {"id": "very-plus-adjective-killer-b2-01", "left": "petrified", "right": "an even stronger way to say 'very frightened' — frozen with fear", "why": "Like a stone (“petra”): too scared to move."},
+      {"id": "very-plus-adjective-killer-b2-02", "left": "livid", "right": "an even stronger way to say 'very angry'", "why": "So angry your face changes colour."},
+      {"id": "very-plus-adjective-killer-b2-03", "left": "ecstatic", "right": "an even stronger way to say 'very happy'", "why": "Wildly happy, like Valencia fans after a win."},
+      {"id": "very-plus-adjective-killer-b2-04", "left": "devastated", "right": "an even stronger way to say 'very upset'", "why": "Deeply hurt by bad news."},
+      {"id": "very-plus-adjective-killer-b2-05", "left": "immaculate", "right": "an even stronger way to say 'very clean or tidy'", "why": "Perfectly clean, without a single mark."},
+      {"id": "very-plus-adjective-killer-b2-06", "left": "colossal", "right": "an even stronger way to say 'very big'", "why": "From the Colossus of Rhodes, a giant statue."},
+      {"id": "very-plus-adjective-killer-b2-07", "left": "minuscule", "right": "an even stronger way to say 'very small'", "why": "Spelling trap: minuscule, with u (like “minus”)."},
+      {"id": "very-plus-adjective-killer-b2-08", "left": "ravenous", "right": "an even stronger way to say 'very hungry'", "why": "Hungry like a wild animal."},
+      {"id": "very-plus-adjective-killer-b2-09", "left": "astonished", "right": "an even stronger way to say 'very surprised'", "why": "So surprised you can hardly believe it."},
+      {"id": "very-plus-adjective-killer-b2-10", "left": "scorching", "right": "an even stronger way to say 'very hot' — about the weather or sun", "why": "A scorching day in the desert, or in Seville in July."},
+      {"id": "very-plus-adjective-killer-b2-11", "left": "drenched", "right": "an even stronger way to say 'very wet'", "why": "Completely wet, as if someone threw a bucket at you."},
+      {"id": "very-plus-adjective-killer-b2-12", "left": "riveting", "right": "an even stronger way to say 'very interesting'", "why": "So gripping you can't put the book down."}
     ],
     "C1": [
-      {
-        "id": "very-plus-adjective-killer-c1-01",
-        "left": "irate",
-        "right": "the strongest way to say 'very angry' — formal register"
-      },
-      {
-        "id": "very-plus-adjective-killer-c1-02",
-        "left": "elated",
-        "right": "the strongest way to say 'very happy' — a moment of triumph"
-      },
-      {
-        "id": "very-plus-adjective-killer-c1-03",
-        "left": "destitute",
-        "right": "the strongest way to say 'very poor' — with nothing left"
-      },
-      {
-        "id": "very-plus-adjective-killer-c1-04",
-        "left": "impoverished",
-        "right": "the strongest way to say 'very poor' — used more formally"
-      },
-      {
-        "id": "very-plus-adjective-killer-c1-05",
-        "left": "inconsolable",
-        "right": "the strongest way to say 'very upset' — cannot be comforted"
-      },
-      {
-        "id": "very-plus-adjective-killer-c1-06",
-        "left": "exorbitant",
-        "right": "the strongest way to say 'very expensive'"
-      },
-      {
-        "id": "very-plus-adjective-killer-c1-07",
-        "left": "meagre",
-        "right": "the strongest way to say 'very small' — used for an amount"
-      },
-      {
-        "id": "very-plus-adjective-killer-c1-08",
-        "left": "monumental",
-        "right": "the strongest way to say 'very important or large in scale'"
-      }
+      {"id": "very-plus-adjective-killer-c1-01", "left": "irate", "right": "the strongest way to say 'very angry' — formal register", "why": "Common in formal writing: “an irate customer”."},
+      {"id": "very-plus-adjective-killer-c1-02", "left": "elated", "right": "the strongest way to say 'very happy' — a moment of triumph", "why": "Lifted up by success: elated after passing the exam."},
+      {"id": "very-plus-adjective-killer-c1-03", "left": "destitute", "right": "the strongest way to say 'very poor' — with nothing left", "why": "No home, no food, no money at all."},
+      {"id": "very-plus-adjective-killer-c1-04", "left": "parsimonious", "right": "the strongest way to say 'very mean with money' — formal", "why": "Formal and critical: someone who hates spending even a cent."},
+      {"id": "very-plus-adjective-killer-c1-05", "left": "inconsolable", "right": "the strongest way to say 'very upset' — cannot be comforted", "why": "Nothing anyone says can make them feel better."},
+      {"id": "very-plus-adjective-killer-c1-06", "left": "exorbitant", "right": "the strongest way to say 'very expensive'", "why": "Unreasonably expensive: exorbitant rents."},
+      {"id": "very-plus-adjective-killer-c1-07", "left": "meagre", "right": "the strongest way to say 'very small' — used for an amount", "why": "British spelling -re: a meagre salary, a meagre meal."},
+      {"id": "very-plus-adjective-killer-c1-08", "left": "monumental", "right": "the strongest way to say 'very important or large in scale'", "why": "Like a monument: a monumental mistake or achievement."},
+      {"id": "very-plus-adjective-killer-c1-09", "left": "excruciating", "right": "the strongest way to say 'very painful'", "why": "Surgery before anaesthesia was excruciating."},
+      {"id": "very-plus-adjective-killer-c1-10", "left": "dilapidated", "right": "the strongest way to say 'very old and falling apart' — about a building", "why": "Broken windows, falling roof: a dilapidated farmhouse."},
+      {"id": "very-plus-adjective-killer-c1-11", "left": "insatiable", "right": "the strongest way to say 'very hungry for more' — never satisfied", "why": "Can't be satisfied: an insatiable appetite for gold."},
+      {"id": "very-plus-adjective-killer-c1-12", "left": "arduous", "right": "the strongest way to say 'very difficult' — long and tiring", "why": "An arduous journey west by wagon."}
     ]
   }
 }

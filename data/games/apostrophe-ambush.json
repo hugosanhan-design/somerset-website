@@ -1,382 +1,65 @@
 {
   "id": "apostrophe-ambush",
   "title": "Apostrophe Ambush",
-  "tags": [
-    "punctuation",
-    "spelling"
-  ],
+  "tags": ["punctuation", "spelling"],
   "engine": "choice",
   "intro": "its or it's, whose or who's, plural or possessive — the tiny mark that gives away a rushed writer.",
-  "source": "Game — Apostrophe Ambush.html",
-  "draft": true,
   "items": {
     "A2": [
-      {
-        "id": "apostrophe-ambush-a2-01",
-        "q": "Which is correct?",
-        "options": [
-          "It's Monday.",
-          "Its Monday.",
-          "Its' Monday."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "apostrophe-ambush-a2-02",
-        "q": "Which is correct?",
-        "options": [
-          "That's my book.",
-          "Thats my book.",
-          "That is' my book."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "apostrophe-ambush-a2-03",
-        "q": "Which is correct?",
-        "options": [
-          "She's my sister.",
-          "Shes my sister.",
-          "She' is my sister."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "apostrophe-ambush-a2-04",
-        "q": "Which is correct?",
-        "options": [
-          "I don't like coffee.",
-          "I dont like coffee.",
-          "I don't' like coffee."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "apostrophe-ambush-a2-05",
-        "q": "Which is correct?",
-        "options": [
-          "This is Tom's car.",
-          "This is Toms car.",
-          "This is Tom's' car."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "apostrophe-ambush-a2-06",
-        "q": "Which is correct?",
-        "options": [
-          "We're going home.",
-          "Were going home.",
-          "We'are going home."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "apostrophe-ambush-a2-07",
-        "q": "Which is correct?",
-        "options": [
-          "It's raining.",
-          "Its raining.",
-          "It' is raining."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "apostrophe-ambush-a2-08",
-        "q": "Which is correct?",
-        "options": [
-          "Can't you come?",
-          "Cant you come?",
-          "Ca'nt you come?"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "apostrophe-ambush-a2-09",
-        "q": "Which is correct?",
-        "options": [
-          "They're my friends.",
-          "Their my friends.",
-          "Theyre my friends."
-        ],
-        "answer": 0
-      }
+      { "id": "apostrophe-ambush-a2-01", "q": "Which is correct?", "options": ["It's Monday.", "Its Monday.", "Its' Monday."], "answer": 0, "why": "“It's” is short for “it is”: it is Monday." },
+      { "id": "apostrophe-ambush-a2-02", "q": "Which is correct?", "options": ["That's my book.", "Thats my book.", "That is' my book."], "answer": 0, "why": "“That's” = “that is”; the apostrophe stands where the “i” was dropped." },
+      { "id": "apostrophe-ambush-a2-03", "q": "Which is correct?", "options": ["She's my sister.", "Shes my sister.", "She' is my sister."], "answer": 0, "why": "“She's” = “she is”; the apostrophe replaces the missing “i”." },
+      { "id": "apostrophe-ambush-a2-04", "q": "Which is correct?", "options": ["I don't like coffee.", "I dont like coffee.", "I don't' like coffee."], "answer": 0, "why": "“Don't” = “do not”: the apostrophe takes the place of the missing “o”." },
+      { "id": "apostrophe-ambush-a2-05", "q": "Which is correct?", "options": ["This is Tom's car.", "This is Toms car.", "This is Tom's' car."], "answer": 0, "why": "The car belongs to Tom, so add 's to his name." },
+      { "id": "apostrophe-ambush-a2-06", "q": "Which is correct?", "options": ["We're going home.", "Were going home.", "We'are going home."], "answer": 0, "why": "“We're” = “we are”. Without the apostrophe, “were” is the past of “be”." },
+      { "id": "apostrophe-ambush-a2-07", "q": "Which is correct?", "options": ["It's raining.", "Its raining.", "It' is raining."], "answer": 0, "why": "“It's raining” = “it is raining”. “Its” with no apostrophe means “su”." },
+      { "id": "apostrophe-ambush-a2-08", "q": "Which is correct?", "options": ["Can't you come?", "Cant you come?", "Ca'nt you come?"], "answer": 0, "why": "“Can't” = “cannot”; the apostrophe sits where letters were removed, between n and t." },
+      { "id": "apostrophe-ambush-a2-09", "q": "Which is correct?", "options": ["They're my friends.", "Their my friends.", "Theyre my friends."], "answer": 0, "why": "“They're” = “they are”. “Their” means “su”, as in “their house”." },
+      { "id": "apostrophe-ambush-a2-10", "q": "Which is correct?", "options": ["The sheriff's horse is tired.", "The sheriffs horse is tired.", "The sheriff's' horse is tired."], "answer": 0, "why": "One sheriff owns the horse: sheriff + 's." },
+      { "id": "apostrophe-ambush-a2-11", "q": "Which is correct?", "options": ["I'm from Valencia.", "Im from Valencia.", "I'am from Valencia."], "answer": 0, "why": "“I'm” = “I am”: one apostrophe where the “a” was dropped." },
+      { "id": "apostrophe-ambush-a2-12", "q": "Which is correct?", "options": ["He isn't at home.", "He isnt at home.", "He is'nt at home."], "answer": 0, "why": "“Isn't” = “is not”: the apostrophe replaces the “o”, between n and t." }
     ],
     "B1": [
-      {
-        "id": "apostrophe-ambush-b1-01",
-        "q": "Which is correct?",
-        "options": [
-          "The dog's bone is under the sofa.",
-          "The dogs bone is under the sofa.",
-          "The dog's' bone is under the sofa."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "apostrophe-ambush-b1-02",
-        "q": "Which is correct?",
-        "options": [
-          "The children's toys are everywhere.",
-          "The childrens toys are everywhere.",
-          "The childrens' toys are everywhere."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "apostrophe-ambush-b1-03",
-        "q": "Which is correct?",
-        "options": [
-          "Whose bag is this?",
-          "Who's bag is this?",
-          "Whos bag is this?"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "apostrophe-ambush-b1-04",
-        "q": "Which is correct?",
-        "options": [
-          "It's been a long day.",
-          "Its been a long day.",
-          "It's' been a long day."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "apostrophe-ambush-b1-05",
-        "q": "Which is correct?",
-        "options": [
-          "The students' results were excellent.",
-          "The student's results were excellent (many students).",
-          "The students results were excellent."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "apostrophe-ambush-b1-06",
-        "q": "Which is correct?",
-        "options": [
-          "My parents' house is huge.",
-          "My parent's house is huge (both parents).",
-          "My parents house is huge."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "apostrophe-ambush-b1-07",
-        "q": "Which is correct?",
-        "options": [
-          "You're going to love this.",
-          "Your going to love this.",
-          "Youre going to love this."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "apostrophe-ambush-b1-08",
-        "q": "Which is correct?",
-        "options": [
-          "James's car broke down.",
-          "James' car broke down (less standard).",
-          "Jame's car broke down."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "apostrophe-ambush-b1-09",
-        "q": "Which is correct?",
-        "options": [
-          "I've never seen that before.",
-          "Ive never seen that before.",
-          "I'have never seen that before."
-        ],
-        "answer": 0
-      }
+      { "id": "apostrophe-ambush-b1-01", "q": "Which is correct?", "options": ["The dog's bone is under the sofa.", "The dogs bone is under the sofa.", "The dog's' bone is under the sofa."], "answer": 0, "why": "One dog owns the bone: dog + 's." },
+      { "id": "apostrophe-ambush-b1-02", "q": "Which is correct?", "options": ["The children's toys are everywhere.", "The childrens toys are everywhere.", "The childrens' toys are everywhere."], "answer": 0, "why": "“Children” is already plural, so it simply takes 's." },
+      { "id": "apostrophe-ambush-b1-03", "q": "Which is correct?", "options": ["Whose bag is this?", "Who's bag is this?", "Whos bag is this?"], "answer": 0, "why": "“Whose” asks who owns something. “Who's” means “who is” or “who has”." },
+      { "id": "apostrophe-ambush-b1-04", "q": "Which is correct?", "options": ["It's been a long day.", "Its been a long day.", "It's' been a long day."], "answer": 0, "why": "Here “it's” = “it has”: it has been a long day." },
+      { "id": "apostrophe-ambush-b1-05", "q": "Which is correct? (many students)", "options": ["The students' results were excellent.", "The student's results were excellent.", "The students results were excellent."], "answer": 0, "why": "A plural ending in -s just adds the apostrophe after the s: students'." },
+      { "id": "apostrophe-ambush-b1-06", "q": "Which is correct? (both parents)", "options": ["My parents' house is huge.", "My parent's house is huge.", "My parents house is huge."], "answer": 0, "why": "The house belongs to both parents: plural parents + apostrophe after the s." },
+      { "id": "apostrophe-ambush-b1-07", "q": "Which is correct?", "options": ["You're going to love this.", "Your going to love this.", "Youre going to love this."], "answer": 0, "why": "“You're” = “you are”. “Your” means “tu” or “vuestro”, as in “your car”." },
+      { "id": "apostrophe-ambush-b1-08", "q": "Which is correct?", "options": ["James's car broke down.", "Jame's car broke down.", "James car broke down."], "answer": 0, "why": "The name is James, so the 's goes after the whole name (James' is also seen)." },
+      { "id": "apostrophe-ambush-b1-09", "q": "Which is correct?", "options": ["I've never seen that before.", "Ive never seen that before.", "I'have never seen that before."], "answer": 0, "why": "“I've” = “I have”; the apostrophe replaces “ha”." },
+      { "id": "apostrophe-ambush-b1-10", "q": "Which is correct?", "options": ["Who's coming to the Fallas with us?", "Whose coming to the Fallas with us?", "Whos coming to the Fallas with us?"], "answer": 0, "why": "“Who's” = “who is”: who is coming?" },
+      { "id": "apostrophe-ambush-b1-11", "q": "Which is correct?", "options": ["The cowboys rode into town at dawn.", "The cowboy's rode into town at dawn.", "The cowboys' rode into town at dawn."], "answer": 0, "why": "Just a plural: more than one cowboy, nothing owned, so no apostrophe." },
+      { "id": "apostrophe-ambush-b1-12", "q": "Which is correct?", "options": ["Their paella is the best in the village.", "They're paella is the best in the village.", "There paella is the best in the village."], "answer": 0, "why": "“Their” shows possession: the paella belongs to them." }
     ],
     "B2": [
-      {
-        "id": "apostrophe-ambush-b2-01",
-        "q": "Which is correct?",
-        "options": [
-          "The company's profits rose sharply.",
-          "The companys profits rose sharply.",
-          "The company's' profits rose sharply."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "apostrophe-ambush-b2-02",
-        "q": "Which is correct?",
-        "options": [
-          "It's clear that its meaning changed.",
-          "Its clear that it's meaning changed.",
-          "It's clear that its' meaning changed."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "apostrophe-ambush-b2-03",
-        "q": "Which is correct?",
-        "options": [
-          "The 1990s were a decade of change.",
-          "The 1990's were a decade of change.",
-          "The 1990s' were a decade of change."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "apostrophe-ambush-b2-04",
-        "q": "Which is correct?",
-        "options": [
-          "Whose idea was it to leave early?",
-          "Who's idea was it to leave early?",
-          "Whos idea was it to leave early?"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "apostrophe-ambush-b2-05",
-        "q": "Which is correct?",
-        "options": [
-          "The boss's decision was final.",
-          "The bosses decision was final.",
-          "The boss' decision was final (less standard)."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "apostrophe-ambush-b2-06",
-        "q": "Which is correct?",
-        "options": [
-          "Two weeks' notice is required.",
-          "Two week's notice is required.",
-          "Two weeks notice is required."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "apostrophe-ambush-b2-07",
-        "q": "Which is correct?",
-        "options": [
-          "The team's morale improved.",
-          "The teams morale improved.",
-          "The team's' morale improved."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "apostrophe-ambush-b2-08",
-        "q": "Which is correct?",
-        "options": [
-          "Everybody's welcome to attend.",
-          "Everybodys welcome to attend.",
-          "Everybody's' welcome to attend."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "apostrophe-ambush-b2-09",
-        "q": "Which is correct?",
-        "options": [
-          "There's no doubt about it.",
-          "Theres no doubt about it.",
-          "There' is no doubt about it."
-        ],
-        "answer": 0
-      }
+      { "id": "apostrophe-ambush-b2-01", "q": "Which is correct?", "options": ["The company's profits rose sharply.", "The companys profits rose sharply.", "The company's' profits rose sharply."], "answer": 0, "why": "One company owns the profits: company + 's." },
+      { "id": "apostrophe-ambush-b2-02", "q": "Which is correct?", "options": ["It's clear that its meaning changed.", "Its clear that it's meaning changed.", "It's clear that its' meaning changed."], "answer": 0, "why": "“It's clear” = “it is clear”; “its meaning” is possessive, with no apostrophe." },
+      { "id": "apostrophe-ambush-b2-03", "q": "Which is correct?", "options": ["The 1990s were a decade of change.", "The 1990's were a decade of change.", "The 1990s' were a decade of change."], "answer": 0, "why": "Decades are simple plurals: 1990s, with no apostrophe." },
+      { "id": "apostrophe-ambush-b2-04", "q": "Which is correct?", "options": ["Whose idea was it to leave early?", "Who's idea was it to leave early?", "Whos idea was it to leave early?"], "answer": 0, "why": "“Whose” asks about ownership: whose idea? “Who's” would mean “who is”." },
+      { "id": "apostrophe-ambush-b2-05", "q": "Which is correct?", "options": ["The boss's decision was final.", "The bosses decision was final.", "The bosse's decision was final."], "answer": 0, "why": "One boss: add 's even after a final s, so boss's." },
+      { "id": "apostrophe-ambush-b2-06", "q": "Which is correct?", "options": ["Two weeks' notice is required.", "Two week's notice is required.", "Two weeks notice is required."], "answer": 0, "why": "Time phrases can be possessive: two weeks' notice, apostrophe after the plural s." },
+      { "id": "apostrophe-ambush-b2-07", "q": "Which is correct?", "options": ["The team's morale improved.", "The teams morale improved.", "The team's' morale improved."], "answer": 0, "why": "One team owns the morale: team + 's." },
+      { "id": "apostrophe-ambush-b2-08", "q": "Which is correct?", "options": ["Everybody's welcome to attend.", "Everybodys welcome to attend.", "Everybody's' welcome to attend."], "answer": 0, "why": "“Everybody's” here = “everybody is”." },
+      { "id": "apostrophe-ambush-b2-09", "q": "Which is correct?", "options": ["There's no doubt about it.", "Theres no doubt about it.", "There' is no doubt about it."], "answer": 0, "why": "“There's” = “there is”." },
+      { "id": "apostrophe-ambush-b2-10", "q": "Which is correct?", "options": ["John Snow's map of cholera deaths changed medicine.", "John Snows map of cholera deaths changed medicine.", "John Snows' map of cholera deaths changed medicine."], "answer": 0, "why": "The map belongs to John Snow: name + 's." },
+      { "id": "apostrophe-ambush-b2-11", "q": "Which is correct? (a whole gang)", "options": ["The outlaws' hideout was in the canyon.", "The outlaw's hideout was in the canyon.", "The outlaws hideout was in the canyon."], "answer": 0, "why": "Several outlaws share the hideout: plural outlaws + apostrophe after the s." },
+      { "id": "apostrophe-ambush-b2-12", "q": "Which is correct?", "options": ["The town council has changed its mind.", "The town council has changed it's mind.", "The town council has changed its' mind."], "answer": 0, "why": "“Its” is possessive, like “his”, with no apostrophe. “It's” always means “it is” or “it has”." }
     ],
     "C1": [
-      {
-        "id": "apostrophe-ambush-c1-01",
-        "q": "Which is correct?",
-        "options": [
-          "The witnesses' accounts differed slightly.",
-          "The witness's accounts differed slightly (only one witness).",
-          "The witnesses accounts differed slightly."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "apostrophe-ambush-c1-02",
-        "q": "Which is correct?",
-        "options": [
-          "It's often its own worst enemy.",
-          "Its often it's own worst enemy.",
-          "Its often its' own worst enemy."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "apostrophe-ambush-c1-03",
-        "q": "Which is correct?",
-        "options": [
-          "A day's work deserves a day's pay.",
-          "A days work deserves a days pay.",
-          "A day's work deserves a days' pay."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "apostrophe-ambush-c1-04",
-        "q": "Which is correct?",
-        "options": [
-          "The government's policy shifted overnight.",
-          "The governments policy shifted overnight.",
-          "The government's' policy shifted overnight."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "apostrophe-ambush-c1-05",
-        "q": "Which is correct?",
-        "options": [
-          "For goodness' sake, hurry up!",
-          "For goodness sake, hurry up!",
-          "For goodness's sake, hurry up!"
-        ],
-        "answer": 0
-      },
-      {
-        "id": "apostrophe-ambush-c1-06",
-        "q": "Which is correct?",
-        "options": [
-          "The Joneses' garden is beautiful.",
-          "The Jones' garden is beautiful.",
-          "The Joneses garden is beautiful."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "apostrophe-ambush-c1-07",
-        "q": "Which is correct?",
-        "options": [
-          "He questioned its validity, not theirs.",
-          "He questioned it's validity, not their's.",
-          "He questioned its' validity, not theirs'."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "apostrophe-ambush-c1-08",
-        "q": "Which is correct?",
-        "options": [
-          "A moment's thought would have helped.",
-          "A moments thought would have helped.",
-          "A moments' thought would have helped."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "apostrophe-ambush-c1-09",
-        "q": "Which is correct?",
-        "options": [
-          "The committee's decision stands.",
-          "The committees decision stands.",
-          "The committee's' decision stands."
-        ],
-        "answer": 0
-      }
+      { "id": "apostrophe-ambush-c1-01", "q": "Which is correct? (several witnesses)", "options": ["The witnesses' accounts differed slightly.", "The witness's accounts differed slightly.", "The witnesses accounts differed slightly."], "answer": 0, "why": "Several witnesses: plural witnesses + apostrophe after the s." },
+      { "id": "apostrophe-ambush-c1-02", "q": "Which is correct?", "options": ["It's often its own worst enemy.", "Its often it's own worst enemy.", "Its often its' own worst enemy."], "answer": 0, "why": "“It's often” = “it is often”; “its own” is possessive, with no apostrophe." },
+      { "id": "apostrophe-ambush-c1-03", "q": "Which is correct?", "options": ["A day's work deserves a day's pay.", "A days work deserves a days pay.", "A day's work deserves a days' pay."], "answer": 0, "why": "One day each time: a day's work, a day's pay." },
+      { "id": "apostrophe-ambush-c1-04", "q": "Which is correct?", "options": ["The government's policy shifted overnight.", "The governments policy shifted overnight.", "The government's' policy shifted overnight."], "answer": 0, "why": "One government: government + 's." },
+      { "id": "apostrophe-ambush-c1-05", "q": "Which is correct?", "options": ["For goodness' sake, hurry up!", "For goodness sake, hurry up!", "For goodness's sake, hurry up!"], "answer": 0, "why": "A fixed phrase: “for goodness' sake” keeps just the apostrophe, no extra s." },
+      { "id": "apostrophe-ambush-c1-06", "q": "Which is correct?", "options": ["The Joneses' garden is beautiful.", "The Jones' garden is beautiful.", "The Joneses garden is beautiful."], "answer": 0, "why": "The Jones family are “the Joneses”, so their garden is “the Joneses'”." },
+      { "id": "apostrophe-ambush-c1-07", "q": "Which is correct?", "options": ["He questioned its validity, not theirs.", "He questioned it's validity, not their's.", "He questioned its' validity, not theirs'."], "answer": 0, "why": "Possessive pronouns (its, theirs, yours, hers) never take an apostrophe." },
+      { "id": "apostrophe-ambush-c1-08", "q": "Which is correct?", "options": ["A moment's thought would have helped.", "A moments thought would have helped.", "A moments' thought would have helped."], "answer": 0, "why": "One moment of thought: a moment's thought, like “a day's work”." },
+      { "id": "apostrophe-ambush-c1-09", "q": "Which is correct?", "options": ["The committee's decision stands.", "The committees decision stands.", "The committee's' decision stands."], "answer": 0, "why": "One committee: committee + 's." },
+      { "id": "apostrophe-ambush-c1-10", "q": "Which is correct?", "options": ["Hers was the best paella in the competition.", "Her's was the best paella in the competition.", "Hers' was the best paella in the competition."], "answer": 0, "why": "“Hers” is a possessive pronoun, like “its” and “theirs”: never an apostrophe." },
+      { "id": "apostrophe-ambush-c1-11", "q": "Which is correct? (the people of Valencia)", "options": ["The Valencians' love of fireworks is famous.", "The Valencian's love of fireworks is famous.", "The Valencians's love of fireworks is famous."], "answer": 0, "why": "Plural Valencians + apostrophe after the s; never add a second s." },
+      { "id": "apostrophe-ambush-c1-12", "q": "Which is correct?", "options": ["My sister-in-law's house is in Xàtiva.", "My sister's-in-law house is in Xàtiva.", "My sister-in-laws house is in Xàtiva."], "answer": 0, "why": "With compound nouns the 's goes at the very end: sister-in-law's." }
     ]
   }
 }

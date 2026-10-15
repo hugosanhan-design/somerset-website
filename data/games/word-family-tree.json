@@ -1,181 +1,65 @@
 {
   "id": "word-family-tree",
   "title": "Word Family Tree",
-  "tags": [
-    "vocabulary"
-  ],
+  "tags": ["vocabulary"],
   "engine": "pairs",
   "intro": "decide, decision, decisive, decisively — one root, four branches. Match each form to what it actually does in a sentence.",
-  "source": "Game — Word Family Tree.html",
-  "draft": true,
   "items": {
     "A2": [
-      {
-        "id": "word-family-tree-a2-01",
-        "left": "happy",
-        "right": "adjective (feeling good)"
-      },
-      {
-        "id": "word-family-tree-a2-02",
-        "left": "happiness",
-        "right": "noun (the feeling of being happy)"
-      },
-      {
-        "id": "word-family-tree-a2-03",
-        "left": "quick",
-        "right": "adjective (fast)"
-      },
-      {
-        "id": "word-family-tree-a2-04",
-        "left": "quickly",
-        "right": "adverb (in a fast way)"
-      },
-      {
-        "id": "word-family-tree-a2-05",
-        "left": "careful",
-        "right": "adjective (paying attention)"
-      },
-      {
-        "id": "word-family-tree-a2-06",
-        "left": "carefully",
-        "right": "adverb (in a careful way)"
-      },
-      {
-        "id": "word-family-tree-a2-07",
-        "left": "friend",
-        "right": "noun (a person you like)"
-      },
-      {
-        "id": "word-family-tree-a2-08",
-        "left": "friendly",
-        "right": "adjective (kind and pleasant)"
-      }
+      { "id": "word-family-tree-a2-01", "left": "happy", "right": "adjective (feeling good)", "why": "Happy is an adjective: a happy family." },
+      { "id": "word-family-tree-a2-02", "left": "happiness", "right": "noun (the feeling of being happy)", "why": "-ness turns an adjective into a noun: happy, happiness." },
+      { "id": "word-family-tree-a2-03", "left": "quick", "right": "adjective (fast)", "why": "Quick is an adjective: a quick lunch." },
+      { "id": "word-family-tree-a2-04", "left": "quickly", "right": "adverb (in a fast way)", "why": "-ly turns an adjective into an adverb: she walked quickly." },
+      { "id": "word-family-tree-a2-05", "left": "careful", "right": "adjective (paying attention)", "why": "-ful makes an adjective: be careful on the stairs." },
+      { "id": "word-family-tree-a2-06", "left": "carefully", "right": "adverb (in a careful way)", "why": "Add -ly to careful for the adverb: drive carefully." },
+      { "id": "word-family-tree-a2-07", "left": "friend", "right": "noun (a person you like)", "why": "Friend is a person, so it's a noun." },
+      { "id": "word-family-tree-a2-08", "left": "friendly", "right": "adjective (kind and pleasant)", "why": "Careful: friendly ends in -ly but is an adjective, not an adverb. A friendly smile." },
+      { "id": "word-family-tree-a2-09", "left": "help", "right": "verb (to make something easier for someone)", "why": "Help is the verb here: can you help me?" },
+      { "id": "word-family-tree-a2-10", "left": "helpful", "right": "adjective (useful, ready to help)", "why": "-ful makes an adjective: a helpful neighbour." },
+      { "id": "word-family-tree-a2-11", "left": "beauty", "right": "noun (the quality of being beautiful)", "why": "Beauty is the noun: the beauty of the Albufera." },
+      { "id": "word-family-tree-a2-12", "left": "beautiful", "right": "adjective (very nice to look at)", "why": "-ful makes an adjective: a beautiful beach." }
     ],
     "B1": [
-      {
-        "id": "word-family-tree-b1-01",
-        "left": "decide",
-        "right": "verb (to choose)"
-      },
-      {
-        "id": "word-family-tree-b1-02",
-        "left": "decision",
-        "right": "noun (a choice you make)"
-      },
-      {
-        "id": "word-family-tree-b1-03",
-        "left": "decisive",
-        "right": "adjective (able to decide quickly)"
-      },
-      {
-        "id": "word-family-tree-b1-04",
-        "left": "create",
-        "right": "verb (to make something new)"
-      },
-      {
-        "id": "word-family-tree-b1-05",
-        "left": "creative",
-        "right": "adjective (good at making new things)"
-      },
-      {
-        "id": "word-family-tree-b1-06",
-        "left": "creativity",
-        "right": "noun (the ability to create)"
-      },
-      {
-        "id": "word-family-tree-b1-07",
-        "left": "succeed",
-        "right": "verb (to achieve a goal)"
-      },
-      {
-        "id": "word-family-tree-b1-08",
-        "left": "success",
-        "right": "noun (achieving what you wanted)"
-      }
+      { "id": "word-family-tree-b1-01", "left": "decide", "right": "verb (to choose)", "why": "Decide is the verb: we decided to stay in Valencia." },
+      { "id": "word-family-tree-b1-02", "left": "decision", "right": "noun (a choice you make)", "why": "-sion makes a noun: a difficult decision." },
+      { "id": "word-family-tree-b1-03", "left": "decisive", "right": "adjective (able to decide quickly)", "why": "-ive makes an adjective: a decisive leader." },
+      { "id": "word-family-tree-b1-04", "left": "create", "right": "verb (to make something new)", "why": "Create is the verb: Sorolla created over 2,000 paintings." },
+      { "id": "word-family-tree-b1-05", "left": "creative", "right": "adjective (good at making new things)", "why": "-ive makes an adjective: a creative cook." },
+      { "id": "word-family-tree-b1-06", "left": "creativity", "right": "noun (the ability to create)", "why": "-ity makes a noun: creativity in the kitchen." },
+      { "id": "word-family-tree-b1-07", "left": "succeed", "right": "verb (to achieve a goal)", "why": "Succeed is the verb: she succeeded in passing the exam." },
+      { "id": "word-family-tree-b1-08", "left": "success", "right": "noun (achieving what you wanted)", "why": "Success is the noun. The adjective is successful." },
+      { "id": "word-family-tree-b1-09", "left": "employ", "right": "verb (to give someone a paid job)", "why": "Employ is the verb: the ranch employed twenty cowboys." },
+      { "id": "word-family-tree-b1-10", "left": "employer", "right": "noun (the person or company that pays you)", "why": "-er is the one who gives the job: the employer." },
+      { "id": "word-family-tree-b1-11", "left": "employee", "right": "noun (a person who works for someone)", "why": "-ee is the one who receives the job: the employee." },
+      { "id": "word-family-tree-b1-12", "left": "unemployed", "right": "adjective (without a paid job)", "why": "un- makes it negative: unemployed means without a job." }
     ],
     "B2": [
-      {
-        "id": "word-family-tree-b2-01",
-        "left": "analyse",
-        "right": "verb (to examine in detail)"
-      },
-      {
-        "id": "word-family-tree-b2-02",
-        "left": "analysis",
-        "right": "noun (a detailed examination)"
-      },
-      {
-        "id": "word-family-tree-b2-03",
-        "left": "analytical",
-        "right": "adjective (good at analysing)"
-      },
-      {
-        "id": "word-family-tree-b2-04",
-        "left": "critic",
-        "right": "noun (a person who judges quality)"
-      },
-      {
-        "id": "word-family-tree-b2-05",
-        "left": "criticise",
-        "right": "verb (to point out faults)"
-      },
-      {
-        "id": "word-family-tree-b2-06",
-        "left": "critical",
-        "right": "adjective (finding fault, or very important)"
-      },
-      {
-        "id": "word-family-tree-b2-07",
-        "left": "economy",
-        "right": "noun (a country's system of trade and money)"
-      },
-      {
-        "id": "word-family-tree-b2-08",
-        "left": "economic",
-        "right": "adjective (relating to the economy)"
-      }
+      { "id": "word-family-tree-b2-01", "left": "analyse", "right": "verb (to examine in detail)", "why": "Analyse is the verb, with -se in British English." },
+      { "id": "word-family-tree-b2-02", "left": "analysis", "right": "noun (a detailed examination)", "why": "Analysis is the noun: a blood analysis. Plural: analyses." },
+      { "id": "word-family-tree-b2-03", "left": "analytical", "right": "adjective (good at analysing)", "why": "-ical makes an adjective: an analytical mind." },
+      { "id": "word-family-tree-b2-04", "left": "critic", "right": "noun (a person who judges quality)", "why": "A critic is a person: a film critic. Not a criticism!" },
+      { "id": "word-family-tree-b2-05", "left": "criticise", "right": "verb (to point out faults)", "why": "Criticise is the verb, with -ise in British English." },
+      { "id": "word-family-tree-b2-06", "left": "critical", "right": "adjective (finding fault, or very important)", "why": "Critical has two meanings: finding fault, or very important (in a critical condition)." },
+      { "id": "word-family-tree-b2-07", "left": "economy", "right": "noun (a country's system of trade and money)", "why": "Economy is the noun: the Spanish economy." },
+      { "id": "word-family-tree-b2-08", "left": "economic", "right": "adjective (relating to the economy)", "why": "Economic means about the economy: an economic crisis." },
+      { "id": "word-family-tree-b2-09", "left": "economical", "right": "adjective (saving money, not wasteful)", "why": "Economical means it saves money: an economical car. Economic is about the economy." },
+      { "id": "word-family-tree-b2-10", "left": "economist", "right": "noun (an expert who studies the economy)", "why": "-ist is a person: an economist." },
+      { "id": "word-family-tree-b2-11", "left": "medicine", "right": "noun (a substance that treats illness)", "why": "Medicine is the noun: take your medicine after meals." },
+      { "id": "word-family-tree-b2-12", "left": "medical", "right": "adjective (relating to doctors and treatment)", "why": "-al makes an adjective: medical school, a medical check-up." }
     ],
     "C1": [
-      {
-        "id": "word-family-tree-c1-01",
-        "left": "persuade",
-        "right": "verb (to convince someone)"
-      },
-      {
-        "id": "word-family-tree-c1-02",
-        "left": "persuasive",
-        "right": "adjective (convincing)"
-      },
-      {
-        "id": "word-family-tree-c1-03",
-        "left": "persuasion",
-        "right": "noun (the act of convincing)"
-      },
-      {
-        "id": "word-family-tree-c1-04",
-        "left": "ambiguous",
-        "right": "adjective (unclear, open to interpretation)"
-      },
-      {
-        "id": "word-family-tree-c1-05",
-        "left": "ambiguity",
-        "right": "noun (the quality of being unclear)"
-      },
-      {
-        "id": "word-family-tree-c1-06",
-        "left": "significant",
-        "right": "adjective (important, notable)"
-      },
-      {
-        "id": "word-family-tree-c1-07",
-        "left": "significance",
-        "right": "noun (importance)"
-      },
-      {
-        "id": "word-family-tree-c1-08",
-        "left": "signify",
-        "right": "verb (to mean or indicate)"
-      }
+      { "id": "word-family-tree-c1-01", "left": "persuade", "right": "verb (to convince someone)", "why": "Persuade is the verb: she persuaded him to see a doctor." },
+      { "id": "word-family-tree-c1-02", "left": "persuasive", "right": "adjective (convincing)", "why": "-ive makes an adjective: a persuasive argument." },
+      { "id": "word-family-tree-c1-03", "left": "persuasion", "right": "noun (the act of convincing)", "why": "-sion makes a noun: the art of persuasion." },
+      { "id": "word-family-tree-c1-04", "left": "ambiguous", "right": "adjective (unclear, open to interpretation)", "why": "Ambiguous is the adjective: an ambiguous answer." },
+      { "id": "word-family-tree-c1-05", "left": "ambiguity", "right": "noun (the quality of being unclear)", "why": "-ity makes a noun: the ambiguity of the contract." },
+      { "id": "word-family-tree-c1-06", "left": "significant", "right": "adjective (important, notable)", "why": "Significant is the adjective: a significant discovery." },
+      { "id": "word-family-tree-c1-07", "left": "significance", "right": "noun (importance)", "why": "-ance makes a noun: the significance of Fleming's discovery." },
+      { "id": "word-family-tree-c1-08", "left": "signify", "right": "verb (to mean or indicate)", "why": "Signify is the verb: a red flag signified danger." },
+      { "id": "word-family-tree-c1-09", "left": "persuasively", "right": "adverb (in a convincing way)", "why": "-ly makes the adverb: she argued persuasively." },
+      { "id": "word-family-tree-c1-10", "left": "insignificant", "right": "adjective (too small to matter)", "why": "in- makes it negative: an insignificant amount." },
+      { "id": "word-family-tree-c1-11", "left": "controversy", "right": "noun (public disagreement)", "why": "Controversy is the noun: the bullfighting controversy." },
+      { "id": "word-family-tree-c1-12", "left": "controversial", "right": "adjective (causing strong disagreement)", "why": "-ial makes an adjective: a controversial decision." }
     ]
   }
 }

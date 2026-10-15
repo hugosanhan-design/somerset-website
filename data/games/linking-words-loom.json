@@ -1,382 +1,65 @@
 {
   "id": "linking-words-loom",
   "title": "Linking Words Loom",
-  "tags": [
-    "other",
-    "register"
-  ],
+  "tags": ["other", "register"],
   "engine": "choice",
   "intro": "However, although, despite, in spite of — weave the right connector into the sentence without breaking the logic or the grammar.",
-  "source": "Game — Linking Words Loom.html",
-  "draft": true,
   "items": {
     "A2": [
-      {
-        "id": "linking-words-loom-a2-01",
-        "q": "Connectors — which is correct?",
-        "options": [
-          "It was cold, so I wore a coat.",
-          "It was cold, but I wore a coat.",
-          "It was cold, so, I wore a coat."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "linking-words-loom-a2-02",
-        "q": "Connectors — which is correct?",
-        "options": [
-          "I like tea, but I prefer coffee.",
-          "I like tea, so I prefer coffee.",
-          "I like tea but, I prefer coffee."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "linking-words-loom-a2-03",
-        "q": "Connectors — which is correct?",
-        "options": [
-          "She was tired because she worked all day.",
-          "She was tired so she worked all day.",
-          "She was tired, because, she worked all day."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "linking-words-loom-a2-04",
-        "q": "Connectors — which is correct?",
-        "options": [
-          "He studied hard, so he passed the exam.",
-          "He studied hard, but he passed the exam.",
-          "He studied hard so, he passed the exam."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "linking-words-loom-a2-05",
-        "q": "Connectors — which is correct?",
-        "options": [
-          "We stayed home because it was raining.",
-          "We stayed home so it was raining.",
-          "We stayed home, because, it was raining."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "linking-words-loom-a2-06",
-        "q": "Connectors — which is correct?",
-        "options": [
-          "I wanted to go, but I was too tired.",
-          "I wanted to go, so I was too tired.",
-          "I wanted to go but, I was too tired."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "linking-words-loom-a2-07",
-        "q": "Connectors — which is correct?",
-        "options": [
-          "It was late, so we went home.",
-          "It was late, but we went home.",
-          "It was late so, we went home."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "linking-words-loom-a2-08",
-        "q": "Connectors — which is correct?",
-        "options": [
-          "She smiled, and everyone felt happy.",
-          "She smiled, but everyone felt happy.",
-          "She smiled and, everyone felt happy."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "linking-words-loom-a2-09",
-        "q": "Connectors — which is correct?",
-        "options": [
-          "He was hungry because he skipped lunch.",
-          "He was hungry so he skipped lunch.",
-          "He was hungry, because, he skipped lunch."
-        ],
-        "answer": 0
-      }
+      { "id": "linking-words-loom-a2-01", "q": "Connectors — which is correct?", "options": ["It was cold, so I wore a coat.", "It was cold, but I wore a coat.", "It was cold, so, I wore a coat."], "answer": 0, "why": "Cold, so a coat: “so” shows a result. The comma goes before “so”, not after." },
+      { "id": "linking-words-loom-a2-02", "q": "Connectors — which is correct?", "options": ["I like tea, but I prefer coffee.", "I like tea, so I prefer coffee.", "I like tea but, I prefer coffee."], "answer": 0, "why": "Liking tea and preferring coffee contrast, so “but”, with the comma before it." },
+      { "id": "linking-words-loom-a2-03", "q": "Connectors — which is correct?", "options": ["She was tired because she worked all day.", "She was tired so she worked all day.", "She was tired, because, she worked all day."], "answer": 0, "why": "“Because” gives the reason: she worked all day, so she was tired." },
+      { "id": "linking-words-loom-a2-04", "q": "Connectors — which is correct?", "options": ["He studied hard, so he passed the exam.", "He studied hard, but he passed the exam.", "He studied hard so, he passed the exam."], "answer": 0, "why": "Studying hard led to passing: a result, so “so”. Comma before it, not after." },
+      { "id": "linking-words-loom-a2-05", "q": "Connectors — which is correct?", "options": ["We stayed home because it was raining.", "We stayed home so it was raining.", "We stayed home, because, it was raining."], "answer": 0, "why": "The rain is the reason for staying home, so “because”, with no extra commas." },
+      { "id": "linking-words-loom-a2-06", "q": "Connectors — which is correct?", "options": ["I wanted to go, but I was too tired.", "I wanted to go, so I was too tired.", "I wanted to go but, I was too tired."], "answer": 0, "why": "Wanting to go and being too tired pull in opposite directions: “but”." },
+      { "id": "linking-words-loom-a2-07", "q": "Connectors — which is correct?", "options": ["It was late, so we went home.", "It was late, but we went home.", "It was late so, we went home."], "answer": 0, "why": "It was late, and the result was going home: “so”." },
+      { "id": "linking-words-loom-a2-08", "q": "Connectors — which is correct?", "options": ["She smiled, and everyone felt happy.", "She smiled, but everyone felt happy.", "She smiled and, everyone felt happy."], "answer": 0, "why": "“And” simply adds the next event; “but” would need a contrast." },
+      { "id": "linking-words-loom-a2-09", "q": "Connectors — which is correct?", "options": ["He was hungry because he skipped lunch.", "He was hungry so he skipped lunch.", "He was hungry, because, he skipped lunch."], "answer": 0, "why": "Skipping lunch is the reason he was hungry, so “because”." },
+      { "id": "linking-words-loom-a2-10", "q": "Connectors — which is correct?", "options": ["The film was long, but it was very good.", "The film was long, so it was very good.", "The film was long but, it was very good."], "answer": 0, "why": "Long but good is a contrast: “but”, with the comma before it." },
+      { "id": "linking-words-loom-a2-11", "q": "Connectors — which is correct?", "options": ["I was thirsty, so I drank some water.", "I was thirsty, but I drank some water.", "I was thirsty so, I drank some water."], "answer": 0, "why": "Thirsty, so water: “so” introduces the result, with the comma before it." },
+      { "id": "linking-words-loom-a2-12", "q": "Connectors — which is correct?", "options": ["We went to La Malvarrosa because it was sunny.", "We went to La Malvarrosa so it was sunny.", "We went to La Malvarrosa, because, it was sunny."], "answer": 0, "why": "Sunshine is the reason for the beach trip, so “because”, with no commas round it." }
     ],
     "B1": [
-      {
-        "id": "linking-words-loom-b1-01",
-        "q": "Connectors — which is correct?",
-        "options": [
-          "It was raining. However, we went for a walk.",
-          "It was raining. Although, we went for a walk.",
-          "It was raining however we went for a walk."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "linking-words-loom-b1-02",
-        "q": "Connectors — which is correct?",
-        "options": [
-          "Although it was raining, we went for a walk.",
-          "Despite it was raining, we went for a walk.",
-          "Although it was raining we went, for a walk."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "linking-words-loom-b1-03",
-        "q": "Connectors — which is correct?",
-        "options": [
-          "Despite the rain, we went for a walk.",
-          "Despite of the rain, we went for a walk.",
-          "Despite the rain we went, for a walk."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "linking-words-loom-b1-04",
-        "q": "Connectors — which is correct?",
-        "options": [
-          "In spite of the rain, we went for a walk.",
-          "In spite the rain, we went for a walk.",
-          "In spite of of the rain, we went for a walk."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "linking-words-loom-b1-05",
-        "q": "Connectors — which is correct?",
-        "options": [
-          "He failed the exam. Nevertheless, he stayed positive.",
-          "He failed the exam. Despite, he stayed positive.",
-          "He failed the exam nevertheless he stayed positive."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "linking-words-loom-b1-06",
-        "q": "Connectors — which is correct?",
-        "options": [
-          "Although she was busy, she helped me.",
-          "Despite she was busy, she helped me.",
-          "Although she was busy she helped, me."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "linking-words-loom-b1-07",
-        "q": "Connectors — which is correct?",
-        "options": [
-          "She passed the exam despite not studying much.",
-          "She passed the exam despite of not studying much.",
-          "She passed the exam although not studying much."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "linking-words-loom-b1-08",
-        "q": "Connectors — which is correct?",
-        "options": [
-          "We continued the match in spite of the storm.",
-          "We continued the match despite of the storm.",
-          "We continued the match in spite the storm."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "linking-words-loom-b1-09",
-        "q": "Connectors — which is correct?",
-        "options": [
-          "It was expensive. However, we bought it anyway.",
-          "It was expensive. Although, we bought it anyway.",
-          "It was expensive however we bought it anyway."
-        ],
-        "answer": 0
-      }
+      { "id": "linking-words-loom-b1-01", "q": "Connectors — which is correct?", "options": ["It was raining. However, we went for a walk.", "It was raining. Although, we went for a walk.", "It was raining however we went for a walk."], "answer": 0, "why": "“However” starts the new sentence and takes a comma; “although” can't stand alone like that." },
+      { "id": "linking-words-loom-b1-02", "q": "Connectors — which is correct?", "options": ["Although it was raining, we went for a walk.", "Despite it was raining, we went for a walk.", "Although it was raining we went, for a walk."], "answer": 0, "why": "“Although” is followed by a full clause; “despite” can't take a subject and verb." },
+      { "id": "linking-words-loom-b1-03", "q": "Connectors — which is correct?", "options": ["Despite the rain, we went for a walk.", "Despite of the rain, we went for a walk.", "Despite the rain we went, for a walk."], "answer": 0, "why": "“Despite” takes a noun directly. Never “despite of”: that's “a pesar de” sneaking in." },
+      { "id": "linking-words-loom-b1-04", "q": "Connectors — which is correct?", "options": ["In spite of the rain, we went for a walk.", "In spite the rain, we went for a walk.", "In spite of of the rain, we went for a walk."], "answer": 0, "why": "“In spite of” needs all three words; only “despite” goes without “of”." },
+      { "id": "linking-words-loom-b1-05", "q": "Connectors — which is correct?", "options": ["He failed the exam. Nevertheless, he stayed positive.", "He failed the exam. Despite, he stayed positive.", "He failed the exam nevertheless he stayed positive."], "answer": 0, "why": "“Nevertheless,” begins a new sentence; “despite” needs a noun after it." },
+      { "id": "linking-words-loom-b1-06", "q": "Connectors — which is correct?", "options": ["Although she was busy, she helped me.", "Despite she was busy, she helped me.", "Although she was busy she helped, me."], "answer": 0, "why": "A subject and verb (“she was busy”) follow “although”, not “despite”." },
+      { "id": "linking-words-loom-b1-07", "q": "Connectors — which is correct?", "options": ["She passed the exam despite not studying much.", "She passed the exam despite of not studying much.", "She passed the exam although not studying much."], "answer": 0, "why": "“Despite” + -ing works: “despite not studying”. No “of” after “despite”." },
+      { "id": "linking-words-loom-b1-08", "q": "Connectors — which is correct?", "options": ["We continued the match in spite of the storm.", "We continued the match despite of the storm.", "We continued the match in spite the storm."], "answer": 0, "why": "“In spite of the storm” or “despite the storm”, but never “despite of”." },
+      { "id": "linking-words-loom-b1-09", "q": "Connectors — which is correct?", "options": ["It was expensive. However, we bought it anyway.", "It was expensive. Although, we bought it anyway.", "It was expensive however we bought it anyway."], "answer": 0, "why": "“However,” at the start of a sentence links it to the one before." },
+      { "id": "linking-words-loom-b1-10", "q": "Connectors — which is correct?", "options": ["Although the doctor was tired, he saw every patient.", "Despite the doctor was tired, he saw every patient.", "Although the doctor was tired he saw, every patient."], "answer": 0, "why": "A full clause (“the doctor was tired”) needs “although”, not “despite”." },
+      { "id": "linking-words-loom-b1-11", "q": "Connectors — which is correct?", "options": ["Despite the heat, the cowboys rode all day.", "Despite of the heat, the cowboys rode all day.", "Although the heat, the cowboys rode all day."], "answer": 0, "why": "“Despite the heat”: a noun after “despite”, no “of”. “Although” needs a verb." },
+      { "id": "linking-words-loom-b1-12", "q": "Connectors — which is correct?", "options": ["The paella was cold. However, everyone ate it.", "The paella was cold. Although, everyone ate it.", "The paella was cold however everyone ate it."], "answer": 0, "why": "“However,” opens the second sentence; “although” can't be used alone with a comma." }
     ],
     "B2": [
-      {
-        "id": "linking-words-loom-b2-01",
-        "q": "Connectors — which is correct?",
-        "options": [
-          "Sales rose in Asia, whereas they fell in Europe.",
-          "Sales rose in Asia, however they fell in Europe.",
-          "Sales rose in Asia whereas, they fell in Europe."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "linking-words-loom-b2-02",
-        "q": "Connectors — which is correct?",
-        "options": [
-          "The plan failed. Consequently, the budget was cut.",
-          "The plan failed. Despite, the budget was cut.",
-          "The plan failed consequently the budget was cut."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "linking-words-loom-b2-03",
-        "q": "Connectors — which is correct?",
-        "options": [
-          "The report is thorough. Moreover, it is well written.",
-          "The report is thorough. Despite, it is well written.",
-          "The report is thorough moreover it is well written."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "linking-words-loom-b2-04",
-        "q": "Connectors — which is correct?",
-        "options": [
-          "He is talented. Furthermore, he works incredibly hard.",
-          "He is talented. Nevertheless, he works incredibly hard.",
-          "He is talented furthermore he works incredibly hard."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "linking-words-loom-b2-05",
-        "q": "Connectors — which is correct?",
-        "options": [
-          "I prefer tea. My sister, on the other hand, loves coffee.",
-          "I prefer tea. My sister, however the other hand, loves coffee.",
-          "I prefer tea my sister on the other hand loves coffee."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "linking-words-loom-b2-06",
-        "q": "Connectors — which is correct?",
-        "options": [
-          "The team lost. Nevertheless, they remained confident.",
-          "The team lost. Whereas, they remained confident.",
-          "The team lost nevertheless they remained confident."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "linking-words-loom-b2-07",
-        "q": "Connectors — which is correct?",
-        "options": [
-          "Costs rose sharply; consequently, prices increased.",
-          "Costs rose sharply; whereas, prices increased.",
-          "Costs rose sharply consequently prices increased."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "linking-words-loom-b2-08",
-        "q": "Connectors — which is correct?",
-        "options": [
-          "She is quiet, whereas her brother is very outgoing.",
-          "She is quiet, moreover her brother is very outgoing.",
-          "She is quiet whereas, her brother is very outgoing."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "linking-words-loom-b2-09",
-        "q": "Connectors — which is correct?",
-        "options": [
-          "The device is compact. Moreover, it is affordable.",
-          "The device is compact. Consequently, it is affordable.",
-          "The device is compact moreover it is affordable."
-        ],
-        "answer": 0
-      }
+      { "id": "linking-words-loom-b2-01", "q": "Connectors — which is correct?", "options": ["Sales rose in Asia, whereas they fell in Europe.", "Sales rose in Asia, however they fell in Europe.", "Sales rose in Asia whereas, they fell in Europe."], "answer": 0, "why": "“Whereas” contrasts two facts in one sentence; “however” can't join them with just a comma." },
+      { "id": "linking-words-loom-b2-02", "q": "Connectors — which is correct?", "options": ["The plan failed. Consequently, the budget was cut.", "The plan failed. Despite, the budget was cut.", "The plan failed consequently the budget was cut."], "answer": 0, "why": "“Consequently,” starts a new sentence to show the result of the failure." },
+      { "id": "linking-words-loom-b2-03", "q": "Connectors — which is correct?", "options": ["The report is thorough. Moreover, it is well written.", "The report is thorough. Despite, it is well written.", "The report is thorough moreover it is well written."], "answer": 0, "why": "“Moreover” adds a second positive point, after a full stop and with a comma." },
+      { "id": "linking-words-loom-b2-04", "q": "Connectors — which is correct?", "options": ["He is talented. Furthermore, he works incredibly hard.", "He is talented. Whereas, he works incredibly hard.", "He is talented furthermore he works incredibly hard."], "answer": 0, "why": "“Furthermore” adds another point in the same direction: talented and hard-working." },
+      { "id": "linking-words-loom-b2-05", "q": "Connectors — which is correct?", "options": ["I prefer tea. My sister, on the other hand, loves coffee.", "I prefer tea. My sister, however the other hand, loves coffee.", "I prefer tea my sister on the other hand loves coffee."], "answer": 0, "why": "“On the other hand” sits between commas in the middle of a sentence." },
+      { "id": "linking-words-loom-b2-06", "q": "Connectors — which is correct?", "options": ["The team lost. Nevertheless, they remained confident.", "The team lost. Whereas, they remained confident.", "The team lost nevertheless they remained confident."], "answer": 0, "why": "Losing but staying confident is a contrast: “Nevertheless,” at the start of the sentence." },
+      { "id": "linking-words-loom-b2-07", "q": "Connectors — which is correct?", "options": ["Costs rose sharply; consequently, prices increased.", "Costs rose sharply; whereas, prices increased.", "Costs rose sharply consequently prices increased."], "answer": 0, "why": "A semicolon before “consequently” and a comma after it link cause and result." },
+      { "id": "linking-words-loom-b2-08", "q": "Connectors — which is correct?", "options": ["She is quiet, whereas her brother is very outgoing.", "She is quiet, moreover her brother is very outgoing.", "She is quiet whereas, her brother is very outgoing."], "answer": 0, "why": "“Whereas” contrasts two people in one sentence, with the comma before it." },
+      { "id": "linking-words-loom-b2-09", "q": "Connectors — which is correct?", "options": ["The device is compact. Moreover, it is affordable.", "The device is compact. Despite, it is affordable.", "The device is compact moreover it is affordable."], "answer": 0, "why": "Compact and affordable are two good points, so “Moreover” adds the second." },
+      { "id": "linking-words-loom-b2-10", "q": "Connectors — which is correct?", "options": ["Valencia is mild in winter, whereas Burgos is freezing.", "Valencia is mild in winter, however Burgos is freezing.", "Valencia is mild in winter whereas, Burgos is freezing."], "answer": 0, "why": "Two contrasting cities in one sentence: “whereas”, with the comma before it." },
+      { "id": "linking-words-loom-b2-11", "q": "Connectors — which is correct?", "options": ["Antibiotics saved millions of lives. Moreover, they changed surgery for ever.", "Antibiotics saved millions of lives. Despite, they changed surgery for ever.", "Antibiotics saved millions of lives moreover they changed surgery for ever."], "answer": 0, "why": "“Moreover” adds a second, stronger point after a full stop." },
+      { "id": "linking-words-loom-b2-12", "q": "Connectors — which is correct?", "options": ["The bank was robbed; consequently, the town hired a new sheriff.", "The bank was robbed; whereas, the town hired a new sheriff.", "The bank was robbed consequently the town hired a new sheriff."], "answer": 0, "why": "The robbery caused the hiring: “; consequently,” shows the result." }
     ],
     "C1": [
-      {
-        "id": "linking-words-loom-c1-01",
-        "q": "Connectors — which is correct?",
-        "options": [
-          "The event went ahead, notwithstanding the storm.",
-          "The event went ahead, notwithstanding of the storm.",
-          "The event went ahead notwithstanding, the storm."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "linking-words-loom-c1-02",
-        "q": "Connectors — which is correct?",
-        "options": [
-          "He accepted the offer, albeit reluctantly.",
-          "He accepted the offer, although reluctantly.",
-          "He accepted the offer albeit, reluctantly."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "linking-words-loom-c1-03",
-        "q": "Connectors — which is correct?",
-        "options": [
-          "The theory holds true insofar as conditions remain stable.",
-          "The theory holds true insofar that conditions remain stable.",
-          "The theory holds true, insofar as, conditions remain stable."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "linking-words-loom-c1-04",
-        "q": "Connectors — which is correct?",
-        "options": [
-          "The results were disappointing. That said, there's room for improvement.",
-          "The results were disappointing. That say, there's room for improvement.",
-          "The results were disappointing that said there's room for improvement."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "linking-words-loom-c1-05",
-        "q": "Connectors — which is correct?",
-        "options": [
-          "Be that as it may, the decision stands.",
-          "Be that as it is, the decision stands.",
-          "Be that as it may the decision, stands."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "linking-words-loom-c1-06",
-        "q": "Connectors — which is correct?",
-        "options": [
-          "The strategy worked, albeit only in the short term.",
-          "The strategy worked, notwithstanding only in the short term.",
-          "The strategy worked albeit, only in the short term."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "linking-words-loom-c1-07",
-        "q": "Connectors — which is correct?",
-        "options": [
-          "Notwithstanding his objections, the plan was approved.",
-          "Notwithstanding of his objections, the plan was approved.",
-          "Notwithstanding his objections the plan, was approved."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "linking-words-loom-c1-08",
-        "q": "Connectors — which is correct?",
-        "options": [
-          "The rule applies insofar as it doesn't conflict with local law.",
-          "The rule applies insofar that it doesn't conflict with local law.",
-          "The rule applies, insofar as it doesn't conflict, with local law."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "linking-words-loom-c1-09",
-        "q": "Connectors — which is correct?",
-        "options": [
-          "It was a small victory. Be that as it may, it mattered.",
-          "It was a small victory. Be that as it is, it mattered.",
-          "It was a small victory be that as it may it mattered."
-        ],
-        "answer": 0
-      }
+      { "id": "linking-words-loom-c1-01", "q": "Connectors — which is correct?", "options": ["The event went ahead, notwithstanding the storm.", "The event went ahead, notwithstanding of the storm.", "The event went ahead notwithstanding, the storm."], "answer": 0, "why": "“Notwithstanding” works like “despite”: straight before the noun, with no “of”." },
+      { "id": "linking-words-loom-c1-02", "q": "Connectors — which is correct?", "options": ["He accepted the offer, albeit reluctantly.", "He accepted the offer, despite reluctantly.", "He accepted the offer albeit, reluctantly."], "answer": 0, "why": "“Albeit” means “although”, and goes straight before an adjective or adverb." },
+      { "id": "linking-words-loom-c1-03", "q": "Connectors — which is correct?", "options": ["The theory holds true insofar as conditions remain stable.", "The theory holds true insofar that conditions remain stable.", "The theory holds true, insofar as, conditions remain stable."], "answer": 0, "why": "The fixed phrase is “insofar as”, meaning “to the extent that”." },
+      { "id": "linking-words-loom-c1-04", "q": "Connectors — which is correct?", "options": ["The results were disappointing. That said, there's room for improvement.", "The results were disappointing. That say, there's room for improvement.", "The results were disappointing that said there's room for improvement."], "answer": 0, "why": "“That said,” means “even so” and opens the second sentence with a comma." },
+      { "id": "linking-words-loom-c1-05", "q": "Connectors — which is correct?", "options": ["Be that as it may, the decision stands.", "Be that as it is, the decision stands.", "Be that as it may the decision, stands."], "answer": 0, "why": "The fixed phrase is “Be that as it may”, meaning “even so”." },
+      { "id": "linking-words-loom-c1-06", "q": "Connectors — which is correct?", "options": ["The strategy worked, albeit only in the short term.", "The strategy worked, notwithstanding only in the short term.", "The strategy worked albeit, only in the short term."], "answer": 0, "why": "“Albeit” adds a limit: it worked, though only for a short time." },
+      { "id": "linking-words-loom-c1-07", "q": "Connectors — which is correct?", "options": ["Notwithstanding his objections, the plan was approved.", "Notwithstanding of his objections, the plan was approved.", "Notwithstanding his objections the plan, was approved."], "answer": 0, "why": "“Notwithstanding his objections”: no “of”, and the comma comes after the whole phrase." },
+      { "id": "linking-words-loom-c1-08", "q": "Connectors — which is correct?", "options": ["The rule applies insofar as it doesn't conflict with local law.", "The rule applies insofar that it doesn't conflict with local law.", "The rule applies, insofar as it doesn't conflict, with local law."], "answer": 0, "why": "“Insofar as” introduces a condition; don't split it off with commas." },
+      { "id": "linking-words-loom-c1-09", "q": "Connectors — which is correct?", "options": ["It was a small victory. Be that as it may, it mattered.", "It was a small victory. Be that as it is, it mattered.", "It was a small victory be that as it may it mattered."], "answer": 0, "why": "“Be that as it may” is fixed, never “as it is”, and it takes a comma." },
+      { "id": "linking-words-loom-c1-10", "q": "Connectors — which is correct?", "options": ["The treatment was effective, albeit painful.", "The treatment was effective, notwithstanding painful.", "The treatment was effective albeit, painful."], "answer": 0, "why": "“Albeit” goes straight before the adjective: “albeit painful”." },
+      { "id": "linking-words-loom-c1-11", "q": "Connectors — which is correct?", "options": ["Notwithstanding the drought, the harvest in the huerta was good.", "Notwithstanding of the drought, the harvest in the huerta was good.", "Notwithstanding the drought the harvest, in the huerta was good."], "answer": 0, "why": "“Notwithstanding” + noun, with no “of”, just like “despite”." },
+      { "id": "linking-words-loom-c1-12", "q": "Connectors — which is correct?", "options": ["The town was lawless. That said, most settlers lived peacefully.", "The town was lawless. That say, most settlers lived peacefully.", "The town was lawless that said most settlers lived peacefully."], "answer": 0, "why": "“That said,” concedes a point after a full stop: lawless, yet mostly peaceful." }
     ]
   }
 }

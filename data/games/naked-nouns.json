@@ -1,381 +1,65 @@
 {
   "id": "naked-nouns",
   "title": "Naked Nouns",
-  "tags": [
-    "article"
-  ],
+  "tags": ["article"],
   "engine": "choice",
   "intro": "Go to school. Have lunch. Love music. English drops the article completely for general statements, institutions and abstract nouns — the cases every rule-book skips past.",
-  "source": "Game — Naked Nouns.html",
-  "draft": true,
   "items": {
     "A2": [
-      {
-        "id": "naked-nouns-a2-01",
-        "q": "Which is correct?",
-        "options": [
-          "I go to school by bus.",
-          "I go to the school by bus.",
-          "I go to a school by bus."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "naked-nouns-a2-02",
-        "q": "Which is correct?",
-        "options": [
-          "We have lunch at home.",
-          "We have lunch at the home.",
-          "We have the lunch at home."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "naked-nouns-a2-03",
-        "q": "Which is correct?",
-        "options": [
-          "She likes music.",
-          "She likes the music.",
-          "She likes a music."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "naked-nouns-a2-04",
-        "q": "Which is correct?",
-        "options": [
-          "Dogs are loyal animals.",
-          "The dogs are loyal animals.",
-          "A dogs are loyal animals."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "naked-nouns-a2-05",
-        "q": "Which is correct?",
-        "options": [
-          "He goes to bed at ten.",
-          "He goes to the bed at ten.",
-          "He goes to a bed at ten."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "naked-nouns-a2-06",
-        "q": "Which is correct?",
-        "options": [
-          "I love chocolate.",
-          "I love the chocolate.",
-          "I love a chocolate."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "naked-nouns-a2-07",
-        "q": "Which is correct?",
-        "options": [
-          "Water is essential for life.",
-          "The water is essential for the life.",
-          "A water is essential for life."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "naked-nouns-a2-08",
-        "q": "Which is correct?",
-        "options": [
-          "Children need love and support.",
-          "The children need the love and support.",
-          "Children need a love and support."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "naked-nouns-a2-09",
-        "q": "Which is correct?",
-        "options": [
-          "We play football on Sundays.",
-          "We play the football on Sundays.",
-          "We play a football on Sundays."
-        ],
-        "answer": 0
-      }
+      { "id": "naked-nouns-a2-01", "q": "Which is correct?", "options": ["I go to school by bus.", "I go to the school by bus.", "I go to a school by bus."], "answer": 0, "why": "“Go to school” as a student: no article. It's the activity, not the building." },
+      { "id": "naked-nouns-a2-02", "q": "Which is correct?", "options": ["We have lunch at home.", "We have lunch at the home.", "We have the lunch at home."], "answer": 0, "why": "Meals take no article: “have lunch”. And “at home” never takes “the”." },
+      { "id": "naked-nouns-a2-03", "q": "Which is correct?", "options": ["She likes music.", "She likes the music.", "She likes a music."], "answer": 0, "why": "Music in general takes no article. Spanish says “la música”; English doesn't." },
+      { "id": "naked-nouns-a2-04", "q": "Which is correct?", "options": ["Dogs are loyal animals.", "The dogs are loyal animals.", "A dogs are loyal animals."], "answer": 0, "why": "General statements about a whole group use the plural with no article: “Dogs are…”." },
+      { "id": "naked-nouns-a2-05", "q": "Which is correct?", "options": ["He goes to bed at ten.", "He goes to the bed at ten.", "He goes to a bed at ten."], "answer": 0, "why": "“Go to bed” means go to sleep: no article." },
+      { "id": "naked-nouns-a2-06", "q": "Which is correct?", "options": ["I love chocolate.", "I love the chocolate.", "I love a chocolate."], "answer": 0, "why": "Things you like in general take no article: “I love chocolate”." },
+      { "id": "naked-nouns-a2-07", "q": "Which is correct?", "options": ["Water is essential for life.", "The water is essential for the life.", "A water is essential for life."], "answer": 0, "why": "Water and life in general: no article. Spanish uses “el agua”; English doesn't." },
+      { "id": "naked-nouns-a2-08", "q": "Which is correct?", "options": ["Children need love and support.", "The children need the love and support.", "Children need a love and support."], "answer": 0, "why": "Love and support in general are abstract nouns: no article." },
+      { "id": "naked-nouns-a2-09", "q": "Which is correct?", "options": ["We play football on Sundays.", "We play the football on Sundays.", "We play a football on Sundays."], "answer": 0, "why": "Sports take no article in English: “play football”, not “the football”." },
+      { "id": "naked-nouns-a2-10", "q": "Which is correct?", "options": ["I have breakfast at eight.", "I have the breakfast at eight.", "I have a breakfast at eight."], "answer": 0, "why": "Meals take no article: “have breakfast”, “have lunch”, “have dinner”." },
+      { "id": "naked-nouns-a2-11", "q": "Which is correct?", "options": ["My father goes to work by car.", "My father goes to the work by car.", "My father goes to work by the car."], "answer": 0, "why": "“Go to work” and “by car” are fixed phrases with no article." },
+      { "id": "naked-nouns-a2-12", "q": "Which is correct?", "options": ["Valencia is famous for oranges.", "Valencia is famous for the oranges.", "Valencia is famous for an oranges."], "answer": 0, "why": "Oranges in general: plural with no article, where Spanish would say “las naranjas”." }
     ],
     "B1": [
-      {
-        "id": "naked-nouns-b1-01",
-        "q": "Which is correct?",
-        "options": [
-          "He was sent to prison for fraud.",
-          "He was sent to the prison for fraud.",
-          "He was sent to a prison for fraud."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "naked-nouns-b1-02",
-        "q": "Which is correct?",
-        "options": [
-          "She's studying medicine at university.",
-          "She's studying the medicine at the university.",
-          "She's studying a medicine at university."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "naked-nouns-b1-03",
-        "q": "Which is correct?",
-        "options": [
-          "They travelled by train.",
-          "They travelled by the train.",
-          "They travelled by a train."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "naked-nouns-b1-04",
-        "q": "Which is correct?",
-        "options": [
-          "Information is power.",
-          "The information is the power.",
-          "An information is power."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "naked-nouns-b1-05",
-        "q": "Which is correct?",
-        "options": [
-          "We need more information about the flight.",
-          "We need more an information about the flight.",
-          "We need more the information about the flight."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "naked-nouns-b1-06",
-        "q": "Which is correct?",
-        "options": [
-          "She gave me good advice.",
-          "She gave me a good advice.",
-          "She gave me the good advice."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "naked-nouns-b1-07",
-        "q": "Which is correct?",
-        "options": [
-          "Furniture in this shop is expensive.",
-          "The furnitures in this shop are expensive.",
-          "A furniture in this shop is expensive."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "naked-nouns-b1-08",
-        "q": "Which is correct?",
-        "options": [
-          "He's afraid of spiders.",
-          "He's afraid of the spiders.",
-          "He's afraid of a spiders."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "naked-nouns-b1-09",
-        "q": "Which is correct?",
-        "options": [
-          "Life isn't always fair.",
-          "The life isn't always fair.",
-          "A life isn't always fair."
-        ],
-        "answer": 0
-      }
+      { "id": "naked-nouns-b1-01", "q": "Which is correct?", "options": ["He was sent to prison for fraud.", "He was sent to the prison for fraud.", "He was sent to a prison for fraud."], "answer": 0, "why": "“Sent to prison” as a punishment: no article. It's the institution, not the building." },
+      { "id": "naked-nouns-b1-02", "q": "Which is correct?", "options": ["She's studying medicine at university.", "She's studying the medicine at the university.", "She's studying a medicine at university."], "answer": 0, "why": "Subjects and “at university” take no article in British English." },
+      { "id": "naked-nouns-b1-03", "q": "Which is correct?", "options": ["They travelled by train.", "They travelled by the train.", "They travelled by a train."], "answer": 0, "why": "Transport with “by” takes no article: “by train”, “by car”, “by bus”." },
+      { "id": "naked-nouns-b1-04", "q": "Which is correct?", "options": ["Information is power.", "The information is the power.", "An information is power."], "answer": 0, "why": "Information in general, as an idea: no article." },
+      { "id": "naked-nouns-b1-05", "q": "Which is correct?", "options": ["We need more information about the flight.", "We need more an information about the flight.", "We need more the information about the flight."], "answer": 0, "why": "“Information” is uncountable: never “an information”. “More information” needs nothing." },
+      { "id": "naked-nouns-b1-06", "q": "Which is correct?", "options": ["She gave me good advice.", "She gave me a good advice.", "She gave me the good advice."], "answer": 0, "why": "“Advice” is uncountable in English: no “a”, and never “advices”." },
+      { "id": "naked-nouns-b1-07", "q": "Which is correct?", "options": ["Furniture is expensive these days.", "The furnitures are expensive these days.", "A furniture is expensive these days."], "answer": 0, "why": "Furniture in general takes no article, and it's uncountable, so never “furnitures”." },
+      { "id": "naked-nouns-b1-08", "q": "Which is correct?", "options": ["He's afraid of spiders.", "He's afraid of the spiders.", "He's afraid of a spiders."], "answer": 0, "why": "Spiders in general: plural, no article. Spanish says “las arañas”." },
+      { "id": "naked-nouns-b1-09", "q": "Which is correct?", "options": ["Life isn't always fair.", "The life isn't always fair.", "A life isn't always fair."], "answer": 0, "why": "Life in general takes no article: “Life isn't always fair”." },
+      { "id": "naked-nouns-b1-10", "q": "Which is correct?", "options": ["Smoking is bad for your health.", "The smoking is bad for the health.", "A smoking is bad for your health."], "answer": 0, "why": "Smoking and health in general: no article. Spanish uses “el tabaco”, “la salud”." },
+      { "id": "naked-nouns-b1-11", "q": "Which is correct?", "options": ["Many people go to church at Easter.", "Many people go to the church at the Easter.", "Many people go to church at the Easter."], "answer": 0, "why": "“Go to church” to worship: no article. Festivals like Easter take none either." },
+      { "id": "naked-nouns-b1-12", "q": "Which is correct?", "options": ["In the Wild West, gold was worth a fortune.", "In the Wild West, the gold was worth a fortune.", "In the Wild West, a gold was worth a fortune."], "answer": 0, "why": "Gold as a material in general: no article." }
     ],
     "B2": [
-      {
-        "id": "naked-nouns-b2-01",
-        "q": "Which is correct?",
-        "options": [
-          "He was taken to hospital after the crash.",
-          "He was taken to the hospital after the crash (as a visitor, not a patient).",
-          "He was taken to a hospital after the crash."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "naked-nouns-b2-02",
-        "q": "Which is correct?",
-        "options": [
-          "I visited him in hospital yesterday.",
-          "I visited him in the hospital yesterday (BrE, as a patient).",
-          "I visited him in a hospital yesterday."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "naked-nouns-b2-03",
-        "q": "Which is correct?",
-        "options": [
-          "Crime has fallen sharply this year.",
-          "The crime has fallen sharply this year.",
-          "A crime has fallen sharply this year."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "naked-nouns-b2-04",
-        "q": "Which is correct?",
-        "options": [
-          "Unemployment rose last quarter.",
-          "The unemployment rose last quarter.",
-          "An unemployment rose last quarter."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "naked-nouns-b2-05",
-        "q": "Which is correct?",
-        "options": [
-          "She plays tennis every weekend.",
-          "She plays the tennis every weekend.",
-          "She plays a tennis every weekend."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "naked-nouns-b2-06",
-        "q": "Which is correct?",
-        "options": [
-          "Honesty is the best policy.",
-          "The honesty is the best policy.",
-          "An honesty is the best policy."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "naked-nouns-b2-07",
-        "q": "Which is correct?",
-        "options": [
-          "He has luggage to check in.",
-          "He has a luggage to check in.",
-          "He has the luggages to check in."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "naked-nouns-b2-08",
-        "q": "Which is correct?",
-        "options": [
-          "Knowledge is valuable.",
-          "The knowledge is valuable.",
-          "A knowledge is valuable."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "naked-nouns-b2-09",
-        "q": "Which is correct?",
-        "options": [
-          "They played chess by candlelight.",
-          "They played chess by the candlelight.",
-          "They played chess by a candlelight."
-        ],
-        "answer": 0
-      }
+      { "id": "naked-nouns-b2-01", "q": "Which is correct?", "options": ["He was taken to hospital after the crash.", "He was taken to the hospital after crash.", "He was taken to hospitals after the crash."], "answer": 0, "why": "British English: an injured person is “taken to hospital”. But a specific crash needs “the”." },
+      { "id": "naked-nouns-b2-02", "q": "Which is correct?", "options": ["My grandmother has been in hospital since Monday.", "My grandmother has been in the hospital since the Monday.", "My grandmother has been in a hospital since a Monday."], "answer": 0, "why": "In British English a patient is “in hospital”. Days like Monday take no article." },
+      { "id": "naked-nouns-b2-03", "q": "Which is correct?", "options": ["Crime has fallen sharply this year.", "The crime has fallen sharply this year.", "A crime has fallen sharply this year."], "answer": 0, "why": "Crime as a general problem: no article." },
+      { "id": "naked-nouns-b2-04", "q": "Which is correct?", "options": ["Unemployment rose last quarter.", "The unemployment rose last quarter.", "An unemployment rose last quarter."], "answer": 0, "why": "Unemployment as a general figure: no article, and it's uncountable." },
+      { "id": "naked-nouns-b2-05", "q": "Which is correct?", "options": ["She plays tennis every weekend.", "She plays the tennis every weekend.", "She plays a tennis every weekend."], "answer": 0, "why": "Sports take no article: “play tennis”." },
+      { "id": "naked-nouns-b2-06", "q": "Which is correct?", "options": ["Honesty is the best policy.", "The honesty is the best policy.", "An honesty is the best policy."], "answer": 0, "why": "Qualities like honesty take no article when you mean them in general." },
+      { "id": "naked-nouns-b2-07", "q": "Which is correct?", "options": ["He has luggage to check in.", "He has a luggage to check in.", "He has the luggages to check in."], "answer": 0, "why": "“Luggage” is uncountable: no “a”, and never “luggages”." },
+      { "id": "naked-nouns-b2-08", "q": "Which is correct?", "options": ["Knowledge is valuable.", "The knowledge is valuable.", "A knowledge is valuable."], "answer": 0, "why": "Knowledge in general: no article, and it's uncountable." },
+      { "id": "naked-nouns-b2-09", "q": "Which is correct?", "options": ["They played chess by candlelight.", "They played chess by the candlelight.", "They played chess by a candlelight."], "answer": 0, "why": "“By candlelight” is a fixed phrase with no article, like “by moonlight”." },
+      { "id": "naked-nouns-b2-10", "q": "Which is correct?", "options": ["Before vaccines, smallpox killed millions.", "Before the vaccines, the smallpox killed millions.", "Before a vaccine, a smallpox killed millions."], "answer": 0, "why": "Vaccines in general and diseases like smallpox take no article." },
+      { "id": "naked-nouns-b2-11", "q": "Which is correct?", "options": ["The outlaw spent ten years in prison.", "The outlaw spent ten years in the prison.", "The outlaw spent the ten years in the prison."], "answer": 0, "why": "“In prison” as a prisoner: no article, just like “in hospital”." },
+      { "id": "naked-nouns-b2-12", "q": "Which is correct?", "options": ["Most Valencians have dinner quite late.", "Most Valencians have the dinner quite late.", "Most Valencians have a dinner quite late."], "answer": 0, "why": "Meals take no article: “have dinner”, just like “have lunch”." }
     ],
     "C1": [
-      {
-        "id": "naked-nouns-c1-01",
-        "q": "Which is correct?",
-        "options": [
-          "Patience is a virtue.",
-          "The patience is a virtue.",
-          "A patience is a virtue."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "naked-nouns-c1-02",
-        "q": "Which is correct?",
-        "options": [
-          "Justice must be seen to be done.",
-          "The justice must be seen to be done.",
-          "A justice must be seen to be done."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "naked-nouns-c1-03",
-        "q": "Which is correct?",
-        "options": [
-          "Poverty remains a global challenge.",
-          "The poverty remains a global challenge.",
-          "A poverty remains a global challenge."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "naked-nouns-c1-04",
-        "q": "Which is correct?",
-        "options": [
-          "Time heals all wounds.",
-          "The time heals all wounds.",
-          "A time heals all wounds."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "naked-nouns-c1-05",
-        "q": "Which is correct?",
-        "options": [
-          "He was charged with theft.",
-          "He was charged with the theft.",
-          "He was charged with a theft."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "naked-nouns-c1-06",
-        "q": "Which is correct?",
-        "options": [
-          "Democracy depends on an informed public.",
-          "The democracy depends on an informed public.",
-          "A democracy depends on an informed public (as a general concept)."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "naked-nouns-c1-07",
-        "q": "Which is correct?",
-        "options": [
-          "Silence fell over the room.",
-          "The silence fell over the room.",
-          "A silence fell over the room."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "naked-nouns-c1-08",
-        "q": "Which is correct?",
-        "options": [
-          "Research suggests otherwise.",
-          "The research suggests otherwise.",
-          "A research suggests otherwise."
-        ],
-        "answer": 0
-      },
-      {
-        "id": "naked-nouns-c1-09",
-        "q": "Which is correct?",
-        "options": [
-          "Freedom of speech is a fundamental right.",
-          "The freedom of speech is a fundamental right.",
-          "A freedom of speech is a fundamental right."
-        ],
-        "answer": 0
-      }
+      { "id": "naked-nouns-c1-01", "q": "Which is correct?", "options": ["Patience is a virtue.", "The patience is a virtue.", "A patience is a virtue."], "answer": 0, "why": "Patience as a general quality: no article, as in this old proverb." },
+      { "id": "naked-nouns-c1-02", "q": "Which is correct?", "options": ["Justice must be seen to be done.", "The justice must be seen to be done.", "A justice must be seen to be done."], "answer": 0, "why": "Justice as an abstract idea: no article." },
+      { "id": "naked-nouns-c1-03", "q": "Which is correct?", "options": ["Poverty remains a global challenge.", "The poverty remains a global challenge.", "A poverty remains a global challenge."], "answer": 0, "why": "Poverty as a general problem: no article." },
+      { "id": "naked-nouns-c1-04", "q": "Which is correct?", "options": ["Time heals all wounds.", "The time heals all wounds.", "A time heals all wounds."], "answer": 0, "why": "Time in general, as in this proverb, takes no article." },
+      { "id": "naked-nouns-c1-05", "q": "Which is correct?", "options": ["Theft is on the rise in big cities.", "The theft is on the rise in big cities.", "A theft is on the rise in big cities."], "answer": 0, "why": "Theft as a type of crime in general: no article." },
+      { "id": "naked-nouns-c1-06", "q": "Which is correct?", "options": ["Democracy depends on an informed public.", "The democracy depends on an informed public.", "The democracy depends on the informed public."], "answer": 0, "why": "Democracy as a system in general: no article." },
+      { "id": "naked-nouns-c1-07", "q": "Which is correct?", "options": ["The prisoners ate in silence.", "The prisoners ate in the silence.", "The prisoners ate in a silence."], "answer": 0, "why": "“In silence” is a fixed phrase with no article." },
+      { "id": "naked-nouns-c1-08", "q": "Which is correct?", "options": ["Research is the key to better treatments.", "The research is the key to the better treatments.", "A research is the key to better treatments."], "answer": 0, "why": "Research is uncountable: no “a”, and no “the” when you mean research in general." },
+      { "id": "naked-nouns-c1-09", "q": "Which is correct?", "options": ["Freedom of speech is a fundamental right.", "The freedom of speech is a fundamental right.", "A freedom of speech is a fundamental right."], "answer": 0, "why": "Freedoms and rights as general ideas take no article: “freedom of speech”." },
+      { "id": "naked-nouns-c1-10", "q": "Which is correct?", "options": ["Medicine changed more in the last century than in the previous thousand years.", "The medicine changed more in the last century than in the previous thousand years.", "A medicine changed more in the last century than in the previous thousand years."], "answer": 0, "why": "Medicine as a whole field: no article. “A medicine” would be one drug." },
+      { "id": "naked-nouns-c1-11", "q": "Which is correct?", "options": ["Nature always finds a way.", "The nature always finds a way.", "A nature always finds a way."], "answer": 0, "why": "Nature in general takes no article. Spanish says “la naturaleza”; English doesn't." },
+      { "id": "naked-nouns-c1-12", "q": "Which is correct?", "options": ["Progress in surgery owes a great deal to anaesthesia.", "The progress in the surgery owes a great deal to the anaesthesia.", "A progress in surgery owes a great deal to anaesthesia."], "answer": 0, "why": "Progress, surgery and anaesthesia in general: no articles. “Progress” is uncountable." }
     ]
   }
 }
