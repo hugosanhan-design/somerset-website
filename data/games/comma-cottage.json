@@ -10,6 +10,7 @@
     "A2": [
       {
         "id": "comma-cottage-a2-01",
+        "explain": "comma-lists-openers",
         "q": "Lists — which is correct?",
         "options": [
           "I bought apples, bananas and milk.",
@@ -21,6 +22,7 @@
       },
       {
         "id": "comma-cottage-a2-02",
+        "explain": "comma-names",
         "q": "Direct address — which is correct?",
         "options": [
           "Come here, John.",
@@ -32,6 +34,7 @@
       },
       {
         "id": "comma-cottage-a2-03",
+        "explain": "comma-lists-openers",
         "q": "Starting with ‘No’ — which is correct?",
         "options": [
           "No, I don't want any.",
@@ -43,6 +46,7 @@
       },
       {
         "id": "comma-cottage-a2-04",
+        "explain": "comma-splice",
         "q": "Joining two short ideas with ‘but’ — which is correct?",
         "options": [
           "I was tired, but I kept working.",
@@ -54,6 +58,7 @@
       },
       {
         "id": "comma-cottage-a2-05",
+        "explain": "comma-lists-openers",
         "q": "Starting with ‘Well’ — which is correct?",
         "options": [
           "Well, that's interesting.",
@@ -65,6 +70,7 @@
       },
       {
         "id": "comma-cottage-a2-06",
+        "explain": "comma-lists-openers",
         "q": "Starting with ‘However’ — which is correct?",
         "options": [
           "However, I forgot my keys.",
@@ -76,6 +82,7 @@
       },
       {
         "id": "comma-cottage-a2-07",
+        "explain": "comma-names",
         "q": "Thanking someone by name — which is correct?",
         "options": [
           "Thank you, Maria.",
@@ -87,6 +94,7 @@
       },
       {
         "id": "comma-cottage-a2-08",
+        "explain": "comma-lists-openers",
         "q": "Starting with ‘Firstly’ — which is correct?",
         "options": [
           "Firstly, let's discuss the budget.",
@@ -98,6 +106,7 @@
       },
       {
         "id": "comma-cottage-a2-09",
+        "explain": "comma-lists-openers",
         "q": "A list of three adjectives — which is correct?",
         "options": [
           "She is kind, honest and generous.",
@@ -109,6 +118,7 @@
       },
       {
         "id": "comma-cottage-a2-10",
+        "explain": "comma-lists-openers",
         "q": "A list of places — which is correct?",
         "options": [
           "We visited Valencia, Xàtiva and Dénia.",
@@ -120,6 +130,7 @@
       },
       {
         "id": "comma-cottage-a2-11",
+        "explain": "comma-lists-openers",
         "q": "Starting with ‘Yes’ — which is correct?",
         "options": [
           "Yes, the sheriff is in town.",
@@ -131,6 +142,7 @@
       },
       {
         "id": "comma-cottage-a2-12",
+        "explain": "comma-names",
         "q": "Asking a question with a name — which is correct?",
         "options": [
           "Are you ready, Carmen?",
@@ -144,6 +156,7 @@
     "B1": [
       {
         "id": "comma-cottage-b1-01",
+        "explain": "comma-lists-openers",
         "q": "Long introductory clause — which is correct?",
         "options": [
           "After finishing his homework, he went outside to play.",
@@ -155,6 +168,7 @@
       },
       {
         "id": "comma-cottage-b1-02",
+        "explain": "comma-splice",
         "q": "Comma splice — which is correct?",
         "options": [
           "I was tired, so I went to bed early.",
@@ -166,6 +180,7 @@
       },
       {
         "id": "comma-cottage-b1-03",
+        "explain": "comma-splice",
         "q": "Joining two full sentences — which is correct?",
         "options": [
           "She studied hard, and she passed the exam.",
@@ -177,6 +192,7 @@
       },
       {
         "id": "comma-cottage-b1-04",
+        "explain": "comma-extra-info",
         "q": "Non-essential extra information — which is correct?",
         "options": [
           "My brother, who lives in London, is visiting next week.",
@@ -188,6 +204,7 @@
       },
       {
         "id": "comma-cottage-b1-05",
+        "explain": "comma-splice",
         "q": "Comma splice — which is correct?",
         "options": [
           "It was raining, but we still went for a walk.",
@@ -199,6 +216,7 @@
       },
       {
         "id": "comma-cottage-b1-06",
+        "explain": "comma-lists-openers",
         "q": "Introductory phrase — which is correct?",
         "options": [
           "In spite of the rain, the match continued.",
@@ -210,6 +228,7 @@
       },
       {
         "id": "comma-cottage-b1-07",
+        "explain": "comma-splice",
         "q": "Two independent clauses, no conjunction — which is correct?",
         "options": [
           "The shop was closed; we went home.",
@@ -221,6 +240,7 @@
       },
       {
         "id": "comma-cottage-b1-08",
+        "explain": "comma-splice",
         "q": "Two sentences in a row — which is correct?",
         "options": [
           "First, we checked in. Then we found our seats.",
@@ -232,6 +252,7 @@
       },
       {
         "id": "comma-cottage-b1-09",
+        "explain": "punctuation-marks",
         "q": "Introducing a direct quotation — which is correct?",
         "options": [
           "She said, \"I'll be there at six.\"",
@@ -243,6 +264,7 @@
       },
       {
         "id": "comma-cottage-b1-10",
+        "explain": "comma-lists-openers",
         "q": "Introductory ‘When’ clause — which is correct?",
         "options": [
           "When the stagecoach arrived, everyone ran outside.",
@@ -254,6 +276,7 @@
       },
       {
         "id": "comma-cottage-b1-11",
+        "explain": "comma-extra-info",
         "q": "Non-essential extra information — which is correct?",
         "options": [
           "Jenner, who was a country doctor, developed the smallpox vaccine.",
@@ -265,6 +288,7 @@
       },
       {
         "id": "comma-cottage-b1-12",
+        "explain": "comma-splice",
         "q": "Comma splice — which is correct?",
         "options": [
           "The paella was ready, so we sat down to eat.",
@@ -278,6 +302,7 @@
     "B2": [
       {
         "id": "comma-cottage-b2-01",
+        "explain": "comma-lists-openers",
         "q": "A necessary Oxford comma — which avoids confusion about who the parents are?",
         "options": [
           "I'd like to thank my parents, Ana, and Pablo.",
@@ -289,6 +314,7 @@
       },
       {
         "id": "comma-cottage-b2-02",
+        "explain": "comma-extra-info",
         "q": "Non-defining relative clause — which is correct?",
         "options": [
           "Valencia, which is on the Mediterranean coast, is famous for paella.",
@@ -300,6 +326,7 @@
       },
       {
         "id": "comma-cottage-b2-03",
+        "explain": "comma-extra-info",
         "q": "Parenthetical comment — which is correct?",
         "options": [
           "The results, to be honest, were disappointing.",
@@ -311,6 +338,7 @@
       },
       {
         "id": "comma-cottage-b2-04",
+        "explain": "comma-extra-info",
         "q": "Comma before a contrasting phrase — which is correct?",
         "options": [
           "The plan was ambitious, though ultimately unsuccessful.",
@@ -322,6 +350,7 @@
       },
       {
         "id": "comma-cottage-b2-05",
+        "explain": "comma-lists-openers",
         "q": "Absolute phrase — which is correct?",
         "options": [
           "Her work finished, she left the office early.",
@@ -333,6 +362,7 @@
       },
       {
         "id": "comma-cottage-b2-06",
+        "explain": "comma-splice",
         "q": "Comma with a coordinating conjunction — which is correct?",
         "options": [
           "He wanted to travel, yet he never had the money.",
@@ -344,6 +374,7 @@
       },
       {
         "id": "comma-cottage-b2-07",
+        "explain": "comma-names",
         "q": "Direct address mid-sentence — which is correct?",
         "options": [
           "I think, Maria, that you're right.",
@@ -355,6 +386,7 @@
       },
       {
         "id": "comma-cottage-b2-08",
+        "explain": "comma-splice",
         "q": "Comma splice with a long clause — which is correct?",
         "options": [
           "The negotiations continued for hours; neither side would compromise.",
@@ -366,6 +398,7 @@
       },
       {
         "id": "comma-cottage-b2-09",
+        "explain": "comma-extra-info",
         "q": "I have one sister. Which is correct?",
         "options": [
           "My sister, who lives in Madrid, is a doctor.",
@@ -377,6 +410,7 @@
       },
       {
         "id": "comma-cottage-b2-10",
+        "explain": "comma-extra-info",
         "q": "Non-defining relative clause — which is correct?",
         "options": [
           "Fleming, who discovered penicillin, was a Scottish doctor.",
@@ -388,6 +422,7 @@
       },
       {
         "id": "comma-cottage-b2-11",
+        "explain": "comma-extra-info",
         "q": "Parenthetical comment — which is correct?",
         "options": [
           "The outlaws, of course, denied everything.",
@@ -399,6 +434,7 @@
       },
       {
         "id": "comma-cottage-b2-12",
+        "explain": "comma-lists-openers",
         "q": "Comma after an ‘unless’ clause — which is correct?",
         "options": [
           "Unless the rain stops, the mascletà will be cancelled.",
@@ -412,6 +448,7 @@
     "C1": [
       {
         "id": "comma-cottage-c1-01",
+        "explain": "comma-not-needed",
         "q": "Identifying one specific report — which is correct?",
         "options": [
           "The report that was published last week caused controversy.",
@@ -423,6 +460,7 @@
       },
       {
         "id": "comma-cottage-c1-02",
+        "explain": "linking-however",
         "q": "Mid-sentence ‘however’ — which is correct?",
         "options": [
           "The results, however, tell a different story.",
@@ -434,6 +472,7 @@
       },
       {
         "id": "comma-cottage-c1-03",
+        "explain": "comma-not-needed",
         "q": "A comma before ‘because’ is usually wrong — which is correct?",
         "options": [
           "She left early because she felt unwell.",
@@ -445,6 +484,7 @@
       },
       {
         "id": "comma-cottage-c1-04",
+        "explain": "comma-extra-info",
         "q": "Comma with an appositive — which is correct?",
         "options": [
           "Cervantes, the author of Don Quixote, was born in Alcalá de Henares.",
@@ -456,6 +496,7 @@
       },
       {
         "id": "comma-cottage-c1-05",
+        "explain": "comma-lists-openers",
         "q": "A series of three actions — which is correct?",
         "options": [
           "The board reviewed the proposal, debated its merits and rejected it.",
@@ -467,6 +508,7 @@
       },
       {
         "id": "comma-cottage-c1-06",
+        "explain": "comma-not-needed",
         "q": "‘Not only… but also’ — which is correct?",
         "options": [
           "The policy was not only unpopular but also unworkable.",
@@ -478,6 +520,7 @@
       },
       {
         "id": "comma-cottage-c1-07",
+        "explain": "comma-extra-info",
         "q": "Dashes instead of commas — which is correct?",
         "options": [
           "The proposal — controversial from the start — was eventually withdrawn.",
@@ -489,6 +532,7 @@
       },
       {
         "id": "comma-cottage-c1-08",
+        "explain": "comma-splice",
         "q": "Comma splice in formal writing — which is correct?",
         "options": [
           "The data were inconclusive; further research is required.",
@@ -500,6 +544,7 @@
       },
       {
         "id": "comma-cottage-c1-09",
+        "explain": "comma-lists-openers",
         "q": "Comma after a long subordinate clause — which is correct?",
         "options": [
           "Although the committee had reservations about the budget, they approved the project.",
@@ -511,6 +556,7 @@
       },
       {
         "id": "comma-cottage-c1-10",
+        "explain": "comma-not-needed",
         "q": "Identifying one specific doctor — which is correct?",
         "options": [
           "The doctor who treated the miners refused payment.",
@@ -522,6 +568,7 @@
       },
       {
         "id": "comma-cottage-c1-11",
+        "explain": "linking-result",
         "q": "‘Therefore’ between two clauses — which is correct?",
         "options": [
           "The well was contaminated; therefore, the pump was closed.",
@@ -533,6 +580,7 @@
       },
       {
         "id": "comma-cottage-c1-12",
+        "explain": "comma-extra-info",
         "q": "Comma with an appositive — which is correct?",
         "options": [
           "Sorolla, the painter of Valencian beaches, was born in 1863.",

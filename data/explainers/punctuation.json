@@ -1,0 +1,184 @@
+{
+  "capital-letters": {
+    "title": "Capital letters",
+    "es": "En español van en minúscula «lunes», «marzo», «inglés» o «español». En inglés llevan SIEMPRE mayúscula: Monday, March, English, Spanish. Y «yo» es I, siempre en mayúscula.",
+    "structure": [
+      "mayúscula: días, meses, idiomas, nacionalidades, religiones, fiestas, lugares e I",
+      "Monday · March · English · Spanish · Easter · Valencia · I"
+    ],
+    "rule": "Días, meses, idiomas, nacionalidades, religiones, fiestas, ciudades y países, más el pronombre I: siempre con mayúscula, aunque en español vayan en minúscula.",
+    "example": {
+      "en": "On Monday I speak English with my British neighbour.",
+      "es": "El lunes hablo inglés con mi vecino británico."
+    }
+  },
+  "capital-names": {
+    "title": "Capitals in names",
+    "es": "En español escribimos «la calle Colón» o «el profesor García». En inglés, cada palabra importante de un nombre propio lleva mayúscula: Colón Street, Professor García, the Silk Exchange.",
+    "structure": [
+      "cada palabra importante del nombre en mayúscula",
+      "Colón Street · Professor García · the United Nations · the Industrial Revolution · WhatsApp"
+    ],
+    "rule": "Si es un NOMBRE (calle, edificio, institución, guerra, época, libro, marca, o un título justo delante de un nombre), cada palabra importante va con mayúscula. «The», «of» y «and» en medio, normalmente no.",
+    "example": {
+      "en": "We visited the Silk Exchange with Professor García.",
+      "es": "Visitamos la Lonja de la Seda con el profesor García."
+    }
+  },
+  "capital-lowercase": {
+    "title": "No capital",
+    "es": "Aquí el inglés se parece al español: minúscula para profesiones, estaciones y puntos cardinales, como «médico», «primavera» u «oeste». La trampa es poner mayúscula por exceso.",
+    "structure": [
+      "minúscula: profesiones, estaciones, asignaturas, direcciones",
+      "a doctor · in the spring · history · turn west · the south of Spain"
+    ],
+    "rule": "Si es una palabra común y no un nombre, minúscula: a doctor, spring, history, west. Lleva mayúscula solo si forma parte de un nombre (Doctor Smith, the Middle East). Los idiomas, siempre: Spanish.",
+    "example": {
+      "en": "My father is a doctor, and he loves the spring.",
+      "es": "Mi padre es médico y le encanta la primavera."
+    }
+  },
+  "comma-lists-openers": {
+    "title": "Commas: lists and openers",
+    "es": "Como en español: comas entre las cosas de una lista, y normalmente sin coma antes del último «and», igual que antes de «y» (a veces se pone para evitar confusión). Y coma tras lo que abre la frase: «Sí, …», «Sin embargo, …».",
+    "structure": [
+      "A, B and C · Yes, … · However, … · If…, …",
+      "apples, oranges and bananas · Well, that's interesting. · If it rains, we'll stay in."
+    ],
+    "rule": "Coma entre las cosas de una lista. Y coma detrás de lo que abre la frase: Yes, No, Well, However, Firstly, o una frase con If, When o Although (si es muy corta, la coma es opcional).",
+    "example": {
+      "en": "However, we bought bread, cheese and olives.",
+      "es": "Sin embargo, compramos pan, queso y aceitunas."
+    }
+  },
+  "comma-names": {
+    "title": "Commas with names",
+    "es": "Igual que en español («Gracias, María»): el nombre de la persona a la que hablas se separa con coma. En inglés también se olvida mucho.",
+    "structure": [
+      "…, nombre. · …, nombre, …",
+      "Thank you, Maria. · Are you ready, Carmen? · I think, Maria, that you're right."
+    ],
+    "rule": "Cuando hablas DIRECTAMENTE a alguien, su nombre va separado: una coma antes si va al final, una a cada lado si va en medio.",
+    "example": {
+      "en": "Are you coming to the Fallas, Carmen?",
+      "es": "¿Vienes a las Fallas, Carmen?"
+    }
+  },
+  "comma-splice": {
+    "title": "Comma splice",
+    "es": "En español a menudo unimos dos frases completas con una coma: «Estaba cansado, me fui a la cama». En inglés eso es un error: la coma sola no basta.",
+    "structure": [
+      "frase, and / but / so + frase · frase; frase · frase. Frase.",
+      "I was tired, so I went to bed. · The shop was closed; we went home."
+    ],
+    "rule": "Dos frases completas no se unen solo con una coma. Usa punto, punto y coma, o coma + and / but / so. Con frases cortas, la coma antes de and o but es opcional.",
+    "example": {
+      "en": "It was raining, but we still went for a walk.",
+      "es": "Llovía, pero aun así salimos a pasear."
+    }
+  },
+  "comma-extra-info": {
+    "title": "Commas for extra information",
+    "es": "Como en español: la información extra va entre comas, «Mi hermano, que vive en Londres, viene a vernos». El error típico es olvidar la SEGUNDA coma, que deja el sujeto separado de su verbo.",
+    "structure": [
+      "nombre, + información extra, + resto de la frase",
+      "London, which is huge, is expensive. · Cervantes, the author of Don Quixote, was born in Alcalá."
+    ],
+    "rule": "Si puedes quitar el trozo y la frase sigue teniendo sentido, es información extra: va entre DOS comas (o dos rayas). Nunca una sola coma entre el sujeto y su verbo.",
+    "example": {
+      "en": "Valencia, which is on the coast, is famous for paella.",
+      "es": "Valencia, que está en la costa, es famosa por la paella."
+    }
+  },
+  "comma-not-needed": {
+    "title": "No comma",
+    "es": "Como en español, si el trozo dice DE QUÉ persona o cosa hablas, no va entre comas: «El médico que atendió a los mineros rechazó el pago». Y nunca hay coma entre el sujeto y el verbo.",
+    "structure": [
+      "sin coma: nombre + who / that que identifica · … because …",
+      "The doctor who treated the miners refused payment. · She left early because she felt unwell."
+    ],
+    "rule": "Si el trozo es necesario para saber de quién hablas, sin comas (y aquí sí puedes usar that). Tampoco va coma entre sujeto y verbo, y normalmente no antes de because.",
+    "example": {
+      "en": "The report that was published last week caused controversy.",
+      "es": "El informe que se publicó la semana pasada causó polémica."
+    }
+  },
+  "apostrophe-contraction": {
+    "title": "Apostrophe for missing letters",
+    "es": "El español no tiene contracciones con apóstrofo. En inglés, el apóstrofo ocupa el sitio de las letras que faltan: don't = do not. Ojo: its («su») e it's («it is») son palabras distintas.",
+    "structure": [
+      "apóstrofo = letras que faltan",
+      "don't (do not) · it's (it is / it has) · they're (they are) · who's (who is)"
+    ],
+    "rule": "Si puedes decir la forma larga (it is, they are, who is), lleva apóstrofo: it's, they're, who's. Si no encaja, es otra palabra, sin apóstrofo: its, their, whose.",
+    "example": {
+      "en": "It's raining, so they're staying at home.",
+      "es": "Está lloviendo, así que se quedan en casa."
+    }
+  },
+  "apostrophe-possessive": {
+    "title": "Possessive 's",
+    "es": "En español decimos «el coche de mi hermano»; en inglés va al revés, con 's: my brother's car. Y un plural normal, sin dueño, no lleva apóstrofo: cowboys, the 1990s.",
+    "structure": [
+      "dueño + 's + cosa",
+      "Tom's car · the children's toys · James's car o James' car · a day's work"
+    ],
+    "rule": "Un dueño: 's (también tras una s: the boss's; con nombres en -s vale James' o James's). Plurales sin s, como children: también 's. Un plural normal que no posee nada no lleva apóstrofo.",
+    "example": {
+      "en": "My sister-in-law's paella is the best.",
+      "es": "La paella de mi cuñada es la mejor."
+    }
+  },
+  "apostrophe-plural-owners": {
+    "title": "Plural possessive s'",
+    "es": "En español «la casa de mis padres» no cambia nada. En inglés, si los dueños son varios y la palabra acaba en -s, el apóstrofo va DESPUÉS de la s: my parents' house.",
+    "structure": [
+      "plural en -s + '",
+      "my parents' house · the students' results · two weeks' notice"
+    ],
+    "rule": "Pregúntate cuántos dueños hay. Uno: parent's. Varios, con plural en -s: parents'. Suena igual; solo cambia dónde va el apóstrofo.",
+    "example": {
+      "en": "The outlaws' hideout was in the canyon.",
+      "es": "El escondite de los forajidos estaba en el cañón."
+    }
+  },
+  "apostrophe-none": {
+    "title": "No apostrophe",
+    "es": "Los posesivos its, their, whose, hers o theirs («su», «suyo») nunca llevan apóstrofo. Los plurales normales tampoco: the 1990s, three cowboys.",
+    "structure": [
+      "sin apóstrofo: its · their · whose · hers · theirs · plurales",
+      "its mind · whose idea · Hers was the best. · the 1990s"
+    ],
+    "rule": "His no lleva apóstrofo, así que its, hers, theirs y whose tampoco. Si dudas con its, prueba «it is»: si no encaja, va sin apóstrofo.",
+    "example": {
+      "en": "The town council has changed its mind.",
+      "es": "El ayuntamiento ha cambiado de opinión."
+    }
+  },
+  "contraction-formal": {
+    "title": "Contractions in formal writing",
+    "es": "En español no hay contracciones con apóstrofo, así que la trampa es otra: I'm, don't o can't son normales al hablar, pero en una carta formal suenan demasiado informales.",
+    "structure": [
+      "formal: la forma completa",
+      "I am · do not · cannot (una sola palabra) · will not (en vez de won't)"
+    ],
+    "rule": "Mensaje a un amigo: I'm, don't, can't. Carta formal, informe o redacción de examen: mejor la forma completa, como I am, do not o cannot.",
+    "example": {
+      "en": "We regret that we cannot accept your request.",
+      "es": "Lamentamos no poder aceptar su solicitud."
+    }
+  },
+  "punctuation-marks": {
+    "title": "Other punctuation marks",
+    "es": "En inglés no hay ¿ ni ¡ de apertura: solo el signo final. Y en el estilo directo, la coma va dentro de las comillas: “I'm tired,” she said.",
+    "structure": [
+      "? solo al final · ; une dos frases · : anuncia lo que viene · - une palabras · comillas: la coma va dentro",
+      "Where are you from? · I can't come; I'm working late. · You need three things: flour, eggs and milk. · a forty-year-old surgeon · “I'm tired,” she said."
+    ],
+    "rule": "Pregunta directa: solo ? al final. Punto y coma entre dos frases completas; dos puntos antes de una lista o explicación; guion en adjetivos compuestos delante del nombre: a forty-year-old surgeon.",
+    "example": {
+      "en": "“Where are you from?” she asked.",
+      "es": "—¿De dónde eres? —preguntó."
+    }
+  }
+}

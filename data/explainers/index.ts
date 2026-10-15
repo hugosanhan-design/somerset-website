@@ -7,5 +7,9 @@ import modalsTags from './modals-tags.json'
 import articlesQuantityOrder from './articles-quantity-order.json'
 import linking from './linking.json'
 import grammarExtra from './grammar-extra.json'
+import prepositionsPhrasal from './prepositions-phrasal.json'
+import punctuation from './punctuation.json'
+import register from './register.json'
+import words from './words.json'
 
-export const EXPLAINERS = { ...pastTenses, ...presentFuture, ...passiveReportedConditionals, ...modalsTags, ...articlesQuantityOrder, ...linking, ...grammarExtra }
+export const EXPLAINERS = { ...pastTenses, ...presentFuture, ...passiveReportedConditionals, ...modalsTags, ...articlesQuantityOrder, ...linking, ...grammarExtra, ...prepositionsPhrasal, ...punctuation, ...register, ...words }

@@ -1,0 +1,132 @@
+{
+  "preposition-verb-extra": {
+    "title": "Listen to · wait for",
+    "es": "Trampa clásica: en español «escuchar», «mirar», «esperar», «buscar» y «pagar» van sin preposición. En inglés estos verbos sí la llevan: listen to, look at, wait for, look for, pay for.",
+    "structure": [
+      "verbo + preposición + cosa o persona",
+      "listen to the radio · look at me · wait for the bus · pay for the coffee"
+    ],
+    "rule": "En inglés muchos verbos piden preposición aunque en español no la lleven: apréndelos en pareja (listen to, wait for). Ojo: pay for es lo que compras; la factura o la persona, sin preposición: pay the bill.",
+    "example": {
+      "en": "I'm waiting for the bus and listening to the radio.",
+      "es": "Estoy esperando el autobús y escuchando la radio."
+    }
+  },
+  "preposition-verb": {
+    "title": "Depend on · arrive at",
+    "es": "Muchos verbos llevan preposición en los dos idiomas, pero no la misma: «depender de» es depend on; «llegar a» es arrive at (un sitio) o arrive in (una ciudad o un país), nunca «arrive to».",
+    "structure": [
+      "verbo + su preposición + nombre",
+      "depend on · rely on · arrive at · believe in · worry about · suffer from"
+    ],
+    "rule": "No traduzcas la preposición española: muchas veces no coincide. Apréndete cada verbo con la suya, como un bloque: depend on, nunca «depend of».",
+    "example": {
+      "en": "It all depends on the weather.",
+      "es": "Todo depende del tiempo."
+    }
+  },
+  "preposition-adjective": {
+    "title": "Good at · afraid of",
+    "es": "Los adjetivos también llevan su preposición, y a menudo no es la española: «casado con» es married to; «orgulloso de», proud of; «se me da bien» es good at.",
+    "structure": [
+      "be + adjetivo + preposición + nombre o -ing",
+      "good at · afraid of · interested in · proud of · married to"
+    ],
+    "rule": "Aprende el adjetivo con su preposición pegada: married to alguien (no «with»), interested in (no «on»). Si detrás va un verbo, en -ing: good at cooking.",
+    "example": {
+      "en": "She's very proud of her children.",
+      "es": "Está muy orgullosa de sus hijos."
+    }
+  },
+  "preposition-verb-someone": {
+    "title": "Blame someone for",
+    "es": "En español decimos «culpar a alguien de» o «felicitar a alguien por». En inglés la persona va justo detrás del verbo, sin «to», y después la preposición.",
+    "structure": [
+      "verbo + persona + preposición + cosa o -ing",
+      "blame him for · accuse her of · congratulate them on"
+    ],
+    "rule": "Primero la persona, luego la preposición: congratulate you on, nunca «congratulate to you». Y cada verbo tiene la suya: accuse OF, blame FOR.",
+    "example": {
+      "en": "They accused him of stealing the car.",
+      "es": "Lo acusaron de robar el coche."
+    }
+  },
+  "phrasal-verb-basics": {
+    "title": "Phrasal verbs",
+    "es": "El inglés junta verbo + partícula y sale un significado nuevo. El español suele usar un solo verbo: put up with es «aguantar»; put off, «aplazar»; look after, «cuidar».",
+    "structure": [
+      "verbo + partícula (up, off, out…) = un verbo nuevo",
+      "put up with = aguantar · look after = cuidar · get over = superar"
+    ],
+    "rule": "No lo traduzcas pieza a pieza: apréndelo entero, como una sola palabra. A veces la partícula da una pista; muchas veces, no.",
+    "example": {
+      "en": "I can't put up with this noise any longer.",
+      "es": "No aguanto más este ruido."
+    }
+  },
+  "phrasal-particle-up-down": {
+    "title": "up · down",
+    "es": "En español cambia el verbo: «subir» o «bajar» el volumen. En inglés el verbo se queda igual y cambia la partícula: turn up, turn down.",
+    "structure": [
+      "up: arriba, más, del todo · down: abajo, menos, por escrito",
+      "get up / sit down · turn up / turn down · cut down on · write down"
+    ],
+    "rule": "Es una tendencia, no una ley: up suele indicar subir, aumentar o acabar del todo; down, bajar, reducir, apuntar o dejar de funcionar (break down).",
+    "example": {
+      "en": "Turn the radio up, please. I can't hear the news.",
+      "es": "Sube la radio, por favor, que no oigo las noticias."
+    }
+  },
+  "phrasal-particle-on-off": {
+    "title": "on · off",
+    "es": "Encender y apagar, subir y bajar del autobús: en español son verbos distintos. En inglés basta con cambiar on por off: turn on / turn off, get on / get off.",
+    "structure": [
+      "on: encender, ponerse, subir, seguir · off: apagar, quitarse, bajar, irse",
+      "turn on / turn off · put on / take off · get on / get off · carry on · set off"
+    ],
+    "rule": "Normalmente on va con conectar, poner encima o seguir (carry on = seguir); off, con desconectar, separarse o irse (set off = salir de viaje).",
+    "example": {
+      "en": "Take off your coat and turn on the heating.",
+      "es": "Quítate el abrigo y pon la calefacción."
+    }
+  },
+  "phrasal-particle-out-in": {
+    "title": "out · in",
+    "es": "Donde el español dice «salir», «entrar», «averiguar» o «acabarse», el inglés suele usar out o in: go out, go in, find out, run out of.",
+    "structure": [
+      "out: fuera, descubrir, hasta el final · in: dentro, entregar",
+      "go out / go in · check in / check out · find out · run out of · hand in"
+    ],
+    "rule": "Suele funcionar así: in es hacia dentro (check in, hand in); out es hacia fuera o hasta acabar (run out of, carry out). Es una pista, no una regla fija.",
+    "example": {
+      "en": "We've run out of milk, so I'm going out to buy some.",
+      "es": "Se nos ha acabado la leche, así que salgo a comprar."
+    }
+  },
+  "phrasal-particle-back-away": {
+    "title": "back · away",
+    "es": "«Volver» y «devolver» en inglés suelen ser verbo + back: come back, pay back, take back. Away añade la idea de «lejos»: get away, give away.",
+    "structure": [
+      "back: volver, devolver · away: lejos, quitar de en medio",
+      "come back · get back · pay back · take back · get away · give away · put away"
+    ],
+    "rule": "Pista útil: back suele llevar la idea de volver al punto de partida; away, la de alejarse o quitar algo de en medio. Es una tendencia, no una regla.",
+    "example": {
+      "en": "I'll pay you back when I get back from Madrid.",
+      "es": "Te devuelvo el dinero cuando vuelva de Madrid."
+    }
+  },
+  "phrasal-separable": {
+    "title": "Turn it down",
+    "es": "En español el pronombre va delante o pegado al verbo: «lo rechazó», «rechazarlo». En inglés, con muchos phrasal verbs, va en medio: turned it down.",
+    "structure": [
+      "verbo + it / him / her / them + partícula",
+      "turn it down · pick her up · fill it in · pero no se separan: look after her, get over it, run into him"
+    ],
+    "rule": "Si se separa y el objeto es un pronombre, va en medio: turn it down, nunca «turn down it». Con un nombre valen las dos. Con tres palabras (put up with) casi nunca se separa.",
+    "example": {
+      "en": "They offered him the job, but he turned it down.",
+      "es": "Le ofrecieron el trabajo, pero lo rechazó."
+    }
+  }
+}

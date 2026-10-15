@@ -1,0 +1,93 @@
+{
+  "register-dear-yours": {
+    "title": "Dear… → Yours…",
+    "es": "En español «Estimado/a» y «Atentamente» sirven casi siempre. En una carta formal inglesa, el saludo decide la despedida: no es lo mismo saber el nombre que no saberlo. En emails de trabajo, Kind regards también vale.",
+    "structure": [
+      "Dear Sir or Madam / To Whom It May Concern / Dear Hiring Manager → Yours faithfully · Dear Mr / Ms / Dr + apellido → Yours sincerely",
+      "Dear Mr Smith … Yours sincerely · Dear Sir or Madam … Yours faithfully"
+    ],
+    "rule": "¿Sabes el nombre? Sincerely (S de surname). ¿No lo sabes? Faithfully. Con nombre, título + apellido: Dear Mr Smith, nunca Dear Mr John.",
+    "example": {
+      "en": "Dear Sir or Madam, I am writing to enquire about your courses. Yours faithfully, Ana López",
+      "es": "Estimados señores: les escribo para informarme sobre sus cursos. Atentamente, Ana López"
+    }
+  },
+  "register-formal-phrases": {
+    "title": "Formal email phrases",
+    "es": "En español cerramos con «quedo a su disposición». Es la trampa: «I remain at your disposal» suena anticuado y forzado en inglés. Se dice «Please do not hesitate to contact me».",
+    "structure": [
+      "frase hecha formal, sin contracciones (I am, no I'm)",
+      "I am writing to enquire about… · I would be grateful if you could… · I look forward to hearing from you."
+    ],
+    "rule": "El inglés formal es educado pero directo. Aprende las frases hechas enteras, como bloques, y no traduzcas las españolas palabra por palabra.",
+    "example": {
+      "en": "Please do not hesitate to contact me if you need any further information.",
+      "es": "Quedo a su disposición para cualquier información adicional."
+    }
+  },
+  "register-neutral": {
+    "title": "Neutral: Kind regards",
+    "es": "Es nuestro «Un saludo»: educado, pero sin ceremonia. Es el tono que más se usa en los emails de trabajo.",
+    "structure": [
+      "Dear / Hello / Hi + nombre (Dear Marta, Hi team) … Kind regards · Best wishes · Many thanks",
+      "Hello Marta, … Kind regards · Thanks for getting back to me."
+    ],
+    "rule": "¿Dudas qué tono usar en un email de trabajo? Elige el neutro: Kind regards o Best wishes casi nunca quedan mal.",
+    "example": {
+      "en": "Thanks for getting back to me. Let me know if Tuesday works for you. Kind regards, Pilar",
+      "es": "Gracias por contestarme. Dime si te va bien el martes. Un saludo, Pilar"
+    }
+  },
+  "register-informal": {
+    "title": "Informal: Hi · Cheers",
+    "es": "Es nuestro «¡Hola!» y «Un abrazo» o «Besos»: para amigos y familia. Ojo: «Love» es para familia, pareja y amigos íntimos; nunca para un cliente o un compañero de trabajo.",
+    "structure": [
+      "Hi / Hey + nombre … Cheers · See you soon · Take care · Love",
+      "Hi Mum, … Love, Ana · Hey! … Cheers, Tom"
+    ],
+    "rule": "Contracciones, exclamaciones y frases cortas: así se escribe a un amigo. Cheers es muy británico: significa «gracias» y «adiós» a la vez.",
+    "example": {
+      "en": "Hi Laura! Thanks a million for dinner last night. See you soon!",
+      "es": "¡Hola, Laura! Mil gracias por la cena de anoche. ¡Hasta pronto!"
+    }
+  },
+  "register-formal-word": {
+    "title": "Formal words: buy → purchase",
+    "es": "Aquí el español te ayuda: muchas palabras formales inglesas vienen del latín, como «adquirir» = acquire o «demostrar» = demonstrate. Ojo con los falsos amigos: assist = ayudar, no «asistir».",
+    "structure": [
+      "palabra corriente o phrasal verb → una sola palabra formal",
+      "buy → purchase · find out → ascertain · get → receive"
+    ],
+    "rule": "En un texto formal, cambia los phrasal verbs más coloquiales por un verbo de una sola palabra cuando puedas, y no uses contracciones. Sin pasarte: a veces use es mejor que utilise.",
+    "example": {
+      "en": "We have received your letter and will endeavour to help.",
+      "es": "Hemos recibido su carta y haremos todo lo posible por ayudarle."
+    }
+  },
+  "register-formal-linker": {
+    "title": "Formal linkers: also → moreover",
+    "es": "Es como pasar de «pero» o «además» a «no obstante» o «asimismo»: dices lo mismo, pero con traje y corbata.",
+    "structure": [
+      "Frase. + conector formal + , + frase",
+      "but → However, · also → Moreover, · so → Therefore,"
+    ],
+    "rule": "En un essay, empieza la frase con el conector formal y pon una coma detrás: However, … Moreover, … Normalmente se evita empezar con And, But o So.",
+    "example": {
+      "en": "The town had a railway. However, it had no doctor.",
+      "es": "El pueblo tenía ferrocarril. No obstante, no tenía médico."
+    }
+  },
+  "register-formal-expression": {
+    "title": "Formal phrases: before → prior to",
+    "es": "Como en español «con respecto a» en vez de «sobre»: una expresión fija, más larga, que da peso al texto.",
+    "structure": [
+      "palabra sencilla → expresión formal fija",
+      "about → with regard to · before → prior to · if → in the event that · a lot of → a great deal of"
+    ],
+    "rule": "Apréndela entera, como un bloque: una palabra cambiada la estropea (with regard to, nunca with regards to). Y con moderación: una o dos por párrafo bastan.",
+    "example": {
+      "en": "Prior to the meeting, the majority of members had read the report.",
+      "es": "Antes de la reunión, la mayoría de los socios habían leído el informe."
+    }
+  }
+}

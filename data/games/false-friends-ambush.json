@@ -12,73 +12,85 @@
         "id": "false-friends-ambush-a2-01",
         "left": "embarrassed",
         "right": "self-conscious and awkward, red in the face",
-        "why": "Embarrassed means self-conscious and awkward; Spanish “embarazada” is “pregnant”, a classic and very public mistake."
+        "why": "Embarrassed means self-conscious and awkward; Spanish “embarazada” is “pregnant”, a classic and very public mistake.",
+        "explain": "false-friend-danger"
       },
       {
         "id": "false-friends-ambush-a2-02",
         "left": "library",
         "right": "a place where you borrow books",
-        "why": "You borrow books from a library; a shop that sells them, Spanish “librería”, is a “bookshop”."
+        "why": "You borrow books from a library; a shop that sells them, Spanish “librería”, is a “bookshop”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "false-friends-ambush-a2-03",
         "left": "carpet",
         "right": "a thick covering for a floor",
-        "why": "A carpet goes on the floor; your papers go in a “folder”, Spanish “carpeta”."
+        "why": "A carpet goes on the floor; your papers go in a “folder”, Spanish “carpeta”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "false-friends-ambush-a2-04",
         "left": "exit",
         "right": "the way out of a building",
-        "why": "Exit is the door out; Spanish “éxito” is “success”."
+        "why": "Exit is the door out; Spanish “éxito” is “success”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "false-friends-ambush-a2-05",
         "left": "large",
         "right": "big in size",
-        "why": "Large means big, as in a large ranch; Spanish “largo” is “long”."
+        "why": "Large means big, as in a large ranch; Spanish “largo” is “long”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "false-friends-ambush-a2-06",
         "left": "pretend",
         "right": "to act as if something is true when it isn't",
-        "why": "The outlaw pretended to be a priest; Spanish “pretender” (to aim or intend) is “intend” or “try to”."
+        "why": "The outlaw pretended to be a priest; Spanish “pretender” (to aim or intend) is “intend” or “try to”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "false-friends-ambush-a2-07",
         "left": "actually",
         "right": "in fact, really",
-        "why": "Actually means in fact; Spanish “actualmente” is “currently” or “at the moment”."
+        "why": "Actually means in fact; Spanish “actualmente” is “currently” or “at the moment”.",
+        "explain": "false-friend-time-words"
       },
       {
         "id": "false-friends-ambush-a2-08",
         "left": "realise",
         "right": "to suddenly understand or become aware of something",
-        "why": "Realise means understand suddenly; Spanish “realizar” (a task) is “carry out” or “do”."
+        "why": "Realise means understand suddenly; Spanish “realizar” (a task) is “carry out” or “do”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "false-friends-ambush-a2-09",
         "left": "success",
         "right": "getting the result you wanted",
-        "why": "Success is a good result; Spanish “suceso”, an incident in the news, is an “incident” or “event”."
+        "why": "Success is a good result; Spanish “suceso”, an incident in the news, is an “incident” or “event”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "false-friends-ambush-a2-10",
         "left": "once",
         "right": "one time only",
-        "why": "Once means one time, as in “I’ve been to Toledo once”; Spanish “once” is “eleven”."
+        "why": "Once means one time, as in “I’ve been to Toledo once”; Spanish “once” is “eleven”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "false-friends-ambush-a2-11",
         "left": "pan",
         "right": "a metal container for cooking on the hob",
-        "why": "A paella is cooked in a pan; Spanish “pan” is “bread”."
+        "why": "A paella is cooked in a pan; Spanish “pan” is “bread”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "false-friends-ambush-a2-12",
         "left": "mayor",
         "right": "the elected head of a town or city",
-        "why": "The mayor runs the town hall; Spanish “mayor” is “older” or “elder”."
+        "why": "The mayor runs the town hall; Spanish “mayor” is “older” or “elder”.",
+        "explain": "false-friend-what"
       }
     ],
     "B1": [
@@ -86,73 +98,85 @@
         "id": "false-friends-ambush-b1-01",
         "left": "assist",
         "right": "to help someone",
-        "why": "Assist means help; Spanish “asistir” (to go to an event) is “attend”."
+        "why": "Assist means help; Spanish “asistir” (to go to an event) is “attend”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "false-friends-ambush-b1-02",
         "left": "sympathetic",
         "right": "kind and understanding when someone is suffering",
-        "why": "Sympathetic means kind when someone is suffering; Spanish “simpático” is “nice” or “friendly”."
+        "why": "Sympathetic means kind when someone is suffering; Spanish “simpático” is “nice” or “friendly”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "false-friends-ambush-b1-03",
         "left": "sensible",
         "right": "practical and showing good judgement",
-        "why": "A sensible person makes wise choices; Spanish “sensible” is “sensitive”."
+        "why": "A sensible person makes wise choices; Spanish “sensible” is “sensitive”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "false-friends-ambush-b1-04",
         "left": "constipated",
         "right": "unable to empty your bowels easily",
-        "why": "Constipated is about your bowels; Spanish “constipado” is “a cold”, a mistake to avoid at the doctor’s."
+        "why": "Constipated is about your bowels; Spanish “constipado” is “a cold”, a mistake to avoid at the doctor’s.",
+        "explain": "false-friend-danger"
       },
       {
         "id": "false-friends-ambush-b1-05",
         "left": "argument",
         "right": "an angry disagreement between people",
-        "why": "An argument is a quarrel; Spanish “argumento” (of a film or book) is the “plot”."
+        "why": "An argument is a quarrel; Spanish “argumento” (of a film or book) is the “plot”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "false-friends-ambush-b1-06",
         "left": "career",
         "right": "the series of jobs you do over your working life",
-        "why": "A career is your working life; Spanish “carrera” (at university) is a “degree” or “degree course”."
+        "why": "A career is your working life; Spanish “carrera” (at university) is a “degree” or “degree course”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "false-friends-ambush-b1-07",
         "left": "actual",
         "right": "real, as opposed to imagined or expected",
-        "why": "Actual means real, as in the actual cost; Spanish “actual” (present-day) is “current”."
+        "why": "Actual means real, as in the actual cost; Spanish “actual” (present-day) is “current”.",
+        "explain": "false-friend-time-words"
       },
       {
         "id": "false-friends-ambush-b1-08",
         "left": "eventually",
         "right": "in the end, after a long time",
-        "why": "Eventually means in the end; Spanish “eventualmente” is “possibly” or “if necessary”."
+        "why": "Eventually means in the end; Spanish “eventualmente” is “possibly” or “if necessary”.",
+        "explain": "false-friend-time-words"
       },
       {
         "id": "false-friends-ambush-b1-09",
         "left": "misery",
         "right": "great unhappiness",
-        "why": "Misery is deep unhappiness; Spanish “miseria” is usually “poverty”, and a tiny amount is “a pittance”."
+        "why": "Misery is deep unhappiness; Spanish “miseria” is usually “poverty”, and a tiny amount is “a pittance”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "false-friends-ambush-b1-10",
         "left": "bland",
         "right": "with very little flavour",
-        "why": "Bland food has little taste; Spanish “blando” is “soft”."
+        "why": "Bland food has little taste; Spanish “blando” is “soft”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "false-friends-ambush-b1-11",
         "left": "resume",
         "right": "to start again after a pause",
-        "why": "The meeting resumed after lunch; Spanish “resumir” is “summarise”."
+        "why": "The meeting resumed after lunch; Spanish “resumir” is “summarise”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "false-friends-ambush-b1-12",
         "left": "professor",
         "right": "a senior teacher at a university",
-        "why": "Only senior university staff are professors; Spanish “profesor” also covers school teachers, who are “teachers”."
+        "why": "Only senior university staff are professors; Spanish “profesor” also covers school teachers, who are “teachers”.",
+        "explain": "false-friend-what"
       }
     ],
     "B2": [
@@ -160,73 +184,85 @@
         "id": "false-friends-ambush-b2-01",
         "left": "compromise",
         "right": "an agreement where both sides give something up",
-        "why": "A compromise is a deal where both sides give a little; Spanish “compromiso” is usually a “commitment” or an “engagement”."
+        "why": "A compromise is a deal where both sides give a little; Spanish “compromiso” is usually a “commitment” or an “engagement”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "false-friends-ambush-b2-02",
         "left": "disgust",
         "right": "a strong feeling that something is revolting",
-        "why": "Disgust is strong revulsion; Spanish “disgusto” (being upset) is “upset” or “annoyance”."
+        "why": "Disgust is strong revulsion; Spanish “disgusto” (being upset) is “upset” or “annoyance”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "false-friends-ambush-b2-03",
         "left": "molest",
         "right": "to abuse someone sexually (a very serious word)",
-        "why": "Molest is a very serious word; for Spanish “molestar” say “bother” or “disturb”."
+        "why": "Molest is a very serious word; for Spanish “molestar” say “bother” or “disturb”.",
+        "explain": "false-friend-danger"
       },
       {
         "id": "false-friends-ambush-b2-04",
         "left": "lecture",
         "right": "a formal talk to an audience, often at university",
-        "why": "A lecture is a formal talk; Spanish “lectura” is “reading”."
+        "why": "A lecture is a formal talk; Spanish “lectura” is “reading”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "false-friends-ambush-b2-05",
         "left": "fabric",
         "right": "cloth used to make clothes or curtains",
-        "why": "Fabric is cloth; Spanish “fábrica” is a “factory”."
+        "why": "Fabric is cloth; Spanish “fábrica” is a “factory”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "false-friends-ambush-b2-06",
         "left": "sane",
         "right": "mentally healthy, not mad",
-        "why": "Sane means mentally healthy; Spanish “sano” (healthy in general) is “healthy”."
+        "why": "Sane means mentally healthy; Spanish “sano” (healthy in general) is “healthy”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "false-friends-ambush-b2-07",
         "left": "deception",
         "right": "the act of tricking or lying to people",
-        "why": "Deception means tricking people; Spanish “decepción” is “disappointment”."
+        "why": "Deception means tricking people; Spanish “decepción” is “disappointment”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "false-friends-ambush-b2-08",
         "left": "educated",
         "right": "having had a good schooling, knowledgeable",
-        "why": "Educated means well schooled; Spanish “educado” is “polite” or “well-mannered”."
+        "why": "Educated means well schooled; Spanish “educado” is “polite” or “well-mannered”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "false-friends-ambush-b2-09",
         "left": "excited",
         "right": "eager and enthusiastic about something good",
-        "why": "“I’m excited about the trip” is completely normal English; Spanish “excitado” suggests agitated or even sexually aroused."
+        "why": "“I’m excited about the trip” is completely normal English; Spanish “excitado” suggests agitated or even sexually aroused.",
+        "explain": "false-friend-danger"
       },
       {
         "id": "false-friends-ambush-b2-10",
         "left": "rare",
         "right": "not common, hard to find",
-        "why": "A rare stamp is hard to find; Spanish “raro” is “strange” or “odd”."
+        "why": "A rare stamp is hard to find; Spanish “raro” is “strange” or “odd”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "false-friends-ambush-b2-11",
         "left": "topic",
         "right": "a subject to talk or write about",
-        "why": "A topic is a subject; Spanish “tópico” is a “cliché” or “stereotype”, like paella and flamenco for every Spaniard."
+        "why": "A topic is a subject; Spanish “tópico” is a “cliché” or “stereotype”, like paella and flamenco for every Spaniard.",
+        "explain": "false-friend-what"
       },
       {
         "id": "false-friends-ambush-b2-12",
         "left": "quiet",
         "right": "making little or no noise",
-        "why": "A quiet room has little noise; Spanish “¡Estate quieto!” is “Keep still!”."
+        "why": "A quiet room has little noise; Spanish “¡Estate quieto!” is “Keep still!”.",
+        "explain": "false-friend-what"
       }
     ],
     "C1": [
@@ -234,73 +270,85 @@
         "id": "false-friends-ambush-c1-01",
         "left": "ultimately",
         "right": "in the end, when everything is considered",
-        "why": "Ultimately means in the end; Spanish “últimamente” is “lately” or “recently”."
+        "why": "Ultimately means in the end; Spanish “últimamente” is “lately” or “recently”.",
+        "explain": "false-friend-time-words"
       },
       {
         "id": "false-friends-ambush-c1-02",
         "left": "idiom",
         "right": "a fixed expression whose meaning is not literal",
-        "why": "An idiom is a fixed expression like “bite the bullet”; Spanish “idioma” is a “language”."
+        "why": "An idiom is a fixed expression like “bite the bullet”; Spanish “idioma” is a “language”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "false-friends-ambush-c1-03",
         "left": "discrete",
         "right": "separate and distinct from each other",
-        "why": "Discrete parts are separate; tactful, Spanish “discreto”, is “discreet”, spelt differently."
+        "why": "Discrete parts are separate; tactful, Spanish “discreto”, is “discreet”, spelt differently.",
+        "explain": "false-friend-what"
       },
       {
         "id": "false-friends-ambush-c1-04",
         "left": "gracious",
         "right": "polite, kind and generous",
-        "why": "Gracious means polite and generous; Spanish “gracioso” is “funny”."
+        "why": "Gracious means polite and generous; Spanish “gracioso” is “funny”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "false-friends-ambush-c1-05",
         "left": "casualty",
         "right": "a person injured or killed in an accident or war",
-        "why": "Casualties are people hurt or killed; Spanish “casualidad” is a “coincidence” or “chance”."
+        "why": "Casualties are people hurt or killed; Spanish “casualidad” is a “coincidence” or “chance”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "false-friends-ambush-c1-06",
         "left": "firm",
         "right": "a company, especially of lawyers or accountants",
-        "why": "A law firm is a company; your handwritten name, Spanish “firma”, is your “signature”."
+        "why": "A law firm is a company; your handwritten name, Spanish “firma”, is your “signature”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "false-friends-ambush-c1-07",
         "left": "apology",
         "right": "an expression of regret for something you did",
-        "why": "An apology means saying sorry; Spanish “apología” (a defence of something) is a “defence” or “justification”."
+        "why": "An apology means saying sorry; Spanish “apología” (a defence of something) is a “defence” or “justification”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "false-friends-ambush-c1-08",
         "left": "complexion",
         "right": "the natural colour and texture of the skin on your face",
-        "why": "A pale complexion is about your facial skin; Spanish “complexión” (body build) is “build”."
+        "why": "A pale complexion is about your facial skin; Spanish “complexión” (body build) is “build”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "false-friends-ambush-c1-09",
         "left": "intoxicated",
         "right": "drunk",
-        "why": "Intoxicated means drunk; Spanish “intoxicado” means “poisoned”, as in “intoxicación alimentaria”, food poisoning."
+        "why": "Intoxicated means drunk; Spanish “intoxicado” means “poisoned”, as in “intoxicación alimentaria”, food poisoning.",
+        "explain": "false-friend-danger"
       },
       {
         "id": "false-friends-ambush-c1-10",
         "left": "prevaricate",
         "right": "to avoid giving a direct answer",
-        "why": "A politician who prevaricates dodges the question; Spanish “prevaricar” means an official knowingly making an unjust decision."
+        "why": "A politician who prevaricates dodges the question; Spanish “prevaricar” means an official knowingly making an unjust decision.",
+        "explain": "false-friend-what"
       },
       {
         "id": "false-friends-ambush-c1-11",
         "left": "jubilation",
         "right": "great joy at a success",
-        "why": "The town greeted the news with jubilation; Spanish “jubilación” is “retirement”."
+        "why": "The town greeted the news with jubilation; Spanish “jubilación” is “retirement”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "false-friends-ambush-c1-12",
         "left": "patron",
         "right": "a supporter of the arts, or a regular customer",
-        "why": "The Medici were patrons of the arts; Spanish “patrón” (at work) is a “boss” or “employer”, though “santo patrón” really is a “patron saint”."
+        "why": "The Medici were patrons of the arts; Spanish “patrón” (at work) is a “boss” or “employer”, though “santo patrón” really is a “patron saint”.",
+        "explain": "false-friend-what"
       }
     ]
   }

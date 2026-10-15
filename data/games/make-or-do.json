@@ -16,7 +16,8 @@
           "do"
         ],
         "answer": 1,
-        "why": "Household chores usually take “do”: do the dishes, do the cleaning."
+        "why": "Household chores usually take “do”: do the dishes, do the cleaning.",
+        "explain": "make-do-do"
       },
       {
         "id": "make-or-do-a2-02",
@@ -26,7 +27,8 @@
           "do"
         ],
         "answer": 0,
-        "why": "Spanish says “cometer un error”; English always says make a mistake, never “do”."
+        "why": "Spanish says “cometer un error”; English always says make a mistake, never “do”.",
+        "explain": "make-do-make"
       },
       {
         "id": "make-or-do-a2-03",
@@ -36,7 +38,8 @@
           "do"
         ],
         "answer": 1,
-        "why": "Housework is a set of tasks, and tasks take “do”: do the housework, do the ironing."
+        "why": "Housework is a set of tasks, and tasks take “do”: do the housework, do the ironing.",
+        "explain": "make-do-do"
       },
       {
         "id": "make-or-do-a2-04",
@@ -46,7 +49,8 @@
           "do"
         ],
         "answer": 0,
-        "why": "You make a promise, and then you keep it or break it; never “do a promise”."
+        "why": "You make a promise, and then you keep it or break it; never “do a promise”.",
+        "explain": "make-do-make"
       },
       {
         "id": "make-or-do-a2-05",
@@ -56,7 +60,8 @@
           "do"
         ],
         "answer": 1,
-        "why": "Fixed phrase: “Could you do me a favour?” = please help me."
+        "why": "Fixed phrase: “Could you do me a favour?” = please help me.",
+        "explain": "make-do-fixed"
       },
       {
         "id": "make-or-do-a2-06",
@@ -66,7 +71,8 @@
           "do"
         ],
         "answer": 0,
-        "why": "Sounds you produce take “make”: make a noise, make a sound."
+        "why": "Sounds you produce take “make”: make a noise, make a sound.",
+        "explain": "make-do-make"
       },
       {
         "id": "make-or-do-a2-07",
@@ -76,7 +82,8 @@
           "do"
         ],
         "answer": 1,
-        "why": "Chores take “do”: do the shopping, do the cooking."
+        "why": "Chores take “do”: do the shopping, do the cooking.",
+        "explain": "make-do-do"
       },
       {
         "id": "make-or-do-a2-08",
@@ -86,7 +93,8 @@
           "do"
         ],
         "answer": 0,
-        "why": "English says make a decision (or “take” in British English), never “do a decision”."
+        "why": "English says make a decision (or “take” in British English), never “do a decision”.",
+        "explain": "make-do-make"
       },
       {
         "id": "make-or-do-a2-09",
@@ -96,7 +104,8 @@
           "do"
         ],
         "answer": 0,
-        "why": "Spanish “hacer la cama”, and English agrees: make the bed."
+        "why": "Spanish “hacer la cama”, and English agrees: make the bed.",
+        "explain": "make-do-fixed"
       },
       {
         "id": "make-or-do-a2-10",
@@ -106,7 +115,8 @@
           "do"
         ],
         "answer": 1,
-        "why": "Another household chore, so “do”: do the ironing, do the washing."
+        "why": "Another household chore, so “do”: do the ironing, do the washing.",
+        "explain": "make-do-do"
       },
       {
         "id": "make-or-do-a2-11",
@@ -116,7 +126,8 @@
           "do"
         ],
         "answer": 0,
-        "why": "You make a wish when you blow out the candles; Spanish says “pedir un deseo”."
+        "why": "You make a wish when you blow out the candles; Spanish says “pedir un deseo”.",
+        "explain": "make-do-make"
       },
       {
         "id": "make-or-do-a2-12",
@@ -126,7 +137,8 @@
           "do"
         ],
         "answer": 1,
-        "why": "Chores ending in -ing usually take “do”: do the cleaning, do the shopping."
+        "why": "Chores ending in -ing usually take “do”: do the cleaning, do the shopping.",
+        "explain": "make-do-do"
       }
     ],
     "B1": [
@@ -138,7 +150,8 @@
           "do"
         ],
         "answer": 0,
-        "why": "Spanish “hacer progresos” becomes make progress, never “do progress”."
+        "why": "Spanish “hacer progresos” becomes make progress, never “do progress”.",
+        "explain": "make-do-make"
       },
       {
         "id": "make-or-do-b1-02",
@@ -148,7 +161,8 @@
           "do"
         ],
         "answer": 0,
-        "why": "Spanish “hacer un esfuerzo” becomes make an effort."
+        "why": "Spanish “hacer un esfuerzo” becomes make an effort.",
+        "explain": "make-do-fixed"
       },
       {
         "id": "make-or-do-b1-03",
@@ -158,7 +172,8 @@
           "do"
         ],
         "answer": 1,
-        "why": "You do business with a company: buy, sell and make deals."
+        "why": "You do business with a company: buy, sell and make deals.",
+        "explain": "make-do-do"
       },
       {
         "id": "make-or-do-b1-04",
@@ -168,7 +183,8 @@
           "do"
         ],
         "answer": 1,
-        "why": "Fixed phrase: do your best. “Make your best” is a common mistake."
+        "why": "Fixed phrase: do your best. “Make your best” is a common mistake.",
+        "explain": "make-do-fixed"
       },
       {
         "id": "make-or-do-b1-05",
@@ -178,7 +194,8 @@
           "do"
         ],
         "answer": 0,
-        "why": "You make a phone call: “Excuse me, I need to make a quick call.”"
+        "why": "You make a phone call: “Excuse me, I need to make a quick call.”",
+        "explain": "make-do-make"
       },
       {
         "id": "make-or-do-b1-06",
@@ -188,7 +205,8 @@
           "do"
         ],
         "answer": 1,
-        "why": "Activities of investigation take “do”: do research, never “make research”."
+        "why": "Activities of investigation take “do”: do research, never “make research”.",
+        "explain": "make-do-do"
       },
       {
         "id": "make-or-do-b1-07",
@@ -198,7 +216,8 @@
           "do"
         ],
         "answer": 0,
-        "why": "Spanish says “ganar dinero”, but English says make money."
+        "why": "Spanish says “ganar dinero”, but English says make money.",
+        "explain": "make-do-make"
       },
       {
         "id": "make-or-do-b1-08",
@@ -208,7 +227,8 @@
           "do"
         ],
         "answer": 1,
-        "why": "Activities take “do”: do exercise, do yoga. Not “make exercise”."
+        "why": "Activities take “do”: do exercise, do yoga. Not “make exercise”.",
+        "explain": "make-do-do"
       },
       {
         "id": "make-or-do-b1-09",
@@ -218,7 +238,8 @@
           "do"
         ],
         "answer": 0,
-        "why": "Things you say take “make”: make a complaint, make a suggestion."
+        "why": "Things you say take “make”: make a complaint, make a suggestion.",
+        "explain": "make-do-make"
       },
       {
         "id": "make-or-do-b1-10",
@@ -228,7 +249,8 @@
           "do"
         ],
         "answer": 1,
-        "why": "Spanish “hacer un curso” works the same in English: do an English course."
+        "why": "Spanish “hacer un curso” works the same in English: do an English course.",
+        "explain": "make-do-do"
       },
       {
         "id": "make-or-do-b1-11",
@@ -238,7 +260,8 @@
           "do"
         ],
         "answer": 0,
-        "why": "Like Spanish “hacer amigos”: make friends, never “do friends”."
+        "why": "Like Spanish “hacer amigos”: make friends, never “do friends”.",
+        "explain": "make-do-make"
       },
       {
         "id": "make-or-do-b1-12",
@@ -248,7 +271,8 @@
           "do"
         ],
         "answer": 1,
-        "why": "Office tasks take “do”: do the paperwork, do the accounts."
+        "why": "Office tasks take “do”: do the paperwork, do the accounts.",
+        "explain": "make-do-do"
       }
     ],
     "B2": [
@@ -260,7 +284,8 @@
           "do"
         ],
         "answer": 0,
-        "why": "Spanish “marcar la diferencia” becomes make a difference."
+        "why": "Spanish “marcar la diferencia” becomes make a difference.",
+        "explain": "make-do-make"
       },
       {
         "id": "make-or-do-b2-02",
@@ -270,7 +295,8 @@
           "do"
         ],
         "answer": 1,
-        "why": "Do damage = cause damage; “make damage” is a typical Spanish-speaker mistake."
+        "why": "Do damage = cause damage; “make damage” is a typical Spanish-speaker mistake.",
+        "explain": "make-do-fixed"
       },
       {
         "id": "make-or-do-b2-03",
@@ -280,7 +306,8 @@
           "do"
         ],
         "answer": 0,
-        "why": "You make an appointment with the doctor: you arrange it. Spanish “pedir cita”."
+        "why": "You make an appointment with the doctor: you arrange it. Spanish “pedir cita”.",
+        "explain": "make-do-make"
       },
       {
         "id": "make-or-do-b2-04",
@@ -290,7 +317,8 @@
           "do"
         ],
         "answer": 1,
-        "why": "Do well means be successful: their new restaurant in Ruzafa is doing very well."
+        "why": "Do well means be successful: their new restaurant in Ruzafa is doing very well.",
+        "explain": "make-do-fixed"
       },
       {
         "id": "make-or-do-b2-05",
@@ -300,7 +328,8 @@
           "do"
         ],
         "answer": 0,
-        "why": "Like make money: make a profit, make a loss."
+        "why": "Like make money: make a profit, make a loss.",
+        "explain": "make-do-make"
       },
       {
         "id": "make-or-do-b2-06",
@@ -310,7 +339,8 @@
           "do"
         ],
         "answer": 1,
-        "why": "Same pattern as damage: do harm, never “make harm”. “It does no harm to ask.”"
+        "why": "Same pattern as damage: do harm, never “make harm”. “It does no harm to ask.”",
+        "explain": "make-do-fixed"
       },
       {
         "id": "make-or-do-b2-07",
@@ -320,7 +350,8 @@
           "do"
         ],
         "answer": 0,
-        "why": "You make an exception when you break your own rule just once: we don’t open on Sundays, but we’ll make an exception."
+        "why": "You make an exception when you break your own rule just once: we don’t open on Sundays, but we’ll make an exception.",
+        "explain": "make-do-make"
       },
       {
         "id": "make-or-do-b2-08",
@@ -330,7 +361,8 @@
           "do"
         ],
         "answer": 1,
-        "why": "British English for washing the dishes after a meal: do the washing-up."
+        "why": "British English for washing the dishes after a meal: do the washing-up.",
+        "explain": "make-do-do"
       },
       {
         "id": "make-or-do-b2-09",
@@ -340,7 +372,8 @@
           "do"
         ],
         "answer": 0,
-        "why": "Things you say take “make”: he made an excuse not to come."
+        "why": "Things you say take “make”: he made an excuse not to come.",
+        "explain": "make-do-make"
       },
       {
         "id": "make-or-do-b2-10",
@@ -350,7 +383,8 @@
           "do"
         ],
         "answer": 1,
-        "why": "A week by the sea in Dénia will do you good."
+        "why": "A week by the sea in Dénia will do you good.",
+        "explain": "make-do-fixed"
       },
       {
         "id": "make-or-do-b2-11",
@@ -360,7 +394,8 @@
           "do"
         ],
         "answer": 0,
-        "why": "Plans you organise take “make”: make arrangements, make plans."
+        "why": "Plans you organise take “make”: make arrangements, make plans.",
+        "explain": "make-do-make"
       },
       {
         "id": "make-or-do-b2-12",
@@ -370,7 +405,8 @@
           "do"
         ],
         "answer": 1,
-        "why": "Work on your appearance takes “do”: do your hair, do your make-up."
+        "why": "Work on your appearance takes “do”: do your hair, do your make-up.",
+        "explain": "make-do-do"
       }
     ],
     "C1": [
@@ -382,7 +418,8 @@
           "do"
         ],
         "answer": 0,
-        "why": "Always plural: make amends = do something to repair a wrong."
+        "why": "Always plural: make amends = do something to repair a wrong.",
+        "explain": "make-do-fixed"
       },
       {
         "id": "make-or-do-c1-02",
@@ -392,7 +429,8 @@
           "do"
         ],
         "answer": 1,
-        "why": "“The photo doesn't do justice to the Albufera” = the real place is more beautiful."
+        "why": "“The photo doesn't do justice to the Albufera” = the real place is more beautiful.",
+        "explain": "make-do-fixed"
       },
       {
         "id": "make-or-do-c1-03",
@@ -402,7 +440,8 @@
           "do"
         ],
         "answer": 0,
-        "why": "Like make progress, but slowly and against difficulty: we're making headway."
+        "why": "Like make progress, but slowly and against difficulty: we're making headway.",
+        "explain": "make-do-fixed"
       },
       {
         "id": "make-or-do-c1-04",
@@ -412,7 +451,8 @@
           "do"
         ],
         "answer": 1,
-        "why": "Said when someone pours the drinks or cuts the cake: “Will you do the honours?”"
+        "why": "Said when someone pours the drinks or cuts the cake: “Will you do the honours?”",
+        "explain": "make-do-fixed"
       },
       {
         "id": "make-or-do-c1-05",
@@ -422,7 +462,8 @@
           "do"
         ],
         "answer": 0,
-        "why": "Like make money, but much more: some prospectors made a fortune in the gold rush."
+        "why": "Like make money, but much more: some prospectors made a fortune in the gold rush.",
+        "explain": "make-do-make"
       },
       {
         "id": "make-or-do-c1-06",
@@ -432,7 +473,8 @@
           "do"
         ],
         "answer": 1,
-        "why": "Obligations take “do”: the sheriff did his duty and arrested his own brother."
+        "why": "Obligations take “do”: the sheriff did his duty and arrested his own brother.",
+        "explain": "make-do-do"
       },
       {
         "id": "make-or-do-c1-07",
@@ -442,7 +484,8 @@
           "do"
         ],
         "answer": 0,
-        "why": "Make ends meet means manage on very little money: on a small pension it’s hard to make ends meet."
+        "why": "Make ends meet means manage on very little money: on a small pension it’s hard to make ends meet.",
+        "explain": "make-do-fixed"
       },
       {
         "id": "make-or-do-c1-08",
@@ -452,7 +495,8 @@
           "do"
         ],
         "answer": 1,
-        "why": "“Do wonders for” = have a very good effect: sea air does wonders for your health."
+        "why": "“Do wonders for” = have a very good effect: sea air does wonders for your health.",
+        "explain": "make-do-fixed"
       },
       {
         "id": "make-or-do-c1-09",
@@ -462,7 +506,8 @@
           "do"
         ],
         "answer": 0,
-        "why": "Informal and nothing violent: “He made a killing on the property market.”"
+        "why": "Informal and nothing violent: “He made a killing on the property market.”",
+        "explain": "make-do-fixed"
       },
       {
         "id": "make-or-do-c1-10",
@@ -472,7 +517,8 @@
           "do"
         ],
         "answer": 1,
-        "why": "Do the trick means work or solve the problem: a strong coffee should do the trick."
+        "why": "Do the trick means work or solve the problem: a strong coffee should do the trick.",
+        "explain": "make-do-fixed"
       },
       {
         "id": "make-or-do-c1-11",
@@ -482,7 +528,8 @@
           "do"
         ],
         "answer": 0,
-        "why": "Like a bee flying straight home: at parties he makes a beeline for the food."
+        "why": "Like a bee flying straight home: at parties he makes a beeline for the food.",
+        "explain": "make-do-fixed"
       },
       {
         "id": "make-or-do-c1-12",
@@ -492,7 +539,8 @@
           "do"
         ],
         "answer": 1,
-        "why": "If there's no sugar, we'll do without: we'll manage without it."
+        "why": "If there's no sugar, we'll do without: we'll manage without it.",
+        "explain": "make-do-fixed"
       }
     ]
   }

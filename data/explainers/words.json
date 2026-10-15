@@ -1,0 +1,223 @@
+{
+  "word-class-gap": {
+    "title": "Which word fits the gap?",
+    "es": "Igual que en español: «feliz», «felicidad», «felizmente». La palabra cambia de final según su función en la frase.",
+    "structure": [
+      "the / a / his + SUSTANTIVO · a / very + ADJETIVO · be + ADJETIVO · verbo + ADVERBIO",
+      "the decision · a creative idea · she is happy · drive carefully"
+    ],
+    "rule": "Mira alrededor del hueco. Tras the, a o his: sustantivo (the decision). Entre a y un sustantivo, tras very o tras be: adjetivo (a creative idea, she is happy). Si dice cómo se hace algo: adverbio (drive carefully).",
+    "example": {
+      "en": "She made a quick decision and left quickly.",
+      "es": "Tomó una decisión rápida y se fue rápidamente."
+    }
+  },
+  "word-prefix-negative": {
+    "title": "Negative prefixes",
+    "es": "Como nuestros «in-», «des-» e «i-»: «imposible», «desacuerdo», «ilógico». Pero en inglés el prefijo no siempre coincide: «injusto» es unfair.",
+    "structure": [
+      "un- · in- / im- / il- / ir- · dis- = no, lo contrario · mis- = mal, equivocadamente",
+      "unfair · impossible · illogical · irresponsible · disagree · misunderstand"
+    ],
+    "rule": "un- es el más común. Delante de p o m suele ir im-; delante de l, il-; delante de r, ir-. mis- no es «no», es «hacerlo mal»: misunderstand = entender mal.",
+    "example": {
+      "en": "It would be irresponsible to ignore the warning.",
+      "es": "Sería irresponsable no hacer caso del aviso."
+    }
+  },
+  "word-prefix-other": {
+    "title": "Prefixes that change the meaning",
+    "es": "Funcionan como en español: «rehacer», «sobrestimar», «contraatacar», «pseudociencia».",
+    "structure": [
+      "re- = otra vez · over- = demasiado · under- = demasiado poco · counter- = contra · pseudo- = falso",
+      "restructure · overwhelmed · underestimate · counteract · pseudoscientific"
+    ],
+    "rule": "Lee el prefijo como una palabra más. over- y under- son opuestos: si tardó el doble de lo previsto, el tiempo se calculó por debajo, underestimated.",
+    "example": {
+      "en": "We underestimated how long the journey would take.",
+      "es": "El viaje nos llevó mucho más tiempo del que habíamos calculado."
+    }
+  },
+  "word-suffix-noun": {
+    "title": "Suffixes for nouns",
+    "es": "Muchos son como los nuestros: -tion es «-ción» (reacción, reaction) y -ity es «-idad» (popularidad, popularity). -ness y -ment no tienen pareja clara.",
+    "structure": [
+      "-ness · -ment · -tion / -sion · -ity / -ty · -ance / -ence · personas: -er, -ee, -ist",
+      "kindness · development · explanation · popularity · safety · employer · employee · economist"
+    ],
+    "rule": "Si el hueco va después de the, a, his o their, casi seguro necesitas un sustantivo. -ness va con adjetivos (dark → darkness); -ment y -tion, normalmente con verbos (develop → development).",
+    "example": {
+      "en": "Their kindness surprised everyone.",
+      "es": "Su amabilidad sorprendió a todo el mundo."
+    }
+  },
+  "word-suffix-adjective": {
+    "title": "Suffixes for adjectives",
+    "es": "-ous suena a «-oso» (famous, famoso) y -able a «-able» (aceptable). -ful y -less no existen en español: son «lleno de» y «sin».",
+    "structure": [
+      "-ful = con · -less = sin · -able = que se puede · -ous · -al / -ic · -ive",
+      "careful · hopeless · comfortable · anxious · logical · meteoric · creative"
+    ],
+    "rule": "Si el hueco va delante de un sustantivo, o después de very o de verbos como be, feel o look, busca un adjetivo. -ful y -less suelen ser opuestos: useful (útil) / useless (inútil).",
+    "example": {
+      "en": "This bag is useless: it has a hole in it.",
+      "es": "Esta bolsa no sirve para nada: tiene un agujero."
+    }
+  },
+  "word-suffix-verb": {
+    "title": "Suffixes for verbs",
+    "es": "Como nuestros «-izar» y «-ificar»: «modernizar», «simplificar».",
+    "structure": [
+      "-ise · -ify",
+      "modernise · prioritise · criticise · simplify · signify"
+    ],
+    "rule": "Si el hueco va después de to, will, can o del sujeto, necesitas un verbo. En inglés británico se escribe normalmente -ise: modernise, prioritise.",
+    "example": {
+      "en": "The council plans to modernise the town centre.",
+      "es": "El ayuntamiento tiene previsto modernizar el centro."
+    }
+  },
+  "word-suffix-adverb": {
+    "title": "Adverbs with -ly",
+    "es": "-ly es nuestro «-mente»: «rápidamente», quickly; «cuidadosamente», carefully.",
+    "structure": [
+      "adjetivo + -ly",
+      "quick → quickly · careful → carefully · persuasive → persuasively"
+    ],
+    "rule": "El adverbio dice CÓMO se hace algo, y va con un verbo: drive carefully. Ojo: friendly, lovely y lonely terminan en -ly pero son adjetivos.",
+    "example": {
+      "en": "Please drive carefully: the roads are wet.",
+      "es": "Conduce con cuidado, por favor: las carreteras están mojadas."
+    }
+  },
+  "make-do-make": {
+    "title": "Make: crear, producir, decir",
+    "es": "En español las dos son «hacer». En inglés, make suele ser hacer algo que antes no existía.",
+    "structure": [
+      "make + algo nuevo, un resultado · make + cosas que dices",
+      "make a cake · make a decision · make money · make a promise · make a complaint · make an excuse"
+    ],
+    "rule": "Normalmente, si al final hay algo nuevo (una tarta, una decisión, dinero, ruido) o algo que dices (una promesa, una queja, una excusa), es make. Es una tendencia, no una ley.",
+    "example": {
+      "en": "I made a mistake and had to start again.",
+      "es": "Me equivoqué y tuve que empezar otra vez."
+    }
+  },
+  "make-do-do": {
+    "title": "Do: tareas y actividades",
+    "es": "También es «hacer», pero do va con el trabajo, las tareas de casa y las actividades en general.",
+    "structure": [
+      "do + tarea, trabajo, actividad",
+      "do the housework · do the shopping · do exercise · do research · do business"
+    ],
+    "rule": "Normalmente, si es una tarea o una actividad (y sobre todo con the …-ing: the ironing, the washing-up), es do.",
+    "example": {
+      "en": "On Saturdays we do the shopping and the cleaning.",
+      "es": "Los sábados hacemos la compra y la limpieza."
+    }
+  },
+  "make-do-fixed": {
+    "title": "Make or do: fixed phrases",
+    "es": "Algunas no siguen la tendencia y hay que aprenderlas de memoria, igual que en español decimos «dar un paseo» y no «hacer un paseo».",
+    "structure": [
+      "make the bed · make an effort · do someone a favour · do your best · do harm",
+      "make ends meet · do the trick · do without"
+    ],
+    "rule": "Si no encaja en «crear» ni en «tarea», es una expresión fija: apréndela entera, como un bloque. Las de daño van con do: do harm, do damage.",
+    "example": {
+      "en": "Could you do me a favour and make the bed?",
+      "es": "¿Me haces un favor y haces la cama?"
+    }
+  },
+  "collocation-heavy-strong": {
+    "title": "Heavy, strong or high?",
+    "es": "En español casi todo es «fuerte»: «lluvia fuerte», «viento fuerte», «café fuerte». En inglés cada palabra tiene su pareja: heavy rain, strong wind, strong coffee.",
+    "structure": [
+      "heavy + rain, traffic, smoker · strong + wind, coffee, smell, accent · high + price, temperature · bad / heavy + cold",
+      "heavy rain (no strong rain) · strong coffee · a bad cold (no a strong cold)"
+    ],
+    "rule": "No traduzcas «fuerte» sin pensar. Lluvia, tráfico y fumador son heavy; viento, café y olor son strong; precio y fiebre son high.",
+    "example": {
+      "en": "There was heavy traffic because of the rain.",
+      "es": "Había mucho tráfico por la lluvia."
+    }
+  },
+  "collocation-adjective-noun": {
+    "title": "Collocations: adjective + noun",
+    "es": "Algunas palabras simplemente van juntas, como en español «error garrafal» o «amigo íntimo». No siempre hay lógica: es costumbre.",
+    "structure": [
+      "adjetivo + sustantivo que suelen ir juntos",
+      "big mistake · close friend · deep breath · hard work · bright idea · wide range"
+    ],
+    "rule": "Aprende las palabras en pareja, no sueltas. Si la traducción literal te suena rara, busca la pareja de verdad: «amigo íntimo» es a close friend.",
+    "example": {
+      "en": "She's a close friend: I've known her for thirty years.",
+      "es": "Es una amiga íntima: la conozco desde hace treinta años."
+    }
+  },
+  "collocation-adverb-adjective": {
+    "title": "Collocations: adverb + adjective",
+    "es": "En español casi siempre vale «muy» o «totalmente». En inglés cada adjetivo tiene su adverbio favorito: deeply sorry, highly unlikely.",
+    "structure": [
+      "adverbio + adjetivo que suelen ir juntos",
+      "deeply sorry · highly unlikely · bitterly cold · fully aware · seriously ill · fast asleep"
+    ],
+    "rule": "Very vale con muchos adjetivos, pero no con los extremos (exhausted, furious) ni con asleep o awake. Las parejas habituales suenan más naturales; apréndelas en bloque: bitterly cold, wide awake.",
+    "example": {
+      "en": "I'm deeply sorry for the delay.",
+      "es": "Siento muchísimo el retraso."
+    }
+  },
+  "false-friend-what": {
+    "title": "False friends",
+    "es": "Palabras que se parecen al español pero significan otra cosa: library no es «librería» (es biblioteca) y carpet no es «carpeta» (es moqueta).",
+    "structure": [
+      "parece = significa otra cosa",
+      "library = biblioteca · carpet = moqueta · large = grande · once = una vez · billion = mil millones"
+    ],
+    "rule": "Si una palabra se parece demasiado al español y la frase no tiene sentido, desconfía. Comprueba el significado antes de usarla.",
+    "example": {
+      "en": "I borrowed this book from the library.",
+      "es": "He sacado este libro de la biblioteca."
+    }
+  },
+  "false-friend-danger": {
+    "title": "The dangerous false friends",
+    "es": "Algunos te pueden dejar en ridículo: embarrassed no es «embarazada», sino avergonzado; constipated no es «constipado», es estreñido.",
+    "structure": [
+      "embarrassed = avergonzado · constipated = estreñido · excited = ilusionado",
+      "preservative = conservante · intoxicated = borracho · molest = abusar sexualmente de alguien"
+    ],
+    "rule": "Apréndete estas de memoria. «Estar embarazada» es be pregnant, «estar constipado» es have a cold y «preservativo» es condom.",
+    "example": {
+      "en": "I was so embarrassed that my face went red.",
+      "es": "Me dio tanta vergüenza que me puse rojo."
+    }
+  },
+  "false-friend-time-words": {
+    "title": "Actually, eventually, ultimately",
+    "es": "«Actualmente» no es actually, es currently. «Eventualmente» no es eventually. «Últimamente» no es ultimately, es lately.",
+    "structure": [
+      "actually = en realidad · eventually = al final · ultimately = en última instancia",
+      "actual = real · eventual = final · currently = actualmente · lately = últimamente"
+    ],
+    "rule": "Actually corrige o precisa algo: en realidad. Eventually y ultimately hablan del final. Para «ahora mismo», usa currently.",
+    "example": {
+      "en": "The train was late, but we eventually got home.",
+      "es": "El tren llegó tarde, pero al final llegamos a casa."
+    }
+  },
+  "cognate-true-friend": {
+    "title": "True friends",
+    "es": "¡Buenas noticias! Muchas palabras parecidas sí significan lo mismo. Casi siempre, -ción es -tion y -dad es -ty: nación, nation; ciudad, city.",
+    "structure": [
+      "-ción → -tion · -dad / -idad → -ty / -ity · -oso → -ous",
+      "nation · city · reality · important · ostentatious"
+    ],
+    "rule": "No desconfíes de todo: la mayoría de los parecidos son amigos de verdad. Sospecha solo cuando la frase deja de tener sentido.",
+    "example": {
+      "en": "Valencia is an important city with a long history.",
+      "es": "Valencia es una ciudad importante con una larga historia."
+    }
+  }
+}

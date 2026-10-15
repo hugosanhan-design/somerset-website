@@ -3,6 +3,7 @@
   "title": "Contraction Control",
   "tags": ["register", "punctuation"],
   "engine": "choice",
+  "explain": "contraction-formal",
   "intro": "I'm becomes I am. Can't becomes cannot. Knowing when NOT to contract in formal writing is its own skill.",
   "items": {
     "A2": [

@@ -11,72 +11,84 @@
     "A2": [
       {
         "id": "same-verb-different-particle-a2-01",
+        "explain": "phrasal-particle-up-down",
         "left": "get up",
         "right": "rise from bed",
         "why": "“Up” means rising: you wake up, then you get up and have breakfast."
       },
       {
         "id": "same-verb-different-particle-a2-02",
+        "explain": "phrasal-particle-on-off",
         "left": "get on",
         "right": "enter a bus, train or plane",
         "why": "You get on a bus, train or plane; for a car or taxi say “get in”."
       },
       {
         "id": "same-verb-different-particle-a2-03",
+        "explain": "phrasal-particle-on-off",
         "left": "get off",
         "right": "leave a bus, train or plane",
         "why": "“Off” means away from: you get off the bus at your stop."
       },
       {
         "id": "same-verb-different-particle-a2-04",
+        "explain": "phrasal-particle-on-off",
         "left": "take off",
         "right": "leave the ground (a plane)",
         "why": "“Off” the ground: the plane takes off from Manises airport."
       },
       {
         "id": "same-verb-different-particle-a2-05",
+        "explain": "phrasal-particle-back-away",
         "left": "take away",
         "right": "remove and carry with you",
         "why": "“Away” means removal: the waiter takes away your plates. Food “to take away” is “para llevar”."
       },
       {
         "id": "same-verb-different-particle-a2-06",
+        "explain": "phrasal-particle-on-off",
         "left": "put on",
         "right": "dress in, wear",
         "why": "You put on a coat or shoes: Spanish “ponerse”."
       },
       {
         "id": "same-verb-different-particle-a2-07",
+        "explain": "phrasal-particle-back-away",
         "left": "put away",
         "right": "return something to its proper place",
         "why": "“Away” means to its place: put the shopping away in the cupboard."
       },
       {
         "id": "same-verb-different-particle-a2-08",
+        "explain": "phrasal-verb-basics",
         "left": "make up",
         "right": "invent a story",
         "why": "Make up a story: invent it, Spanish “inventarse”."
       },
       {
         "id": "same-verb-different-particle-a2-09",
+        "explain": "phrasal-particle-out-in",
         "left": "get in",
         "right": "enter a car or taxi",
         "why": "Small vehicles you sit inside: get in a car, but get on a bus."
       },
       {
         "id": "same-verb-different-particle-a2-10",
+        "explain": "phrasal-particle-out-in",
         "left": "take out",
         "right": "take someone to a restaurant or the cinema",
         "why": "He took his wife out for dinner in El Carmen: he invited her."
       },
       {
         "id": "same-verb-different-particle-a2-11",
+        "explain": "phrasal-particle-out-in",
         "left": "put out",
         "right": "stop a fire burning",
         "why": "Firefighters put out the fire: Spanish “apagar”."
       },
       {
         "id": "same-verb-different-particle-a2-12",
+        "explain": "phrasal-particle-back-away",
         "left": "get back",
         "right": "return from a trip or holiday",
         "why": "We got back from the Pyrenees late on Sunday: we returned from our trip."
@@ -85,72 +97,84 @@
     "B1": [
       {
         "id": "same-verb-different-particle-b1-01",
+        "explain": "phrasal-verb-basics",
         "left": "get by",
         "right": "manage with the little you have",
         "why": "With little money or little English, you can still get by: you just manage."
       },
       {
         "id": "same-verb-different-particle-b1-02",
+        "explain": "phrasal-verb-basics",
         "left": "get over",
         "right": "recover from an illness or shock",
         "why": "You climb over the problem: you recover from an illness or a shock."
       },
       {
         "id": "same-verb-different-particle-b1-03",
+        "explain": "phrasal-verb-basics",
         "left": "take up",
         "right": "start a new hobby",
         "why": "He took up golf when he retired: he started a new hobby."
       },
       {
         "id": "same-verb-different-particle-b1-04",
+        "explain": "phrasal-verb-basics",
         "left": "take after",
         "right": "resemble a parent or relative",
         "why": "She takes after her mother: she looks or acts like her. Spanish “salir a”."
       },
       {
         "id": "same-verb-different-particle-b1-05",
+        "explain": "phrasal-particle-back-away",
         "left": "take back",
         "right": "return something to a shop",
         "why": "The shoes were too small, so I took them back: I returned them to the shop."
       },
       {
         "id": "same-verb-different-particle-b1-06",
+        "explain": "phrasal-verb-basics",
         "left": "get together",
         "right": "meet socially",
         "why": "The old friends get together every Christmas: they meet up and spend time together."
       },
       {
         "id": "same-verb-different-particle-b1-07",
+        "explain": "phrasal-particle-on-off",
         "left": "put off",
         "right": "postpone",
         "why": "Don't put off going to the doctor: don't postpone it."
       },
       {
         "id": "same-verb-different-particle-b1-08",
+        "explain": "phrasal-verb-basics",
         "left": "put forward",
         "right": "suggest an idea or plan",
         "why": "She put forward a proposal at the meeting: she suggested it."
       },
       {
         "id": "same-verb-different-particle-b1-09",
+        "explain": "phrasal-particle-back-away",
         "left": "get away",
         "right": "escape from a place or person",
         "why": "The outlaws got away before the sheriff arrived: they escaped."
       },
       {
         "id": "same-verb-different-particle-b1-10",
+        "explain": "phrasal-particle-up-down",
         "left": "take down",
         "right": "write notes of what someone says",
         "why": "The nurse took down the patient's details: she wrote them on a form."
       },
       {
         "id": "same-verb-different-particle-b1-11",
+        "explain": "phrasal-separable",
         "left": "put up",
         "right": "give someone a bed for the night",
         "why": "Friends put us up in Valencia during the Fallas: we stayed at their flat."
       },
       {
         "id": "same-verb-different-particle-b1-12",
+        "explain": "phrasal-verb-basics",
         "left": "get on with",
         "right": "have a good relationship with someone",
         "why": "“I get on well with my sister-in-law”: we have a friendly relationship."
@@ -159,72 +183,84 @@
     "B2": [
       {
         "id": "same-verb-different-particle-b2-01",
+        "explain": "phrasal-verb-basics",
         "left": "get through",
         "right": "successfully complete something difficult",
         "why": "You get through a hard week or an exam: you reach the end successfully."
       },
       {
         "id": "same-verb-different-particle-b2-02",
+        "explain": "phrasal-separable",
         "left": "get across",
         "right": "successfully communicate an idea",
         "why": "A good teacher gets the idea across: the message reaches the listener."
       },
       {
         "id": "same-verb-different-particle-b2-03",
+        "explain": "phrasal-verb-basics",
         "left": "take in",
         "right": "fully understand, or deceive someone",
         "why": "Two meanings: take in information (understand it), or be taken in by a con man (deceived)."
       },
       {
         "id": "same-verb-different-particle-b2-04",
+        "explain": "phrasal-particle-back-away",
         "left": "take back",
         "right": "retract something you said",
         "why": "“I take it back”: you withdraw what you said, “retirar lo dicho”."
       },
       {
         "id": "same-verb-different-particle-b2-05",
+        "explain": "phrasal-verb-basics",
         "left": "make up for",
         "right": "compensate for a loss or mistake",
         "why": "Extra hours make up for lost time: they compensate for it."
       },
       {
         "id": "same-verb-different-particle-b2-06",
+        "explain": "phrasal-particle-on-off",
         "left": "make off with",
         "right": "steal and run away with something",
         "why": "The thief made off with the cash box: he stole it and ran."
       },
       {
         "id": "same-verb-different-particle-b2-07",
+        "explain": "phrasal-verb-basics",
         "left": "put up with",
         "right": "tolerate something unpleasant",
         "why": "Spanish “aguantar”: I can't put up with the neighbours' dog any longer."
       },
       {
         "id": "same-verb-different-particle-b2-08",
+        "explain": "phrasal-particle-up-down",
         "left": "put down",
         "right": "write something, or belittle someone",
         "why": "Put down your name on the list (write it), or put someone down (make them feel small)."
       },
       {
         "id": "same-verb-different-particle-b2-09",
+        "explain": "phrasal-verb-basics",
         "left": "get round to",
         "right": "finally find time to do something",
         "why": "I never get round to fixing the gate: I keep not finding the time."
       },
       {
         "id": "same-verb-different-particle-b2-10",
+        "explain": "phrasal-verb-basics",
         "left": "take over",
         "right": "take control of a company or place",
         "why": "When the founder retired, his daughter took over the business."
       },
       {
         "id": "same-verb-different-particle-b2-11",
+        "explain": "phrasal-separable",
         "left": "put through",
         "right": "transfer a caller to another person",
         "why": "“I'll put you through to the doctor”: the receptionist connects your call."
       },
       {
         "id": "same-verb-different-particle-b2-12",
+        "explain": "phrasal-verb-basics",
         "left": "get down to",
         "right": "start working seriously on something",
         "why": "After coffee, let's get down to business: start the real work."
@@ -233,72 +269,84 @@
     "C1": [
       {
         "id": "same-verb-different-particle-c1-01",
+        "explain": "phrasal-verb-basics",
         "left": "get around",
         "right": "circumvent a rule, or travel to many places",
         "why": "Get around a rule (find a way round it), or get around (travel a lot)."
       },
       {
         "id": "same-verb-different-particle-c1-02",
+        "explain": "phrasal-verb-basics",
         "left": "get at",
         "right": "imply something indirectly, or criticise persistently",
         "why": "“What are you getting at?” = what do you mean? It can also mean to criticise repeatedly."
       },
       {
         "id": "same-verb-different-particle-c1-03",
+        "explain": "phrasal-verb-basics",
         "left": "take to",
         "right": "start liking someone or something quickly",
         "why": "She took to Valencia immediately: she liked it straight away."
       },
       {
         "id": "same-verb-different-particle-c1-04",
+        "explain": "phrasal-verb-basics",
         "left": "take on",
         "right": "accept a responsibility, or hire someone",
         "why": "Take on a challenge or new staff: accept a responsibility, or hire someone."
       },
       {
         "id": "same-verb-different-particle-c1-05",
+        "explain": "phrasal-verb-basics",
         "left": "make do with",
         "right": "manage with what's available, though not ideal",
         "why": "With no doctor in town, the settlers made do with home remedies: not ideal, but enough."
       },
       {
         "id": "same-verb-different-particle-c1-06",
+        "explain": "phrasal-verb-basics",
         "left": "make of",
         "right": "form an opinion or interpretation about something",
         "why": "“What do you make of the new mayor?” = what's your opinion of him?"
       },
       {
         "id": "same-verb-different-particle-c1-07",
+        "explain": "phrasal-separable",
         "left": "put across",
         "right": "communicate an idea clearly and convincingly",
         "why": "A good speaker puts across an argument clearly and persuasively."
       },
       {
         "id": "same-verb-different-particle-c1-08",
+        "explain": "phrasal-verb-basics",
         "left": "put down to",
         "right": "attribute something to a particular cause",
         "why": "He put his good health down to the Mediterranean diet: he said it was the cause."
       },
       {
         "id": "same-verb-different-particle-c1-09",
+        "explain": "phrasal-separable",
         "left": "take aback",
         "right": "surprise or shock someone",
         "why": "Usually passive: “I was taken aback by his rudeness” = surprised and a little shocked."
       },
       {
         "id": "same-verb-different-particle-c1-10",
+        "explain": "phrasal-verb-basics",
         "left": "make over",
         "right": "legally transfer property to someone",
         "why": "Before he died, the rancher made the land over to his daughter."
       },
       {
         "id": "same-verb-different-particle-c1-11",
+        "explain": "phrasal-verb-basics",
         "left": "put in for",
         "right": "formally apply for something",
         "why": "She put in for a transfer to the Valencia office: she applied officially."
       },
       {
         "id": "same-verb-different-particle-c1-12",
+        "explain": "phrasal-verb-basics",
         "left": "get off",
         "right": "escape a serious punishment",
         "why": "He got off with a fine instead of prison: get off = escape the heavy punishment you expected."

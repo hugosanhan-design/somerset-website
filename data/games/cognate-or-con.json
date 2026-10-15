@@ -17,7 +17,8 @@
           "to write a newspaper story"
         ],
         "answer": 0,
-        "why": "As a verb, “notice” means see or become aware of something; Spanish “noticia” is “news”."
+        "why": "As a verb, “notice” means see or become aware of something; Spanish “noticia” is “news”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "cognate-or-con-a2-02",
@@ -28,7 +29,8 @@
           "a type of dance"
         ],
         "answer": 0,
-        "why": "A “rope” is a thick cord, like a cowboy's lasso. Spanish “ropa” is “clothes”."
+        "why": "A “rope” is a thick cord, like a cowboy's lasso. Spanish “ropa” is “clothes”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "cognate-or-con-a2-03",
@@ -39,7 +41,8 @@
           "a type of food"
         ],
         "answer": 0,
-        "why": "A “diary” is a personal journal. A daily newspaper, Spanish “diario”, is a “newspaper”."
+        "why": "A “diary” is a personal journal. A daily newspaper, Spanish “diario”, is a “newspaper”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "cognate-or-con-a2-04",
@@ -50,7 +53,8 @@
           "grandparents only"
         ],
         "answer": 0,
-        "why": "“Parents” are only your mother and father. Spanish “parientes”, all your relatives, are “relatives”."
+        "why": "“Parents” are only your mother and father. Spanish “parientes”, all your relatives, are “relatives”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "cognate-or-con-a2-05",
@@ -61,7 +65,8 @@
           "a type of shoe"
         ],
         "answer": 0,
-        "why": "A “pie” is a dish baked in pastry, sweet or savoury. Spanish “pie” is your “foot”."
+        "why": "A “pie” is a dish baked in pastry, sweet or savoury. Spanish “pie” is your “foot”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "cognate-or-con-a2-06",
@@ -72,7 +77,8 @@
           "a type of net"
         ],
         "answer": 0,
-        "why": "“Red” is simply a colour. Spanish “red”, a network or net, is “network” or “net”."
+        "why": "“Red” is simply a colour. Spanish “red”, a network or net, is “network” or “net”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "cognate-or-con-a2-07",
@@ -83,7 +89,8 @@
           "expensive"
         ],
         "answer": 0,
-        "why": "A true friend: “important” means the same as Spanish “importante”."
+        "why": "A true friend: “important” means the same as Spanish “importante”.",
+        "explain": "cognate-true-friend"
       },
       {
         "id": "cognate-or-con-a2-08",
@@ -94,7 +101,8 @@
           "to wait for someone"
         ],
         "answer": 0,
-        "why": "“Attend” means go to: attend a meeting, attend Mass. “Atender el teléfono” is “answer the phone”."
+        "why": "“Attend” means go to: attend a meeting, attend Mass. “Atender el teléfono” is “answer the phone”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "cognate-or-con-a2-09",
@@ -105,7 +113,8 @@
           "the price of something"
         ],
         "answer": 0,
-        "why": "A “costume” is fancy dress for a play or Carnival. A habit, Spanish “costumbre”, is a “custom”."
+        "why": "A “costume” is fancy dress for a play or Carnival. A habit, Spanish “costumbre”, is a “custom”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "cognate-or-con-a2-10",
@@ -116,7 +125,8 @@
           "a type of sauce"
         ],
         "answer": 0,
-        "why": "“Soap” is for washing. Spanish “sopa” is “soup”: only one of these goes in the bowl."
+        "why": "“Soap” is for washing. Spanish “sopa” is “soup”: only one of these goes in the bowl.",
+        "explain": "false-friend-what"
       },
       {
         "id": "cognate-or-con-a2-11",
@@ -127,7 +137,8 @@
           "a football pitch"
         ],
         "answer": 0,
-        "why": "A “camp” is a place with tents, like a cattle drive's night camp. Spanish “campo” is “countryside” or “field”."
+        "why": "A “camp” is a place with tents, like a cattle drive's night camp. Spanish “campo” is “countryside” or “field”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "cognate-or-con-a2-12",
@@ -138,7 +149,8 @@
           "a large bowl"
         ],
         "answer": 0,
-        "why": "A “balloon” floats at a party. A ball you kick, Spanish “balón”, is a “ball”."
+        "why": "A “balloon” floats at a party. A ball you kick, Spanish “balón”, is a “ball”.",
+        "explain": "false-friend-what"
       }
     ],
     "B1": [
@@ -151,7 +163,8 @@
           "to give someone advice"
         ],
         "answer": 0,
-        "why": "“Advertise” means promote publicly. Spanish “advertir”, to warn, is “warn”."
+        "why": "“Advertise” means promote publicly. Spanish “advertir”, to warn, is “warn”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "cognate-or-con-b1-02",
@@ -162,7 +175,8 @@
           "a club for retired people"
         ],
         "answer": 0,
-        "why": "A British “college” is for study after 16 or part of a university; Spanish “colegio” is simply a “school”."
+        "why": "A British “college” is for study after 16 or part of a university; Spanish “colegio” is simply a “school”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "cognate-or-con-b1-03",
@@ -173,7 +187,8 @@
           "ten million"
         ],
         "answer": 0,
-        "why": "An English “billion” is a thousand million. Spanish “billón” is a million million, a “trillion”."
+        "why": "An English “billion” is a thousand million. Spanish “billón” is a million million, a “trillion”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "cognate-or-con-b1-04",
@@ -184,7 +199,8 @@
           "a type of plate"
         ],
         "answer": 0,
-        "why": "A “vase” holds flowers. A drinking glass, Spanish “vaso”, is a “glass”."
+        "why": "A “vase” holds flowers. A drinking glass, Spanish “vaso”, is a “glass”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "cognate-or-con-b1-05",
@@ -195,7 +211,8 @@
           "an electrician"
         ],
         "answer": 0,
-        "why": "A “conductor” leads an orchestra or checks tickets. The person driving a car is the “driver”."
+        "why": "A “conductor” leads an orchestra or checks tickets. The person driving a car is the “driver”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "cognate-or-con-b1-06",
@@ -206,7 +223,8 @@
           "a recipe"
         ],
         "answer": 0,
-        "why": "A “recipient” is a person who receives something. Spanish “recipiente” is a “container”."
+        "why": "A “recipient” is a person who receives something. Spanish “recipiente” is a “container”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "cognate-or-con-b1-07",
@@ -217,7 +235,8 @@
           "a lecture"
         ],
         "answer": 0,
-        "why": "An English “discussion” is calm. A heated “discusión” in Spanish is an “argument”."
+        "why": "An English “discussion” is calm. A heated “discusión” in Spanish is an “argument”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "cognate-or-con-b1-08",
@@ -228,7 +247,8 @@
           "an opinion"
         ],
         "answer": 0,
-        "why": "As a noun, a “notice” is a written sign or announcement. Spanish “noticia” is “news”."
+        "why": "As a noun, a “notice” is a written sign or announcement. Spanish “noticia” is “news”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "cognate-or-con-b1-09",
@@ -239,7 +259,8 @@
           "to move house"
         ],
         "answer": 0,
-        "why": "“Remove” means take away: remove a stain. To stir the paella, Spanish “remover”, is “stir”."
+        "why": "“Remove” means take away: remove a stain. To stir the paella, Spanish “remover”, is “stir”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "cognate-or-con-b1-10",
@@ -250,7 +271,8 @@
           "a calendar on the wall"
         ],
         "answer": 0,
-        "why": "An English “agenda” is a meeting's list of topics. Your appointments book is a “diary”."
+        "why": "An English “agenda” is a meeting's list of topics. Your appointments book is a “diary”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "cognate-or-con-b1-11",
@@ -261,7 +283,8 @@
           "to repeat something"
         ],
         "answer": 0,
-        "why": "To “record” is to store sound or write something down. Spanish “recordar” is “remember”."
+        "why": "To “record” is to store sound or write something down. Spanish “recordar” is “remember”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "cognate-or-con-b1-12",
@@ -272,7 +295,8 @@
           "a strange object"
         ],
         "answer": 0,
-        "why": "A “stranger” is someone you don't know. A person from another country is a “foreigner”."
+        "why": "A “stranger” is someone you don't know. A person from another country is a “foreigner”.",
+        "explain": "false-friend-what"
       }
     ],
     "B2": [
@@ -285,7 +309,8 @@
           "gratitude"
         ],
         "answer": 0,
-        "why": "“Disgrace” means shame. Spanish “desgracia”, a misfortune, is “misfortune” or “tragedy”."
+        "why": "“Disgrace” means shame. Spanish “desgracia”, a misfortune, is “misfortune” or “tragedy”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "cognate-or-con-b2-02",
@@ -296,7 +321,8 @@
           "a type of plastic"
         ],
         "answer": 0,
-        "why": "In Britain cars run on “petrol”. Crude oil, Spanish “petróleo”, is “oil” or “petroleum”."
+        "why": "In Britain cars run on “petrol”. Crude oil, Spanish “petróleo”, is “oil” or “petroleum”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "cognate-or-con-b2-03",
@@ -307,7 +333,8 @@
           "shy or embarrassed"
         ],
         "answer": 0,
-        "why": "“Candid” means frank and honest. Spanish “cándido”, naive, is “naive” in English."
+        "why": "“Candid” means frank and honest. Spanish “cándido”, naive, is “naive” in English.",
+        "explain": "false-friend-what"
       },
       {
         "id": "cognate-or-con-b2-04",
@@ -318,7 +345,8 @@
           "to argue with someone"
         ],
         "answer": 0,
-        "why": "To “condescend” is to talk down to people; Spanish “condescendiente” (kind, willing to please) is “accommodating” or “obliging”."
+        "why": "To “condescend” is to talk down to people; Spanish “condescendiente” (kind, willing to please) is “accommodating” or “obliging”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "cognate-or-con-b2-05",
@@ -329,7 +357,8 @@
           "colourful"
         ],
         "answer": 0,
-        "why": "A con: “bizarre” means very strange, while traditional Spanish “bizarro” means brave or gallant."
+        "why": "A con: “bizarre” means very strange, while traditional Spanish “bizarro” means brave or gallant.",
+        "explain": "false-friend-what"
       },
       {
         "id": "cognate-or-con-b2-06",
@@ -340,7 +369,8 @@
           "very expensive"
         ],
         "answer": 0,
-        "why": "“Exquisite” means extremely fine and delicate, but everyday tasty food, Spanish “exquisito”, is more naturally “delicious”."
+        "why": "“Exquisite” means extremely fine and delicate, but everyday tasty food, Spanish “exquisito”, is more naturally “delicious”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "cognate-or-con-b2-07",
@@ -351,7 +381,8 @@
           "a warning label"
         ],
         "answer": 0,
-        "why": "A “preservative” keeps food fresh. Careful: Spanish “preservativo” is a “condom”."
+        "why": "A “preservative” keeps food fresh. Careful: Spanish “preservativo” is a “condom”.",
+        "explain": "false-friend-danger"
       },
       {
         "id": "cognate-or-con-b2-08",
@@ -362,7 +393,8 @@
           "happiness"
         ],
         "answer": 0,
-        "why": "“Sympathy” means feeling sorry for someone. Spanish “simpatía” is “friendliness” or “charm”."
+        "why": "“Sympathy” means feeling sorry for someone. Spanish “simpatía” is “friendliness” or “charm”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "cognate-or-con-b2-09",
@@ -373,7 +405,8 @@
           "to turn around"
         ],
         "answer": 0,
-        "why": "The job involves travelling. To wrap a present, Spanish “envolver”, is “wrap”."
+        "why": "The job involves travelling. To wrap a present, Spanish “envolver”, is “wrap”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "cognate-or-con-b2-10",
@@ -384,7 +417,8 @@
           "a public speech"
         ],
         "answer": 0,
-        "why": "A fever can be a manifestation of infection. A street protest is a “demonstration”."
+        "why": "A fever can be a manifestation of infection. A street protest is a “demonstration”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "cognate-or-con-b2-11",
@@ -395,7 +429,8 @@
           "a scarf"
         ],
         "answer": 0,
-        "why": "A “collar” is on a shirt or a dog. Spanish “collar”, jewellery, is a “necklace”."
+        "why": "A “collar” is on a shirt or a dog. Spanish “collar”, jewellery, is a “necklace”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "cognate-or-con-b2-12",
@@ -406,7 +441,8 @@
           "an unfair law"
         ],
         "answer": 0,
-        "why": "An “injury” is physical harm: a broken leg. Spanish “injuria”, an insult, is “insult” or “slander”."
+        "why": "An “injury” is physical harm: a broken leg. Spanish “injuria”, an insult, is “insult” or “slander”.",
+        "explain": "false-friend-what"
       }
     ],
     "C1": [
@@ -419,7 +455,8 @@
           "modest"
         ],
         "answer": 0,
-        "why": "“Ostentatious” means showy, designed to impress: an ostentatious gold watch."
+        "why": "“Ostentatious” means showy, designed to impress: an ostentatious gold watch.",
+        "explain": "cognate-true-friend"
       },
       {
         "id": "cognate-or-con-c1-02",
@@ -430,7 +467,8 @@
           "unknown"
         ],
         "answer": 0,
-        "why": "“Notorious” means famous for something bad, like a notorious outlaw; Spanish “notorio” (well-known, obvious) is “well-known” or “evident”."
+        "why": "“Notorious” means famous for something bad, like a notorious outlaw; Spanish “notorio” (well-known, obvious) is “well-known” or “evident”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "cognate-or-con-c1-03",
@@ -441,7 +479,8 @@
           "honest"
         ],
         "answer": 0,
-        "why": "“Ingenious” means clever and inventive. Spanish “ingenuo”, naive, is “naive” or “ingenuous”."
+        "why": "“Ingenious” means clever and inventive. Spanish “ingenuo”, naive, is “naive” or “ingenuous”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "cognate-or-con-c1-04",
@@ -452,7 +491,8 @@
           "a type of argument"
         ],
         "answer": 0,
-        "why": "In Britain a “diversion” is a detour or a distraction; everyday fun, Spanish “diversión”, is just “fun”."
+        "why": "In Britain a “diversion” is a detour or a distraction; everyday fun, Spanish “diversión”, is just “fun”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "cognate-or-con-c1-05",
@@ -463,7 +503,8 @@
           "urgent"
         ],
         "answer": 0,
-        "why": "“Eventual” means final, in the end. Spanish “eventual”, possible or temporary, is “possible” or “temporary”."
+        "why": "“Eventual” means final, in the end. Spanish “eventual”, possible or temporary, is “possible” or “temporary”.",
+        "explain": "false-friend-time-words"
       },
       {
         "id": "cognate-or-con-c1-06",
@@ -474,7 +515,8 @@
           "to be late"
         ],
         "answer": 0,
-        "why": "“Anticipate” means expect and prepare. To bring something forward, Spanish “anticipar”, is “bring forward”."
+        "why": "“Anticipate” means expect and prepare. To bring something forward, Spanish “anticipar”, is “bring forward”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "cognate-or-con-c1-07",
@@ -485,7 +527,8 @@
           "to argue"
         ],
         "answer": 0,
-        "why": "“Assume” means suppose without proof (or take on, as in assume control), but accepting a painful fact, Spanish “asumirlo”, is “accept” or “come to terms with”."
+        "why": "“Assume” means suppose without proof (or take on, as in assume control), but accepting a painful fact, Spanish “asumirlo”, is “accept” or “come to terms with”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "cognate-or-con-c1-08",
@@ -496,7 +539,8 @@
           "to celebrate"
         ],
         "answer": 0,
-        "why": "To “contest” a decision is to challenge it. Spanish “contestar”, to answer, is “answer” or “reply”."
+        "why": "To “contest” a decision is to challenge it. Spanish “contestar”, to answer, is “answer” or “reply”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "cognate-or-con-c1-09",
@@ -507,7 +551,8 @@
           "to forget"
         ],
         "answer": 0,
-        "why": "To “ignore” is to choose not to notice. Not knowing something is “not know” or “be unaware of”."
+        "why": "To “ignore” is to choose not to notice. Not knowing something is “not know” or “be unaware of”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "cognate-or-con-c1-10",
@@ -518,7 +563,8 @@
           "a convenient place"
         ],
         "answer": 0,
-        "why": "Oranges and oil are commodities. Spanish “comodidad” is “comfort” or “convenience”."
+        "why": "Oranges and oil are commodities. Spanish “comodidad” is “comfort” or “convenience”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "cognate-or-con-c1-11",
@@ -529,7 +575,8 @@
           "lazy"
         ],
         "answer": 0,
-        "why": "A “vicious” attack is cruel and violent, a much stronger word than Spanish “vicioso”."
+        "why": "A “vicious” attack is cruel and violent, a much stronger word than Spanish “vicioso”.",
+        "explain": "false-friend-what"
       },
       {
         "id": "cognate-or-con-c1-12",
@@ -540,7 +587,8 @@
           "an underground train"
         ],
         "answer": 0,
-        "why": "English suburbs are usually quiet and comfortable. A slum, Spanish “suburbio”, is not a suburb."
+        "why": "English suburbs are usually quiet and comfortable. A slum, Spanish “suburbio”, is not a suburb.",
+        "explain": "false-friend-what"
       }
     ]
   }

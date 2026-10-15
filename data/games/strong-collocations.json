@@ -12,73 +12,85 @@
         "id": "strong-collocations-a2-01",
         "left": "big mistake",
         "right": "a serious error",
-        "why": "Mistakes are big or serious, not “large” or “strong”: it was a big mistake to sell the house."
+        "why": "Mistakes are big or serious, not “large” or “strong”: it was a big mistake to sell the house.",
+        "explain": "collocation-adjective-noun"
       },
       {
         "id": "strong-collocations-a2-02",
         "left": "heavy rain",
         "right": "water pouring down from the sky",
-        "why": "Rain is heavy, not strong: “lluvia fuerte” becomes “heavy rain”."
+        "why": "Rain is heavy, not strong: “lluvia fuerte” becomes “heavy rain”.",
+        "explain": "collocation-heavy-strong"
       },
       {
         "id": "strong-collocations-a2-03",
         "left": "strong coffee",
         "right": "a cup full of flavour and caffeine",
-        "why": "Coffee and tea are strong or weak, never “heavy” or “hard”."
+        "why": "Coffee and tea are strong or weak, never “heavy” or “hard”.",
+        "explain": "collocation-heavy-strong"
       },
       {
         "id": "strong-collocations-a2-04",
         "left": "fast asleep",
         "right": "resting so soundly that noise won’t wake you",
-        "why": "“Fast” here means firmly, not quickly: someone fast asleep won’t wake easily."
+        "why": "“Fast” here means firmly, not quickly: someone fast asleep won’t wake easily.",
+        "explain": "collocation-adverb-adjective"
       },
       {
         "id": "strong-collocations-a2-05",
         "left": "wide awake",
         "right": "fully alert, not drowsy at all",
-        "why": "Wide awake is the opposite of fast asleep: eyes wide open."
+        "why": "Wide awake is the opposite of fast asleep: eyes wide open.",
+        "explain": "collocation-adverb-adjective"
       },
       {
         "id": "strong-collocations-a2-06",
         "left": "light sleep",
         "right": "rest that the smallest noise can interrupt",
-        "why": "Sleep is light or deep: in a light sleep, the smallest noise wakes you."
+        "why": "Sleep is light or deep: in a light sleep, the smallest noise wakes you.",
+        "explain": "collocation-adjective-noun"
       },
       {
         "id": "strong-collocations-a2-07",
         "left": "hard work",
         "right": "a job that needs a lot of effort",
-        "why": "“Hard work” is the fixed pair; “trabajo duro” translates neatly for once."
+        "why": "“Hard work” is the fixed pair; “trabajo duro” translates neatly for once.",
+        "explain": "collocation-adjective-noun"
       },
       {
         "id": "strong-collocations-a2-08",
         "left": "bright idea",
         "right": "a clever thought",
-        "why": "A clever idea is bright, like a light switching on in your head."
+        "why": "A clever idea is bright, like a light switching on in your head.",
+        "explain": "collocation-adjective-noun"
       },
       {
         "id": "strong-collocations-a2-09",
         "left": "heavy smoker",
         "right": "someone who gets through many cigarettes a day",
-        "why": "Smokers and drinkers are heavy, never “strong”."
+        "why": "Smokers and drinkers are heavy, never “strong”.",
+        "explain": "collocation-heavy-strong"
       },
       {
         "id": "strong-collocations-a2-10",
         "left": "strong wind",
         "right": "air that blows very hard",
-        "why": "Wind is strong, but rain is heavy: don’t swap them."
+        "why": "Wind is strong, but rain is heavy: don’t swap them.",
+        "explain": "collocation-heavy-strong"
       },
       {
         "id": "strong-collocations-a2-11",
         "left": "high price",
         "right": "a lot of money to pay",
-        "why": "Prices are high or low, never “expensive”: the thing is expensive, its price is high."
+        "why": "Prices are high or low, never “expensive”: the thing is expensive, its price is high.",
+        "explain": "collocation-heavy-strong"
       },
       {
         "id": "strong-collocations-a2-12",
         "left": "bad cold",
         "right": "a nasty virus: blocked nose, sore throat, feeling awful",
-        "why": "A cold is bad or heavy, not “strong”: “un resfriado fuerte” is a bad cold."
+        "why": "A cold is bad or heavy, not “strong”: “un resfriado fuerte” is a bad cold.",
+        "explain": "collocation-heavy-strong"
       }
     ],
     "B1": [
@@ -86,73 +98,85 @@
         "id": "strong-collocations-b1-01",
         "left": "heavy traffic",
         "right": "a large number of vehicles on the road",
-        "why": "Traffic is heavy or light, never “strong”."
+        "why": "Traffic is heavy or light, never “strong”.",
+        "explain": "collocation-heavy-strong"
       },
       {
         "id": "strong-collocations-b1-02",
         "left": "strong smell",
         "right": "a very noticeable odour",
-        "why": "Smells and tastes are strong, unlike rain, which is heavy."
+        "why": "Smells and tastes are strong, unlike rain, which is heavy.",
+        "explain": "collocation-heavy-strong"
       },
       {
         "id": "strong-collocations-b1-03",
         "left": "deep regret",
         "right": "a strong feeling of sadness about something",
-        "why": "Deep feelings take “deep”: deep regret, deep sadness, deep respect."
+        "why": "Deep feelings take “deep”: deep regret, deep sadness, deep respect.",
+        "explain": "collocation-adjective-noun"
       },
       {
         "id": "strong-collocations-b1-04",
         "left": "wide range",
         "right": "a large variety",
-        "why": "A range is wide, like a long shelf full of choices."
+        "why": "A range is wide, like a long shelf full of choices.",
+        "explain": "collocation-adjective-noun"
       },
       {
         "id": "strong-collocations-b1-05",
         "left": "high hopes",
         "right": "a strong expectation of success",
-        "why": "Hopes are high, like expectations: “We have high hopes for the new doctor.”"
+        "why": "Hopes are high, like expectations: “We have high hopes for the new doctor.”",
+        "explain": "collocation-heavy-strong"
       },
       {
         "id": "strong-collocations-b1-06",
         "left": "close friend",
         "right": "someone you know very well and trust",
-        "why": "Friends are close, not “near”: it is about the relationship, not distance."
+        "why": "Friends are close, not “near”: it is about the relationship, not distance.",
+        "explain": "collocation-adjective-noun"
       },
       {
         "id": "strong-collocations-b1-07",
         "left": "great pleasure",
         "right": "strong enjoyment",
-        "why": "“It’s a great pleasure to meet you” is a fixed polite phrase."
+        "why": "“It’s a great pleasure to meet you” is a fixed polite phrase.",
+        "explain": "collocation-adjective-noun"
       },
       {
         "id": "strong-collocations-b1-08",
         "left": "badly injured",
         "right": "hurt very seriously",
-        "why": "People are badly injured, things are badly damaged."
+        "why": "People are badly injured, things are badly damaged.",
+        "explain": "collocation-adverb-adjective"
       },
       {
         "id": "strong-collocations-b1-09",
         "left": "deep breath",
         "right": "filling your lungs with as much air as you can",
-        "why": "“Deep” is the usual partner for breath: take a deep breath and the air goes right down into your lungs."
+        "why": "“Deep” is the usual partner for breath: take a deep breath and the air goes right down into your lungs.",
+        "explain": "collocation-adjective-noun"
       },
       {
         "id": "strong-collocations-b1-10",
         "left": "strong accent",
         "right": "a way of speaking that clearly shows where you are from",
-        "why": "Accents are strong or slight: “He has a strong Valencian accent.”"
+        "why": "Accents are strong or slight: “He has a strong Valencian accent.”",
+        "explain": "collocation-heavy-strong"
       },
       {
         "id": "strong-collocations-b1-11",
         "left": "high temperature",
         "right": "a fever: your body is much hotter than normal",
-        "why": "Doctors say “a high temperature” for a fever, not “a big fever”."
+        "why": "Doctors say “a high temperature” for a fever, not “a big fever”.",
+        "explain": "collocation-heavy-strong"
       },
       {
         "id": "strong-collocations-b1-12",
         "left": "bitterly cold",
         "right": "freezing, the kind of weather that hurts your face",
-        "why": "“Bitterly” pairs with cold: the kind of cold that bites."
+        "why": "“Bitterly” pairs with cold: the kind of cold that bites.",
+        "explain": "collocation-adverb-adjective"
       }
     ],
     "B2": [
@@ -160,73 +184,85 @@
         "id": "strong-collocations-b2-01",
         "left": "deeply sorry",
         "right": "apologising very sincerely",
-        "why": "Formal apologies use “deeply”: “We are deeply sorry for the delay.”"
+        "why": "Formal apologies use “deeply”: “We are deeply sorry for the delay.”",
+        "explain": "collocation-adverb-adjective"
       },
       {
         "id": "strong-collocations-b2-02",
         "left": "bitterly disappointed",
         "right": "extremely upset about a let-down",
-        "why": "Disappointment can be bitter, like a taste that stays in your mouth: bitterly disappointed."
+        "why": "Disappointment can be bitter, like a taste that stays in your mouth: bitterly disappointed.",
+        "explain": "collocation-adverb-adjective"
       },
       {
         "id": "strong-collocations-b2-03",
         "left": "utterly exhausted",
         "right": "completely tired out",
-        "why": "“Utterly” goes with extreme adjectives like exhausted, not with plain “tired”."
+        "why": "“Utterly” goes with extreme adjectives like exhausted, not with plain “tired”.",
+        "explain": "collocation-adverb-adjective"
       },
       {
         "id": "strong-collocations-b2-04",
         "left": "highly unlikely",
         "right": "very improbable",
-        "why": "“Highly” pairs with likely and unlikely, never with big or tall."
+        "why": "“Highly” pairs with likely and unlikely, never with big or tall.",
+        "explain": "collocation-adverb-adjective"
       },
       {
         "id": "strong-collocations-b2-05",
         "left": "perfectly clear",
         "right": "completely obvious",
-        "why": "Often a firm phrase: “I want to make this perfectly clear.”"
+        "why": "Often a firm phrase: “I want to make this perfectly clear.”",
+        "explain": "collocation-adverb-adjective"
       },
       {
         "id": "strong-collocations-b2-06",
         "left": "widely known",
         "right": "familiar to a great many people",
-        "why": "“Widely” means spread among many people: widely known, widely used."
+        "why": "“Widely” means spread among many people: widely known, widely used.",
+        "explain": "collocation-adverb-adjective"
       },
       {
         "id": "strong-collocations-b2-07",
         "left": "severely damaged",
         "right": "badly harmed or broken",
-        "why": "Things are severely damaged: “The stagecoach was severely damaged in the crash.”"
+        "why": "Things are severely damaged: “The stagecoach was severely damaged in the crash.”",
+        "explain": "collocation-adverb-adjective"
       },
       {
         "id": "strong-collocations-b2-08",
         "left": "fully aware",
         "right": "completely conscious of something",
-        "why": "“Fully aware” stresses you know it all: “I’m fully aware of the risks.”"
+        "why": "“Fully aware” stresses you know it all: “I’m fully aware of the risks.”",
+        "explain": "collocation-adverb-adjective"
       },
       {
         "id": "strong-collocations-b2-09",
         "left": "highly recommended",
         "right": "praised and suggested by many people",
-        "why": "“Highly” again: a highly recommended restaurant gets praise from many people."
+        "why": "“Highly” again: a highly recommended restaurant gets praise from many people.",
+        "explain": "collocation-adverb-adjective"
       },
       {
         "id": "strong-collocations-b2-10",
         "left": "heavily armed",
         "right": "carrying a lot of weapons",
-        "why": "The outlaws were heavily armed: “heavily” means carrying a large amount."
+        "why": "The outlaws were heavily armed: “heavily” means carrying a large amount.",
+        "explain": "collocation-adverb-adjective"
       },
       {
         "id": "strong-collocations-b2-11",
         "left": "seriously ill",
         "right": "so unwell that it is dangerous",
-        "why": "People are seriously ill, never “strongly ill” or “heavily ill”."
+        "why": "People are seriously ill, never “strongly ill” or “heavily ill”.",
+        "explain": "collocation-adverb-adjective"
       },
       {
         "id": "strong-collocations-b2-12",
         "left": "closely linked",
         "right": "very strongly connected",
-        "why": "“Closely” goes with linked and related: smoking is closely linked to lung disease."
+        "why": "“Closely” goes with linked and related: smoking is closely linked to lung disease.",
+        "explain": "collocation-adverb-adjective"
       }
     ],
     "C1": [
@@ -234,73 +270,85 @@
         "id": "strong-collocations-c1-01",
         "left": "absolutely furious",
         "right": "extremely angry",
-        "why": "Furious is already extreme, so it takes “absolutely”, not “very”."
+        "why": "Furious is already extreme, so it takes “absolutely”, not “very”.",
+        "explain": "collocation-adverb-adjective"
       },
       {
         "id": "strong-collocations-c1-02",
         "left": "blatantly unfair",
         "right": "openly and shamelessly unjust",
-        "why": "“Blatantly” means openly, without shame: blatantly unfair, blatantly obvious."
+        "why": "“Blatantly” means openly, without shame: blatantly unfair, blatantly obvious.",
+        "explain": "collocation-adverb-adjective"
       },
       {
         "id": "strong-collocations-c1-03",
         "left": "painfully aware",
         "right": "uncomfortably conscious of something",
-        "why": "You know it so clearly that it hurts a little."
+        "why": "You know it so clearly that it hurts a little.",
+        "explain": "collocation-adverb-adjective"
       },
       {
         "id": "strong-collocations-c1-04",
         "left": "profoundly grateful",
         "right": "deeply thankful",
-        "why": "“Profoundly” is a formal, deep intensifier: profoundly grateful, profoundly moved."
+        "why": "“Profoundly” is a formal, deep intensifier: profoundly grateful, profoundly moved.",
+        "explain": "collocation-adverb-adjective"
       },
       {
         "id": "strong-collocations-c1-05",
         "left": "glaringly obvious",
         "right": "very noticeably clear, almost embarrassingly so",
-        "why": "Glaring like a harsh light: impossible not to see."
+        "why": "Glaring like a harsh light: impossible not to see.",
+        "explain": "collocation-adverb-adjective"
       },
       {
         "id": "strong-collocations-c1-06",
         "left": "overwhelmingly positive",
         "right": "extremely favourable, by a large margin",
-        "why": "Reviews or votes are overwhelmingly positive when nearly everyone agrees."
+        "why": "Reviews or votes are overwhelmingly positive when nearly everyone agrees.",
+        "explain": "collocation-adverb-adjective"
       },
       {
         "id": "strong-collocations-c1-07",
         "left": "staunchly opposed",
         "right": "very firmly against something",
-        "why": "“Staunch” means loyal and firm: a staunch opponent never changes sides."
+        "why": "“Staunch” means loyal and firm: a staunch opponent never changes sides.",
+        "explain": "collocation-adverb-adjective"
       },
       {
         "id": "strong-collocations-c1-08",
         "left": "acutely embarrassed",
         "right": "sharply and intensely ashamed in front of others",
-        "why": "“Acutely” means sharply: acutely embarrassed, acutely aware, acute pain."
+        "why": "“Acutely” means sharply: acutely embarrassed, acutely aware, acute pain.",
+        "explain": "collocation-adverb-adjective"
       },
       {
         "id": "strong-collocations-c1-09",
         "left": "eminently sensible",
         "right": "extremely reasonable and wise",
-        "why": "“Eminently” means highly, mostly with sensible, suitable and reasonable."
+        "why": "“Eminently” means highly, mostly with sensible, suitable and reasonable.",
+        "explain": "collocation-adverb-adjective"
       },
       {
         "id": "strong-collocations-c1-10",
         "left": "vastly superior",
         "right": "far, far better than the rest",
-        "why": "“Vastly” means by a huge amount: vastly superior, vastly different."
+        "why": "“Vastly” means by a huge amount: vastly superior, vastly different.",
+        "explain": "collocation-adverb-adjective"
       },
       {
         "id": "strong-collocations-c1-11",
         "left": "deeply entrenched",
         "right": "firmly fixed and very hard to change",
-        "why": "Entrenched like soldiers in a trench: beliefs and habits that won’t move."
+        "why": "Entrenched like soldiers in a trench: beliefs and habits that won’t move.",
+        "explain": "collocation-adverb-adjective"
       },
       {
         "id": "strong-collocations-c1-12",
         "left": "fiercely independent",
         "right": "strongly determined to manage alone",
-        "why": "“Fiercely” suits strong feelings: fiercely independent, fiercely loyal."
+        "why": "“Fiercely” suits strong feelings: fiercely independent, fiercely loyal.",
+        "explain": "collocation-adverb-adjective"
       }
     ]
   }

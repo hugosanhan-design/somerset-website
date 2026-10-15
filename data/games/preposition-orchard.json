@@ -10,6 +10,7 @@
     "A2": [
       {
         "id": "preposition-orchard-a2-01",
+        "explain": "preposition-verb-extra",
         "q": "listen ___ music",
         "options": [
           "to",
@@ -21,6 +22,7 @@
       },
       {
         "id": "preposition-orchard-a2-02",
+        "explain": "preposition-verb-extra",
         "q": "look ___ a picture",
         "options": [
           "at",
@@ -32,6 +34,7 @@
       },
       {
         "id": "preposition-orchard-a2-03",
+        "explain": "preposition-verb-extra",
         "q": "wait ___ the bus",
         "options": [
           "for",
@@ -43,6 +46,7 @@
       },
       {
         "id": "preposition-orchard-a2-04",
+        "explain": "preposition-verb",
         "q": "arrive ___ the station",
         "options": [
           "at",
@@ -54,6 +58,7 @@
       },
       {
         "id": "preposition-orchard-a2-05",
+        "explain": "preposition-adjective",
         "q": "good ___ football",
         "options": [
           "at",
@@ -65,6 +70,7 @@
       },
       {
         "id": "preposition-orchard-a2-06",
+        "explain": "preposition-adjective",
         "q": "afraid ___ spiders",
         "options": [
           "of",
@@ -76,6 +82,7 @@
       },
       {
         "id": "preposition-orchard-a2-07",
+        "explain": "preposition-adjective",
         "q": "interested ___ music",
         "options": [
           "in",
@@ -87,6 +94,7 @@
       },
       {
         "id": "preposition-orchard-a2-08",
+        "explain": "preposition-adjective",
         "q": "married ___ someone",
         "options": [
           "to",
@@ -98,6 +106,7 @@
       },
       {
         "id": "preposition-orchard-a2-09",
+        "explain": "preposition-verb",
         "q": "belong ___ the sheriff",
         "options": [
           "to",
@@ -109,6 +118,7 @@
       },
       {
         "id": "preposition-orchard-a2-10",
+        "explain": "preposition-verb",
         "q": "think ___ the future",
         "options": [
           "about",
@@ -120,6 +130,7 @@
       },
       {
         "id": "preposition-orchard-a2-11",
+        "explain": "preposition-adjective",
         "q": "proud ___ your children",
         "options": [
           "of",
@@ -131,6 +142,7 @@
       },
       {
         "id": "preposition-orchard-a2-12",
+        "explain": "preposition-verb-extra",
         "q": "pay ___ the paella",
         "options": [
           "for",
@@ -144,6 +156,7 @@
     "B1": [
       {
         "id": "preposition-orchard-b1-01",
+        "explain": "preposition-verb",
         "q": "depend ___ your parents",
         "options": [
           "on",
@@ -155,6 +168,7 @@
       },
       {
         "id": "preposition-orchard-b1-02",
+        "explain": "preposition-verb",
         "q": "apologise ___ a mistake",
         "options": [
           "for",
@@ -166,6 +180,7 @@
       },
       {
         "id": "preposition-orchard-b1-03",
+        "explain": "preposition-verb",
         "q": "believe ___ yourself",
         "options": [
           "in",
@@ -177,6 +192,7 @@
       },
       {
         "id": "preposition-orchard-b1-04",
+        "explain": "preposition-verb",
         "q": "worry ___ money",
         "options": [
           "about",
@@ -188,6 +204,7 @@
       },
       {
         "id": "preposition-orchard-b1-05",
+        "explain": "preposition-verb",
         "q": "complain ___ the service",
         "options": [
           "about",
@@ -199,6 +216,7 @@
       },
       {
         "id": "preposition-orchard-b1-06",
+        "explain": "preposition-verb",
         "q": "succeed ___ business",
         "options": [
           "in",
@@ -210,6 +228,7 @@
       },
       {
         "id": "preposition-orchard-b1-07",
+        "explain": "preposition-verb-someone",
         "q": "congratulate someone ___ their success",
         "options": [
           "on",
@@ -221,6 +240,7 @@
       },
       {
         "id": "preposition-orchard-b1-08",
+        "explain": "preposition-verb",
         "q": "insist ___ paying",
         "options": [
           "on",
@@ -232,6 +252,7 @@
       },
       {
         "id": "preposition-orchard-b1-09",
+        "explain": "preposition-verb",
         "q": "agree ___ your doctor",
         "options": [
           "with",
@@ -243,6 +264,7 @@
       },
       {
         "id": "preposition-orchard-b1-10",
+        "explain": "preposition-verb",
         "q": "laugh ___ a joke",
         "options": [
           "at",
@@ -254,6 +276,7 @@
       },
       {
         "id": "preposition-orchard-b1-11",
+        "explain": "preposition-verb",
         "q": "suffer ___ headaches",
         "options": [
           "from",
@@ -265,6 +288,7 @@
       },
       {
         "id": "preposition-orchard-b1-12",
+        "explain": "preposition-verb-extra",
         "q": "search ___ gold",
         "options": [
           "for",
@@ -278,6 +302,7 @@
     "B2": [
       {
         "id": "preposition-orchard-b2-01",
+        "explain": "preposition-verb",
         "q": "rely ___ a friend",
         "options": [
           "on",
@@ -289,6 +314,7 @@
       },
       {
         "id": "preposition-orchard-b2-02",
+        "explain": "preposition-verb",
         "q": "consist ___ three parts",
         "options": [
           "of",
@@ -300,6 +326,7 @@
       },
       {
         "id": "preposition-orchard-b2-03",
+        "explain": "preposition-verb-someone",
         "q": "blame someone ___ a mistake",
         "options": [
           "for",
@@ -311,6 +338,7 @@
       },
       {
         "id": "preposition-orchard-b2-04",
+        "explain": "preposition-verb",
         "q": "deal ___ a problem",
         "options": [
           "with",
@@ -322,6 +350,7 @@
       },
       {
         "id": "preposition-orchard-b2-05",
+        "explain": "preposition-verb",
         "q": "cope ___ stress",
         "options": [
           "with",
@@ -333,6 +362,7 @@
       },
       {
         "id": "preposition-orchard-b2-06",
+        "explain": "preposition-verb",
         "q": "We all benefit ___ regular exercise.",
         "options": [
           "from",
@@ -344,6 +374,7 @@
       },
       {
         "id": "preposition-orchard-b2-07",
+        "explain": "preposition-verb",
         "q": "react ___ news",
         "options": [
           "to",
@@ -355,6 +386,7 @@
       },
       {
         "id": "preposition-orchard-b2-08",
+        "explain": "preposition-verb",
         "q": "specialise ___ law",
         "options": [
           "in",
@@ -366,6 +398,7 @@
       },
       {
         "id": "preposition-orchard-b2-09",
+        "explain": "preposition-verb",
         "q": "Local residents object ___ the plan.",
         "options": [
           "to",
@@ -377,6 +410,7 @@
       },
       {
         "id": "preposition-orchard-b2-10",
+        "explain": "preposition-verb-someone",
         "q": "accuse someone ___ theft",
         "options": [
           "of",
@@ -388,6 +422,7 @@
       },
       {
         "id": "preposition-orchard-b2-11",
+        "explain": "preposition-verb",
         "q": "participate ___ the Fallas",
         "options": [
           "in",
@@ -399,6 +434,7 @@
       },
       {
         "id": "preposition-orchard-b2-12",
+        "explain": "preposition-verb",
         "q": "recover ___ surgery",
         "options": [
           "from",
@@ -412,6 +448,7 @@
     "C1": [
       {
         "id": "preposition-orchard-c1-01",
+        "explain": "preposition-verb",
         "q": "comply ___ regulations",
         "options": [
           "with",
@@ -423,6 +460,7 @@
       },
       {
         "id": "preposition-orchard-c1-02",
+        "explain": "preposition-verb",
         "q": "refrain ___ commenting",
         "options": [
           "from",
@@ -434,6 +472,7 @@
       },
       {
         "id": "preposition-orchard-c1-03",
+        "explain": "preposition-verb",
         "q": "embark ___ a journey",
         "options": [
           "on",
@@ -445,6 +484,7 @@
       },
       {
         "id": "preposition-orchard-c1-04",
+        "explain": "preposition-verb",
         "q": "adhere ___ the rules",
         "options": [
           "to",
@@ -456,6 +496,7 @@
       },
       {
         "id": "preposition-orchard-c1-05",
+        "explain": "preposition-verb",
         "q": "capitalise ___ an opportunity",
         "options": [
           "on",
@@ -467,6 +508,7 @@
       },
       {
         "id": "preposition-orchard-c1-06",
+        "explain": "preposition-verb",
         "q": "grapple ___ a dilemma",
         "options": [
           "with",
@@ -478,6 +520,7 @@
       },
       {
         "id": "preposition-orchard-c1-07",
+        "explain": "preposition-verb",
         "q": "stem ___ a lack of funding",
         "options": [
           "from",
@@ -489,6 +532,7 @@
       },
       {
         "id": "preposition-orchard-c1-08",
+        "explain": "preposition-verb",
         "q": "culminate ___ success",
         "options": [
           "in",
@@ -500,6 +544,7 @@
       },
       {
         "id": "preposition-orchard-c1-09",
+        "explain": "preposition-verb",
         "q": "abstain ___ voting",
         "options": [
           "from",
@@ -511,6 +556,7 @@
       },
       {
         "id": "preposition-orchard-c1-10",
+        "explain": "preposition-verb",
         "q": "dispose ___ waste",
         "options": [
           "of",
@@ -522,6 +568,7 @@
       },
       {
         "id": "preposition-orchard-c1-11",
+        "explain": "preposition-verb",
         "q": "subscribe ___ a theory",
         "options": [
           "to",
@@ -533,6 +580,7 @@
       },
       {
         "id": "preposition-orchard-c1-12",
+        "explain": "preposition-verb",
         "q": "dwell ___ the past",
         "options": [
           "on",

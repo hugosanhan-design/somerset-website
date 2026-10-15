@@ -18,7 +18,8 @@
           "clearless"
         ],
         "answer": 0,
-        "why": "“Nobody could follow them”, so not clear: un- makes the opposite."
+        "why": "“Nobody could follow them”, so not clear: un- makes the opposite.",
+        "explain": "word-prefix-negative"
       },
       {
         "id": "prefix-and-suffix-workshop-a2-02",
@@ -29,7 +30,8 @@
           "carely"
         ],
         "answer": 0,
-        "why": "Taking care with a vase: “careful”. “Caring” is about being kind to people."
+        "why": "Taking care with a vase: “careful”. “Caring” is about being kind to people.",
+        "explain": "word-suffix-adjective"
       },
       {
         "id": "prefix-and-suffix-workshop-a2-03",
@@ -40,7 +42,8 @@
           "hopeful"
         ],
         "answer": 0,
-        "why": "Losing his job and no way out: -less means without, so without hope."
+        "why": "Losing his job and no way out: -less means without, so without hope.",
+        "explain": "word-suffix-adjective"
       },
       {
         "id": "prefix-and-suffix-workshop-a2-04",
@@ -51,7 +54,8 @@
           "undark"
         ],
         "answer": 0,
-        "why": "After “complete” we need a noun: dark + -ness."
+        "why": "After “complete” we need a noun: dark + -ness.",
+        "explain": "word-suffix-noun"
       },
       {
         "id": "prefix-and-suffix-workshop-a2-05",
@@ -62,7 +66,8 @@
           "dispossible"
         ],
         "answer": 0,
-        "why": "Far too much work, so it cannot be done: before p the opposite takes im-, “impossible”."
+        "why": "Far too much work, so it cannot be done: before p the opposite takes im-, “impossible”.",
+        "explain": "word-prefix-negative"
       },
       {
         "id": "prefix-and-suffix-workshop-a2-06",
@@ -73,7 +78,8 @@
           "unhelp"
         ],
         "answer": 0,
-        "why": "A good thing to do: help + -ful, full of help."
+        "why": "A good thing to do: help + -ful, full of help.",
+        "explain": "word-suffix-adjective"
       },
       {
         "id": "prefix-and-suffix-workshop-a2-07",
@@ -84,7 +90,8 @@
           "unfear"
         ],
         "answer": 0,
-        "why": "Afraid “of the dark”: fear + -ful. “Fearless” means not afraid."
+        "why": "Afraid “of the dark”: fear + -ful. “Fearless” means not afraid.",
+        "explain": "word-suffix-adjective"
       },
       {
         "id": "prefix-and-suffix-workshop-a2-08",
@@ -95,7 +102,8 @@
           "unuse"
         ],
         "answer": 0,
-        "why": "A bag with a hole has no use: -less means without."
+        "why": "A bag with a hole has no use: -less means without.",
+        "explain": "word-suffix-adjective"
       },
       {
         "id": "prefix-and-suffix-workshop-a2-09",
@@ -106,7 +114,8 @@
           "unkind"
         ],
         "answer": 0,
-        "why": "After “their” we need a noun: kind + -ness."
+        "why": "After “their” we need a noun: kind + -ness.",
+        "explain": "word-suffix-noun"
       },
       {
         "id": "prefix-and-suffix-workshop-a2-10",
@@ -117,7 +126,8 @@
           "disfair"
         ],
         "answer": 0,
-        "why": "Blaming her for a mistake was not fair: un- makes the opposite."
+        "why": "Blaming her for a mistake was not fair: un- makes the opposite.",
+        "explain": "word-prefix-negative"
       },
       {
         "id": "prefix-and-suffix-workshop-a2-11",
@@ -128,7 +138,8 @@
           "inlucky"
         ],
         "answer": 0,
-        "why": "A lost horseshoe in the desert is bad luck: un- makes the opposite of “lucky”."
+        "why": "A lost horseshoe in the desert is bad luck: un- makes the opposite of “lucky”.",
+        "explain": "word-prefix-negative"
       },
       {
         "id": "prefix-and-suffix-workshop-a2-12",
@@ -139,7 +150,8 @@
           "uncolour"
         ],
         "answer": 0,
-        "why": "Red, green, yellow and orange: full of colour, so colour + -ful."
+        "why": "Red, green, yellow and orange: full of colour, so colour + -ful.",
+        "explain": "word-suffix-adjective"
       }
     ],
     "B1": [
@@ -152,7 +164,8 @@
           "unagree"
         ],
         "answer": 0,
-        "why": "A terrible idea means you do not agree, and the opposite of agree takes dis-: “disagree”."
+        "why": "A terrible idea means you do not agree, and the opposite of agree takes dis-: “disagree”.",
+        "explain": "word-prefix-negative"
       },
       {
         "id": "prefix-and-suffix-workshop-b1-02",
@@ -163,7 +176,8 @@
           "ununderstood"
         ],
         "answer": 0,
-        "why": "He brought the wrong dish, so he understood wrongly: mis- means badly or wrongly."
+        "why": "He brought the wrong dish, so he understood wrongly: mis- means badly or wrongly.",
+        "explain": "word-prefix-negative"
       },
       {
         "id": "prefix-and-suffix-workshop-b1-03",
@@ -174,7 +188,8 @@
           "discomfort"
         ],
         "answer": 0,
-        "why": "After “very” we need an adjective: comfort + -able."
+        "why": "After “very” we need an adjective: comfort + -able.",
+        "explain": "word-suffix-adjective"
       },
       {
         "id": "prefix-and-suffix-workshop-b1-04",
@@ -185,7 +200,8 @@
           "explanement"
         ],
         "answer": 0,
-        "why": "After “a clear” we need a noun: explain → “explanation” (no i in the middle)."
+        "why": "After “a clear” we need a noun: explain → “explanation” (no i in the middle).",
+        "explain": "word-suffix-noun"
       },
       {
         "id": "prefix-and-suffix-workshop-b1-05",
@@ -196,7 +212,8 @@
           "unapproved"
         ],
         "answer": 0,
-        "why": "They voted against it, so they did not approve: “disapprove of”."
+        "why": "They voted against it, so they did not approve: “disapprove of”.",
+        "explain": "word-prefix-negative"
       },
       {
         "id": "prefix-and-suffix-workshop-b1-06",
@@ -207,7 +224,8 @@
           "unleading"
         ],
         "answer": 0,
-        "why": "Information that gives a wrong idea: mis- + leading."
+        "why": "Information that gives a wrong idea: mis- + leading.",
+        "explain": "word-prefix-negative"
       },
       {
         "id": "prefix-and-suffix-workshop-b1-07",
@@ -218,7 +236,8 @@
           "misunderstandable"
         ],
         "answer": 0,
-        "why": "“Even for beginners”, so easy to understand: -able means can be."
+        "why": "“Even for beginners”, so easy to understand: -able means can be.",
+        "explain": "word-suffix-adjective"
       },
       {
         "id": "prefix-and-suffix-workshop-b1-08",
@@ -229,7 +248,8 @@
           "inlikely"
         ],
         "answer": 0,
-        "why": "Everything is ready, so a delay is not likely: un- + likely gives “unlikely”."
+        "why": "Everything is ready, so a delay is not likely: un- + likely gives “unlikely”.",
+        "explain": "word-prefix-negative"
       },
       {
         "id": "prefix-and-suffix-workshop-b1-09",
@@ -240,7 +260,8 @@
           "misacceptable"
         ],
         "answer": 0,
-        "why": "Not acceptable: un- + accept + -able."
+        "why": "Not acceptable: un- + accept + -able.",
+        "explain": "word-prefix-negative"
       },
       {
         "id": "prefix-and-suffix-workshop-b1-10",
@@ -251,7 +272,8 @@
           "missatisfied"
         ],
         "answer": 0,
-        "why": "Unhappy customers after a delay: the opposite of satisfied takes dis-."
+        "why": "Unhappy customers after a delay: the opposite of satisfied takes dis-.",
+        "explain": "word-prefix-negative"
       },
       {
         "id": "prefix-and-suffix-workshop-b1-11",
@@ -262,7 +284,8 @@
           "undiagnosed"
         ],
         "answer": 0,
-        "why": "Mistaken for flu, so diagnosed wrongly: mis- means wrongly."
+        "why": "Mistaken for flu, so diagnosed wrongly: mis- means wrongly.",
+        "explain": "word-prefix-negative"
       },
       {
         "id": "prefix-and-suffix-workshop-b1-12",
@@ -273,7 +296,8 @@
           "successive"
         ],
         "answer": 0,
-        "why": "After “very” we need an adjective: success + -ful."
+        "why": "After “very” we need an adjective: success + -ful.",
+        "explain": "word-suffix-adjective"
       }
     ],
     "B2": [
@@ -286,7 +310,8 @@
           "developness"
         ],
         "answer": 0,
-        "why": "A noun before “plan”: develop + -ment, with no extra e."
+        "why": "A noun before “plan”: develop + -ment, with no extra e.",
+        "explain": "word-suffix-noun"
       },
       {
         "id": "prefix-and-suffix-workshop-b2-02",
@@ -297,7 +322,8 @@
           "reactivity"
         ],
         "answer": 0,
-        "why": "After “His” we need a noun: react + -ion."
+        "why": "After “His” we need a noun: react + -ion.",
+        "explain": "word-suffix-noun"
       },
       {
         "id": "prefix-and-suffix-workshop-b2-03",
@@ -308,7 +334,8 @@
           "misstructure"
         ],
         "answer": 0,
-        "why": "Organise again after a merger: re- means again."
+        "why": "Organise again after a merger: re- means again.",
+        "explain": "word-prefix-other"
       },
       {
         "id": "prefix-and-suffix-workshop-b2-04",
@@ -319,7 +346,8 @@
           "unwhelmed"
         ],
         "answer": 0,
-        "why": "Too much work and tears: over- means too much."
+        "why": "Too much work and tears: over- means too much.",
+        "explain": "word-prefix-other"
       },
       {
         "id": "prefix-and-suffix-workshop-b2-05",
@@ -330,7 +358,8 @@
           "disestimated"
         ],
         "answer": 0,
-        "why": "It took twice as long as planned: the estimate was too low, so under-."
+        "why": "It took twice as long as planned: the estimate was too low, so under-.",
+        "explain": "word-prefix-other"
       },
       {
         "id": "prefix-and-suffix-workshop-b2-06",
@@ -341,7 +370,8 @@
           "populariness"
         ],
         "answer": 0,
-        "why": "After “widespread” we need a noun: popular + -ity."
+        "why": "After “widespread” we need a noun: popular + -ity.",
+        "explain": "word-suffix-noun"
       },
       {
         "id": "prefix-and-suffix-workshop-b2-07",
@@ -352,7 +382,8 @@
           "anxiosity"
         ],
         "answer": 0,
-        "why": "After “a lot of” we need a noun: anxious → “anxiety”."
+        "why": "After “a lot of” we need a noun: anxious → “anxiety”.",
+        "explain": "word-suffix-noun"
       },
       {
         "id": "prefix-and-suffix-workshop-b2-08",
@@ -363,7 +394,8 @@
           "modernify"
         ],
         "answer": 0,
-        "why": "Make something modern: -ise, the British spelling."
+        "why": "Make something modern: -ise, the British spelling.",
+        "explain": "word-suffix-verb"
       },
       {
         "id": "prefix-and-suffix-workshop-b2-09",
@@ -374,7 +406,8 @@
           "priorify"
         ],
         "answer": 0,
-        "why": "Put tasks in order of priority: priority → “prioritise”."
+        "why": "Put tasks in order of priority: priority → “prioritise”.",
+        "explain": "word-suffix-verb"
       },
       {
         "id": "prefix-and-suffix-workshop-b2-10",
@@ -385,7 +418,8 @@
           "safeity"
         ],
         "answer": 0,
-        "why": "A noun before “equipment”: safe → “safety”."
+        "why": "A noun before “equipment”: safe → “safety”.",
+        "explain": "word-suffix-noun"
       },
       {
         "id": "prefix-and-suffix-workshop-b2-11",
@@ -396,7 +430,8 @@
           "reducity"
         ],
         "answer": 0,
-        "why": "After “a dramatic” we need a noun: reduce → “reduction”."
+        "why": "After “a dramatic” we need a noun: reduce → “reduction”.",
+        "explain": "word-suffix-noun"
       },
       {
         "id": "prefix-and-suffix-workshop-b2-12",
@@ -407,7 +442,8 @@
           "dissufficient"
         ],
         "answer": 0,
-        "why": "They moved on, so not enough water: in- makes the opposite of “sufficient”."
+        "why": "They moved on, so not enough water: in- makes the opposite of “sufficient”.",
+        "explain": "word-prefix-negative"
       }
     ],
     "C1": [
@@ -420,7 +456,8 @@
           "simplise"
         ],
         "answer": 0,
-        "why": "Make something simple: simple → “simplify”."
+        "why": "Make something simple: simple → “simplify”.",
+        "explain": "word-suffix-verb"
       },
       {
         "id": "prefix-and-suffix-workshop-c1-02",
@@ -431,7 +468,8 @@
           "inlogical"
         ],
         "answer": 0,
-        "why": "The conclusions did not follow, so it was not logical: before l the negative prefix becomes il-, “illogical”."
+        "why": "The conclusions did not follow, so it was not logical: before l the negative prefix becomes il-, “illogical”.",
+        "explain": "word-prefix-negative"
       },
       {
         "id": "prefix-and-suffix-workshop-c1-03",
@@ -442,7 +480,8 @@
           "disact"
         ],
         "answer": 0,
-        "why": "Measures that act against crime: counter- means against."
+        "why": "Measures that act against crime: counter- means against.",
+        "explain": "word-prefix-other"
       },
       {
         "id": "prefix-and-suffix-workshop-c1-04",
@@ -453,7 +492,8 @@
           "unscientifical"
         ],
         "answer": 0,
-        "why": "It sounded like science but had no evidence: pseudo- means false."
+        "why": "It sounded like science but had no evidence: pseudo- means false.",
+        "explain": "word-prefix-other"
       },
       {
         "id": "prefix-and-suffix-workshop-c1-05",
@@ -464,7 +504,8 @@
           "disrealistic"
         ],
         "answer": 0,
-        "why": "Promises that could never come true: un- + realistic."
+        "why": "Promises that could never come true: un- + realistic.",
+        "explain": "word-prefix-negative"
       },
       {
         "id": "prefix-and-suffix-workshop-c1-06",
@@ -475,7 +516,8 @@
           "disresponsible"
         ],
         "answer": 0,
-        "why": "Before r, the negative prefix becomes ir-: “irresponsible”."
+        "why": "Before r, the negative prefix becomes ir-: “irresponsible”.",
+        "explain": "word-prefix-negative"
       },
       {
         "id": "prefix-and-suffix-workshop-c1-07",
@@ -486,7 +528,8 @@
           "disrefutable"
         ],
         "answer": 0,
-        "why": "“Nobody could argue against it”: ir- + refutable, impossible to refute."
+        "why": "“Nobody could argue against it”: ir- + refutable, impossible to refute.",
+        "explain": "word-prefix-negative"
       },
       {
         "id": "prefix-and-suffix-workshop-c1-08",
@@ -497,7 +540,8 @@
           "misbelief"
         ],
         "answer": 0,
-        "why": "Shock at the news: the noun for not believing is “disbelief”."
+        "why": "Shock at the news: the noun for not believing is “disbelief”.",
+        "explain": "word-prefix-negative"
       },
       {
         "id": "prefix-and-suffix-workshop-c1-09",
@@ -508,7 +552,8 @@
           "uncompatible"
         ],
         "answer": 0,
-        "why": "Two accounts that cannot both be true: in- + compatible."
+        "why": "Two accounts that cannot both be true: in- + compatible.",
+        "explain": "word-prefix-negative"
       },
       {
         "id": "prefix-and-suffix-workshop-c1-10",
@@ -519,7 +564,8 @@
           "meteorial"
         ],
         "answer": 0,
-        "why": "A rise as fast and bright as a meteor: meteor + -ic."
+        "why": "A rise as fast and bright as a meteor: meteor + -ic.",
+        "explain": "word-suffix-adjective"
       },
       {
         "id": "prefix-and-suffix-workshop-c1-11",
@@ -530,7 +576,8 @@
           "disexplicable"
         ],
         "answer": 0,
-        "why": "A mystery until Snow’s map pointed to the cause: in- + explicable, impossible to explain."
+        "why": "A mystery until Snow’s map pointed to the cause: in- + explicable, impossible to explain.",
+        "explain": "word-prefix-negative"
       },
       {
         "id": "prefix-and-suffix-workshop-c1-12",
@@ -541,7 +588,8 @@
           "dishabited"
         ],
         "answer": 0,
-        "why": "“Not a soul remained”, so nobody lived there: un- + inhabit + -ed gives “uninhabited”."
+        "why": "“Not a soul remained”, so nobody lived there: un- + inhabit + -ed gives “uninhabited”.",
+        "explain": "word-prefix-negative"
       }
     ]
   }
