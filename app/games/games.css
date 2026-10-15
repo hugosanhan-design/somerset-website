@@ -1,0 +1,25 @@
+/* Portal mini-games: embedded shell on the course kit tokens (.course). Phone first. */
+.gm{min-height:100dvh;display:flex;flex-direction:column;background:radial-gradient(900px 420px at 50% -10%,rgba(185,205,157,.35),transparent 70%),var(--paper)}
+.gm-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 1.1rem;border-bottom:1px solid var(--line);background:rgba(245,241,230,.92)}
+.gm-brand{font:700 1.05rem var(--brand);color:var(--ink)}
+.gm-brand b{color:var(--racing-2)}
+.gm-back{font:600 .95rem var(--sans);color:var(--racing-2);text-decoration:none;padding:.45rem .9rem;border:1.5px solid var(--line);border-radius:var(--pill)}
+.gm-main{flex:1;width:min(720px,100%);margin:0 auto;padding:1.4rem 1rem 3rem}
+.gm-card{padding:2rem 1.6rem}
+.gm-center{text-align:center;display:flex;flex-direction:column;align-items:center}
+.gm-kicker{font:600 .8rem var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--brass);margin:1rem 0 .3rem}
+.gm-kicker--play{text-align:center;margin:0 0 .8rem}
+.gm-title{font-size:2rem;line-height:1.15;margin:.2rem 0 .6rem}
+.gm-lead{font-size:1.1rem;color:var(--ink-soft);max-width:34ch;margin:0 auto .8rem}
+.gm-meta{font-size:.95rem;color:var(--muted);margin:0 0 1.4rem}
+.gm-start{font-size:1.1rem;padding:.95rem 2.4rem}
+.gm-review{list-style:none;margin:1.2rem 0 0;padding:0;display:grid;gap:.7rem}
+.gm-review li{background:var(--paper-2);border-radius:var(--radius-sm);padding:.9rem 1rem;border-left:4px solid var(--brass)}
+.gm-review__q{font-family:var(--serif);font-size:1.15rem;margin:0 0 .3rem}
+.gm-review__why{font-size:1rem;color:var(--muted);margin:0}
+.gm-actions{display:flex;flex-wrap:wrap;gap:.7rem;justify-content:center;margin-top:1.6rem}
+.gm-saved{text-align:center;font-size:.9rem;color:var(--muted);margin:1rem 0 0}
+/* bigger tap targets on phones */
+.gm .ck-opt__main{min-height:56px}
+@media(max-width:620px){.gm-title{font-size:1.65rem}.gm-card{padding:1.5rem 1.1rem}.gm .ck-deck__q{font-size:1.35rem}}
+.gm a.ck-btn{text-decoration:none}

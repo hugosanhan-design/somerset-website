@@ -273,7 +273,7 @@ const BLANK_RE = /_{3,}/
 export const normAnswer = (s: string) => s.toLowerCase().replace(/[.,;:!?"']+$/g, '').replace(/\s+/g, ' ').trim()
 
 export function Deck({
-  items, onAnswer, onDone, onRestart, listen, glossLabel = 'Show translation', endTitle = 'Done', endSub, endExtra, resetKey,
+  items, onAnswer, onDone, onRestart, listen, glossLabel = 'Show translation', endTitle = 'Done', endSub, endExtra, resetKey, manualNext = false,
 }: {
   items: DeckItem[]
   onAnswer?: (item: DeckItem, ok: boolean, firstTry: boolean, chosen: string) => void
@@ -283,6 +283,7 @@ export function Deck({
   glossLabel?: string
   endTitle?: React.ReactNode; endSub?: React.ReactNode; endExtra?: React.ReactNode
   resetKey?: unknown                       // change it to start again from item 1
+  manualNext?: boolean                     // wait for "Next" after each answer (time to read `after`) instead of auto-advancing
 }) {
   const [idx, setIdx] = useState(0)
   const [wrong, setWrong] = useState<string[]>([])
@@ -313,7 +314,7 @@ export function Deck({
     if (ok) {
       const next = [...results, firstTry]
       setResults(next); setDone({ first: firstTry, revealed: false })
-      timer.current = setTimeout(() => advance(next), firstTry ? 950 : 1400)
+      if (!manualNext) timer.current = setTimeout(() => advance(next), firstTry ? 950 : 1400)
       return
     }
     const w = [...wrong, chosen]
@@ -389,7 +390,7 @@ export function Deck({
             text={done.revealed ? <>The answer is <strong>{answerText}</strong>.</> : undefined} revise={!done.first} />
         )}
         {done && it.kind === 'choice' && it.after && <p className="ck-deck__after">{it.after}</p>}
-        {done?.revealed && <div className="ck-row"><Btn variant="accent" onClick={() => advance(results)}>Next →</Btn></div>}
+        {(done?.revealed || (done && manualNext)) && <div className="ck-row"><Btn variant="accent" autoFocus onClick={() => advance(results)}>{idx + 1 >= total ? 'Finish' : 'Next'} →</Btn></div>}
       </div>
     </div>
   )

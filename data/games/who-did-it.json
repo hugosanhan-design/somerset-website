@@ -1,0 +1,25 @@
+{
+  "id": "who-did-it",
+  "title": "Who Did It?",
+  "tags": ["tense", "other"],
+  "engine": "choice",
+  "intro": "Discovered by, credited with, said to have… Give the credit the way English does.",
+  "items": {
+    "B2": [
+      { "id": "wd-b2-01", "q": "Penicillin ___ by Alexander Fleming in 1928.", "options": ["was discovered", "discovered", "has discovered"], "answer": 0, "why": "The medicine did not discover anything: it received the action. Passive: was + past participle, with “by” for the person." },
+      { "id": "wd-b2-02", "q": "Edward Jenner ___ developing the first vaccine.", "options": ["is credited with", "is credited for", "credits with"], "answer": 0, "why": "The fixed pattern is “be credited WITH + noun or -ing”." },
+      { "id": "wd-b2-03", "q": "Jesse James ___ more than twenty banks and trains.", "options": ["is said to have robbed", "is said to rob", "says to have robbed"], "answer": 0, "why": "People say it now about the past: is said + to have + past participle." },
+      { "id": "wd-b2-04", "q": "The Water Tribunal of Valencia ___ for more than a thousand years.", "options": ["is believed to have existed", "is believed to exist", "believes to have existed"], "answer": 0, "why": "A belief now about a long past: is believed + to have + past participle." },
+      { "id": "wd-b2-05", "q": "The first X-ray image ___ by Wilhelm Röntgen in 1895.", "options": ["was taken", "took", "has been taken"], "answer": 0, "why": "Past passive with a stated date: was + past participle. “1895” rules out the present perfect." },
+      { "id": "wd-b2-06", "q": "Billy the Kid ___ by Sheriff Pat Garrett in 1881.", "options": ["was shot", "shot", "had shot"], "answer": 0, "why": "Billy received the action: past passive, was + past participle." },
+      { "id": "wd-b2-07", "q": "Louis Pasteur ___ to have saved thousands of lives with his work on germs.", "options": ["is thought", "thinks", "is thinking"], "answer": 0, "why": "Reporting what people think: is thought + to have + past participle." },
+      { "id": "wd-b2-08", "q": "Since then, the smallpox vaccine ___ to millions of people.", "options": ["has been given", "has given", "was giving"], "answer": 0, "why": "“Since then” needs the present perfect; the vaccine receives the action, so passive: has been given." },
+      { "id": "wd-b2-09", "q": "Many towns in the Wild West ___ almost overnight when gold was found nearby.", "options": ["were built", "built", "had built"], "answer": 0, "why": "Towns don't build: they are built. Past passive, were + past participle." },
+      { "id": "wd-b2-10", "q": "Microbes ___ for the first time by Antonie van Leeuwenhoek in the 1670s.", "options": ["were seen", "saw", "have been seen"], "answer": 0, "why": "Past passive with a past date: were + past participle." },
+      { "id": "wd-b2-11", "q": "It ___ that real cowboys spent far more time with cattle than with guns.", "options": ["is said", "says", "is saying"], "answer": 0, "why": "The impersonal pattern is “It is said that…”, never “It says that…” for general belief." },
+      { "id": "wd-b2-12", "q": "The new hospital ___ when the epidemic reached the city.", "options": ["was being built", "was building", "had built"], "answer": 0, "why": "In progress at that moment and passive: was being + past participle." },
+      { "id": "wd-b2-13", "q": "Florence Nightingale ___ as the founder of modern nursing.", "options": ["is often described", "often describes", "is often describing"], "answer": 0, "why": "Other people describe her: present passive, is + past participle." },
+      { "id": "wd-b2-14", "q": "Until John Snow's work in 1854, it ___ that cholera was spread by dirty water.", "options": ["was not known", "did not know", "was not knowing"], "answer": 0, "why": "Nobody is named as the knower: passive with “it”, was not known." }
+    ]
+  }
+}
