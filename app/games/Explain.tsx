@@ -1,9 +1,9 @@
 'use client'
 // "Explícamelo": a Spanish card for one grammar point — how you say it in Spanish, a mini
-// timeline, the structure, one rule to remember and an example. Cards live in data/explainers.json.
+// timeline, the structure, one rule to remember and an example. Cards live in data/explainers/*.json.
 import { useEffect, useState } from 'react'
 import { SomersetIcon } from '@/components/SomersetIcon'
-import explainers from '@/data/explainers.json'
+import { EXPLAINERS } from '@/data/explainers'
 
 type Mark = { kind: 'point' | 'span'; x?: number; x1?: number; x2?: number; label: string; tone?: 'brass' }
 export type Explainer = {
@@ -11,7 +11,7 @@ export type Explainer = {
   timeline?: { marks: Mark[]; arrow?: [number, number] }
   example?: { en: string; es: string }
 }
-const CARDS = explainers as unknown as Record<string, Explainer>
+const CARDS = EXPLAINERS as unknown as Record<string, Explainer>
 
 export function getExplainer(id?: string): Explainer | null {
   return id && !id.startsWith('_') ? CARDS[id] ?? null : null

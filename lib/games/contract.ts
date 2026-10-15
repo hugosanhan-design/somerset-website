@@ -16,7 +16,7 @@ export const LEVELS: Level[] = ['A2', 'B1', 'B2', 'C1']
 export type Engine = 'choice' | 'pairs'
 
 export type ChoiceItem = { id: string; q: string; options: string[]; answer: number; why?: string; explain?: string }
-export type PairItem = { id: string; left: string; right: string; why?: string }
+export type PairItem = { id: string; left: string; right: string; why?: string; explain?: string }
 
 export type GameDef = {
   id: string

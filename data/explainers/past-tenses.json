@@ -1,0 +1,113 @@
+{
+  "past-simple": {
+    "title": "Past simple",
+    "es": "Es nuestro pretérito indefinido: «llegó», «ensilló», «vio».",
+    "structure": [
+      "sujeto + verbo en pasado (-ed o irregular)",
+      "He saddled · She arrived · They saw"
+    ],
+    "rule": "Acción terminada, en un momento concreto del pasado. Si puedes decir CUÁNDO (ayer, en 1885, después…), casi seguro es past simple.",
+    "timeline": {
+      "marks": [
+        {
+          "kind": "point",
+          "x": 0.45,
+          "label": "saddled"
+        }
+      ]
+    },
+    "example": {
+      "en": "The cowboy saddled his horse and rode out of town.",
+      "es": "El vaquero ensilló su caballo y se fue del pueblo."
+    }
+  },
+  "past-continuous": {
+    "title": "Past continuous",
+    "es": "Es «estaba + gerundio»: «estaba bebiendo», «estaban cenando».",
+    "structure": [
+      "was / were + verbo-ing",
+      "I was cooking · They were sitting"
+    ],
+    "rule": "La acción larga de fondo, la «película» que está en marcha… y algo corto la interrumpe (past simple). Was drinking WHEN the coach arrived.",
+    "timeline": {
+      "marks": [
+        {
+          "kind": "span",
+          "x1": 0.2,
+          "x2": 0.7,
+          "label": "was drinking"
+        },
+        {
+          "kind": "point",
+          "x": 0.5,
+          "label": "arrived"
+        }
+      ]
+    },
+    "example": {
+      "en": "The sheriff was drinking his coffee when the stagecoach arrived.",
+      "es": "El sheriff se estaba tomando el café cuando llegó la diligencia."
+    }
+  },
+  "past-perfect": {
+    "title": "Past perfect",
+    "es": "Es nuestro pluscuamperfecto: «había crecido», «ya se habían escapado».",
+    "structure": [
+      "had + participio",
+      "had grown · had left · had escaped"
+    ],
+    "rule": "El pasado del pasado. Si dos cosas pasaron y una fue ANTES que la otra, la de antes va con had. Pistas: by the time, before, already.",
+    "timeline": {
+      "marks": [
+        {
+          "kind": "point",
+          "x": 0.25,
+          "label": "had grown",
+          "tone": "brass"
+        },
+        {
+          "kind": "point",
+          "x": 0.65,
+          "label": "came back"
+        }
+      ],
+      "arrow": [
+        0.25,
+        0.65
+      ]
+    },
+    "example": {
+      "en": "When Fleming came back, mould had grown on one of his dishes.",
+      "es": "Cuando Fleming volvió, había crecido moho en una de sus placas."
+    }
+  },
+  "past-perfect-continuous": {
+    "title": "Past perfect continuous",
+    "es": "Es «llevaba + tiempo + gerundio» o «había estado + gerundio»: «llevaban horas trabajando».",
+    "structure": [
+      "had been + verbo-ing",
+      "had been working · had been riding"
+    ],
+    "rule": "Cuánto tiempo LLEVABA pasando algo hasta un momento del pasado. Si en español dirías «llevaba…», en inglés suele ser had been + -ing.",
+    "timeline": {
+      "marks": [
+        {
+          "kind": "span",
+          "x1": 0.1,
+          "x2": 0.6,
+          "label": "had been working",
+          "tone": "brass"
+        },
+        {
+          "kind": "point",
+          "x": 0.6,
+          "label": "opened his eyes"
+        }
+      ]
+    },
+    "example": {
+      "en": "The doctors had been working for hours when the patient opened his eyes.",
+      "es": "Los médicos llevaban horas trabajando cuando el paciente abrió los ojos."
+    }
+  }
+}

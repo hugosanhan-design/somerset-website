@@ -19,7 +19,8 @@ export function ChoiceEngine({ items, onFinish, explain }: { items: ChoiceItem[]
       {getExplainer(it.explain ?? explain) && <><br /><ExplainButton ids={[it.explain ?? explain]} variant="link" label={`Más sobre el ${getExplainer(it.explain ?? explain)!.title.toLowerCase()} →`} /></>}
     </>,
     // Before answering: every card in the set as tabs, so the button never gives the answer away.
-    aside: <ExplainButton ids={allCards} />,
+    // (Skipped when a mixed game would need more than 6 tabs; the after-answer link still shows.)
+    aside: allCards.length <= 6 ? <ExplainButton ids={allCards} /> : undefined,
   })), [items, explain, allCards])
 
   return (

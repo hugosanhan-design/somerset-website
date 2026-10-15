@@ -9,7 +9,17 @@ const dir = path.join(root, 'data/games')
 const tagSrc = fs.readFileSync(path.join(root, 'data/errorTags.ts'), 'utf8')
 const TAGS = [...tagSrc.matchAll(/key:\s*'([a-z-]+)'/g)].map(m => m[1])
 const LEVELS = ['A2', 'B1', 'B2', 'C1']
-const EXPLAIN = Object.keys(JSON.parse(fs.readFileSync(path.join(root, 'data/explainers.json'), 'utf8'))).filter(k => !k.startsWith('_'))
+const EXPLAIN = []
+for (const f of fs.readdirSync(path.join(root, 'data/explainers')).filter(f => f.endsWith('.json'))) {
+  const cards = JSON.parse(fs.readFileSync(path.join(root, 'data/explainers', f), 'utf8'))
+  for (const [id, c] of Object.entries(cards)) {
+    if (EXPLAIN.includes(id)) { console.log(`✗ explainers/${f}: card id "${id}" is used twice`); process.exitCode = 1 }
+    EXPLAIN.push(id)
+    const miss = ['title', 'es', 'structure', 'rule'].filter(k => !c[k])
+    if (miss.length) { console.log(`✗ explainers/${f}: card "${id}" is missing ${miss.join(', ')}`); process.exitCode = 1 }
+    if (/[\u{1F300}-\u{1FAFF}]/u.test(JSON.stringify(c)) || /\btests?\b/i.test(JSON.stringify(c))) { console.log(`✗ explainers/${f}: card "${id}" has an emoji or the word "test"`); process.exitCode = 1 }
+  }
+}
 const MIN_ITEMS = 10      // a session needs at least this many
 const FULL_ITEMS = 12     // the "Got 3 minutes?" target
 const ENGINES = { choice: ['q', 'options', 'answer'], pairs: ['left', 'right'] }
@@ -73,4 +83,4 @@ for (const f of files) {
   if (warns.length) { warned++; console.log(`   ! ${warns.join('\n   ! ')}`) }
 }
 console.log(`\n${files.length} games · ${files.length - failed} pass · ${failed} fail · ${warned} with warnings`)
-process.exit(failed ? 1 : 0)
+process.exit(failed || process.exitCode ? 1 : 0)

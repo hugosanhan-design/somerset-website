@@ -1,0 +1,132 @@
+{
+  "modal-must-have-to": {
+    "title": "Must / have to",
+    "es": "Es nuestro «tener que» o «deber»: «tienes que llevar cinturón», «debo terminarlo».",
+    "structure": [
+      "must / have to + verbo (sin to después de must)",
+      "You must wear · I have to finish · We have to leave"
+    ],
+    "rule": "Obligación: no hay elección. Must y have to casi siempre sirven las dos. Pistas: it's the law, it's the rule, no choice.",
+    "example": {
+      "en": "You must wear a seatbelt in the car. It's the law.",
+      "es": "Tienes que llevar el cinturón en el coche. Es la ley."
+    }
+  },
+  "modal-mustnt-dont-have-to": {
+    "title": "Mustn't / don't have to",
+    "es": "La gran trampa: «mustn't» es «no debes» (está prohibido) y «don't have to» es «no tienes que» (no hace falta). En negativo significan cosas opuestas.",
+    "structure": [
+      "mustn't + verbo · don't have to / needn't + verbo · needn't have + participio",
+      "You mustn't smoke · You don't have to pay · You needn't have worried"
+    ],
+    "rule": "Mustn't = prohibido (forbidden). Don't have to o needn't = no es necesario, tú eliges (optional, free). Needn't have + participio = lo hiciste, pero no hacía falta.",
+    "example": {
+      "en": "You don't have to come, but you mustn't tell anyone.",
+      "es": "No tienes que venir, pero no debes contárselo a nadie."
+    }
+  },
+  "modal-should": {
+    "title": "Should / ought to",
+    "es": "Es «deberías»: un consejo. Y «should have» es «deberías haber…»: lo que tocaba hacer y no se hizo.",
+    "structure": [
+      "should / ought to + verbo · should have + participio · is supposed to + verbo",
+      "You should rest · You should have told me · The train is supposed to arrive at six"
+    ],
+    "rule": "Consejo o lo que se espera: should u ought to; para lo que no se hizo, should have + participio. «Is supposed to» es «se supone que».",
+    "example": {
+      "en": "You should see a doctor about that cough.",
+      "es": "Deberías ir al médico por esa tos."
+    }
+  },
+  "modal-might-could": {
+    "title": "Might / may / could",
+    "es": "Es «puede que» o «quizá»: «puede que llueva», «quizá esté en casa».",
+    "structure": [
+      "might / may / could + verbo",
+      "It might rain · She may be at home · It could arrive by 9"
+    ],
+    "rule": "Posibilidad: no estás seguro. Pistas: maybe, I'm not sure, just in case. Ojo: aquí could no es pasado, es «podría».",
+    "example": {
+      "en": "It might rain later, so take an umbrella just in case.",
+      "es": "Puede que llueva más tarde, así que llévate un paraguas por si acaso."
+    }
+  },
+  "deduction-must-cant": {
+    "title": "Must be / can't be",
+    "es": "Es «debe de…» o «no puede ser…»: «debe de estar en casa», «no puede ser él». Trampa: lo contrario de must be es can't be, nunca mustn't be.",
+    "structure": [
+      "must / might / can't + be (ahora) · + have + participio (pasado)",
+      "must be · can't be · must have been · can't have known"
+    ],
+    "rule": "Deducir por pistas: must = estoy seguro de que sí; might o could = quizá; can't = seguro que no. Para el pasado, añade have + participio.",
+    "example": {
+      "en": "All the lights are on, so she must be at home.",
+      "es": "Tiene todas las luces encendidas, así que debe de estar en casa."
+    }
+  },
+  "deduction-likely": {
+    "title": "Probably, likely, bound to",
+    "es": "Es «probablemente», «es probable que…», «seguro que va a…». Trampa: «is likely to be» sí, «is probable to be» no (probable va con that: it's probable that…).",
+    "structure": [
+      "is probably · is (un)likely to + verbo · is bound to + verbo",
+      "He's probably at home · It's unlikely to rain · Prices are bound to rise"
+    ],
+    "rule": "Una escala de seguridad: definitely (seguro) > bound to (casi seguro) > probably, likely (probable) > maybe (quizá) > unlikely (probablemente no).",
+    "example": {
+      "en": "It's the Fallas, so the city centre is bound to be busy.",
+      "es": "Son las Fallas, así que seguro que el centro está lleno de gente."
+    }
+  },
+  "deduction-looks-like": {
+    "title": "Looks like, seems, according to",
+    "es": "Es nuestro «parece», «huele a», «suena a». En inglés el verbo cambia según el sentido: «parece que va a llover» es «it looks like rain».",
+    "structure": [
+      "looks / sounds like + nombre · smells of / like + nombre · seems to be + adjetivo",
+      "It looks like rain · That sounds like the coach · It seems to be closed"
+    ],
+    "rule": "Di de dónde sale tu idea: de los ojos (looks like), del oído (sounds like), de la nariz (smells like)… Seems to be es tu impresión; according to (según) cita a otro, e in my opinion, a ti mismo.",
+    "example": {
+      "en": "It smells of paella in here!",
+      "es": "¡Aquí huele a paella!"
+    }
+  },
+  "deduction-formal": {
+    "title": "Formal certainty phrases",
+    "es": "Como nuestras frases hechas «con toda probabilidad», «más allá de toda duda razonable» o «es concebible que…». Muchas se traducen casi palabra por palabra.",
+    "structure": [
+      "frase hecha + that… / + el resto de la frase",
+      "It stands to reason that… · In all probability… · There's no telling…"
+    ],
+    "rule": "Ordénalas por seguridad: beyond reasonable doubt (seguro) > in all probability (muy probable) > on the balance of probabilities (más probable que no) > it is conceivable (solo posible) > there's no telling (imposible saberlo).",
+    "example": {
+      "en": "In all probability, the patient will recover.",
+      "es": "Con toda probabilidad, el paciente se recuperará."
+    }
+  },
+  "question-tag": {
+    "title": "Question tags",
+    "es": "Es nuestro «¿verdad?» o «¿no?» al final. En español nunca cambia; en inglés se construye cada vez con el verbo de la frase.",
+    "structure": [
+      "frase positiva + tag negativo · frase negativa + tag positivo",
+      "You're tired, aren't you? · She likes coffee, doesn't she? · He wasn't there, was he?"
+    ],
+    "rule": "Repite el auxiliar de la frase (is, can, will, has…) y el sujeto como pronombre; si no hay auxiliar, usa do, does o did. Si la frase es positiva, el tag es negativo, y al revés.",
+    "example": {
+      "en": "You live in Valencia, don't you?",
+      "es": "Vives en Valencia, ¿verdad?"
+    }
+  },
+  "question-tag-special": {
+    "title": "Question tags: special cases",
+    "es": "En español basta con «¿no?», pero en inglés algunas palabras cambian el tag: I'm, let's, there, nobody, never…",
+    "structure": [
+      "I'm → aren't I · Let's → shall we · There's → isn't there",
+      "Nobody / Someone / Everyone → they · never, hardly, few → tag positivo"
+    ],
+    "rule": "Never, nobody, nothing, hardly y few hacen negativa la frase: tag en positivo. Nobody, someone y everyone llevan they; nothing y something, it.",
+    "example": {
+      "en": "Nobody called, did they?",
+      "es": "No llamó nadie, ¿verdad?"
+    }
+  }
+}

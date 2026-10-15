@@ -1,0 +1,261 @@
+{
+  "passive-past": {
+    "title": "Past passive",
+    "es": "Es nuestro «fue construido» o, más natural, «se construyó». En inglés la pasiva se usa mucho más: si el protagonista es la cosa, va en pasiva.",
+    "structure": [
+      "was / were + participio (+ by + quién lo hizo)",
+      "was discovered · were built · was shot by"
+    ],
+    "rule": "Si el sujeto no hace la acción sino que la RECIBE, va en pasiva. La penicilina no descubrió nada: was discovered, y quien lo hizo va detrás de by.",
+    "example": {
+      "en": "The Serranos Towers were built at the end of the fourteenth century.",
+      "es": "Las Torres de Serranos se construyeron a finales del siglo XIV."
+    }
+  },
+  "passive-tenses": {
+    "title": "Passive in other tenses",
+    "es": "La pasiva vale para cualquier tiempo. En español solemos decir «se ha dado», «la describen», «lo estaban construyendo».",
+    "structure": [
+      "be (en el tiempo que toque) + participio",
+      "is described · has been given · was being built"
+    ],
+    "rule": "El participio no cambia nunca: lo que cambia de tiempo es be. Busca la pista (since then, often, at that moment) y pon be en ese tiempo.",
+    "example": {
+      "en": "The bridge was being repaired when the floods came.",
+      "es": "Estaban arreglando el puente cuando llegaron las inundaciones."
+    }
+  },
+  "passive-credited-with": {
+    "title": "Credited with",
+    "es": "Es nuestro «se le atribuye…» o «se le reconoce el mérito de…». La trampa: en español es «el mérito DE»; en inglés la preposición es with.",
+    "structure": [
+      "sujeto + is credited with + nombre o verbo-ing",
+      "is credited with developing · is credited with the discovery"
+    ],
+    "rule": "Credited WITH, y después de with el verbo va en -ing: credited with inventing. Si el sujeto es la cosa, es to: The invention is credited to Gutenberg.",
+    "example": {
+      "en": "Gutenberg is credited with inventing the printing press in Europe.",
+      "es": "A Gutenberg se le atribuye la invención de la imprenta en Europa."
+    }
+  },
+  "passive-said-to-have": {
+    "title": "Is said to have…",
+    "es": "Es nuestro «se dice que…», «se cree que…». En inglés, en vez de empezar con «se dice», la persona va delante: Jesse James is said to have robbed…",
+    "structure": [
+      "sujeto + is said / believed / thought + to have + participio",
+      "is said to have robbed · is believed to have existed"
+    ],
+    "rule": "Para algo pasado o que dura hasta hoy, to have + participio: is believed to have existed. Para algo de ahora, sin have: He is said to live in Paris.",
+    "example": {
+      "en": "El Cid is said to have won a battle after his death.",
+      "es": "Se dice que el Cid ganó una batalla después de muerto."
+    }
+  },
+  "passive-it-is-said": {
+    "title": "It is said that…",
+    "es": "Es palabra por palabra nuestro «se dice que…», «se creía que…». Como el inglés necesita un sujeto, empieza con It.",
+    "structure": [
+      "It + is said / was believed + that + frase",
+      "It is said that… · It was widely believed that…"
+    ],
+    "rule": "Para «se dice» o «se creía», usa It is said / It was believed. «It says» es lo que pone en un cartel o en un periódico, no lo que piensa la gente.",
+    "example": {
+      "en": "It was believed that the Earth was the centre of the universe.",
+      "es": "Se creía que la Tierra era el centro del universo."
+    }
+  },
+  "reported-backshift": {
+    "title": "Reported speech",
+    "es": "Igual que en español: «Estoy cansada» → «Dijo que estaba cansada». Al contarlo, el verbo da un paso atrás.",
+    "structure": [
+      "am → was · like → liked · can → could · will → would",
+      "must → had to · may → might · don't know → didn't know"
+    ],
+    "rule": "Después de said, el verbo normalmente da un paso atrás. Si lo que dijo sigue siendo verdad, puedes dejarlo en presente: She said the shop opens at nine.",
+    "example": {
+      "en": "He said he couldn't come to the party.",
+      "es": "Dijo que no podía venir a la fiesta."
+    }
+  },
+  "reported-past-perfect": {
+    "title": "Reported: had + participio",
+    "es": "Como en español: «Lo vi ayer» → «Dijo que lo había visto el día anterior». El pasado pasa a pluscuamperfecto.",
+    "structure": [
+      "saw / have seen → had seen",
+      "had gone · had bought · had finished"
+    ],
+    "rule": "Si lo que dijo ya era pasado, al contarlo normalmente pasa a had + participio. Ojo al participio: had gone, nunca had went.",
+    "timeline": {
+      "marks": [
+        {
+          "kind": "point",
+          "x": 0.25,
+          "label": "had written",
+          "tone": "brass"
+        },
+        {
+          "kind": "point",
+          "x": 0.65,
+          "label": "said"
+        }
+      ],
+      "arrow": [
+        0.25,
+        0.65
+      ]
+    },
+    "example": {
+      "en": "She said she had written the letter the previous night.",
+      "es": "Dijo que había escrito la carta la noche anterior."
+    }
+  },
+  "reported-pronouns-time": {
+    "title": "Words that change",
+    "es": "En español también cambian: «mañana» → «al día siguiente», «aquí» → «allí», «mi» → «su». En inglés, igual.",
+    "structure": [
+      "my → his / her · we → they · this → that · here → there",
+      "tomorrow → the next day · yesterday → the day before · last night → the previous night"
+    ],
+    "rule": "Piensa en quién lo cuenta y cuándo. Si cambia la persona, cambian my y we; si cambia el momento, cambian tomorrow, yesterday y now (→ then).",
+    "example": {
+      "en": "“I'll see you tomorrow.” → She said she would see me the next day.",
+      "es": "«Te veo mañana.» → Dijo que me vería al día siguiente."
+    }
+  },
+  "reported-questions": {
+    "title": "Reported questions",
+    "es": "En español: «¿Dónde vives?» → «Me preguntó dónde vivía». En inglés, además, desaparecen do / did y el orden vuelve a ser el de una frase normal.",
+    "structure": [
+      "asked + where / what / if + sujeto + verbo",
+      "asked where I lived · asked if I was coming"
+    ],
+    "rule": "Ya no es una pregunta: sin do ni did, y con el sujeto delante del verbo. Para las preguntas de sí o no, usa if.",
+    "example": {
+      "en": "The sheriff asked if I had seen the outlaws.",
+      "es": "El sheriff me preguntó si había visto a los forajidos."
+    }
+  },
+  "reported-orders": {
+    "title": "Orders and requests",
+    "es": "En español usamos subjuntivo: «Me dijo que cerrara la puerta». En inglés es más fácil: told me to close.",
+    "structure": [
+      "told / asked / warned / advised + persona + (not) to + verbo",
+      "told me to close · warned people not to drink"
+    ],
+    "rule": "Orden, petición o consejo: persona + to + verbo. Si es negativa, not va delante de to: told me not to touch.",
+    "example": {
+      "en": "The doctor advised me to rest for a week.",
+      "es": "El médico me aconsejó que descansara una semana."
+    }
+  },
+  "reported-verbs": {
+    "title": "Reporting verbs",
+    "es": "En español casi todo va con «que»: «admitió que…», «negó que…». En inglés cada verbo trae su patrón, y muchos van con -ing.",
+    "structure": [
+      "admit / deny / suggest + -ing · accuse of + -ing · promise / refuse + (not) to · insist that",
+      "denied taking · suggested going · promised not to"
+    ],
+    "rule": "Aprende cada verbo con su pareja: deny + -ing, accuse OF + -ing, insist THAT. Después de una preposición, el verbo siempre va en -ing.",
+    "example": {
+      "en": "He denied taking the money.",
+      "es": "Negó haber cogido el dinero."
+    }
+  },
+  "conditional-zero": {
+    "title": "Zero conditional",
+    "es": "Igual que en español: «Si calientas agua a 100 °C, hierve». Presente en las dos partes.",
+    "structure": [
+      "if + presente, presente",
+      "If you heat water, it boils · Ice melts if…"
+    ],
+    "rule": "Para lo que pasa SIEMPRE: leyes de la naturaleza, hechos, costumbres. Si puedes cambiar if por when sin cambiar el sentido, es zero conditional.",
+    "example": {
+      "en": "Plants die if you don't water them.",
+      "es": "Las plantas se mueren si no las riegas."
+    }
+  },
+  "conditional-first": {
+    "title": "First conditional",
+    "es": "Es «si llueve, nos quedaremos en casa». En español no decimos «si lloverá», y en inglés tampoco: normalmente no hay will después de if.",
+    "structure": [
+      "if + presente, will + verbo",
+      "If it rains, we'll stay · If you go, you'll see"
+    ],
+    "rule": "Algo posible y real en el futuro. Will va en la otra mitad, normalmente no detrás de if; en esa mitad también vale una orden: If he's late, call me.",
+    "example": {
+      "en": "If you go to Valencia in March, you'll see the Fallas.",
+      "es": "Si vas a Valencia en marzo, verás las Fallas."
+    }
+  },
+  "conditional-second": {
+    "title": "Second conditional",
+    "es": "Es «si fuera rico, viajaría». Donde nosotros usamos «fuera / tuviera», el inglés usa el pasado simple.",
+    "structure": [
+      "if + pasado simple, would + verbo",
+      "If I were rich, I'd travel · If she had time, she'd learn"
+    ],
+    "rule": "Algo imaginario o poco probable, hoy o en el futuro. Con I, he y she, lo más cuidado es were: If I were you… (was también se oye mucho al hablar).",
+    "example": {
+      "en": "If I lived in Valencia, I'd eat paella every Sunday.",
+      "es": "Si viviera en Valencia, comería paella todos los domingos."
+    }
+  },
+  "conditional-third": {
+    "title": "Third conditional",
+    "es": "Es «si hubiera estudiado, habría aprobado»: un pasado que ya no se puede cambiar. Y «If only I had…» es nuestro «ojalá hubiera…».",
+    "structure": [
+      "if + had + participio, would have + participio",
+      "If I had studied, I would have passed · If only I hadn't…"
+    ],
+    "rule": "Imaginar un pasado distinto: «hubiera» = had + participio, «habría» = would have + participio. Pistas: yesterday, in 1928, algo ya terminado.",
+    "example": {
+      "en": "If Fleming hadn't left his dishes out, he wouldn't have discovered penicillin.",
+      "es": "Si Fleming no hubiera dejado las placas fuera, no habría descubierto la penicilina."
+    }
+  },
+  "conditional-mixed": {
+    "title": "Mixed conditional",
+    "es": "Es «si hubiera estudiado más, ahora tendría mejor trabajo»: la causa en el pasado y el resultado hoy. En español los mezclamos igual.",
+    "structure": [
+      "if + had + participio, would + verbo (ahora)",
+      "If I had worked harder, I would have a better job now"
+    ],
+    "rule": "Mira la pista del resultado: now o today → would + verbo, sin have. A veces es al revés, algo de hoy con un resultado pasado: If she weren't so stubborn, she would have listened.",
+    "timeline": {
+      "marks": [
+        {
+          "kind": "point",
+          "x": 0.3,
+          "label": "hadn't missed",
+          "tone": "brass"
+        },
+        {
+          "kind": "point",
+          "x": 0.95,
+          "label": "would live"
+        }
+      ],
+      "arrow": [
+        0.3,
+        0.95
+      ]
+    },
+    "example": {
+      "en": "If I hadn't missed that train, I would live in Paris now.",
+      "es": "Si no hubiera perdido aquel tren, ahora viviría en París."
+    }
+  },
+  "conditional-inversion": {
+    "title": "Inversion (Had I known…)",
+    "es": "Es una manera formal de quitar el if, como nuestro «de haberlo sabido…». Had, were o should pasan delante del sujeto.",
+    "structure": [
+      "Had I known = If I had known · Were I = If I were · Should you = If you",
+      "Had Jenner not noticed… · Were I in your position… · Should you need…"
+    ],
+    "rule": "Sin if, el auxiliar (had, were, should) sube al principio y el resto es un condicional normal. En negativa, not va detrás del sujeto: Had it not been for…",
+    "example": {
+      "en": "Had I known, I would have come earlier.",
+      "es": "De haberlo sabido, habría venido antes."
+    }
+  }
+}

@@ -35,6 +35,6 @@ export function buildSession(game: GameDef, level: Level, n = SESSION_ITEMS): Ch
 function pairsAsChoice(bank: PairItem[]): ChoiceItem[] {
   return bank.map(p => {
     const others = shuffle(bank.filter(o => o.right !== p.right)).slice(0, 3).map(o => o.right)
-    return { id: p.id, q: p.left, options: [p.right, ...others], answer: 0, why: p.why }
+    return { id: p.id, q: p.left, options: [p.right, ...others], answer: 0, why: p.why, explain: p.explain }
   })
 }

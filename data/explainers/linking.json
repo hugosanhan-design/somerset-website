@@ -1,0 +1,80 @@
+{
+  "linking-cause": {
+    "title": "Because · because of",
+    "es": "Because es «porque» y va con una frase; because of es «por» o «a causa de» y va con un nombre.",
+    "structure": [
+      "because / since / as / given that + frase  ·  because of / due to / owing to / on account of + nombre",
+      "because I was ill · since she had a meeting · because of the noise"
+    ],
+    "rule": "¿Detrás viene sujeto + verbo? Because, since o as. ¿Solo un nombre? Because of, due to u owing to.",
+    "example": {
+      "en": "I couldn't sleep because of the noise outside.",
+      "es": "No pude dormir por el ruido de fuera."
+    }
+  },
+  "linking-result": {
+    "title": "So · therefore",
+    "es": "Es nuestro «así que» o «por eso»: «tenía hambre, así que me hice un bocadillo».",
+    "structure": [
+      "causa + , so + resultado · frase; therefore, + resultado",
+      "I was hungry, so I made a sandwich · It rained; therefore, we stayed in"
+    ],
+    "rule": "Because presenta la causa; so, el resultado. Truco: «porque» = because, «así que» = so. Therefore y consequently significan lo mismo, pero se puntúan como however: It rained; therefore, we stayed in.",
+    "example": {
+      "en": "It was raining, so we took an umbrella.",
+      "es": "Estaba lloviendo, así que cogimos un paraguas."
+    }
+  },
+  "linking-contrast": {
+    "title": "Although · but · whereas",
+    "es": "«Although» y «even though» son nuestro «aunque»; «but» es «pero»; «whereas» es «mientras que», para comparar dos cosas distintas.",
+    "structure": [
+      "although / even though / whereas + sujeto + verbo  ·  frase, but + frase",
+      "although it was cold · but I was tired · whereas Madrid is dry"
+    ],
+    "rule": "Detrás de although normalmente va una frase entera: although IT WAS raining. Con despite eso no vale. Y si no hay contraste, no es but sino and.",
+    "example": {
+      "en": "Although it was cold, we went for a walk.",
+      "es": "Aunque hacía frío, salimos a dar un paseo."
+    }
+  },
+  "linking-despite": {
+    "title": "Despite · in spite of",
+    "es": "Es nuestro «a pesar de». La trampa: decimos «a pesar de que llovía», pero en inglés despite no lleva una frase detrás. Y nunca «despite of».",
+    "structure": [
+      "despite / in spite of / notwithstanding + nombre o verbo-ing",
+      "despite the rain · in spite of the heat · despite being tired"
+    ],
+    "rule": "Despite e in spite of van con un nombre o con -ing; although, con una frase. Despite the rain = although it was raining. Si quieres una frase entera: despite the fact that it was raining.",
+    "example": {
+      "en": "Despite the rain, we went for a walk.",
+      "es": "A pesar de la lluvia, salimos a dar un paseo."
+    }
+  },
+  "linking-however": {
+    "title": "However · nevertheless",
+    "es": "Es nuestro «sin embargo», y se puntúa igual: «Llovía. Sin embargo, salimos». Lo mismo con nevertheless (aun así), moreover (además) y consequently (por consiguiente).",
+    "structure": [
+      "Frase. However, + frase.  ·  También en medio, entre comas: My sister, however, loves coffee.",
+      "However, … · On the other hand, … · Nevertheless, … · Be that as it may, …"
+    ],
+    "rule": "Une dos frases separadas: punto o punto y coma antes, coma después. Although no funciona así: «Although,» suelto con coma es un error.",
+    "example": {
+      "en": "It was raining. However, we went for a walk.",
+      "es": "Estaba lloviendo. Sin embargo, salimos a dar un paseo."
+    }
+  },
+  "linking-albeit": {
+    "title": "Albeit · insofar as",
+    "es": "Dos conectores muy formales: «albeit» es un «aunque» sin verbo («aunque a regañadientes»); «insofar as» es «en la medida en que».",
+    "structure": [
+      "albeit + adjetivo, adverbio o grupo nominal (sin verbo)  ·  insofar as + frase",
+      "albeit reluctantly · albeit painful · albeit a small one · insofar as it works"
+    ],
+    "rule": "Albeit va tras una coma y sin verbo: he accepted, albeit reluctantly. Insofar siempre con as, nunca «insofar that».",
+    "example": {
+      "en": "He accepted the offer, albeit reluctantly.",
+      "es": "Aceptó la oferta, aunque a regañadientes."
+    }
+  }
+}

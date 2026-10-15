@@ -10,6 +10,7 @@
     "A2": [
       {
         "id": "future-forms-fair-a2-01",
+        "explain": "future-going-to",
         "q": "Look at those clouds! It ___ rain.",
         "options": [
           "is going to",
@@ -21,6 +22,7 @@
       },
       {
         "id": "future-forms-fair-a2-02",
+        "explain": "future-will",
         "q": "I ___ call you tonight, I promise.",
         "options": [
           "will",
@@ -32,6 +34,7 @@
       },
       {
         "id": "future-forms-fair-a2-03",
+        "explain": "future-present-simple",
         "q": "The train ___ at 9am every day.",
         "options": [
           "leaves",
@@ -43,6 +46,7 @@
       },
       {
         "id": "future-forms-fair-a2-04",
+        "explain": "future-present-continuous",
         "q": "We ___ to the cinema tonight — I’ve already bought the tickets.",
         "options": [
           "are going",
@@ -54,6 +58,7 @@
       },
       {
         "id": "future-forms-fair-a2-05",
+        "explain": "future-will",
         "q": "I think it ___ be sunny tomorrow.",
         "options": [
           "will",
@@ -65,6 +70,7 @@
       },
       {
         "id": "future-forms-fair-a2-06",
+        "explain": "future-going-to",
         "q": "Look out! You ___ drop that!",
         "options": [
           "are going to",
@@ -76,6 +82,7 @@
       },
       {
         "id": "future-forms-fair-a2-07",
+        "explain": "future-present-continuous",
         "q": "I ___ meeting Sarah at 5pm today.",
         "options": [
           "am",
@@ -87,6 +94,7 @@
       },
       {
         "id": "future-forms-fair-a2-08",
+        "explain": "future-present-simple",
         "q": "The shop ___ at 6pm on weekdays.",
         "options": [
           "closes",
@@ -98,6 +106,7 @@
       },
       {
         "id": "future-forms-fair-a2-09",
+        "explain": "future-will",
         "q": "I'm thirsty. I ___ get a glass of water.",
         "options": [
           "will",
@@ -109,6 +118,7 @@
       },
       {
         "id": "future-forms-fair-a2-10",
+        "explain": "future-present-continuous",
         "q": "She ___ having a party next Saturday — she's already invited everyone.",
         "options": [
           "is",
@@ -120,6 +130,7 @@
       },
       {
         "id": "future-forms-fair-a2-11",
+        "explain": "future-present-simple",
         "q": "I’ll phone you when I ___ to the hotel.",
         "options": [
           "get",
@@ -131,6 +142,7 @@
       },
       {
         "id": "future-forms-fair-a2-12",
+        "explain": "future-present-simple",
         "q": "The bus to the Albufera ___ at ten o’clock tomorrow morning.",
         "options": [
           "leaves",
@@ -144,6 +156,7 @@
     "B1": [
       {
         "id": "future-forms-fair-b1-01",
+        "explain": "future-continuous-perfect",
         "q": "By the time you arrive, I ___ finished cooking.",
         "options": [
           "will have",
@@ -155,6 +168,7 @@
       },
       {
         "id": "future-forms-fair-b1-02",
+        "explain": "future-present-simple",
         "q": "The meeting ___ at 10am next Monday.",
         "options": [
           "starts",
@@ -166,6 +180,7 @@
       },
       {
         "id": "future-forms-fair-b1-03",
+        "explain": "future-will",
         "q": "I promise I ___ help you tomorrow.",
         "options": [
           "will",
@@ -177,6 +192,7 @@
       },
       {
         "id": "future-forms-fair-b1-04",
+        "explain": "future-going-to",
         "q": "Look at the sky — it ___ to rain any minute.",
         "options": [
           "is going",
@@ -188,6 +204,7 @@
       },
       {
         "id": "future-forms-fair-b1-05",
+        "explain": "future-present-continuous",
         "q": "We ___ to Italy next summer — the flights are already booked.",
         "options": [
           "are going",
@@ -199,6 +216,7 @@
       },
       {
         "id": "future-forms-fair-b1-06",
+        "explain": "future-continuous-perfect",
         "q": "This time next week, I ___ lying on a beach.",
         "options": [
           "will be",
@@ -210,6 +228,7 @@
       },
       {
         "id": "future-forms-fair-b1-07",
+        "explain": "future-present-simple",
         "q": "The plane ___ at 7:45, so we need to leave now.",
         "options": [
           "departs",
@@ -221,6 +240,7 @@
       },
       {
         "id": "future-forms-fair-b1-08",
+        "explain": "future-will",
         "q": "I ___ you when I arrive.",
         "options": [
           "will call",
@@ -232,6 +252,7 @@
       },
       {
         "id": "future-forms-fair-b1-09",
+        "explain": "future-going-to",
         "q": "She’s studying really hard — she ___ pass the exam.",
         "options": [
           "is going to",
@@ -243,6 +264,7 @@
       },
       {
         "id": "future-forms-fair-b1-10",
+        "explain": "future-continuous-perfect",
         "q": "By next year, they ___ married for a decade.",
         "options": [
           "will have been",
@@ -254,6 +276,7 @@
       },
       {
         "id": "future-forms-fair-b1-11",
+        "explain": "future-present-simple",
         "q": "We’ll start the paella as soon as Grandma ___ .",
         "options": [
           "arrives",
@@ -265,6 +288,7 @@
       },
       {
         "id": "future-forms-fair-b1-12",
+        "explain": "future-present-continuous",
         "q": "The sheriff ___ the new deputy at noon tomorrow — it’s all arranged.",
         "options": [
           "is meeting",
@@ -278,6 +302,7 @@
     "B2": [
       {
         "id": "future-forms-fair-b2-01",
+        "explain": "future-continuous-perfect",
         "q": "By 2030, scientists ___ found a cure, according to experts.",
         "options": [
           "will have",
@@ -289,6 +314,7 @@
       },
       {
         "id": "future-forms-fair-b2-02",
+        "explain": "future-continuous-perfect",
         "q": "This time tomorrow, we ___ flying over the Atlantic.",
         "options": [
           "will be",
@@ -300,6 +326,7 @@
       },
       {
         "id": "future-forms-fair-b2-03",
+        "explain": "future-present-simple",
         "q": "The conference ___ place next month, as scheduled.",
         "options": [
           "takes",
@@ -311,6 +338,7 @@
       },
       {
         "id": "future-forms-fair-b2-04",
+        "explain": "future-continuous-perfect",
         "q": "I can't come — I ___ working late that evening.",
         "options": [
           "will be",
@@ -322,6 +350,7 @@
       },
       {
         "id": "future-forms-fair-b2-05",
+        "explain": "future-going-to",
         "q": "Given the current trend, unemployment ___ rise further.",
         "options": [
           "is going to",
@@ -333,6 +362,7 @@
       },
       {
         "id": "future-forms-fair-b2-06",
+        "explain": "future-continuous-perfect",
         "q": "By the end of this course, you ___ mastered all the tenses.",
         "options": [
           "will have",
@@ -344,6 +374,7 @@
       },
       {
         "id": "future-forms-fair-b2-07",
+        "explain": "future-present-simple",
         "q": "The ceremony ___ at exactly noon tomorrow.",
         "options": [
           "begins",
@@ -355,6 +386,7 @@
       },
       {
         "id": "future-forms-fair-b2-08",
+        "explain": "future-going-to",
         "q": "Watch out — that ladder ___ fall!",
         "options": [
           "is going to",
@@ -366,6 +398,7 @@
       },
       {
         "id": "future-forms-fair-b2-09",
+        "explain": "future-present-continuous",
         "q": "I ___ seeing the doctor at 3pm, so I can't make the meeting.",
         "options": [
           "am",
@@ -377,6 +410,7 @@
       },
       {
         "id": "future-forms-fair-b2-10",
+        "explain": "future-continuous-perfect",
         "q": "By this time next month, she ___ her new job for six weeks.",
         "options": [
           "will have had",
@@ -388,6 +422,7 @@
       },
       {
         "id": "future-forms-fair-b2-11",
+        "explain": "future-continuous-perfect",
         "q": "By the time the doctor arrives, the patient ___ for three hours.",
         "options": [
           "will have been waiting",
@@ -399,6 +434,7 @@
       },
       {
         "id": "future-forms-fair-b2-12",
+        "explain": "future-present-simple",
         "q": "I’ll lend you my saddle, as long as you ___ it back by Friday.",
         "options": [
           "bring",
@@ -412,6 +448,7 @@
     "C1": [
       {
         "id": "future-forms-fair-c1-01",
+        "explain": "future-be-to",
         "q": "The King ___ visit Valencia next week, the palace has announced.",
         "options": [
           "is to",
@@ -423,6 +460,7 @@
       },
       {
         "id": "future-forms-fair-c1-02",
+        "explain": "future-be-to",
         "q": "I ___ call you last night, but I fell asleep on the sofa.",
         "options": [
           "was going to",
@@ -434,6 +472,7 @@
       },
       {
         "id": "future-forms-fair-c1-03",
+        "explain": "future-be-to",
         "q": "The two banks are on the verge ___ merging.",
         "options": [
           "of",
@@ -445,6 +484,7 @@
       },
       {
         "id": "future-forms-fair-c1-04",
+        "explain": "future-be-to",
         "q": "Little did we know that the trip ___ change our lives.",
         "options": [
           "would",
@@ -456,6 +496,7 @@
       },
       {
         "id": "future-forms-fair-c1-05",
+        "explain": "future-continuous-perfect",
         "q": "___ you be using the car this evening? I'd like to borrow it.",
         "options": [
           "Will",
@@ -467,6 +508,7 @@
       },
       {
         "id": "future-forms-fair-c1-06",
+        "explain": "future-be-to",
         "q": "The talks ___ have been held in Geneva, but they were moved to Vienna.",
         "options": [
           "were to",
@@ -478,6 +520,7 @@
       },
       {
         "id": "future-forms-fair-c1-07",
+        "explain": "future-will",
         "q": "Someone's at the door. That ___ be the postman: he always comes at ten.",
         "options": [
           "will",
@@ -489,6 +532,7 @@
       },
       {
         "id": "future-forms-fair-c1-08",
+        "explain": "future-be-to",
         "q": "We ___ off when the storm broke, so we stayed at home.",
         "options": [
           "were about to set",
@@ -500,6 +544,7 @@
       },
       {
         "id": "future-forms-fair-c1-09",
+        "explain": "future-continuous-perfect",
         "q": "The committee ___ its findings by Friday, according to the schedule.",
         "options": [
           "will have submitted",
@@ -511,6 +556,7 @@
       },
       {
         "id": "future-forms-fair-c1-10",
+        "explain": "future-continuous-perfect",
         "q": "By 2050, renewable energy ___ overtaken fossil fuels, most analysts agree.",
         "options": [
           "will have",
@@ -522,6 +568,7 @@
       },
       {
         "id": "future-forms-fair-c1-11",
+        "explain": "future-be-to",
         "q": "The new metro line ___ to open next spring, the council has announced.",
         "options": [
           "is due",
@@ -533,6 +580,7 @@
       },
       {
         "id": "future-forms-fair-c1-12",
+        "explain": "future-present-simple",
         "q": "Once the vaccine ___ approved, doctors will start giving it to the elderly.",
         "options": [
           "has been",

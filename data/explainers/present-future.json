@@ -1,0 +1,213 @@
+{
+  "present-perfect": {
+    "title": "Present perfect",
+    "es": "Se forma como nuestro «he comido» y a veces se usa igual (¿Has estado alguna vez…? = Have you ever been…?). Pero en España decimos «he llegado hace un rato»; en inglés, con ago o un momento terminado, va past simple: I arrived a while ago.",
+    "structure": [
+      "have / has + participio",
+      "has lost · have been · haven't seen"
+    ],
+    "rule": "Lo que importa es la experiencia o el resultado AHORA, no cuándo pasó. Pistas: yet, already, just, ever, never, so far, this week (sin terminar).",
+    "timeline": {
+      "marks": [
+        {
+          "kind": "point",
+          "x": 0.5,
+          "label": "has lost",
+          "tone": "brass"
+        }
+      ],
+      "arrow": [
+        0.5,
+        1
+      ]
+    },
+    "example": {
+      "en": "She has lost her keys, so she can't get in.",
+      "es": "Ha perdido las llaves y no puede entrar."
+    }
+  },
+  "present-perfect-since-for": {
+    "title": "Since / for",
+    "es": "En español usamos el presente: «vive aquí desde 2020», «llevan diez años casados». En inglés eso es present perfect: has lived, have been married.",
+    "structure": [
+      "have / has + participio + since (desde) / for (desde hace)",
+      "since 2020 · for ten years · How long have you known…?"
+    ],
+    "rule": "Si empezó en el pasado y SIGUE hoy, nunca el presente. Since + el momento en que empezó; for + cuánto dura. «¿Desde cuándo…?» = How long have you…?",
+    "timeline": {
+      "marks": [
+        {
+          "kind": "span",
+          "x1": 0.3,
+          "x2": 1,
+          "label": "has lived"
+        },
+        {
+          "kind": "point",
+          "x": 0.3,
+          "label": "since 2020",
+          "tone": "brass"
+        }
+      ]
+    },
+    "example": {
+      "en": "My grandmother has lived in the same street for sixty years.",
+      "es": "Mi abuela vive en la misma calle desde hace sesenta años."
+    }
+  },
+  "past-simple-finished-time": {
+    "title": "Past simple: tiempo terminado",
+    "es": "Es nuestro «fui», «vi», «cené». Ojo con el resultado de hoy: «ya he firmado» es present perfect, pero «lo firmé el martes» es past simple porque dices CUÁNDO.",
+    "structure": [
+      "sujeto + verbo en pasado · pregunta: Did + sujeto + verbo",
+      "went · watched · Did you see…?"
+    ],
+    "rule": "Si dices un CUÁNDO ya terminado (yesterday, last week, in 2019, two days ago, when I was a child), past simple. Pregunta con did, no con have.",
+    "timeline": {
+      "marks": [
+        {
+          "kind": "point",
+          "x": 0.4,
+          "label": "went (in 2019)"
+        }
+      ]
+    },
+    "example": {
+      "en": "We went to Paris in 2019.",
+      "es": "Fuimos a París en 2019."
+    }
+  },
+  "present-perfect-continuous": {
+    "title": "Present perfect continuous",
+    "es": "Es nuestro «llevo + tiempo + gerundio»: «llevo toda la mañana escribiendo», «llevo desde las nueve intentándolo».",
+    "structure": [
+      "have / has been + verbo-ing",
+      "have been writing · has been rising"
+    ],
+    "rule": "Una actividad que empezó antes y sigue, con el foco en CUÁNTO TIEMPO. Si cuentas cosas terminadas (three novels), vuelve al present perfect normal: has written.",
+    "timeline": {
+      "marks": [
+        {
+          "kind": "span",
+          "x1": 0.35,
+          "x2": 1,
+          "label": "have been trying"
+        },
+        {
+          "kind": "point",
+          "x": 0.35,
+          "label": "since nine",
+          "tone": "brass"
+        }
+      ]
+    },
+    "example": {
+      "en": "I've been trying to call the bank since nine.",
+      "es": "Llevo desde las nueve intentando llamar al banco."
+    }
+  },
+  "future-will": {
+    "title": "Will",
+    "es": "Es como nuestro futuro: «lloverá», «te ayudaré». Ojo: en español prometemos y decidimos en presente («te llamo esta noche»); en inglés eso es will: I'll call you. Y para suponer: «será el cartero» = That will be the postman.",
+    "structure": [
+      "will + verbo (sin to) · I'll · won't",
+      "I'll call you · I think it will rain · I won't forget"
+    ],
+    "rule": "Lo que decides en el momento, lo que prometes u ofreces, y lo que opinas sin pruebas (I think, probably). Si ya estaba planeado, normalmente going to.",
+    "example": {
+      "en": "I promise I'll call you tonight.",
+      "es": "Te prometo que te llamo esta noche."
+    }
+  },
+  "future-going-to": {
+    "title": "Going to",
+    "es": "Es nuestro «voy a + infinitivo»: «voy a llamar», «va a llover». Aquí el español y el inglés van de la mano.",
+    "structure": [
+      "am / is / are + going to + verbo",
+      "It's going to rain · You're going to drop it"
+    ],
+    "rule": "Un plan que ya tenías en la cabeza, o algo que VES venir por una prueba de ahora (look at those clouds!). Nunca sin am / is / are.",
+    "example": {
+      "en": "Look at those clouds! It's going to rain.",
+      "es": "¡Mira esas nubes! Va a llover."
+    }
+  },
+  "future-present-continuous": {
+    "title": "Present continuous para el futuro",
+    "es": "En español decimos «esta noche vamos al cine» o «he quedado con Sarah a las cinco». En inglés, un plan ya cerrado va en presente continuo: We're going to the cinema tonight.",
+    "structure": [
+      "am / is / are + verbo-ing + cuándo",
+      "I'm meeting Sarah at 5 · We're flying on Friday"
+    ],
+    "rule": "Si está en la agenda (entradas compradas, cita, vuelo reservado), present continuous. Casi siempre lleva hora o fecha: tonight, at 5, next Saturday.",
+    "example": {
+      "en": "I'm seeing the doctor at three, so I can't come to the meeting.",
+      "es": "Tengo médico a las tres, así que no puedo ir a la reunión."
+    }
+  },
+  "future-present-simple": {
+    "title": "Present simple para el futuro",
+    "es": "Como en español: «el tren sale a las nueve». Ojo con when: decimos «cuando llegue» (subjuntivo), y el inglés pone presente simple, nunca will: when I get there.",
+    "structure": [
+      "horarios: The bus leaves at 10 · tras when, as soon as, once, as long as: presente",
+      "The train leaves at 9 · as soon as Grandma arrives"
+    ],
+    "rule": "Horarios y programas fijos (trenes, tiendas, ceremonias) van en presente, aunque sean de mañana. Después de when, as soon as, once o as long as, nunca will (o present perfect si algo termina antes: once it has been approved).",
+    "example": {
+      "en": "I'll phone you when I get to the hotel.",
+      "es": "Te llamo cuando llegue al hotel."
+    }
+  },
+  "future-continuous-perfect": {
+    "title": "Will be -ing / will have + participio",
+    "es": "Son nuestro «estaré + gerundio» y «habré + participio»: «mañana a esta hora estaré volando», «para entonces habré terminado».",
+    "structure": [
+      "will be + verbo-ing · will have + participio (nunca will has)",
+      "will be flying · will have finished"
+    ],
+    "rule": "This time tomorrow: will be -ing, algo EN MARCHA. By Friday: will have + participio, algo ya HECHO. Will you be using…? pregunta planes con educación.",
+    "example": {
+      "en": "By the time you arrive, I'll have finished cooking.",
+      "es": "Para cuando llegues, ya habré terminado de cocinar."
+    }
+  },
+  "future-be-to": {
+    "title": "Be to, be due to, be about to",
+    "es": "Son fórmulas de noticias y horarios: «está previsto que», «está a punto de». Y desde el pasado: «iba a» = was going to / was about to; «iría» = would.",
+    "structure": [
+      "be to / be due to + verbo · be about to + verbo · on the verge of + -ing",
+      "is to visit · is due to open · was about to leave"
+    ],
+    "rule": "Be to y be due to: planes oficiales. Be about to y on the verge of: algo inminente. Was / were to have + participio: un plan que al final no ocurrió.",
+    "example": {
+      "en": "The King is to visit Valencia next week.",
+      "es": "Está previsto que el Rey visite Valencia la semana que viene."
+    }
+  },
+  "irregular-past-simple": {
+    "title": "Past simple irregular (2.ª forma)",
+    "es": "Es nuestro «fui», «vi», «tuve». Muchos verbos no añaden -ed y cambian del todo: go, went. Ojo con parejas parecidas: lie (tumbarse) → lay; lay (poner) → laid; rise → rose; raise → raised.",
+    "structure": [
+      "infinitivo · PAST SIMPLE · participio",
+      "go, went, gone · see, saw, seen · buy, bought, bought"
+    ],
+    "rule": "La 2.ª forma va sola, sin have: I went, she saw. Muchas van por familias que suenan igual: bought, thought, sought · slept, kept, wept.",
+    "example": {
+      "en": "We went to the market and bought some oranges.",
+      "es": "Fuimos al mercado y compramos naranjas."
+    }
+  },
+  "irregular-past-participle": {
+    "title": "Past participle (3.ª forma)",
+    "es": "Es nuestro participio: «ido», «visto», «roto». Como en español («he roto», «fue robado»), para formar el verbo necesita have o be; solo, funciona como adjetivo: a broken window.",
+    "structure": [
+      "infinitivo · past simple · PARTICIPIO",
+      "break, broke, broken · fly, flew, flown · swim, swam, swum"
+    ],
+    "rule": "Después de have (present perfect) o be (pasiva), usa la 3.ª forma: I have broken, it was stolen. Muchas acaban en -en o -n (taken, flown, worn); otras siguen el patrón i-a-u: drink, drank, drunk.",
+    "example": {
+      "en": "Someone has stolen the sheriff's horse.",
+      "es": "Alguien ha robado el caballo del sheriff."
+    }
+  }
+}

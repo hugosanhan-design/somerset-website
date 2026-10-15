@@ -10,6 +10,7 @@
     "A2": [
       {
         "id": "time-traveller-a2-01",
+        "explain": "past-simple-finished-time",
         "q": "I ___ to London last year.",
         "options": [
           "went",
@@ -21,6 +22,7 @@
       },
       {
         "id": "time-traveller-a2-02",
+        "explain": "present-perfect",
         "q": "I ___ sushi many times in my life.",
         "options": [
           "have eaten",
@@ -32,6 +34,7 @@
       },
       {
         "id": "time-traveller-a2-03",
+        "explain": "present-perfect",
         "q": "She ___ her keys. She can't find them.",
         "options": [
           "has lost",
@@ -43,6 +46,7 @@
       },
       {
         "id": "time-traveller-a2-04",
+        "explain": "past-simple-finished-time",
         "q": "We ___ the film yesterday evening.",
         "options": [
           "watched",
@@ -54,6 +58,7 @@
       },
       {
         "id": "time-traveller-a2-05",
+        "explain": "present-perfect-since-for",
         "q": "He ___ here since 2020.",
         "options": [
           "has lived",
@@ -65,6 +70,7 @@
       },
       {
         "id": "time-traveller-a2-06",
+        "explain": "past-simple-finished-time",
         "q": "They ___ dinner an hour ago.",
         "options": [
           "had",
@@ -76,6 +82,7 @@
       },
       {
         "id": "time-traveller-a2-07",
+        "explain": "present-perfect",
         "q": "___ you finished your coffee yet?",
         "options": [
           "Have",
@@ -87,6 +94,7 @@
       },
       {
         "id": "time-traveller-a2-08",
+        "explain": "past-simple-finished-time",
         "q": "I ___ this book last month.",
         "options": [
           "read",
@@ -98,6 +106,7 @@
       },
       {
         "id": "time-traveller-a2-09",
+        "explain": "present-perfect",
         "q": "My sister has just ___ home.",
         "options": [
           "arrived",
@@ -109,6 +118,7 @@
       },
       {
         "id": "time-traveller-a2-10",
+        "explain": "past-simple-finished-time",
         "q": "We ___ to Paris in 2019.",
         "options": [
           "went",
@@ -120,6 +130,7 @@
       },
       {
         "id": "time-traveller-a2-11",
+        "explain": "present-perfect-since-for",
         "q": "My grandmother ___ in Valencia all her life — she still lives in the same street.",
         "options": [
           "has lived",
@@ -131,6 +142,7 @@
       },
       {
         "id": "time-traveller-a2-12",
+        "explain": "past-simple-finished-time",
         "q": "The sheriff ___ the bank robbers two days ago.",
         "options": [
           "caught",
@@ -144,6 +156,7 @@
     "B1": [
       {
         "id": "time-traveller-b1-01",
+        "explain": "present-perfect",
         "q": "It’s only ten o’clock, and I ___ three cups of coffee so far this morning.",
         "options": [
           "have had",
@@ -155,6 +168,7 @@
       },
       {
         "id": "time-traveller-b1-02",
+        "explain": "present-perfect",
         "q": "She ___ to Japan twice so far.",
         "options": [
           "has been",
@@ -166,6 +180,7 @@
       },
       {
         "id": "time-traveller-b1-03",
+        "explain": "past-simple-finished-time",
         "q": "We ___ that restaurant last Friday.",
         "options": [
           "tried",
@@ -177,6 +192,7 @@
       },
       {
         "id": "time-traveller-b1-04",
+        "explain": "present-perfect-since-for",
         "q": "He ___ his car since he got his licence.",
         "options": [
           "has had",
@@ -188,6 +204,7 @@
       },
       {
         "id": "time-traveller-b1-05",
+        "explain": "past-simple-finished-time",
         "q": "___ you see Maria at the party last night?",
         "options": [
           "Did",
@@ -199,7 +216,8 @@
       },
       {
         "id": "time-traveller-b1-06",
-        "q": "I ___ my keys this morning — I still can't find them.",
+        "explain": "present-perfect",
+        "q": "I ___ my keys — I still can't find them.",
         "options": [
           "have lost",
           "had lost",
@@ -210,6 +228,7 @@
       },
       {
         "id": "time-traveller-b1-07",
+        "explain": "present-perfect-since-for",
         "q": "They ___ married for ten years now.",
         "options": [
           "have been",
@@ -221,6 +240,7 @@
       },
       {
         "id": "time-traveller-b1-08",
+        "explain": "past-simple-finished-time",
         "q": "She ___ her degree in 2018.",
         "options": [
           "finished",
@@ -232,6 +252,7 @@
       },
       {
         "id": "time-traveller-b1-09",
+        "explain": "present-perfect",
         "q": "I ___ never seen such a beautiful place.",
         "options": [
           "have",
@@ -243,6 +264,7 @@
       },
       {
         "id": "time-traveller-b1-10",
+        "explain": "present-perfect-since-for",
         "q": "We ___ here for six months now.",
         "options": [
           "have lived",
@@ -254,6 +276,7 @@
       },
       {
         "id": "time-traveller-b1-11",
+        "explain": "present-perfect-since-for",
         "q": "Penicillin ___ millions of lives since Fleming discovered it.",
         "options": [
           "has saved",
@@ -265,6 +288,7 @@
       },
       {
         "id": "time-traveller-b1-12",
+        "explain": "past-simple-finished-time",
         "q": "My grandparents ___ to Valencia in 1965.",
         "options": [
           "moved",
@@ -278,6 +302,7 @@
     "B2": [
       {
         "id": "time-traveller-b2-01",
+        "explain": "present-perfect",
         "q": "I ___ him so far today — maybe he’s ill.",
         "options": [
           "haven't seen",
@@ -289,6 +314,7 @@
       },
       {
         "id": "time-traveller-b2-02",
+        "explain": "present-perfect-since-for",
         "q": "She ___ in Valencia for ten years now, and she has no plans to leave.",
         "options": [
           "has lived",
@@ -300,6 +326,7 @@
       },
       {
         "id": "time-traveller-b2-03",
+        "explain": "present-perfect",
         "q": "This week ___ very busy so far.",
         "options": [
           "has been",
@@ -311,6 +338,7 @@
       },
       {
         "id": "time-traveller-b2-04",
+        "explain": "past-simple-finished-time",
         "q": "He ___ his job last week — he's now unemployed.",
         "options": [
           "lost",
@@ -322,6 +350,7 @@
       },
       {
         "id": "time-traveller-b2-05",
+        "explain": "present-perfect-since-for",
         "q": "How long ___ each other? Since university, so about thirty years.",
         "options": [
           "have you known",
@@ -333,6 +362,7 @@
       },
       {
         "id": "time-traveller-b2-06",
+        "explain": "present-perfect",
         "q": "She ___ to five countries so far this year.",
         "options": [
           "has been",
@@ -344,6 +374,7 @@
       },
       {
         "id": "time-traveller-b2-07",
+        "explain": "present-perfect-since-for",
         "q": "We ___ any news from the lab since Monday.",
         "options": [
           "haven't received",
@@ -355,6 +386,7 @@
       },
       {
         "id": "time-traveller-b2-08",
+        "explain": "present-perfect",
         "q": "Don't worry, I ___ it already.",
         "options": [
           "have done",
@@ -366,6 +398,7 @@
       },
       {
         "id": "time-traveller-b2-09",
+        "explain": "past-simple-finished-time",
         "q": "___ you ever meet my grandfather? He died in 2010.",
         "options": [
           "Did",
@@ -377,6 +410,7 @@
       },
       {
         "id": "time-traveller-b2-10",
+        "explain": "present-perfect-continuous",
         "q": "I ___ in this flat since I came to Valencia, but I'm moving next month.",
         "options": [
           "have been living",
@@ -388,6 +422,7 @@
       },
       {
         "id": "time-traveller-b2-11",
+        "explain": "present-perfect-since-for",
         "q": "The old cowboy ___ a horse since his accident in the 1990s.",
         "options": [
           "hasn’t ridden",
@@ -399,6 +434,7 @@
       },
       {
         "id": "time-traveller-b2-12",
+        "explain": "past-simple-finished-time",
         "q": "When I was a child, my family ___ to the Fallas every March.",
         "options": [
           "went",
@@ -412,6 +448,7 @@
     "C1": [
       {
         "id": "time-traveller-c1-01",
+        "explain": "past-perfect",
         "q": "It was the first time she ___ a speech in public, and her hands were shaking.",
         "options": [
           "had given",
@@ -423,6 +460,7 @@
       },
       {
         "id": "time-traveller-c1-02",
+        "explain": "present-perfect-continuous",
         "q": "I ___ the report all morning, and I still haven't finished it.",
         "options": [
           "have been writing",
@@ -434,6 +472,7 @@
       },
       {
         "id": "time-traveller-c1-03",
+        "explain": "present-perfect-continuous",
         "q": "She ___ three novels since she retired, and she's working on a fourth.",
         "options": [
           "has written",
@@ -445,6 +484,7 @@
       },
       {
         "id": "time-traveller-c1-04",
+        "explain": "present-perfect-since-for",
         "q": "Hardly a week ___ without some new scandal since the election.",
         "options": [
           "has gone by",
@@ -456,6 +496,7 @@
       },
       {
         "id": "time-traveller-c1-05",
+        "explain": "past-simple-finished-time",
         "q": "We ___ the contract last Tuesday, so it's now legally binding.",
         "options": [
           "signed",
@@ -467,6 +508,7 @@
       },
       {
         "id": "time-traveller-c1-06",
+        "explain": "present-perfect-continuous",
         "q": "Prices ___ steadily for the past decade, and analysts expect the trend to continue.",
         "options": [
           "have been rising",
@@ -478,6 +520,7 @@
       },
       {
         "id": "time-traveller-c1-07",
+        "explain": "present-perfect-continuous",
         "q": "I ___ to get through to the bank since nine, and I'm still on hold.",
         "options": [
           "have been trying",
@@ -489,6 +532,7 @@
       },
       {
         "id": "time-traveller-c1-08",
+        "explain": "present-perfect",
         "q": "This ___ the hottest summer on record so far, and August isn't over yet.",
         "options": [
           "has been",
@@ -500,6 +544,7 @@
       },
       {
         "id": "time-traveller-c1-09",
+        "explain": "past-simple-finished-time",
         "q": "The government ___ new regulations last year, and they remain in force.",
         "options": [
           "introduced",
@@ -511,6 +556,7 @@
       },
       {
         "id": "time-traveller-c1-10",
+        "explain": "present-perfect",
         "q": "That's the third time this week the lift ___ down.",
         "options": [
           "has broken",
@@ -522,6 +568,7 @@
       },
       {
         "id": "time-traveller-c1-11",
+        "explain": "present-perfect-since-for",
         "q": "Ever since Jenner’s first vaccine, doctors ___ that prevention is better than cure.",
         "options": [
           "have argued",
@@ -533,6 +580,7 @@
       },
       {
         "id": "time-traveller-c1-12",
+        "explain": "past-simple-finished-time",
         "q": "The last stagecoach ___ through the town over a century ago, but the old inn still stands.",
         "options": [
           "rolled",

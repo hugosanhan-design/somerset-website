@@ -1,0 +1,184 @@
+{
+  "article-a-an": {
+    "title": "A / an",
+    "es": "Es nuestro «un / una». Pero ojo: en inglés también va con profesiones, donde en español no ponemos nada: «Es médico» → He's a doctor.",
+    "structure": [
+      "a + sonido de consonante · an + sonido de vocal",
+      "a dog · an apple · an hour · a university"
+    ],
+    "rule": "Una cosa cualquiera, contable y en singular, o la profesión de alguien. Elige por cómo SUENA, no por cómo se escribe: an hour, a university.",
+    "example": {
+      "en": "My great-grandfather was a cowboy in Texas.",
+      "es": "Mi bisabuelo era vaquero en Texas."
+    }
+  },
+  "article-the": {
+    "title": "The",
+    "es": "Es nuestro «el, la, los, las», pero en inglés se usa bastante menos: sobre todo cuando sabemos de qué cosa concreta hablamos.",
+    "structure": [
+      "the + algo concreto, conocido o único",
+      "the sun · the door · the book on the table"
+    ],
+    "rule": "Usa the si los dos sabemos CUÁL: solo hay uno (the sun), ya está claro (close the door) o lo concretas (the history of Spain). También: play the guitar, the 1920s, the rich.",
+    "example": {
+      "en": "The book on the table is mine.",
+      "es": "El libro que está en la mesa es mío."
+    }
+  },
+  "article-zero-general": {
+    "title": "No article: things in general",
+    "es": "La gran trampa. En español decimos «Me gustan los perros», «la música», «la vida». En inglés, para hablar en general, no se pone artículo.",
+    "structure": [
+      "plural o incontable, sin artículo",
+      "I like dogs · Music relaxes me · Life is hard"
+    ],
+    "rule": "Si hablas de algo en general (todos los perros, la vida en sí), sin artículo. Solo pones the cuando es algo concreto: the dogs next door.",
+    "example": {
+      "en": "In general, dogs are loyal animals.",
+      "es": "En general, los perros son animales leales."
+    }
+  },
+  "article-zero-phrases": {
+    "title": "No article: fixed phrases",
+    "es": "En español decimos «ir al colegio», «ir a la cama», «estar en el hospital». En inglés estas expresiones van sin artículo.",
+    "structure": [
+      "go to / be at + school, work, church · go to / be in + bed, hospital, prison",
+      "have lunch · go by bus · play tennis · elected mayor"
+    ],
+    "rule": "Si vas para lo que sirve el sitio (estudiar, dormir, curarte), sin artículo; si solo vas de visita, the: I went to the hospital to visit him. Igual con cargos: elected mayor.",
+    "example": {
+      "en": "He was taken to hospital after the accident.",
+      "es": "Lo llevaron al hospital después del accidente."
+    }
+  },
+  "uncountable-spanish-trap": {
+    "title": "Uncountable in English, countable in Spanish",
+    "es": "En español decimos «un consejo», «una información», «los muebles». En inglés advice, information, furniture y news son incontables: nunca llevan a ni -s (news acaba en -s, pero es singular: The news is good).",
+    "structure": [
+      "sin a/an, sin -s, verbo en singular",
+      "some advice · a piece of advice · The news is good"
+    ],
+    "rule": "Nunca «an advice» ni «informations». Para contar uno, di a piece of: a piece of advice, a piece of furniture.",
+    "example": {
+      "en": "She gave me some good advice about the flat.",
+      "es": "Me dio unos buenos consejos sobre el piso."
+    }
+  },
+  "uncountable-basics": {
+    "title": "Uncountable nouns",
+    "es": "Igual que en español: no decimos «tres dineros» ni «dos tráficos». Money, bread, rice, music o weather se tratan como una masa.",
+    "structure": [
+      "sin a/an, sin -s, verbo en singular",
+      "some bread · a slice of bread · a glass of milk"
+    ],
+    "rule": "Si no lo puedes contar uno a uno, no lleva a ni -s. Para contarlo, usa un envase o un trozo: a glass of, a slice of, a bag of.",
+    "example": {
+      "en": "We need some rice for the paella.",
+      "es": "Necesitamos arroz para la paella."
+    }
+  },
+  "quantity-much-many": {
+    "title": "Much / many / a lot of",
+    "es": "En español todo es «mucho»: mucho dinero, muchos libros. En inglés depende de si se puede contar.",
+    "structure": [
+      "much + incontable · many + plural · a lot of + los dos",
+      "much money · many books · a lot of water"
+    ],
+    "rule": "Much y many van sobre todo en preguntas y negativas (How many…? I don't have much…). En frases afirmativas, lo normal es a lot of; many también es correcto, solo más formal: There are many students.",
+    "example": {
+      "en": "The cowboys didn't have much water in the desert.",
+      "es": "Los vaqueros no tenían mucha agua en el desierto."
+    }
+  },
+  "quantity-few-little": {
+    "title": "A few / a little / few / little",
+    "es": "Few y little son «poco/s»; a few y a little son «unos pocos / un poco». Esa a pequeñita cambia el sentido.",
+    "structure": [
+      "a few / few + plural · a little / little + incontable",
+      "a few euros · few friends · a little milk · little hope"
+    ],
+    "rule": "Con a, el vaso medio lleno: hay algo, suficiente. Sin a, el vaso medio vacío: casi nada, y es una pena.",
+    "example": {
+      "en": "There's a little milk left, enough for one coffee.",
+      "es": "Queda un poco de leche, suficiente para un café."
+    }
+  },
+  "quantity-great-deal-number": {
+    "title": "A great deal of / a number of / plenty of",
+    "es": "Son formas más cuidadas de decir «mucho/s». La trampa: deal va con lo que no se cuenta y number con lo que sí.",
+    "structure": [
+      "a great deal of + incontable · a number of + plural · plenty of + los dos",
+      "a great deal of time · a number of complaints · plenty of options"
+    ],
+    "rule": "Deal = dinero, tiempo, paciencia (masa). Number = personas, quejas, votos (se cuentan, y el verbo va en plural); igual con a majority of. Plenty of = de sobra, vale para todo.",
+    "example": {
+      "en": "A number of complaints were received.",
+      "es": "Se recibieron varias quejas."
+    }
+  },
+  "quantity-formal": {
+    "title": "A wealth of / a dearth of / scarce",
+    "es": "Vocabulario formal de cantidad, como nuestro «abundancia», «escasez» o «una fracción».",
+    "structure": [
+      "mucho: a wealth of · an abundance of · no shortage of · ample · copious",
+      "poco: a dearth of · scarce · una parte pequeña: a fraction of"
+    ],
+    "rule": "Apréndelos por parejas de opuestos: a wealth of (riqueza) frente a a dearth of (escasez), ample frente a scarce.",
+    "example": {
+      "en": "The archive contains a wealth of historical documents.",
+      "es": "El archivo es riquísimo en documentos históricos."
+    }
+  },
+  "indirect-question-wh": {
+    "title": "Indirect questions (where, what, how…)",
+    "es": "En español casi no cambia: «¿Dónde está?» → «¿Sabes dónde está?». En inglés sí: la pregunta de dentro vuelve al orden normal de frase.",
+    "structure": [
+      "Could you tell me / I wonder + where, what, how… + sujeto + verbo",
+      "where the station is · what she wants · when the market opens"
+    ],
+    "rule": "Después de Could you tell me…, Do you know…, I wonder…: sujeto ANTES del verbo, y fuera do, does y did. Where the station is, nunca «where is the station».",
+    "example": {
+      "en": "Could you tell me where the station is?",
+      "es": "¿Me puedes decir dónde está la estación?"
+    }
+  },
+  "indirect-question-if-whether": {
+    "title": "Indirect yes/no questions: if / whether",
+    "es": "Es nuestro «si»: «¿Sabes si la tienda está abierta?». En inglés, igual: if o whether, y luego orden normal.",
+    "structure": [
+      "if / whether + sujeto + verbo",
+      "if the shop is open · whether he's coming"
+    ],
+    "rule": "Si la pregunta original se contesta con sí o no (Is the shop open?), mete if o whether y pon el sujeto delante: if the shop is open.",
+    "example": {
+      "en": "Do you know if the shop is open?",
+      "es": "¿Sabes si la tienda está abierta?"
+    }
+  },
+  "indirect-question-reported": {
+    "title": "Reported questions (asked, wanted to know)",
+    "es": "Como en español: «Me preguntó cómo me llamaba». El verbo da un paso atrás en el tiempo y el orden es el de una frase normal.",
+    "structure": [
+      "asked / wanted to know + where, what, if… + sujeto + verbo en pasado",
+      "what my name was · where I had been · when the train would arrive"
+    ],
+    "rule": "Ya no es una pregunta, así que no hay interrogación ni inversión: sujeto + verbo. Y el verbo va hacia atrás: is → was, will → would.",
+    "example": {
+      "en": "She asked me what my name was.",
+      "es": "Me preguntó cómo me llamaba."
+    }
+  },
+  "indirect-question-subject": {
+    "title": "When who / what is the subject",
+    "es": "Cuando «qué» o «quién» es quien hace la acción (¿Qué pasó? ¿Quién es el responsable?), el verbo va justo detrás.",
+    "structure": [
+      "who / what + verbo (sin did)",
+      "what happened · who is responsible · what caused it"
+    ],
+    "rule": "Si who o what ES el sujeto, el orden es el mismo que en la pregunta directa, y nunca lleva did: what happened, no «what did it happen».",
+    "example": {
+      "en": "Do you have any idea what happened?",
+      "es": "¿Tienes idea de qué ha pasado?"
+    }
+  }
+}
