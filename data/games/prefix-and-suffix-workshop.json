@@ -1,65 +1,548 @@
 {
   "id": "prefix-and-suffix-workshop",
   "title": "Prefix & Suffix Workshop",
-  "tags": ["vocabulary", "spelling"],
+  "tags": [
+    "vocabulary",
+    "spelling"
+  ],
   "engine": "choice",
   "intro": "Unclear, disagree, kindness. Pick the form of the word that fits the gap.",
   "items": {
     "A2": [
-      {"id": "prefix-and-suffix-workshop-a2-01", "q": "The instructions were completely ___ (clear) — nobody could follow them.", "options": ["unclear", "disclear", "clearless"], "answer": 0, "why": "“Nobody could follow them”, so not clear: un- makes the opposite."},
-      {"id": "prefix-and-suffix-workshop-a2-02", "q": "She was very ___ (care) with the antique vase.", "options": ["careful", "caring", "carely"], "answer": 0, "why": "Taking care with a vase: “careful”. “Caring” is about being kind to people."},
-      {"id": "prefix-and-suffix-workshop-a2-03", "q": "He felt ___ (hope) after losing his job and saw no way out.", "options": ["hopeless", "unhope", "hopeful"], "answer": 0, "why": "Losing his job and no way out: -less means without, so without hope."},
-      {"id": "prefix-and-suffix-workshop-a2-04", "q": "The room was in complete ___ (dark).", "options": ["darkness", "darkful", "undark"], "answer": 0, "why": "After “complete” we need a noun: dark + -ness."},
-      {"id": "prefix-and-suffix-workshop-a2-05", "q": "There’s far too much work. It’s ___ (possible) to finish this by Friday.", "options": ["impossible", "unpossible", "dispossible"], "answer": 0, "why": "Far too much work, so it cannot be done: before p the opposite takes im-, “impossible”."},
-      {"id": "prefix-and-suffix-workshop-a2-06", "q": "That was a very ___ (help) thing to do.", "options": ["helpful", "helpless", "unhelp"], "answer": 0, "why": "A good thing to do: help + -ful, full of help."},
-      {"id": "prefix-and-suffix-workshop-a2-07", "q": "The child was ___ (fear) of the dark.", "options": ["fearful", "fearless", "unfear"], "answer": 0, "why": "Afraid “of the dark”: fear + -ful. “Fearless” means not afraid."},
-      {"id": "prefix-and-suffix-workshop-a2-08", "q": "This bag is ___ (use) — it has a hole in it.", "options": ["useless", "useful", "unuse"], "answer": 0, "why": "A bag with a hole has no use: -less means without."},
-      {"id": "prefix-and-suffix-workshop-a2-09", "q": "Their ___ (kind) surprised everyone.", "options": ["kindness", "kindful", "unkind"], "answer": 0, "why": "After “their” we need a noun: kind + -ness."},
-      {"id": "prefix-and-suffix-workshop-a2-10", "q": "It was ___ (fair) to blame her for the mistake.", "options": ["unfair", "fairless", "disfair"], "answer": 0, "why": "Blaming her for a mistake was not fair: un- makes the opposite."},
-      {"id": "prefix-and-suffix-workshop-a2-11", "q": "The cowboy was very ___ (luck) — his horse lost a shoe in the desert.", "options": ["unlucky", "dislucky", "inlucky"], "answer": 0, "why": "A lost horseshoe in the desert is bad luck: un- makes the opposite of “lucky”."},
-      {"id": "prefix-and-suffix-workshop-a2-12", "q": "The fruit stalls at the Mercado Central are very ___ (colour): red, green, yellow and orange.", "options": ["colourful", "colourless", "uncolour"], "answer": 0, "why": "Red, green, yellow and orange: full of colour, so colour + -ful."}
+      {
+        "id": "prefix-and-suffix-workshop-a2-01",
+        "q": "The instructions were completely ___ (clear) — nobody could follow them.",
+        "options": [
+          "unclear",
+          "disclear",
+          "clearless"
+        ],
+        "answer": 0,
+        "why": "“Nobody could follow them”, so not clear: un- makes the opposite."
+      },
+      {
+        "id": "prefix-and-suffix-workshop-a2-02",
+        "q": "She was very ___ (care) with the antique vase.",
+        "options": [
+          "careful",
+          "caring",
+          "carely"
+        ],
+        "answer": 0,
+        "why": "Taking care with a vase: “careful”. “Caring” is about being kind to people."
+      },
+      {
+        "id": "prefix-and-suffix-workshop-a2-03",
+        "q": "He felt ___ (hope) after losing his job and saw no way out.",
+        "options": [
+          "hopeless",
+          "unhope",
+          "hopeful"
+        ],
+        "answer": 0,
+        "why": "Losing his job and no way out: -less means without, so without hope."
+      },
+      {
+        "id": "prefix-and-suffix-workshop-a2-04",
+        "q": "The room was in complete ___ (dark).",
+        "options": [
+          "darkness",
+          "darkful",
+          "undark"
+        ],
+        "answer": 0,
+        "why": "After “complete” we need a noun: dark + -ness."
+      },
+      {
+        "id": "prefix-and-suffix-workshop-a2-05",
+        "q": "There’s far too much work. It’s ___ (possible) to finish this by Friday.",
+        "options": [
+          "impossible",
+          "unpossible",
+          "dispossible"
+        ],
+        "answer": 0,
+        "why": "Far too much work, so it cannot be done: before p the opposite takes im-, “impossible”."
+      },
+      {
+        "id": "prefix-and-suffix-workshop-a2-06",
+        "q": "That was a very ___ (help) thing to do.",
+        "options": [
+          "helpful",
+          "helpless",
+          "unhelp"
+        ],
+        "answer": 0,
+        "why": "A good thing to do: help + -ful, full of help."
+      },
+      {
+        "id": "prefix-and-suffix-workshop-a2-07",
+        "q": "The child was ___ (fear) of the dark.",
+        "options": [
+          "fearful",
+          "fearless",
+          "unfear"
+        ],
+        "answer": 0,
+        "why": "Afraid “of the dark”: fear + -ful. “Fearless” means not afraid."
+      },
+      {
+        "id": "prefix-and-suffix-workshop-a2-08",
+        "q": "This bag is ___ (use) — it has a hole in it.",
+        "options": [
+          "useless",
+          "useful",
+          "unuse"
+        ],
+        "answer": 0,
+        "why": "A bag with a hole has no use: -less means without."
+      },
+      {
+        "id": "prefix-and-suffix-workshop-a2-09",
+        "q": "Their ___ (kind) surprised everyone.",
+        "options": [
+          "kindness",
+          "kindful",
+          "unkind"
+        ],
+        "answer": 0,
+        "why": "After “their” we need a noun: kind + -ness."
+      },
+      {
+        "id": "prefix-and-suffix-workshop-a2-10",
+        "q": "It was ___ (fair) to blame her for the mistake.",
+        "options": [
+          "unfair",
+          "fairless",
+          "disfair"
+        ],
+        "answer": 0,
+        "why": "Blaming her for a mistake was not fair: un- makes the opposite."
+      },
+      {
+        "id": "prefix-and-suffix-workshop-a2-11",
+        "q": "The cowboy was very ___ (luck) — his horse lost a shoe in the desert.",
+        "options": [
+          "unlucky",
+          "dislucky",
+          "inlucky"
+        ],
+        "answer": 0,
+        "why": "A lost horseshoe in the desert is bad luck: un- makes the opposite of “lucky”."
+      },
+      {
+        "id": "prefix-and-suffix-workshop-a2-12",
+        "q": "The fruit stalls at the Mercado Central are very ___ (colour): red, green, yellow and orange.",
+        "options": [
+          "colourful",
+          "colourless",
+          "uncolour"
+        ],
+        "answer": 0,
+        "why": "Red, green, yellow and orange: full of colour, so colour + -ful."
+      }
     ],
     "B1": [
-      {"id": "prefix-and-suffix-workshop-b1-01", "q": "I completely ___ (agree) with that decision: I think it’s a terrible idea.", "options": ["disagree", "misagree", "unagree"], "answer": 0, "why": "A terrible idea means you do not agree, and the opposite of agree takes dis-: “disagree”."},
-      {"id": "prefix-and-suffix-workshop-b1-02", "q": "The waiter ___ (understand) my order and brought something completely different.", "options": ["misunderstood", "disunderstood", "ununderstood"], "answer": 0, "why": "He brought the wrong dish, so he understood wrongly: mis- means badly or wrongly."},
-      {"id": "prefix-and-suffix-workshop-b1-03", "q": "This chair is very ___ (comfort).", "options": ["comfortable", "comfortful", "discomfort"], "answer": 0, "why": "After “very” we need an adjective: comfort + -able."},
-      {"id": "prefix-and-suffix-workshop-b1-04", "q": "He gave a clear ___ (explain) of the rules.", "options": ["explanation", "explaination", "explanement"], "answer": 0, "why": "After “a clear” we need a noun: explain → “explanation” (no i in the middle)."},
-      {"id": "prefix-and-suffix-workshop-b1-05", "q": "The committee strongly ___ (approve) of the plan and voted against it.", "options": ["disapproved", "misapproved", "unapproved"], "answer": 0, "why": "They voted against it, so they did not approve: “disapprove of”."},
-      {"id": "prefix-and-suffix-workshop-b1-06", "q": "That information was completely ___ (lead).", "options": ["misleading", "disleading", "unleading"], "answer": 0, "why": "Information that gives a wrong idea: mis- + leading."},
-      {"id": "prefix-and-suffix-workshop-b1-07", "q": "The instructions are ___ (understand) even for beginners.", "options": ["understandable", "understandful", "misunderstandable"], "answer": 0, "why": "“Even for beginners”, so easy to understand: -able means can be."},
-      {"id": "prefix-and-suffix-workshop-b1-08", "q": "Everything is ready, so it’s ___ (like) that the meeting will be postponed.", "options": ["unlikely", "dislikely", "mislike"], "answer": 0, "why": "Everything is ready, so a delay is not likely: un- + likely gives “unlikely”."},
-      {"id": "prefix-and-suffix-workshop-b1-09", "q": "Her behaviour was completely ___ (accept).", "options": ["unacceptable", "disacceptable", "misacceptable"], "answer": 0, "why": "Not acceptable: un- + accept + -able."},
-      {"id": "prefix-and-suffix-workshop-b1-10", "q": "The company faced ___ (satisfy) customers after the delay.", "options": ["dissatisfied", "insatisfied", "missatisfied"], "answer": 0, "why": "Unhappy customers after a delay: the opposite of satisfied takes dis-."},
-      {"id": "prefix-and-suffix-workshop-b1-11", "q": "In the past, doctors often ___ (diagnose) the disease because the symptoms looked like flu.", "options": ["misdiagnosed", "disdiagnosed", "undiagnosed"], "answer": 0, "why": "Mistaken for flu, so diagnosed wrongly: mis- means wrongly."},
-      {"id": "prefix-and-suffix-workshop-b1-12", "q": "The new tram line to the beach in Valencia was very ___ (success).", "options": ["successful", "successly", "successive"], "answer": 0, "why": "After “very” we need an adjective: success + -ful."}
+      {
+        "id": "prefix-and-suffix-workshop-b1-01",
+        "q": "I completely ___ (agree) with that decision: I think it’s a terrible idea.",
+        "options": [
+          "disagree",
+          "misagree",
+          "unagree"
+        ],
+        "answer": 0,
+        "why": "A terrible idea means you do not agree, and the opposite of agree takes dis-: “disagree”."
+      },
+      {
+        "id": "prefix-and-suffix-workshop-b1-02",
+        "q": "The waiter ___ (understand) my order and brought something completely different.",
+        "options": [
+          "misunderstood",
+          "disunderstood",
+          "ununderstood"
+        ],
+        "answer": 0,
+        "why": "He brought the wrong dish, so he understood wrongly: mis- means badly or wrongly."
+      },
+      {
+        "id": "prefix-and-suffix-workshop-b1-03",
+        "q": "This chair is very ___ (comfort).",
+        "options": [
+          "comfortable",
+          "comfortful",
+          "discomfort"
+        ],
+        "answer": 0,
+        "why": "After “very” we need an adjective: comfort + -able."
+      },
+      {
+        "id": "prefix-and-suffix-workshop-b1-04",
+        "q": "He gave a clear ___ (explain) of the rules.",
+        "options": [
+          "explanation",
+          "explaination",
+          "explanement"
+        ],
+        "answer": 0,
+        "why": "After “a clear” we need a noun: explain → “explanation” (no i in the middle)."
+      },
+      {
+        "id": "prefix-and-suffix-workshop-b1-05",
+        "q": "The committee strongly ___ (approve) of the plan and voted against it.",
+        "options": [
+          "disapproved",
+          "misapproved",
+          "unapproved"
+        ],
+        "answer": 0,
+        "why": "They voted against it, so they did not approve: “disapprove of”."
+      },
+      {
+        "id": "prefix-and-suffix-workshop-b1-06",
+        "q": "That information was completely ___ (lead).",
+        "options": [
+          "misleading",
+          "disleading",
+          "unleading"
+        ],
+        "answer": 0,
+        "why": "Information that gives a wrong idea: mis- + leading."
+      },
+      {
+        "id": "prefix-and-suffix-workshop-b1-07",
+        "q": "The instructions are ___ (understand) even for beginners.",
+        "options": [
+          "understandable",
+          "understandful",
+          "misunderstandable"
+        ],
+        "answer": 0,
+        "why": "“Even for beginners”, so easy to understand: -able means can be."
+      },
+      {
+        "id": "prefix-and-suffix-workshop-b1-08",
+        "q": "Everything is ready, so it’s ___ (like) that the meeting will be postponed.",
+        "options": [
+          "unlikely",
+          "dislikely",
+          "inlikely"
+        ],
+        "answer": 0,
+        "why": "Everything is ready, so a delay is not likely: un- + likely gives “unlikely”."
+      },
+      {
+        "id": "prefix-and-suffix-workshop-b1-09",
+        "q": "Her behaviour was completely ___ (accept).",
+        "options": [
+          "unacceptable",
+          "disacceptable",
+          "misacceptable"
+        ],
+        "answer": 0,
+        "why": "Not acceptable: un- + accept + -able."
+      },
+      {
+        "id": "prefix-and-suffix-workshop-b1-10",
+        "q": "The company faced ___ (satisfy) customers after the delay.",
+        "options": [
+          "dissatisfied",
+          "insatisfied",
+          "missatisfied"
+        ],
+        "answer": 0,
+        "why": "Unhappy customers after a delay: the opposite of satisfied takes dis-."
+      },
+      {
+        "id": "prefix-and-suffix-workshop-b1-11",
+        "q": "In the past, doctors often ___ (diagnose) the disease because the symptoms looked like flu.",
+        "options": [
+          "misdiagnosed",
+          "disdiagnosed",
+          "undiagnosed"
+        ],
+        "answer": 0,
+        "why": "Mistaken for flu, so diagnosed wrongly: mis- means wrongly."
+      },
+      {
+        "id": "prefix-and-suffix-workshop-b1-12",
+        "q": "The new tram line to the beach in Valencia was very ___ (success).",
+        "options": [
+          "successful",
+          "successly",
+          "successive"
+        ],
+        "answer": 0,
+        "why": "After “very” we need an adjective: success + -ful."
+      }
     ],
     "B2": [
-      {"id": "prefix-and-suffix-workshop-b2-01", "q": "The government announced a new ___ (develop) plan.", "options": ["development", "developement", "developness"], "answer": 0, "why": "A noun before “plan”: develop + -ment, with no extra e."},
-      {"id": "prefix-and-suffix-workshop-b2-02", "q": "His ___ (react) to the news was unexpected.", "options": ["reaction", "reactness", "reactivity"], "answer": 0, "why": "After “His” we need a noun: react + -ion."},
-      {"id": "prefix-and-suffix-workshop-b2-03", "q": "The company decided to ___ (structure) after the merger.", "options": ["restructure", "destructure", "misstructure"], "answer": 0, "why": "Organise again after a merger: re- means again."},
-      {"id": "prefix-and-suffix-workshop-b2-04", "q": "She felt ___ (whelm) by the amount of work and burst into tears.", "options": ["overwhelmed", "underwhelmed", "unwhelmed"], "answer": 0, "why": "Too much work and tears: over- means too much."},
-      {"id": "prefix-and-suffix-workshop-b2-05", "q": "The time needed for the project was ___ (estimate): it took twice as long as planned.", "options": ["underestimated", "overestimated", "disestimated"], "answer": 0, "why": "It took twice as long as planned: the estimate was too low, so under-."},
-      {"id": "prefix-and-suffix-workshop-b2-06", "q": "Her new novel received widespread ___ (popular).", "options": ["popularity", "popularness", "populariness"], "answer": 0, "why": "After “widespread” we need a noun: popular + -ity."},
-      {"id": "prefix-and-suffix-workshop-b2-07", "q": "The exam results caused a lot of ___ (anxious) among students.", "options": ["anxiety", "anxiousment", "anxiosity"], "answer": 0, "why": "After “a lot of” we need a noun: anxious → “anxiety”."},
-      {"id": "prefix-and-suffix-workshop-b2-08", "q": "The council plans to ___ (modern) the town centre.", "options": ["modernise", "modernate", "modernify"], "answer": 0, "why": "Make something modern: -ise, the British spelling."},
-      {"id": "prefix-and-suffix-workshop-b2-09", "q": "It’s important to ___ (priority) your tasks.", "options": ["prioritise", "priorate", "priorify"], "answer": 0, "why": "Put tasks in order of priority: priority → “prioritise”."},
-      {"id": "prefix-and-suffix-workshop-b2-10", "q": "The workers demanded better ___ (safe) equipment.", "options": ["safety", "safeness", "safeity"], "answer": 0, "why": "A noun before “equipment”: safe → “safety”."},
-      {"id": "prefix-and-suffix-workshop-b2-11", "q": "Hand-washing led to a dramatic ___ (reduce) in deaths on Semmelweis's wards.", "options": ["reduction", "reducement", "reducity"], "answer": 0, "why": "After “a dramatic” we need a noun: reduce → “reduction”."},
-      {"id": "prefix-and-suffix-workshop-b2-12", "q": "The water at the ranch was ___ (sufficient) for so many cattle, so the cowboys moved on.", "options": ["insufficient", "unsufficient", "dissufficient"], "answer": 0, "why": "They moved on, so not enough water: in- makes the opposite of “sufficient”."}
+      {
+        "id": "prefix-and-suffix-workshop-b2-01",
+        "q": "The government announced a new ___ (develop) plan.",
+        "options": [
+          "development",
+          "developement",
+          "developness"
+        ],
+        "answer": 0,
+        "why": "A noun before “plan”: develop + -ment, with no extra e."
+      },
+      {
+        "id": "prefix-and-suffix-workshop-b2-02",
+        "q": "His ___ (react) to the news was unexpected.",
+        "options": [
+          "reaction",
+          "reactness",
+          "reactivity"
+        ],
+        "answer": 0,
+        "why": "After “His” we need a noun: react + -ion."
+      },
+      {
+        "id": "prefix-and-suffix-workshop-b2-03",
+        "q": "The company decided to ___ (structure) after the merger.",
+        "options": [
+          "restructure",
+          "destructure",
+          "misstructure"
+        ],
+        "answer": 0,
+        "why": "Organise again after a merger: re- means again."
+      },
+      {
+        "id": "prefix-and-suffix-workshop-b2-04",
+        "q": "She felt ___ (whelm) by the amount of work and burst into tears.",
+        "options": [
+          "overwhelmed",
+          "underwhelmed",
+          "unwhelmed"
+        ],
+        "answer": 0,
+        "why": "Too much work and tears: over- means too much."
+      },
+      {
+        "id": "prefix-and-suffix-workshop-b2-05",
+        "q": "The time needed for the project was ___ (estimate): it took twice as long as planned.",
+        "options": [
+          "underestimated",
+          "overestimated",
+          "disestimated"
+        ],
+        "answer": 0,
+        "why": "It took twice as long as planned: the estimate was too low, so under-."
+      },
+      {
+        "id": "prefix-and-suffix-workshop-b2-06",
+        "q": "Her new novel received widespread ___ (popular).",
+        "options": [
+          "popularity",
+          "popularness",
+          "populariness"
+        ],
+        "answer": 0,
+        "why": "After “widespread” we need a noun: popular + -ity."
+      },
+      {
+        "id": "prefix-and-suffix-workshop-b2-07",
+        "q": "The exam results caused a lot of ___ (anxious) among students.",
+        "options": [
+          "anxiety",
+          "anxiousment",
+          "anxiosity"
+        ],
+        "answer": 0,
+        "why": "After “a lot of” we need a noun: anxious → “anxiety”."
+      },
+      {
+        "id": "prefix-and-suffix-workshop-b2-08",
+        "q": "The council plans to ___ (modern) the town centre.",
+        "options": [
+          "modernise",
+          "modernate",
+          "modernify"
+        ],
+        "answer": 0,
+        "why": "Make something modern: -ise, the British spelling."
+      },
+      {
+        "id": "prefix-and-suffix-workshop-b2-09",
+        "q": "It’s important to ___ (priority) your tasks.",
+        "options": [
+          "prioritise",
+          "priorate",
+          "priorify"
+        ],
+        "answer": 0,
+        "why": "Put tasks in order of priority: priority → “prioritise”."
+      },
+      {
+        "id": "prefix-and-suffix-workshop-b2-10",
+        "q": "The workers demanded better ___ (safe) equipment.",
+        "options": [
+          "safety",
+          "safeness",
+          "safeity"
+        ],
+        "answer": 0,
+        "why": "A noun before “equipment”: safe → “safety”."
+      },
+      {
+        "id": "prefix-and-suffix-workshop-b2-11",
+        "q": "Hand-washing led to a dramatic ___ (reduce) in deaths on Semmelweis's wards.",
+        "options": [
+          "reduction",
+          "reducement",
+          "reducity"
+        ],
+        "answer": 0,
+        "why": "After “a dramatic” we need a noun: reduce → “reduction”."
+      },
+      {
+        "id": "prefix-and-suffix-workshop-b2-12",
+        "q": "The water at the ranch was ___ (sufficient) for so many cattle, so the cowboys moved on.",
+        "options": [
+          "insufficient",
+          "unsufficient",
+          "dissufficient"
+        ],
+        "answer": 0,
+        "why": "They moved on, so not enough water: in- makes the opposite of “sufficient”."
+      }
     ],
     "C1": [
-      {"id": "prefix-and-suffix-workshop-c1-01", "q": "The scientist tried to ___ (simple) the complex theory for the public.", "options": ["simplify", "simplicate", "simplise"], "answer": 0, "why": "Make something simple: simple → “simplify”."},
-      {"id": "prefix-and-suffix-workshop-c1-02", "q": "His argument was ___ (logic) from start to finish: none of his conclusions followed from his evidence.", "options": ["illogical", "unlogical", "inlogical"], "answer": 0, "why": "The conclusions did not follow, so it was not logical: before l the negative prefix becomes il-, “illogical”."},
-      {"id": "prefix-and-suffix-workshop-c1-03", "q": "The measures were designed to ___ (act) the rising crime rate.", "options": ["counteract", "antiact", "disact"], "answer": 0, "why": "Measures that act against crime: counter- means against."},
-      {"id": "prefix-and-suffix-workshop-c1-04", "q": "Her explanation seemed rather ___ (science) — it sounded like science, but no real evidence backed it.", "options": ["pseudoscientific", "antiscientific", "unscientifical"], "answer": 0, "why": "It sounded like science but had no evidence: pseudo- means false."},
-      {"id": "prefix-and-suffix-workshop-c1-05", "q": "The politician's promises proved entirely ___ (real).", "options": ["unrealistic", "irrealistic", "disrealistic"], "answer": 0, "why": "Promises that could never come true: un- + realistic."},
-      {"id": "prefix-and-suffix-workshop-c1-06", "q": "It would be ___ (responsible) of me to ignore the warning.", "options": ["irresponsible", "unresponsible", "disresponsible"], "answer": 0, "why": "Before r, the negative prefix becomes ir-: “irresponsible”."},
-      {"id": "prefix-and-suffix-workshop-c1-07", "q": "The evidence was ___ (refute) — nobody could argue against it.", "options": ["irrefutable", "unrefutable", "disrefutable"], "answer": 0, "why": "“Nobody could argue against it”: ir- + refutable, impossible to refute."},
-      {"id": "prefix-and-suffix-workshop-c1-08", "q": "His resignation was met with ___ (belief) from the whole office.", "options": ["disbelief", "inbelief", "misbelief"], "answer": 0, "why": "Shock at the news: the noun for not believing is “disbelief”."},
-      {"id": "prefix-and-suffix-workshop-c1-09", "q": "The two accounts of the accident were completely ___ (compatible).", "options": ["incompatible", "discompatible", "uncompatible"], "answer": 0, "why": "Two accounts that cannot both be true: in- + compatible."},
-      {"id": "prefix-and-suffix-workshop-c1-10", "q": "Her rise to fame was nothing short of ___ (meteor).", "options": ["meteoric", "meteorous", "meteorial"], "answer": 0, "why": "A rise as fast and bright as a meteor: meteor + -ic."},
-      {"id": "prefix-and-suffix-workshop-c1-11", "q": "The cholera outbreak seemed ___ (explicable) until John Snow mapped the deaths around the Broad Street pump.", "options": ["inexplicable", "unexplicable", "disexplicable"], "answer": 0, "why": "A mystery until Snow’s map pointed to the cause: in- + explicable, impossible to explain."},
-      {"id": "prefix-and-suffix-workshop-c1-12", "q": "After the silver mine closed, the town was ___ (inhabit): not a soul remained.", "options": ["uninhabited", "inhabitable", "dishabited"], "answer": 0, "why": "“Not a soul remained”, so nobody lived there: un- + inhabit + -ed gives “uninhabited”."}
+      {
+        "id": "prefix-and-suffix-workshop-c1-01",
+        "q": "The scientist tried to ___ (simple) the complex theory for the public.",
+        "options": [
+          "simplify",
+          "simplicate",
+          "simplise"
+        ],
+        "answer": 0,
+        "why": "Make something simple: simple → “simplify”."
+      },
+      {
+        "id": "prefix-and-suffix-workshop-c1-02",
+        "q": "His argument was ___ (logic) from start to finish: none of his conclusions followed from his evidence.",
+        "options": [
+          "illogical",
+          "unlogical",
+          "inlogical"
+        ],
+        "answer": 0,
+        "why": "The conclusions did not follow, so it was not logical: before l the negative prefix becomes il-, “illogical”."
+      },
+      {
+        "id": "prefix-and-suffix-workshop-c1-03",
+        "q": "The measures were designed to ___ (act) the rising crime rate.",
+        "options": [
+          "counteract",
+          "antiact",
+          "disact"
+        ],
+        "answer": 0,
+        "why": "Measures that act against crime: counter- means against."
+      },
+      {
+        "id": "prefix-and-suffix-workshop-c1-04",
+        "q": "Her explanation seemed rather ___ (science) — it sounded like science, but no real evidence backed it.",
+        "options": [
+          "pseudoscientific",
+          "antiscientific",
+          "unscientifical"
+        ],
+        "answer": 0,
+        "why": "It sounded like science but had no evidence: pseudo- means false."
+      },
+      {
+        "id": "prefix-and-suffix-workshop-c1-05",
+        "q": "The politician's promises proved entirely ___ (real).",
+        "options": [
+          "unrealistic",
+          "irrealistic",
+          "disrealistic"
+        ],
+        "answer": 0,
+        "why": "Promises that could never come true: un- + realistic."
+      },
+      {
+        "id": "prefix-and-suffix-workshop-c1-06",
+        "q": "It would be ___ (responsible) of me to ignore the warning.",
+        "options": [
+          "irresponsible",
+          "unresponsible",
+          "disresponsible"
+        ],
+        "answer": 0,
+        "why": "Before r, the negative prefix becomes ir-: “irresponsible”."
+      },
+      {
+        "id": "prefix-and-suffix-workshop-c1-07",
+        "q": "The evidence was ___ (refute) — nobody could argue against it.",
+        "options": [
+          "irrefutable",
+          "unrefutable",
+          "disrefutable"
+        ],
+        "answer": 0,
+        "why": "“Nobody could argue against it”: ir- + refutable, impossible to refute."
+      },
+      {
+        "id": "prefix-and-suffix-workshop-c1-08",
+        "q": "His resignation was met with ___ (belief) from the whole office.",
+        "options": [
+          "disbelief",
+          "inbelief",
+          "misbelief"
+        ],
+        "answer": 0,
+        "why": "Shock at the news: the noun for not believing is “disbelief”."
+      },
+      {
+        "id": "prefix-and-suffix-workshop-c1-09",
+        "q": "The two accounts of the accident were completely ___ (compatible).",
+        "options": [
+          "incompatible",
+          "discompatible",
+          "uncompatible"
+        ],
+        "answer": 0,
+        "why": "Two accounts that cannot both be true: in- + compatible."
+      },
+      {
+        "id": "prefix-and-suffix-workshop-c1-10",
+        "q": "Her rise to fame was nothing short of ___ (meteor).",
+        "options": [
+          "meteoric",
+          "meteorous",
+          "meteorial"
+        ],
+        "answer": 0,
+        "why": "A rise as fast and bright as a meteor: meteor + -ic."
+      },
+      {
+        "id": "prefix-and-suffix-workshop-c1-11",
+        "q": "The cholera outbreak seemed ___ (explicable) until John Snow mapped the deaths around the Broad Street pump.",
+        "options": [
+          "inexplicable",
+          "unexplicable",
+          "disexplicable"
+        ],
+        "answer": 0,
+        "why": "A mystery until Snow’s map pointed to the cause: in- + explicable, impossible to explain."
+      },
+      {
+        "id": "prefix-and-suffix-workshop-c1-12",
+        "q": "After the silver mine closed, the town was ___ (inhabit): not a soul remained.",
+        "options": [
+          "uninhabited",
+          "inhabitable",
+          "dishabited"
+        ],
+        "answer": 0,
+        "why": "“Not a soul remained”, so nobody lived there: un- + inhabit + -ed gives “uninhabited”."
+      }
     ]
   }
 }

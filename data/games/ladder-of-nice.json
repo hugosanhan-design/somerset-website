@@ -1,65 +1,308 @@
 {
   "id": "ladder-of-nice",
   "title": "Ladder of Nice",
-  "tags": ["vocabulary", "register"],
+  "tags": [
+    "vocabulary",
+    "register"
+  ],
   "engine": "pairs",
   "intro": "Nice, good, bad — the three words that do all the work and none of the precision. Climb the ladder to the word that actually fits.",
   "items": {
     "A2": [
-      {"id": "ladder-of-nice-a2-01", "left": "delicious", "right": "a stronger way to say 'good' about food", "why": "Only for food and drink: a delicious paella, not a delicious film."},
-      {"id": "ladder-of-nice-a2-02", "left": "generous", "right": "a more precise way to say 'nice' about a person who gives a lot", "why": "Generous people share their time, money or food."},
-      {"id": "ladder-of-nice-a2-03", "left": "awful", "right": "a stronger way to say 'bad' about weather or a situation", "why": "“Awful weather” is much stronger than “bad weather”."},
-      {"id": "ladder-of-nice-a2-04", "left": "beautiful", "right": "a stronger way to say 'nice' about how something looks", "why": "For things you see: a beautiful beach, a beautiful dress."},
-      {"id": "ladder-of-nice-a2-05", "left": "friendly", "right": "a more precise way to say 'nice' about someone's personality", "why": "A friendly person is easy to talk to and smiles a lot."},
-      {"id": "ladder-of-nice-a2-06", "left": "disgusting", "right": "a stronger way to say 'bad' about food or a smell that makes you feel sick", "why": "Very strong: the food or smell makes you feel sick."},
-      {"id": "ladder-of-nice-a2-07", "left": "talented", "right": "a more precise way to say 'good' at doing something", "why": "A talented guitarist has a natural gift."},
-      {"id": "ladder-of-nice-a2-08", "left": "comfortable", "right": "a more precise way to say 'nice' about a place to sit or sleep", "why": "Say it in three parts: COMF-ta-ble."},
-      {"id": "ladder-of-nice-a2-09", "left": "fantastic", "right": "a stronger way to say 'good' about a holiday or a film", "why": "Enthusiastic and positive: “The holiday was fantastic!”"},
-      {"id": "ladder-of-nice-a2-10", "left": "rude", "right": "a more precise way to say 'bad' about someone's manners", "why": "A rude waiter doesn't say please or thank you."},
-      {"id": "ladder-of-nice-a2-11", "left": "tidy", "right": "a more precise way to say 'nice' about a room where everything is in its place", "why": "A tidy room is ordered, nothing on the floor."},
-      {"id": "ladder-of-nice-a2-12", "left": "dangerous", "right": "a more precise way to say 'bad' about a road or place that could hurt you", "why": "Precise: the problem is the risk, not just “bad”."}
+      {
+        "id": "ladder-of-nice-a2-01",
+        "left": "delicious",
+        "right": "a stronger way to say 'good' about food",
+        "why": "Only for food and drink: a delicious paella, not a delicious film."
+      },
+      {
+        "id": "ladder-of-nice-a2-02",
+        "left": "generous",
+        "right": "a more precise way to say 'nice' about a person who gives a lot",
+        "why": "Generous people share their time, money or food."
+      },
+      {
+        "id": "ladder-of-nice-a2-03",
+        "left": "awful",
+        "right": "a stronger way to say 'bad' about weather or a situation",
+        "why": "“Awful weather” is much stronger than “bad weather”."
+      },
+      {
+        "id": "ladder-of-nice-a2-04",
+        "left": "beautiful",
+        "right": "a stronger way to say 'nice' about how something looks",
+        "why": "For things you see: a beautiful beach, a beautiful dress."
+      },
+      {
+        "id": "ladder-of-nice-a2-05",
+        "left": "friendly",
+        "right": "a more precise way to say 'nice' about someone who is warm and easy to talk to",
+        "why": "A friendly person is easy to talk to and smiles a lot."
+      },
+      {
+        "id": "ladder-of-nice-a2-06",
+        "left": "disgusting",
+        "right": "a stronger way to say 'bad' about food or a smell that makes you feel sick",
+        "why": "Very strong: the food or smell makes you feel sick."
+      },
+      {
+        "id": "ladder-of-nice-a2-07",
+        "left": "talented",
+        "right": "a more precise way to say 'good' at doing something",
+        "why": "A talented guitarist has a natural gift."
+      },
+      {
+        "id": "ladder-of-nice-a2-08",
+        "left": "comfortable",
+        "right": "a more precise way to say 'nice' about a place to sit or sleep",
+        "why": "A comfortable sofa or bed feels soft and relaxing. Say it in three parts: COMF-ta-ble."
+      },
+      {
+        "id": "ladder-of-nice-a2-09",
+        "left": "fantastic",
+        "right": "a stronger way to say 'good' about a holiday or a film",
+        "why": "Enthusiastic and positive: “The holiday was fantastic!”"
+      },
+      {
+        "id": "ladder-of-nice-a2-10",
+        "left": "rude",
+        "right": "a more precise way to say 'bad' about someone's manners",
+        "why": "A rude waiter doesn't say please or thank you."
+      },
+      {
+        "id": "ladder-of-nice-a2-11",
+        "left": "tidy",
+        "right": "a more precise way to say 'nice' about a room where everything is in its place",
+        "why": "A tidy room is ordered, nothing on the floor."
+      },
+      {
+        "id": "ladder-of-nice-a2-12",
+        "left": "dangerous",
+        "right": "a more precise way to say 'bad' about a road or place that could hurt you",
+        "why": "Precise: the problem is the risk, not just “bad”."
+      }
     ],
     "B1": [
-      {"id": "ladder-of-nice-b1-01", "left": "pleasant", "right": "a more precise way to say 'nice' about an experience", "why": "A pleasant evening: calm, nice, nothing special."},
-      {"id": "ladder-of-nice-b1-02", "left": "considerate", "right": "a more precise way to say 'nice' about someone who thinks of others", "why": "Considerate people think about others: they phone if they'll be late."},
-      {"id": "ladder-of-nice-b1-03", "left": "dreadful", "right": "a more precise way to say 'bad' — very strong, almost shocking", "why": "Stronger than bad: “a dreadful accident”."},
-      {"id": "ladder-of-nice-b1-04", "left": "gorgeous", "right": "a more precise way to say 'nice' about someone's appearance", "why": "Very attractive; informal and enthusiastic."},
-      {"id": "ladder-of-nice-b1-05", "left": "outstanding", "right": "a more precise way to say 'good' — exceptionally so", "why": "It “stands out” from all the others."},
-      {"id": "ladder-of-nice-b1-06", "left": "unpleasant", "right": "a more precise way to say 'bad' — mild, about something you didn't enjoy", "why": "Mild and polite: an unpleasant smell, an unpleasant trip."},
-      {"id": "ladder-of-nice-b1-07", "left": "charming", "right": "a more precise way to say 'nice' about someone's manner", "why": "A charming person makes you feel good with their manners."},
-      {"id": "ladder-of-nice-b1-08", "left": "reliable", "right": "a more precise way to say 'good' about someone you can always count on", "why": "A reliable mechanic does the job well, every time."},
-      {"id": "ladder-of-nice-b1-09", "left": "spacious", "right": "a more precise way to say 'nice' about a flat with lots of room", "why": "From “space”: plenty of room to move."},
-      {"id": "ladder-of-nice-b1-10", "left": "skilful", "right": "a more precise way to say 'good' about how someone uses their hands or tools", "why": "British spelling: skilful. “A skilful surgeon.”"},
-      {"id": "ladder-of-nice-b1-11", "left": "harmful", "right": "a more precise way to say 'bad' about something that damages your health", "why": "From “harm”: smoking is harmful."},
-      {"id": "ladder-of-nice-b1-12", "left": "mouth-watering", "right": "a more precise way to say 'good' about food that makes you hungry just looking at it", "why": "Your mouth “waters” when you see it: “una pinta que se te hace la boca agua”."}
+      {
+        "id": "ladder-of-nice-b1-01",
+        "left": "pleasant",
+        "right": "a more precise way to say 'nice' about an experience",
+        "why": "A pleasant evening: calm, nice, nothing special."
+      },
+      {
+        "id": "ladder-of-nice-b1-02",
+        "left": "considerate",
+        "right": "a more precise way to say 'nice' about someone who thinks of others",
+        "why": "Considerate people think about others: they phone if they'll be late."
+      },
+      {
+        "id": "ladder-of-nice-b1-03",
+        "left": "dreadful",
+        "right": "a more precise way to say 'bad' — very strong, almost shocking",
+        "why": "Stronger than bad: “a dreadful accident”."
+      },
+      {
+        "id": "ladder-of-nice-b1-04",
+        "left": "gorgeous",
+        "right": "a more precise way to say 'nice' about someone's appearance",
+        "why": "Very attractive; informal and enthusiastic."
+      },
+      {
+        "id": "ladder-of-nice-b1-05",
+        "left": "outstanding",
+        "right": "a more precise way to say 'good' — exceptionally so",
+        "why": "It “stands out” from all the others."
+      },
+      {
+        "id": "ladder-of-nice-b1-06",
+        "left": "unpleasant",
+        "right": "a more precise way to say 'bad' — mild, about something you didn't enjoy",
+        "why": "Mild and polite: an unpleasant smell, an unpleasant trip."
+      },
+      {
+        "id": "ladder-of-nice-b1-07",
+        "left": "charming",
+        "right": "a more precise way to say 'nice' about someone's manner",
+        "why": "A charming person makes you feel good with their manners."
+      },
+      {
+        "id": "ladder-of-nice-b1-08",
+        "left": "reliable",
+        "right": "a more precise way to say 'good' about someone you can always count on",
+        "why": "A reliable mechanic does the job well, every time."
+      },
+      {
+        "id": "ladder-of-nice-b1-09",
+        "left": "spacious",
+        "right": "a more precise way to say 'nice' about a flat with lots of room",
+        "why": "From “space”: plenty of room to move."
+      },
+      {
+        "id": "ladder-of-nice-b1-10",
+        "left": "skilful",
+        "right": "a more precise way to say 'good' about how someone uses their hands or tools",
+        "why": "British spelling: skilful. “A skilful surgeon.”"
+      },
+      {
+        "id": "ladder-of-nice-b1-11",
+        "left": "harmful",
+        "right": "a more precise way to say 'bad' about something that damages your health",
+        "why": "From “harm”: smoking is harmful."
+      },
+      {
+        "id": "ladder-of-nice-b1-12",
+        "left": "mouth-watering",
+        "right": "a more precise way to say 'good' about food that makes you hungry just looking at it",
+        "why": "Your mouth “waters” when you see it: “una pinta que se te hace la boca agua”."
+      }
     ],
     "B2": [
-      {"id": "ladder-of-nice-b2-01", "left": "delightful", "right": "an even stronger, more vivid 'nice' — genuinely pleasing, full of charm", "why": "A delightful afternoon or person gives real pleasure."},
-      {"id": "ladder-of-nice-b2-02", "left": "appalling", "right": "an even stronger 'bad' — cruel, shocking treatment of people or animals", "why": "Collocation: appalling treatment, appalling cruelty."},
-      {"id": "ladder-of-nice-b2-03", "left": "exquisite", "right": "an even stronger 'nice' — delicate and finely made, like lace or a fine dish", "why": "For fine detail and quality: exquisite embroidery, exquisite cooking."},
-      {"id": "ladder-of-nice-b2-04", "left": "gruelling", "right": "an even more precise 'bad' — a day or journey that is exhausting and hard", "why": "British spelling with -ll: a gruelling climb, a gruelling twelve-hour shift."},
-      {"id": "ladder-of-nice-b2-05", "left": "hospitable", "right": "an even more precise 'nice' — welcoming to guests", "why": "Same family as “hospitality”: making guests feel at home."},
-      {"id": "ladder-of-nice-b2-06", "left": "meticulous", "right": "an even more precise 'good' — extremely careful with detail", "why": "A meticulous doctor checks everything twice."},
-      {"id": "ladder-of-nice-b2-07", "left": "abysmal", "right": "an even stronger 'bad' — so low in quality or standard it seems to have no bottom", "why": "From “abyss”: so low you can't see the bottom."},
-      {"id": "ladder-of-nice-b2-08", "left": "captivating", "right": "an even stronger 'nice' — a story or speaker that holds your attention completely", "why": "It “captures” you: you can't look away."},
-      {"id": "ladder-of-nice-b2-09", "left": "invaluable", "right": "an even stronger 'good' — so useful you can't put a price on it", "why": "Spanish trap: invaluable = extremely valuable, not worthless."},
-      {"id": "ladder-of-nice-b2-10", "left": "squalid", "right": "an even stronger 'bad' — dirty, miserable living conditions", "why": "Victorian slums were squalid: dirty and neglected."},
-      {"id": "ladder-of-nice-b2-11", "left": "resourceful", "right": "an even more precise 'good' — finding clever solutions with very little", "why": "A resourceful cowboy fixes his wagon with rope and a stick."},
-      {"id": "ladder-of-nice-b2-12", "left": "breathtaking", "right": "an even stronger 'nice' — a view so beautiful it amazes you", "why": "It “takes your breath away”: the view from the Sierra Calderona."}
+      {
+        "id": "ladder-of-nice-b2-01",
+        "left": "delightful",
+        "right": "an even stronger, more vivid 'nice' — genuinely pleasing, full of charm",
+        "why": "A delightful afternoon or person gives real pleasure."
+      },
+      {
+        "id": "ladder-of-nice-b2-02",
+        "left": "appalling",
+        "right": "an even stronger 'bad' — cruel, shocking treatment of people or animals",
+        "why": "Collocation: appalling treatment, appalling cruelty."
+      },
+      {
+        "id": "ladder-of-nice-b2-03",
+        "left": "exquisite",
+        "right": "an even stronger 'nice' — delicate and finely made, like lace or a fine dish",
+        "why": "For fine detail and quality: exquisite embroidery, exquisite cooking."
+      },
+      {
+        "id": "ladder-of-nice-b2-04",
+        "left": "gruelling",
+        "right": "an even more precise 'bad' — a day or journey that is exhausting and hard",
+        "why": "British spelling with -ll: a gruelling climb, a gruelling twelve-hour shift."
+      },
+      {
+        "id": "ladder-of-nice-b2-05",
+        "left": "hospitable",
+        "right": "an even more precise 'nice' — welcoming to guests",
+        "why": "Same family as “hospitality”: making guests feel at home."
+      },
+      {
+        "id": "ladder-of-nice-b2-06",
+        "left": "meticulous",
+        "right": "an even more precise 'good' — extremely careful with detail",
+        "why": "A meticulous doctor checks everything twice."
+      },
+      {
+        "id": "ladder-of-nice-b2-07",
+        "left": "abysmal",
+        "right": "an even stronger 'bad' — so low in quality or standard it seems to have no bottom",
+        "why": "From “abyss”: so low you can't see the bottom."
+      },
+      {
+        "id": "ladder-of-nice-b2-08",
+        "left": "captivating",
+        "right": "an even stronger 'nice' — a story or speaker that holds your attention completely",
+        "why": "It “captures” you: you can't look away."
+      },
+      {
+        "id": "ladder-of-nice-b2-09",
+        "left": "invaluable",
+        "right": "an even stronger 'good' — so useful you can't put a price on it",
+        "why": "Spanish trap: invaluable = extremely valuable, not worthless."
+      },
+      {
+        "id": "ladder-of-nice-b2-10",
+        "left": "squalid",
+        "right": "an even stronger 'bad' — dirty, miserable living conditions",
+        "why": "Victorian slums were squalid: dirty and neglected."
+      },
+      {
+        "id": "ladder-of-nice-b2-11",
+        "left": "resourceful",
+        "right": "an even more precise 'good' — finding clever solutions with very little",
+        "why": "A resourceful cowboy fixes his wagon with rope and a stick."
+      },
+      {
+        "id": "ladder-of-nice-b2-12",
+        "left": "breathtaking",
+        "right": "an even stronger 'nice' — a view so beautiful it amazes you",
+        "why": "It “takes your breath away”: the view from the Sierra Calderona."
+      }
     ],
     "C1": [
-      {"id": "ladder-of-nice-c1-01", "left": "sublime", "right": "the most elevated 'nice' — a beauty beyond ordinary description", "why": "Used for art, music or nature that seems almost spiritual."},
-      {"id": "ladder-of-nice-c1-02", "left": "dire", "right": "the strongest 'bad' — a situation that is extremely serious or urgent", "why": "Collocations: dire consequences, in dire need, the situation is dire."},
-      {"id": "ladder-of-nice-c1-03", "left": "impeccable", "right": "the strongest 'good' — flawless, without a single fault", "why": "Impeccable manners, impeccable English: nothing to correct."},
-      {"id": "ladder-of-nice-c1-04", "left": "reprehensible", "right": "the strongest 'bad' — behaviour you must condemn morally", "why": "From “reprehend”, to criticise: a moral judgement."},
-      {"id": "ladder-of-nice-c1-05", "left": "magnanimous", "right": "the strongest 'nice' — generous and forgiving on a grand scale", "why": "Latin “great soul”: generous even to a defeated rival."},
-      {"id": "ladder-of-nice-c1-06", "left": "exemplary", "right": "the strongest 'good' — a model that others should follow", "why": "From “example”: exemplary conduct deserves to be copied."},
-      {"id": "ladder-of-nice-c1-07", "left": "egregious", "right": "the strongest 'bad' — an error so obvious it stands out from the rest", "why": "Latin “out of the herd”: it stands out, for the wrong reasons."},
-      {"id": "ladder-of-nice-c1-08", "left": "convivial", "right": "a refined 'nice' — friendly, warm and sociable in atmosphere", "why": "A convivial dinner: good food, good company, lots of talk."},
-      {"id": "ladder-of-nice-c1-09", "left": "salubrious", "right": "a refined 'nice' — a healthy, respectable area to live in", "why": "Often used negatively and with humour: “not a very salubrious area”."},
-      {"id": "ladder-of-nice-c1-10", "left": "efficacious", "right": "a formal, precise 'good' — a remedy or treatment that works", "why": "It simply means “effective”: an efficacious treatment works."},
-      {"id": "ladder-of-nice-c1-11", "left": "pernicious", "right": "the strongest 'bad' — harmful in a slow, hidden way", "why": "Pernicious effects grow quietly over time."},
-      {"id": "ladder-of-nice-c1-12", "left": "virtuoso", "right": "the strongest 'good' — a musician's dazzling skill", "why": "A virtuoso performance: technical brilliance, like a great guitarist."}
+      {
+        "id": "ladder-of-nice-c1-01",
+        "left": "sublime",
+        "right": "the most elevated 'nice' — a beauty beyond ordinary description",
+        "why": "Used for art, music or nature that seems almost spiritual."
+      },
+      {
+        "id": "ladder-of-nice-c1-02",
+        "left": "dire",
+        "right": "the strongest 'bad' — a situation that is extremely serious or urgent",
+        "why": "Collocations: dire consequences, in dire need, the situation is dire."
+      },
+      {
+        "id": "ladder-of-nice-c1-03",
+        "left": "impeccable",
+        "right": "the strongest 'good' — flawless, without a single fault",
+        "why": "Impeccable manners, impeccable English: nothing to correct."
+      },
+      {
+        "id": "ladder-of-nice-c1-04",
+        "left": "reprehensible",
+        "right": "the strongest 'bad' — behaviour you must condemn morally",
+        "why": "From “reprehend”, to criticise: a moral judgement."
+      },
+      {
+        "id": "ladder-of-nice-c1-05",
+        "left": "magnanimous",
+        "right": "the strongest 'nice' — generous and forgiving on a grand scale",
+        "why": "Latin “great soul”: generous even to a defeated rival."
+      },
+      {
+        "id": "ladder-of-nice-c1-06",
+        "left": "exemplary",
+        "right": "the strongest 'good' — a model that others should follow",
+        "why": "From “example”: exemplary conduct deserves to be copied."
+      },
+      {
+        "id": "ladder-of-nice-c1-07",
+        "left": "egregious",
+        "right": "the strongest 'bad' — an error so obvious it stands out from the rest",
+        "why": "Latin “out of the herd”: it stands out, for the wrong reasons."
+      },
+      {
+        "id": "ladder-of-nice-c1-08",
+        "left": "convivial",
+        "right": "a refined 'nice' — friendly, warm and sociable in atmosphere",
+        "why": "A convivial dinner: good food, good company, lots of talk."
+      },
+      {
+        "id": "ladder-of-nice-c1-09",
+        "left": "salubrious",
+        "right": "a refined 'nice' — a healthy, respectable area to live in",
+        "why": "Often used negatively and with humour: “not a very salubrious area”."
+      },
+      {
+        "id": "ladder-of-nice-c1-10",
+        "left": "efficacious",
+        "right": "a formal, precise 'good' — a remedy or treatment that works",
+        "why": "It simply means “effective”: an efficacious treatment works."
+      },
+      {
+        "id": "ladder-of-nice-c1-11",
+        "left": "pernicious",
+        "right": "the strongest 'bad' — harmful in a slow, hidden way",
+        "why": "Pernicious effects grow quietly over time."
+      },
+      {
+        "id": "ladder-of-nice-c1-12",
+        "left": "virtuoso",
+        "right": "the strongest 'good' — a musician's dazzling skill",
+        "why": "A virtuoso performance: technical brilliance, like a great guitarist."
+      }
     ]
   }
 }

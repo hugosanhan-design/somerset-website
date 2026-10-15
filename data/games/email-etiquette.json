@@ -1,65 +1,307 @@
 {
   "id": "email-etiquette",
   "title": "Email Etiquette",
-  "tags": ["register"],
+  "tags": [
+    "register"
+  ],
   "engine": "pairs",
   "intro": "The right opening and closing for the right relationship — a friend, a boss, a stranger. Get it wrong and the whole email reads off.",
   "items": {
     "A2": [
-      {"id": "email-etiquette-a2-01", "left": "Hi Mum,", "right": "your mother — a warm, everyday opening", "why": "Family gets “Hi” plus the name: simple and warm."},
-      {"id": "email-etiquette-a2-02", "left": "Dear Sir or Madam,", "right": "a stranger — very formal, name unknown", "why": "When you don't know who will read it, this is the safe formal choice."},
-      {"id": "email-etiquette-a2-03", "left": "Hey!", "right": "a close friend — very casual opening", "why": "Very relaxed: keep it for good friends."},
-      {"id": "email-etiquette-a2-04", "left": "Love, Ana", "right": "family or partner — a closing with affection", "why": "“Love” before your name is for people close to your heart."},
-      {"id": "email-etiquette-a2-05", "left": "Hello everyone,", "right": "a group of classmates — friendly opening for many people", "why": "“Everyone” tells the reader the email goes to a whole group."},
-      {"id": "email-etiquette-a2-06", "left": "Dear Mr Jones,", "right": "a man you don't know well — formal opening with Mr", "why": "Formal opening for a new contact: Dear + Mr + surname."},
-      {"id": "email-etiquette-a2-07", "left": "See you soon,", "right": "a friend — casual closing about meeting again", "why": "You expect to see them soon, so it's friendly and relaxed."},
-      {"id": "email-etiquette-a2-08", "left": "Kind regards,", "right": "a boss or client — polite professional closing", "why": "The most common safe closing in British work emails."},
-      {"id": "email-etiquette-a2-09", "left": "Dear Dr Ortega,", "right": "a doctor — formal opening with a professional title", "why": "Use the title they earned: Dr, not Mr or Mrs."},
-      {"id": "email-etiquette-a2-10", "left": "Thank you for your help.", "right": "someone who helped you — simple, polite thanks", "why": "Clear and polite: works for a shop, a hotel or a neighbour."},
-      {"id": "email-etiquette-a2-11", "left": "Happy birthday!", "right": "a friend on their special day — cheerful opening", "why": "Start with the reason you're writing: their birthday."},
-      {"id": "email-etiquette-a2-12", "left": "Sorry, I can't come on Saturday.", "right": "a friend's invitation — saying no politely", "why": "Start with “Sorry” so the “no” sounds kind."}
+      {
+        "id": "email-etiquette-a2-01",
+        "left": "Hi Mum,",
+        "right": "your mother — a warm, everyday opening",
+        "why": "Family gets “Hi” plus the name: simple and warm."
+      },
+      {
+        "id": "email-etiquette-a2-02",
+        "left": "Dear Sir or Madam,",
+        "right": "a stranger — very formal, name unknown",
+        "why": "When you don't know who will read it, this is the safe formal choice."
+      },
+      {
+        "id": "email-etiquette-a2-03",
+        "left": "Hey!",
+        "right": "a close friend — very casual opening",
+        "why": "Very relaxed: keep it for good friends."
+      },
+      {
+        "id": "email-etiquette-a2-04",
+        "left": "Love, Ana",
+        "right": "family or partner — a closing with affection",
+        "why": "“Love” before your name is for people close to your heart."
+      },
+      {
+        "id": "email-etiquette-a2-05",
+        "left": "Hello everyone,",
+        "right": "a group of classmates — friendly opening for many people",
+        "why": "“Everyone” tells the reader the email goes to a whole group."
+      },
+      {
+        "id": "email-etiquette-a2-06",
+        "left": "Dear Mr Jones,",
+        "right": "a man you don't know well — formal opening with Mr",
+        "why": "Formal opening for a new contact: Dear + Mr + surname."
+      },
+      {
+        "id": "email-etiquette-a2-07",
+        "left": "See you soon,",
+        "right": "a friend — casual closing about meeting again",
+        "why": "You expect to see them soon, so it's friendly and relaxed."
+      },
+      {
+        "id": "email-etiquette-a2-08",
+        "left": "Kind regards,",
+        "right": "a boss or client — polite professional closing",
+        "why": "The most common safe closing in British work emails."
+      },
+      {
+        "id": "email-etiquette-a2-09",
+        "left": "Dear Dr Ortega,",
+        "right": "a doctor — formal opening with a professional title",
+        "why": "Use the title they earned: Dr, not Mr or Mrs."
+      },
+      {
+        "id": "email-etiquette-a2-10",
+        "left": "Thank you for your help.",
+        "right": "someone who helped you — simple, polite thanks",
+        "why": "Clear and polite: works for a shop, a hotel or a neighbour."
+      },
+      {
+        "id": "email-etiquette-a2-11",
+        "left": "Happy birthday!",
+        "right": "a friend on their special day — cheerful opening",
+        "why": "Start with the reason you're writing: their birthday."
+      },
+      {
+        "id": "email-etiquette-a2-12",
+        "left": "Sorry, I can't come on Saturday.",
+        "right": "a friend's invitation — saying no politely",
+        "why": "Start with “Sorry” so the “no” sounds kind."
+      }
     ],
     "B1": [
-      {"id": "email-etiquette-b1-01", "left": "Dear Hiring Manager,", "right": "a job application — formal opening addressed to the person hiring", "why": "No name? Address the role: the person who will hire you."},
-      {"id": "email-etiquette-b1-02", "left": "Hi team,", "right": "a group of colleagues — friendly opening to everyone", "why": "Friendly and inclusive for people you work with every day."},
-      {"id": "email-etiquette-b1-03", "left": "Hope you're doing well!", "right": "a friend or familiar colleague — warm casual opening", "why": "The informal cousin of “I hope this email finds you well”."},
-      {"id": "email-etiquette-b1-04", "left": "Yours sincerely,", "right": "a formal contact you named at the start — professional closing", "why": "You wrote “Dear Mr García”? Then finish with “Yours sincerely”."},
-      {"id": "email-etiquette-b1-05", "left": "Cheers,", "right": "a friendly colleague — casual British closing that also means thanks", "why": "Very common in British offices between people who get on; it means both “thanks” and “bye”."},
-      {"id": "email-etiquette-b1-06", "left": "To Whom It May Concern,", "right": "an official document for any reader — very formal, a bit old-fashioned", "why": "Used for references and notices that anyone might read."},
-      {"id": "email-etiquette-b1-07", "left": "Speak soon,", "right": "a friend you'll phone shortly — casual closing", "why": "“Speak” suggests a call or chat is coming."},
-      {"id": "email-etiquette-b1-08", "left": "Warm regards,", "right": "a client you know well — friendly professional closing", "why": "“Warm” adds a touch of friendship to “regards”."},
-      {"id": "email-etiquette-b1-09", "left": "Thank you for your quick reply.", "right": "a business that answered fast — polite opening thanks", "why": "Thanking them first sets a positive tone."},
-      {"id": "email-etiquette-b1-10", "left": "Congratulations on your retirement!", "right": "a colleague who is leaving work for good — warm opening", "why": "Retirement is a big moment: open with the good wishes."},
-      {"id": "email-etiquette-b1-11", "left": "I am writing to complain about...", "right": "a company that gave bad service — formal opening for a complaint", "why": "State the purpose straight away, calmly and formally."},
-      {"id": "email-etiquette-b1-12", "left": "Sorry for the late reply!", "right": "a friend you forgot to answer — casual apology", "why": "With an exclamation mark it's light and friendly, not formal."}
+      {
+        "id": "email-etiquette-b1-01",
+        "left": "Dear Hiring Manager,",
+        "right": "a job application — formal opening addressed to the person hiring",
+        "why": "No name? Address the role: the person who will hire you."
+      },
+      {
+        "id": "email-etiquette-b1-02",
+        "left": "Hi team,",
+        "right": "a group of colleagues — friendly opening to everyone",
+        "why": "Friendly and inclusive for people you work with every day."
+      },
+      {
+        "id": "email-etiquette-b1-03",
+        "left": "Hope you're doing well!",
+        "right": "a friend or familiar colleague — warm casual opening",
+        "why": "The informal cousin of “I hope this email finds you well”."
+      },
+      {
+        "id": "email-etiquette-b1-04",
+        "left": "Yours sincerely,",
+        "right": "a formal contact you named at the start — professional closing",
+        "why": "You wrote “Dear Mr García”? Then finish with “Yours sincerely”."
+      },
+      {
+        "id": "email-etiquette-b1-05",
+        "left": "Cheers,",
+        "right": "a friendly colleague — casual British closing that also means thanks",
+        "why": "Very common in British offices between people who get on; it means both “thanks” and “bye”."
+      },
+      {
+        "id": "email-etiquette-b1-06",
+        "left": "To Whom It May Concern,",
+        "right": "an official document for any reader — very formal, a bit old-fashioned",
+        "why": "Used for references and notices that anyone might read."
+      },
+      {
+        "id": "email-etiquette-b1-07",
+        "left": "Speak soon,",
+        "right": "a friend you'll phone shortly — casual closing",
+        "why": "“Speak” suggests a call or chat is coming."
+      },
+      {
+        "id": "email-etiquette-b1-08",
+        "left": "Warm regards,",
+        "right": "a client you know well — friendly professional closing",
+        "why": "“Warm” adds a touch of friendship to “regards”."
+      },
+      {
+        "id": "email-etiquette-b1-09",
+        "left": "Thank you for your quick reply.",
+        "right": "a business that answered fast — polite opening thanks",
+        "why": "Thanking them first sets a positive tone."
+      },
+      {
+        "id": "email-etiquette-b1-10",
+        "left": "Congratulations on your retirement!",
+        "right": "a colleague who is leaving work for good — warm opening",
+        "why": "Retirement is a big moment: open with the good wishes."
+      },
+      {
+        "id": "email-etiquette-b1-11",
+        "left": "I am writing to complain about...",
+        "right": "a company that gave bad service — formal opening for a complaint",
+        "why": "State the purpose straight away, calmly and formally."
+      },
+      {
+        "id": "email-etiquette-b1-12",
+        "left": "Sorry for the late reply!",
+        "right": "a friend you forgot to answer — casual apology",
+        "why": "With an exclamation mark it's light and friendly, not formal."
+      }
     ],
     "B2": [
-      {"id": "email-etiquette-b2-01", "left": "Dear Professor García,", "right": "a university tutor — formal opening with title", "why": "Academic staff get their title: Professor or Dr."},
-      {"id": "email-etiquette-b2-02", "left": "Hiya,", "right": "a friend or friendly colleague — very casual, chatty British opening", "why": "Very British and very casual: fine with friends and friendly colleagues, never in a formal email."},
-      {"id": "email-etiquette-b2-03", "left": "I hope this message finds you well.", "right": "a professional contact — formal, slightly old-fashioned opening", "why": "A polite first line; some people now find it a bit stiff."},
-      {"id": "email-etiquette-b2-04", "left": "Take care,", "right": "a friend who is ill or having a hard time — warm, caring closing", "why": "You hope they look after themselves: kind and personal."},
-      {"id": "email-etiquette-b2-05", "left": "Yours faithfully,", "right": "an unnamed formal recipient — closing when you don't know their name", "why": "Pairs with “Dear Sir or Madam”."},
-      {"id": "email-etiquette-b2-06", "left": "All the best,", "right": "almost anyone — a friendly, safe closing", "why": "Friendly but neutral: fine for nearly any reader."},
-      {"id": "email-etiquette-b2-07", "left": "Just checking in —", "right": "a colleague who hasn't replied — gentle, casual follow-up", "why": "A light nudge without sounding impatient."},
-      {"id": "email-etiquette-b2-08", "left": "Many thanks,", "right": "a colleague or client — brief, appreciative closing", "why": "Shorter than “Thank you very much”, still professional."},
-      {"id": "email-etiquette-b2-09", "left": "Welcome aboard!", "right": "a new colleague on their first day — friendly opening", "why": "From ships: you've joined the crew."},
-      {"id": "email-etiquette-b2-10", "left": "Please accept my apologies for the delay.", "right": "a client waiting for your answer — formal apology", "why": "Formal, full apology for keeping a client waiting."},
-      {"id": "email-etiquette-b2-11", "left": "Dear all,", "right": "a large group, some you don't know — neutral opening", "why": "Neutral and efficient for mailing lists and big groups."},
-      {"id": "email-etiquette-b2-12", "left": "Thanks in advance,", "right": "someone you've just asked a favour — closing before they help", "why": "You thank them before they act; use it with care, it can sound pushy."}
+      {
+        "id": "email-etiquette-b2-01",
+        "left": "Dear Professor García,",
+        "right": "a university tutor — formal opening with title",
+        "why": "Academic staff get their title: Professor or Dr."
+      },
+      {
+        "id": "email-etiquette-b2-02",
+        "left": "Hiya,",
+        "right": "a friend or friendly colleague — very casual, chatty British opening",
+        "why": "Very British and very casual: fine with friends and friendly colleagues, never in a formal email."
+      },
+      {
+        "id": "email-etiquette-b2-03",
+        "left": "I hope this message finds you well.",
+        "right": "a professional contact — formal, slightly old-fashioned opening",
+        "why": "A polite first line; some people now find it a bit stiff."
+      },
+      {
+        "id": "email-etiquette-b2-04",
+        "left": "Get well soon,",
+        "right": "a friend who is ill — warm, caring closing",
+        "why": "You hope they recover quickly: kind and personal."
+      },
+      {
+        "id": "email-etiquette-b2-05",
+        "left": "Yours faithfully,",
+        "right": "an unnamed formal recipient — closing when you don't know their name",
+        "why": "Pairs with “Dear Sir or Madam”."
+      },
+      {
+        "id": "email-etiquette-b2-06",
+        "left": "All the best,",
+        "right": "almost anyone — a friendly, safe closing",
+        "why": "Friendly but neutral: fine for nearly any reader."
+      },
+      {
+        "id": "email-etiquette-b2-07",
+        "left": "Just checking in —",
+        "right": "a colleague who hasn't replied — gentle, casual follow-up",
+        "why": "A light nudge without sounding impatient."
+      },
+      {
+        "id": "email-etiquette-b2-08",
+        "left": "Many thanks,",
+        "right": "a colleague or client — brief, appreciative closing",
+        "why": "Shorter than “Thank you very much”, still professional."
+      },
+      {
+        "id": "email-etiquette-b2-09",
+        "left": "Welcome aboard!",
+        "right": "a new colleague on their first day — friendly opening",
+        "why": "From ships: you've joined the crew."
+      },
+      {
+        "id": "email-etiquette-b2-10",
+        "left": "Please accept my apologies for the delay.",
+        "right": "a client waiting for your answer — formal apology",
+        "why": "Formal, full apology for keeping a client waiting."
+      },
+      {
+        "id": "email-etiquette-b2-11",
+        "left": "Dear all,",
+        "right": "a large group, some you don't know — neutral opening",
+        "why": "Neutral and efficient for mailing lists and big groups."
+      },
+      {
+        "id": "email-etiquette-b2-12",
+        "left": "Thanks in advance,",
+        "right": "someone you've just asked a favour — closing before they help",
+        "why": "You thank them before they act; use it with care, it can sound pushy."
+      }
     ],
     "C1": [
-      {"id": "email-etiquette-c1-01", "left": "I am writing on behalf of the board.", "right": "a formal representative context — professional, authoritative opening", "why": "You speak for the board, not just yourself."},
-      {"id": "email-etiquette-c1-02", "left": "Lovely to hear from you!", "right": "a friend who has just written to you — warm reply opening", "why": "You're replying with pleasure to their message."},
-      {"id": "email-etiquette-c1-03", "left": "Please accept my sincere apologies.", "right": "a formal complaint or error context — professional, remorseful", "why": "“Sincere” makes the apology serious and formal."},
-      {"id": "email-etiquette-c1-04", "left": "I would be happy to provide any further information.", "right": "a client you are serving — offering further help, formally", "why": "The natural British way to offer more help; avoid the Spanish-style “I remain at your disposal”."},
-      {"id": "email-etiquette-c1-05", "left": "Do give my regards to the family.", "right": "a family friend — warm, polite closing", "why": "Emphatic “do” makes the wish warmer."},
-      {"id": "email-etiquette-c1-06", "left": "I look forward to your prompt response.", "right": "a formal business contact — professional closing with urgency", "why": "“Prompt” politely says: please don't take long."},
-      {"id": "email-etiquette-c1-07", "left": "Catch up soon?", "right": "a close friend — casual, informal closing", "why": "A friendly question suggesting you meet or chat."},
-      {"id": "email-etiquette-c1-08", "left": "Looking forward to working with you.", "right": "a new business partner — closing that welcomes the work ahead", "why": "A natural British closing line when a project or partnership is just starting; formal letters to officials end “Yours faithfully” or “Yours sincerely”."},
-      {"id": "email-etiquette-c1-09", "left": "Please disregard my previous email.", "right": "an email sent by accident — asking them to ignore it", "why": "“Disregard” = ignore; a clean, formal fix."},
-      {"id": "email-etiquette-c1-10", "left": "Congrats on the new job!", "right": "a friend with good career news — cheerful opening", "why": "“Congrats” is the casual short form of “congratulations”."},
-      {"id": "email-etiquette-c1-11", "left": "I should be most grateful for your assistance.", "right": "a formal request — highly polite, very British", "why": "“Should” for “would” and “most” for “very”: extra polite."},
-      {"id": "email-etiquette-c1-12", "left": "Thoughts?", "right": "a colleague you work with closely — one-word ask for opinions", "why": "One word inviting comments; only for close colleagues."}
+      {
+        "id": "email-etiquette-c1-01",
+        "left": "I am writing on behalf of the board.",
+        "right": "a formal representative context — professional, authoritative opening",
+        "why": "You speak for the board, not just yourself."
+      },
+      {
+        "id": "email-etiquette-c1-02",
+        "left": "Lovely to hear from you!",
+        "right": "a friend who has just written to you — warm reply opening",
+        "why": "You're replying with pleasure to their message."
+      },
+      {
+        "id": "email-etiquette-c1-03",
+        "left": "Please accept my sincere apologies.",
+        "right": "a formal complaint or error context — professional, remorseful",
+        "why": "“Sincere” makes the apology serious and formal."
+      },
+      {
+        "id": "email-etiquette-c1-04",
+        "left": "I would be happy to provide any further information.",
+        "right": "a client you are serving — offering further help, formally",
+        "why": "The natural British way to offer more help; avoid the Spanish-style “I remain at your disposal”."
+      },
+      {
+        "id": "email-etiquette-c1-05",
+        "left": "Do give my regards to the family.",
+        "right": "a family friend — warm, polite closing",
+        "why": "Emphatic “do” makes the wish warmer."
+      },
+      {
+        "id": "email-etiquette-c1-06",
+        "left": "I look forward to your prompt response.",
+        "right": "a formal business contact — professional closing with urgency",
+        "why": "“Prompt” politely says: please don't take long."
+      },
+      {
+        "id": "email-etiquette-c1-07",
+        "left": "Catch up soon?",
+        "right": "a close friend — casual, informal closing",
+        "why": "A friendly question suggesting you meet or chat."
+      },
+      {
+        "id": "email-etiquette-c1-08",
+        "left": "Looking forward to working with you.",
+        "right": "a new business partner — closing that welcomes the work ahead",
+        "why": "A natural British closing line when a project or partnership is just starting: warm but professional."
+      },
+      {
+        "id": "email-etiquette-c1-09",
+        "left": "Please disregard my previous email.",
+        "right": "an email sent by accident — asking them to ignore it",
+        "why": "“Disregard” = ignore; a clean, formal fix."
+      },
+      {
+        "id": "email-etiquette-c1-10",
+        "left": "Congrats on the new job!",
+        "right": "a friend with good career news — cheerful opening",
+        "why": "“Congrats” is the casual short form of “congratulations”."
+      },
+      {
+        "id": "email-etiquette-c1-11",
+        "left": "I should be most grateful for your assistance.",
+        "right": "a formal request — highly polite, very British",
+        "why": "“Should” for “would” and “most” for “very”: extra polite."
+      },
+      {
+        "id": "email-etiquette-c1-12",
+        "left": "Thoughts?",
+        "right": "a colleague you work with closely — one-word ask for opinions",
+        "why": "One word inviting comments; only for close colleagues."
+      }
     ]
   }
 }

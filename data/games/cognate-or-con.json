@@ -1,65 +1,547 @@
 {
   "id": "cognate-or-con",
   "title": "Cognate or Con?",
-  "tags": ["vocabulary"],
+  "tags": [
+    "vocabulary"
+  ],
   "engine": "choice",
   "intro": "Some English words that look Spanish really do mean the same thing. Many don't. Here you practise telling the true friends from the impostors.",
   "items": {
     "A2": [
-      { "id": "cognate-or-con-a2-01", "q": "What does 'notice' mean as a verb?", "options": ["to see or become aware of something", "to tell someone the news", "to write a newspaper story"], "answer": 0, "why": "As a verb, “notice” means see or become aware of something; Spanish “noticia” is “news”." },
-      { "id": "cognate-or-con-a2-02", "q": "What does 'rope' mean in English?", "options": ["a thick cord", "clothes", "a type of dance"], "answer": 0, "why": "A “rope” is a thick cord, like a cowboy's lasso. Spanish “ropa” is “clothes”." },
-      { "id": "cognate-or-con-a2-03", "q": "What does 'diary' mean in English?", "options": ["a personal journal", "a newspaper", "a type of food"], "answer": 0, "why": "A “diary” is a personal journal. A daily newspaper, Spanish “diario”, is a “newspaper”." },
-      { "id": "cognate-or-con-a2-04", "q": "What does 'parents' mean in English?", "options": ["mother and father", "all your relatives", "grandparents only"], "answer": 0, "why": "“Parents” are only your mother and father. Spanish “parientes”, all your relatives, are “relatives”." },
-      { "id": "cognate-or-con-a2-05", "q": "What does 'pie' mean in English?", "options": ["a dish baked in pastry", "your foot", "a type of shoe"], "answer": 0, "why": "A “pie” is a dish baked in pastry, sweet or savoury. Spanish “pie” is your “foot”." },
-      { "id": "cognate-or-con-a2-06", "q": "What does 'red' mean in English?", "options": ["a colour", "a network", "a type of net"], "answer": 0, "why": "“Red” is simply a colour. Spanish “red”, a network or net, is “network” or “net”." },
-      { "id": "cognate-or-con-a2-07", "q": "What does 'important' mean in English?", "options": ["significant or serious", "urgent only", "expensive"], "answer": 0, "why": "A true friend: “important” means the same as Spanish “importante”." },
-      { "id": "cognate-or-con-a2-08", "q": "What does 'attend' mean in English?", "options": ["to go to (an event)", "to answer the phone", "to wait for someone"], "answer": 0, "why": "“Attend” means go to: attend a meeting, attend Mass. “Atender el teléfono” is “answer the phone”." },
-      { "id": "cognate-or-con-a2-09", "q": "What does 'costume' mean in English?", "options": ["special clothes for a play or party", "a habit or custom, like Spanish costumbre", "the price of something"], "answer": 0, "why": "A “costume” is fancy dress for a play or Carnival. A habit, Spanish “costumbre”, is a “custom”." },
-      { "id": "cognate-or-con-a2-10", "q": "What does 'soap' mean in English?", "options": ["something you wash with", "soup", "a type of sauce"], "answer": 0, "why": "“Soap” is for washing. Spanish “sopa” is “soup”: only one of these goes in the bowl." },
-      { "id": "cognate-or-con-a2-11", "q": "What does 'camp' mean in English?", "options": ["a place where people stay in tents", "the countryside, like Spanish campo", "a football pitch"], "answer": 0, "why": "A “camp” is a place with tents, like a cattle drive's night camp. Spanish “campo” is “countryside” or “field”." },
-      { "id": "cognate-or-con-a2-12", "q": "What does 'balloon' mean in English?", "options": ["a rubber bag filled with air", "a ball, like Spanish balón", "a large bowl"], "answer": 0, "why": "A “balloon” floats at a party. A ball you kick, Spanish “balón”, is a “ball”." }
+      {
+        "id": "cognate-or-con-a2-01",
+        "q": "What does 'notice' mean as a verb?",
+        "options": [
+          "to see or become aware of something",
+          "to tell someone the news",
+          "to write a newspaper story"
+        ],
+        "answer": 0,
+        "why": "As a verb, “notice” means see or become aware of something; Spanish “noticia” is “news”."
+      },
+      {
+        "id": "cognate-or-con-a2-02",
+        "q": "What does 'rope' mean in English?",
+        "options": [
+          "a thick cord",
+          "clothes",
+          "a type of dance"
+        ],
+        "answer": 0,
+        "why": "A “rope” is a thick cord, like a cowboy's lasso. Spanish “ropa” is “clothes”."
+      },
+      {
+        "id": "cognate-or-con-a2-03",
+        "q": "What does 'diary' mean in English?",
+        "options": [
+          "a personal journal",
+          "a newspaper",
+          "a type of food"
+        ],
+        "answer": 0,
+        "why": "A “diary” is a personal journal. A daily newspaper, Spanish “diario”, is a “newspaper”."
+      },
+      {
+        "id": "cognate-or-con-a2-04",
+        "q": "What does 'parents' mean in English?",
+        "options": [
+          "mother and father",
+          "all your relatives",
+          "grandparents only"
+        ],
+        "answer": 0,
+        "why": "“Parents” are only your mother and father. Spanish “parientes”, all your relatives, are “relatives”."
+      },
+      {
+        "id": "cognate-or-con-a2-05",
+        "q": "What does 'pie' mean in English?",
+        "options": [
+          "a dish baked in pastry",
+          "your foot",
+          "a type of shoe"
+        ],
+        "answer": 0,
+        "why": "A “pie” is a dish baked in pastry, sweet or savoury. Spanish “pie” is your “foot”."
+      },
+      {
+        "id": "cognate-or-con-a2-06",
+        "q": "What does 'red' mean in English?",
+        "options": [
+          "a colour",
+          "a network",
+          "a type of net"
+        ],
+        "answer": 0,
+        "why": "“Red” is simply a colour. Spanish “red”, a network or net, is “network” or “net”."
+      },
+      {
+        "id": "cognate-or-con-a2-07",
+        "q": "What does 'important' mean in English?",
+        "options": [
+          "significant or serious",
+          "urgent only",
+          "expensive"
+        ],
+        "answer": 0,
+        "why": "A true friend: “important” means the same as Spanish “importante”."
+      },
+      {
+        "id": "cognate-or-con-a2-08",
+        "q": "What does 'attend' mean in English?",
+        "options": [
+          "to go to (an event)",
+          "to answer the phone",
+          "to wait for someone"
+        ],
+        "answer": 0,
+        "why": "“Attend” means go to: attend a meeting, attend Mass. “Atender el teléfono” is “answer the phone”."
+      },
+      {
+        "id": "cognate-or-con-a2-09",
+        "q": "What does 'costume' mean in English?",
+        "options": [
+          "special clothes for a play or party",
+          "a habit or custom, like Spanish costumbre",
+          "the price of something"
+        ],
+        "answer": 0,
+        "why": "A “costume” is fancy dress for a play or Carnival. A habit, Spanish “costumbre”, is a “custom”."
+      },
+      {
+        "id": "cognate-or-con-a2-10",
+        "q": "What does 'soap' mean in English?",
+        "options": [
+          "something you wash with",
+          "soup",
+          "a type of sauce"
+        ],
+        "answer": 0,
+        "why": "“Soap” is for washing. Spanish “sopa” is “soup”: only one of these goes in the bowl."
+      },
+      {
+        "id": "cognate-or-con-a2-11",
+        "q": "What does 'camp' mean in English?",
+        "options": [
+          "a place where people stay in tents",
+          "the countryside, like Spanish campo",
+          "a football pitch"
+        ],
+        "answer": 0,
+        "why": "A “camp” is a place with tents, like a cattle drive's night camp. Spanish “campo” is “countryside” or “field”."
+      },
+      {
+        "id": "cognate-or-con-a2-12",
+        "q": "What does 'balloon' mean in English?",
+        "options": [
+          "a rubber bag filled with air",
+          "a ball, like Spanish balón",
+          "a large bowl"
+        ],
+        "answer": 0,
+        "why": "A “balloon” floats at a party. A ball you kick, Spanish “balón”, is a “ball”."
+      }
     ],
     "B1": [
-      { "id": "cognate-or-con-b1-01", "q": "What does 'advertise' mean in English?", "options": ["to promote a product publicly", "to warn someone of danger", "to give someone advice"], "answer": 0, "why": "“Advertise” means promote publicly. Spanish “advertir”, to warn, is “warn”." },
-      { "id": "cognate-or-con-b1-02", "q": "What does 'college' mean in British English?", "options": ["a place to study after 16, or part of a university", "a primary or secondary school, like Spanish colegio", "a club for retired people"], "answer": 0, "why": "A British “college” is for study after 16 or part of a university; Spanish “colegio” is simply a “school”." },
-      { "id": "cognate-or-con-b1-03", "q": "What does 'billion' mean in English?", "options": ["a thousand million (1,000,000,000)", "a million million, like Spanish billón", "ten million"], "answer": 0, "why": "An English “billion” is a thousand million. Spanish “billón” is a million million, a “trillion”." },
-      { "id": "cognate-or-con-b1-04", "q": "What does 'vase' mean in English?", "options": ["a container for flowers", "a drinking glass", "a type of plate"], "answer": 0, "why": "A “vase” holds flowers. A drinking glass, Spanish “vaso”, is a “glass”." },
-      { "id": "cognate-or-con-b1-05", "q": "What does 'conductor' mean in English?", "options": ["someone who leads an orchestra, or a train official", "a driver of a car", "an electrician"], "answer": 0, "why": "A “conductor” leads an orchestra or checks tickets. The person driving a car is the “driver”." },
-      { "id": "cognate-or-con-b1-06", "q": "What does 'recipient' mean in English?", "options": ["the person who receives something", "a container", "a recipe"], "answer": 0, "why": "A “recipient” is a person who receives something. Spanish “recipiente” is a “container”." },
-      { "id": "cognate-or-con-b1-07", "q": "What does 'discussion' mean in English?", "options": ["a calm conversation about a topic", "a heated argument", "a lecture"], "answer": 0, "why": "An English “discussion” is calm. A heated “discusión” in Spanish is an “argument”." },
-      { "id": "cognate-or-con-b1-08", "q": "What does 'notice' mean as a noun?", "options": ["a written announcement", "a piece of news", "an opinion"], "answer": 0, "why": "As a noun, a “notice” is a written sign or announcement. Spanish “noticia” is “news”." },
-      { "id": "cognate-or-con-b1-09", "q": "What does 'remove' mean in English?", "options": ["to take something away", "to stir, like Spanish remover", "to move house"], "answer": 0, "why": "“Remove” means take away: remove a stain. To stir the paella, Spanish “remover”, is “stir”." },
-      { "id": "cognate-or-con-b1-10", "q": "What does 'agenda' mean in English?", "options": ["a list of things to discuss at a meeting", "a diary for appointments, like Spanish agenda", "a calendar on the wall"], "answer": 0, "why": "An English “agenda” is a meeting's list of topics. Your appointments book is a “diary”." },
-      { "id": "cognate-or-con-b1-11", "q": "What does 'record' mean in English, as a verb?", "options": ["to store sounds or information", "to remember, like Spanish recordar", "to repeat something"], "answer": 0, "why": "To “record” is to store sound or write something down. Spanish “recordar” is “remember”." },
-      { "id": "cognate-or-con-b1-12", "q": "What does 'stranger' mean in English?", "options": ["a person you don't know", "a person from another country, like Spanish extranjero", "a strange object"], "answer": 0, "why": "A “stranger” is someone you don't know. A person from another country is a “foreigner”." }
+      {
+        "id": "cognate-or-con-b1-01",
+        "q": "What does 'advertise' mean in English?",
+        "options": [
+          "to promote a product publicly",
+          "to warn someone of danger",
+          "to give someone advice"
+        ],
+        "answer": 0,
+        "why": "“Advertise” means promote publicly. Spanish “advertir”, to warn, is “warn”."
+      },
+      {
+        "id": "cognate-or-con-b1-02",
+        "q": "What does 'college' mean in British English?",
+        "options": [
+          "a place to study after 16, or part of a university",
+          "a primary or secondary school, like Spanish colegio",
+          "a club for retired people"
+        ],
+        "answer": 0,
+        "why": "A British “college” is for study after 16 or part of a university; Spanish “colegio” is simply a “school”."
+      },
+      {
+        "id": "cognate-or-con-b1-03",
+        "q": "What does 'billion' mean in English?",
+        "options": [
+          "a thousand million (1,000,000,000)",
+          "a million million, like Spanish billón",
+          "ten million"
+        ],
+        "answer": 0,
+        "why": "An English “billion” is a thousand million. Spanish “billón” is a million million, a “trillion”."
+      },
+      {
+        "id": "cognate-or-con-b1-04",
+        "q": "What does 'vase' mean in English?",
+        "options": [
+          "a container for flowers",
+          "a drinking glass",
+          "a type of plate"
+        ],
+        "answer": 0,
+        "why": "A “vase” holds flowers. A drinking glass, Spanish “vaso”, is a “glass”."
+      },
+      {
+        "id": "cognate-or-con-b1-05",
+        "q": "What does 'conductor' mean in English?",
+        "options": [
+          "someone who leads an orchestra, or a train official",
+          "a driver of a car",
+          "an electrician"
+        ],
+        "answer": 0,
+        "why": "A “conductor” leads an orchestra or checks tickets. The person driving a car is the “driver”."
+      },
+      {
+        "id": "cognate-or-con-b1-06",
+        "q": "What does 'recipient' mean in English?",
+        "options": [
+          "the person who receives something",
+          "a container",
+          "a recipe"
+        ],
+        "answer": 0,
+        "why": "A “recipient” is a person who receives something. Spanish “recipiente” is a “container”."
+      },
+      {
+        "id": "cognate-or-con-b1-07",
+        "q": "What does 'discussion' mean in English?",
+        "options": [
+          "a calm conversation about a topic",
+          "a heated argument",
+          "a lecture"
+        ],
+        "answer": 0,
+        "why": "An English “discussion” is calm. A heated “discusión” in Spanish is an “argument”."
+      },
+      {
+        "id": "cognate-or-con-b1-08",
+        "q": "What does 'notice' mean as a noun?",
+        "options": [
+          "a written announcement",
+          "a piece of news",
+          "an opinion"
+        ],
+        "answer": 0,
+        "why": "As a noun, a “notice” is a written sign or announcement. Spanish “noticia” is “news”."
+      },
+      {
+        "id": "cognate-or-con-b1-09",
+        "q": "What does 'remove' mean in English?",
+        "options": [
+          "to take something away",
+          "to stir, like Spanish remover",
+          "to move house"
+        ],
+        "answer": 0,
+        "why": "“Remove” means take away: remove a stain. To stir the paella, Spanish “remover”, is “stir”."
+      },
+      {
+        "id": "cognate-or-con-b1-10",
+        "q": "What does 'agenda' mean in English?",
+        "options": [
+          "a list of things to discuss at a meeting",
+          "a diary for appointments, like Spanish agenda",
+          "a calendar on the wall"
+        ],
+        "answer": 0,
+        "why": "An English “agenda” is a meeting's list of topics. Your appointments book is a “diary”."
+      },
+      {
+        "id": "cognate-or-con-b1-11",
+        "q": "What does 'record' mean in English, as a verb?",
+        "options": [
+          "to store sounds or information",
+          "to remember, like Spanish recordar",
+          "to repeat something"
+        ],
+        "answer": 0,
+        "why": "To “record” is to store sound or write something down. Spanish “recordar” is “remember”."
+      },
+      {
+        "id": "cognate-or-con-b1-12",
+        "q": "What does 'stranger' mean in English?",
+        "options": [
+          "a person you don't know",
+          "a person from another country, like Spanish extranjero",
+          "a strange object"
+        ],
+        "answer": 0,
+        "why": "A “stranger” is someone you don't know. A person from another country is a “foreigner”."
+      }
     ],
     "B2": [
-      { "id": "cognate-or-con-b2-01", "q": "What does 'disgrace' mean in English?", "options": ["shame or loss of reputation", "a type of celebration", "gratitude"], "answer": 0, "why": "“Disgrace” means shame. Spanish “desgracia”, a misfortune, is “misfortune” or “tragedy”." },
-      { "id": "cognate-or-con-b2-02", "q": "What does 'petrol' mean in British English?", "options": ["fuel for cars (gasoline)", "petroleum or crude oil", "a type of plastic"], "answer": 0, "why": "In Britain cars run on “petrol”. Crude oil, Spanish “petróleo”, is “oil” or “petroleum”." },
-      { "id": "cognate-or-con-b2-03", "q": "What does 'candid' mean in English?", "options": ["honest and direct", "naive or innocent, like Spanish cándido", "shy or embarrassed"], "answer": 0, "why": "“Candid” means frank and honest. Spanish “cándido”, naive, is “naive” in English." },
-      { "id": "cognate-or-con-b2-04", "q": "What does 'condescend' mean in English?", "options": ["to talk down to someone, as if you are superior", "to be kind and obliging, like Spanish condescendiente", "to argue with someone"], "answer": 0, "why": "To “condescend” is to talk down to people; obliging, Spanish “condescendiente”, is “accommodating” or “obliging”." },
-      { "id": "cognate-or-con-b2-05", "q": "What does 'bizarre' mean in English?", "options": ["very strange or unusual", "brave or gallant, like Spanish bizarro", "colourful"], "answer": 0, "why": "A con: “bizarre” means very strange, while traditional Spanish “bizarro” means brave or gallant." },
-      { "id": "cognate-or-con-b2-06", "q": "What does 'exquisite' mean in English?", "options": ["extremely beautiful or delicate", "exact or precise", "expensive only"], "answer": 0, "why": "“Exquisite” means extremely fine and delicate, but everyday tasty food, Spanish “exquisito”, is more naturally “delicious”." },
-      { "id": "cognate-or-con-b2-07", "q": "What does 'preservative' mean in English?", "options": ["a chemical added to food to keep it fresh", "a type of insurance", "a warning label"], "answer": 0, "why": "A “preservative” keeps food fresh. Careful: Spanish “preservativo” is a “condom”." },
-      { "id": "cognate-or-con-b2-08", "q": "What does 'sympathy' mean in English?", "options": ["feeling sorry for someone's situation", "friendliness or likeability, like Spanish simpatía", "happiness"], "answer": 0, "why": "“Sympathy” means feeling sorry for someone. Spanish “simpatía” is “friendliness” or “charm”." },
-      { "id": "cognate-or-con-b2-09", "q": "What does 'involve' mean in English?", "options": ["to include as a necessary part", "to wrap, like Spanish envolver", "to turn around"], "answer": 0, "why": "The job involves travelling. To wrap a present, Spanish “envolver”, is “wrap”." },
-      { "id": "cognate-or-con-b2-10", "q": "What does 'manifestation' mean in English?", "options": ["a sign that something exists", "a street protest, like Spanish manifestación", "a public speech"], "answer": 0, "why": "A fever can be a manifestation of infection. A street protest is a “demonstration”." },
-      { "id": "cognate-or-con-b2-11", "q": "What does 'collar' mean in English?", "options": ["the part of a shirt around the neck", "a necklace, like Spanish collar", "a scarf"], "answer": 0, "why": "A “collar” is on a shirt or a dog. Spanish “collar”, jewellery, is a “necklace”." },
-      { "id": "cognate-or-con-b2-12", "q": "What does 'injury' mean in English?", "options": ["physical harm to the body", "an insult, like Spanish injuria", "an unfair law"], "answer": 0, "why": "An “injury” is physical harm: a broken leg. Spanish “injuria”, an insult, is “insult” or “slander”." }
+      {
+        "id": "cognate-or-con-b2-01",
+        "q": "What does 'disgrace' mean in English?",
+        "options": [
+          "shame or loss of reputation",
+          "a type of celebration",
+          "gratitude"
+        ],
+        "answer": 0,
+        "why": "“Disgrace” means shame. Spanish “desgracia”, a misfortune, is “misfortune” or “tragedy”."
+      },
+      {
+        "id": "cognate-or-con-b2-02",
+        "q": "What does 'petrol' mean in British English?",
+        "options": [
+          "fuel for cars (gasoline)",
+          "petroleum or crude oil",
+          "a type of plastic"
+        ],
+        "answer": 0,
+        "why": "In Britain cars run on “petrol”. Crude oil, Spanish “petróleo”, is “oil” or “petroleum”."
+      },
+      {
+        "id": "cognate-or-con-b2-03",
+        "q": "What does 'candid' mean in English?",
+        "options": [
+          "honest and direct",
+          "naive or innocent, like Spanish cándido",
+          "shy or embarrassed"
+        ],
+        "answer": 0,
+        "why": "“Candid” means frank and honest. Spanish “cándido”, naive, is “naive” in English."
+      },
+      {
+        "id": "cognate-or-con-b2-04",
+        "q": "What does 'condescend' mean in English?",
+        "options": [
+          "to talk down to someone, as if you are superior",
+          "to be kind and willing to help",
+          "to argue with someone"
+        ],
+        "answer": 0,
+        "why": "To “condescend” is to talk down to people; Spanish “condescendiente” (kind, willing to please) is “accommodating” or “obliging”."
+      },
+      {
+        "id": "cognate-or-con-b2-05",
+        "q": "What does 'bizarre' mean in English?",
+        "options": [
+          "very strange or unusual",
+          "brave or gallant, like Spanish bizarro",
+          "colourful"
+        ],
+        "answer": 0,
+        "why": "A con: “bizarre” means very strange, while traditional Spanish “bizarro” means brave or gallant."
+      },
+      {
+        "id": "cognate-or-con-b2-06",
+        "q": "What does 'exquisite' mean in English?",
+        "options": [
+          "extremely beautiful or delicate",
+          "exact or precise",
+          "very expensive"
+        ],
+        "answer": 0,
+        "why": "“Exquisite” means extremely fine and delicate, but everyday tasty food, Spanish “exquisito”, is more naturally “delicious”."
+      },
+      {
+        "id": "cognate-or-con-b2-07",
+        "q": "What does 'preservative' mean in English?",
+        "options": [
+          "a chemical added to food to keep it fresh",
+          "a type of insurance",
+          "a warning label"
+        ],
+        "answer": 0,
+        "why": "A “preservative” keeps food fresh. Careful: Spanish “preservativo” is a “condom”."
+      },
+      {
+        "id": "cognate-or-con-b2-08",
+        "q": "What does 'sympathy' mean in English?",
+        "options": [
+          "feeling sorry for someone's situation",
+          "friendliness or likeability, like Spanish simpatía",
+          "happiness"
+        ],
+        "answer": 0,
+        "why": "“Sympathy” means feeling sorry for someone. Spanish “simpatía” is “friendliness” or “charm”."
+      },
+      {
+        "id": "cognate-or-con-b2-09",
+        "q": "What does 'involve' mean in English?",
+        "options": [
+          "to include as a necessary part",
+          "to wrap, like Spanish envolver",
+          "to turn around"
+        ],
+        "answer": 0,
+        "why": "The job involves travelling. To wrap a present, Spanish “envolver”, is “wrap”."
+      },
+      {
+        "id": "cognate-or-con-b2-10",
+        "q": "What does 'manifestation' mean in English?",
+        "options": [
+          "a sign that something exists",
+          "a street protest, like Spanish manifestación",
+          "a public speech"
+        ],
+        "answer": 0,
+        "why": "A fever can be a manifestation of infection. A street protest is a “demonstration”."
+      },
+      {
+        "id": "cognate-or-con-b2-11",
+        "q": "What does 'collar' mean in English?",
+        "options": [
+          "the part of a shirt around the neck",
+          "a necklace, like Spanish collar",
+          "a scarf"
+        ],
+        "answer": 0,
+        "why": "A “collar” is on a shirt or a dog. Spanish “collar”, jewellery, is a “necklace”."
+      },
+      {
+        "id": "cognate-or-con-b2-12",
+        "q": "What does 'injury' mean in English?",
+        "options": [
+          "physical harm to the body",
+          "an insult, like Spanish injuria",
+          "an unfair law"
+        ],
+        "answer": 0,
+        "why": "An “injury” is physical harm: a broken leg. Spanish “injuria”, an insult, is “insult” or “slander”."
+      }
     ],
     "C1": [
-      { "id": "cognate-or-con-c1-01", "q": "What does 'ostentatious' mean in English?", "options": ["showy, designed to impress", "hidden or secret", "modest"], "answer": 0, "why": "“Ostentatious” means showy, designed to impress: an ostentatious gold watch." },
-      { "id": "cognate-or-con-c1-02", "q": "What does 'notorious' mean in English?", "options": ["famous for something bad", "well-known in a good way", "unknown"], "answer": 0, "why": "“Notorious” means famous for something bad, like a notorious outlaw; Spanish “notorio” (well-known, obvious) is “well-known” or “evident”." },
-      { "id": "cognate-or-con-c1-03", "q": "What does 'ingenious' mean in English?", "options": ["clever and original", "naive, like Spanish ingenuo", "honest"], "answer": 0, "why": "“Ingenious” means clever and inventive. Spanish “ingenuo”, naive, is “naive” or “ingenuous”." },
-      { "id": "cognate-or-con-c1-04", "q": "What does 'diversion' mean in British English?", "options": ["an alternative route when a road is closed, or a distraction", "fun, as in Spanish '¡Qué diversión!'", "a type of argument"], "answer": 0, "why": "In Britain a “diversion” is a detour or a distraction; everyday fun, Spanish “diversión”, is just “fun”." },
-      { "id": "cognate-or-con-c1-05", "q": "What does 'eventual' mean in English?", "options": ["happening at the end of a process", "possible or maybe, like Spanish eventual", "urgent"], "answer": 0, "why": "“Eventual” means final, in the end. Spanish “eventual”, possible or temporary, is “possible” or “temporary”." },
-      { "id": "cognate-or-con-c1-06", "q": "What does 'anticipate' mean in English?", "options": ["to expect something and prepare for it", "to do something earlier than planned, like Spanish anticipar", "to be late"], "answer": 0, "why": "“Anticipate” means expect and prepare. To bring something forward, Spanish “anticipar”, is “bring forward”." },
-      { "id": "cognate-or-con-c1-07", "q": "What does 'assume' mean in English?", "options": ["to believe something is true without proof", "to accept a painful fact, like Spanish 'asumirlo'", "to argue"], "answer": 0, "why": "“Assume” means suppose without proof (or take on, as in assume control), but accepting a painful fact, Spanish “asumirlo”, is “accept” or “come to terms with”." },
-      { "id": "cognate-or-con-c1-08", "q": "What does 'contest' mean in English, as a verb?", "options": ["to formally challenge or dispute", "to answer, like Spanish contestar", "to celebrate"], "answer": 0, "why": "To “contest” a decision is to challenge it. Spanish “contestar”, to answer, is “answer” or “reply”." },
-      { "id": "cognate-or-con-c1-09", "q": "What does 'ignore' mean in English?", "options": ["to deliberately pay no attention to", "not to know something, like Spanish ignorar", "to forget"], "answer": 0, "why": "To “ignore” is to choose not to notice. Not knowing something is “not know” or “be unaware of”." },
-      { "id": "cognate-or-con-c1-10", "q": "What does 'commodity' mean in English?", "options": ["a product that can be bought and sold", "comfort, like Spanish comodidad", "a convenient place"], "answer": 0, "why": "Oranges and oil are commodities. Spanish “comodidad” is “comfort” or “convenience”." },
-      { "id": "cognate-or-con-c1-11", "q": "What does 'vicious' mean in English?", "options": ["cruel and violent", "having a bad habit, like Spanish vicioso", "lazy"], "answer": 0, "why": "A “vicious” attack is cruel and violent, a much stronger word than Spanish “vicioso”." },
-      { "id": "cognate-or-con-c1-12", "q": "What does 'suburb' mean in English?", "options": ["a residential area on the edge of a city", "a poor neighbourhood, like Spanish suburbio", "an underground train"], "answer": 0, "why": "English suburbs are usually quiet and comfortable. A slum, Spanish “suburbio”, is not a suburb." }
+      {
+        "id": "cognate-or-con-c1-01",
+        "q": "What does 'ostentatious' mean in English?",
+        "options": [
+          "showy, designed to impress",
+          "hidden or secret",
+          "modest"
+        ],
+        "answer": 0,
+        "why": "“Ostentatious” means showy, designed to impress: an ostentatious gold watch."
+      },
+      {
+        "id": "cognate-or-con-c1-02",
+        "q": "What does 'notorious' mean in English?",
+        "options": [
+          "famous for something bad",
+          "well-known in a good way",
+          "unknown"
+        ],
+        "answer": 0,
+        "why": "“Notorious” means famous for something bad, like a notorious outlaw; Spanish “notorio” (well-known, obvious) is “well-known” or “evident”."
+      },
+      {
+        "id": "cognate-or-con-c1-03",
+        "q": "What does 'ingenious' mean in English?",
+        "options": [
+          "clever and original",
+          "naive, like Spanish ingenuo",
+          "honest"
+        ],
+        "answer": 0,
+        "why": "“Ingenious” means clever and inventive. Spanish “ingenuo”, naive, is “naive” or “ingenuous”."
+      },
+      {
+        "id": "cognate-or-con-c1-04",
+        "q": "What does 'diversion' mean in British English?",
+        "options": [
+          "an alternative route when a road is closed, or a distraction",
+          "a party or celebration",
+          "a type of argument"
+        ],
+        "answer": 0,
+        "why": "In Britain a “diversion” is a detour or a distraction; everyday fun, Spanish “diversión”, is just “fun”."
+      },
+      {
+        "id": "cognate-or-con-c1-05",
+        "q": "What does 'eventual' mean in English?",
+        "options": [
+          "happening at the end of a process",
+          "possible or maybe, like Spanish eventual",
+          "urgent"
+        ],
+        "answer": 0,
+        "why": "“Eventual” means final, in the end. Spanish “eventual”, possible or temporary, is “possible” or “temporary”."
+      },
+      {
+        "id": "cognate-or-con-c1-06",
+        "q": "What does 'anticipate' mean in English?",
+        "options": [
+          "to expect something and prepare for it",
+          "to do something earlier than planned, like Spanish anticipar",
+          "to be late"
+        ],
+        "answer": 0,
+        "why": "“Anticipate” means expect and prepare. To bring something forward, Spanish “anticipar”, is “bring forward”."
+      },
+      {
+        "id": "cognate-or-con-c1-07",
+        "q": "What does 'assume' mean in English?",
+        "options": [
+          "to believe something is true without proof",
+          "to accept a painful fact, like Spanish 'asumirlo'",
+          "to argue"
+        ],
+        "answer": 0,
+        "why": "“Assume” means suppose without proof (or take on, as in assume control), but accepting a painful fact, Spanish “asumirlo”, is “accept” or “come to terms with”."
+      },
+      {
+        "id": "cognate-or-con-c1-08",
+        "q": "What does 'contest' mean in English, as a verb?",
+        "options": [
+          "to formally challenge or dispute",
+          "to answer, like Spanish contestar",
+          "to celebrate"
+        ],
+        "answer": 0,
+        "why": "To “contest” a decision is to challenge it. Spanish “contestar”, to answer, is “answer” or “reply”."
+      },
+      {
+        "id": "cognate-or-con-c1-09",
+        "q": "What does 'ignore' mean in English?",
+        "options": [
+          "to deliberately pay no attention to",
+          "not to know something, like Spanish ignorar",
+          "to forget"
+        ],
+        "answer": 0,
+        "why": "To “ignore” is to choose not to notice. Not knowing something is “not know” or “be unaware of”."
+      },
+      {
+        "id": "cognate-or-con-c1-10",
+        "q": "What does 'commodity' mean in English?",
+        "options": [
+          "a product that can be bought and sold",
+          "comfort, like Spanish comodidad",
+          "a convenient place"
+        ],
+        "answer": 0,
+        "why": "Oranges and oil are commodities. Spanish “comodidad” is “comfort” or “convenience”."
+      },
+      {
+        "id": "cognate-or-con-c1-11",
+        "q": "What does 'vicious' mean in English?",
+        "options": [
+          "cruel and violent",
+          "having a bad habit, like Spanish vicioso",
+          "lazy"
+        ],
+        "answer": 0,
+        "why": "A “vicious” attack is cruel and violent, a much stronger word than Spanish “vicioso”."
+      },
+      {
+        "id": "cognate-or-con-c1-12",
+        "q": "What does 'suburb' mean in English?",
+        "options": [
+          "a residential area on the edge of a city",
+          "a poor neighbourhood, like Spanish suburbio",
+          "an underground train"
+        ],
+        "answer": 0,
+        "why": "English suburbs are usually quiet and comfortable. A slum, Spanish “suburbio”, is not a suburb."
+      }
     ]
   }
 }

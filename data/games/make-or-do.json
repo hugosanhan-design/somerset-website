@@ -324,13 +324,13 @@
       },
       {
         "id": "make-or-do-b2-08",
-        "q": "___ the washing up (clean the dishes)",
+        "q": "___ the washing-up (clean the dishes)",
         "options": [
           "make",
           "do"
         ],
         "answer": 1,
-        "why": "British English for washing the dishes after a meal: do the washing up."
+        "why": "British English for washing the dishes after a meal: do the washing-up."
       },
       {
         "id": "make-or-do-b2-09",

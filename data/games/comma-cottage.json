@@ -1,65 +1,547 @@
 {
   "id": "comma-cottage",
   "title": "Comma Cottage",
-  "tags": ["punctuation"],
+  "tags": [
+    "punctuation"
+  ],
   "engine": "choice",
   "intro": "The comma rules that quietly wreck a good sentence.",
   "items": {
     "A2": [
-      { "id": "comma-cottage-a2-01", "q": "Lists — which is correct?", "options": ["I bought apples, bananas and milk.", "I bought apples bananas and milk.", "I bought, apples, bananas, and, milk."], "answer": 0, "why": "Commas separate the items in a list; “and” joins the last two." },
-      { "id": "comma-cottage-a2-02", "q": "Direct address — which is correct?", "options": ["Come here, John.", "Come here John.", "Come, here John."], "answer": 0, "why": "Put a comma before the name of the person you are speaking to." },
-      { "id": "comma-cottage-a2-03", "q": "Starting with ‘No’ — which is correct?", "options": ["No, I don't want any.", "No I don't want any.", "No, I don't, want any."], "answer": 0, "why": "A comma follows “No” or “Yes” at the start of a reply." },
-      { "id": "comma-cottage-a2-04", "q": "Joining two short ideas with ‘but’ — which is correct?", "options": ["I was tired, but I kept working.", "I was tired but, I kept working.", "I was tired, but I kept, working."], "answer": 0, "why": "A comma usually goes before “but” when it joins two complete ideas." },
-      { "id": "comma-cottage-a2-05", "q": "Starting with ‘Well’ — which is correct?", "options": ["Well, that's interesting.", "Well that's interesting.", "Well, that's, interesting."], "answer": 0, "why": "“Well” at the start is a pause word, so a comma follows it." },
-      { "id": "comma-cottage-a2-06", "q": "Starting with ‘However’ — which is correct?", "options": ["However, I forgot my keys.", "However I forgot my keys.", "However, I, forgot my keys."], "answer": 0, "why": "“However” at the start of a sentence is followed by a comma, but no comma goes between “I” and its verb." },
-      { "id": "comma-cottage-a2-07", "q": "Thanking someone by name — which is correct?", "options": ["Thank you, Maria.", "Thank you Maria.", "Thank, you Maria."], "answer": 0, "why": "A comma comes before the name: thank you, Maria." },
-      { "id": "comma-cottage-a2-08", "q": "Starting with ‘Firstly’ — which is correct?", "options": ["Firstly, let's discuss the budget.", "Firstly let's discuss the budget.", "Firstly, let's, discuss the budget."], "answer": 0, "why": "Sequencing words like “Firstly” are followed by a comma." },
-      { "id": "comma-cottage-a2-09", "q": "A list of three adjectives — which is correct?", "options": ["She is kind, honest and generous.", "She is kind honest and generous.", "She is kind, honest, and, generous."], "answer": 0, "why": "Commas separate the adjectives in the list; “and” joins the last two." },
-      { "id": "comma-cottage-a2-10", "q": "A list of places — which is correct?", "options": ["We visited Valencia, Xàtiva and Dénia.", "We visited Valencia Xàtiva and Dénia.", "We visited, Valencia, Xàtiva, and, Dénia."], "answer": 0, "why": "Commas separate the places in the list; “and” joins the last two." },
-      { "id": "comma-cottage-a2-11", "q": "Starting with ‘Yes’ — which is correct?", "options": ["Yes, the sheriff is in town.", "Yes the sheriff is in town.", "Yes, the sheriff, is in town."], "answer": 0, "why": "A comma follows “Yes” at the start of an answer." },
-      { "id": "comma-cottage-a2-12", "q": "Asking a question with a name — which is correct?", "options": ["Are you ready, Carmen?", "Are you ready Carmen?", "Are, you ready Carmen?"], "answer": 0, "why": "Put a comma before the name of the person you are talking to." }
+      {
+        "id": "comma-cottage-a2-01",
+        "q": "Lists — which is correct?",
+        "options": [
+          "I bought apples, bananas and milk.",
+          "I bought apples bananas and milk.",
+          "I bought, apples, bananas, and, milk."
+        ],
+        "answer": 0,
+        "why": "Commas separate the items in a list; “and” joins the last two."
+      },
+      {
+        "id": "comma-cottage-a2-02",
+        "q": "Direct address — which is correct?",
+        "options": [
+          "Come here, John.",
+          "Come here John.",
+          "Come, here John."
+        ],
+        "answer": 0,
+        "why": "Put a comma before the name of the person you are speaking to."
+      },
+      {
+        "id": "comma-cottage-a2-03",
+        "q": "Starting with ‘No’ — which is correct?",
+        "options": [
+          "No, I don't want any.",
+          "No I don't want any.",
+          "No, I don't, want any."
+        ],
+        "answer": 0,
+        "why": "A comma follows “No” or “Yes” at the start of a reply."
+      },
+      {
+        "id": "comma-cottage-a2-04",
+        "q": "Joining two short ideas with ‘but’ — which is correct?",
+        "options": [
+          "I was tired, but I kept working.",
+          "I was tired but, I kept working.",
+          "I was tired, but I kept, working."
+        ],
+        "answer": 0,
+        "why": "A comma usually goes before “but” when it joins two complete ideas."
+      },
+      {
+        "id": "comma-cottage-a2-05",
+        "q": "Starting with ‘Well’ — which is correct?",
+        "options": [
+          "Well, that's interesting.",
+          "Well that's interesting.",
+          "Well, that's, interesting."
+        ],
+        "answer": 0,
+        "why": "“Well” at the start is a pause word, so a comma follows it."
+      },
+      {
+        "id": "comma-cottage-a2-06",
+        "q": "Starting with ‘However’ — which is correct?",
+        "options": [
+          "However, I forgot my keys.",
+          "However I forgot my keys.",
+          "However, I, forgot my keys."
+        ],
+        "answer": 0,
+        "why": "“However” at the start of a sentence is followed by a comma, but no comma goes between “I” and its verb."
+      },
+      {
+        "id": "comma-cottage-a2-07",
+        "q": "Thanking someone by name — which is correct?",
+        "options": [
+          "Thank you, Maria.",
+          "Thank you Maria.",
+          "Thank, you Maria."
+        ],
+        "answer": 0,
+        "why": "A comma comes before the name: thank you, Maria."
+      },
+      {
+        "id": "comma-cottage-a2-08",
+        "q": "Starting with ‘Firstly’ — which is correct?",
+        "options": [
+          "Firstly, let's discuss the budget.",
+          "Firstly let's discuss the budget.",
+          "Firstly, let's, discuss the budget."
+        ],
+        "answer": 0,
+        "why": "Sequencing words like “Firstly” are followed by a comma."
+      },
+      {
+        "id": "comma-cottage-a2-09",
+        "q": "A list of three adjectives — which is correct?",
+        "options": [
+          "She is kind, honest and generous.",
+          "She is kind honest and generous.",
+          "She is kind, honest, and, generous."
+        ],
+        "answer": 0,
+        "why": "Commas separate the adjectives in the list; “and” joins the last two."
+      },
+      {
+        "id": "comma-cottage-a2-10",
+        "q": "A list of places — which is correct?",
+        "options": [
+          "We visited Valencia, Xàtiva and Dénia.",
+          "We visited Valencia Xàtiva and Dénia.",
+          "We visited, Valencia, Xàtiva, and, Dénia."
+        ],
+        "answer": 0,
+        "why": "Commas separate the places in the list; “and” joins the last two."
+      },
+      {
+        "id": "comma-cottage-a2-11",
+        "q": "Starting with ‘Yes’ — which is correct?",
+        "options": [
+          "Yes, the sheriff is in town.",
+          "Yes the sheriff is in town.",
+          "Yes, the sheriff, is in town."
+        ],
+        "answer": 0,
+        "why": "A comma follows “Yes” at the start of an answer."
+      },
+      {
+        "id": "comma-cottage-a2-12",
+        "q": "Asking a question with a name — which is correct?",
+        "options": [
+          "Are you ready, Carmen?",
+          "Are you ready Carmen?",
+          "Are, you ready Carmen?"
+        ],
+        "answer": 0,
+        "why": "Put a comma before the name of the person you are talking to."
+      }
     ],
     "B1": [
-      { "id": "comma-cottage-b1-01", "q": "Long introductory clause — which is correct?", "options": ["After finishing his homework, he went outside to play.", "After finishing his homework, he went, outside to play.", "After finishing, his homework he went outside to play."], "answer": 0, "why": "A comma marks where the opening phrase ends and the main clause starts." },
-      { "id": "comma-cottage-b1-02", "q": "Comma splice — which is correct?", "options": ["I was tired, so I went to bed early.", "I was tired, I went to bed early.", "I was tired I went to bed, early."], "answer": 0, "why": "A comma alone can't join two full sentences; add a linking word like “so”." },
-      { "id": "comma-cottage-b1-03", "q": "Joining two full sentences — which is correct?", "options": ["She studied hard, and she passed the exam.", "She studied hard she passed the exam.", "She studied hard, she passed the exam."], "answer": 0, "why": "Comma + “and” joins two full sentences; a comma alone would be a splice." },
-      { "id": "comma-cottage-b1-04", "q": "Non-essential extra information — which is correct?", "options": ["My brother, who lives in London, is visiting next week.", "My brother who lives in London is visiting next week.", "My brother, who lives in London is visiting next week."], "answer": 0, "why": "Extra information gets a comma at both ends, like brackets." },
-      { "id": "comma-cottage-b1-05", "q": "Comma splice — which is correct?", "options": ["It was raining, but we still went for a walk.", "It was raining, we still went for a walk.", "It was raining we still went, for a walk."], "answer": 0, "why": "The comma needs “but” after it; a comma alone can't join two sentences." },
-      { "id": "comma-cottage-b1-06", "q": "Introductory phrase — which is correct?", "options": ["In spite of the rain, the match continued.", "In spite of the rain, the match, continued.", "In spite, of the rain, the match continued."], "answer": 0, "why": "A comma separates the opening phrase from the main clause." },
-      { "id": "comma-cottage-b1-07", "q": "Two independent clauses, no conjunction — which is correct?", "options": ["The shop was closed; we went home.", "The shop was closed, we went home.", "The shop was closed we went, home."], "answer": 0, "why": "With no linking word, two full sentences need a semicolon or a full stop, not a comma." },
-      { "id": "comma-cottage-b1-08", "q": "Sequencing words — which is correct?", "options": ["First, we checked in. Then we found our seats.", "First, we checked, in. Then we found, our seats.", "First, we, checked in. Then we, found our seats."], "answer": 0, "why": "A comma usually follows “First”; it never splits a verb from the words that complete it." },
-      { "id": "comma-cottage-b1-09", "q": "Introducing a direct quotation — which is correct?", "options": ["She said, \"I'll be there at six.\"", "She said \"I'll be there at six.\"", "She said, \"I'll, be there at six.\""], "answer": 0, "why": "A comma introduces direct speech after “said”." },
-      { "id": "comma-cottage-b1-10", "q": "Introductory ‘When’ clause — which is correct?", "options": ["When the stagecoach arrived, everyone ran outside.", "When the stagecoach, arrived everyone ran outside.", "When, the stagecoach arrived, everyone ran outside."], "answer": 0, "why": "The comma goes where the time clause ends and the main clause starts." },
-      { "id": "comma-cottage-b1-11", "q": "Non-essential extra information — which is correct?", "options": ["Jenner, who was a country doctor, developed the smallpox vaccine.", "Jenner who was a country doctor developed the smallpox vaccine.", "Jenner, who was a country doctor developed the smallpox vaccine."], "answer": 0, "why": "Extra information about a named person needs a comma at both ends." },
-      { "id": "comma-cottage-b1-12", "q": "Comma splice — which is correct?", "options": ["The paella was ready, so we sat down to eat.", "The paella was ready, we sat down to eat.", "The paella was ready we sat down, to eat."], "answer": 0, "why": "A comma alone can't join two sentences; “so” does the joining." }
+      {
+        "id": "comma-cottage-b1-01",
+        "q": "Long introductory clause — which is correct?",
+        "options": [
+          "After finishing his homework, he went outside to play.",
+          "After finishing his homework, he went, outside to play.",
+          "After finishing, his homework he went outside to play."
+        ],
+        "answer": 0,
+        "why": "A comma marks where the opening phrase ends and the main clause starts."
+      },
+      {
+        "id": "comma-cottage-b1-02",
+        "q": "Comma splice — which is correct?",
+        "options": [
+          "I was tired, so I went to bed early.",
+          "I was tired, I went to bed early.",
+          "I was tired I went to bed, early."
+        ],
+        "answer": 0,
+        "why": "A comma alone can't join two full sentences; add a linking word like “so”."
+      },
+      {
+        "id": "comma-cottage-b1-03",
+        "q": "Joining two full sentences — which is correct?",
+        "options": [
+          "She studied hard, and she passed the exam.",
+          "She studied hard she passed the exam.",
+          "She studied hard, she passed the exam."
+        ],
+        "answer": 0,
+        "why": "Comma + “and” joins two full sentences; a comma alone would be a splice."
+      },
+      {
+        "id": "comma-cottage-b1-04",
+        "q": "Non-essential extra information — which is correct?",
+        "options": [
+          "My brother, who lives in London, is visiting next week.",
+          "My brother who lives in London is visiting next week.",
+          "My brother, who lives in London is visiting next week."
+        ],
+        "answer": 0,
+        "why": "Extra information gets a comma at both ends, like brackets."
+      },
+      {
+        "id": "comma-cottage-b1-05",
+        "q": "Comma splice — which is correct?",
+        "options": [
+          "It was raining, but we still went for a walk.",
+          "It was raining, we still went for a walk.",
+          "It was raining we still went, for a walk."
+        ],
+        "answer": 0,
+        "why": "The comma needs “but” after it; a comma alone can't join two sentences."
+      },
+      {
+        "id": "comma-cottage-b1-06",
+        "q": "Introductory phrase — which is correct?",
+        "options": [
+          "In spite of the rain, the match continued.",
+          "In spite of the rain, the match, continued.",
+          "In spite, of the rain, the match continued."
+        ],
+        "answer": 0,
+        "why": "A comma separates the opening phrase from the main clause."
+      },
+      {
+        "id": "comma-cottage-b1-07",
+        "q": "Two independent clauses, no conjunction — which is correct?",
+        "options": [
+          "The shop was closed; we went home.",
+          "The shop was closed, we went home.",
+          "The shop was closed we went, home."
+        ],
+        "answer": 0,
+        "why": "With no linking word, two full sentences need a semicolon or a full stop, not a comma."
+      },
+      {
+        "id": "comma-cottage-b1-08",
+        "q": "Two sentences in a row — which is correct?",
+        "options": [
+          "First, we checked in. Then we found our seats.",
+          "First, we checked in then we found our seats.",
+          "First we, checked in. Then we found our seats."
+        ],
+        "answer": 0,
+        "why": "Two complete sentences need a full stop between them; a comma after “First” is usual, but never between “we” and its verb."
+      },
+      {
+        "id": "comma-cottage-b1-09",
+        "q": "Introducing a direct quotation — which is correct?",
+        "options": [
+          "She said, \"I'll be there at six.\"",
+          "She said \"I'll be there at six.\"",
+          "She said, \"I'll, be there at six.\""
+        ],
+        "answer": 0,
+        "why": "A comma introduces direct speech after “said”."
+      },
+      {
+        "id": "comma-cottage-b1-10",
+        "q": "Introductory ‘When’ clause — which is correct?",
+        "options": [
+          "When the stagecoach arrived, everyone ran outside.",
+          "When the stagecoach, arrived everyone ran outside.",
+          "When, the stagecoach arrived, everyone ran outside."
+        ],
+        "answer": 0,
+        "why": "The comma goes where the time clause ends and the main clause starts."
+      },
+      {
+        "id": "comma-cottage-b1-11",
+        "q": "Non-essential extra information — which is correct?",
+        "options": [
+          "Jenner, who was a country doctor, developed the smallpox vaccine.",
+          "Jenner who was a country doctor developed the smallpox vaccine.",
+          "Jenner, who was a country doctor developed the smallpox vaccine."
+        ],
+        "answer": 0,
+        "why": "Extra information about a named person needs a comma at both ends."
+      },
+      {
+        "id": "comma-cottage-b1-12",
+        "q": "Comma splice — which is correct?",
+        "options": [
+          "The paella was ready, so we sat down to eat.",
+          "The paella was ready, we sat down to eat.",
+          "The paella was ready we sat down, to eat."
+        ],
+        "answer": 0,
+        "why": "A comma alone can't join two sentences; “so” does the joining."
+      }
     ],
     "B2": [
-      { "id": "comma-cottage-b2-01", "q": "A necessary Oxford comma — which avoids confusion about who the parents are?", "options": ["I'd like to thank my parents, Ana, and Pablo.", "I'd like to thank my parents, Ana and Pablo.", "I'd like to thank my parents Ana and Pablo."], "answer": 0, "why": "The comma before “and” shows Ana and Pablo are separate people, not your parents' names." },
-      { "id": "comma-cottage-b2-02", "q": "Non-defining relative clause — which is correct?", "options": ["Valencia, which is on the Mediterranean coast, is famous for paella.", "Valencia which is on the Mediterranean coast is famous for paella.", "Valencia, which is on the Mediterranean coast is famous for paella."], "answer": 0, "why": "We already know which Valencia, so the extra fact sits between two commas." },
-      { "id": "comma-cottage-b2-03", "q": "Parenthetical comment — which is correct?", "options": ["The results, to be honest, were disappointing.", "The results to be honest were disappointing.", "The results, to be honest were disappointing."], "answer": 0, "why": "“To be honest” is an aside: a comma on each side." },
-      { "id": "comma-cottage-b2-04", "q": "Comma before a contrasting phrase — which is correct?", "options": ["The plan was ambitious, though ultimately unsuccessful.", "The plan was ambitious though ultimately unsuccessful.", "The plan was ambitious, though, ultimately unsuccessful."], "answer": 0, "why": "A comma before “though” marks the contrast added after the main clause." },
-      { "id": "comma-cottage-b2-05", "q": "Absolute phrase — which is correct?", "options": ["Her work finished, she left the office early.", "Her work finished she left the office early.", "Her work, finished, she left the office early."], "answer": 0, "why": "The opening phrase “Her work finished” is closed with a comma." },
-      { "id": "comma-cottage-b2-06", "q": "Comma with a coordinating conjunction — which is correct?", "options": ["He wanted to travel, yet he never had the money.", "He wanted, to travel yet he never had the money.", "He wanted to travel, yet, he never had the money."], "answer": 0, "why": "A comma goes before “yet” when it joins two full clauses, not after it." },
-      { "id": "comma-cottage-b2-07", "q": "Direct address mid-sentence — which is correct?", "options": ["I think, Maria, that you're right.", "I think Maria that you're right.", "I think, Maria that you're right."], "answer": 0, "why": "A name in the middle of a sentence needs a comma on each side." },
-      { "id": "comma-cottage-b2-08", "q": "Comma splice with a long clause — which is correct?", "options": ["The negotiations continued for hours; neither side would compromise.", "The negotiations continued for hours, neither side would compromise.", "The negotiations continued for hours neither side, would compromise."], "answer": 0, "why": "Two full sentences with no linking word: a semicolon, not a comma." },
-      { "id": "comma-cottage-b2-09", "q": "Comma after a conditional clause — which is correct?", "options": ["If the weather improves, we'll go to the beach.", "If the weather improves, we'll go, to the beach.", "If the weather, improves, we'll go to the beach."], "answer": 0, "why": "When the “if” clause comes first, we normally close it with a comma, but no comma splits “go to the beach”." },
-      { "id": "comma-cottage-b2-10", "q": "Non-defining relative clause — which is correct?", "options": ["Fleming, who discovered penicillin, was a Scottish doctor.", "Fleming who discovered penicillin was a Scottish doctor.", "Fleming, who discovered penicillin was a Scottish doctor."], "answer": 0, "why": "We know who Fleming is, so the extra fact sits between two commas." },
-      { "id": "comma-cottage-b2-11", "q": "Parenthetical comment — which is correct?", "options": ["The outlaws, of course, denied everything.", "The outlaws of course denied everything.", "The outlaws, of course denied everything."], "answer": 0, "why": "“Of course” is an aside: a comma on each side." },
-      { "id": "comma-cottage-b2-12", "q": "Comma after an ‘unless’ clause — which is correct?", "options": ["Unless the rain stops, the mascletà will be cancelled.", "Unless the rain stops the mascletà, will be cancelled.", "Unless, the rain stops, the mascletà will be cancelled."], "answer": 0, "why": "When the “unless” clause comes first, a comma closes it." }
+      {
+        "id": "comma-cottage-b2-01",
+        "q": "A necessary Oxford comma — which avoids confusion about who the parents are?",
+        "options": [
+          "I'd like to thank my parents, Ana, and Pablo.",
+          "I'd like to thank my parents, Ana and Pablo.",
+          "I'd like to thank my parents Ana and Pablo."
+        ],
+        "answer": 0,
+        "why": "The comma before “and” shows Ana and Pablo are separate people, not your parents' names."
+      },
+      {
+        "id": "comma-cottage-b2-02",
+        "q": "Non-defining relative clause — which is correct?",
+        "options": [
+          "Valencia, which is on the Mediterranean coast, is famous for paella.",
+          "Valencia which is on the Mediterranean coast is famous for paella.",
+          "Valencia, which is on the Mediterranean coast is famous for paella."
+        ],
+        "answer": 0,
+        "why": "We already know which Valencia, so the extra fact sits between two commas."
+      },
+      {
+        "id": "comma-cottage-b2-03",
+        "q": "Parenthetical comment — which is correct?",
+        "options": [
+          "The results, to be honest, were disappointing.",
+          "The results to be honest were disappointing.",
+          "The results, to be honest were disappointing."
+        ],
+        "answer": 0,
+        "why": "“To be honest” is an aside: a comma on each side."
+      },
+      {
+        "id": "comma-cottage-b2-04",
+        "q": "Comma before a contrasting phrase — which is correct?",
+        "options": [
+          "The plan was ambitious, though ultimately unsuccessful.",
+          "The plan was ambitious though ultimately unsuccessful.",
+          "The plan was ambitious, though, ultimately unsuccessful."
+        ],
+        "answer": 0,
+        "why": "A comma before “though” marks the contrast added after the main clause."
+      },
+      {
+        "id": "comma-cottage-b2-05",
+        "q": "Absolute phrase — which is correct?",
+        "options": [
+          "Her work finished, she left the office early.",
+          "Her work finished she left the office early.",
+          "Her work, finished, she left the office early."
+        ],
+        "answer": 0,
+        "why": "The opening phrase “Her work finished” is closed with a comma."
+      },
+      {
+        "id": "comma-cottage-b2-06",
+        "q": "Comma with a coordinating conjunction — which is correct?",
+        "options": [
+          "He wanted to travel, yet he never had the money.",
+          "He wanted, to travel yet he never had the money.",
+          "He wanted to travel, yet, he never had the money."
+        ],
+        "answer": 0,
+        "why": "A comma goes before “yet” when it joins two full clauses, not after it."
+      },
+      {
+        "id": "comma-cottage-b2-07",
+        "q": "Direct address mid-sentence — which is correct?",
+        "options": [
+          "I think, Maria, that you're right.",
+          "I think Maria that you're right.",
+          "I think, Maria that you're right."
+        ],
+        "answer": 0,
+        "why": "A name in the middle of a sentence needs a comma on each side."
+      },
+      {
+        "id": "comma-cottage-b2-08",
+        "q": "Comma splice with a long clause — which is correct?",
+        "options": [
+          "The negotiations continued for hours; neither side would compromise.",
+          "The negotiations continued for hours, neither side would compromise.",
+          "The negotiations continued for hours neither side, would compromise."
+        ],
+        "answer": 0,
+        "why": "Two full sentences with no linking word: a semicolon, not a comma."
+      },
+      {
+        "id": "comma-cottage-b2-09",
+        "q": "I have one sister. Which is correct?",
+        "options": [
+          "My sister, who lives in Madrid, is a doctor.",
+          "My sister who lives in Madrid, is a doctor.",
+          "My sister, who lives in Madrid is a doctor."
+        ],
+        "answer": 0,
+        "why": "With only one sister, “who lives in Madrid” is extra information, so it needs a comma on both sides."
+      },
+      {
+        "id": "comma-cottage-b2-10",
+        "q": "Non-defining relative clause — which is correct?",
+        "options": [
+          "Fleming, who discovered penicillin, was a Scottish doctor.",
+          "Fleming who discovered penicillin was a Scottish doctor.",
+          "Fleming, who discovered penicillin was a Scottish doctor."
+        ],
+        "answer": 0,
+        "why": "We know who Fleming is, so the extra fact sits between two commas."
+      },
+      {
+        "id": "comma-cottage-b2-11",
+        "q": "Parenthetical comment — which is correct?",
+        "options": [
+          "The outlaws, of course, denied everything.",
+          "The outlaws of course denied everything.",
+          "The outlaws, of course denied everything."
+        ],
+        "answer": 0,
+        "why": "“Of course” is an aside: a comma on each side."
+      },
+      {
+        "id": "comma-cottage-b2-12",
+        "q": "Comma after an ‘unless’ clause — which is correct?",
+        "options": [
+          "Unless the rain stops, the mascletà will be cancelled.",
+          "Unless the rain stops the mascletà, will be cancelled.",
+          "Unless, the rain stops, the mascletà will be cancelled."
+        ],
+        "answer": 0,
+        "why": "When the “unless” clause comes first, a comma closes it."
+      }
     ],
     "C1": [
-      { "id": "comma-cottage-c1-01", "q": "Identifying one specific report — which is correct?", "options": ["The report that was published last week caused controversy.", "The report, that was published last week, caused controversy.", "The report which was published last week, caused controversy."], "answer": 0, "why": "“That” gives essential information identifying the report, so no commas." },
-      { "id": "comma-cottage-c1-02", "q": "Mid-sentence ‘however’ — which is correct?", "options": ["The results, however, tell a different story.", "The results however tell a different story.", "The results, however tell a different story."], "answer": 0, "why": "Mid-sentence “however” is an aside: commas on both sides." },
-      { "id": "comma-cottage-c1-03", "q": "A comma before ‘because’ is usually wrong — which is correct?", "options": ["She left early because she felt unwell.", "She left early, because she felt unwell.", "She left, early because she felt unwell."], "answer": 0, "why": "When “because” gives the reason after the main clause, no comma is needed." },
-      { "id": "comma-cottage-c1-04", "q": "Comma with an appositive — which is correct?", "options": ["Cervantes, the author of Don Quixote, was born in Alcalá de Henares.", "Cervantes the author of Don Quixote was born in Alcalá de Henares.", "Cervantes, the author of Don Quixote was born in Alcalá de Henares."], "answer": 0, "why": "“The author of Don Quixote” is extra information: commas on both sides." },
-      { "id": "comma-cottage-c1-05", "q": "A series of three actions — which is correct?", "options": ["The board reviewed the proposal, debated its merits and rejected it.", "The board reviewed the proposal, debated its merits and, rejected it.", "The board reviewed the proposal debated its merits and rejected it."], "answer": 0, "why": "Commas separate the actions in the list; never put the comma after “and”." },
-      { "id": "comma-cottage-c1-06", "q": "‘Not only… but also’ — which is correct?", "options": ["The policy was not only unpopular but also unworkable.", "The policy was not only unpopular but, also unworkable.", "The policy was, not only unpopular but also unworkable."], "answer": 0, "why": "No comma is needed between “not only” and “but also” when the parts are short." },
-      { "id": "comma-cottage-c1-07", "q": "Dashes instead of commas — which is correct?", "options": ["The proposal — controversial from the start — was eventually withdrawn.", "The proposal, controversial from the start — was eventually withdrawn.", "The proposal — controversial from the start, was eventually withdrawn."], "answer": 0, "why": "Paired dashes work like brackets: open with one, close with one, never mix with a comma." },
-      { "id": "comma-cottage-c1-08", "q": "Comma splice in formal writing — which is correct?", "options": ["The data were inconclusive; further research is required.", "The data were inconclusive, further research is required.", "The data were inconclusive further, research is required."], "answer": 0, "why": "Two full sentences with no linking word: a semicolon, not a comma." },
-      { "id": "comma-cottage-c1-09", "q": "Comma after a long subordinate clause — which is correct?", "options": ["Although the committee had reservations about the budget, they approved the project.", "Although the committee had reservations about the budget they approved the project.", "Although the committee had reservations, about the budget, they approved the project."], "answer": 0, "why": "A long “although” clause at the start is closed with a comma." },
-      { "id": "comma-cottage-c1-10", "q": "Identifying one specific doctor — which is correct?", "options": ["The doctor who treated the miners refused payment.", "The doctor, who treated the miners, refused payment.", "The doctor who treated the miners, refused payment."], "answer": 0, "why": "The clause tells us which doctor, so it's essential: no commas." },
-      { "id": "comma-cottage-c1-11", "q": "‘Therefore’ between two clauses — which is correct?", "options": ["The well was contaminated; therefore, the pump was closed.", "The well was contaminated, therefore the pump was closed.", "The well was contaminated therefore, the pump was closed."], "answer": 0, "why": "“Therefore” can't join sentences like “and”: a semicolon before it, a comma after." },
-      { "id": "comma-cottage-c1-12", "q": "Comma with an appositive — which is correct?", "options": ["Sorolla, the painter of Valencian beaches, was born in 1863.", "Sorolla the painter of Valencian beaches was born in 1863.", "Sorolla, the painter of Valencian beaches was born in 1863."], "answer": 0, "why": "“The painter of Valencian beaches” is extra information: commas on both sides." }
+      {
+        "id": "comma-cottage-c1-01",
+        "q": "Identifying one specific report — which is correct?",
+        "options": [
+          "The report that was published last week caused controversy.",
+          "The report, that was published last week, caused controversy.",
+          "The report which was published last week, caused controversy."
+        ],
+        "answer": 0,
+        "why": "“That” gives essential information identifying the report, so no commas."
+      },
+      {
+        "id": "comma-cottage-c1-02",
+        "q": "Mid-sentence ‘however’ — which is correct?",
+        "options": [
+          "The results, however, tell a different story.",
+          "The results however tell a different story.",
+          "The results, however tell a different story."
+        ],
+        "answer": 0,
+        "why": "Mid-sentence “however” is an aside: commas on both sides."
+      },
+      {
+        "id": "comma-cottage-c1-03",
+        "q": "A comma before ‘because’ is usually wrong — which is correct?",
+        "options": [
+          "She left early because she felt unwell.",
+          "She left early, because she felt unwell.",
+          "She left, early because she felt unwell."
+        ],
+        "answer": 0,
+        "why": "When “because” gives the reason after the main clause, no comma is needed."
+      },
+      {
+        "id": "comma-cottage-c1-04",
+        "q": "Comma with an appositive — which is correct?",
+        "options": [
+          "Cervantes, the author of Don Quixote, was born in Alcalá de Henares.",
+          "Cervantes the author of Don Quixote was born in Alcalá de Henares.",
+          "Cervantes, the author of Don Quixote was born in Alcalá de Henares."
+        ],
+        "answer": 0,
+        "why": "“The author of Don Quixote” is extra information: commas on both sides."
+      },
+      {
+        "id": "comma-cottage-c1-05",
+        "q": "A series of three actions — which is correct?",
+        "options": [
+          "The board reviewed the proposal, debated its merits and rejected it.",
+          "The board reviewed the proposal, debated its merits and, rejected it.",
+          "The board reviewed the proposal debated its merits and rejected it."
+        ],
+        "answer": 0,
+        "why": "Commas separate the actions in the list; never put the comma after “and”."
+      },
+      {
+        "id": "comma-cottage-c1-06",
+        "q": "‘Not only… but also’ — which is correct?",
+        "options": [
+          "The policy was not only unpopular but also unworkable.",
+          "The policy was not only unpopular but, also unworkable.",
+          "The policy was, not only unpopular but also unworkable."
+        ],
+        "answer": 0,
+        "why": "No comma is needed between “not only” and “but also” when the parts are short."
+      },
+      {
+        "id": "comma-cottage-c1-07",
+        "q": "Dashes instead of commas — which is correct?",
+        "options": [
+          "The proposal — controversial from the start — was eventually withdrawn.",
+          "The proposal, controversial from the start — was eventually withdrawn.",
+          "The proposal — controversial from the start, was eventually withdrawn."
+        ],
+        "answer": 0,
+        "why": "Paired dashes work like brackets: open with one, close with one, never mix with a comma."
+      },
+      {
+        "id": "comma-cottage-c1-08",
+        "q": "Comma splice in formal writing — which is correct?",
+        "options": [
+          "The data were inconclusive; further research is required.",
+          "The data were inconclusive, further research is required.",
+          "The data were inconclusive further, research is required."
+        ],
+        "answer": 0,
+        "why": "Two full sentences with no linking word: a semicolon, not a comma."
+      },
+      {
+        "id": "comma-cottage-c1-09",
+        "q": "Comma after a long subordinate clause — which is correct?",
+        "options": [
+          "Although the committee had reservations about the budget, they approved the project.",
+          "Although the committee had reservations about the budget they approved the project.",
+          "Although the committee had reservations, about the budget, they approved the project."
+        ],
+        "answer": 0,
+        "why": "A long “although” clause at the start is closed with a comma."
+      },
+      {
+        "id": "comma-cottage-c1-10",
+        "q": "Identifying one specific doctor — which is correct?",
+        "options": [
+          "The doctor who treated the miners refused payment.",
+          "The doctor, who treated the miners, refused payment.",
+          "The doctor who treated the miners, refused payment."
+        ],
+        "answer": 0,
+        "why": "The clause tells us which doctor, so it's essential: no commas."
+      },
+      {
+        "id": "comma-cottage-c1-11",
+        "q": "‘Therefore’ between two clauses — which is correct?",
+        "options": [
+          "The well was contaminated; therefore, the pump was closed.",
+          "The well was contaminated, therefore the pump was closed.",
+          "The well was contaminated therefore, the pump was closed."
+        ],
+        "answer": 0,
+        "why": "“Therefore” can't join sentences like “and”: a semicolon before it, a comma after."
+      },
+      {
+        "id": "comma-cottage-c1-12",
+        "q": "Comma with an appositive — which is correct?",
+        "options": [
+          "Sorolla, the painter of Valencian beaches, was born in 1863.",
+          "Sorolla the painter of Valencian beaches was born in 1863.",
+          "Sorolla, the painter of Valencian beaches was born in 1863."
+        ],
+        "answer": 0,
+        "why": "“The painter of Valencian beaches” is extra information: commas on both sides."
+      }
     ]
   }
 }

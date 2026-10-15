@@ -1,67 +1,319 @@
 {
   "id": "deduction-detective",
   "title": "Deduction Detective",
-  "tags": ["other"],
+  "tags": [
+    "other"
+  ],
   "engine": "pairs",
   "intro": "Must be, might be, can't be — reading the clues to deduce, not just guess. How certain are you, really?",
   "items": {
     "A2": [
-      { "id": "deduction-detective-a2-01", "left": "tastes like", "right": "it seems so from the flavour", "why": "“Tastes like” for your mouth: “This tastes like lemon.”" },
-      { "id": "deduction-detective-a2-02", "left": "definitely isn't", "right": "a known fact that it's not true — no doubt at all", "why": "“Definitely” goes before “isn't”: “He definitely isn't at home.”" },
-      { "id": "deduction-detective-a2-03", "left": "according to", "right": "the information comes from another person or a source", "why": "“According to the radio, it will rain.” Never “according to me”." },
-      { "id": "deduction-detective-a2-04", "left": "in my opinion", "right": "what I personally think, not a fact", "why": "“In my opinion” gives your own view: “In my opinion, the film is too long.”" },
-      { "id": "deduction-detective-a2-05", "left": "maybe", "right": "perhaps — one word, often at the start of the sentence", "why": "“Maybe” (one word) means “quizás”: “Maybe she's at home.”" },
-      { "id": "deduction-detective-a2-06", "left": "is probably", "right": "likely, based on the evidence", "why": "“Probably” goes after “is”: “He is probably at home.”" },
-      { "id": "deduction-detective-a2-07", "left": "is definitely", "right": "a known fact, no doubt at all — no deduction needed", "why": "“Definitely” is for something you know, not a guess from clues." },
-      { "id": "deduction-detective-a2-08", "left": "isn't likely to be", "right": "probably not true", "why": "“Isn’t likely to be” means probably not; “likely” is followed by “to”." },
-      { "id": "deduction-detective-a2-09", "left": "looks like", "right": "it seems so from what I can see", "why": "“Looks like” + noun for what you see: “It looks like rain.”" },
-      { "id": "deduction-detective-a2-10", "left": "sounds like", "right": "it seems so from what I can hear", "why": "“Sounds like” for what you hear: “That sounds like the stagecoach.”" },
-      { "id": "deduction-detective-a2-11", "left": "smells like", "right": "it seems so from the smell", "why": "“Smells like” for your nose: “It smells like paella in here.”" },
-      { "id": "deduction-detective-a2-12", "left": "feels like", "right": "it seems so from touching it", "why": "“Feels like” for your hands: “This feels like silk.”" }
+      {
+        "id": "deduction-detective-a2-01",
+        "left": "tastes like",
+        "right": "it seems so from the flavour",
+        "why": "“Tastes like” for your mouth: “This tastes like lemon.”"
+      },
+      {
+        "id": "deduction-detective-a2-02",
+        "left": "definitely isn't",
+        "right": "I'm completely sure it's not true",
+        "why": "Total certainty, negative: “He definitely isn't at home.” Definitely goes before “isn't”."
+      },
+      {
+        "id": "deduction-detective-a2-03",
+        "left": "according to",
+        "right": "the information comes from another person or a source",
+        "why": "“According to the radio, it will rain.” Never “according to me”."
+      },
+      {
+        "id": "deduction-detective-a2-04",
+        "left": "in my opinion",
+        "right": "what I personally think, not a fact",
+        "why": "“In my opinion” gives your own view: “In my opinion, the film is too long.”"
+      },
+      {
+        "id": "deduction-detective-a2-05",
+        "left": "maybe",
+        "right": "perhaps — it's possible, but I'm not sure",
+        "why": "“Maybe” (one word) means “quizás”: “Maybe she's at home.”"
+      },
+      {
+        "id": "deduction-detective-a2-06",
+        "left": "is probably",
+        "right": "likely, based on the evidence",
+        "why": "“Probably” goes after “is”: “He is probably at home.”"
+      },
+      {
+        "id": "deduction-detective-a2-07",
+        "left": "is definitely",
+        "right": "I'm completely sure it's true",
+        "why": "“Definitely” is for something you know, not a guess from clues."
+      },
+      {
+        "id": "deduction-detective-a2-08",
+        "left": "isn't likely to be",
+        "right": "probably not true",
+        "why": "“Isn’t likely to be” means probably not; “likely” is followed by “to”."
+      },
+      {
+        "id": "deduction-detective-a2-09",
+        "left": "looks like",
+        "right": "it seems so from what I can see",
+        "why": "“Looks like” + noun for what you see: “It looks like rain.”"
+      },
+      {
+        "id": "deduction-detective-a2-10",
+        "left": "sounds like",
+        "right": "it seems so from what I can hear",
+        "why": "“Sounds like” for what you hear: “That sounds like the stagecoach.”"
+      },
+      {
+        "id": "deduction-detective-a2-11",
+        "left": "smells like",
+        "right": "it seems so from the smell",
+        "why": "“Smells like” for your nose: “It smells like paella in here.”"
+      },
+      {
+        "id": "deduction-detective-a2-12",
+        "left": "feels like",
+        "right": "it seems so from touching it",
+        "why": "“Feels like” for your hands: “This feels like silk.”"
+      }
     ],
     "B1": [
-      { "id": "deduction-detective-b1-01", "left": "must have been", "right": "I'm sure it happened — strong past deduction", "why": "Must have + past participle: a confident deduction about the past." },
-      { "id": "deduction-detective-b1-02", "left": "can't have been", "right": "I'm sure it didn't happen", "why": "The negative of “must have been” is “can’t have been”, never “mustn’t have been”." },
-      { "id": "deduction-detective-b1-03", "left": "might have been", "right": "it's possible it happened, but I'm not sure", "why": "Might have + past participle: possible in the past, but you can’t be sure." },
-      { "id": "deduction-detective-b1-04", "left": "should be", "right": "I expect it, if all goes to plan — 'the train should be here soon'", "why": "“Should be” is what you expect if things go normally." },
-      { "id": "deduction-detective-b1-05", "left": "is bound to be", "right": "almost certain to happen — 'it's bound to rain'", "why": "“Bound to” is a near-certain prediction: “It’s bound to be busy during the Fallas.”" },
-      { "id": "deduction-detective-b1-06", "left": "seems to be", "right": "my impression is that it is — the everyday spoken choice", "why": "“Seems to be” is soft and common in speech: you report an impression." },
-      { "id": "deduction-detective-b1-07", "left": "appears to be", "right": "formal wording for what the evidence shows — used in reports and the news", "why": "“Appears to be” is the formal cousin of “seems to be”." },
-      { "id": "deduction-detective-b1-08", "left": "is unlikely to be", "right": "probably not, based on the evidence", "why": "“Unlikely to” means probably not; like “likely”, it takes “to”." },
-      { "id": "deduction-detective-b1-09", "left": "must be working", "right": "I'm sure an action is in progress right now — be + -ing", "why": "Must be + -ing: “The light’s on; he must be working.”" },
-      { "id": "deduction-detective-b1-10", "left": "can't be working", "right": "I'm sure an action isn't in progress right now — be + -ing", "why": "Can’t be + -ing: “It’s silent; the machine can’t be working.”" },
-      { "id": "deduction-detective-b1-11", "left": "should have been", "right": "it was expected, but it didn't happen", "why": "Should have + past participle: it was the plan, but it didn’t happen." },
-      { "id": "deduction-detective-b1-12", "left": "might not have been", "right": "it's possible it didn't happen", "why": "Might not have + participle: maybe not; much weaker than “can’t have”." },
-      { "id": "deduction-detective-b1-13", "left": "must be", "right": "I'm sure it's true now — be + adjective or noun: 'he must be tired'", "why": "Clues make you sure: “He has a sheriff’s star. He must be the sheriff.”" },
-      { "id": "deduction-detective-b1-14", "left": "can't be", "right": "I'm sure it's not true now — never 'mustn't be'", "why": "The opposite of “must be” is “can’t be”, never “mustn’t be”." }
+      {
+        "id": "deduction-detective-b1-01",
+        "left": "must have been",
+        "right": "I'm sure it happened — strong past deduction",
+        "why": "Must have + past participle: a confident deduction about the past."
+      },
+      {
+        "id": "deduction-detective-b1-02",
+        "left": "can't have been",
+        "right": "I'm sure it didn't happen",
+        "why": "The negative of “must have been” is “can’t have been”, never “mustn’t have been”."
+      },
+      {
+        "id": "deduction-detective-b1-03",
+        "left": "might have been",
+        "right": "it's possible it happened, but I'm not sure",
+        "why": "Might have + past participle: possible in the past, but you can’t be sure."
+      },
+      {
+        "id": "deduction-detective-b1-04",
+        "left": "should be",
+        "right": "I expect it, if all goes to plan — 'the train should be here soon'",
+        "why": "“Should be” is what you expect if things go normally."
+      },
+      {
+        "id": "deduction-detective-b1-05",
+        "left": "is bound to be",
+        "right": "almost certain to happen — 'it's bound to rain'",
+        "why": "“Bound to” is a near-certain prediction: “It’s bound to be busy during the Fallas.”"
+      },
+      {
+        "id": "deduction-detective-b1-06",
+        "left": "seems to be",
+        "right": "my impression is that it is — the everyday spoken choice",
+        "why": "“Seems to be” is soft and common in speech: you report an impression."
+      },
+      {
+        "id": "deduction-detective-b1-07",
+        "left": "appears to be",
+        "right": "formal wording for what the evidence shows — used in reports and the news",
+        "why": "“Appears to be” is the formal cousin of “seems to be”."
+      },
+      {
+        "id": "deduction-detective-b1-08",
+        "left": "is unlikely to be",
+        "right": "probably not, based on the evidence",
+        "why": "“Unlikely to” means probably not; like “likely”, it takes “to”."
+      },
+      {
+        "id": "deduction-detective-b1-09",
+        "left": "must be working",
+        "right": "I'm sure an action is in progress right now — be + -ing",
+        "why": "Must be + -ing: “The light’s on; he must be working.”"
+      },
+      {
+        "id": "deduction-detective-b1-10",
+        "left": "can't be working",
+        "right": "I'm sure an action isn't in progress right now — be + -ing",
+        "why": "Can’t be + -ing: “It’s silent; the machine can’t be working.”"
+      },
+      {
+        "id": "deduction-detective-b1-11",
+        "left": "should have been",
+        "right": "it was expected, but it didn't happen",
+        "why": "Should have + past participle: it was the plan, but it didn’t happen."
+      },
+      {
+        "id": "deduction-detective-b1-12",
+        "left": "might not have been",
+        "right": "it's possible it didn't happen",
+        "why": "Might not have + participle: maybe not; much weaker than “can’t have”."
+      },
+      {
+        "id": "deduction-detective-b1-13",
+        "left": "must be",
+        "right": "I'm sure about a state or identity now (not an action) — based on clear clues",
+        "why": "Clues make you sure: “He has a sheriff’s star. He must be the sheriff.”"
+      },
+      {
+        "id": "deduction-detective-b1-14",
+        "left": "can't be",
+        "right": "I'm sure a state or identity is impossible now (not an action)",
+        "why": "The opposite of “must be” is “can’t be”, never “mustn’t be”."
+      }
     ],
     "B2": [
-      { "id": "deduction-detective-b2-01", "left": "must be lying", "right": "I'm sure the person isn't telling the truth", "why": "Must be + -ing: “His story keeps changing. He must be lying.”" },
-      { "id": "deduction-detective-b2-02", "left": "can't possibly be true", "right": "it is completely impossible", "why": "“Possibly” after “can’t” makes the impossibility even stronger." },
-      { "id": "deduction-detective-b2-03", "left": "could well be", "right": "it's quite possible — 'well' makes 'could' stronger", "why": "“Well” after could, may or might raises the chance: quite likely, not just possible." },
-      { "id": "deduction-detective-b2-04", "left": "is highly likely to be", "right": "very probable — a high chance, but not certain", "why": "“Highly likely” means very probable; “highly”, not “very much”, goes with likely." },
-      { "id": "deduction-detective-b2-05", "left": "is hardly likely to be", "right": "very unlikely, given the evidence", "why": "“Hardly” is almost negative already: very unlikely. Don’t add “not”." },
-      { "id": "deduction-detective-b2-06", "left": "must surely be", "right": "I'm confident, and I expect you to agree", "why": "“Surely” adds feeling: you’re confident and expect the listener to agree." },
-      { "id": "deduction-detective-b2-07", "left": "may well have been", "right": "there's a good chance it happened", "why": "May well have + past participle: a good chance it happened." },
-      { "id": "deduction-detective-b2-08", "left": "cannot rule out", "right": "cannot say for certain that something is false", "why": "To rule something out is to exclude it; if you can’t, it is still possible." },
-      { "id": "deduction-detective-b2-09", "left": "must have been doing", "right": "I'm sure that action was in progress at a past moment", "why": "Must have been + -ing: “He was covered in dust; he must have been riding all day.”" },
-      { "id": "deduction-detective-b2-10", "left": "can't have known", "right": "I'm sure the person didn't know at the time", "why": "Can’t have + past participle: “He can’t have known about the robbery.”" },
-      { "id": "deduction-detective-b2-11", "left": "is said to be", "right": "people say so — reported, not proven", "why": "Passive reporting: “The old mine is said to be full of gold.”" },
-      { "id": "deduction-detective-b2-12", "left": "should have arrived by now", "right": "it was due already, so I'm starting to worry", "why": "Should have + participle + “by now”: it was expected already." }
+      {
+        "id": "deduction-detective-b2-01",
+        "left": "must be lying",
+        "right": "I'm sure the person isn't telling the truth",
+        "why": "Must be + -ing: “His story keeps changing. He must be lying.”"
+      },
+      {
+        "id": "deduction-detective-b2-02",
+        "left": "can't possibly be true",
+        "right": "it is completely impossible",
+        "why": "“Possibly” after “can’t” makes the impossibility even stronger."
+      },
+      {
+        "id": "deduction-detective-b2-03",
+        "left": "could well be",
+        "right": "a real possibility — stronger than 'might', weaker than 'probably'",
+        "why": "“Well” after could, may or might raises the chance: quite likely, not just possible."
+      },
+      {
+        "id": "deduction-detective-b2-04",
+        "left": "is highly likely to be",
+        "right": "very probable — a high chance, but not certain",
+        "why": "“Highly likely” means very probable; “highly”, not “very much”, goes with likely."
+      },
+      {
+        "id": "deduction-detective-b2-05",
+        "left": "is hardly likely to be",
+        "right": "very unlikely, given the evidence",
+        "why": "“Hardly” is almost negative already: very unlikely. Don’t add “not”."
+      },
+      {
+        "id": "deduction-detective-b2-06",
+        "left": "must surely be",
+        "right": "I'm confident, and I expect you to agree",
+        "why": "“Surely” adds feeling: you’re confident and expect the listener to agree."
+      },
+      {
+        "id": "deduction-detective-b2-07",
+        "left": "may well have been",
+        "right": "there's a good chance it happened",
+        "why": "May well have + past participle: a good chance it happened."
+      },
+      {
+        "id": "deduction-detective-b2-08",
+        "left": "cannot rule out",
+        "right": "cannot say for certain that something is false",
+        "why": "To rule something out is to exclude it; if you can’t, it is still possible."
+      },
+      {
+        "id": "deduction-detective-b2-09",
+        "left": "must have been doing",
+        "right": "I'm sure that action was in progress at a past moment",
+        "why": "Must have been + -ing: “He was covered in dust; he must have been riding all day.”"
+      },
+      {
+        "id": "deduction-detective-b2-10",
+        "left": "can't have known",
+        "right": "I'm sure the person didn't know at the time",
+        "why": "Can’t have + past participle: “He can’t have known about the robbery.”"
+      },
+      {
+        "id": "deduction-detective-b2-11",
+        "left": "is said to be",
+        "right": "people say so — reported, not proven",
+        "why": "Passive reporting: “The old mine is said to be full of gold.”"
+      },
+      {
+        "id": "deduction-detective-b2-12",
+        "left": "should have arrived by now",
+        "right": "it was due already, so I'm starting to worry",
+        "why": "Should have + participle + “by now”: it was expected already."
+      }
     ],
     "C1": [
-      { "id": "deduction-detective-c1-01", "left": "it stands to reason that", "right": "it logically follows, based on the facts", "why": "The conclusion follows from logic: “It stands to reason that dirty water spreads disease.”" },
-      { "id": "deduction-detective-c1-02", "left": "in all probability", "right": "very probably, almost certainly", "why": "A formal “almost certainly”: “In all probability, the patient will recover.”" },
-      { "id": "deduction-detective-c1-03", "left": "beyond reasonable doubt", "right": "certain enough to be accepted as fact", "why": "The standard in a criminal trial: so certain that no sensible person doubts it." },
-      { "id": "deduction-detective-c1-04", "left": "there's every indication that", "right": "all the signs agree, with nothing against it", "why": "“Every indication” means every sign points the same way: a strong, formal deduction." },
-      { "id": "deduction-detective-c1-05", "left": "it defies belief that", "right": "it's true, but so shocking it's hard to believe", "why": "For true but shocking facts: “It defies belief that surgeons once refused to wash their hands.”" },
-      { "id": "deduction-detective-c1-06", "left": "one could be forgiven for assuming", "right": "it would be an understandable, if wrong, conclusion", "why": "A polite way to say a natural assumption is actually wrong." },
-      { "id": "deduction-detective-c1-07", "left": "it's a foregone conclusion", "right": "the result is certain before it even happens", "why": "The outcome is settled in advance: “The election was a foregone conclusion.”" },
-      { "id": "deduction-detective-c1-08", "left": "on the balance of probabilities", "right": "more likely true than not, weighing the evidence", "why": "The civil-court standard: more likely than not, lower than “beyond reasonable doubt”." },
-      { "id": "deduction-detective-c1-09", "left": "it is conceivable that", "right": "it is possible to imagine, even if unlikely", "why": "“Conceivable” means it can be imagined: possible, but not likely." },
-      { "id": "deduction-detective-c1-10", "left": "it would appear that", "right": "this seems true, said cautiously and formally", "why": "A careful, formal deduction: “It would appear that the safe was opened from inside.”" },
-      { "id": "deduction-detective-c1-11", "left": "there's no telling", "right": "it's impossible to know or predict", "why": "Nobody can know: “There’s no telling what the outlaws will do next.”" },
-      { "id": "deduction-detective-c1-12", "left": "I'd hazard a guess that", "right": "I'm offering a modest guess, not a firm deduction", "why": "To hazard a guess is to risk one: a tentative, modest deduction." }
+      {
+        "id": "deduction-detective-c1-01",
+        "left": "it stands to reason that",
+        "right": "it logically follows, based on the facts",
+        "why": "The conclusion follows from logic: “It stands to reason that dirty water spreads disease.”"
+      },
+      {
+        "id": "deduction-detective-c1-02",
+        "left": "in all probability",
+        "right": "almost certainly — said formally",
+        "why": "A formal “almost certainly”: “In all probability, the patient will recover.”"
+      },
+      {
+        "id": "deduction-detective-c1-03",
+        "left": "beyond reasonable doubt",
+        "right": "certain enough to be accepted as fact",
+        "why": "The standard in a criminal trial: so certain that no sensible person doubts it."
+      },
+      {
+        "id": "deduction-detective-c1-04",
+        "left": "there's every indication that",
+        "right": "all the signs agree, with nothing against it",
+        "why": "“Every indication” means every sign points the same way: a strong, formal deduction."
+      },
+      {
+        "id": "deduction-detective-c1-05",
+        "left": "it defies belief that",
+        "right": "it's true, but so shocking it's hard to believe",
+        "why": "For true but shocking facts: “It defies belief that surgeons once refused to wash their hands.”"
+      },
+      {
+        "id": "deduction-detective-c1-06",
+        "left": "one could be forgiven for assuming",
+        "right": "it would be an understandable, if wrong, conclusion",
+        "why": "A polite way to say a natural assumption is actually wrong."
+      },
+      {
+        "id": "deduction-detective-c1-07",
+        "left": "it's a foregone conclusion",
+        "right": "the result is certain before it even happens",
+        "why": "The outcome is settled in advance: “The election was a foregone conclusion.”"
+      },
+      {
+        "id": "deduction-detective-c1-08",
+        "left": "on the balance of probabilities",
+        "right": "more likely true than not, weighing the evidence",
+        "why": "The civil-court standard: more likely than not, lower than “beyond reasonable doubt”."
+      },
+      {
+        "id": "deduction-detective-c1-09",
+        "left": "it is conceivable that",
+        "right": "it is possible to imagine, even if unlikely",
+        "why": "“Conceivable” means it can be imagined: possible, but not likely."
+      },
+      {
+        "id": "deduction-detective-c1-10",
+        "left": "it would appear that",
+        "right": "this seems true, said cautiously and formally",
+        "why": "A careful, formal deduction: “It would appear that the safe was opened from inside.”"
+      },
+      {
+        "id": "deduction-detective-c1-11",
+        "left": "there's no telling",
+        "right": "it's impossible to know or predict",
+        "why": "Nobody can know: “There’s no telling what the outlaws will do next.”"
+      },
+      {
+        "id": "deduction-detective-c1-12",
+        "left": "I'd hazard a guess that",
+        "right": "I'm offering a modest guess, not a firm deduction",
+        "why": "To hazard a guess is to risk one: a tentative, modest deduction."
+      }
     ]
   }
 }

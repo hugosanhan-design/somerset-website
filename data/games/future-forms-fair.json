@@ -1,65 +1,547 @@
 {
   "id": "future-forms-fair",
   "title": "Future Forms Fair",
-  "tags": ["tense"],
+  "tags": [
+    "tense"
+  ],
   "engine": "choice",
   "intro": "Will, going to, the present continuous or the present simple? Pick the future that fits the situation.",
   "items": {
     "A2": [
-      { "id": "future-forms-fair-a2-01", "q": "Look at those clouds! It ___ rain.", "options": ["is going to", "going to", "is"], "answer": 0, "why": "You can see the clouds now: evidence, so “going to”, and it needs “is”." },
-      { "id": "future-forms-fair-a2-02", "q": "I ___ call you tonight, I promise.", "options": ["will", "am", "going to"], "answer": 0, "why": "A promise made now: will + verb." },
-      { "id": "future-forms-fair-a2-03", "q": "The train ___ at 9am every day.", "options": ["leaves", "is leaving", "will leave"], "answer": 0, "why": "“Every day” is a timetable: present simple." },
-      { "id": "future-forms-fair-a2-04", "q": "We ___ to the cinema tonight — I’ve already bought the tickets.", "options": ["are going", "are go", "go"], "answer": 0, "why": "The tickets are bought, so it’s arranged: present continuous, not “go” as in Spanish “vamos”." },
-      { "id": "future-forms-fair-a2-05", "q": "I think it ___ be sunny tomorrow.", "options": ["will", "is", "going to"], "answer": 0, "why": "“I think” plus an opinion about the future: will." },
-      { "id": "future-forms-fair-a2-06", "q": "Look out! You ___ drop that!", "options": ["are going to", "going to", "drop"], "answer": 0, "why": "You can see it about to happen: “are going to”, with the “are”." },
-      { "id": "future-forms-fair-a2-07", "q": "I ___ meeting Sarah at 5pm today.", "options": ["am", "will", "going"], "answer": 0, "why": "A fixed arrangement with a time: present continuous (am meeting)." },
-      { "id": "future-forms-fair-a2-08", "q": "The shop ___ at 6pm on weekdays.", "options": ["closes", "is closing", "will close"], "answer": 0, "why": "“On weekdays” is a timetable: present simple." },
-      { "id": "future-forms-fair-a2-09", "q": "I'm thirsty. I ___ get a glass of water.", "options": ["will", "am", "going to"], "answer": 0, "why": "A decision made at the moment of speaking: will + verb." },
-      { "id": "future-forms-fair-a2-10", "q": "She ___ having a party next Saturday — she's already invited everyone.", "options": ["is", "will", "going"], "answer": 0, "why": "Everyone is invited, so it’s arranged: present continuous (is having)." },
-      { "id": "future-forms-fair-a2-11", "q": "I’ll phone you when I ___ to the hotel.", "options": ["get", "will get", "going to get"], "answer": 0, "why": "After “when” about the future, English uses the present simple." },
-      { "id": "future-forms-fair-a2-12", "q": "The bus to the Albufera ___ at ten o’clock tomorrow morning.", "options": ["leaves", "left", "leave"], "answer": 0, "why": "A bus timetable: present simple with -s, even for tomorrow." }
+      {
+        "id": "future-forms-fair-a2-01",
+        "q": "Look at those clouds! It ___ rain.",
+        "options": [
+          "is going to",
+          "going to",
+          "is"
+        ],
+        "answer": 0,
+        "why": "You can see the clouds now: evidence, so “going to”, and it needs “is”."
+      },
+      {
+        "id": "future-forms-fair-a2-02",
+        "q": "I ___ call you tonight, I promise.",
+        "options": [
+          "will",
+          "am",
+          "going to"
+        ],
+        "answer": 0,
+        "why": "A promise made now: will + verb."
+      },
+      {
+        "id": "future-forms-fair-a2-03",
+        "q": "The train ___ at 9am every day.",
+        "options": [
+          "leaves",
+          "is leaving",
+          "will leave"
+        ],
+        "answer": 0,
+        "why": "“Every day” is a timetable: present simple."
+      },
+      {
+        "id": "future-forms-fair-a2-04",
+        "q": "We ___ to the cinema tonight — I’ve already bought the tickets.",
+        "options": [
+          "are going",
+          "are go",
+          "go"
+        ],
+        "answer": 0,
+        "why": "The tickets are bought, so it’s arranged: present continuous, not “go” as in Spanish “vamos”."
+      },
+      {
+        "id": "future-forms-fair-a2-05",
+        "q": "I think it ___ be sunny tomorrow.",
+        "options": [
+          "will",
+          "is",
+          "going to"
+        ],
+        "answer": 0,
+        "why": "“I think” plus an opinion about the future: will."
+      },
+      {
+        "id": "future-forms-fair-a2-06",
+        "q": "Look out! You ___ drop that!",
+        "options": [
+          "are going to",
+          "going to",
+          "drop"
+        ],
+        "answer": 0,
+        "why": "You can see it about to happen: “are going to”, with the “are”."
+      },
+      {
+        "id": "future-forms-fair-a2-07",
+        "q": "I ___ meeting Sarah at 5pm today.",
+        "options": [
+          "am",
+          "will",
+          "going"
+        ],
+        "answer": 0,
+        "why": "A fixed arrangement with a time: present continuous (am meeting)."
+      },
+      {
+        "id": "future-forms-fair-a2-08",
+        "q": "The shop ___ at 6pm on weekdays.",
+        "options": [
+          "closes",
+          "is closing",
+          "will close"
+        ],
+        "answer": 0,
+        "why": "“On weekdays” is a timetable: present simple."
+      },
+      {
+        "id": "future-forms-fair-a2-09",
+        "q": "I'm thirsty. I ___ get a glass of water.",
+        "options": [
+          "will",
+          "am",
+          "going to"
+        ],
+        "answer": 0,
+        "why": "A decision made at the moment of speaking: will + verb."
+      },
+      {
+        "id": "future-forms-fair-a2-10",
+        "q": "She ___ having a party next Saturday — she's already invited everyone.",
+        "options": [
+          "is",
+          "will",
+          "going"
+        ],
+        "answer": 0,
+        "why": "Everyone is invited, so it’s arranged: present continuous (is having)."
+      },
+      {
+        "id": "future-forms-fair-a2-11",
+        "q": "I’ll phone you when I ___ to the hotel.",
+        "options": [
+          "get",
+          "will get",
+          "going to get"
+        ],
+        "answer": 0,
+        "why": "After “when” about the future, English uses the present simple."
+      },
+      {
+        "id": "future-forms-fair-a2-12",
+        "q": "The bus to the Albufera ___ at ten o’clock tomorrow morning.",
+        "options": [
+          "leaves",
+          "left",
+          "leave"
+        ],
+        "answer": 0,
+        "why": "A bus timetable: present simple with -s, even for tomorrow."
+      }
     ],
     "B1": [
-      { "id": "future-forms-fair-b1-01", "q": "By the time you arrive, I ___ finished cooking.", "options": ["will have", "had", "have"], "answer": 0, "why": "“By the time you arrive” looks back from a future point: future perfect." },
-      { "id": "future-forms-fair-b1-02", "q": "The meeting ___ at 10am next Monday.", "options": ["starts", "started", "start"], "answer": 0, "why": "A fixed schedule: present simple with -s, even for “next Monday”." },
-      { "id": "future-forms-fair-b1-03", "q": "I promise I ___ help you tomorrow.", "options": ["will", "am", "help"], "answer": 0, "why": "“I promise” goes with will, not the present as in Spanish “te ayudo”." },
-      { "id": "future-forms-fair-b1-04", "q": "Look at the sky — it ___ to rain any minute.", "options": ["is going", "will go", "goes"], "answer": 0, "why": "Look at the sky: evidence now, so “is going to rain”." },
-      { "id": "future-forms-fair-b1-05", "q": "We ___ to Italy next summer — the flights are already booked.", "options": ["are going", "went", "go"], "answer": 0, "why": "The flights are booked: an arrangement, so present continuous." },
-      { "id": "future-forms-fair-b1-06", "q": "This time next week, I ___ lying on a beach.", "options": ["will be", "will", "was"], "answer": 0, "why": "“This time next week” plus an action in progress: future continuous." },
-      { "id": "future-forms-fair-b1-07", "q": "The plane ___ at 7:45, so we need to leave now.", "options": ["departs", "departed", "is depart"], "answer": 0, "why": "Flights run to a timetable: present simple, and it hasn’t left yet." },
-      { "id": "future-forms-fair-b1-08", "q": "I ___ you when I arrive.", "options": ["will call", "call", "called"], "answer": 0, "why": "A future action you decide or offer now: will + verb; the present “call” is the Spanish “te llamo” (only after “when” is the present right: “when I arrive”)." },
-      { "id": "future-forms-fair-b1-09", "q": "She’s studying really hard — she ___ pass the exam.", "options": ["is going to", "going to", "passes"], "answer": 0, "why": "Evidence now (she’s studying hard) points to the result: “is going to”." },
-      { "id": "future-forms-fair-b1-10", "q": "By next year, they ___ married for a decade.", "options": ["will have been", "will be", "have been"], "answer": 0, "why": "“By next year” plus a length of time up to then: future perfect." },
-      { "id": "future-forms-fair-b1-11", "q": "We’ll start the paella as soon as Grandma ___ .", "options": ["arrives", "will arrive", "is arriving"], "answer": 0, "why": "After “as soon as” about the future: present simple." },
-      { "id": "future-forms-fair-b1-12", "q": "The sheriff ___ the new deputy at noon tomorrow — it’s all arranged.", "options": ["is meeting", "met", "meet"], "answer": 0, "why": "“It’s all arranged” with a time: present continuous." }
+      {
+        "id": "future-forms-fair-b1-01",
+        "q": "By the time you arrive, I ___ finished cooking.",
+        "options": [
+          "will have",
+          "had",
+          "have"
+        ],
+        "answer": 0,
+        "why": "“By the time you arrive” looks back from a future point: future perfect."
+      },
+      {
+        "id": "future-forms-fair-b1-02",
+        "q": "The meeting ___ at 10am next Monday.",
+        "options": [
+          "starts",
+          "started",
+          "start"
+        ],
+        "answer": 0,
+        "why": "A fixed schedule: present simple with -s, even for “next Monday”."
+      },
+      {
+        "id": "future-forms-fair-b1-03",
+        "q": "I promise I ___ help you tomorrow.",
+        "options": [
+          "will",
+          "am",
+          "help"
+        ],
+        "answer": 0,
+        "why": "“I promise” goes with will, not the present as in Spanish “te ayudo”."
+      },
+      {
+        "id": "future-forms-fair-b1-04",
+        "q": "Look at the sky — it ___ to rain any minute.",
+        "options": [
+          "is going",
+          "will go",
+          "goes"
+        ],
+        "answer": 0,
+        "why": "Look at the sky: evidence now, so “is going to rain”."
+      },
+      {
+        "id": "future-forms-fair-b1-05",
+        "q": "We ___ to Italy next summer — the flights are already booked.",
+        "options": [
+          "are going",
+          "went",
+          "go"
+        ],
+        "answer": 0,
+        "why": "The flights are booked: an arrangement, so present continuous."
+      },
+      {
+        "id": "future-forms-fair-b1-06",
+        "q": "This time next week, I ___ lying on a beach.",
+        "options": [
+          "will be",
+          "will",
+          "was"
+        ],
+        "answer": 0,
+        "why": "“This time next week” plus an action in progress: future continuous."
+      },
+      {
+        "id": "future-forms-fair-b1-07",
+        "q": "The plane ___ at 7:45, so we need to leave now.",
+        "options": [
+          "departs",
+          "departed",
+          "is depart"
+        ],
+        "answer": 0,
+        "why": "Flights run to a timetable: present simple, and it hasn’t left yet."
+      },
+      {
+        "id": "future-forms-fair-b1-08",
+        "q": "I ___ you when I arrive.",
+        "options": [
+          "will call",
+          "call",
+          "called"
+        ],
+        "answer": 0,
+        "why": "A future action you decide or offer now: will + verb; the present “call” is the Spanish “te llamo” (only after “when” is the present right: “when I arrive”)."
+      },
+      {
+        "id": "future-forms-fair-b1-09",
+        "q": "She’s studying really hard — she ___ pass the exam.",
+        "options": [
+          "is going to",
+          "going to",
+          "passes"
+        ],
+        "answer": 0,
+        "why": "Evidence now (she’s studying hard) points to the result: “is going to”."
+      },
+      {
+        "id": "future-forms-fair-b1-10",
+        "q": "By next year, they ___ married for a decade.",
+        "options": [
+          "will have been",
+          "will be",
+          "have been"
+        ],
+        "answer": 0,
+        "why": "“By next year” plus a length of time up to then: future perfect."
+      },
+      {
+        "id": "future-forms-fair-b1-11",
+        "q": "We’ll start the paella as soon as Grandma ___ .",
+        "options": [
+          "arrives",
+          "will arrive",
+          "is arriving"
+        ],
+        "answer": 0,
+        "why": "After “as soon as” about the future: present simple."
+      },
+      {
+        "id": "future-forms-fair-b1-12",
+        "q": "The sheriff ___ the new deputy at noon tomorrow — it’s all arranged.",
+        "options": [
+          "is meeting",
+          "met",
+          "meet"
+        ],
+        "answer": 0,
+        "why": "“It’s all arranged” with a time: present continuous."
+      }
     ],
     "B2": [
-      { "id": "future-forms-fair-b2-01", "q": "By 2030, scientists ___ found a cure, according to experts.", "options": ["will have", "had", "have"], "answer": 0, "why": "“By 2030” looks back from a future point: future perfect." },
-      { "id": "future-forms-fair-b2-02", "q": "This time tomorrow, we ___ flying over the Atlantic.", "options": ["will be", "will", "were"], "answer": 0, "why": "“This time tomorrow” plus an action in progress: future continuous." },
-      { "id": "future-forms-fair-b2-03", "q": "The conference ___ place next month, as scheduled.", "options": ["takes", "took", "take"], "answer": 0, "why": "“As scheduled” is a timetable: present simple, even for next month." },
-      { "id": "future-forms-fair-b2-04", "q": "I can't come — I ___ working late that evening.", "options": ["will be", "will", "was"], "answer": 0, "why": "An action in progress at a future time (“that evening”): future continuous." },
-      { "id": "future-forms-fair-b2-05", "q": "Given the current trend, unemployment ___ rise further.", "options": ["is going to", "going to", "rises"], "answer": 0, "why": "“Given the current trend” is evidence now: “is going to”." },
-      { "id": "future-forms-fair-b2-06", "q": "By the end of this course, you ___ mastered all the tenses.", "options": ["will have", "had", "have"], "answer": 0, "why": "“By the end of this course” looks back from a future point: future perfect." },
-      { "id": "future-forms-fair-b2-07", "q": "The ceremony ___ at exactly noon tomorrow.", "options": ["begins", "began", "begin"], "answer": 0, "why": "A fixed programme: present simple, even for tomorrow." },
-      { "id": "future-forms-fair-b2-08", "q": "Watch out — that ladder ___ fall!", "options": ["is going to", "going to", "falls"], "answer": 0, "why": "“Watch out” — you can see it happening: “is going to”." },
-      { "id": "future-forms-fair-b2-09", "q": "I ___ seeing the doctor at 3pm, so I can't make the meeting.", "options": ["am", "will", "going"], "answer": 0, "why": "A fixed appointment with a time: present continuous (am seeing)." },
-      { "id": "future-forms-fair-b2-10", "q": "By this time next month, she ___ her new job for six weeks.", "options": ["will have had", "will have", "has had"], "answer": 0, "why": "“By this time next month” plus “for six weeks”: future perfect." },
-      { "id": "future-forms-fair-b2-11", "q": "By the time the doctor arrives, the patient ___ for three hours.", "options": ["will have been waiting", "has been waiting", "will have waiting"], "answer": 0, "why": "“By the time” plus a length of time up to a future point: future perfect continuous." },
-      { "id": "future-forms-fair-b2-12", "q": "I’ll lend you my saddle, as long as you ___ it back by Friday.", "options": ["bring", "will bring", "are bringing"], "answer": 0, "why": "After “as long as” about the future: present simple." }
+      {
+        "id": "future-forms-fair-b2-01",
+        "q": "By 2030, scientists ___ found a cure, according to experts.",
+        "options": [
+          "will have",
+          "had",
+          "have"
+        ],
+        "answer": 0,
+        "why": "“By 2030” looks back from a future point: future perfect."
+      },
+      {
+        "id": "future-forms-fair-b2-02",
+        "q": "This time tomorrow, we ___ flying over the Atlantic.",
+        "options": [
+          "will be",
+          "will",
+          "were"
+        ],
+        "answer": 0,
+        "why": "“This time tomorrow” plus an action in progress: future continuous."
+      },
+      {
+        "id": "future-forms-fair-b2-03",
+        "q": "The conference ___ place next month, as scheduled.",
+        "options": [
+          "takes",
+          "took",
+          "take"
+        ],
+        "answer": 0,
+        "why": "“As scheduled” is a timetable: present simple, even for next month."
+      },
+      {
+        "id": "future-forms-fair-b2-04",
+        "q": "I can't come — I ___ working late that evening.",
+        "options": [
+          "will be",
+          "will",
+          "was"
+        ],
+        "answer": 0,
+        "why": "An action in progress at a future time (“that evening”): future continuous."
+      },
+      {
+        "id": "future-forms-fair-b2-05",
+        "q": "Given the current trend, unemployment ___ rise further.",
+        "options": [
+          "is going to",
+          "going to",
+          "rises"
+        ],
+        "answer": 0,
+        "why": "“Given the current trend” is evidence now: “is going to”."
+      },
+      {
+        "id": "future-forms-fair-b2-06",
+        "q": "By the end of this course, you ___ mastered all the tenses.",
+        "options": [
+          "will have",
+          "had",
+          "have"
+        ],
+        "answer": 0,
+        "why": "“By the end of this course” looks back from a future point: future perfect."
+      },
+      {
+        "id": "future-forms-fair-b2-07",
+        "q": "The ceremony ___ at exactly noon tomorrow.",
+        "options": [
+          "begins",
+          "began",
+          "begin"
+        ],
+        "answer": 0,
+        "why": "A fixed programme: present simple, even for tomorrow."
+      },
+      {
+        "id": "future-forms-fair-b2-08",
+        "q": "Watch out — that ladder ___ fall!",
+        "options": [
+          "is going to",
+          "going to",
+          "falls"
+        ],
+        "answer": 0,
+        "why": "“Watch out” — you can see it happening: “is going to”."
+      },
+      {
+        "id": "future-forms-fair-b2-09",
+        "q": "I ___ seeing the doctor at 3pm, so I can't make the meeting.",
+        "options": [
+          "am",
+          "will",
+          "going"
+        ],
+        "answer": 0,
+        "why": "A fixed appointment with a time: present continuous (am seeing)."
+      },
+      {
+        "id": "future-forms-fair-b2-10",
+        "q": "By this time next month, she ___ her new job for six weeks.",
+        "options": [
+          "will have had",
+          "will have",
+          "has had"
+        ],
+        "answer": 0,
+        "why": "“By this time next month” plus “for six weeks”: future perfect."
+      },
+      {
+        "id": "future-forms-fair-b2-11",
+        "q": "By the time the doctor arrives, the patient ___ for three hours.",
+        "options": [
+          "will have been waiting",
+          "has been waiting",
+          "will have waiting"
+        ],
+        "answer": 0,
+        "why": "“By the time” plus a length of time up to a future point: future perfect continuous."
+      },
+      {
+        "id": "future-forms-fair-b2-12",
+        "q": "I’ll lend you my saddle, as long as you ___ it back by Friday.",
+        "options": [
+          "bring",
+          "will bring",
+          "are bringing"
+        ],
+        "answer": 0,
+        "why": "After “as long as” about the future: present simple."
+      }
     ],
     "C1": [
-      { "id": "future-forms-fair-c1-01", "q": "The President ___ visit Valencia next week, the palace has announced.", "options": ["is to", "will to", "is about"], "answer": 0, "why": "“Be to” + verb is for official plans; “about to” is only for the next few moments." },
-      { "id": "future-forms-fair-c1-02", "q": "I ___ call you last night, but I fell asleep on the sofa.", "options": ["was going to", "am going to", "will"], "answer": 0, "why": "A plan seen from the past that didn't happen: future in the past, “was going to”." },
-      { "id": "future-forms-fair-c1-03", "q": "The two banks are on the verge ___ merging.", "options": ["of", "to", "for"], "answer": 0, "why": "“On the verge of” + -ing means something is about to happen very soon." },
-      { "id": "future-forms-fair-c1-04", "q": "Little did we know that the trip ___ change our lives.", "options": ["would", "will", "was"], "answer": 0, "why": "Looking ahead from a past moment: “would” is the future in the past." },
-      { "id": "future-forms-fair-c1-05", "q": "___ you be using the car this evening? I'd like to borrow it.", "options": ["Will", "Are", "Do"], "answer": 0, "why": "The future continuous asks politely about someone's plans without pressing them." },
-      { "id": "future-forms-fair-c1-06", "q": "The talks ___ have been held in Geneva, but they were moved to Vienna.", "options": ["were to", "are to", "will"], "answer": 0, "why": "“Was/were to have” + past participle is a formal plan that never happened." },
-      { "id": "future-forms-fair-c1-07", "q": "Someone's at the door. That ___ be the postman: he always comes at ten.", "options": ["will", "is going to", "shall"], "answer": 0, "why": "“Will” can express a confident guess about the present." },
-      { "id": "future-forms-fair-c1-08", "q": "We ___ off when the storm broke, so we stayed at home.", "options": ["were about to set", "are about to set", "will set"], "answer": 0, "why": "“Was/were about to” is a future seen from a past moment: it was just going to happen." },
-      { "id": "future-forms-fair-c1-09", "q": "The committee ___ its findings by Friday, according to the schedule.", "options": ["will have submitted", "will have submit", "has submitted"], "answer": 0, "why": "“By Friday” looks back from a future deadline: will have + past participle." },
-      { "id": "future-forms-fair-c1-10", "q": "By 2050, renewable energy ___ overtaken fossil fuels, most analysts agree.", "options": ["will have", "will has", "has"], "answer": 0, "why": "“By 2050” looks back from a future point: future perfect. After “will” use the base form “have”, never “has”." },
-      { "id": "future-forms-fair-c1-11", "q": "The new metro line ___ to open next spring, the council has announced.", "options": ["is due", "will", "is about"], "answer": 0, "why": "“Is due to” is for an official timetable; “about to” is only for the next few moments." },
-      { "id": "future-forms-fair-c1-12", "q": "Once the vaccine ___ approved, doctors will start giving it to the elderly.", "options": ["has been", "will have been", "will be"], "answer": 0, "why": "After “once” about the future, no “will”: present perfect for something completed first." }
+      {
+        "id": "future-forms-fair-c1-01",
+        "q": "The King ___ visit Valencia next week, the palace has announced.",
+        "options": [
+          "is to",
+          "is about to",
+          "is being to"
+        ],
+        "answer": 0,
+        "why": "“Be to” + verb is for official plans; “about to” is only for the next few moments, so it cannot go with “next week”."
+      },
+      {
+        "id": "future-forms-fair-c1-02",
+        "q": "I ___ call you last night, but I fell asleep on the sofa.",
+        "options": [
+          "was going to",
+          "am going to",
+          "will"
+        ],
+        "answer": 0,
+        "why": "A plan seen from the past that didn't happen: future in the past, “was going to”."
+      },
+      {
+        "id": "future-forms-fair-c1-03",
+        "q": "The two banks are on the verge ___ merging.",
+        "options": [
+          "of",
+          "to",
+          "for"
+        ],
+        "answer": 0,
+        "why": "“On the verge of” + -ing means something is about to happen very soon."
+      },
+      {
+        "id": "future-forms-fair-c1-04",
+        "q": "Little did we know that the trip ___ change our lives.",
+        "options": [
+          "would",
+          "will",
+          "was"
+        ],
+        "answer": 0,
+        "why": "Looking ahead from a past moment: “would” is the future in the past."
+      },
+      {
+        "id": "future-forms-fair-c1-05",
+        "q": "___ you be using the car this evening? I'd like to borrow it.",
+        "options": [
+          "Will",
+          "Are",
+          "Do"
+        ],
+        "answer": 0,
+        "why": "The future continuous asks politely about someone's plans without pressing them."
+      },
+      {
+        "id": "future-forms-fair-c1-06",
+        "q": "The talks ___ have been held in Geneva, but they were moved to Vienna.",
+        "options": [
+          "were to",
+          "are to",
+          "will"
+        ],
+        "answer": 0,
+        "why": "“Was/were to have” + past participle is a formal plan that never happened."
+      },
+      {
+        "id": "future-forms-fair-c1-07",
+        "q": "Someone's at the door. That ___ be the postman: he always comes at ten.",
+        "options": [
+          "will",
+          "is going to",
+          "shall"
+        ],
+        "answer": 0,
+        "why": "“Will” can express a confident guess about the present."
+      },
+      {
+        "id": "future-forms-fair-c1-08",
+        "q": "We ___ off when the storm broke, so we stayed at home.",
+        "options": [
+          "were about to set",
+          "are about to set",
+          "will set"
+        ],
+        "answer": 0,
+        "why": "“Was/were about to” is a future seen from a past moment: it was just going to happen."
+      },
+      {
+        "id": "future-forms-fair-c1-09",
+        "q": "The committee ___ its findings by Friday, according to the schedule.",
+        "options": [
+          "will have submitted",
+          "will have submit",
+          "has submitted"
+        ],
+        "answer": 0,
+        "why": "“By Friday” looks back from a future deadline: will have + past participle."
+      },
+      {
+        "id": "future-forms-fair-c1-10",
+        "q": "By 2050, renewable energy ___ overtaken fossil fuels, most analysts agree.",
+        "options": [
+          "will have",
+          "will has",
+          "has"
+        ],
+        "answer": 0,
+        "why": "“By 2050” looks back from a future point: future perfect. After “will” use the base form “have”, never “has”."
+      },
+      {
+        "id": "future-forms-fair-c1-11",
+        "q": "The new metro line ___ to open next spring, the council has announced.",
+        "options": [
+          "is due",
+          "will",
+          "is about"
+        ],
+        "answer": 0,
+        "why": "“Is due to” is for an official timetable; “about to” is only for the next few moments."
+      },
+      {
+        "id": "future-forms-fair-c1-12",
+        "q": "Once the vaccine ___ approved, doctors will start giving it to the elderly.",
+        "options": [
+          "has been",
+          "will have been",
+          "will be"
+        ],
+        "answer": 0,
+        "why": "After “once” about the future, no “will”: present perfect for something completed first."
+      }
     ]
   }
 }
